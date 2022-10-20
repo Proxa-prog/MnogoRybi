@@ -1,24 +1,23 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const { resolve } = require('path');
 
 module.exports = {
     mode: 'development',
-    entry: ['@babel/polyfill', './src/index.tsx'],
+    entry: ['@babel/polyfill', path.resolve(__dirname, 'src', 'index.tsx')],
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].[hach].js'
+        filename: '[name].[contenthash].js',
+        clean: true,
     },
     devServer: {
         port: 2525
     },
     resolve: {
-        extensions: ['.js', '.ts', '.tsx'],
+        extensions: ['.ts', '.tsx', '.js', 'jsx'],
       },    
     plugins: [
-        new HTMLWebpackPlugin({template: './src/index.html'}),
-        new CleanWebpackPlugin(),
+        new HTMLWebpackPlugin({template: path.resolve(__dirname, 'public', 'index.html')}),
     ],
     module: {
         rules: [
@@ -31,14 +30,9 @@ module.exports = {
                 use: 'file-loader'
             },
             {
-                test: /\.m?tsx?$/,
+                test: /\.tsx?$/,
+                use: 'ts-loader',
                 exclude: /node_modules/,
-                use: {
-                  loader: "babel-loader",
-                  options: {
-                    presets: ['@babel/preset-env']
-                  }
-                }
             },
             {
                 test: /\.m?tsx$/,
