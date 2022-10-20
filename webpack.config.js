@@ -5,7 +5,7 @@ const { resolve } = require('path');
 
 module.exports = {
     mode: 'development',
-    entry: ['@babel/polyfill', './src/index.jsx'],
+    entry: ['@babel/polyfill', './src/index.tsx'],
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[hach].js'
@@ -14,7 +14,7 @@ module.exports = {
         port: 2525
     },
     resolve: {
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.ts', '.tsx'],
       },    
     plugins: [
         new HTMLWebpackPlugin({template: './src/index.html'}),
@@ -31,7 +31,7 @@ module.exports = {
                 use: 'file-loader'
             },
             {
-                test: /\.m?js$/,
+                test: /\.m?tsx?$/,
                 exclude: /node_modules/,
                 use: {
                   loader: "babel-loader",
@@ -41,7 +41,7 @@ module.exports = {
                 }
             },
             {
-                test: /\.m?jsx$/,
+                test: /\.m?tsx$/,
                 exclude: /node_modules/,
                 use: {
                   loader: "babel-loader",
