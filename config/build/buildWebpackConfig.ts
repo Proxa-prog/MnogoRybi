@@ -1,8 +1,9 @@
-const paths = require("./config/build/buildLoaders.ts");
-const resolvers = require("./config/build/buildResolvers.ts");
-const HTML = require("./config/build/buildPlugins.ts");
+const paths = require("./buildLoaders.ts");
+const resolvers = require("./buildResolvers.ts");
+const HTML = require("./buildPlugins.ts");
 
 const mode = "development";
+
 
 module.exports = {
   mode: mode,
