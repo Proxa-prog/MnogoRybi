@@ -1,6 +1,9 @@
+import buildWebpackConfig from "./buildWebpackConfig";
+import { IPaths } from "./types/config";
+
 const path = require("path");
 
-module.exports = {
+const entry: IPaths = {
   entry: ["@babel/polyfill", path.resolve(__dirname, "../../", "src", "index.tsx")],
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -8,3 +11,12 @@ module.exports = {
     clean: true,
   },
 };
+
+export const mode = "development";
+
+const config = buildWebpackConfig({
+  mode: mode,
+  entry: entry,
+})
+
+export default config;

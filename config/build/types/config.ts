@@ -1,11 +1,13 @@
 export interface IPaths {
-    entry: string;
-    output: string;
-    isDev: boolean;
+    entry: string[];
+    output: {
+        path: string;
+        filename: string;
+        clean: boolean;
+    }
 }
 
 export interface IWebpackConfig {
     mode: string;
-    paths: IPaths;
-    isDev: boolean;
+    entry: IPaths;
 }

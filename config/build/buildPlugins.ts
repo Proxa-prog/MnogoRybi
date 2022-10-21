@@ -1,5 +1,10 @@
 const HTMLWebpackPlugin = require("html-webpack-plugin");
-const pathss = require("path");
+const path = require("path");
 
-module.exports = new HTMLWebpackPlugin({template: pathss.resolve(__dirname, "../../", 'public', 'index.html')});
+const plugins = [
+  new HTMLWebpackPlugin({
+    template: path.resolve(__dirname, "../../", "public", "index.html"),
+  }),
+];
 
+export default plugins;

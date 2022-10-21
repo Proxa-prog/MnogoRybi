@@ -1,3 +1,7 @@
-module.exports = {
-  extensions: [".ts", ".tsx", ".js", "jsx"],
+const resolvers = () => {
+    return ({
+        extensions: [".ts", ".tsx", ".js", "jsx"]
+      });
 };
+
+export default resolvers;
