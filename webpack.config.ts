@@ -1,20 +1,18 @@
-import config from "./config/build/buildLoaders";
 import plugins from "./config/build/buildPlugins";
 import resolvers from "./config/build/buildResolvers";
+import {
+  configDevelopment,
+  configProduction,
+  env,
+} from "./config/build/buildWebpackConfig";
 
-const path = require("path");
 const { merge } = require("webpack-merge");
 
-export const paths = {
-  entry: path.resolve(__dirname, "src", "index.tsx"),
-}
+const config = env === "development" ? configDevelopment : configProduction;
 
 module.exports = merge([
   config,
   {
-    devServer: {
-      port: 2525,
-    },
     resolve: resolvers(),
     plugins: plugins,
     module: {
