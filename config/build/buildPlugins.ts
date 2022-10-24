@@ -1,5 +1,5 @@
-const HTMLWebpackPlugin = require("html-webpack-plugin");
-const path = require("path");
+import * as HTMLWebpackPlugin from "html-webpack-plugin";
+import * as path from 'path';
 
 const plugins = [
   new HTMLWebpackPlugin({

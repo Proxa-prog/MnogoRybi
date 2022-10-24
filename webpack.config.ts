@@ -1,16 +1,15 @@
 import plugins from "./config/build/buildPlugins";
 import resolvers from "./config/build/buildResolvers";
+import { merge } from "webpack-merge";
 import {
   configDevelopment,
   configProduction,
   env,
 } from "./config/build/buildWebpackConfig";
 
-const { merge } = require("webpack-merge");
-
 const config = env === "development" ? configDevelopment : configProduction;
 
-module.exports = merge([
+const webpackConfig = merge([
   config,
   {
     resolve: resolvers(),
@@ -44,3 +43,5 @@ module.exports = merge([
     },
   },
 ]);
+
+export default webpackConfig;

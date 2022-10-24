@@ -1,6 +1,5 @@
 import { IDev, IProd } from "./types/config";
-
-const path = require("path");
+import * as path from 'path';
 
 export const development: IDev = {
   entry: [
