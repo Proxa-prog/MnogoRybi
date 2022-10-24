@@ -3,7 +3,7 @@ import * as React from 'react';
 const App = () => {
     return (
         <div>
-            <h1>React is working!!!!!!</h1>
+            <h1>React is working!!!</h1>
         </div>
     )
 }

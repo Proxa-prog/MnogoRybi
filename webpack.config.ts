@@ -1,47 +1,12 @@
-import plugins from "./config/build/buildPlugins";
-import resolvers from "./config/build/buildResolvers";
-import { merge } from "webpack-merge";
-import {
-  configDevelopment,
-  configProduction,
-  env,
-} from "./config/build/buildWebpackConfig";
+import * as path from "path";
+import buildWebpackConfig from "./config/build/buildWebpackConfig";
 
-const config = env === "development" ? configDevelopment : configProduction;
+const paths = {
+  entry: path.resolve(__dirname, "src", "index.tsx"),
+  output: path.resolve(__dirname, "dist"),
+  html: path.resolve(__dirname, "public", "index.html"),
+};
 
-const webpackConfig = merge([
-  config,
-  {
-    resolve: resolvers(),
-    plugins: plugins,
-    module: {
-      rules: [
-        {
-          test: /\.(css|scss)$/,
-          use: ["style-loader", "css-loader", "sass-loader"],
-        },
-        {
-          test: /\.(jpeg|jpg|png|gif)$/,
-          use: "file-loader",
-        },
-        {
-          test: /\.tsx?$/,
-          use: "ts-loader",
-          exclude: /node_modules/,
-        },
-        {
-          test: /\.m?tsx$/,
-          exclude: /node_modules/,
-          use: {
-            loader: "babel-loader",
-            options: {
-              presets: ["@babel/preset-env", "@babel/preset-react"],
-            },
-          },
-        },
-      ],
-    },
-  },
-]);
+const webpackConfig = buildWebpackConfig(paths);
 
 export default webpackConfig;

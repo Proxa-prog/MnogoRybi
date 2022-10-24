@@ -1,10 +1,12 @@
 import * as HTMLWebpackPlugin from "html-webpack-plugin";
-import * as path from 'path';
+import { IPatsh } from "./types/config";
 
-const plugins = [
-  new HTMLWebpackPlugin({
-    template: path.resolve(__dirname, "../../", "public", "index.html"),
-  }),
-];
+const plugins = (paths: IPatsh) => {
+  return [
+    new HTMLWebpackPlugin({
+      template: paths.html,
+    }),
+  ];
+};
 
 export default plugins;

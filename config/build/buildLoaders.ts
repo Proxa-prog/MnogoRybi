@@ -1,29 +1,30 @@
-import { IDev, IProd } from "./types/config";
-import * as path from 'path';
+import { IPatsh } from "./types/config";
 
-export const development: IDev = {
-  entry: [
-    "@babel/polyfill",
-    path.resolve(__dirname, "../../", "src", "index.tsx"),
-  ],
-  output: {
-    path: path.resolve(__dirname, "../../", "dist"),
-    filename: "[name].[contenthash].js",
-    clean: true,
-  },
-  devServer: {
-    port: 2525,
-  },
-};
+export const selectConfig = (mode: string, paths: IPatsh) => {
+  if (mode === "development") {
+    return {
+      mode: "development",
+      entry: ["@babel/polyfill", paths.entry],
+      output: {
+        path: paths.output,
+        filename: "[name].[contenthash].js",
+        clean: true,
+      },
+      devServer: {
+        port: 2525,
+      },
+    };
+  }
 
-export const production: IProd = {
-  entry: [
-    "@babel/polyfill",
-    path.resolve(__dirname, "../../", "src", "index.tsx"),
-  ],
-  output: {
-    path: path.resolve(__dirname, "../../", "dist"),
-    filename: "[name].[contenthash].js",
-    clean: true,
-  },
+  if (mode === "production") {
+    return {
+      mode: "production",
+      entry: ["@babel/polyfill", paths.entry],
+      output: {
+        path: paths.output,
+        filename: "[name].[contenthash].js",
+        clean: true,
+      },
+    };
+  }
 };
