@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "webpack-dev-server --env development --open",
-    "build": "webpack --env production"
+    "start": "webpack serve --open",
+    "build": "webpack --env mode=production"
   },
   "repository": {
     "type": "git",
