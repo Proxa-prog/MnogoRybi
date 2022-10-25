@@ -1,10 +1,10 @@
-import * as HTMLWebpackPlugin from "html-webpack-plugin";
-import { IPatsh } from "./types/config";
+import HTMLWebpackPlugin from "html-webpack-plugin";
+import {BuildOptions} from "./types/config";
 
-const plugins = (paths: IPatsh) => {
+const plugins = (options: BuildOptions) => {
   return [
     new HTMLWebpackPlugin({
-      template: paths.html,
+      template: options.paths.html,
     }),
   ];
 };
