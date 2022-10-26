@@ -1,9 +1,9 @@
 import * as React from 'react';
-import './style.scss';
+import styles from './App.module.scss';
 
 const App = () => {
     return (
-        <div className='App'>
+        <div className={styles.App}>
             <h1>React is working!!!!!!SSs!!!!</h1>
         </div>
     )
