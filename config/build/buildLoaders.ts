@@ -1,8 +1,8 @@
 import webpack from 'webpack';
 
 export function buildLoaders(): webpack.RuleSetRule[]{
-  const cssLoader = {
-    test: /\.(css|scss)$/,
+  const scssLoader = {
+    test: /\.(sa|sc|c)ss$/,
     use: ["style-loader", "css-loader", "sass-loader"],
   };
 
@@ -29,7 +29,7 @@ export function buildLoaders(): webpack.RuleSetRule[]{
   };
 
   return [
-    cssLoader,
+    scssLoader,
     fileLoader,
     babelLoader,
     tsLoader,
