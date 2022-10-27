@@ -4,7 +4,7 @@ import styles from './App.module.scss';
 const App = () => {
     return (
         <div className={styles.App}>
-            <h1>React is working!!!!!!SSs!!!!</h1>
+            <h1>React is working!!!!!!s!!!!</h1>
         </div>
     )
 }
