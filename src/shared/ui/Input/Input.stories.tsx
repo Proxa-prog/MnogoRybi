@@ -1,7 +1,7 @@
 import React from "react";
 
 import Input from "./Input";
-import "../../../index.scss";
+import "./Input.module.scss";
 
 export default {
     title: 'Input',
@@ -15,7 +15,6 @@ export default {
                 'normal',
                 'value',
                 'error',
-                'error_message',
             ],
             control: {
                 type: 'radio'
@@ -47,6 +46,14 @@ Desktop.args = {
     variant: 'normal',
 }
 
+Desktop.decorators = [
+    (Story: any) => (
+      <div style={{ margin: '3em' }}>
+        <Story />
+      </div>
+    ),
+  ];
+
 export const Mobile = Template.bind({});
 
 Mobile.args = {
@@ -54,3 +61,11 @@ Mobile.args = {
     label: 'Имя',
     variant: 'normal',
 }
+
+Mobile.decorators = [
+    (Story: any) => (
+      <div style={{ margin: '3em' }}>
+        <Story />
+      </div>
+    ),
+  ];

@@ -3,39 +3,50 @@ import classNames from 'classnames';
 
 import styles from './Checkbox.module.scss';
 
-type HtmlInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onClick'>;
+type HtmlInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'>;
+
+type Checkbox = 'not_active' | 'active' | 'not_active_disabled' | 'active_disabled';
 
 interface CheckboxProps extends HtmlInputProps {
-    onClick: () => void;
-    variant: string;
+    onChange: () => void;
+    className: string;
+    variant: Checkbox;
+    checked: boolean;
+    label: string;
+    disabled: boolean;
 }
 
 const Checkbox = (props: CheckboxProps) => {
     const {
+        className,
         variant,
         type,
+        checked,
+        label,
+        disabled,
     } = props;
 
-    const [isChecked, setIsChecked] = useState(true);
-
     return (
-        <input
-            type="checkbox"
-            className={classNames(
-                styles.not_active,
-                styles[variant],
-                styles[isChecked ? 'not_active' : 'active'],
-                styles[variant],
-                styles[type]
-            )}
-            disabled={
-                variant === 'not_active_disabled' ||
-                    variant === 'active_disabled' ?
-                    true :
-                    false
-            }
-            onClick={() => setIsChecked((prev: boolean) => !prev)}
-        />
+        <>
+            <label
+                htmlFor={styles.checkbox}>
+                {label}
+            </label>
+            <input
+                id={styles.checkbox}
+                type="checkbox"
+                className={classNames(
+                    styles.checkbox,
+                    styles[variant],
+                    [
+                        styles[type],
+                        className,
+                    ]
+                )}
+                disabled={disabled}
+            />
+        </>
+
     );
 }
 
