@@ -17,6 +17,7 @@ interface InputProps extends HtmlInputProps {
     label: string;
     media: string;
     error?: string;
+    required?: boolean;
 }
 
 const Input = (props: InputProps) => {
@@ -31,16 +32,11 @@ const Input = (props: InputProps) => {
         value,
         onChange,
         error,
+        required,
     } = props;
 
     return (
         <div className={styles.inputWrapper}>
-            <label
-                htmlFor={name}
-                className={styles.labelInput}
-            >
-                {label}
-            </label>
             <input
                 className={classNames(
                     styles.desktop,
@@ -54,11 +50,19 @@ const Input = (props: InputProps) => {
                 type="text"
                 placeholder={placeholder}
                 readOnly={readonly}
+                value={value}
+                required={required}
                 onChange={(event) => {
                     onChange(event.target.value, name)
                 }}
-                value={value}
+
             />
+            <label
+                htmlFor={name}
+                className={styles.labelInput}
+            >
+                {label}
+            </label>
             {error && <span className={styles.error_message_text}>
                 {error}
             </span>}

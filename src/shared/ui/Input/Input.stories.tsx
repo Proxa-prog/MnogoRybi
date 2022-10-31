@@ -7,19 +7,6 @@ export default {
     title: 'Input',
     component: Input,
     argTypes: {
-        variant: {
-            type: 'string',
-            description: 'Вариант внешнего вида поля ввода',
-            defaultValue: 'normal',
-            options: [
-                'normal',
-                'value',
-                'error',
-            ],
-            control: {
-                type: 'radio'
-            },
-        },
         media: {
             type: 'string',
             description: 'Разрешение экрана',
@@ -43,7 +30,6 @@ export const Desktop = Template.bind({});
 Desktop.args = {
     placeholder: 'Введите имя',
     label: 'Имя',
-    variant: 'normal',
 }
 
 Desktop.decorators = [

@@ -41,6 +41,7 @@
     "html-webpack-plugin": "^5.5.0",
     "sass": "^1.55.0",
     "sass-loader": "^13.1.0",
+    "storybook-addon-pseudo-states": "^1.15.1",
     "storybook-webpack-federation-plugin": "^2.0.1",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.4.1",
