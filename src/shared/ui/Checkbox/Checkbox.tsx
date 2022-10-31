@@ -41,8 +41,8 @@ const Checkbox = (props: CheckboxProps) => {
                 type="checkbox"
                 className={classNames(
                     styles.checkbox,
+                    {[styles.circle]: isCircle},
                     [
-                        {[styles.circle]: isCircle},
                         [className],
                     ]
                 )}

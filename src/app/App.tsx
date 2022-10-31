@@ -10,10 +10,11 @@ const App = () => {
         <div className={styles.App}>
             <h1>React is working!!!!!!s!!!!</h1>
             <Input
+                name='adf'
                 label={'asdf'}
-                media={'mobile'}
+                media={'desktop'}
                 error={'sdef'}
-                // required
+                required
             />
             <Checkbox
                 label='asdf'
