@@ -1,9 +1,8 @@
 import * as React from 'react';
 
-import styles from './App.module.scss';
-import "../theme.scss";
 import Input from "../shared/ui/Input/Input";
-
+import styles from './App.module.scss';
+import "./styles/index.scss";
 
 const App = () => {
     return (

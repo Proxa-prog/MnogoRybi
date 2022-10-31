@@ -1,6 +1,7 @@
 import React from "react";
 
 import Checkbox from "./Checkbox";
+import "./Checkbox.module.scss";
 
 export default {
     title: 'Checkbox',

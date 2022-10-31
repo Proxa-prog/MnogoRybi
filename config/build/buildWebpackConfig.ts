@@ -10,6 +10,7 @@ export const buildWebpackConfig = (options: BuildOptions) => {
     paths: {
       entry,
       output,
+      global,
     },
     isDev,
     mode,
@@ -26,7 +27,7 @@ export const buildWebpackConfig = (options: BuildOptions) => {
     resolve: resolvers(),
     plugins: plugins(options),
     module: {
-      rules: buildLoaders()
+      rules: buildLoaders(global)
     },
     devServer: isDev ? buildDevServer(options) : undefined,
   };
