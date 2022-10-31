@@ -16,8 +16,9 @@ const App = () => {
                 // required
             />
             <Checkbox
-                onChange={() => { }}
                 label='asdf'
+                checked
+                // isCircle
             />
         </div>
     )

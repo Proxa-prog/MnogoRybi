@@ -52,7 +52,7 @@ const Input = (props: InputProps) => {
                 readOnly={readonly}
                 value={value}
                 required={required}
-                onChange={(event) => {
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                     onChange(event.target.value, name)
                 }}
 

@@ -10,8 +10,8 @@ export default {
 
 const Template = (arg: any) => <Checkbox {...arg} />;
 
-export const Square = Template.bind({});
+export const Default = Template.bind({});
 
-Square.args = {
+Default.args = {
     variant: 'checked',
 }

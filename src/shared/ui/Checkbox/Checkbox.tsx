@@ -1,27 +1,33 @@
-import React, { InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes, useState } from 'react';
 import classNames from 'classnames';
 
 import styles from './Checkbox.module.scss';
 
-type HtmlInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'>;
+type HtmlInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onClick'>;
 
 interface CheckboxProps extends HtmlInputProps {
-    onChange?: () => void;
     className?: string;
     label?: string;
     disabled?: boolean;
     isCircle?: boolean;
+    checked?: boolean;
 }
 
 const Checkbox = (props: CheckboxProps) => {
     const {
-        onChange,
         className,
         isCircle,
         label,
         disabled,
+        checked,
     } = props;
 
+    const [isChecked, setIsChecked] = useState(checked);
+
+    const handleOnClick = () => {
+        setIsChecked(!isChecked);
+    };
+    
     return (
         <>
             <label
@@ -36,15 +42,15 @@ const Checkbox = (props: CheckboxProps) => {
                 className={classNames(
                     styles.checkbox,
                     [
-                        styles[isCircle ? 'circle' : ''],
-                        className,
+                        {[styles.circle]: isCircle},
+                        [className],
                     ]
                 )}
                 disabled={disabled}
-                onChange={() => { onChange() }}
+                checked={isChecked}
+                onClick={handleOnClick}
             />
         </>
-
     );
 }
 
