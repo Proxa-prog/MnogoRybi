@@ -7,19 +7,19 @@ type HtmlInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onC
 
 type Variant = 'normal' | 'value' | 'error';
 
-interface InputProps extends HtmlInputProps {
+export interface InputProps extends HtmlInputProps {
+    label: string;
+    media: string;
+    name: string;
     className?: string;
     placeholder?: string;
     value?: string | number;
     onChange?: (value: string, name?: string) => void;
     readonly?: boolean;
     variant?: Variant;
-    label: string;
-    media: string;
     error?: string;
     required?: boolean;
     type?: string;
-    name: string;
 }
 
 const Input = (props: InputProps) => {
@@ -43,7 +43,7 @@ const Input = (props: InputProps) => {
             <input
                 className={classNames(
                     styles.desktop,
-                    styles[variant],
+                    styles[variant as string],
                     [
                         styles[media],
                         className,
@@ -56,7 +56,9 @@ const Input = (props: InputProps) => {
                 value={value}
                 required={required}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                    onChange(event.target.value, name)
+                    if (onChange) {
+                        onChange(event.target.value, name);
+                    }
                 }}
 
             />

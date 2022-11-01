@@ -24,10 +24,10 @@ const Checkbox = (props: CheckboxProps) => {
         onChange,
     } = props;
 
-    const handleOnChange = (event:  React.ChangeEvent<HTMLInputElement>) => {
+    const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         onChange(event.target.checked);
     };
-    
+
     return (
         <>
             <label
@@ -41,10 +41,8 @@ const Checkbox = (props: CheckboxProps) => {
                 type="checkbox"
                 className={classNames(
                     styles.checkbox,
-                    {[styles.circle]: isCircle},
-                    [
-                        [className],
-                    ]
+                    { [styles.circle]: isCircle },
+                    [className],
                 )}
                 disabled={disabled}
                 checked={checked}

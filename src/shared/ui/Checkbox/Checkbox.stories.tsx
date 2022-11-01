@@ -1,14 +1,20 @@
 import React from "react";
+import { Args, Story } from "@storybook/react";
 
 import Checkbox from "./Checkbox";
 import "./Checkbox.module.scss";
 
 export default {
     title: 'Checkbox',
-    component: Checkbox,     
+    component: Checkbox,
 };
 
-const Template = (arg: any) => <Checkbox {...arg} />;
+const Template: Story = (arg: Partial<Args>) => (
+    <Checkbox
+        onChange={() => { }}
+        {...arg}
+    />
+);
 
 export const Default = Template.bind({});
 
