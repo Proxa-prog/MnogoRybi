@@ -12,8 +12,8 @@ export default (env: BuildEnv) => {
     global: path.resolve(__dirname, 'src', 'global.scss'),
   };
 
-  const mode = (env.mode !== null) ? env.mode : 'development';
-  const PORT = (env.port !== null) ? env.port : 2525;
+  const mode = (env.mode !== undefined) ? env.mode : 'development';
+  const PORT = (env.port !== undefined) ? env.port : 2525;
 
   const isDev = mode === 'development';
 
