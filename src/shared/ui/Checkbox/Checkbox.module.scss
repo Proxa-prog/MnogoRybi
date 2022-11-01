@@ -1,0 +1,74 @@
+.checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1px solid $gray-30;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:checked {
+        position: relative;
+        background: $blue-100;
+        border: 1px solid $blue-100;
+    
+        &::before {
+            position: absolute;
+            content: "";
+            width: 20px;
+            height: 20px;
+            background-image: url("../../../assets/img/svg/ok.svg");
+            background-repeat: no-repeat;
+            left: 2px;
+            top: 3px;
+        }
+    }
+
+    &:checked:disabled {
+        position: relative;
+        background: $gray-10;
+        border: 1px solid $gray-30;
+    
+        &::before {
+            position: absolute;
+            content: "";
+            width: 20px;
+            height: 20px;
+            background-image: url("../../../assets/img/svg/ok.svg");
+            background-repeat: no-repeat;
+            left: 3px;
+            top: 3px;
+        }
+    }
+
+    &:disabled {
+        position: relative;
+        background: $gray-10;
+    }
+}
+
+.circle {
+    border: 1px solid $blue-100;
+    border-radius: 10px;
+    background: $white-00;
+
+    &:checked {
+        border: 4px solid $blue-100;
+        border-radius: 15px;
+        background: $white-00;
+
+        &::before {
+            display: none;
+        }
+    }
+
+    &:disabled {
+        background: $white-00;
+        border: 1px solid $gray-10;
+    }
+
+    &:checked:disabled {
+        background: $white-00;
+        border: 4px solid $gray-10;
+    }
+}

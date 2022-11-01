@@ -8,6 +8,7 @@ export default (env: BuildEnv) => {
     output: path.resolve(__dirname, "dist"),
     html: path.resolve(__dirname, "public", "index.html"),
     src: path.resolve(__dirname, 'src'),
+    global: path.resolve(__dirname, "src",'global.scss'),
   };
 
   const mode = env.mode || 'development';

@@ -1,0 +1,19 @@
+$gray-100:                     #414042;
+$gray-30:                      #CCD2E3;
+$gray-10:                      #F6F6F6;
+$white-00:                     #FFFFFF;
+$red-100:                      #FF003D;
+$blue-100:                     #31688F;
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }

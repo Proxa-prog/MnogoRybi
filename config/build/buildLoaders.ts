@@ -1,9 +1,19 @@
-import webpack from 'webpack';
+import webpack from "webpack";
 
-export function buildLoaders(): webpack.RuleSetRule[]{
+export function buildLoaders(global: string): webpack.RuleSetRule[] {
   const scssLoader = {
     test: /\.(sa|sc|c)ss$/,
-    use: ["style-loader", "css-loader", "sass-loader"],
+    use: [
+      "style-loader",
+      "css-loader",
+      "sass-loader",
+      {
+        loader: "sass-resources-loader",
+        options: {
+          resources: global,
+        },
+      },
+    ],
   };
 
   const fileLoader = {
@@ -28,10 +38,5 @@ export function buildLoaders(): webpack.RuleSetRule[]{
     exclude: /node_modules/,
   };
 
-  return [
-    scssLoader,
-    fileLoader,
-    babelLoader,
-    tsLoader,
-  ];
+  return [scssLoader, fileLoader, babelLoader, tsLoader];
 }

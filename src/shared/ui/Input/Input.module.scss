@@ -1,0 +1,70 @@
+.inputWrapper {
+    width: 420px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.label_input {
+    order: -1;
+    position: relative;
+    margin-bottom: 5px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 150%;
+    color: $gray-100;
+}
+
+//---------screen resolution---------//
+
+.desktop {
+    min-width: 420px;
+    padding: 15px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: $gray-30;
+    background: $gray-10;
+    border: 1px solid $gray-30;
+    border-radius: 10px;
+    margin-bottom: 5px;
+
+    
+    &:required + .label_input::after {
+        position: absolute;
+        content: "*";
+        color: $red-100;
+        right: -12px;
+    }
+}
+
+.mobile {
+    padding: 10px;
+
+    &:required + .label_input::after {
+        position: absolute;
+        content: "*";
+        color: $red-100;
+        right: -12px;
+    }
+}
+
+//---------variant---------//
+
+.error, .error_message {
+    border: 1px solid $red-100;
+    background: $white-00;
+}
+
+.value {
+    background: $white-00;
+}
+
+//-------------------------//
+
+.error_message_text {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: $red-100;
+}
