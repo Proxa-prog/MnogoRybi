@@ -1,4 +1,4 @@
-import React, { ChangeEvent, InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import classNames from 'classnames';
 
 import styles from './Checkbox.module.scss';

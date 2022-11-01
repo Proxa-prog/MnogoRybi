@@ -14,13 +14,14 @@ const App = () => {
                 label={'asdf'}
                 media={'desktop'}
                 error={'sdef'}
-                // required
+                required
             />
             <Checkbox
                 label='asdf'
                 checked
-                onChange={() => {}}
-                isCircle
+                onChange={() => {console.log("Checkbox onChange.");
+                }}
+                // isCircle
             />
         </div>
     )

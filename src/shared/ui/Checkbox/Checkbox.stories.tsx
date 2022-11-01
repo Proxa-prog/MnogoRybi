@@ -11,7 +11,8 @@ export default {
 
 const Template: Story = (arg: Partial<Args>) => (
     <Checkbox
-        onChange={() => { }}
+        onChange={() => {console.log("Checkbox.stories");
+        }}
         {...arg}
     />
 );

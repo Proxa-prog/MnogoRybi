@@ -68,9 +68,12 @@ const Input = (props: InputProps) => {
             >
                 {label}
             </label>
-            {error && <span className={styles.error_message_text}>
-                {error}
-            </span>}
+            {
+                error &&
+                <span className={styles.error_message_text}>
+                    {error}
+                </span>
+            }
         </div>
     );
 };
