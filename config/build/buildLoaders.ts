@@ -1,14 +1,14 @@
-import webpack from "webpack";
+import webpack from 'webpack';
 
-export function buildLoaders(global: string): webpack.RuleSetRule[] {
+export default function buildLoaders(global: string): webpack.RuleSetRule[] {
   const scssLoader = {
     test: /\.(sa|sc|c)ss$/,
     use: [
-      "style-loader",
-      "css-loader",
-      "sass-loader",
+      'style-loader',
+      'css-loader',
+      'sass-loader',
       {
-        loader: "sass-resources-loader",
+        loader: 'sass-resources-loader',
         options: {
           resources: global,
         },
@@ -18,23 +18,23 @@ export function buildLoaders(global: string): webpack.RuleSetRule[] {
 
   const fileLoader = {
     test: /\.(jpeg|jpg|png|gif)$/,
-    use: "file-loader",
+    use: 'file-loader',
   };
 
   const babelLoader = {
     test: /\.m?tsx$/,
     exclude: /node_modules/,
     use: {
-      loader: "babel-loader",
+      loader: 'babel-loader',
       options: {
-        presets: ["@babel/preset-env", "@babel/preset-react"],
+        presets: ['@babel/preset-env', '@babel/preset-react'],
       },
     },
   };
 
   const tsLoader = {
     test: /\.tsx?$/,
-    use: "ts-loader",
+    use: 'ts-loader',
     exclude: /node_modules/,
   };
 

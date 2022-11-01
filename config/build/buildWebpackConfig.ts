@@ -1,17 +1,12 @@
-import {buildLoaders} from "./buildLoaders";
-import plugins from "./buildPlugins";
-import resolvers from "./buildResolvers";
-import {BuildOptions} from "./types/config";
-import {buildDevServer} from "./buildDevServer";
-
+import buildLoaders from './buildLoaders';
+import plugins from './buildPlugins';
+import resolvers from './buildResolvers';
+import { BuildOptions } from './types/config';
+import buildDevServer from './buildDevServer';
 
 export const buildWebpackConfig = (options: BuildOptions) => {
   const {
-    paths: {
-      entry,
-      output,
-      global,
-    },
+    paths: { entry, output, global },
     isDev,
     mode,
   } = options;
@@ -21,13 +16,13 @@ export const buildWebpackConfig = (options: BuildOptions) => {
     entry,
     output: {
       path: output,
-      filename: "[name].[contenthash].js",
+      filename: '[name].[contenthash].js',
       clean: true,
     },
     resolve: resolvers(),
     plugins: plugins(options),
     module: {
-      rules: buildLoaders(global)
+      rules: buildLoaders(global),
     },
     devServer: isDev ? buildDevServer(options) : undefined,
   };
