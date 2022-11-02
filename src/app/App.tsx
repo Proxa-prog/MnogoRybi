@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Svg from '../shared/ui/Svg/Svg';
 import Checkbox from '../shared/ui/Checkbox/Checkbox';
 
 import Input from '../shared/ui/Input/Input';
@@ -22,6 +23,12 @@ const App: React.FC = () => (
         console.log('Checkbox onChange.');
       }}
     // isCircle
+    />
+    <Svg
+      name="ok_gray"
+      className="qwerty"
+      width="50"
+      height="50"
     />
   </div>
 );
