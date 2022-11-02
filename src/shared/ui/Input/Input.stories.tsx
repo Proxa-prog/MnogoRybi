@@ -1,8 +1,8 @@
-import React from "react";
-import { Args, Story } from "@storybook/react";
+import React from 'react';
+import { Args, Story } from '@storybook/react';
 
-import Input, { InputProps } from "./Input";
-import "./Input.module.scss";
+import Input, { InputProps } from './Input';
+import './Input.module.scss';
 
 export default {
   title: 'Input',
@@ -17,17 +17,17 @@ export default {
         'mobile',
       ],
       control: {
-        type: 'radio'
+        type: 'radio',
       },
     },
-  }
+  },
 };
 
 const Template: Story<InputProps> = (arg: Partial<Args>) => (
   <Input
-    label={""}
-    media={""}
-    name={""}
+    label=""
+    media=""
+    name=""
     {...arg}
   />
 );
@@ -37,10 +37,10 @@ export const Desktop = Template.bind({});
 Desktop.args = {
   placeholder: 'Введите имя',
   label: 'Имя',
-}
+};
 
 Desktop.decorators = [
-  (Story: Story) => (
+  (Story) => (
     <div style={{ margin: '3em' }}>
       <Story />
     </div>
@@ -53,10 +53,10 @@ Mobile.args = {
   placeholder: 'Введите имя',
   label: 'Имя',
   variant: 'normal',
-}
+};
 
 Mobile.decorators = [
-  (Story: Story) => (
+  (Story) => (
     <div style={{ margin: '3em' }}>
       <Story />
     </div>
