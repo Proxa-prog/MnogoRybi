@@ -4,7 +4,9 @@ import Checkbox from '../shared/ui/Checkbox/Checkbox';
 
 import Input from '../shared/ui/Input/Input';
 import styles from './App.module.scss';
+import '../fonts/style.css';
 import './styles/index.scss';
+import Typography from '../shared/ui/Typography/Typography';
 
 const App: React.FC = () => (
   <div className={styles.App}>
@@ -30,6 +32,7 @@ const App: React.FC = () => (
       width="50"
       height="50"
     />
+    <Typography type="H3">Некоторый текст</Typography>
   </div>
 );
 

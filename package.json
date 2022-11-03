@@ -5,9 +5,8 @@
   "scripts": {
     "start": "webpack serve",
     "build": "webpack --env mode=production",
-    "sb": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "storybook": "start-storybook -p 6006"
+    "sb": "start-storybook -p 6006 -s ./src",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
