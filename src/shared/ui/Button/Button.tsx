@@ -5,14 +5,17 @@ import style from './Button.module.scss';
 
 type ButtonType = 'button' | 'submit' | 'reset';
 type ButtonColor = 'yellow' | 'blue';
+type ButtonTurn = 'back' | 'forward' | 'default';
 
 export interface ButtonProps {
   className?: string;
   disabled?: boolean;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   type: ButtonType;
   color?: ButtonColor;
   isGrayTheme?: boolean;
+  onClick: () => void;
+  isTurn?: ButtonTurn;
 }
 const Button: FC<ButtonProps> = (props) => {
   const {
@@ -22,21 +25,30 @@ const Button: FC<ButtonProps> = (props) => {
     type = 'submit',
     color = 'default',
     isGrayTheme = false,
+    onClick,
+    isTurn = 'default',
   } = props;
 
   const defaultButtonColor = isGrayTheme ? 'default_white' : '';
+
+  const handleOnClick = () => {
+    onClick();
+  };
+
   return (
     <button
       className={classNames(
         className,
         style.default,
+        style[color],
         [
-          style[color],
           style[defaultButtonColor],
+          style[isTurn],
         ],
       )}
       disabled={disabled}
       type={type}
+      onClick={handleOnClick}
     >
       {children}
     </button>

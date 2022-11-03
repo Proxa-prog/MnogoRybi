@@ -5,6 +5,9 @@
     line-height: 18px;
     border-radius: 13px;
     color: $white-00;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
 }
 
 .green {

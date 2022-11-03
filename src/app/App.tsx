@@ -7,6 +7,7 @@ import styles from './App.module.scss';
 import Typography from '../shared/ui/Typography/Typography';
 import Button from '../shared/ui/Button/Button';
 import StatusMarker from '../shared/ui/StatusMarker/StatusMarker';
+import Counter from '../shared/ui/Counter/Counter';
 
 import '../fonts/style.css';
 import './styles/index.scss';
@@ -38,6 +39,9 @@ const App: React.FC = () => (
     <Typography type="H1">Некоторый текст</Typography>
     <Button
       type="button"
+      onClick={() => {
+        console.log('Button onClick');
+      }}
     >
       Войти
     </Button>
@@ -46,6 +50,15 @@ const App: React.FC = () => (
     >
       Label
     </StatusMarker>
+    <Counter count={1} />
+    <Button
+      isTurn="default"
+      type="button"
+      onClick={() => {
+        console.log('Button Turn onClick');
+      }}
+      isGrayTheme
+    />
   </div>
 );
 

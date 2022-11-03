@@ -6,6 +6,10 @@
     background: $gray-10;
     border-radius: 25px;
     border: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+    cursor: pointer;
 
     &:hover {
         background-color: $gray-30;
@@ -22,10 +26,6 @@
     @media (max-width: 320px) {
         padding: 10px 20px;
     }
-}
-
-.default_white {
-    background: $white-00;
 }
 
 .yellow {
@@ -59,4 +59,95 @@
     &:disabled {
         @include button_disabled;
     }
+}
+
+.back {
+    position: relative;
+    padding: 10px;
+    width: 44px;
+    height: 44px;
+    background: $gray-10;
+    border-radius: 25px;
+
+    &:hover {
+        background-color: $gray-10;
+    }
+
+    &:active {
+        background-color: $gray-10;
+    }
+
+    &:disabled {
+        background-color: $gray-10;
+    }
+
+    &::before {
+        position: absolute;
+        content: "";
+        width: 12px;
+        height: 2px;
+        transform: rotate(45deg);
+        background-color: $gray-100;
+        bottom: 17px;
+        left: 15px;
+    }
+
+    &::after {
+        position: absolute;
+        content: "";
+        width: 12px;
+        height: 2px;
+        transform: rotate(-45deg);
+        background-color: $gray-100;
+        top: 18px;
+        left: 15px;
+    }
+}
+
+.forward {
+    position: relative;
+    padding: 10px;
+    width: 44px;
+    height: 44px;
+    background: $gray-10;
+    border-radius: 25px;
+
+    &:hover {
+        background-color: $gray-10;
+    }
+
+    &:active {
+        background-color: $gray-10;
+    }
+
+    &:disabled {
+        background-color: $gray-10;
+    }
+
+    &::before {
+        position: absolute;
+        content: "";
+        width: 12px;
+        height: 2px;
+        transform: rotate(-45deg);
+        background-color: $gray-100;
+        bottom: 17px;
+        left: 17px;
+    }
+
+    &::after {
+        position: absolute;
+        content: "";
+        width: 12px;
+        height: 2px;
+        transform: rotate(45deg);
+        background-color: $gray-100;
+        top: 18px;
+        left: 17px;
+    }
+}
+
+
+.default_white {
+    background: $white-00;
 }
