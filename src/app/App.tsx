@@ -32,7 +32,7 @@ const App: React.FC = () => (
       width="50"
       height="50"
     />
-    <Typography type="TEXT2">Заголовок первого уровня</Typography>
+    <Typography type="H3">Некоторый текст</Typography>
   </div>
 );
 
