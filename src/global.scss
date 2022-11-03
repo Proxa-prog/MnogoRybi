@@ -1,4 +1,5 @@
 $gray-100:                     #414042;
+$gray-70:                      #808285;
 $gray-30:                      #CCD2E3;
 $gray-10:                      #F6F6F6;
 $white-00:                     #FFFFFF;
@@ -7,6 +8,8 @@ $blue-100:                     #31688F;
 $blue-30:                      #235273;
 $yellow-100:                   #FFD600;
 $yellow-30:                    #FFB800;
+$green-100:                    #0DB9BB;
+$purpul-100:                   #C028CD;
 
 @mixin button_disabled {
   color: $gray-30;

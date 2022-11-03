@@ -6,6 +6,7 @@ import Input from '../shared/ui/Input/Input';
 import styles from './App.module.scss';
 import Typography from '../shared/ui/Typography/Typography';
 import Button from '../shared/ui/Button/Button';
+import StatusMarker from '../shared/ui/StatusMarker/StatusMarker';
 
 import '../fonts/style.css';
 import './styles/index.scss';
@@ -40,6 +41,11 @@ const App: React.FC = () => (
     >
       Войти
     </Button>
+    <StatusMarker
+      color="yellow"
+    >
+      Label
+    </StatusMarker>
   </div>
 );
 
