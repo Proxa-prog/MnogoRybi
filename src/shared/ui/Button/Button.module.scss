@@ -1,0 +1,62 @@
+.default {
+    padding: 15px 25px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    background: $gray-10;
+    border-radius: 25px;
+    border: none;
+
+    &:hover {
+        background-color: $gray-30;
+    }
+
+    &:active {
+        background-color: $gray-10;
+    }
+
+    &:disabled {
+        @include button_disabled;
+    }
+
+    @media (max-width: 320px) {
+        padding: 10px 20px;
+    }
+}
+
+.default_white {
+    background: $white-00;
+}
+
+.yellow {
+    background: $yellow-100;
+
+    &:hover {
+        background-color: $yellow-30;
+    }
+
+    &:active {
+        background-color: $yellow-100;
+    }
+
+    &:disabled {
+        @include button_disabled;
+    }
+}
+
+.blue {
+    background: $blue-100;
+    color: $white-00;
+
+    &:hover {
+        background-color: $blue-30;
+    }
+
+    &:active {
+        background-color: $blue-100;
+    }
+
+    &:disabled {
+        @include button_disabled;
+    }
+}
