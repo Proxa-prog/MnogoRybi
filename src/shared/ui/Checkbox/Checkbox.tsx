@@ -31,13 +31,13 @@ const Checkbox: FC<CheckboxProps> = (props) => {
   return (
     <>
       <label
-        htmlFor={styles.checkbox}
+        htmlFor="checkbox"
         className="visually-hidden"
       >
         {label}
       </label>
       <input
-        id={styles.checkbox}
+        id="checkbox"
         type="checkbox"
         className={classNames(
           styles.checkbox,
@@ -45,8 +45,8 @@ const Checkbox: FC<CheckboxProps> = (props) => {
           [className],
         )}
         disabled={disabled}
-        checked={checked}
         onChange={handleOnChange}
+        checked={checked}
       />
     </>
   );
