@@ -1,0 +1,109 @@
+.card {
+    width: 305px;
+    background: $white-00;
+    border-radius: 10px;
+    overflow:hidden;
+
+    h3 {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 4px;
+    }
+
+    .descriprion {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 21px;
+        color: $gray-70;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 140%;
+    }
+
+    &:hover {
+        box-shadow: 0px 4px 25px rgba(5, 5, 5, 0.15);
+    }
+
+    @media (max-width: 768px) {
+        width: 350px;
+    }
+
+    @media (max-width: 320px) {
+        width: 290px;
+    }
+}
+
+.previousCost {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 140%;
+    color: $gray-30;
+    text-decoration: line-through;
+}
+
+.card_status_wrapper {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card_status  {
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.button_buy {
+    margin-right: 0;
+}
+
+.image_wrapper {
+    width: 305px;
+    height: 240px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+
+    @media (max-width: 768px) {
+        width: 350px;
+        height: 275px;
+    }
+
+    @media (max-width: 320px) {
+        width: 290px;
+        height: 220px;
+    }
+}
+
+.description_wrapper {
+    padding: 20px;
+}
+
+.cost_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.current_cost {
+    margin-right: auto;
+}
+
+.info {
+    width: 413px;
+
+    .image_wrapper {
+        width: 100%;
+    }
+
+    .description_wrapper_info {
+        background-color: $gray-10;
+    }
+}

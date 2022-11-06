@@ -50,11 +50,15 @@
           "peerDependencies": true
         }
       ],
-      "linebreak-style": ["error", "windows"]
+      "linebreak-style": ["error", "windows"],
+      "react/button-has-type": [0]
   },
   "env": {
     "browser": true,
     "node": true
+  },
+  "globals": {
+    "JSX":"readonly"
   },
   "ignorePatterns": ["src/**/*.test.ts", "src/frontend/generated/*"]
 }
