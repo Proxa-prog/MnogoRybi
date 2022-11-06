@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import classnames from 'classnames';
 
-import Image from './poke_with_turkey.jpg';
-import Button from '../../../shared/ui/Button/Button';
+import Image from '../../assets/image/poke_with_turkey.jpg';
+import ImageInfo from '../../assets/image/cheesecake.jpg';
+import Button, { ButtonColor } from '../../../shared/ui/Button/Button';
 import StatusMarker, { StatusMarkerProps } from '../../../shared/ui/StatusMarker/StatusMarker';
 
 import style from './Card.module.scss';
@@ -15,6 +16,10 @@ export interface CardProps {
   cost?: number;
   previousCost?: number;
   statuses?: StatusMarkerProps[];
+  isInfo?: boolean;
+  buttonText?: string;
+  buttonColor?: ButtonColor;
+  isGrayTheme?: boolean;
 }
 
 const Card: FC<CardProps> = (props) => {
@@ -23,21 +28,32 @@ const Card: FC<CardProps> = (props) => {
     imageUrl,
     header,
     description,
-    cost,
+    cost = null,
     previousCost = null,
     statuses,
+    isInfo,
+    buttonText = 'В корзину',
+    buttonColor = 'default',
+    isGrayTheme = false,
   } = props;
 
   return (
     <div className={classnames(
       style.card,
-      className,
+      { [style.info]: isInfo },
+      [className],
     )}
     >
-      <div className={style.image_wrapper}>
+      <div
+        className={style.image_wrapper}
+        style={{
+          backgroundImage: `url(${ImageInfo})`,
+        }}
+      >
         <div className={style.card_status_wrapper}>
           {(statuses !== undefined) ? statuses.map((status: StatusMarkerProps) => (
             <StatusMarker
+              key={0}
               color={status.color}
               className={style.card_status}
             >
@@ -46,37 +62,50 @@ const Card: FC<CardProps> = (props) => {
           ))
             : null}
         </div>
-        <img src={Image} width="305" height="240" alt="Поке с индейкой" />
+        {/* <img src={ImageInfo} width="305" height="240" alt="Поке с индейкой" /> */}
       </div>
-      <div className={style.description_wrapper}>
+      <div className={classnames(
+        style.description_wrapper,
+        { [style.description_wrapper_info]: isInfo },
+      )}
+      >
         <h3>{header}</h3>
         <p className={style.descriprion}>{description}</p>
         <div className={style.cost_wrapper}>
-          <div className={style.current_cost}>
-            <p>
-              {cost}
-              &nbsp;
-              &#8381;
-            </p>
-            {(previousCost !== null)
-              ? (
-                <span className={style.previousCost}>
-                  {previousCost}
-                  &nbsp;
-                  &#8381;
-                </span>
-              )
-              : null}
-          </div>
+          {(cost !== null || previousCost !== null)
+            ? (
+              <div className={style.current_cost}>
+                {(cost !== null)
+                  ? (
+                    <p>
+                      {cost}
+                      &nbsp;
+                      &#8381;
+                    </p>
+                  )
+                  : null}
+                {(previousCost !== null)
+                  ? (
+                    <span className={style.previousCost}>
+                      {previousCost}
+                      &nbsp;
+                      &#8381;
+                    </span>
+                  )
+                  : null}
+              </div>
+            )
+            : null}
           <Button
             className={style.button_buy}
-            color="yellow"
+            color={buttonColor}
+            isGrayTheme={isGrayTheme}
             type="button"
             onClick={() => {
               console.log('Товар добавлен в корзину');
             }}
           >
-            В корзину
+            {buttonText}
           </Button>
         </div>
       </div>

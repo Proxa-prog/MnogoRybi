@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import style from './Button.module.scss';
 
 type ButtonType = 'button' | 'submit' | 'reset';
-type ButtonColor = 'yellow' | 'blue';
+export type ButtonColor = 'default' | 'yellow' | 'blue';
 type ButtonTurn = 'back' | 'forward' | 'default';
 
 export interface ButtonProps {

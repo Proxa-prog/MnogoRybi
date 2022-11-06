@@ -62,9 +62,9 @@ const App: React.FC = () => (
       isGrayTheme
     />
     <Card
-      imageUrl="../../shared/assets/icons/done.svg"
+      imageUrl="https://via.placeholder.com/150"
       header="Фирменный поке с индейкой"
-      description="Состав на усмотрение шеф-повара"
+      description="Состав на усмотрение шеповара"
       cost={360}
       previousCost={360}
       statuses={[
@@ -87,6 +87,20 @@ const App: React.FC = () => (
         {
           children: 'Старинка',
           color: 'green',
+        },
+      ]}
+    />
+    <Card
+      imageUrl="./cheesecake.jpg"
+      isInfo
+      header="Утро начинается с кофе"
+      description="Мы варим для вас кофе на итальянских зёрнах, заряженный на продуктивную рабочую неделю."
+      buttonText="Подробнее"
+      isGrayTheme
+      statuses={[
+        {
+          children: 'Блюдо дня',
+          color: 'yellow',
         },
       ]}
     />
