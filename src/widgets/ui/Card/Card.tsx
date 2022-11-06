@@ -20,6 +20,8 @@ export interface CardProps {
   buttonText?: string;
   buttonColor?: ButtonColor;
   isGrayTheme?: boolean;
+  disabled?: boolean;
+  onClick?: () => void;
 }
 
 const Card: FC<CardProps> = (props) => {
@@ -35,7 +37,15 @@ const Card: FC<CardProps> = (props) => {
     buttonText = 'В корзину',
     buttonColor = 'default',
     isGrayTheme = false,
+    disabled = false,
+    onClick,
   } = props;
+
+  const handleButtonClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
 
   return (
     <div className={classnames(
@@ -100,9 +110,8 @@ const Card: FC<CardProps> = (props) => {
             color={buttonColor}
             isGrayTheme={isGrayTheme}
             type="button"
-            onClick={() => {
-              console.log('Товар добавлен в корзину');
-            }}
+            disabled={disabled}
+            onClick={handleButtonClick}
           >
             {buttonText}
           </Button>
