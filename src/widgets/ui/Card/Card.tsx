@@ -47,7 +47,7 @@ const Card: FC<CardProps> = (props) => {
       <div
         className={style.image_wrapper}
         style={{
-          backgroundImage: `url(${ImageInfo})`,
+          backgroundImage: `url(${Image})`,
         }}
       >
         <div className={style.card_status_wrapper}>
@@ -62,7 +62,6 @@ const Card: FC<CardProps> = (props) => {
           ))
             : null}
         </div>
-        {/* <img src={ImageInfo} width="305" height="240" alt="Поке с индейкой" /> */}
       </div>
       <div className={classnames(
         style.description_wrapper,
