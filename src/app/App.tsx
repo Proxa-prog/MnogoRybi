@@ -8,6 +8,8 @@ import Button from '../shared/ui/Button/Button';
 import StatusMarker from '../shared/ui/StatusMarker/StatusMarker';
 import Counter from '../shared/ui/Counter/Counter';
 
+import Header from '../widgets/ui/Header/Header';
+
 import Card from '../widgets/ui/Card/Card';
 
 import styles from './App.module.scss';
@@ -16,6 +18,7 @@ import './styles/index.scss';
 
 const App: React.FC = () => (
   <div className={styles.App}>
+    <Header />
     <h1>React is working!!!!!!s!!!!</h1>
     <Input
       name="adf"
