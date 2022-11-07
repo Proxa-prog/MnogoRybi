@@ -41,6 +41,10 @@ const Card: FC<CardProps> = (props) => {
     onClick,
   } = props;
 
+  // const fetchUser = fetch('http://localhost:3001/cards/2')
+  //   .then(response => response.json())
+  //   .then(json => console.log(json));
+
   const handleButtonClick = () => {
     if (onClick) {
       onClick();
