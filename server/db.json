@@ -1,0 +1,64 @@
+{
+    "cards": [
+        {
+            "id": 1,
+            "imageUrl": "https://via.placeholder.com/150",
+            "header": "Фирменный поке с индейкой",
+            "description": "Состав на усмотрение шеф-повара",
+            "cost": 360,
+            "previousCost": 360,
+            "statuses": [
+                {
+                    "children": "Новинка",
+                    "color": "blue"
+                },
+                {
+                    "children": "234",
+                    "color": "purple"
+                },
+                {
+                    "children": "Хит Сезона!",
+                    "color": "gray"
+                },
+                {
+                    "children": "Блюдо дня",
+                    "color": "yellow"
+                },
+                {
+                    "children": "Старинка",
+                    "color": "green"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "imageUrl": "https://via.placeholder.com/150",
+            "header": "Фирменный поке с индейкой",
+            "description": "Состав на усмотрение шеф-повара",
+            "cost": 460,
+            "previousCost": 560,
+            "statuses": [
+                {
+                    "children": "Новинка",
+                    "color": "blue"
+                },
+                {
+                    "children": "234",
+                    "color": "purple"
+                },
+                {
+                    "children": "Хит Сезона!",
+                    "color": "gray"
+                },
+                {
+                    "children": "Блюдо дня",
+                    "color": "yellow"
+                },
+                {
+                    "children": "Старинка",
+                    "color": "green"
+                }
+            ]
+        }
+    ]
+  }
