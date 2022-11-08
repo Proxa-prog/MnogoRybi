@@ -2,9 +2,12 @@ import React, { FC } from 'react';
 
 import classNames from 'classnames';
 
-import Button from '../../../shared/ui/Button/Button';
 import logo from '../../assets/image/logo.svg';
+import Button from '../../../shared/ui/Button/Button';
 import StatusMarker from '../../../shared/ui/StatusMarker/StatusMarker';
+import List from '../../../shared/ui/List/List';
+
+import { INFO, PRODUCTS } from '../../../constants/constants';
 
 import style from './Header.module.scss';
 
@@ -91,22 +94,17 @@ const Header: FC<HeaderProps> = (props) => {
       </div>
       <div className={style.header__nav_wrapper}>
         <nav className={style.header__nav}>
-          <ul className={style.header__products_list}>
-            <li className={style.header__products_item}>Поке</li>
-            <li className={style.header__products_item}>Роллы</li>
-            <li className={style.header__products_item}>Супы и карри</li>
-            <li className={style.header__products_item}>Вок</li>
-            <li className={style.header__products_item}>Сэндвичи</li>
-            <li className={style.header__products_item}>Десерты</li>
-            <li className={style.header__products_item}>Напитки</li>
-          </ul>
+          <List
+            classNameList={style.header__products_list}
+            classNameItem={style.header__products_item}
+            items={PRODUCTS}
+          />
           <div className={style.header__vertical_line} />
-          <ul className={style.header__products_list}>
-            <li className={style.header__products_item}>Франшиза</li>
-            <li className={style.header__products_item}>Доставка</li>
-            <li className={style.header__products_item}>Новости</li>
-            <li className={style.header__products_item}>Контакты</li>
-          </ul>
+          <List
+            classNameList={style.header__products_list}
+            classNameItem={style.header__products_item}
+            items={INFO}
+          />
           <Button
             className={style.header__button_create_poke}
             type="button"
