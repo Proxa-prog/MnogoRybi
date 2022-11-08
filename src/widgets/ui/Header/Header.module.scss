@@ -10,7 +10,7 @@
     padding: 10px 80px 20px;
 }
 
-.header__list {
+.header__info_wrapper {
     display: flex;
     flex-wrap: wrap;
 }
@@ -24,17 +24,6 @@
         font-size: 12px;
         line-height: 18px;
         color: $gray-70;
-    }
-    
-    .header__select {
-        border: none;
-    }
-
-    .header__info {
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 24px;
-        color: $gray-100;
     }
 
     a[href^="tel:"] {

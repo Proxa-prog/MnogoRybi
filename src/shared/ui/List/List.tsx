@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 export interface ListProps {
   classNameItem?: string;
   classNameList?: string;
-  items: string[];
+  items: any[];
 }
 
 const List: FC<ListProps> = (props) => {

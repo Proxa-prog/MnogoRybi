@@ -1,11 +1,10 @@
 import React, { FC } from 'react';
 
-import classNames from 'classnames';
-
 import logo from '../../assets/image/logo.svg';
 import Button from '../../../shared/ui/Button/Button';
 import StatusMarker from '../../../shared/ui/StatusMarker/StatusMarker';
 import List from '../../../shared/ui/List/List';
+import Select from '../../../shared/ui/Select/Select';
 
 import { INFO, PRODUCTS } from '../../../constants/constants';
 
@@ -25,29 +24,20 @@ const Header: FC<HeaderProps> = (props) => {
       <div className={style.header__order_data_wrapper}>
         <img src={logo} width={236} height={70} alt="Логитип Много Рыбы" />
         <div className={style.header__order_data}>
-          <ul className={style.header__list}>
-            <li className={style.header__item}>
+          <div className={style.header__info_wrapper}>
+            <div className={style.header__item}>
               <p>Доставка по адресу</p>
-              <select
-                className={classNames(
-                  style.header__select,
-                  style.header__info,
-                )}
-                name="address"
-                required
-              >
-                <option disabled selected>Адрес не выбран</option>
-              </select>
-            </li>
-            <li className={style.header__item}>
+              <Select options={PRODUCTS} />
+            </div>
+            <div className={style.header__item}>
               <p>Принимаем заказы</p>
               <span className={style.header__info}>9:00-24:00</span>
-            </li>
-            <li className={style.header__item}>
+            </div>
+            <div className={style.header__item}>
               <p>Телефон</p>
               <a href="tel:+74852980100">8 (4852) 980-100</a>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
         <div className={style.header__button_wrapper}>
           <Button
