@@ -1,21 +1,19 @@
 import React, { FC } from 'react';
 
-
 import classNames from 'classnames';
+
 import Button from '../../../shared/ui/Button/Button';
 import logo from '../../assets/image/logo.svg';
-import StatusMarker, { StatusMarkerProps } from '../../../shared/ui/StatusMarker/StatusMarker';
+import StatusMarker from '../../../shared/ui/StatusMarker/StatusMarker';
 
 import style from './Header.module.scss';
 
 export interface HeaderProps {
-  buttonEnterText?: string;
   itemsInTheBasket?: any;
 }
 
 const Header: FC<HeaderProps> = (props) => {
   const {
-    buttonEnterText,
     itemsInTheBasket,
   } = props;
 
@@ -81,18 +79,42 @@ const Header: FC<HeaderProps> = (props) => {
               className={style.header__button_basket}
               type="button"
               color="yellow"
+              image="property_bag_alt_fill.svg"
               onClick={() => {
                 console.log('Button enter header');
               }}
             >
-              Войти
+              0 &#8381;
             </Button>
           </div>
         </div>
       </div>
-      <div>
-        <nav>
-
+      <div className={style.header__nav_wrapper}>
+        <nav className={style.header__nav}>
+          <ul className={style.header__products_list}>
+            <li className={style.header__products_item}>Поке</li>
+            <li className={style.header__products_item}>Роллы</li>
+            <li className={style.header__products_item}>Супы и карри</li>
+            <li className={style.header__products_item}>Вок</li>
+            <li className={style.header__products_item}>Сэндвичи</li>
+            <li className={style.header__products_item}>Десерты</li>
+            <li className={style.header__products_item}>Напитки</li>
+          </ul>
+          <div className={style.header__vertical_line} />
+          <ul className={style.header__products_list}>
+            <li className={style.header__products_item}>Франшиза</li>
+            <li className={style.header__products_item}>Доставка</li>
+            <li className={style.header__products_item}>Новости</li>
+            <li className={style.header__products_item}>Контакты</li>
+          </ul>
+          <Button
+            className={style.header__button_create_poke}
+            type="button"
+            isGrayTheme
+            onClick={() => { console.log('Button Create'); }}
+          >
+            Создать поке
+          </Button>
         </nav>
       </div>
     </header>

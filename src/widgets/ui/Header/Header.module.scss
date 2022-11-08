@@ -50,10 +50,46 @@
 
 .header__button_basket_wrapper {
     position: relative;
+    margin-left: 10px;
 
     .header__amount_items {
         position: absolute;
         right: 0;
         top: 0;
     }
+}
+
+.header__nav_wrapper {
+    width: 100%;
+    padding: 10px 80px;
+    background-color: $yellow-10;
+}
+
+.header__nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.header__vertical_line {
+    width: 1px;
+    height: 24px;
+    background-color: $yellow-100;
+    margin-right: 20px;
+}
+
+.header__products_list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.header__products_item {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    margin-right: 20px;
+}
+
+.header__button_create_poke {
+    margin-left: auto;
 }

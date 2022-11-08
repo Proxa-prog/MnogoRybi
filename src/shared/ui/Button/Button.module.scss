@@ -1,4 +1,6 @@
 .default {
+    display: flex;
+    align-items: center;
     padding: 15px 25px;
     font-weight: 700;
     font-size: 14px;
@@ -26,6 +28,10 @@
     @media (max-width: 320px) {
         padding: 10px 20px;
     }
+}
+
+.image_inside {
+    margin-right: 5px;
 }
 
 .yellow {

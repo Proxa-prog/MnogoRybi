@@ -1,5 +1,8 @@
 import React, { FC } from 'react';
+
 import classNames from 'classnames';
+
+import ImageWrapper from '../ImageWrapper/ImageWrapper';
 
 import style from './Button.module.scss';
 
@@ -16,7 +19,10 @@ export interface ButtonProps {
   isGrayTheme?: boolean;
   onClick: () => void;
   isTurn?: ButtonTurn;
+  image?: string;
+  buttonImageAlt?: string;
 }
+
 const Button: FC<ButtonProps> = (props) => {
   const {
     className,
@@ -27,6 +33,8 @@ const Button: FC<ButtonProps> = (props) => {
     isGrayTheme = false,
     onClick,
     isTurn = 'default',
+    buttonImageAlt = '',
+    image = '',
   } = props;
 
   const defaultButtonColor = isGrayTheme ? 'default_white' : '';
@@ -50,6 +58,7 @@ const Button: FC<ButtonProps> = (props) => {
       type={type}
       onClick={handleOnClick}
     >
+      {(image !== '') ? <ImageWrapper name={image} alt={buttonImageAlt} /> : null}
       {children}
     </button>
   );
