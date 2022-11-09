@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import classnames from 'classnames';
 
 import Image from '../../assets/image/poke_with_turkey.jpg';
-import ImageInfo from '../../assets/image/cheesecake.jpg';
 import Button, { ButtonColor } from '../../../shared/ui/Button/Button';
 import StatusMarker, { StatusMarkerProps } from '../../../shared/ui/StatusMarker/StatusMarker';
 

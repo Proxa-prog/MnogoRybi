@@ -19,7 +19,11 @@ const List: FC<ListProps> = (props) => {
   } = props;
 
   return (
-    <ul className={classNameList}>
+    <ul className={classNames(
+      style.default,
+      classNameList,
+    )}
+    >
       {
         isLink
           ? items.map((item: string) => (

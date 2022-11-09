@@ -19,7 +19,8 @@ export interface ButtonProps {
   isGrayTheme?: boolean;
   onClick: () => void;
   isTurn?: ButtonTurn;
-  image?: string;
+  imageLeft?: string;
+  imageRight?: string;
   buttonImageAlt?: string;
 }
 
@@ -34,7 +35,8 @@ const Button: FC<ButtonProps> = (props) => {
     onClick,
     isTurn = 'default',
     buttonImageAlt = '',
-    image = '',
+    imageLeft = '',
+    imageRight = '',
   } = props;
 
   const defaultButtonColor = isGrayTheme ? 'default_white' : '';
@@ -58,8 +60,17 @@ const Button: FC<ButtonProps> = (props) => {
       type={type}
       onClick={handleOnClick}
     >
-      {(image !== '') ? <ImageWrapper name={image} alt={buttonImageAlt} /> : null}
+      {
+        (imageLeft !== '')
+          ? <ImageWrapper className={style.button__image} name={imageLeft} alt={buttonImageAlt} />
+          : null
+      }
       {children}
+      {
+        (imageRight !== '')
+          ? <ImageWrapper className={style.button__image} name={imageRight} alt={buttonImageAlt} />
+          : null
+      }
     </button>
   );
 };
