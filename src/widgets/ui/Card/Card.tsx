@@ -22,11 +22,12 @@ export interface CardProps {
   isGrayTheme?: boolean;
   disabled?: boolean;
   onClick?: () => void;
+  id?: string;
 }
 
 const Card: FC<CardProps> = (props) => {
   const {
-    className,
+    className = '',
     imageUrl,
     header,
     description,
@@ -39,6 +40,7 @@ const Card: FC<CardProps> = (props) => {
     isGrayTheme = false,
     disabled = false,
     onClick,
+    id,
   } = props;
 
   // const fetchUser = fetch('http://localhost:3001/cards/2')
@@ -52,11 +54,13 @@ const Card: FC<CardProps> = (props) => {
   };
 
   return (
-    <div className={classnames(
-      style.card,
-      { [style.info]: isInfo },
-      [className],
-    )}
+    <div
+      className={classnames(
+        style.card,
+        { [style.info]: isInfo },
+        [style[className]],
+      )}
+      id={id}
     >
       <div
         className={style.image_wrapper}

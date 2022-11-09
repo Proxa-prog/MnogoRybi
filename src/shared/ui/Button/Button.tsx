@@ -25,7 +25,7 @@ export interface ButtonProps {
 
 const Button: FC<ButtonProps> = (props) => {
   const {
-    className,
+    className = '',
     disabled,
     children,
     type = 'submit',
@@ -46,12 +46,12 @@ const Button: FC<ButtonProps> = (props) => {
   return (
     <button
       className={classNames(
-        className,
         style.default,
         style[color],
         [
           style[defaultButtonColor],
           style[isTurn],
+          style[className],
         ],
       )}
       disabled={disabled}

@@ -18,7 +18,7 @@ import './styles/index.scss';
 
 const App: React.FC = () => (
   <div className={styles.App}>
-    <Header />
+    <Header isAuth />
     <h1>React is working!!!!!!s!!!!</h1>
     <Input
       name="adf"
@@ -65,6 +65,7 @@ const App: React.FC = () => (
       isGrayTheme
     />
     <Card
+      id="Поке"
       imageUrl="https://via.placeholder.com/150"
       header="Фирменный поке с индейкой"
       description="Состав на усмотрение шеповара"

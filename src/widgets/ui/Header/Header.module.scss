@@ -15,16 +15,12 @@
     flex-wrap: wrap;
 }
 
-.header__item {
-    margin-left: 40px;
+.header__logo {
     margin-right: 40px;
+}
 
-    p {
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 18px;
-        color: $gray-70;
-    }
+.header__item {
+    margin: 0 1.4vw;
 
     a[href^="tel:"] {
         text-decoration: none;
@@ -39,7 +35,6 @@
 
 .header__button_basket_wrapper {
     position: relative;
-    margin-left: 10px;
 
     .header__amount_items {
         position: absolute;
@@ -49,9 +44,18 @@
 }
 
 .header__nav_wrapper {
+    position: sticky;
+    top: 0;
     width: 100%;
     padding: 10px 80px;
     background-color: $yellow-10;
+}
+
+.header__nav_wrapper_scroll {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
 .header__nav {
@@ -79,6 +83,6 @@
     margin-right: 20px;
 }
 
-.header__button_create_poke {
+.header__button_create_poke_wrapper {
     margin-left: auto;
 }
