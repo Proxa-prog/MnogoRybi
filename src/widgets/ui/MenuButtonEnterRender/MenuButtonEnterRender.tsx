@@ -4,11 +4,13 @@ import Button from '../../../shared/ui/Button/Button';
 
 interface MenuButtonEnterRenderProps {
   isAuth: boolean;
+  scroll?: number;
 }
 
 const MenuButtonEnterRender: FC<MenuButtonEnterRenderProps> = (props) => {
   const {
     isAuth,
+    scroll,
   } = props;
 
   return (
@@ -16,7 +18,7 @@ const MenuButtonEnterRender: FC<MenuButtonEnterRenderProps> = (props) => {
       ? (
         <Button
           imageLeft="user_fill.svg"
-          className="user_auth"
+          className={(scroll !== undefined && scroll >= 100) ? 'user_auth_scroll' : 'user_auth'}
           type="button"
           isGrayTheme
           onClick={() => {

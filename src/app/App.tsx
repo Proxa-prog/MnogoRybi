@@ -18,7 +18,7 @@ import './styles/index.scss';
 
 const App: React.FC = () => (
   <div className={styles.App}>
-    <Header />
+    <Header isAuth />
     <h1>React is working!!!!!!s!!!!</h1>
     <Input
       name="adf"

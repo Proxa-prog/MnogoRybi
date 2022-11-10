@@ -13,6 +13,7 @@ import style from './Header.module.scss';
 import LabelText from '../../../shared/ui/LabelText/LabelText';
 import MenuButtonBasketRender from '../MenuButtonBasketRender/MenuButtonBasketRender';
 import MenuButtonEnterRender from '../MenuButtonEnterRender/MenuButtonEnterRender';
+import ImageWrapper from '../../../shared/ui/ImageWrapper/ImageWrapper';
 
 export interface HeaderProps {
   itemsInTheBasket?: any;
@@ -26,8 +27,7 @@ const Header: FC<HeaderProps> = (props) => {
   } = props;
 
   const [scroll, setScroll] = useState(0);
-  const winw = window.innerWidth;
-  console.log(winw);
+  const windowWidth = window.innerWidth;
 
   const handleScroll = () => {
     setScroll(window.scrollY);
@@ -59,7 +59,7 @@ const Header: FC<HeaderProps> = (props) => {
             </div>
             <div className={style.header__info}>
               <LabelText>Принимаем заказы</LabelText>
-              <span className={style.header__info}>9:00-24:00</span>
+              <span>9:00-24:00</span>
             </div>
             <div className={style.header__info}>
               <LabelText>Телефон</LabelText>
@@ -96,9 +96,10 @@ const Header: FC<HeaderProps> = (props) => {
               ? (
                 <Button
                   type="button"
+                  className="button_orders"
                   imageLeft="desk_alt_fill.svg"
                   onClick={() => {
-                    console.log('Button enter header');
+                    console.log('Button orders header');
                   }}
                 >
                   Заказы
@@ -107,7 +108,10 @@ const Header: FC<HeaderProps> = (props) => {
               : null
           }
           <div className={style.header__button_basket_wrapper}>
-            <MenuButtonBasketRender itemsInTheBasket={itemsInTheBasket} />
+            <MenuButtonBasketRender
+              itemsInTheBasket={itemsInTheBasket}
+              windowWidth={windowWidth}
+            />
           </div>
         </div>
       </div>
@@ -128,22 +132,62 @@ const Header: FC<HeaderProps> = (props) => {
           >
             Меню
           </Button>
-          <List
-            isLink
-            classNameList={style.header__products_list}
-            classNameItem={style.header__products_item}
-            items={PRODUCTS}
-          />
-          <div className={style.header__vertical_line} />
-          <List
-            isLink
-            classNameList={style.header__products_list}
-            classNameItem={style.header__products_item}
-            items={INFO}
-          />
+          <div className={classNames(
+            style.list_wrapper,
+            { [style.list_wrapper_scroll]: scroll >= 100 },
+          )}
+          >
+            {
+              (scroll >= 100 && windowWidth >= 1024)
+                ? (
+                  <ImageWrapper
+                    className={style.header__logo_scroll}
+                    name="logo_only_image.svg"
+                    alt="Логотип тарелка, рыба, китайские палочки"
+                  />
+                )
+                : null
+            }
+            <List
+              isLink
+              classNameList={style.header__products_list}
+              classNameItem={style.header__products_item}
+              items={PRODUCTS}
+            />
+            <div className={style.header__vertical_line} />
+            {
+              (scroll >= 100)
+                ? (
+                  <>
+                    <List
+                      isLink
+                      classNameList={style.header__info_list_scroll}
+                      classNameItem={style.header__info_item_scroll}
+                      items={INFO}
+                    />
+                    <Button
+                      className="header__button_more"
+                      type="button"
+                      imageRight="property_expand_down.svg"
+                      onClick={() => { console.log('Button Create'); }}
+                    >
+                      Ещё
+                    </Button>
+                  </>
+                )
+                : (
+                  <List
+                    isLink
+                    classNameList={style.header__info_list}
+                    classNameItem={style.header__info_item}
+                    items={INFO}
+                  />
+                )
+            }
+          </div>
           <div className={style.header__button_wrapper}>
             <Button
-              className={style.header__button_create_poke}
+              className="header__button_create_poke"
               type="button"
               isGrayTheme
               onClick={() => { console.log('Button Create'); }}
@@ -151,18 +195,21 @@ const Header: FC<HeaderProps> = (props) => {
               Создать поке
             </Button>
             {
-              (scroll >= 100 && winw <= 768)
+              (scroll >= 100 && windowWidth > 767)
                 ? (
                   <>
-                    <MenuButtonEnterRender isAuth={isAuth} />
+                    <MenuButtonEnterRender isAuth={isAuth} scroll={scroll} />
                     <div className={style.header__button_basket_wrapper}>
-                      <MenuButtonBasketRender itemsInTheBasket={itemsInTheBasket} />
+                      <MenuButtonBasketRender
+                        itemsInTheBasket={itemsInTheBasket}
+                        scroll={scroll}
+                        windowWidth={windowWidth}
+                      />
                     </div>
                   </>
                 )
                 : null
             }
-
           </div>
         </nav>
       </div>

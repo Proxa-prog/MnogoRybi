@@ -13,7 +13,15 @@ const ImageWrapper: FC<ImageWrapperProps> = (props) => {
     className,
   } = props;
 
-  return <img className={className} src={`images/${name}`} alt={alt} width={24} height={24} />;
+  return (
+    <img
+      className={className}
+      src={`images/${name}`}
+      alt={alt}
+      width={24}
+      height={24}
+    />
+  );
 };
 
 export default ImageWrapper;

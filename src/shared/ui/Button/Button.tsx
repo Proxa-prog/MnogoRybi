@@ -14,6 +14,7 @@ export interface ButtonProps {
   className?: string;
   disabled?: boolean;
   children?: React.ReactNode;
+  childrenWrapperClassName?: string;
   type: ButtonType;
   color?: ButtonColor;
   isGrayTheme?: boolean;
@@ -29,6 +30,7 @@ const Button: FC<ButtonProps> = (props) => {
     className = '',
     disabled,
     children,
+    childrenWrapperClassName = '',
     type = 'submit',
     color = 'default',
     isGrayTheme = false,
@@ -65,7 +67,7 @@ const Button: FC<ButtonProps> = (props) => {
           ? <ImageWrapper className={style.button__image} name={imageLeft} alt={buttonImageAlt} />
           : null
       }
-      {children}
+      <span className={style[childrenWrapperClassName]}>{children}</span>
       {
         (imageRight !== '')
           ? <ImageWrapper className={style.button__image} name={imageRight} alt={buttonImageAlt} />
