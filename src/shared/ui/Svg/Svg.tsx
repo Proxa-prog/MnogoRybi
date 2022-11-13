@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import Icons from '../../assets/icons/sprite.svg';
+import Icons from '/public/images/sprite.svg';
 
 interface SvgProps {
   name: string;

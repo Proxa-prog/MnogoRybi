@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
-import Svg from '../../../ui/Svg/Svg';
 
 import styles from './Icon.module.scss';
+import Svg from '/src/shared/ui/Svg/Svg';
 
 const stories = storiesOf('Icon', module);
 stories.addDecorator(withKnobs);

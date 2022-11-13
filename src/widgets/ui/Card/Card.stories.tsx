@@ -2,7 +2,7 @@ import React from 'react';
 import { Args, Story } from '@storybook/react';
 
 import Card from './Card';
-import '../../../app/App.module.scss';
+import '/src/app/App.module.scss';
 import './Card.module.scss';
 
 export default {

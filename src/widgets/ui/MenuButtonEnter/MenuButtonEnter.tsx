@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 
-import Button from '../../../shared/ui/Button/Button';
+import Button from '/src/shared/ui/Button/Button';
 
-interface MenuButtonEnterRenderProps {
+interface MenuButtonEnterProps {
   isAuth: boolean;
   scroll?: number;
 }
 
-const MenuButtonEnterRender: FC<MenuButtonEnterRenderProps> = (props) => {
+const MenuButtonEnter: FC<MenuButtonEnterProps> = (props) => {
   const {
     isAuth,
     scroll,
@@ -40,4 +40,4 @@ const MenuButtonEnterRender: FC<MenuButtonEnterRenderProps> = (props) => {
   );
 };
 
-export default MenuButtonEnterRender;
+export default MenuButtonEnter;

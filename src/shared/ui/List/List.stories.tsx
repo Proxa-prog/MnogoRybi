@@ -2,7 +2,7 @@ import React from 'react';
 import { Args, Story } from '@storybook/react';
 
 import List from './List';
-import { PRODUCTS } from '../../../constants/constants';
+import { PRODUCTS } from '/src/constants/constants';
 
 export default {
   title: 'List',

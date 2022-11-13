@@ -1,28 +1,37 @@
 import React, { FC } from 'react';
+import { ViewPorts } from '/src/constants/constants';
 
-import Button from '../../../shared/ui/Button/Button';
-import StatusMarker from '../../../shared/ui/StatusMarker/StatusMarker';
+import Button from '/src/shared/ui/Button/Button';
+import StatusMarker from '/src/shared/ui/StatusMarker/StatusMarker';
 
-import style from '../Header/Header.module.scss';
+import style from '/src/widgets/ui/Header/Header.module.scss';
 
-interface MenuButtonBasketRenderProps {
+interface MenuButtonBasketProps {
   itemsInTheBasket: number;
   scroll?: number;
   windowWidth: number;
 }
 
-const MenuButtonBasketRender: FC<MenuButtonBasketRenderProps> = (props) => {
+const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
   const {
     itemsInTheBasket,
     scroll,
     windowWidth,
   } = props;
 
-  if (scroll !== undefined && scroll > 0 && windowWidth > 1023) {
+  if (
+    scroll !== undefined
+    && scroll > 0
+    && windowWidth >= ViewPorts.DESKTOP
+  ) {
     return (
       <Button
         childrenWrapperClassName="button__text_wrapper"
-        className={(scroll !== undefined && scroll >= 100) ? 'header__button_basket_scroll' : 'header__button_basket'}
+        className={
+          (scroll !== undefined && scroll >= 100)
+            ? 'header__button_basket_scroll'
+            : 'header__button_basket'
+        }
         type="button"
         color="yellow"
         imageLeft="property_bag_alt_fill.svg"
@@ -60,7 +69,11 @@ const MenuButtonBasketRender: FC<MenuButtonBasketRenderProps> = (props) => {
       }
       <Button
         childrenWrapperClassName="button__text_wrapper"
-        className={(scroll !== undefined && scroll >= 100) ? 'header__button_basket_scroll' : 'header__button_basket'}
+        className={
+          (scroll !== undefined && scroll >= 100)
+            ? 'header__button_basket_scroll'
+            : 'header__button_basket'
+        }
         type="button"
         color="yellow"
         imageLeft="property_bag_alt_fill.svg"
@@ -74,4 +87,4 @@ const MenuButtonBasketRender: FC<MenuButtonBasketRenderProps> = (props) => {
   );
 };
 
-export default MenuButtonBasketRender;
+export default MenuButtonBasket;

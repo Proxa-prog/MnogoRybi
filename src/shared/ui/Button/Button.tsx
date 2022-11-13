@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 
 import classNames from 'classnames';
-
 import ImageWrapper from '../ImageWrapper/ImageWrapper';
 
 import style from './Button.module.scss';
@@ -23,6 +22,8 @@ export interface ButtonProps {
   imageLeft?: string;
   imageRight?: string;
   buttonImageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
 }
 
 const Button: FC<ButtonProps> = (props) => {
@@ -39,6 +40,8 @@ const Button: FC<ButtonProps> = (props) => {
     buttonImageAlt = '',
     imageLeft = '',
     imageRight = '',
+    imageWidth = 0,
+    imageHeight = 0,
   } = props;
 
   const defaultButtonColor = isGrayTheme ? 'default_white' : '';
@@ -51,10 +54,10 @@ const Button: FC<ButtonProps> = (props) => {
     <button
       className={classNames(
         style.default,
-        style[color],
+        style[isTurn],
         [
           style[defaultButtonColor],
-          style[isTurn],
+          style[color],
           style[className],
         ],
       )}
@@ -63,15 +66,29 @@ const Button: FC<ButtonProps> = (props) => {
       onClick={handleOnClick}
     >
       {
-        (imageLeft !== '')
-          ? <ImageWrapper className={style.button__image} name={imageLeft} alt={buttonImageAlt} />
-          : null
+        (imageLeft !== '') && (
+          <ImageWrapper
+            className={style.button__image}
+            width={imageWidth}
+            height={imageHeight}
+            name={imageLeft}
+            alt={buttonImageAlt}
+          />
+        )
       }
-      <span className={style[childrenWrapperClassName]}>{children}</span>
+      <span className={style[childrenWrapperClassName]}>
+        {children}
+      </span>
       {
-        (imageRight !== '')
-          ? <ImageWrapper className={style.button__image} name={imageRight} alt={buttonImageAlt} />
-          : null
+        (imageRight !== '') && (
+          <ImageWrapper
+            className={style.button__image}
+            width={imageWidth}
+            height={imageHeight}
+            name={imageRight}
+            alt={buttonImageAlt}
+          />
+        )
       }
     </button>
   );

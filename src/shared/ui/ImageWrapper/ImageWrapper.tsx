@@ -4,6 +4,8 @@ interface ImageWrapperProps {
   name: string;
   alt: string;
   className?: string;
+  width: number;
+  height: number;
 }
 
 const ImageWrapper: FC<ImageWrapperProps> = (props) => {
@@ -11,6 +13,8 @@ const ImageWrapper: FC<ImageWrapperProps> = (props) => {
     name,
     alt,
     className,
+    width,
+    height,
   } = props;
 
   return (
@@ -18,8 +22,8 @@ const ImageWrapper: FC<ImageWrapperProps> = (props) => {
       className={className}
       src={`images/${name}`}
       alt={alt}
-      width={24}
-      height={24}
+      width={width}
+      height={height}
     />
   );
 };

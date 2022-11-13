@@ -2,7 +2,7 @@ import React from 'react';
 import { Args, Story } from '@storybook/react';
 
 import Select from './Select';
-import { PRODUCTS } from '../../../constants/constants';
+import { PRODUCTS } from '/src/constants/constants';
 
 export default {
   title: 'Select',
@@ -17,3 +17,7 @@ const Template: Story = (arg: Partial<Args>) => (
 );
 
 export const Default = Template.bind({});
+
+Default.args = {
+  optoins: PRODUCTS,
+};

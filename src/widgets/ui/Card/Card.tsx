@@ -1,9 +1,8 @@
 import React, { FC } from 'react';
 import classnames from 'classnames';
 
-import Image from '../../assets/image/poke_with_turkey.jpg';
-import Button, { ButtonColor } from '../../../shared/ui/Button/Button';
-import StatusMarker, { StatusMarkerProps } from '../../../shared/ui/StatusMarker/StatusMarker';
+import Button, { ButtonColor } from '/src/shared/ui/Button/Button';
+import StatusMarker, { StatusMarkerProps } from '/src/shared/ui/StatusMarker/StatusMarker';
 
 import style from './Card.module.scss';
 
@@ -42,10 +41,6 @@ const Card: FC<CardProps> = (props) => {
     id,
   } = props;
 
-  // const fetchUser = fetch('http://localhost:3001/cards/2')
-  //   .then(response => response.json())
-  //   .then(json => console.log(json));
-
   const handleButtonClick = () => {
     if (onClick) {
       onClick();
@@ -64,11 +59,11 @@ const Card: FC<CardProps> = (props) => {
       <div
         className={style.image_wrapper}
         style={{
-          backgroundImage: `url(${Image})`,
+          backgroundImage: `url(images/${imageUrl})`,
         }}
       >
         <div className={style.card_status_wrapper}>
-          {(statuses !== undefined) ? statuses.map((status: StatusMarkerProps) => (
+          {(statuses !== undefined) && statuses.map((status: StatusMarkerProps) => (
             <StatusMarker
               key={0}
               color={status.color}
@@ -76,8 +71,7 @@ const Card: FC<CardProps> = (props) => {
             >
               {status.children}
             </StatusMarker>
-          ))
-            : null}
+          ))}
         </div>
       </div>
       <div className={classnames(
@@ -88,30 +82,24 @@ const Card: FC<CardProps> = (props) => {
         <h3>{header}</h3>
         <p className={style.descriprion}>{description}</p>
         <div className={style.cost_wrapper}>
-          {(cost !== null || previousCost !== null)
-            ? (
-              <div className={style.current_cost}>
-                {(cost !== null)
-                  ? (
-                    <p>
-                      {cost}
-                      &nbsp;
-                      &#8381;
-                    </p>
-                  )
-                  : null}
-                {(previousCost !== null)
-                  ? (
-                    <span className={style.previousCost}>
-                      {previousCost}
-                      &nbsp;
-                      &#8381;
-                    </span>
-                  )
-                  : null}
-              </div>
-            )
-            : null}
+          {(cost !== null || previousCost !== null) && (
+            <div className={style.current_cost}>
+              {(cost !== null) && (
+                <p>
+                  {cost}
+                  &nbsp;
+                  &#8381;
+                </p>
+              )}
+              {(previousCost !== null) && (
+                <span className={style.previousCost}>
+                  {previousCost}
+                  &nbsp;
+                  &#8381;
+                </span>
+              )}
+            </div>
+          )}
           <Button
             className={style.button_buy}
             color={buttonColor}

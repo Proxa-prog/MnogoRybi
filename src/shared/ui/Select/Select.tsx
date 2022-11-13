@@ -11,6 +11,7 @@ export interface SelectProps extends HtmlSelectProps {
   options: string[];
   className?: string;
   disabled?: boolean;
+  promptOption?: string;
 }
 
 const Select: FC<SelectProps> = (props) => {
@@ -20,6 +21,7 @@ const Select: FC<SelectProps> = (props) => {
     options,
     className,
     disabled,
+    promptOption,
   } = props;
 
   return (
@@ -33,7 +35,13 @@ const Select: FC<SelectProps> = (props) => {
       required
       disabled={disabled}
     >
-      <option selected disabled hidden>Адрес не выбран</option>
+      <option
+        selected
+        disabled={disabled}
+        hidden
+      >
+        {promptOption}
+      </option>
       {options.map((option: string) => (
         <option>
           {option}
