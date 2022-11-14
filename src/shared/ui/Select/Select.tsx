@@ -34,16 +34,17 @@ const Select: FC<SelectProps> = (props) => {
       id={id}
       required
       disabled={disabled}
+      defaultValue="Default"
     >
       <option
-        selected
+        value="Default"
         disabled={disabled}
         hidden
       >
         {promptOption}
       </option>
       {options.map((option: string) => (
-        <option>
+        <option key={option}>
           {option}
         </option>
       ))}

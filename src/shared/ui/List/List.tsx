@@ -1,3 +1,4 @@
+import { nanoid } from '@reduxjs/toolkit';
 import classNames from 'classnames';
 import React, { FC } from 'react';
 
@@ -6,7 +7,7 @@ import style from './List.module.scss';
 export interface ListProps {
   classNameItem?: string;
   classNameList?: string;
-  items: any[];
+  items: string[];
   isLink?: boolean;
 }
 
@@ -25,19 +26,25 @@ const List: FC<ListProps> = (props) => {
     )}
     >
       {
-        isLink
-          ? items.map((item: string) => (
+        items.map((item: string) => {
+          const id = nanoid();
+
+          return (
             <li
               className={classNames(
                 style.defaultLi,
                 classNameItem,
               )}
-              key={item}
+              key={id}
             >
-              <a href={`#${item}`}>{item}</a>
+              {
+                isLink
+                  ? <a href={`#${item}`}>{item}</a>
+                  : <span>{item}</span>
+              }
             </li>
-          ))
-          : items.map((item: string) => <li className={classNameItem} key={item}>{item}</li>)
+          )
+        })
       }
     </ul>
   );

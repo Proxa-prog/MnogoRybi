@@ -7,6 +7,25 @@ import { PRODUCTS } from '/src/constants/constants';
 export default {
   title: 'Select',
   component: Select,
+  argTypes: {
+    media: {
+      type: 'string',
+      description: 'Разрешение экрана',
+      defaultValue: 'desktop',
+      optoins: [
+        "Поке",
+        "Супы и карри",
+        "Вок",
+        "Сэндвичи",
+        "Десерты",
+        "Напитки",
+        "Роллы",
+      ],
+      control: {
+        type: 'radio',
+      },
+    },
+  },
 };
 
 const Template: Story = (arg: Partial<Args>) => (

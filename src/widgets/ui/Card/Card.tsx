@@ -5,6 +5,7 @@ import Button, { ButtonColor } from '/src/shared/ui/Button/Button';
 import StatusMarker, { StatusMarkerProps } from '/src/shared/ui/StatusMarker/StatusMarker';
 
 import style from './Card.module.scss';
+import { nanoid } from '@reduxjs/toolkit';
 
 export interface CardProps {
   className?: string;
@@ -63,15 +64,20 @@ const Card: FC<CardProps> = (props) => {
         }}
       >
         <div className={style.card_status_wrapper}>
-          {(statuses !== undefined) && statuses.map((status: StatusMarkerProps) => (
-            <StatusMarker
-              key={0}
-              color={status.color}
-              className={style.card_status}
-            >
-              {status.children}
-            </StatusMarker>
-          ))}
+          {(statuses !== undefined) && statuses.map((status: StatusMarkerProps) => {
+            const id = nanoid();
+
+            return (
+              <StatusMarker
+                key={id}
+                color={status.color}
+                className={style.card_status}
+              >
+                {status.children}
+              </StatusMarker>
+            )
+          }
+          )}
         </div>
       </div>
       <div className={classnames(

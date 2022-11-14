@@ -32,10 +32,16 @@ const Header: FC<HeaderProps> = (props) => {
   } = props;
 
   const [scroll, setScroll] = useState(0);
+  const [isButtonMenuActive, setIsButtonMenuActive] = useState(false);
   const windowWidth = window.innerWidth;
 
   const handleScroll = () => {
     setScroll(window.scrollY);
+  };
+
+  const onButtonMenuClick = () => {
+    setIsButtonMenuActive((prevState) => !prevState);
+
   };
 
   useEffect(() => {
@@ -143,18 +149,23 @@ const Header: FC<HeaderProps> = (props) => {
             isGrayTheme
             className="button_menu"
             type="button"
-            imageRight="property_expand_down.svg"
+            imageRight={
+              isButtonMenuActive
+                ? "property_expand_up.svg"
+                : "property_expand_down.svg"
+            }
             imageHeight={24}
             imageWidth={24}
-            onClick={() => {
-              console.log('Button menu header');
-            }}
+            onClick={onButtonMenuClick}
           >
             Меню
           </Button>
           <div className={classNames(
             style.list_wrapper,
-            { [style.list_wrapper_scroll]: scroll >= ONE_HUNDRED_PIXEL_SCROLL },
+            {
+              [style.list_wrapper_scroll]: scroll >= ONE_HUNDRED_PIXEL_SCROLL,
+              [style.list_wrapper__open]: isButtonMenuActive,
+            },
           )}
           >
             {
@@ -170,8 +181,16 @@ const Header: FC<HeaderProps> = (props) => {
             }
             <List
               isLink
-              classNameList={style.header__products_list}
-              classNameItem={style.header__products_item}
+              classNameList={
+                isButtonMenuActive
+                  ? style.header__products_list__open
+                  : style.header__products_list
+              }
+              classNameItem={
+                isButtonMenuActive
+                  ? style.header__products_item__open
+                  : style.header__products_item
+              }
               items={PRODUCTS}
             />
             <div className={style.header__vertical_line} />
