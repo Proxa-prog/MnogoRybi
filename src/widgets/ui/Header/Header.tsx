@@ -32,16 +32,20 @@ const Header: FC<HeaderProps> = (props) => {
   } = props;
 
   const [scroll, setScroll] = useState(0);
-  const [isButtonMenuActive, setIsButtonMenuActive] = useState(false);
+  const [isHeaderMenuActive, setIsHeaderMenuActive] = useState(false);
+  const [isProductsMenuActive, setIsProductsMenuActive] = useState(false);
   const windowWidth = window.innerWidth;
 
   const handleScroll = () => {
     setScroll(window.scrollY);
   };
 
-  const onButtonMenuClick = () => {
-    setIsButtonMenuActive((prevState) => !prevState);
+  const onProductsMenuClick = () => {
+    setIsProductsMenuActive((prevState) => !prevState);
+  };
 
+  const onHeaderMenuClick = () => {
+    setIsHeaderMenuActive((prevState) => !prevState);
   };
 
   useEffect(() => {
@@ -51,25 +55,38 @@ const Header: FC<HeaderProps> = (props) => {
   }, []);
 
   return (
-    <header className={style.header}>
-      <div className={style.header__order_data_wrapper}>
+    <header className={
+      isHeaderMenuActive
+        ? style.header__open
+        : style.header
+    }>
+      <div className={
+        isHeaderMenuActive
+          ? style.header__order_data_wrapper__open
+          : style.header__order_data_wrapper
+      }>
         <Button
-          imageLeft="property_menu.svg"
+          imageLeft={
+            isHeaderMenuActive
+              ? "property_close_round.svg"
+              : "property_menu.svg"
+          }
           imageHeight={24}
           imageWidth={24}
           className="header_menu"
           type="button"
-          onClick={() => {
-            console.log('Button enter header');
-          }}
+          onClick={onHeaderMenuClick}
         />
-        <ImageWrapper
-          className={style.header__logo}
-          alt="Логотип Много Рыбы"
-          name="logo.svg"
-          width={236}
-          height={70}
-        />
+        {isHeaderMenuActive || (
+          <ImageWrapper
+            className={style.header__logo}
+            alt="Логотип Много Рыбы"
+            name="logo.svg"
+            width={236}
+            height={70}
+          />
+        )}
+
         <div className={style.header__order_data}>
           <div className={style.header__info_wrapper}>
             <div className={style.header__info}>
@@ -91,52 +108,60 @@ const Header: FC<HeaderProps> = (props) => {
         </div>
         <div className={style.header__button_wrapper}>
           {
-            isAuth
-              ? (
-                <Button
-                  imageLeft="user_fill.svg"
-                  imageHeight={24}
-                  imageWidth={24}
-                  className="user_auth"
-                  type="button"
-                  onClick={() => {
-                    console.log('Button enter header');
-                  }}
-                />
-              )
-              : (
-                <Button
-                  type="button"
-                  onClick={() => {
-                    console.log('Button enter header');
-                  }}
-                >
-                  Войти
-                </Button>
-              )
-          }
-          {
-            isAuth && (
-              <Button
-                type="button"
-                className="button_orders"
-                imageLeft="desk_alt_fill.svg"
-                imageHeight={24}
-                imageWidth={24}
-                onClick={() => {
-                  console.log('Button orders header');
-                }}
-              >
-                Заказы
-              </Button>
+            isHeaderMenuActive || (
+              isAuth
+                ? (
+                  <Button
+                    imageLeft="user_fill.svg"
+                    imageHeight={24}
+                    imageWidth={24}
+                    className="user_auth"
+                    type="button"
+                    onClick={() => {
+                      console.log('Button enter header');
+                    }}
+                  />
+                )
+                : (
+                  <Button
+                    type="button"
+                    onClick={() => {
+                      console.log('Button enter header');
+                    }}
+                  >
+                    Войти
+                  </Button>
+                )
             )
           }
-          <div className={style.header__button_basket_wrapper}>
-            <MenuButtonBasket
-              itemsInTheBasket={itemsInTheBasket}
-              windowWidth={windowWidth}
-            />
-          </div>
+          {
+            isHeaderMenuActive || (
+              isAuth && (
+                <Button
+                  type="button"
+                  className="button_orders"
+                  imageLeft="desk_alt_fill.svg"
+                  imageHeight={24}
+                  imageWidth={24}
+                  onClick={() => {
+                    console.log('Button orders header');
+                  }}
+                >
+                  Заказы
+                </Button>
+              )
+            )
+          }
+          {
+            isHeaderMenuActive || (
+              <div className={style.header__button_basket_wrapper}>
+                <MenuButtonBasket
+                  itemsInTheBasket={itemsInTheBasket}
+                  windowWidth={windowWidth}
+                />
+              </div>
+            )
+          }
         </div>
       </div>
       <div className={classNames(
@@ -145,26 +170,28 @@ const Header: FC<HeaderProps> = (props) => {
       )}
       >
         <nav className={style.header__nav}>
-          <Button
-            isGrayTheme
-            className="button_menu"
-            type="button"
-            imageRight={
-              isButtonMenuActive
-                ? "property_expand_up.svg"
-                : "property_expand_down.svg"
-            }
-            imageHeight={24}
-            imageWidth={24}
-            onClick={onButtonMenuClick}
-          >
-            Меню
-          </Button>
+          {isHeaderMenuActive || (
+            <Button
+              isGrayTheme
+              className="button_menu"
+              type="button"
+              imageRight={
+                isProductsMenuActive
+                  ? "property_expand_up.svg"
+                  : "property_expand_down.svg"
+              }
+              imageHeight={24}
+              imageWidth={24}
+              onClick={onProductsMenuClick}
+            >
+              Меню
+            </Button>
+          )}
           <div className={classNames(
             style.list_wrapper,
             {
               [style.list_wrapper_scroll]: scroll >= ONE_HUNDRED_PIXEL_SCROLL,
-              [style.list_wrapper__open]: isButtonMenuActive,
+              [style.list_wrapper__open]: isProductsMenuActive,
             },
           )}
           >
@@ -182,12 +209,12 @@ const Header: FC<HeaderProps> = (props) => {
             <List
               isLink
               classNameList={
-                isButtonMenuActive
+                isProductsMenuActive
                   ? style.header__products_list__open
                   : style.header__products_list
               }
               classNameItem={
-                isButtonMenuActive
+                isProductsMenuActive
                   ? style.header__products_item__open
                   : style.header__products_item
               }
@@ -219,7 +246,11 @@ const Header: FC<HeaderProps> = (props) => {
                 : (
                   <List
                     isLink
-                    classNameList={style.header__info_list}
+                    classNameList={
+                      isHeaderMenuActive
+                        ? style.header__info_list__open
+                        : style.header__info_list
+                    }
                     classNameItem={style.header__info_item}
                     items={INFO}
                   />
@@ -227,14 +258,17 @@ const Header: FC<HeaderProps> = (props) => {
             }
           </div>
           <div className={style.header__button_wrapper}>
-            <Button
-              className="header__button_create_poke"
-              type="button"
-              isGrayTheme
-              onClick={() => { console.log('Button Create'); }}
-            >
-              Создать поке
-            </Button>
+            {isHeaderMenuActive || (
+              <Button
+                className="header__button_create_poke"
+                type="button"
+                isGrayTheme
+                onClick={() => { console.log('Button Create'); }}
+              >
+                Создать поке
+              </Button>
+            )}
+
             {
               (scroll >= ONE_HUNDRED_PIXEL_SCROLL && windowWidth >= ViewPorts.TABLET)
               && (
