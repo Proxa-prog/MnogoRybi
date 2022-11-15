@@ -1,5 +1,7 @@
+import { nanoid } from '@reduxjs/toolkit';
 import classNames from 'classnames';
 import React, { FC, SelectHTMLAttributes } from 'react';
+import { IProducts } from 'src/constants/constants';
 
 import style from './Select.module.scss';
 
@@ -8,7 +10,7 @@ type HtmlSelectProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'onChange'>
 export interface SelectProps extends HtmlSelectProps {
   name?: string;
   id?: string;
-  options: string[];
+  options: IProducts[];
   className?: string;
   disabled?: boolean;
   promptOption?: string;
@@ -43,11 +45,15 @@ const Select: FC<SelectProps> = (props) => {
       >
         {promptOption}
       </option>
-      {options.map((option: string) => (
-        <option key={option}>
-          {option}
-        </option>
-      ))}
+      {options.map((option: IProducts) => {
+        const id = nanoid();
+
+        return (
+          <option key={id}>
+            {option.name}
+          </option>
+        )
+      })}
     </select>
   );
 };

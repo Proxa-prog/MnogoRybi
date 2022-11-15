@@ -25,6 +25,40 @@
     background-color: $yellow-10;
 }
 
+.header_menu_button {
+    display: none;
+
+    @media (max-width: 1023px) {
+        display: block;
+        width: 40px;
+        height: 40px;
+        padding: 10px;
+        margin-right: 20px;
+    }
+
+    @media (max-width: 767px) {
+        width: 36px;
+        height: 36px;
+        padding: 8px;
+    }
+}
+
+.header_menu_button__open {
+    display: none;
+
+    @media (max-width: 1023px) {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        z-index: 1000;
+        display: block;
+        width: 40px;
+        height: 40px;
+        padding: 10px;
+        margin-right: 20px;
+    }
+}
+
 .header__order_data_wrapper {
     display: flex;
     align-items: center;
@@ -135,8 +169,8 @@
 
 .header__button_basket {
     @media (max-width: 767px) {
-        width: 20px;
-        height: 20px;
+        width: 36px;
+        height: 36px;
     }
 }
 
@@ -171,7 +205,6 @@
 .header__nav {
     position: relative;
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
 }
@@ -230,7 +263,7 @@
 .header__info_list_scroll {
     display: flex;
     flex-wrap: wrap;
-    flex-basis: 38%;
+    flex-basis: 27.3%;
 
     .header__info_item_scroll:nth-child(n+4) {
         display: none;
@@ -288,9 +321,57 @@
     }
 }
 
+.header__button_orders {
+    @media (max-width: 1023px) {
+        display: none;
+    }
+}
+
+.header__button_more {
+    background-color: inherit;
+    padding: 0;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    margin-left: 0;
+}
+
+.header__button_create_poke {
+    padding: 10px 20px;
+    align-self: center;
+}
+
+.header__user_auth {
+    width: 50px;
+    height: 50px;
+    padding: 15px;
+
+    @media (max-width: 767px) {
+        width: 36px;
+        height: 36px;
+        padding: 8px;
+    }
+}
+
+.header__button_products_menu {
+    display: none;
+
+    @media (max-width: 1023px) {
+        display: flex;
+        padding-left: 20px;
+        padding-right: 10px;
+    }
+}
+
+.user_auth_scroll {
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    align-self: center;
+}
+
 .list_wrapper {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     flex-basis: 79.64%;
 
@@ -327,4 +408,10 @@
     width: 38.5px;
     height: 45px;
     margin-right: 25.75px;
+}
+
+.header__button_basket_scroll {
+    padding: 10px;
+    width: 64px;
+    height: 40px;
 }

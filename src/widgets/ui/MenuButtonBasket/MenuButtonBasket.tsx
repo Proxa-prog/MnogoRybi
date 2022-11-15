@@ -24,13 +24,14 @@ const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
     && scroll > 0
     && windowWidth >= ViewPorts.DESKTOP
   ) {
+
     return (
       <Button
         childrenWrapperClassName="button__text_wrapper"
         className={
           (scroll !== undefined && scroll >= 100)
-            ? 'header__button_basket_scroll'
-            : 'header__button_basket'
+            ? style.header__button_basket_scroll
+            : style.header__button_basket
         }
         type="button"
         color="yellow"
@@ -71,8 +72,8 @@ const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
         childrenWrapperClassName="button__text_wrapper"
         className={
           (scroll !== undefined && scroll >= 100)
-            ? 'header__button_basket_scroll'
-            : 'header__button_basket'
+            ? style.header__button_basket_scroll
+            : style.header__button_basket
         }
         type="button"
         color="yellow"

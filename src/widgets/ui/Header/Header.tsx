@@ -56,17 +56,20 @@ const Header: FC<HeaderProps> = (props) => {
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', getWindowWidth);
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.addEventListener('resize', getWindowWidth);
+    }
   }, []);
 
   return (
     <header className={
-      isHeaderMenuActive && windowWidth < 1024
+      isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP
         ? style.header__open
         : style.header
     }>
       <div className={
-        isHeaderMenuActive && windowWidth < 1024
+        isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP
           ? style.header__order_data_wrapper__open
           : style.header__order_data_wrapper
       }>
@@ -80,14 +83,14 @@ const Header: FC<HeaderProps> = (props) => {
           imageHeight={24}
           imageWidth={24}
           className={
-            isHeaderMenuActive && windowWidth < 1024
-              ? "header_menu__open"
-              : "header_menu"
+            isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP
+              ? style.header_menu_button__open
+              : style.header_menu_button
           }
           type="button"
           onClick={onHeaderMenuClick}
         />
-        {isHeaderMenuActive && windowWidth < 1024 || (
+        {isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP || (
           <ImageWrapper
             className={style.header__logo}
             alt="Логотип Много Рыбы"
@@ -98,19 +101,19 @@ const Header: FC<HeaderProps> = (props) => {
         )}
 
         <div className={
-          isHeaderMenuActive && windowWidth < 1024
+          isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP
             ? style.header__order_data__open
             : style.header__order_data
         }>
           <div className={
-            isHeaderMenuActive && windowWidth < 1024
+            isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP
               ? style.header__info_wrapper__open
               : style.header__info_wrapper
           }>
             <div className={
-              isHeaderMenuActive && windowWidth < 1024
-              ? style.header__info__open
-              : style.header__info}>
+              isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP
+                ? style.header__info__open
+                : style.header__info}>
               <LabelText>Доставка по адресу</LabelText>
               <Select
                 options={PRODUCTS}
@@ -118,16 +121,16 @@ const Header: FC<HeaderProps> = (props) => {
               />
             </div>
             <div className={
-              isHeaderMenuActive && windowWidth < 1024
-              ? style.header__info__open
-              : style.header__info}>
+              isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP
+                ? style.header__info__open
+                : style.header__info}>
               <LabelText>Принимаем заказы</LabelText>
               <span>9:00-24:00</span>
             </div>
             <div className={
-              isHeaderMenuActive && windowWidth < 1024
-              ? style.header__info__open
-              : style.header__info}>
+              isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP
+                ? style.header__info__open
+                : style.header__info}>
               <LabelText>Телефон</LabelText>
               <a href="tel:+74852980100">8 (4852) 980-100</a>
             </div>
@@ -135,14 +138,14 @@ const Header: FC<HeaderProps> = (props) => {
         </div>
         <div className={style.header__button_wrapper}>
           {
-            isHeaderMenuActive && windowWidth < 1024 || (
+            isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP || (
               isAuth
                 ? (
                   <Button
                     imageLeft="user_fill.svg"
                     imageHeight={24}
                     imageWidth={24}
-                    className="user_auth"
+                    className={style.header__user_auth}
                     type="button"
                     onClick={() => {
                       console.log('Button enter header');
@@ -162,11 +165,11 @@ const Header: FC<HeaderProps> = (props) => {
             )
           }
           {
-            isHeaderMenuActive && windowWidth < 1024 || (
+            isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP || (
               isAuth && (
                 <Button
                   type="button"
-                  className="button_orders"
+                  className={style.header__button_orders}
                   imageLeft="desk_alt_fill.svg"
                   imageHeight={24}
                   imageWidth={24}
@@ -180,7 +183,7 @@ const Header: FC<HeaderProps> = (props) => {
             )
           }
           {
-            isHeaderMenuActive && windowWidth < 1024 || (
+            isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP || (
               <div className={style.header__button_basket_wrapper}>
                 <MenuButtonBasket
                   itemsInTheBasket={itemsInTheBasket}
@@ -197,10 +200,10 @@ const Header: FC<HeaderProps> = (props) => {
       )}
       >
         <nav className={style.header__nav}>
-          {isHeaderMenuActive && windowWidth < 1024 || (
+          {isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP || (
             <Button
               isGrayTheme
-              className="button_menu"
+              className={style.header__button_products_menu}
               type="button"
               imageRight={
                 isProductsMenuActive
@@ -219,7 +222,7 @@ const Header: FC<HeaderProps> = (props) => {
             {
               [style.list_wrapper_scroll]: scroll >= ONE_HUNDRED_PIXEL_SCROLL,
               [style.list_wrapper__open]: isProductsMenuActive,
-              [style.list_wrapper__open_button_menu]: isHeaderMenuActive  && windowWidth < 1024,
+              [style.list_wrapper__open_button_menu]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
             },
           )}
           >
@@ -250,7 +253,7 @@ const Header: FC<HeaderProps> = (props) => {
             />
             <div className={style.header__vertical_line} />
             {
-              (scroll >= ONE_HUNDRED_PIXEL_SCROLL)
+              (scroll >= ONE_HUNDRED_PIXEL_SCROLL && windowWidth >= ViewPorts.DESKTOP)
                 ? (
                   <>
                     <List
@@ -260,7 +263,7 @@ const Header: FC<HeaderProps> = (props) => {
                       items={INFO}
                     />
                     <Button
-                      className="header__button_more"
+                      className={style.header__button_more}
                       type="button"
                       imageRight="property_expand_down.svg"
                       imageHeight={24}
@@ -275,12 +278,12 @@ const Header: FC<HeaderProps> = (props) => {
                   <List
                     isLink
                     classNameList={
-                      isHeaderMenuActive && windowWidth < 1024
+                      isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP
                         ? style.header__info_list__open
                         : style.header__info_list
                     }
                     classNameItem={
-                      isHeaderMenuActive && windowWidth < 1024
+                      isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP
                         ? style.header__info_item__open
                         : style.header__info_item
                     }
@@ -290,9 +293,9 @@ const Header: FC<HeaderProps> = (props) => {
             }
           </div>
           <div className={style.header__button_wrapper}>
-            {isHeaderMenuActive  && windowWidth < 1024 || (
+            {isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP || (
               <Button
-                className="header__button_create_poke"
+                className={style.header__button_create_poke}
                 type="button"
                 isGrayTheme
                 onClick={() => { console.log('Button Create'); }}

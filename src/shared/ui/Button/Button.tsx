@@ -28,7 +28,7 @@ export interface ButtonProps {
 
 const Button: FC<ButtonProps> = (props) => {
   const {
-    className = '',
+    className,
     disabled,
     children,
     childrenWrapperClassName = '',
@@ -58,7 +58,7 @@ const Button: FC<ButtonProps> = (props) => {
         [
           style[defaultButtonColor],
           style[color],
-          style[className],
+          className,
         ],
       )}
       disabled={disabled}
