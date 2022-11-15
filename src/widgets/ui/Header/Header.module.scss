@@ -192,6 +192,7 @@
 .header__products_list {
     display: flex;
     flex-wrap: wrap;
+    flex-basis: 57.64%;
 
     @media (max-width: 1023px) {
         display: none;
@@ -220,6 +221,7 @@
 .header__info_list {
     display: flex;
     flex-wrap: wrap;
+    flex-basis: 38%;
 
     @media (max-width: 1023px) {
         display: none;
@@ -229,6 +231,7 @@
 .header__info_list_scroll {
     display: flex;
     flex-wrap: wrap;
+    flex-basis: 38%;
 
     .header__info_item_scroll:nth-child(n+4) {
         display: none;
@@ -290,6 +293,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    flex-basis: 79.64%;
 
     @media (max-width: 1023px) {
         display: none;
