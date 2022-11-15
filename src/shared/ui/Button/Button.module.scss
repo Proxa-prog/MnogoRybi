@@ -200,6 +200,22 @@
     }
 }
 
+.header_menu__open {
+    display: none;
+
+    @media (max-width: 1023px) {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        z-index: 1000;
+        display: block;
+        width: 40px;
+        height: 40px;
+        padding: 10px;
+        margin-right: 20px;
+    }
+}
+
 .button_menu {
     display: none;
 

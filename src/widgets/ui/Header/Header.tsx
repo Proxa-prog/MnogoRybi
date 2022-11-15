@@ -34,7 +34,7 @@ const Header: FC<HeaderProps> = (props) => {
   const [scroll, setScroll] = useState(0);
   const [isHeaderMenuActive, setIsHeaderMenuActive] = useState(false);
   const [isProductsMenuActive, setIsProductsMenuActive] = useState(false);
-  const windowWidth = window.innerWidth;
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const handleScroll = () => {
     setScroll(window.scrollY);
@@ -48,24 +48,30 @@ const Header: FC<HeaderProps> = (props) => {
     setIsHeaderMenuActive((prevState) => !prevState);
   };
 
+  const getWindowWidth = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', getWindowWidth);
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <header className={
-      isHeaderMenuActive
+      isHeaderMenuActive && windowWidth < 1024
         ? style.header__open
         : style.header
     }>
       <div className={
-        isHeaderMenuActive
+        isHeaderMenuActive && windowWidth < 1024
           ? style.header__order_data_wrapper__open
           : style.header__order_data_wrapper
       }>
         <Button
+          isGrayTheme={isHeaderMenuActive && true}
           imageLeft={
             isHeaderMenuActive
               ? "property_close_round.svg"
@@ -73,11 +79,15 @@ const Header: FC<HeaderProps> = (props) => {
           }
           imageHeight={24}
           imageWidth={24}
-          className="header_menu"
+          className={
+            isHeaderMenuActive && windowWidth < 1024
+              ? "header_menu__open"
+              : "header_menu"
+          }
           type="button"
           onClick={onHeaderMenuClick}
         />
-        {isHeaderMenuActive || (
+        {isHeaderMenuActive && windowWidth < 1024 || (
           <ImageWrapper
             className={style.header__logo}
             alt="Логотип Много Рыбы"
@@ -87,20 +97,37 @@ const Header: FC<HeaderProps> = (props) => {
           />
         )}
 
-        <div className={style.header__order_data}>
-          <div className={style.header__info_wrapper}>
-            <div className={style.header__info}>
+        <div className={
+          isHeaderMenuActive && windowWidth < 1024
+            ? style.header__order_data__open
+            : style.header__order_data
+        }>
+          <div className={
+            isHeaderMenuActive && windowWidth < 1024
+              ? style.header__info_wrapper__open
+              : style.header__info_wrapper
+          }>
+            <div className={
+              isHeaderMenuActive && windowWidth < 1024
+              ? style.header__info__open
+              : style.header__info}>
               <LabelText>Доставка по адресу</LabelText>
               <Select
                 options={PRODUCTS}
                 promptOption="Адрес не выбран"
               />
             </div>
-            <div className={style.header__info}>
+            <div className={
+              isHeaderMenuActive && windowWidth < 1024
+              ? style.header__info__open
+              : style.header__info}>
               <LabelText>Принимаем заказы</LabelText>
               <span>9:00-24:00</span>
             </div>
-            <div className={style.header__info}>
+            <div className={
+              isHeaderMenuActive && windowWidth < 1024
+              ? style.header__info__open
+              : style.header__info}>
               <LabelText>Телефон</LabelText>
               <a href="tel:+74852980100">8 (4852) 980-100</a>
             </div>
@@ -108,7 +135,7 @@ const Header: FC<HeaderProps> = (props) => {
         </div>
         <div className={style.header__button_wrapper}>
           {
-            isHeaderMenuActive || (
+            isHeaderMenuActive && windowWidth < 1024 || (
               isAuth
                 ? (
                   <Button
@@ -135,7 +162,7 @@ const Header: FC<HeaderProps> = (props) => {
             )
           }
           {
-            isHeaderMenuActive || (
+            isHeaderMenuActive && windowWidth < 1024 || (
               isAuth && (
                 <Button
                   type="button"
@@ -153,7 +180,7 @@ const Header: FC<HeaderProps> = (props) => {
             )
           }
           {
-            isHeaderMenuActive || (
+            isHeaderMenuActive && windowWidth < 1024 || (
               <div className={style.header__button_basket_wrapper}>
                 <MenuButtonBasket
                   itemsInTheBasket={itemsInTheBasket}
@@ -170,7 +197,7 @@ const Header: FC<HeaderProps> = (props) => {
       )}
       >
         <nav className={style.header__nav}>
-          {isHeaderMenuActive || (
+          {isHeaderMenuActive && windowWidth < 1024 || (
             <Button
               isGrayTheme
               className="button_menu"
@@ -192,6 +219,7 @@ const Header: FC<HeaderProps> = (props) => {
             {
               [style.list_wrapper_scroll]: scroll >= ONE_HUNDRED_PIXEL_SCROLL,
               [style.list_wrapper__open]: isProductsMenuActive,
+              [style.list_wrapper__open_button_menu]: isHeaderMenuActive  && windowWidth < 1024,
             },
           )}
           >
@@ -247,18 +275,22 @@ const Header: FC<HeaderProps> = (props) => {
                   <List
                     isLink
                     classNameList={
-                      isHeaderMenuActive
+                      isHeaderMenuActive && windowWidth < 1024
                         ? style.header__info_list__open
                         : style.header__info_list
                     }
-                    classNameItem={style.header__info_item}
+                    classNameItem={
+                      isHeaderMenuActive && windowWidth < 1024
+                        ? style.header__info_item__open
+                        : style.header__info_item
+                    }
                     items={INFO}
                   />
                 )
             }
           </div>
           <div className={style.header__button_wrapper}>
-            {isHeaderMenuActive || (
+            {isHeaderMenuActive  && windowWidth < 1024 || (
               <Button
                 className="header__button_create_poke"
                 type="button"
