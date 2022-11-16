@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import classNames from 'classnames';
-import ImageWrapper from '../ImageWrapper/ImageWrapper';
+import ImageWrapper from 'shared/ui/ImageWrapper/ImageWrapper';
 
 import style from './Button.module.scss';
 

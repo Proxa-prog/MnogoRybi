@@ -1,19 +1,20 @@
 import React from 'react';
 import { Args, Story } from '@storybook/react';
 
-import List from './List';
-import { PRODUCTS } from 'constants/constants';
+import Header from './Header';
+import './Header.module.scss';
 
 export default {
-  title: 'List',
-  component: List,
+  title: 'Header',
+  component: Header,
 };
 
 const Template: Story = (arg: Partial<Args>) => (
-  <List
-    items={PRODUCTS}
-    {...arg}
-  />
+  <Header {...arg} />
 );
 
 export const Default = Template.bind({});
+
+Default.args = {
+
+};

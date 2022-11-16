@@ -6,7 +6,7 @@ import buildDevServer from './buildDevServer';
 
 export const buildWebpackConfig = (options: BuildOptions) => {
   const {
-    paths: { entry, output, global },
+    paths: { entry, output, global, root },
     isDev,
     mode,
   } = options;
@@ -19,7 +19,7 @@ export const buildWebpackConfig = (options: BuildOptions) => {
       filename: '[name].[contenthash].js',
       clean: true,
     },
-    resolve: resolvers(),
+    resolve: resolvers(root),
     plugins: plugins(options),
     module: {
       rules: buildLoaders(global),

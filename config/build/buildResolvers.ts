@@ -1,4 +1,13 @@
-const resolvers = () => ({
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+
+
+const resolvers = (root: any) => ({
+  plugins: [
+    new TsconfigPathsPlugin({
+        configFile: root,
+    }),
+],
+
   extensions: [
     '.ts',
     '.tsx',

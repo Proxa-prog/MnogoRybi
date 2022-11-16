@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 
-import Button from '/src/shared/ui/Button/Button';
+import Button from 'shared/ui/Button/Button';
 
-import style from '/src/widgets/ui/Header/Header.module.scss';
+import style from 'widgets/ui/Header/Header.module.scss';
 
 interface MenuButtonEnterProps {
   isAuth: boolean;

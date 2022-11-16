@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
-import { ViewPorts } from '/src/constants/constants';
+import { ViewPorts } from 'constants/constants';
 
-import Button from '/src/shared/ui/Button/Button';
-import StatusMarker from '/src/shared/ui/StatusMarker/StatusMarker';
+import Button from 'shared/ui/Button/Button';
+import StatusMarker from 'shared/ui/StatusMarker/StatusMarker';
 
-import style from '/src/widgets/ui/Header/Header.module.scss';
+import style from 'widgets/ui/Header/Header.module.scss';
 
 interface MenuButtonBasketProps {
   itemsInTheBasket: number;

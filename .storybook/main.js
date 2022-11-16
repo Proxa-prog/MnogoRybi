@@ -31,6 +31,13 @@ module.exports = {
     "@storybook/addon-interactions",
     "storybook-addon-pseudo-states",
   ],
+  webpackFinal: async (config, { configType }) => {
+    config.resolve.modules = [
+      path.resolve(__dirname, "../src"), "node_modules"
+    ]
+
+    return config;
+  },
   "framework": "@storybook/react",
   "core": {
     "builder": "@storybook/builder-webpack5"

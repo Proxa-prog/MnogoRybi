@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "rootDir": "./src",
     "outDir": "./dist/",
     "noImplicitAny": true,
     "module": "es6",
@@ -9,15 +10,22 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "*": ["./*"]
+      "*": ["*"],
     },
     "strict": true,
   },
+
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
     }
-  }
+  },
+
+  "include": [
+    "src/**/*",
+    "*d.ts"
+  ],
+  "exclude": ["node_modules"]
 }

@@ -1,7 +1,7 @@
 import { nanoid } from '@reduxjs/toolkit';
 import classNames from 'classnames';
 import React, { FC, SelectHTMLAttributes } from 'react';
-import { IProducts } from 'src/constants/constants';
+import { IProducts } from 'constants/constants';
 
 import style from './Select.module.scss';
 

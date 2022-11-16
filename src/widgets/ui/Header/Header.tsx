@@ -1,23 +1,25 @@
 import React, { FC, useEffect, useState } from 'react';
 
 import classNames from 'classnames';
-import Button from '/src/shared/ui/Button/Button';
 
-import List from '/src/shared/ui/List/List';
-import Select from '/src/shared/ui/Select/Select';
-import LabelText from '/src/shared/ui/LabelText/LabelText';
+import Button from 'shared/ui/Button/Button';
+import List from 'shared/ui/List/List';
+import Select from 'shared/ui/Select/Select';
+import LabelText from 'shared/ui/LabelText/LabelText';
+import ImageWrapper from 'shared/ui/ImageWrapper/ImageWrapper';
+
+import MenuButtonBasket from 'widgets/ui/MenuButtonBasket/MenuButtonBasket';
+import MenuButtonEnter from 'widgets/ui/MenuButtonEnter/MenuButtonEnter';
+
 import {
   INFO,
   ONE_HUNDRED_PIXEL_SCROLL,
   PRODUCTS,
   ViewPorts,
-} from '/src/constants/constants';
-import MenuButtonBasket from '/src/widgets/ui/MenuButtonBasket/MenuButtonBasket';
-import MenuButtonEnter from '/src/widgets/ui/MenuButtonEnter/MenuButtonEnter';
-
-import ImageWrapper from '/src/shared/ui/ImageWrapper/ImageWrapper';
+} from 'constants/constants';
 
 import style from './Header.module.scss';
+
 
 
 export interface HeaderProps {

@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import classnames from 'classnames';
 
-import Button, { ButtonColor } from '/src/shared/ui/Button/Button';
-import StatusMarker, { StatusMarkerProps } from '/src/shared/ui/StatusMarker/StatusMarker';
+import Button, { ButtonColor } from 'shared/ui/Button/Button';
+import StatusMarker, { StatusMarkerProps } from 'shared/ui/StatusMarker/StatusMarker';
 
 import style from './Card.module.scss';
 import { nanoid } from '@reduxjs/toolkit';
