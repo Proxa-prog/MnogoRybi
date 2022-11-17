@@ -69,7 +69,7 @@ const Input: FC<InputProps> = (props) => {
         {label}
       </label>
       {
-        error != null
+        error
         && (
           <span className={styles.error_message_text}>
             {error}

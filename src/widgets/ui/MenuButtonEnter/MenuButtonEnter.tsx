@@ -1,3 +1,4 @@
+import { ONE_HUNDRED_PIXEL_SCROLL } from 'entities/constants/constants';
 import React, { FC } from 'react';
 
 import Button from 'shared/ui/Button/Button';
@@ -21,7 +22,7 @@ const MenuButtonEnter: FC<MenuButtonEnterProps> = (props) => {
         <Button
           imageLeft="user_fill.svg"
           className={
-            (scroll !== undefined && scroll >= 100)
+            (scroll && scroll >= ONE_HUNDRED_PIXEL_SCROLL)
             ? style.user_auth_scroll
             : style.user_auth
           }

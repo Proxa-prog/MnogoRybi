@@ -16,7 +16,7 @@ import {
   ONE_HUNDRED_PIXEL_SCROLL,
   PRODUCTS,
   ViewPorts,
-} from 'constants/constants';
+} from 'entities/constants/constants';
 
 import style from './Header.module.scss';
 
@@ -60,21 +60,19 @@ const Header: FC<HeaderProps> = (props) => {
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      window.addEventListener('resize', getWindowWidth);
+      window.removeEventListener('resize', getWindowWidth);
     }
   }, []);
 
   return (
-    <header className={
-      isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP
-        ? style.header__open
-        : style.header
-    }>
-      <div className={
-        isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP
-          ? style.header__order_data_wrapper__open
-          : style.header__order_data_wrapper
-      }>
+    <header className={classNames(
+      style.header,
+      { [style.header__open]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP },
+    )}>
+      <div className={classNames(
+        style.header__order_data_wrapper,
+        { [style.header__order_data_wrapper__open]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP },
+      )}>
         <Button
           isGrayTheme={isHeaderMenuActive && true}
           imageLeft={
@@ -84,11 +82,10 @@ const Header: FC<HeaderProps> = (props) => {
           }
           imageHeight={24}
           imageWidth={24}
-          className={
-            isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP
-              ? style.header_menu_button__open
-              : style.header_menu_button
-          }
+          className={classNames(
+            style.header_menu_button,
+            { [style.header_menu_button__open]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP }
+          )}
           type="button"
           onClick={onHeaderMenuClick}
         />
@@ -102,37 +99,35 @@ const Header: FC<HeaderProps> = (props) => {
           />
         )}
 
-        <div className={
-          isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP
-            ? style.header__order_data__open
-            : style.header__order_data
-        }>
-          <div className={
-            isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP
-              ? style.header__info_wrapper__open
-              : style.header__info_wrapper
-          }>
-            <div className={
-              isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP
-                ? style.header__info__open
-                : style.header__info}>
+        <div className={classNames(
+          style.header__order_data,
+          { [style.header__order_data__open]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP }
+        )}>
+          <div className={classNames(
+            style.header__info_wrapper,
+            { [style.header__info_wrapper__open]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP }
+          )}>
+            <div className={classNames(
+              style.header__info,
+              { [style.header__info__open]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP }
+            )}>
               <LabelText>Доставка по адресу</LabelText>
               <Select
                 options={PRODUCTS}
                 promptOption="Адрес не выбран"
               />
             </div>
-            <div className={
-              isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP
-                ? style.header__info__open
-                : style.header__info}>
+            <div className={classNames(
+              style.header__info,
+              { [style.header__info__open]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP }
+            )}>
               <LabelText>Принимаем заказы</LabelText>
               <span>9:00-24:00</span>
             </div>
-            <div className={
-              isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP
-                ? style.header__info__open
-                : style.header__info}>
+            <div className={classNames(
+              style.header__info,
+              { [style.header__info__open]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP }
+            )}>
               <LabelText>Телефон</LabelText>
               <a href="tel:+74852980100">8 (4852) 980-100</a>
             </div>
@@ -241,16 +236,14 @@ const Header: FC<HeaderProps> = (props) => {
             }
             <List
               isLink
-              classNameList={
-                isProductsMenuActive
-                  ? style.header__products_list__open
-                  : style.header__products_list
-              }
-              classNameItem={
-                isProductsMenuActive
-                  ? style.header__products_item__open
-                  : style.header__products_item
-              }
+              classNameList={classNames(
+                style.header__products_list,
+                { [style.header__products_list__open]: isProductsMenuActive }
+              )}
+              classNameItem={classNames(
+                style.header__products_item,
+                { [style.header__products_item__open]: isProductsMenuActive }
+              )}
               items={PRODUCTS}
             />
             <div className={style.header__vertical_line} />
@@ -279,16 +272,14 @@ const Header: FC<HeaderProps> = (props) => {
                 : (
                   <List
                     isLink
-                    classNameList={
-                      isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP
-                        ? style.header__info_list__open
-                        : style.header__info_list
-                    }
-                    classNameItem={
-                      isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP
-                        ? style.header__info_item__open
-                        : style.header__info_item
-                    }
+                    classNameList={classNames(
+                      style.header__info_list,
+                      { [style.header__info_list__open]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP }
+                    )}
+                    classNameItem={classNames(
+                      style.header__info_item,
+                      { [style.header__info_item__open]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP }
+                    )}
                     items={INFO}
                   />
                 )
@@ -327,7 +318,7 @@ const Header: FC<HeaderProps> = (props) => {
           </div>
         </nav>
       </div>
-    </header>
+    </header >
   );
 };
 

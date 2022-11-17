@@ -64,7 +64,7 @@ const Card: FC<CardProps> = (props) => {
         }}
       >
         <div className={style.card_status_wrapper}>
-          {(statuses !== undefined) && statuses.map((status: StatusMarkerProps) => {
+          {(statuses) && statuses.map((status: StatusMarkerProps) => {
             const id = nanoid();
 
             return (
@@ -86,18 +86,20 @@ const Card: FC<CardProps> = (props) => {
       )}
       >
         <h3>{header}</h3>
-        <p className={style.descriprion}>{description}</p>
+        <p className={style.descriprion}>
+          {description}
+        </p>
         <div className={style.cost_wrapper}>
-          {(cost !== null || previousCost !== null) && (
+          {(cost || previousCost) && (
             <div className={style.current_cost}>
-              {(cost !== null) && (
+              {(cost) && (
                 <p>
                   {cost}
                   &nbsp;
                   &#8381;
                 </p>
               )}
-              {(previousCost !== null) && (
+              {(previousCost) && (
                 <span className={style.previousCost}>
                   {previousCost}
                   &nbsp;

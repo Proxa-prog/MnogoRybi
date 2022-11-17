@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { ViewPorts } from 'constants/constants';
+import { ONE_HUNDRED_PIXEL_SCROLL, ViewPorts } from 'entities/constants/constants';
 
 import Button from 'shared/ui/Button/Button';
 import StatusMarker from 'shared/ui/StatusMarker/StatusMarker';
@@ -20,7 +20,7 @@ const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
   } = props;
 
   if (
-    scroll !== undefined
+    scroll
     && scroll > 0
     && windowWidth >= ViewPorts.DESKTOP
   ) {
@@ -29,7 +29,7 @@ const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
       <Button
         childrenWrapperClassName="button__text_wrapper"
         className={
-          (scroll !== undefined && scroll >= 100)
+          (scroll && scroll >= ONE_HUNDRED_PIXEL_SCROLL)
             ? style.header__button_basket_scroll
             : style.header__button_basket
         }
@@ -48,7 +48,7 @@ const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
   return (
     <>
       {
-        (itemsInTheBasket !== undefined)
+        (itemsInTheBasket)
           ? (
             <StatusMarker
               key={0}
@@ -71,7 +71,7 @@ const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
       <Button
         childrenWrapperClassName="button__text_wrapper"
         className={
-          (scroll !== undefined && scroll >= 100)
+          (scroll && scroll >= ONE_HUNDRED_PIXEL_SCROLL)
             ? style.header__button_basket_scroll
             : style.header__button_basket
         }

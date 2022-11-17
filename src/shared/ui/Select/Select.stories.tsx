@@ -2,7 +2,7 @@ import React from 'react';
 import { Args, Story } from '@storybook/react';
 
 import Select from './Select';
-import { PRODUCTS } from 'constants/constants';
+import { PRODUCTS } from 'entities/constants/constants';
 
 export default {
   title: 'Select',
@@ -13,13 +13,13 @@ export default {
       description: 'Разрешение экрана',
       defaultValue: 'desktop',
       optoins: [
-        "Поке",
-        "Супы и карри",
-        "Вок",
-        "Сэндвичи",
-        "Десерты",
-        "Напитки",
-        "Роллы",
+        { name: "Поке" },
+        { name: "Супы и карри" },
+        { name: "Вок" },
+        { name: "Сэндвичи" },
+        { name: "Десерты" },
+        { name: "Напитки" },
+        { name: "Роллы" },
       ],
       control: {
         type: 'radio',
