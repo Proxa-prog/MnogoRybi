@@ -1,6 +1,6 @@
 import * as path from 'path';
 
-import { BuildEnv, BuildPaths } from 'config/build/types/config';
+import { BuildEnv, BuildPaths } from './config/build/types/config';
 import buildWebpackConfig from './config/build/buildWebpackConfig';
 
 export default (env: BuildEnv) => {
@@ -9,6 +9,7 @@ export default (env: BuildEnv) => {
     output: path.resolve(__dirname, 'dist'),
     html: path.resolve(__dirname, 'public', 'index.html'),
     src: path.resolve(__dirname, 'src'),
+    root: path.resolve(__dirname, 'tsconfig.json'),
     global: path.resolve(__dirname, 'src', 'global.scss'),
   };
 

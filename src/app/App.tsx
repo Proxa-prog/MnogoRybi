@@ -1,21 +1,23 @@
 import * as React from 'react';
 
-import Svg from '../shared/ui/Svg/Svg';
-import Checkbox from '../shared/ui/Checkbox/Checkbox';
-import Input from '../shared/ui/Input/Input';
-import Typography from '../shared/ui/Typography/Typography';
-import Button from '../shared/ui/Button/Button';
-import StatusMarker from '../shared/ui/StatusMarker/StatusMarker';
-import Counter from '../shared/ui/Counter/Counter';
+import Header from 'widgets/ui/Header/Header';
+import Card from 'widgets/ui/Card/Card';
 
-import Card from '../widgets/ui/Card/Card';
+import Input from 'shared/ui/Input/Input';
+import Checkbox from 'shared/ui/Checkbox/Checkbox';
+import Svg from 'shared/ui/Svg/Svg';
+import Typography from 'shared/ui/Typography/Typography';
+import Button from 'shared/ui/Button/Button';
+import StatusMarker from 'shared/ui/StatusMarker/StatusMarker';
+import Counter from 'shared/ui/Counter/Counter';
 
 import styles from './App.module.scss';
-import '../fonts/style.css';
+import 'fonts/style.css';
 import './styles/index.scss';
 
 const App: React.FC = () => (
   <div className={styles.App}>
+    <Header isAuth />
     <h1>React is working!!!!!!s!!!!</h1>
     <Input
       name="adf"
@@ -62,7 +64,8 @@ const App: React.FC = () => (
       isGrayTheme
     />
     <Card
-      imageUrl="https://via.placeholder.com/150"
+      id="Поке"
+      imageUrl="poke_with_turkey.jpg"
       header="Фирменный поке с индейкой"
       description="Состав на усмотрение шеповара"
       cost={360}

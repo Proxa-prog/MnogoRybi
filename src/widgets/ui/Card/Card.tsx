@@ -1,12 +1,11 @@
 import React, { FC } from 'react';
 import classnames from 'classnames';
 
-import Image from '../../assets/image/poke_with_turkey.jpg';
-import ImageInfo from '../../assets/image/cheesecake.jpg';
-import Button, { ButtonColor } from '../../../shared/ui/Button/Button';
-import StatusMarker, { StatusMarkerProps } from '../../../shared/ui/StatusMarker/StatusMarker';
+import Button, { ButtonColor } from 'shared/ui/Button/Button';
+import StatusMarker, { StatusMarkerProps } from 'shared/ui/StatusMarker/StatusMarker';
 
 import style from './Card.module.scss';
+import { nanoid } from '@reduxjs/toolkit';
 
 export interface CardProps {
   className?: string;
@@ -22,11 +21,12 @@ export interface CardProps {
   isGrayTheme?: boolean;
   disabled?: boolean;
   onClick?: () => void;
+  id?: string;
 }
 
 const Card: FC<CardProps> = (props) => {
   const {
-    className,
+    className = '',
     imageUrl,
     header,
     description,
@@ -39,11 +39,8 @@ const Card: FC<CardProps> = (props) => {
     isGrayTheme = false,
     disabled = false,
     onClick,
+    id,
   } = props;
-
-  // const fetchUser = fetch('http://localhost:3001/cards/2')
-  //   .then(response => response.json())
-  //   .then(json => console.log(json));
 
   const handleButtonClick = () => {
     if (onClick) {
@@ -52,29 +49,35 @@ const Card: FC<CardProps> = (props) => {
   };
 
   return (
-    <div className={classnames(
-      style.card,
-      { [style.info]: isInfo },
-      [className],
-    )}
+    <div
+      className={classnames(
+        style.card,
+        { [style.info]: isInfo },
+        [style[className]],
+      )}
+      id={id}
     >
       <div
         className={style.image_wrapper}
         style={{
-          backgroundImage: `url(${Image})`,
+          backgroundImage: `url(images/${imageUrl})`,
         }}
       >
         <div className={style.card_status_wrapper}>
-          {(statuses !== undefined) ? statuses.map((status: StatusMarkerProps) => (
-            <StatusMarker
-              key={0}
-              color={status.color}
-              className={style.card_status}
-            >
-              {status.children}
-            </StatusMarker>
-          ))
-            : null}
+          {(statuses) && statuses.map((status: StatusMarkerProps) => {
+            const id = nanoid();
+
+            return (
+              <StatusMarker
+                key={id}
+                color={status.color}
+                className={style.card_status}
+              >
+                {status.children}
+              </StatusMarker>
+            )
+          }
+          )}
         </div>
       </div>
       <div className={classnames(
@@ -83,32 +86,28 @@ const Card: FC<CardProps> = (props) => {
       )}
       >
         <h3>{header}</h3>
-        <p className={style.descriprion}>{description}</p>
+        <p className={style.descriprion}>
+          {description}
+        </p>
         <div className={style.cost_wrapper}>
-          {(cost !== null || previousCost !== null)
-            ? (
-              <div className={style.current_cost}>
-                {(cost !== null)
-                  ? (
-                    <p>
-                      {cost}
-                      &nbsp;
-                      &#8381;
-                    </p>
-                  )
-                  : null}
-                {(previousCost !== null)
-                  ? (
-                    <span className={style.previousCost}>
-                      {previousCost}
-                      &nbsp;
-                      &#8381;
-                    </span>
-                  )
-                  : null}
-              </div>
-            )
-            : null}
+          {(cost || previousCost) && (
+            <div className={style.current_cost}>
+              {(cost) && (
+                <p>
+                  {cost}
+                  &nbsp;
+                  &#8381;
+                </p>
+              )}
+              {(previousCost) && (
+                <span className={style.previousCost}>
+                  {previousCost}
+                  &nbsp;
+                  &#8381;
+                </span>
+              )}
+            </div>
+          )}
           <Button
             className={style.button_buy}
             color={buttonColor}
