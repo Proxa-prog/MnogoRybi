@@ -15,14 +15,34 @@
     background-color: $gray-100;
     padding: 40px 80px;
     display: flex;
+
+    @media (max-width: 1023px) {
+        display: block;
+        padding: 40px 24px;
+    }
 }
 
 .footer__info_wrapper {
-    padding: 20px 89px;
+    padding: 20px;
     display: flex;
+    justify-content: flex-start;
     width: 100%;
+
+    @media (max-width: 1023px) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        padding: 40px 0;
+    }
 }
 
+.footer__logo_wrapper {
+    margin-right: 69px;
+
+    @media (max-width: 1023px) {
+        width: 100%;
+    }
+}
 
 .footer__logo {
     width: 235.9px;
@@ -30,15 +50,32 @@
 }
 
 .footer__list {
-    min-width: 305px;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
+
+    @media (max-width: 1023px) {
+        margin-bottom: 40px;
+    }
+}
+
+.footer__products,
+.footer__info,
+.footer__contacts {
+    width: 33%;
+
+    @media (max-width: 1023px) {
+        width: 50%;
+    }
 }
 
 .footer__item {
     margin-bottom: 15px;
     color: $gray-30;
+
+    a {
+        color: $gray-30;
+    }
 }
 
 .footer__address_item {
@@ -53,10 +90,17 @@
     font-weight: 700;
     font-size: 16px;
     line-height: 24px;
-    color: $white-00;
+    
+    a {
+        color: $white-00;
+    }
 }
 
 .footer__products {
+
+}
+
+.footer__info {
 
 }
 
@@ -68,4 +112,26 @@
         line-height: 24px;
         color: $gray-30;
     }
+}
+
+.footer__politics_wrapper {
+    background-color: $gray-70;
+    padding: 20px 80px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    
+    a {
+        color: $white-00;
+        text-decoration: none;
+    }
+
+    @media (max-width: 1023px) {
+        padding: 20px 83px 20px 24px;
+    }
+}
+
+.footer__our_politics {
+    display: flex;
+    justify-content: space-between;
 }
