@@ -19,6 +19,25 @@ export const INFO = [
   { name: "Контакты" },
 ];
 
+export const INFO_FOOTER = [
+  { name: "Доставка и оплата" },
+  { name: "Новости" },
+  { name: "Франшиза" },
+  { name: "Контакты" },
+  { name: "Личный кабинет" },
+];
+
+export const ADDRESS = [
+  { name: "Ярославль, Некрасова 52/35" },
+  { name: "Ярославль, Тургенева 1а" },
+  { name: "Ярославль, Свободы 52/39" },
+  { name: "Ярославль, Урицкого 39" },
+];
+
+export const PHONES = [
+  {name: "8 (4852) 980-100"},
+]
+
 export const ONE_HUNDRED_PIXEL_SCROLL = 100;
 
 export enum ViewPorts {

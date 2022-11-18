@@ -1,0 +1,71 @@
+.footer {
+    position: relative;
+    width: 100%;
+    color: $white-00;
+
+    h3 {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 20px;
+    }
+}
+
+.footer__nav {
+    background-color: $gray-100;
+    padding: 40px 80px;
+    display: flex;
+}
+
+.footer__info_wrapper {
+    padding: 20px 89px;
+    display: flex;
+    width: 100%;
+}
+
+
+.footer__logo {
+    width: 235.9px;
+    height: 70px;
+}
+
+.footer__list {
+    min-width: 305px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.footer__item {
+    margin-bottom: 15px;
+    color: $gray-30;
+}
+
+.footer__address_item {
+    margin-bottom: 0;
+}
+
+.footer__address_list {
+    margin-bottom: 15px;
+}
+
+.footer__info_item {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: $white-00;
+}
+
+.footer__products {
+
+}
+
+.footer__contacts {
+    a[href^="tel:"] {
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: $gray-30;
+    }
+}

@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import Header from 'widgets/ui/Header/Header';
+import Footer from 'widgets/ui/Footer/Footer';
 import Card from 'widgets/ui/Card/Card';
 
 import Input from 'shared/ui/Input/Input';
@@ -19,6 +20,7 @@ const App: React.FC = () => (
   <div className={styles.App}>
     <Header isAuth />
     <h1>React is working!!!!!!s!!!!</h1>
+    <Footer />
     <Input
       name="adf"
       label="asdf"
