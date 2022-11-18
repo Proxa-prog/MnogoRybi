@@ -8,7 +8,9 @@
     "sb": "start-storybook -p 6006 -s ./src",
     "build-storybook": "build-storybook",
     "server": "json-server --watch server/db.json -p 3001",
-    "dev": "concurrently \"npm run server\" \"npm start\""
+    "dev": "concurrently \"npm run server\" \"npm start\"",
+    "prepare": "husky install",
+    "test": "npx eslint"
   },
   "repository": {
     "type": "git",
@@ -52,6 +54,7 @@
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-storybook": "^0.6.7",
     "file-loader": "^6.2.0",
+    "husky": "^8.0.2",
     "nanoid": "^4.0.0",
     "sass": "^1.55.0",
     "sass-loader": "^13.1.0",
