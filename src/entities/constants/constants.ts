@@ -34,9 +34,22 @@ export const ADDRESS = [
   { name: "Ярославль, Урицкого 39" },
 ];
 
-export const PHONES = [
-  {name: "8 (4852) 980-100"},
-]
+export const PHONES = [{ name: "8 (4852) 980-100" }];
+
+export const DESCRIPTION_IMAGES_LINKS = [
+  {
+    name: "description_background.jpg",
+    isCurrent: true,
+  },
+  {
+    name: "cheesecake.jpg",
+    isCurrent: false,
+  },
+  {
+    name: "poke_with_turkey.jpg",
+    isCurrent: false,
+  },
+];
 
 export const ONE_HUNDRED_PIXEL_SCROLL = 100;
 
