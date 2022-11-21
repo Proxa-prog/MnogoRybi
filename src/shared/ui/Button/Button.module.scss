@@ -13,6 +13,7 @@
     -khtml-user-select: none;
     user-select: none;
     cursor: pointer;
+    color: $gray-100;
 
     &:hover {
         background-color: $gray-30;
