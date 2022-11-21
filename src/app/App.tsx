@@ -21,7 +21,7 @@ const App: React.FC = () => (
     <Header isAuth />
     <h1>React is working!!!!!!s!!!!</h1>
     <Footer />
-    <Input
+    {/* <Input
       name="adf"
       label="asdf"
       media="desktop"
@@ -108,7 +108,7 @@ const App: React.FC = () => (
           color: 'yellow',
         },
       ]}
-    />
+    /> */}
   </div>
 );
 

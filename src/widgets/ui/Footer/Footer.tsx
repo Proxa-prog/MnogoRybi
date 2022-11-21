@@ -33,7 +33,7 @@ const Footer: FC<FooterProps> = (props) => {
             className={style.footer__logo}
             alt="Логотип Много Рыбы"
             name="logo_white.svg"
-            width={236}
+            width={235.9}
             height={70}
           />
         </div>
@@ -49,7 +49,6 @@ const Footer: FC<FooterProps> = (props) => {
               items={PRODUCTS}
               classNameList={classNames(
                 style.footer__list,
-                // { [style.footer__products_list]: isProductsMenuActive }
               )}
               classNameItem={classNames(
                 style.footer__item
@@ -65,7 +64,6 @@ const Footer: FC<FooterProps> = (props) => {
               items={INFO_FOOTER}
               classNameList={classNames(
                 style.footer__list,
-                // { [style.footer__info_list]: true }
               )}
               classNameItem={classNames(
                 style.footer__item,
@@ -98,8 +96,12 @@ const Footer: FC<FooterProps> = (props) => {
         <div className={classNames(
           style.footer__our_politics
         )}>
-          <a href='#'>© 2022 poke-room «МногоРыбы».</a>
-          <a href='#'>Политика обработки персональных данных</a>
+          <a className={classNames(
+            style.header__our_politics_item
+          )} href='#'>© 2022 poke-room «МногоРыбы».</a>
+          <a className={classNames(
+            style.header__our_politics_item
+          )} href='#'>Политика обработки персональных данных</a>
         </div>
       </div>
     </footer>
