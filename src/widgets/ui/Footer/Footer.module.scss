@@ -2,6 +2,7 @@
     position: relative;
     width: 100%;
     color: $white-00;
+    background-color: $gray-100;
 
     h3 {
         font-weight: 700;
@@ -12,13 +13,15 @@
 }
 
 .footer__nav {
-    background-color: $gray-100;
     padding: 40px 80px;
     display: flex;
+    max-width: 1440px;
+    margin: 0 auto;
 
     @media (max-width: 1023px) {
         display: block;
         padding: 40px 24px;
+        margin: 0;
     }
 
 
@@ -137,7 +140,7 @@
 
 .footer__politics_wrapper {
     background-color: $gray-70;
-    padding: 20px 80px;
+    padding: 20px 0;
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
@@ -163,9 +166,17 @@
 .footer__our_politics {
     display: flex;
     justify-content: space-between;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 95px 0 80px;
 
+    @media (max-width: 1023px) {
+        padding: 0;
+    }
+    
     @media (max-width: 767px) {
         flex-wrap: wrap;
+        margin: 0;
      }
 }
 
