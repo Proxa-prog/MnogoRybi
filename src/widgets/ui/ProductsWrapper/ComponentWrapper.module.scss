@@ -1,0 +1,13 @@
+.default {
+    width: 100%;
+    padding: 80px 60px;
+    background: $gray-10;
+
+    @media (max-width: 1023px) {
+        padding: 60px 24px;
+    }
+
+    @media (max-width: 767px) {
+        padding: 41px 15px;
+    }
+}

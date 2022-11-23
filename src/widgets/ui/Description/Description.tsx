@@ -64,7 +64,6 @@ const Description: FC<DescriptionProps> = (props) => {
   useEffect(() => {
     chooseCurrentDescription(buttonClickCounter, descriptions);
   }, [buttonClickCounter])
-console.log(descriptions);
 
   return (
     <section className={style.description}>

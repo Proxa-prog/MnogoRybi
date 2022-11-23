@@ -29,11 +29,11 @@
         box-shadow: 0px 4px 25px rgba(5, 5, 5, 0.15);
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1023px) {
         width: 350px;
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         width: 290px;
     }
 }
@@ -70,12 +70,12 @@
     background-size: cover;
     background-position: center;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1023px) {
         width: 350px;
         height: 275px;
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         width: 290px;
         height: 220px;
     }

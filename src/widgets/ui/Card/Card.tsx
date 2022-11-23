@@ -53,7 +53,7 @@ const Card: FC<CardProps> = (props) => {
       className={classnames(
         style.card,
         { [style.info]: isInfo },
-        [style[className]],
+        [className],
       )}
       id={id}
     >

@@ -7,7 +7,7 @@ type ButtonColor = 'yellow' | 'blue' | 'purple' | 'gray' | 'green';
 
 export interface StatusMarkerProps {
   className?: string;
-  children: React.ReactNode;
+  children?: string | number;
   color?: ButtonColor;
 }
 const StatusMarker: FC<StatusMarkerProps> = (props) => {
