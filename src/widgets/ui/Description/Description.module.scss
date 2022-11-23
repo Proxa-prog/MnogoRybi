@@ -3,6 +3,7 @@
     width: 100%;
     height: 540px;
     overflow: hidden;
+    background-color: $green-10;
 
     @media (max-width: 1023px) {
         height: 400px;
@@ -18,6 +19,10 @@
     position: absolute;
     top: 248px;
     z-index: 1;
+
+    @media (max-width: 1023px) {
+        display: none;
+    }
 }
 
 .button_forward {
@@ -34,7 +39,6 @@
     position: absolute;
     width: 100%;
     height: 540px;
-
     
     @media (max-width: 1023px) {
         height: 400px;

@@ -1,29 +1,52 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import classNames from 'classnames';
+import { nanoid } from '@reduxjs/toolkit';
 
 import Button from 'shared/ui/Button/Button';
 
+import { DESCRIPTION_COUNT_LENGTS } from 'entities/constants/constants';
+
+import { useTypedSelectors } from 'app/hooks/useTypedSelectors';
+import { changeDescription, IDescription } from 'app/store/reducers/description';
+
 import style from './Description.module.scss';
-import { DESCRIPTION_IMAGES_LINKS } from 'entities/constants/constants';
-import { nanoid } from '@reduxjs/toolkit';
 
 export interface DescriptionProps {
 
 }
 
 const Description: FC<DescriptionProps> = (props) => {
+  const dispatch = useDispatch();
+  const { descriptions } = useTypedSelectors((state) => state.descriptions);
   const [windowWidth, setWindowWidth] = useState(0);
-  const [buttonClickCounter, setButtonClickCounter] = useState(1);
+  const [buttonClickCounter, setButtonClickCounter] = useState(0);
   const [isButtonPrevDisabled, setIsButtonPrevDisabled] = useState(true);
   const [isButtonForwardDisabled, setIsButtonForwardDisabled] = useState(false);
+
+  const chooseCurrentDescription = (counter: number, descriptionsArray: IDescription[]) => {
+    const newDescriptionsArray = descriptionsArray.map((description: IDescription, index: number) => {
+      description.isCurrent = false;
+
+      if (index === counter) {
+        description.isCurrent = true;
+
+        return description;
+      }
+
+      return description;
+    });
+
+    dispatch(changeDescription(newDescriptionsArray))
+  };
 
   const onButtonBackClick = () => {
     setButtonClickCounter(prev => prev - 1);
 
-    buttonClickCounter < DESCRIPTION_IMAGES_LINKS.length + 1 && setIsButtonForwardDisabled(false);
+    buttonClickCounter < descriptions.length + 1 && setIsButtonForwardDisabled(false);
 
-    buttonClickCounter < 3
+    buttonClickCounter < descriptions.length -1
       ? setIsButtonPrevDisabled(true)
       : setIsButtonPrevDisabled(false), setWindowWidth(prev => prev + window.innerWidth)
   };
@@ -33,11 +56,15 @@ const Description: FC<DescriptionProps> = (props) => {
 
     buttonClickCounter > 0 && setIsButtonPrevDisabled(false);
 
-    buttonClickCounter === DESCRIPTION_IMAGES_LINKS.length - 1
+    buttonClickCounter === descriptions.length - DESCRIPTION_COUNT_LENGTS
       ? setIsButtonForwardDisabled(true)
       : setIsButtonForwardDisabled(false); setWindowWidth(prev => prev - window.innerWidth)
   };
-  console.log(buttonClickCounter);
+
+  useEffect(() => {
+    chooseCurrentDescription(buttonClickCounter, descriptions);
+  }, [buttonClickCounter])
+console.log(descriptions);
 
   return (
     <section className={style.description}>
@@ -53,7 +80,7 @@ const Description: FC<DescriptionProps> = (props) => {
         style={{ transform: `translateX(${windowWidth}px)` }}
       >
         {
-          DESCRIPTION_IMAGES_LINKS.map((link) => {
+          descriptions.map((link) => {
             const id = nanoid();
 
             return (
@@ -70,7 +97,7 @@ const Description: FC<DescriptionProps> = (props) => {
       </div>
       <div className={style.slider_counter}>
         {
-          DESCRIPTION_IMAGES_LINKS.map((item) => {
+          descriptions.map((item) => {
             const id = nanoid();
 
             return (

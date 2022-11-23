@@ -1,3 +1,5 @@
+import { IDescription } from "app/store/reducers/description";
+
 export interface IProducts {
   name: string;
 }
@@ -36,7 +38,7 @@ export const ADDRESS = [
 
 export const PHONES = [{ name: "8 (4852) 980-100" }];
 
-export const DESCRIPTION_IMAGES_LINKS = [
+export const DESCRIPTION_IMAGES_LINKS: IDescription[] = [
   {
     name: "description_background.jpg",
     isCurrent: true,
@@ -50,6 +52,8 @@ export const DESCRIPTION_IMAGES_LINKS = [
     isCurrent: false,
   },
 ];
+
+export const DESCRIPTION_COUNT_LENGTS = 2;
 
 export const ONE_HUNDRED_PIXEL_SCROLL = 100;
 
