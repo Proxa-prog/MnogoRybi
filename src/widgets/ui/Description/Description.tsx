@@ -4,15 +4,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { nanoid } from '@reduxjs/toolkit';
 
+import { changeDescription } from 'app/store/reducers/description';
+import { RootState } from 'app/store';
+import {  IDescription } from 'app/store/reducers/description';
+
 import Button from 'shared/ui/Button/Button';
 
 import { DESCRIPTION_COUNT_LENGTS } from 'entities/constants/constants';
 
-import {  IDescription } from 'app/store/reducers/description';
 
 import style from './Description.module.scss';
-import { changeDescription } from 'app/store/reducers/description';
-import { RootState } from 'app/store';
 
 export interface DescriptionProps {
 
@@ -41,7 +42,6 @@ const Description: FC<DescriptionProps> = (props) => {
 
       return description;
     });
-    console.log(newDescriptionsArray);
 
     dispatch(changeDescription(newDescriptionsArray));
   };

@@ -10,422 +10,136 @@
             "buttonColor": "yellow",
             "statuses": [
                 {
-                    "children": "Новинка",
+                    "children": "Хит",
                     "color": "blue"
                 },
                 {
-                    "children": "234",
+                    "children": "-10%",
                     "color": "purple"
-                },
-                {
-                    "children": "Хит Сезона!",
-                    "color": "gray"
-                },
-                {
-                    "children": "Блюдо дня",
-                    "color": "yellow"
-                },
-                {
-                    "children": "Старинка",
-                    "color": "green"
                 }
             ]
         },
         {
             "id": "2",
-            "imageUrl": "poke_with_turkey.jpg",
-            "header": "Фирменный поке с индейкой",
-            "description": "Состав на усмотрение шеф-повара",
-            "cost": "460",
-            "previousCost": "560",
+            "imageUrl": "poke_with_salmon.jpg",
+            "header": "Фирменный поке с лососем",
+            "description": "Состав на усмотрение шеф-повара от 320 гр. до 450 гр.",
+            "cost": "360",
+            "previousCost": "420",
+            "buttonColor": "yellow",
             "statuses": [
                 {
                     "children": "Новинка",
-                    "color": "blue"
-                },
-                {
-                    "children": "234",
-                    "color": "purple"
-                },
-                {
-                    "children": "Хит Сезона!",
-                    "color": "gray"
-                },
-                {
-                    "children": "Блюдо дня",
-                    "color": "yellow"
-                },
-                {
-                    "children": "Старинка",
                     "color": "green"
+                },
+                {
+                    "children": "-10%",
+                    "color": "purple"
                 }
             ]
         },
         {
             "id": "3",
-            "imageUrl": "poke_with_turkey.jpg",
-            "header": "Фирменный поке с индейкой",
-            "description": "Состав на усмотрение шеф-повара",
-            "cost": "460",
-            "previousCost": "560",
+            "imageUrl": "poke_with_shrimp.jpg",
+            "header": "Фирменный поке с креветками",
+            "description": "Состав на усмотрение шеф-повара от 320 гр. до 450 гр.",
+            "cost": "360",
+            "buttonColor": "yellow",
             "statuses": [
                 {
                     "children": "Новинка",
-                    "color": "blue"
-                },
-                {
-                    "children": "234",
-                    "color": "purple"
-                },
-                {
-                    "children": "Хит Сезона!",
-                    "color": "gray"
-                },
-                {
-                    "children": "Блюдо дня",
-                    "color": "yellow"
-                },
-                {
-                    "children": "Старинка",
                     "color": "green"
                 }
             ]
         },
         {
             "id": "4",
-            "imageUrl": "poke_with_turkey.jpg",
+            "imageUrl": "poke_with_4.jpg",
             "header": "Фирменный поке с индейкой",
             "description": "Состав на усмотрение шеф-повара",
-            "cost": "460",
-            "previousCost": "560",
+            "cost": "360",
+            "buttonColor": "yellow",
             "statuses": [
                 {
                     "children": "Новинка",
-                    "color": "blue"
-                },
-                {
-                    "children": "234",
-                    "color": "purple"
-                },
-                {
-                    "children": "Хит Сезона!",
-                    "color": "gray"
-                },
-                {
-                    "children": "Блюдо дня",
-                    "color": "yellow"
-                },
-                {
-                    "children": "Старинка",
                     "color": "green"
                 }
             ]
         },
         {
             "id": "5",
-            "imageUrl": "poke_with_turkey.jpg",
+            "imageUrl": "poke_with_5.jpg",
             "header": "Фирменный поке с индейкой",
             "description": "Состав на усмотрение шеф-повара",
-            "cost": "460",
-            "previousCost": "560",
+            "cost": "360",
+            "previousCost": "420",
+            "buttonColor": "yellow",
             "statuses": [
                 {
-                    "children": "Новинка",
-                    "color": "blue"
-                },
-                {
-                    "children": "234",
+                    "children": "-10%",
                     "color": "purple"
-                },
-                {
-                    "children": "Хит Сезона!",
-                    "color": "gray"
-                },
-                {
-                    "children": "Блюдо дня",
-                    "color": "yellow"
-                },
-                {
-                    "children": "Старинка",
-                    "color": "green"
                 }
             ]
         },
         {
             "id": "6",
-            "imageUrl": "poke_with_turkey.jpg",
+            "imageUrl": "poke_with_6.jpg",
             "header": "Фирменный поке с индейкой",
             "description": "Состав на усмотрение шеф-повара",
-            "cost": "460",
-            "previousCost": "560",
-            "statuses": [
-                {
-                    "children": "Новинка",
-                    "color": "blue"
-                },
-                {
-                    "children": "234",
-                    "color": "purple"
-                },
-                {
-                    "children": "Хит Сезона!",
-                    "color": "gray"
-                },
-                {
-                    "children": "Блюдо дня",
-                    "color": "yellow"
-                },
-                {
-                    "children": "Старинка",
-                    "color": "green"
-                }
-            ]
+            "cost": "360",
+            "buttonColor": "yellow"
         },
         {
             "id": "7",
-            "imageUrl": "poke_with_turkey.jpg",
+            "imageUrl": "poke_with_7.jpg",
             "header": "Фирменный поке с индейкой",
             "description": "Состав на усмотрение шеф-повара",
-            "cost": "460",
-            "previousCost": "560",
-            "statuses": [
-                {
-                    "children": "Новинка",
-                    "color": "blue"
-                },
-                {
-                    "children": "234",
-                    "color": "purple"
-                },
-                {
-                    "children": "Хит Сезона!",
-                    "color": "gray"
-                },
-                {
-                    "children": "Блюдо дня",
-                    "color": "yellow"
-                },
-                {
-                    "children": "Старинка",
-                    "color": "green"
-                }
-            ]
+            "cost": "360",
+            "buttonColor": "yellow"
         },
         {
             "id": "8",
-            "imageUrl": "poke_with_turkey.jpg",
+            "imageUrl": "poke_with_8.jpg",
             "header": "Фирменный поке с индейкой",
             "description": "Состав на усмотрение шеф-повара",
-            "cost": "460",
-            "previousCost": "560",
+            "cost": "360",
+            "buttonColor": "yellow",
             "statuses": [
                 {
                     "children": "Новинка",
-                    "color": "blue"
-                },
-                {
-                    "children": "234",
-                    "color": "purple"
-                },
-                {
-                    "children": "Хит Сезона!",
-                    "color": "gray"
-                },
-                {
-                    "children": "Блюдо дня",
-                    "color": "yellow"
-                },
-                {
-                    "children": "Старинка",
                     "color": "green"
                 }
             ]
         },
         {
             "id": "9",
-            "imageUrl": "poke_with_turkey.jpg",
+            "imageUrl": "poke_with_9.jpg",
             "header": "Фирменный поке с индейкой",
             "description": "Состав на усмотрение шеф-повара",
-            "cost": "460",
-            "previousCost": "560",
+            "cost": "360",
+            "previousCost": "420",
+            "buttonColor": "yellow",
             "statuses": [
                 {
-                    "children": "Новинка",
-                    "color": "blue"
-                },
-                {
-                    "children": "234",
+                    "children": "-10%",
                     "color": "purple"
-                },
-                {
-                    "children": "Хит Сезона!",
-                    "color": "gray"
-                },
-                {
-                    "children": "Блюдо дня",
-                    "color": "yellow"
-                },
-                {
-                    "children": "Старинка",
-                    "color": "green"
                 }
             ]
         },
         {
             "id": "10",
-            "imageUrl": "poke_with_turkey.jpg",
+            "imageUrl": "poke_with_10.jpg",
             "header": "Фирменный поке с индейкой",
             "description": "Состав на усмотрение шеф-повара",
-            "cost": "460",
-            "previousCost": "560",
-            "statuses": [
-                {
-                    "children": "Новинка",
-                    "color": "blue"
-                },
-                {
-                    "children": "234",
-                    "color": "purple"
-                },
-                {
-                    "children": "Хит Сезона!",
-                    "color": "gray"
-                },
-                {
-                    "children": "Блюдо дня",
-                    "color": "yellow"
-                },
-                {
-                    "children": "Старинка",
-                    "color": "green"
-                }
-            ]
+            "cost": "360",
+            "buttonColor": "yellow"
         },
         {
             "id": "11",
-            "imageUrl": "poke_with_turkey.jpg",
-            "header": "Фирменный поке с индейкой",
-            "description": "Состав на усмотрение шеф-повара",
-            "cost": "460",
-            "previousCost": "560",
-            "statuses": [
-                {
-                    "children": "Новинка",
-                    "color": "blue"
-                },
-                {
-                    "children": "234",
-                    "color": "purple"
-                },
-                {
-                    "children": "Хит Сезона!",
-                    "color": "gray"
-                },
-                {
-                    "children": "Блюдо дня",
-                    "color": "yellow"
-                },
-                {
-                    "children": "Старинка",
-                    "color": "green"
-                }
-            ]
-        },
-        {
-            "id": "12",
-            "imageUrl": "poke_with_turkey.jpg",
-            "header": "Фирменный поке с индейкой",
-            "description": "Состав на усмотрение шеф-повара",
-            "cost": "460",
-            "previousCost": "560",
-            "statuses": [
-                {
-                    "children": "Новинка",
-                    "color": "blue"
-                },
-                {
-                    "children": "234",
-                    "color": "purple"
-                },
-                {
-                    "children": "Хит Сезона!",
-                    "color": "gray"
-                },
-                {
-                    "children": "Блюдо дня",
-                    "color": "yellow"
-                },
-                {
-                    "children": "Старинка",
-                    "color": "green"
-                }
-            ]
-        },
-        {
-            "id": "13",
-            "imageUrl": "poke_with_turkey.jpg",
-            "header": "Фирменный поке с индейкой",
-            "description": "Состав на усмотрение шеф-повара",
-            "cost": "460",
-            "previousCost": "560",
-            "statuses": [
-                {
-                    "children": "Новинка",
-                    "color": "blue"
-                },
-                {
-                    "children": "234",
-                    "color": "purple"
-                },
-                {
-                    "children": "Хит Сезона!",
-                    "color": "gray"
-                },
-                {
-                    "children": "Блюдо дня",
-                    "color": "yellow"
-                },
-                {
-                    "children": "Старинка",
-                    "color": "green"
-                }
-            ]
-        },
-        {
-            "id": "14",
-            "imageUrl": "poke_with_turkey.jpg",
-            "header": "Фирменный поке с индейкой",
-            "description": "Состав на усмотрение шеф-повара",
-            "cost": "460",
-            "previousCost": "560",
-            "statuses": [
-                {
-                    "children": "Новинка",
-                    "color": "blue"
-                },
-                {
-                    "children": "234",
-                    "color": "purple"
-                },
-                {
-                    "children": "Хит Сезона!",
-                    "color": "gray"
-                },
-                {
-                    "children": "Блюдо дня",
-                    "color": "yellow"
-                },
-                {
-                    "children": "Старинка",
-                    "color": "green"
-                }
-            ]
+            "imageUrl": "poke_with_11.jpg",
+            "header": "Фирменный поке с морским гребешком",
+            "cost": "360",
+            "buttonColor": "yellow"
         }
       ]
-      
   }
-
-
-
-
-  

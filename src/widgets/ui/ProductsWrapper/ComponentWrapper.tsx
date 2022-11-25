@@ -16,7 +16,6 @@ const ComponentWrapper: FC<ComponentWrapperProps> = (props) => {
     title,
     children,
   } = props;
-  console.log(className);
 
   return (
     <section className={classNames(

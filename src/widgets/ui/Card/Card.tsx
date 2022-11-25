@@ -60,7 +60,7 @@ const Card: FC<CardProps> = (props) => {
       <div
         className={style.image_wrapper}
         style={{
-          backgroundImage: `url(images/${imageUrl})`,
+          backgroundImage: `url(images/poke/${imageUrl})`,
         }}
       >
         <div className={style.card_status_wrapper}>

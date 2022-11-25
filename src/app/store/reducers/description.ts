@@ -31,7 +31,7 @@ export const descriptionSlice = createSlice({
       state.descriptions = action.payload
     },
   },
-})
+});
 
 export const { changeDescription } = descriptionSlice.actions;
 

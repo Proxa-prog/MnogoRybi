@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import descriptionReducer from "./reducers/description";
+import productionsReducer from "./reducers/productions";
 
 const rootReducer = combineReducers({
   description: descriptionReducer,
+  productions: productionsReducer,
 });
 
 export const store = configureStore({
