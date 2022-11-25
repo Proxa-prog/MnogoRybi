@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import classNames from 'classnames';
 import { nanoid } from '@reduxjs/toolkit';
@@ -8,10 +8,11 @@ import Button from 'shared/ui/Button/Button';
 
 import { DESCRIPTION_COUNT_LENGTS } from 'entities/constants/constants';
 
-import { useTypedSelectors } from 'app/hooks/useTypedSelectors';
-import { changeDescription, IDescription } from 'app/store/reducers/description';
+import {  IDescription } from 'app/store/reducers/description';
 
 import style from './Description.module.scss';
+import { changeDescription } from 'app/store/reducers/description';
+import { RootState } from 'app/store';
 
 export interface DescriptionProps {
 
@@ -19,14 +20,17 @@ export interface DescriptionProps {
 
 const Description: FC<DescriptionProps> = (props) => {
   const dispatch = useDispatch();
-  const { descriptions } = useTypedSelectors((state) => state.descriptions);
+  const descriptions = useSelector((state: RootState) => state.description.descriptions);
   const [windowWidth, setWindowWidth] = useState(0);
   const [buttonClickCounter, setButtonClickCounter] = useState(0);
   const [isButtonPrevDisabled, setIsButtonPrevDisabled] = useState(true);
   const [isButtonForwardDisabled, setIsButtonForwardDisabled] = useState(false);
 
   const chooseCurrentDescription = (counter: number, descriptionsArray: IDescription[]) => {
-    const newDescriptionsArray = descriptionsArray.map((description: IDescription, index: number) => {
+    const copy = JSON.parse(JSON.stringify(descriptionsArray))
+
+    const newDescriptionsArray = copy.map((description: IDescription, index: number) => {
+
       description.isCurrent = false;
 
       if (index === counter) {
@@ -37,8 +41,9 @@ const Description: FC<DescriptionProps> = (props) => {
 
       return description;
     });
+    console.log(newDescriptionsArray);
 
-    dispatch(changeDescription(newDescriptionsArray))
+    dispatch(changeDescription(newDescriptionsArray));
   };
 
   const onButtonBackClick = () => {

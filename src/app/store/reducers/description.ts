@@ -1,3 +1,4 @@
+import { createSlice } from "@reduxjs/toolkit";
 import { DESCRIPTION_IMAGES_LINKS } from "entities/constants/constants";
 
 export interface IDescription {
@@ -5,15 +6,15 @@ export interface IDescription {
   isCurrent: boolean;
 }
 
-interface DescriprionsArray {
+export interface DescriprionsArray {
   descriptions: IDescription[];
 }
 
-enum DescriptionAction {
+export enum DescriptionAction {
   CHANGE_DESCRIPTION = 'CHANGE_DESCRIPTION',
 }
 
-interface IDescriptionsAction {
+export interface IDescriptionsAction {
   type: DescriptionAction;
   payload: IDescription[];
 }
@@ -22,16 +23,16 @@ const initialState: DescriprionsArray =  {
   descriptions: DESCRIPTION_IMAGES_LINKS,
 };
 
-export const descriptionReducer = (state = initialState, action: IDescriptionsAction): DescriprionsArray => {
-  switch (action.type) {
-    case DescriptionAction.CHANGE_DESCRIPTION:
-      return { descriptions: action.payload };
-    default:
-      return state;
-  }
-};
+export const descriptionSlice = createSlice({
+  name: 'descriptions',
+  initialState,
+  reducers: {
+    changeDescription: (state, action) => {
+      state.descriptions = action.payload
+    },
+  },
+})
 
-export const changeDescription = (payload: IDescription[]) => ({
-  type: DescriptionAction.CHANGE_DESCRIPTION,
-  payload,
-});
+export const { changeDescription } = descriptionSlice.actions;
+
+export default descriptionSlice.reducer;
