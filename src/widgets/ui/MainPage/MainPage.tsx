@@ -1,16 +1,15 @@
 import React, { FC, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import axios from 'axios';
-
-import { RootState } from 'app/store';
+import { useAppDispatch } from 'app/store';
 
 import Description from 'widgets/ui/Description/Description';
 import ComponentWrapper from 'widgets/ui/ProductsWrapper/ComponentWrapper';
 import Products from 'widgets/ui/Products/Products';
 
-
-import { getProductions } from 'entities/productions/api';
+import { getProd } from 'entities/productions/model/selectors';
+import { fetchProductions } from 'entities/productions/model/services/getProductions';
+import { POKE_URL } from "entities/constants/constants";
 
 import style from './MainPage.module.scss';
 
@@ -19,12 +18,11 @@ export interface MainPageProps {
 }
 
 const MainPage: FC<MainPageProps> = (props) => {
-  const dispatch = useDispatch();
-  const productions = useSelector((state: RootState) => state.productions.productions);
+  const dispatch = useAppDispatch();
+  const productions = useSelector(getProd);
 
   useEffect(() => {
-    // @ts-ignore
-    dispatch(getProductions());
+    dispatch(fetchProductions(dispatch));
   }, []);
 
   return (
@@ -33,6 +31,10 @@ const MainPage: FC<MainPageProps> = (props) => {
       <ComponentWrapper title='Наша продукция'>
         <Products
           title='Поке'
+          productCards={productions}
+        />
+        <Products
+          title='Роллы'
           productCards={productions}
         />
       </ComponentWrapper>

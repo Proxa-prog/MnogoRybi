@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { fetchProductions } from "entities/productions/model/services/getProductions";
 import { CardProps } from "widgets/ui/Card/Card";
 
 export enum ProductionAction {
@@ -27,6 +28,12 @@ export const productionsSlice = createSlice({
       state.productions = action.payload
     },
   },
+  // extraReducers: (builder) => {
+  //   builder.addCase(fetchProductions.fulfilled, (state, action) => {
+  //     console.log(action.payload);
+
+  //   });
+  // },
 });
 
 export const { getProductionsAction } = productionsSlice.actions;
