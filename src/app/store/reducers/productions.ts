@@ -12,11 +12,27 @@ export interface IProductionsAction {
 }
 
 export interface IProductionsArray {
-  productions: CardProps[];
+  productions: {
+    poke: CardProps[],
+    rolls: CardProps[],
+    wok: CardProps[],
+    curry: CardProps[],
+    sandwich: CardProps[],
+    deserts: CardProps[],
+    beverages: CardProps[],
+  };
 }
 
 const initialState: IProductionsArray = {
-  productions: [],
+  productions: {
+    poke: [],
+    rolls: [],
+    wok: [],
+    curry: [],
+    sandwich: [],
+    deserts: [],
+    beverages: [],
+  },
 }
 
 

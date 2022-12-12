@@ -9,7 +9,6 @@ import Products from 'widgets/ui/Products/Products';
 
 import { getProd } from 'entities/productions/model/selectors';
 import { fetchProductions } from 'entities/productions/model/services/getProductions';
-import { POKE_URL } from "entities/constants/constants";
 
 import style from './MainPage.module.scss';
 
@@ -31,11 +30,31 @@ const MainPage: FC<MainPageProps> = (props) => {
       <ComponentWrapper title='Наша продукция'>
         <Products
           title='Поке'
-          productCards={productions}
+          productCards={productions.poke}
         />
         <Products
           title='Роллы'
-          productCards={productions}
+          productCards={productions.rolls}
+        />
+        <Products
+          title='Супы и карри'
+          productCards={productions.curry}
+        />
+        <Products
+          title='Вок'
+          productCards={productions.wok}
+        />
+        <Products
+          title='Роллы'
+          productCards={productions.sandwich}
+        />
+        <Products
+          title='Десерты'
+          productCards={productions.deserts}
+        />
+        <Products
+          title='Напитки'
+          productCards={productions.beverages}
         />
       </ComponentWrapper>
     </div>

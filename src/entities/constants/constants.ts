@@ -65,4 +65,4 @@ export enum ViewPorts {
   "DESKTOP" = 1024,
 }
 
-export const POKE_URL = "http://localhost:3001/poke";
+export const POKE_URL = "http://localhost:3001/productions";
