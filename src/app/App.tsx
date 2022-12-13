@@ -6,11 +6,13 @@ import { store } from './store';
 
 import Header from 'widgets/ui/Header/Header';
 import MainPage from 'widgets/ui/MainPage/MainPage';
+import AboutCompany from 'widgets/ui/AboutCompany/AboutCompany';
+import Franchise from 'widgets/ui/Franchise/Franchise';
 import Footer from 'widgets/ui/Footer/Footer';
 
-import style from './App.module.scss';
 import 'fonts/style.css';
 import './styles/index.scss';
+import style from './App.module.scss';
 
 const App: React.FC = () => {
   return (
@@ -18,6 +20,8 @@ const App: React.FC = () => {
       <div className={style.App}>
         <Header isAuth />
         <MainPage />
+        <AboutCompany />
+        <Franchise />
         <Footer />
       </div>
     </Provider>

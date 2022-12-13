@@ -1,0 +1,22 @@
+.advanced {
+    display: none;
+
+    @media (max-width: 767px) {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 10px 20px;
+        background-color: $white-00;
+        border-radius: 50px;
+        margin-bottom: 10px;
+
+        p {
+            white-space: pre-line
+        }
+    }
+}
+
+.image {
+    margin-right: 15px;
+}

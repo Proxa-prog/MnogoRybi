@@ -65,6 +65,11 @@
 
 .button_buy {
     margin-right: 0;
+    padding: 15px 25px;
+
+    @media (max-width: 767px) {
+        padding: 10px 20px;
+    }
 }
 
 .image_wrapper {

@@ -6,7 +6,7 @@ import ImageWrapper from 'shared/ui/ImageWrapper/ImageWrapper';
 import style from './Button.module.scss';
 
 type ButtonType = 'button' | 'submit' | 'reset';
-export type ButtonColor = 'default' | 'yellow' | 'blue';
+export type ButtonColor = 'default' | 'yellow' | 'blue' | 'white';
 type ButtonTurn = 'back' | 'forward' | 'default';
 
 export interface ButtonProps {
