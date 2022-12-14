@@ -1,64 +1,494 @@
 {
-    "cards": [
-        {
-            "id": 1,
-            "imageUrl": "https://via.placeholder.com/150",
-            "header": "Фирменный поке с индейкой",
-            "description": "Состав на усмотрение шеф-повара",
-            "cost": 360,
-            "previousCost": 360,
-            "statuses": [
-                {
-                    "children": "Новинка",
-                    "color": "blue"
-                },
-                {
-                    "children": "234",
-                    "color": "purple"
-                },
-                {
-                    "children": "Хит Сезона!",
-                    "color": "gray"
-                },
-                {
-                    "children": "Блюдо дня",
-                    "color": "yellow"
-                },
-                {
-                    "children": "Старинка",
-                    "color": "green"
-                }
-            ]
-        },
-        {
-            "id": 2,
-            "imageUrl": "https://via.placeholder.com/150",
-            "header": "Фирменный поке с индейкой",
-            "description": "Состав на усмотрение шеф-повара",
-            "cost": 460,
-            "previousCost": 560,
-            "statuses": [
-                {
-                    "children": "Новинка",
-                    "color": "blue"
-                },
-                {
-                    "children": "234",
-                    "color": "purple"
-                },
-                {
-                    "children": "Хит Сезона!",
-                    "color": "gray"
-                },
-                {
-                    "children": "Блюдо дня",
-                    "color": "yellow"
-                },
-                {
-                    "children": "Старинка",
-                    "color": "green"
-                }
-            ]
-        }
-    ]
-  }
+    "productions": {
+        "poke": [
+            {
+                "id": "1",
+                "imageUrl": "poke/poke_with_turkey.jpg",
+                "header": "Фирменный поке с индейкой",
+                "description": "Состав на усмотрение шеф-повара",
+                "cost": "360",
+                "previousCost": "360",
+                "buttonColor": "yellow",
+                "statuses": [
+                    {
+                        "children": "Хит",
+                        "color": "blue"
+                    },
+                    {
+                        "children": "-10%",
+                        "color": "purple"
+                    }
+                ]
+            },
+            {
+                "id": "2",
+                "imageUrl": "poke/poke_with_salmon.jpg",
+                "header": "Фирменный поке с лососем",
+                "description": "Состав на усмотрение шеф-повара от 320 гр. до 450 гр.",
+                "cost": "360",
+                "previousCost": "420",
+                "buttonColor": "yellow",
+                "statuses": [
+                    {
+                        "children": "Новинка",
+                        "color": "green"
+                    },
+                    {
+                        "children": "-10%",
+                        "color": "purple"
+                    }
+                ]
+            },
+            {
+                "id": "3",
+                "imageUrl": "poke/poke_with_shrimp.jpg",
+                "header": "Фирменный поке с креветками",
+                "description": "Состав на усмотрение шеф-повара от 320 гр. до 450 гр.",
+                "cost": "360",
+                "buttonColor": "yellow",
+                "statuses": [
+                    {
+                        "children": "Новинка",
+                        "color": "green"
+                    }
+                ]
+            },
+            {
+                "id": "4",
+                "imageUrl": "poke/poke_with_4.jpg",
+                "header": "Фирменный поке с индейкой",
+                "description": "Состав на усмотрение шеф-повара",
+                "cost": "360",
+                "buttonColor": "yellow",
+                "statuses": [
+                    {
+                        "children": "Новинка",
+                        "color": "green"
+                    }
+                ]
+            },
+            {
+                "id": "5",
+                "imageUrl": "poke/poke_with_5.jpg",
+                "header": "Фирменный поке с индейкой",
+                "description": "Состав на усмотрение шеф-повара",
+                "cost": "360",
+                "previousCost": "420",
+                "buttonColor": "yellow",
+                "statuses": [
+                    {
+                        "children": "-10%",
+                        "color": "purple"
+                    }
+                ]
+            },
+            {
+                "id": "6",
+                "imageUrl": "poke/poke_with_6.jpg",
+                "header": "Фирменный поке с индейкой",
+                "description": "Состав на усмотрение шеф-повара",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "7",
+                "imageUrl": "poke/poke_with_7.jpg",
+                "header": "Фирменный поке с индейкой",
+                "description": "Состав на усмотрение шеф-повара",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "8",
+                "imageUrl": "poke/poke_with_8.jpg",
+                "header": "Фирменный поке с индейкой",
+                "description": "Состав на усмотрение шеф-повара",
+                "cost": "360",
+                "buttonColor": "yellow",
+                "statuses": [
+                    {
+                        "children": "Новинка",
+                        "color": "green"
+                    }
+                ]
+            },
+            {
+                "id": "9",
+                "imageUrl": "poke/poke_with_9.jpg",
+                "header": "Фирменный поке с индейкой",
+                "description": "Состав на усмотрение шеф-повара",
+                "cost": "360",
+                "previousCost": "420",
+                "buttonColor": "yellow",
+                "statuses": [
+                    {
+                        "children": "-10%",
+                        "color": "purple"
+                    }
+                ]
+            },
+            {
+                "id": "10",
+                "imageUrl": "poke/poke_with_10.jpg",
+                "header": "Фирменный поке с индейкой",
+                "description": "Состав на усмотрение шеф-повара",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "11",
+                "imageUrl": "poke/poke_with_11.jpg",
+                "header": "Фирменный поке с морским гребешком",
+                "cost": "360",
+                "buttonColor": "yellow"
+            }
+          ],
+    
+          "rolls": [
+            {
+                "id": "12",
+                "imageUrl": "rolls/important_fish.jpg",
+                "header": "Важная рыба",
+                "description": "Тунец, рис ,нори,сливочный сыр, авокадо и соус Манго Маракуйя 260 гр",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "13",
+                "imageUrl": "rolls/on_the_crest.jpg",
+                "header": "На гребне",
+                "description": "Морской гребешок,Рис, нори, сливочный сыр, соус спайс и кунжут  250 гр",
+                "cost": "360",
+                "previousCost": "420",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "14",
+                "imageUrl": "rolls/roll_3.jpg",
+                "header": "Фирменный поке с индейкой",
+                "description": "Состав на усмотрение шевповара",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "15",
+                "imageUrl": "rolls/roll_3.jpg",
+                "header": "Томаго ролл с лососем",
+                "description": "Лосось,сливочный сыр,томаты в яичном блине и японским соусом 220 гр",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "16",
+                "imageUrl": "rolls/important_fish.jpg",
+                "header": "Важная рыба",
+                "description": "Тунец, рис ,нори,сливочный сыр, авокадо и соус Манго Маракуйя 260 гр",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "17",
+                "imageUrl": "rolls/on_the_crest.jpg",
+                "header": "На гребне",
+                "description": "Морской гребешок,Рис, нори, сливочный сыр, соус спайс и кунжут  250 гр",
+                "cost": "360",
+                "previousCost": "420",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "18",
+                "imageUrl": "rolls/roll_3.jpg",
+                "header": "Фирменный поке с индейкой",
+                "description": "Состав на усмотрение шевповара",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "19",
+                "imageUrl": "rolls/roll_3.jpg",
+                "header": "Томаго ролл с лососем",
+                "description": "Лосось,сливочный сыр,томаты в яичном блине и японским соусом 220 гр",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "20",
+                "imageUrl": "rolls/important_fish.jpg",
+                "header": "Важная рыба",
+                "description": "Тунец, рис ,нори,сливочный сыр, авокадо и соус Манго Маракуйя 260 гр",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "21",
+                "imageUrl": "rolls/on_the_crest.jpg",
+                "header": "На гребне",
+                "description": "Морской гребешок,Рис, нори, сливочный сыр, соус спайс и кунжут  250 гр",
+                "cost": "360",
+                "previousCost": "420",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "22",
+                "imageUrl": "rolls/roll_3.jpg",
+                "header": "Фирменный поке с индейкой",
+                "description": "Состав на усмотрение шевповара",
+                "cost": "360",
+                "buttonColor": "yellow"
+            }
+          ],
+
+          "curry": [
+            {
+                "id": "23",
+                "imageUrl": "curry/curry_with_squid.jpg",
+                "header": "Тайский Карри с кальмаром",
+                "description": "Кальмар,рис, грибы, красный лук,болгарский перец, паста карри, соус Вок, сливки, зеленый лук,кинза 350 гр",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "24",
+                "imageUrl": "curry/curry_with_chicken.jpg",
+                "header": "Тайский Карри с курицей",
+                "description": "Курица,рис, грибы, красный лук,болгарский перец, паста карри  соус Вок, сливки, зеленый лук,кинза",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "25",
+                "imageUrl": "curry/curry_with_shrimps.jpg",
+                "header": "Тайский Карри с креветками",
+                "description": "Креветки ,рис, грибы, красный лук,болгарский перец, паста карри соус Вок, сливки, зеленый лук,кинза 350 гр",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "26",
+                "imageUrl": "curry/miso_soup.jpg",
+                "header": "Мисо-суп 350 гр.",
+                "description": "Тофу, водоросли вакаме, лук порей, грибы шампиньоны, мисо-бульон",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "27",
+                "imageUrl": "curry/tom_yum_kai.jpg",
+                "header": "Том-ям-кай 350 гр.",
+                "description": "Курица,грибы шампиньоны, фасоль, черри, лайм, зелень, сливки, куриный бульон. Подается с рисом",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "28",
+                "imageUrl": "curry/tom_yum_kai.jpg",
+                "header": "На гребне",
+                "description": "Морской гребешок,Рис, нори, сливочный сыр, соус спайс и кунжут  250 гр",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "29",
+                "imageUrl": "curry/tom_yum_kung.jpg",
+                "header": "Том-ям-кунг 350 гр.",
+                "description": "Креветки, грибы шампиньоны, фасоль, черри, лайм, зелень, сливки, куриный бульон.Подается с рисом",
+                "cost": "360",
+                "buttonColor": "yellow"
+            }
+          ],
+
+          "wok": [
+            {
+                "id": "30",
+                "imageUrl": "wok/pad_tai_with_shrimps_and_rice.jpg",
+                "header": "Пад Тай с креветкой и рисом",
+                "description": "Креветки,овощи,рис, яйцо и соус Пад Тай 350 гр",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "31",
+                "imageUrl": "wok/pad_tai_with_shrimps.jpg",
+                "header": "Пад Тай с креветками",
+                "description": "Креветки,овощи,рисовая лапша, яйцо и соус Пад Тай 350 гр",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "32",
+                "imageUrl": "wok/pad_tai_with_chicken_and_rice.jpg",
+                "header": "Пад Тай с курицей и рисом",
+                "description": "Курица,овощи,рис, яйцо и соус Пад Тай 360 гр.",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "33",
+                "imageUrl": "wok/wok_with_chicken.jpg",
+                "header": "Пад Тай с курицей",
+                "description": "Курица,овощи,рисовая лапша, яйцо и соус Пад Тай 360  гр",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "34",
+                "imageUrl": "wok/wok_with_chicken.jpg",
+                "header": "Вок с курицей",
+                "description": "Основа и соус на выбор",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "35",
+                "imageUrl": "wok/wok_with_pork.jpg",
+                "header": "Вок со свининой",
+                "description": "Основа и соус на выбор",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "36",
+                "imageUrl": "wok/wok_with_vegetables.jpg",
+                "header": "Вок с овощами",
+                "description": "Основа и соус на выбор",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "37",
+                "imageUrl": "wok/wok_tom_yum.jpg",
+                "header": "Том-ям-кунг 350 гр.",
+                "description": "Креветки, грибы шампиньоны, фасоль, черри, лайм, зелень, сливки, куриный бульон.Подается с рисом",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "38",
+                "imageUrl": "wok/wok_with_chicken.jpg",
+                "header": "Вок с морепродуктами",
+                "description": "Основа и соус на выбор",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "39",
+                "imageUrl": "wok/wok_with_chicken_and_pineapple.jpg",
+                "header": "Вок с курицей и ананасом",
+                "description": "Курица, рис, ананас,огурец,красный лук, болгарский перец, соус Тай Чили, соус Вок, лук порей, зелень",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "40",
+                "imageUrl": "wok/wok_with_shrimps_and_pineapple.jpg",
+                "header": "Вок с креветками и ананасом",
+                "description": "Креветки, рис, ананас,огурец,красный лук, болгарский перец, соус Тай Чили, соус Вок, лук порей, зелень",
+                "cost": "360",
+                "buttonColor": "yellow"
+            }
+          ],
+          "sandwich": [
+            {
+                "id": "41",
+                "imageUrl": "sandwich/sandwich_california.jpg",
+                "header": "Сэндвич Калифорния",
+                "description": "рис, нори, сурими, авокадо, огурец, масаго, сыр мягкий, японский соус, темпура, сухари панко",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "42",
+                "imageUrl": "sandwich/sandwich_california.jpg",
+                "header": "Сэндвич Филадельфия",
+                "description": "рис, нори, сыр мягкий, сыр сливочный, огурец, лосось, темпура, сухари панко",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "43",
+                "imageUrl": "sandwich/sandwich_spicy_tuna.jpg",
+                "header": "Сэндвич Спайси Туна",
+                "description": "рис, нори, мягкий сыр, тунец, крем авокадо, шрирача, темпура, сухари панко",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "44",
+                "imageUrl": "sandwich/sandwich_spicy_tuna.jpg",
+                "header": "Сэндвич Унаги Темпура",
+                "description": "рис, нори, мягкий сыр, угорь, авокадо, японский соус, темпура, сухари панко",
+                "cost": "360",
+                "buttonColor": "yellow"
+            }
+          ],
+
+          "deserts": [
+            {
+                "id": "45",
+                "imageUrl": "deserts/moti.jpg",
+                "header": "Моти",
+                "description": "Японский рисовый десерт.В ассортименте: Манго, Малина, Сливочный.",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "46",
+                "imageUrl": "deserts/san_sebastian.jpg",
+                "header": "Сан-Себастьян",
+                "description": "Испанский чизкейк 100г.В ассортименте: Манго, Малина, Сливочный.",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "47",
+                "imageUrl": "deserts/chia_pudding.jpg",
+                "header": "Чиа-пудинг 180 гр.",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "48",
+                "imageUrl": "deserts/cheesecake.jpg",
+                "header": "Чизкейк",
+                "description": "В ассортименте: Манго, Малина, Классика.",
+                "cost": "360",
+                "buttonColor": "yellow"
+            }
+          ],
+
+          "beverages": [
+            {
+                "id": "49",
+                "imageUrl": "beverages/mors_orange.jpg",
+                "header": "Морс облепиха-апельсин",
+                "description": "0,5 л",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "50",
+                "imageUrl": "beverages/mors_currant.jpg",
+                "header": "Морт черная смородина",
+                "description": "0,5 л",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "51",
+                "imageUrl": "beverages/mors_currant.jpg",
+                "header": "Морс малина-имбирь",
+                "description": "0,5 л",
+                "cost": "360",
+                "buttonColor": "yellow"
+            },
+            {
+                "id": "52",
+                "imageUrl": "beverages/mors_cheesecake.jpg",
+                "header": "Чизкейк",
+                "description": "В ассортименте 0,33 л",
+                "cost": "360",
+                "buttonColor": "yellow"
+            }
+          ]
+    }
+}

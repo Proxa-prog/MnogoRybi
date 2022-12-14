@@ -83,7 +83,7 @@
 }
 
 .header__order_data {
-    flex-basis: 45%;
+    flex-basis: 46%;
     
     @media (max-width: 1023px) {
         display: none;
@@ -91,7 +91,7 @@
 }
 
 .header__order_data__open {
-    flex-basis: 45%;
+    flex-basis: 46%;
     
     @media (max-width: 1023px) {
         display: flex;
@@ -335,7 +335,7 @@
 }
 
 .header__button_menu {
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         padding-left: 15px;
         padding-right: 10px;
     }

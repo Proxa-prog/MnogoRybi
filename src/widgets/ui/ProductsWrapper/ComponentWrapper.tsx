@@ -7,7 +7,7 @@ import style from './ComponentWrapper.module.scss';
 export interface ComponentWrapperProps {
   className?: string;
   title?: string;
-  children: JSX.Element;
+  children: JSX.Element | JSX.Element[];
 }
 
 const ComponentWrapper: FC<ComponentWrapperProps> = (props) => {
@@ -16,7 +16,6 @@ const ComponentWrapper: FC<ComponentWrapperProps> = (props) => {
     title,
     children,
   } = props;
-  console.log(className);
 
   return (
     <section className={classNames(

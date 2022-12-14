@@ -74,6 +74,23 @@
     }
 }
 
+.white {
+    background: $white-00;
+    color: $gray-100;
+
+    &:hover {
+        background-color: $gray-20;
+    }
+
+    &:active {
+        background-color: $gray-30;
+    }
+
+    &:disabled {
+        @include button_disabled;
+    }
+}
+
 .back {
     position: relative;
     padding: 10px;

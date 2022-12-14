@@ -1,0 +1,44 @@
+.franchise {
+    padding: 25px 80px;
+    background-color: $green-100;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+        h3 {
+            font-weight: 600;
+            font-size: 32px;
+            line-height: 120%;
+            color: $white-00;
+        }
+
+    @media (max-width: 1023px) {
+        padding: 31px 85px;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        h3 {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 767px) {
+        padding: 20px 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        h3 {
+            font-size: 26px;
+            line-height: 120%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .button_show_more {
+            padding: 10px 20px;
+        }
+    }
+}
