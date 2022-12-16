@@ -8,6 +8,7 @@ import style from './Button.module.scss';
 type ButtonType = 'button' | 'submit' | 'reset';
 export type ButtonColor = 'default' | 'yellow' | 'blue' | 'white';
 type ButtonTurn = 'back' | 'forward' | 'default';
+type ButtonClose = 'close';
 
 export interface ButtonProps {
   className?: string;
@@ -17,13 +18,15 @@ export interface ButtonProps {
   type: ButtonType;
   color?: ButtonColor;
   isGrayTheme?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
   isTurn?: ButtonTurn;
+  isClose?: ButtonClose;
   imageLeft?: string;
   imageRight?: string;
   buttonImageAlt?: string;
   imageWidth?: number;
   imageHeight?: number;
+  id?: string;
 }
 
 const Button: FC<ButtonProps> = (props) => {
@@ -37,17 +40,21 @@ const Button: FC<ButtonProps> = (props) => {
     isGrayTheme = false,
     onClick,
     isTurn = 'default',
+    isClose = '',
     buttonImageAlt = '',
     imageLeft = '',
     imageRight = '',
     imageWidth = 0,
     imageHeight = 0,
+    id,
   } = props;
 
   const defaultButtonColor = isGrayTheme ? 'default_white' : '';
 
   const handleOnClick = () => {
-    onClick();
+    if (onClick) {
+      onClick();
+    }
   };
 
   return (
@@ -55,6 +62,7 @@ const Button: FC<ButtonProps> = (props) => {
       className={classNames(
         style.default,
         style[isTurn],
+        style[isClose],
         [
           style[defaultButtonColor],
           style[color],
@@ -64,6 +72,7 @@ const Button: FC<ButtonProps> = (props) => {
       disabled={disabled}
       type={type}
       onClick={handleOnClick}
+      id={id}
     >
       {
         (imageLeft !== '') && (

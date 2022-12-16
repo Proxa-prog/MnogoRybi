@@ -3,10 +3,12 @@ import { useDispatch } from "react-redux";
 import { combineReducers } from "redux";
 import descriptionReducer from "./reducers/description";
 import productionsReducer from "./reducers/productions";
+import openProductsCardReducer from "./reducers/openProductsCard";
 
 const rootReducer = combineReducers({
   description: descriptionReducer,
   productions: productionsReducer,
+  openProductsCard: openProductsCardReducer,
 });
 
 export const store = configureStore({
