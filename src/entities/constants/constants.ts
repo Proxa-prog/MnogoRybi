@@ -16,6 +16,26 @@ export const PRODUCTS = [
   { name: "Напитки" },
 ];
 
+export const BASE_PRODUCT = [
+  { name: "Рисовая лапша" },
+  { name: "Пшеничная лапша" },
+  { name: "Лапша удон" },
+  { name: "Лапша сомен" },
+  { name: "Лапша рамен" },
+  { name: "Лапша соба" },
+  { name: "Фунчоза" },
+];
+
+export const SAUCE = [
+  { name: "Соевый соус" },
+  { name: "Сливочный-чили соус" },
+  { name: "Медовый соус" },
+  { name: "Терияки соус" },
+  { name: "Унаги соус" },
+  { name: "Спайси соус" },
+  { name: "Кимчи соус" },
+];
+
 export const INFO = [
   { name: "Франшиза" },
   { name: "Доставка" },
