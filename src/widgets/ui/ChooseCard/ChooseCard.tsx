@@ -36,28 +36,29 @@ const ChooseCard: FC<ChooseCardProps> = (props) => {
 
   return (
     <div className={style.choose_card}>
-      <div className={style.statuses_wrapper}>
-        {(productsCard.statuses) && productsCard.statuses.map((status: StatusMarkerProps) => {
-          const id = nanoid();
-
-          return (
-            <StatusMarker
-              key={id}
-              color={status.color}
-              className={style.card_status}
-            >
-              {status.children}
-            </StatusMarker>
-          )
-        }
-        )}
-      </div>
       <div
         className={style.image}
         style={{
           backgroundImage: `url(images/${productsCard.imageUrl})`,
         }}
-      ></div>
+      >
+        <div className={style.statuses_wrapper}>
+          {(productsCard.statuses) && productsCard.statuses.map((status: StatusMarkerProps) => {
+            const id = nanoid();
+
+            return (
+              <StatusMarker
+                key={id}
+                color={status.color}
+                className={style.card_status}
+              >
+                {status.children}
+              </StatusMarker>
+            )
+          }
+          )}
+        </div>
+      </div>
       <div className={style.info_wrapper}>
         <div className={style.info}>
           <h3>{productsCard.header}</h3>
@@ -81,7 +82,6 @@ const ChooseCard: FC<ChooseCardProps> = (props) => {
               options={BASE_PRODUCT}
               promptOption={BASE_PRODUCT[0].name}
               className={style.ingredients_select}
-              style={{ backgroundImage: `url(images/plus.svg)` }}
             />
 
             <LabelText
@@ -92,7 +92,6 @@ const ChooseCard: FC<ChooseCardProps> = (props) => {
               options={SAUCE}
               promptOption={SAUCE[0].name}
               className={style.ingredients_select}
-              style={{ backgroundImage: `url(images/plus.svg)` }}
             />
           </div>
         </div>

@@ -218,6 +218,18 @@
         top: 19px;
         left: 14px;
     }
+
+    @media (max-width: 767px) {
+        &::before {
+            top: 18px;
+            left: 11px;
+        }
+    
+        &::after {
+            top: 18px;
+            left: 11px;
+        }
+    }
 }
 
 .default_white {

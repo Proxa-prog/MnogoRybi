@@ -13,4 +13,12 @@
     z-index: 10001;
     right: 505px;
     top: 20px;
+
+    @media (max-width: 767px) {
+        width: 36px;
+        height: 36px;
+        left: auto;
+        right: 270px;
+        top: 15px;
+    }
 }
