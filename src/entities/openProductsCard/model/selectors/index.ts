@@ -10,5 +10,3 @@ export const openProductsCard = createSelector(
     return getOpenProductsCard;
   }
 );
-
-

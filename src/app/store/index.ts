@@ -4,11 +4,15 @@ import { combineReducers } from "redux";
 import descriptionReducer from "./reducers/description";
 import productionsReducer from "./reducers/productions";
 import openProductsCardReducer from "./reducers/openProductsCard";
+import amountProductReduser from "./reducers/amountProduct";
+import basketReduser from "./reducers/basket";
 
 const rootReducer = combineReducers({
   description: descriptionReducer,
   productions: productionsReducer,
   openProductsCard: openProductsCardReducer,
+  amountProduct: amountProductReduser,
+  basket: basketReduser,
 });
 
 export const store = configureStore({

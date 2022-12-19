@@ -19,11 +19,10 @@
     height: 408px;
     background-repeat: no-repeat;
     background-position: top;
-    background-size: contain;
+    background-size: 100%;
 
     @media (max-width: 767px) {
         height: 261px;
-        background-size: 100% 100%;
     }
 }
 

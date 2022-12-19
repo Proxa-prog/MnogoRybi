@@ -1,16 +1,26 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 
+import { useAppDispatch } from 'app/store';
+import {
+  setNewProduct,
+  setBaseProduct,
+  setSauce,
+  setAmountProduct,
+  setCostProduct
+} from 'app/store/reducers/amountProduct';
+import { addProductInBasket } from 'app/store/reducers/basket';
+
 import { openProductsCard } from 'entities/openProductsCard/model/selectors';
 import { BASE_PRODUCT, SAUCE } from 'entities/constants/constants';
+import { getAmountProduct } from 'entities/amountProduct/model';
+import { openBasket } from 'entities/basket/model';
 
 import Select from 'shared/ui/Select/Select';
 import LabelText from 'shared/ui/LabelText/LabelText';
 import Button from 'shared/ui/Button/Button';
 import StatusMarker, { StatusMarkerProps } from 'shared/ui/StatusMarker/StatusMarker';
-
-import Image from '/public/images/plus.svg';
 
 import style from './ChooseCard.module.scss';
 
@@ -18,21 +28,61 @@ export interface ChooseCardProps {
 }
 
 const ChooseCard: FC<ChooseCardProps> = (props) => {
-  // const {
-  //     imageUrl,
-  // } = props;
+  const dispatch = useAppDispatch();
   const productsCard = useSelector(openProductsCard);
-  const [amountProduct, setAmountProduct] = useState(1);
+  const amountProduct = useSelector(getAmountProduct);
+  const basket = useSelector(openBasket);
+  console.log(amountProduct);
+  console.log('basket', basket);
 
+  // Увеличить количество товараx
   const addAmountProduct = () => {
-    setAmountProduct(prev => prev + 1);
-  }
+    const addAmount = amountProduct.amount + 1;
+    const addCost = Number(productsCard.cost) * addAmount;
 
+    dispatch(setAmountProduct(addAmount));
+    dispatch(setCostProduct(addCost));
+  };
+
+  // Уменьшить количество товара
   const removeAmountProduct = () => {
-    if (amountProduct > 1) {
-      setAmountProduct(prev => prev - 1);
+    if (amountProduct.amount > 1) {
+      const addAmount = amountProduct.amount - 1;
+      const addCost = Number(productsCard.cost) * addAmount;
+
+      dispatch(setAmountProduct(addAmount));
+      dispatch(setCostProduct(addCost));
     }
-  }
+  };
+
+  // Добавить товар в корзину
+  const addProductOnBasket = () => {
+    dispatch(addProductInBasket({
+      name: amountProduct.name,
+      amount: amountProduct.amount,
+      cost: amountProduct.cost,
+      baseProduct: amountProduct.baseProduct,
+      sauce: amountProduct.sauce,
+    }));
+  };
+
+  // Установить значение основы блюда
+  const changeBaseProduct = (baseProd: string) => {
+    dispatch(setBaseProduct(baseProd));
+  };
+
+  // Установить значение соуса
+  const changeSauce = (sauce: string) => {
+    dispatch(setSauce(sauce));
+  };
+
+  useEffect(() => {
+    dispatch(setNewProduct({
+      name: productsCard.header,
+      amount: 1,
+      cost: productsCard.cost,
+    }));
+  }, []);
 
   return (
     <div className={style.choose_card}>
@@ -82,6 +132,7 @@ const ChooseCard: FC<ChooseCardProps> = (props) => {
               options={BASE_PRODUCT}
               promptOption={BASE_PRODUCT[0].name}
               className={style.ingredients_select}
+              onChange={changeBaseProduct}
             />
 
             <LabelText
@@ -92,6 +143,7 @@ const ChooseCard: FC<ChooseCardProps> = (props) => {
               options={SAUCE}
               promptOption={SAUCE[0].name}
               className={style.ingredients_select}
+              onChange={changeSauce}
             />
           </div>
         </div>
@@ -106,7 +158,7 @@ const ChooseCard: FC<ChooseCardProps> = (props) => {
               imageHeight={24}
               onClick={removeAmountProduct}
             />
-            <span className={style.amount}>{amountProduct}</span>
+            <span className={style.amount}>{amountProduct.amount}</span>
             <Button
               className={style.button_amount}
               type='button'
@@ -121,7 +173,8 @@ const ChooseCard: FC<ChooseCardProps> = (props) => {
             className={style.button_basket}
             type='button'
             color='yellow'
-            children={`В корзину за ${productsCard.cost} ₽`}
+            children={`В корзину за ${amountProduct.cost} ₽`}
+            onClick={addProductOnBasket}
           />
         </div>
       </div>
