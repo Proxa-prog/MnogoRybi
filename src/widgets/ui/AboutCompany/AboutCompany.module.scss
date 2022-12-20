@@ -16,14 +16,17 @@
 .images_wrapper {
     width: 58%;
     height: 500px;
-    // background-image: url("/public/images/about_company_mobile.png");
+    background-image: url("/public/images/about_company.png");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
 
-    
     @media (max-width: 1023px) {
         width: 100%;
+    }
+
+    @media (max-width: 767px) {
+        background-image: url("/public/images/about_company_mobile.png");
     }
 }
 
@@ -47,6 +50,7 @@
     }
 
     .logo_wrapper {
+        background-image: url("/public/images/more_fish_white_logo.svg");
         background-repeat: no-repeat;
         background-size: cover;
         width: 38vw;

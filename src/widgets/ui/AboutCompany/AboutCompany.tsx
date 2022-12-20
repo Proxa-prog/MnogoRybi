@@ -1,7 +1,5 @@
 import React, { FC } from 'react';
 
-import Image from '/public/images/about_company.png';
-import ImageMobile from '/public/images/about_company_mobile.png';
 import logo from '/public/images/more_fish_white_logo.svg';
 
 import Advanced from 'widgets/ui/Advanced/Advanced';
@@ -18,7 +16,6 @@ const AboutCompany: FC<AboutCompanyProps> = (props) => {
         <section className={style.about_company}>
             <div
                 className={style.images_wrapper}
-                style={{ backgroundImage: `url(${ImageMobile})` }}
             ></div>
             <Advanced
                 name='fish'
@@ -45,7 +42,6 @@ const AboutCompany: FC<AboutCompanyProps> = (props) => {
                 </p>
                 <div
                     className={style.logo_wrapper}
-                    style={{backgroundImage: `url(${logo})`}}
                 />
             </div>
         </section>

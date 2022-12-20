@@ -1,6 +1,8 @@
 import { nanoid } from '@reduxjs/toolkit';
 import classNames from 'classnames';
-import React, { FC, SelectHTMLAttributes } from 'react';
+import React,
+{ FC, SelectHTMLAttributes }
+  from 'react';
 import { IProducts } from 'entities/constants/constants';
 
 import style from './Select.module.scss';
@@ -14,6 +16,7 @@ export interface SelectProps extends HtmlSelectProps {
   className?: string;
   disabled?: boolean;
   promptOption?: string;
+  onChange?: (baseProd: string) => void;
 }
 
 const Select: FC<SelectProps> = (props) => {
@@ -24,6 +27,7 @@ const Select: FC<SelectProps> = (props) => {
     className,
     disabled,
     promptOption,
+    onChange,
   } = props;
 
   return (
@@ -37,6 +41,7 @@ const Select: FC<SelectProps> = (props) => {
       required
       disabled={disabled}
       defaultValue="Default"
+      onChange={(event) => onChange && onChange(event.target.value)}
     >
       <option
         value="Default"

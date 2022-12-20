@@ -4,6 +4,7 @@ import { nanoid } from '@reduxjs/toolkit';
 import Card, { CardProps } from '../Card/Card';
 
 import style from './Products.module.scss';
+import ChooseCard from '../ChooseCard/ChooseCard';
 
 export interface ProductsProps {
   title?: string;
@@ -15,6 +16,14 @@ const Products: FC<ProductsProps> = (props) => {
     title,
     productCards,
   } = props;
+
+  const buttonHandleClick = (images: string) => {
+    console.log("dsfg");
+
+    // return (
+    //   <ChooseCard imageUrl={images}/>
+    // )
+  }
 
   return (
     <div className={style.products_wrapper}>
@@ -36,6 +45,7 @@ const Products: FC<ProductsProps> = (props) => {
               description={productCard.description}
               imageUrl={productCard.imageUrl}
               statuses={productCard.statuses}
+              // onClick={buttonHandleClick}
             />
           )
         })

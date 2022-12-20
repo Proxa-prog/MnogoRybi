@@ -1,0 +1,189 @@
+.choose_card {
+    width: 500px;
+    height: 100vh;
+    background-color: $white-00;
+    position: fixed;
+    z-index: 10000;
+    right: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: 767px) {
+        width: 320px;
+    }
+}
+
+.image {
+    width: 100%;
+    height: 408px;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100%;
+
+    @media (max-width: 767px) {
+        height: 261px;
+    }
+}
+
+.calories {
+    margin-bottom: 30px;
+}
+
+.info_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.info {
+    padding: 30px;
+
+    h3 {
+        font-weight: 600;
+        font-size: 26px;
+        line-height: 120%;
+        margin-bottom: 10px;
+    }
+    
+    span {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 150%;
+        margin-right: 30px;
+    }
+
+    h4 {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 150%;
+    }
+
+    @media (max-width: 767px) {
+        padding: 20px;
+        h3 {
+            font-size: 22px;
+        }
+        
+        span {
+            font-size: 12px;
+        }
+    
+        h4 {
+            font-size: 14px;
+        }
+    }
+}
+
+.amount_wrapper {
+    padding: 20px 30px;
+    background-color: $yellow-10;
+    display: flex;
+
+    @media (max-width: 767px) {
+        padding: 15px;
+        justify-content: space-between;
+    }
+}
+
+.amount {
+    width: 56px;
+    text-align: center;
+}
+
+.button_amount {
+    width: 24px;
+    height: 24px;
+    padding: 5px;
+    margin: 0;
+}
+
+.how_much_wrapper {
+    background: $white-00;
+    border: 1px solid $gray-30;
+    border-radius: 30px;
+    padding: 18px;
+    width: 160px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (max-width: 767px) {
+        padding: 8px;
+        width: 110px;
+    }
+}
+
+.button_basket {
+    padding: 18px 58px;
+    border-radius: 30px;
+
+    @media (max-width: 767px) {
+        padding: 8px 22px;
+    }
+}
+
+.compaund {
+    margin-bottom: 30px;
+
+    h4 {
+        margin-bottom: 10px;
+    }
+
+    span {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 150%;
+    }
+}
+
+.ingredients {
+    .ingredients_label {
+        position: relative;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 150%;
+        margin-bottom: 5px;
+
+        &::after {
+            position: absolute;
+            right: 15px;
+            top: 47px;
+            content: "";
+            width: 20px;
+            height: 20px;
+            background-image: url("/public/images/arrow_down.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+
+    .ingredients_select {
+        width: 100%;
+        background: $gray-10;
+        border: 1px solid $gray-30;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 15px;
+        appearance: none;
+    }
+}
+
+.statuses_wrapper {
+    position: absolute;
+    display: flex;
+    top: 30px;
+    left: 30px;
+    right: 30px;
+
+    @media (max-width: 767px) {
+        left: auto;
+        right: 15px;
+        top: 20px;
+    }
+}
+
+.card_status {
+    margin-right: 5px;
+}
