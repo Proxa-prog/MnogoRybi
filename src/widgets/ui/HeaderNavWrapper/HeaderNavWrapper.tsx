@@ -26,6 +26,8 @@ interface HeaderNavWrapperProps {
   scrollHeight: number;
   isProductsMenuActive: boolean;
   onProductsMenuClick: () => void;
+  onClick?: () => void;
+  onBasketButtonClick?: () => void;
 }
 
 const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
@@ -37,6 +39,8 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
     scrollHeight,
     isProductsMenuActive,
     onProductsMenuClick,
+    onClick,
+    onBasketButtonClick,
   } = props;
 
   return (
@@ -162,6 +166,7 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
                       itemsInTheBasket={itemsInTheBasket}
                       scroll={scrollHeight}
                       windowWidth={windowWidth}
+                      onClick={onBasketButtonClick}
                     />
                   </div>
                 </>

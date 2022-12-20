@@ -10,6 +10,8 @@ interface MenuButtonBasketProps {
   itemsInTheBasket: number;
   scroll?: number;
   windowWidth: number;
+  onBasketButtonClick?: () => void;
+  onClick?: () => void;
 }
 
 const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
@@ -17,6 +19,8 @@ const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
     itemsInTheBasket,
     scroll,
     windowWidth,
+    onBasketButtonClick,
+    onClick,
   } = props;
 
   if (
@@ -36,9 +40,7 @@ const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
         type="button"
         color="yellow"
         imageLeft="property_bag_alt_fill.svg"
-        onClick={() => {
-          console.log('Button enter header');
-        }}
+        onClick={onClick}
       >
         0 &#8381;
       </Button>
@@ -78,9 +80,7 @@ const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
         type="button"
         color="yellow"
         imageLeft="property_bag_alt_fill.svg"
-        onClick={() => {
-          console.log('Button enter header');
-        }}
+        onClick={onBasketButtonClick}
       >
         0 &#8381;
       </Button>

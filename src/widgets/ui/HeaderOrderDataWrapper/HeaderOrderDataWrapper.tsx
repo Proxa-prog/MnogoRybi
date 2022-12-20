@@ -22,6 +22,8 @@ interface HeaderOrderDataWrapperProps {
   isAuth: boolean;
   itemsInTheBasket: any;
   onHeaderMenuClick: () => void;
+  onClick?: () => void;
+  onBasketButtonClick?: () => void;
 }
 
 const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
@@ -31,6 +33,8 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
     isAuth,
     itemsInTheBasket,
     onHeaderMenuClick,
+    onClick,
+    onBasketButtonClick,
   } = props;
 
   return (
@@ -150,6 +154,7 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
               <MenuButtonBasket
                 itemsInTheBasket={itemsInTheBasket}
                 windowWidth={windowWidth}
+                onBasketButtonClick={onBasketButtonClick}
               />
             </div>
           )

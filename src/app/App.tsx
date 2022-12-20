@@ -9,6 +9,7 @@ import AboutCompany from 'widgets/ui/AboutCompany/AboutCompany';
 import Franchise from 'widgets/ui/Franchise/Franchise';
 import ChooseCardWrapper from 'widgets/ui/ChooseCardWrapper/ChooseCardWrapper';
 import Footer from 'widgets/ui/Footer/Footer';
+import BasketWrapper from 'widgets/ui/BasketWrapper/BasketWrapper';
 
 import 'fonts/style.css';
 import './styles/index.scss';
@@ -24,6 +25,7 @@ const App: React.FC = () => {
         <AboutCompany />
         <Franchise />
         <ChooseCardWrapper />
+        <BasketWrapper />
         <Footer />
       </div>
     </Provider>

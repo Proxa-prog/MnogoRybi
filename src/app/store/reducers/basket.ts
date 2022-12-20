@@ -2,27 +2,38 @@ import { createSlice } from "@reduxjs/toolkit";
 import { IAmountProduct } from "./amountProduct";
 
 export enum IBasketAction {
-  ADD_PRODUCT = 'ADD_PRODUCT',
+  ADD_PRODUCT = "ADD_PRODUCT",
+  OPEN_BASKET = "OPEN_BASKET",
 }
 
 export interface IBasketArray {
-  basket: IAmountProduct[],
+  basketState: {
+    basket: IAmountProduct[];
+    isBasketOpen: boolean;
+  }
 }
 
 const initialState: IBasketArray = {
-  basket: [],
-}
+  basketState: {
+    basket: [],
+    isBasketOpen: false,
+  },
+};
 
 export const basketSlice = createSlice({
-  name: 'basket',
+  name: "basket",
   initialState,
   reducers: {
     addProductInBasket: (state, action) => {
-      state.basket = [...state.basket, action.payload];
+      state.basketState.basket = [...state.basketState.basket, action.payload];
+      state.basketState.isBasketOpen = state.basketState.isBasketOpen;
+    },
+    openBasketBlock: (state, action) => {
+      state.basketState.isBasketOpen = !action.payload;
     },
   },
 });
 
-export const { addProductInBasket } = basketSlice.actions;
+export const { addProductInBasket, openBasketBlock } = basketSlice.actions;
 
 export default basketSlice.reducer;

@@ -3,22 +3,23 @@ import { useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 
 import { useAppDispatch } from 'app/store';
-import { setOpenProductsCard } from 'app/store/reducers/openProductsCard';
+import { openBasketBlock } from 'app/store/reducers/basket';
 
-import { openProductsCard } from 'entities/openProductsCard/model/selectors';
+import { openBasket } from 'entities/basket/model';
 
 import Button from 'shared/ui/Button/Button';
 
-import ChooseCard from 'widgets/ui/ChooseCard/ChooseCard';
+import Basket from 'widgets/ui/Basket/Basket';
 
-import style from './ChooseCardWrapper.module.scss';
+import style from './BasketWrapper.module.scss';
 
-export interface ChooseCardWrapperProps {
+
+export interface BasketWrapperProps {
 }
 
-const ChooseCardWrapper: FC<ChooseCardWrapperProps> = (props) => {
+const BasketWrapper: FC<BasketWrapperProps> = (props) => {
   const dispatch = useAppDispatch();
-  const productsCard = useSelector(openProductsCard);
+  const basket = useSelector(openBasket);
   const cardWrapperId = nanoid();
   const buttonCloseId = nanoid();
 
@@ -26,17 +27,17 @@ const ChooseCardWrapper: FC<ChooseCardWrapperProps> = (props) => {
     if (event.target.id === cardWrapperId ||
       event.target.id === buttonCloseId
     ) {
-      dispatch(setOpenProductsCard({ imageUrl: '', isOpen: false }));
+      dispatch(openBasketBlock(basket.isBasketOpen));
     }
   };
 
   return (
     <>
       {
-        productsCard.isOpen && (
+        basket.isBasketOpen && (
           <div
+            className={style.basket_wrapper}
             id={cardWrapperId}
-            className={style.choose_card_wrapper}
             onClick={handleBackgroundClick}
           >
             <Button
@@ -45,7 +46,7 @@ const ChooseCardWrapper: FC<ChooseCardWrapperProps> = (props) => {
               isClose='close'
               type='button'
             />
-            <ChooseCard />
+            <Basket />
           </div>
         )
       }
@@ -53,4 +54,4 @@ const ChooseCardWrapper: FC<ChooseCardWrapperProps> = (props) => {
   )
 }
 
-export default ChooseCardWrapper;
+export default BasketWrapper;

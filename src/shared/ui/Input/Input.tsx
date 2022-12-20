@@ -9,7 +9,7 @@ type Variant = 'normal' | 'value' | 'error';
 
 export interface InputProps extends HtmlInputProps {
   label: string;
-  media: string;
+  media?: string;
   name: string;
   className?: string;
   placeholder?: string;
@@ -45,7 +45,7 @@ const Input: FC<InputProps> = (props) => {
           styles.desktop,
           styles[variant as string],
           [
-            styles[media],
+            media && styles[media],
             className,
           ],
         )}

@@ -1,0 +1,57 @@
+.payment {
+    @include basket_block_wrapper;
+}
+
+.payment_header_wrapper {
+    @include basket_block_header;
+}
+
+p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: $gray-70;
+    margin-bottom: 15px;
+}
+
+hr {
+    width: 100%;
+    border: 1px solid $gray-10;
+}
+
+.card_data {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.user_name {
+    width: 405px;
+    margin-bottom: 15px;
+}
+
+.card_validity {
+    width: 265px;
+}
+
+.card_cvc {
+    width: 130px;
+}
+
+.agreement {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+
+    span {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        color: $gray-70;
+        margin-left: 10px;
+    }
+}
+
+.courier {
+    @include checkbox_block;
+}
