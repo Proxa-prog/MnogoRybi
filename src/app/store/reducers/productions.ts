@@ -44,12 +44,6 @@ export const productionsSlice = createSlice({
       state.productions = action.payload
     },
   },
-  // extraReducers: (builder) => {
-  //   builder.addCase(fetchProductions.fulfilled, (state, action) => {
-  //     console.log(action.payload);
-
-  //   });
-  // },
 });
 
 export const { getProductionsAction } = productionsSlice.actions;

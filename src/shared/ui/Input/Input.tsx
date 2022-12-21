@@ -12,6 +12,7 @@ export interface InputProps extends HtmlInputProps {
   media?: string;
   name: string;
   className?: string;
+  classNameWrapper?: string;
   placeholder?: string;
   value?: string | number;
   onChange?: (value?: string, name?: string) => void;
@@ -25,6 +26,7 @@ export interface InputProps extends HtmlInputProps {
 const Input: FC<InputProps> = (props) => {
   const {
     className,
+    classNameWrapper,
     placeholder,
     name,
     label,
@@ -39,7 +41,10 @@ const Input: FC<InputProps> = (props) => {
   } = props;
 
   return (
-    <div className={styles.inputWrapper}>
+    <div className={classNames(
+      styles.inputWrapper,
+      [classNameWrapper]
+    )}>
       <input
         className={classNames(
           styles.desktop,

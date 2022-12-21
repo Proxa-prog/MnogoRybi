@@ -1,0 +1,38 @@
+
+
+.amount {
+    width: 56px;
+    text-align: center;
+}
+
+.button_amount {
+    width: 24px;
+    height: 24px;
+    padding: 5px;
+    margin: 0;
+}
+
+.how_much_wrapper {
+    background: $white-00;
+    border: 1px solid $gray-30;
+    border-radius: 30px;
+    padding: 18px;
+    width: 160px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (max-width: 767px) {
+        padding: 8px;
+        width: 110px;
+    }
+}
+
+.button_basket {
+    padding: 18px 58px;
+    border-radius: 30px;
+
+    @media (max-width: 767px) {
+        padding: 8px 22px;
+    }
+}

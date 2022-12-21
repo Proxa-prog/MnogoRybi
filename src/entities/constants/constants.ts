@@ -1,6 +1,4 @@
 import { IDescription } from "app/store/reducers/description";
-import { StatusMarkerProps } from "shared/ui/StatusMarker/StatusMarker";
-import { CardProps } from "widgets/ui/Card/Card";
 
 export interface IProducts {
   name: string;

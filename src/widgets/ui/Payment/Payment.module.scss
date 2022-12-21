@@ -2,6 +2,10 @@
     @include basket_block_wrapper;
 }
 
+.payment_block_wrapepr {
+    padding: 15px;
+}
+
 .payment_header_wrapper {
     @include basket_block_header;
 }
@@ -11,7 +15,6 @@ p {
     font-size: 14px;
     line-height: 20px;
     color: $gray-70;
-    margin-bottom: 15px;
 }
 
 hr {
@@ -26,16 +29,24 @@ hr {
 }
 
 .user_name {
-    width: 405px;
+    width: 100%;
     margin-bottom: 15px;
 }
 
+.validity_wrapper {
+    width: 65%;
+}
+
 .card_validity {
-    width: 265px;
+    width: 100%;
+}
+
+.cvc_wrapper {
+    width: 32%;
 }
 
 .card_cvc {
-    width: 130px;
+    width: 100%;
 }
 
 .agreement {

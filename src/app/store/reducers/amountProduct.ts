@@ -9,6 +9,8 @@ export interface IAmountProduct extends IIngridients {
   name: string;
   amount: number;
   cost: number;
+  imageUrl: string;
+  description: string;
 }
 
 export interface IHowMuchProduct {
@@ -38,6 +40,8 @@ const initialState: AmountProductArray = {
     cost: 0,
     baseProduct: "",
     sauce: "",
+    imageUrl: "",
+    description: "",
   },
 };
 

@@ -1,18 +1,14 @@
 import React, { FC } from 'react';
-import { useSelector } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
 
-import { useAppDispatch } from 'app/store';
-
-import { openBasket } from 'entities/basket/model';
-
-import Button from 'shared/ui/Button/Button';
-import Input from 'shared/ui/Input/Input';
 import Select from 'shared/ui/Select/Select';
+import Checkbox from 'shared/ui/Checkbox/Checkbox';
+
+import { ADDRESS } from 'entities/constants/constants';
 
 import style from './Delivery.module.scss';
-import Checkbox from 'shared/ui/Checkbox/Checkbox';
 import LabelText from 'shared/ui/LabelText/LabelText';
-import { nanoid } from '@reduxjs/toolkit';
+import classNames from 'classnames';
 
 export interface DeliveryProps {
 }
@@ -24,28 +20,39 @@ const Delivery: FC<DeliveryProps> = (props) => {
     <div className={style.delivery_wrapper}>
       <h4>Доставка</h4>
       <div className={style.delivery}>
-        <div className={style.delivery_header_wrapper}>
-          <Checkbox
+        <div className={style.delivery_block_wrapepr}>
+          <div className={style.delivery_header_wrapper}>
+            <Checkbox
+              id={labelDeliveryCheckboxId}
+              checked
+              isCircle
+              onChange={
+                () => { }
+              } />
+            <span>Доставка по адресу</span>
+          </div>
+          <p
+            className={style.delivery_checkbox_label}
             id={labelDeliveryCheckboxId}
-            checked
-            isCircle
-            onChange={
-              () => { }
-            } />
-          <span>Доставка по адресу</span>
+          >
+            Доставляем заказ ежедневно с 09:00 по 00:00
+          </p>
         </div>
-        <p
-          className={style.delivery_checkbox_label}
-          id={labelDeliveryCheckboxId}
-        >
-          Доставляем заказ ежедневно с 09:00 по 00:00
-        </p>
         <hr />
-        <Select
-          className={style.delivery_address}
-          options={[]}
-        />
-        <p>Хотите доставить по другому адресу? <a>Да изменить</a></p>
+        <div className={style.delivery_block_wrapepr}>
+          <LabelText
+            className={classNames(
+              style.address_label,
+            )}
+            children=''
+          />
+          <Select
+            className={style.delivery_address}
+            promptOption={ADDRESS[0].name}
+            options={ADDRESS}
+          />
+          <p className={style.change_address_text}>Хотите доставить по другому адресу? <a href='#'>Да изменить</a></p>
+        </div>
       </div>
       <div className={style.pickup_of_goods}>
         <Checkbox

@@ -1,0 +1,46 @@
+.basket_summ_wrapper {
+    width: 100%;
+    background-color: $white-00;
+    padding: 30px;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.input_wrapper {
+    width: 100%;
+    color: $gray-30;
+}
+
+.text,
+.cost {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    color: $gray-70;
+}
+
+.cost {
+    color: $gray-100;
+}
+
+.product_amount {
+    @include basket_summ_text_template;
+}
+
+.cost_of_delivery {
+    @include basket_summ_text_template;
+}
+
+.basket_summ {
+    @include basket_summ_text_template;
+
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 120%;
+    color: $gray-100;
+}
+
+.order_commet {
+    width: 100%;
+}

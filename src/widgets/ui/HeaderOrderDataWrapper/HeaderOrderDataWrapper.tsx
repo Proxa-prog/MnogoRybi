@@ -10,6 +10,7 @@ import Button from "shared/ui/Button/Button";
 import MenuButtonBasket from "widgets/ui/MenuButtonBasket/MenuButtonBasket";
 
 import {
+  ADDRESS,
   PRODUCTS,
   ViewPorts
 } from "entities/constants/constants";
@@ -82,7 +83,7 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
           )}>
             <LabelText>Доставка по адресу</LabelText>
             <Select
-              options={PRODUCTS}
+              options={ADDRESS}
               promptOption="Адрес не выбран"
             />
           </div>
