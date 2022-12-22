@@ -40,7 +40,7 @@ const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
         type="button"
         color="yellow"
         imageLeft="property_bag_alt_fill.svg"
-        onClick={onClick}
+        onClick={onBasketButtonClick}
       >
         0 &#8381;
       </Button>

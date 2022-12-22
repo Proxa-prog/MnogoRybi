@@ -58,14 +58,16 @@ const Card: FC<CardProps> = (props) => {
   };
 
   const handleCardClick = (image: string) => {
-    dispatch(setOpenProductsCard({
-      imageUrl: image,
-      isOpen: true,
-      header: header,
-      description: description,
-      cost: cost,
-      statuses: statuses,
-    }));
+    return () => {
+      dispatch(setOpenProductsCard({
+        imageUrl: image,
+        isOpen: true,
+        header: header,
+        description: description,
+        cost: cost,
+        statuses: statuses,
+      }));
+    }
   };
 
   return (
@@ -76,7 +78,7 @@ const Card: FC<CardProps> = (props) => {
         [className],
       )}
       id={id}
-      onClick={() => {}}
+      onClick={() => { }}
     >
       <div
         className={style.image_wrapper}
@@ -135,7 +137,7 @@ const Card: FC<CardProps> = (props) => {
             isGrayTheme={isGrayTheme}
             type="button"
             disabled={disabled}
-            onClick={() => {handleCardClick(imageUrl)}}
+            onClick={handleCardClick(imageUrl)}
           >
             {buttonText}
           </Button>

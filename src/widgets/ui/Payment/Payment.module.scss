@@ -3,7 +3,7 @@
 }
 
 .payment_block_wrapepr {
-    padding: 15px;
+    padding: 10px;
 }
 
 .payment_header_wrapper {
@@ -15,6 +15,11 @@ p {
     font-size: 14px;
     line-height: 20px;
     color: $gray-70;
+
+    @media (max-width: 767px) {
+        font-size: 12px;
+        line-height: 18px;
+    }
 }
 
 hr {
@@ -60,6 +65,19 @@ hr {
         line-height: 20px;
         color: $gray-70;
         margin-left: 10px;
+    }
+    
+    @media (max-width: 767px) {
+        span {
+            font-size: 12px;
+            line-height: 18px;
+        }
+    }
+}
+
+.agreement_checkbox {
+    @media (max-width: 767px) {
+        width: 24px;
     }
 }
 

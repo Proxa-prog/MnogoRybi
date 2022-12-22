@@ -166,7 +166,7 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
                       itemsInTheBasket={itemsInTheBasket}
                       scroll={scrollHeight}
                       windowWidth={windowWidth}
-                      onClick={onBasketButtonClick}
+                      onBasketButtonClick={onBasketButtonClick}
                     />
                   </div>
                 </>

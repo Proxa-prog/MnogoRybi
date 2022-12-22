@@ -9,9 +9,9 @@ import Delivery from 'widgets/ui/Delivery/Delivery';
 import Payment from 'widgets/ui/Payment/Payment';
 import Recipient from 'widgets/ui/Recipient/Recipient';
 import BasketSumm from 'widgets/ui/BasketSumm/BasketSumm';
+import ShowOrder from 'widgets/ui/ShowOrder/ShowOrder';
 
 import style from './Basket.module.scss';
-import ShowOrder from '../ShowOrder/ShowOrder';
 
 export interface BasketProps {
 }
@@ -49,8 +49,8 @@ const Basket: FC<BasketProps> = (props) => {
           color='yellow'
           children={
             totalCost === 0
-            ? `Заказать на ${totalCost} ₽`
-            : `Заказать на ${totalCost + costOfDelivery} ₽`
+              ? `Заказать на ${totalCost} ₽`
+              : `Заказать на ${totalCost + costOfDelivery} ₽`
           }
         />
       </div>

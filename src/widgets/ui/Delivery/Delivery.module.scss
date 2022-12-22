@@ -4,6 +4,10 @@
 
 .delivery_block_wrapepr {
     padding: 15px;
+
+    @media (max-width: 767px) {
+        padding: 10px;
+    }
 }
 
 .delivery {
@@ -23,6 +27,11 @@
     font-size: 14px;
     line-height: 20px;
     color: $gray-70;
+
+    @media (max-width: 767px) {
+        font-size: 12px;
+        line-height: 18px;
+    }
 }
 
 hr {
@@ -54,6 +63,11 @@ hr {
     padding: 15px;
     margin-bottom: 15px;
     appearance: none;
+
+    @media (max-width: 767px) {
+        font-size: 14px;
+        line-height: 20px;
+    }
 }
 
 .pickup_of_goods {
@@ -62,4 +76,18 @@ hr {
 
 .change_address_text {
     margin-bottom: 0;
+
+    br {
+        display: none;
+    }
+
+    @media (max-width: 767px) {
+        width: 213px;
+        text-align: center;
+        margin: 0 auto;
+
+        br {
+            display: block;
+        }
+      }
 }

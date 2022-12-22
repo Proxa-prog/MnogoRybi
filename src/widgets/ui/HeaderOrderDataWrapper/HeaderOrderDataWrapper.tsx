@@ -11,7 +11,6 @@ import MenuButtonBasket from "widgets/ui/MenuButtonBasket/MenuButtonBasket";
 
 import {
   ADDRESS,
-  PRODUCTS,
   ViewPorts
 } from "entities/constants/constants";
 

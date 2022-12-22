@@ -8,6 +8,10 @@
     display: flex;
     flex-direction: column;
     overflow: scroll;
+
+    @media (max-width: 767px) {
+        width: 320px;
+    }
 }
 
 .basket_info {
@@ -19,6 +23,10 @@
         font-size: 20px;
         line-height: 120%;
         margin-bottom: 15px;
+    }
+
+    @media (max-width: 767px) {
+        padding: 15px;
     }
 }
 
@@ -39,4 +47,8 @@
     padding: 18px;
     width: 100%;
     justify-content: center;
+
+    @media (max-width: 767px) {
+        padding: 8px;
+    }
 }

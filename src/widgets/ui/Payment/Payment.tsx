@@ -15,9 +15,9 @@ const Payment: FC<PaymentProps> = (props) => {
 
   return (
     <div className={style.payment_wrapper}>
+      <h4>Оплата</h4>
       <div className={style.payment}>
         <div className={style.payment_block_wrapepr}>
-          <h4>Оплата</h4>
           <div className={style.payment_header_wrapper}>
             <Checkbox
               id={labelPaymentCheckboxId}
@@ -56,6 +56,7 @@ const Payment: FC<PaymentProps> = (props) => {
           </div>
           <div className={style.agreement}>
             <Checkbox
+              className={style.agreement_checkbox}
               checked
               onChange={() => { }}
             />

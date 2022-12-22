@@ -51,7 +51,7 @@ const Delivery: FC<DeliveryProps> = (props) => {
             promptOption={ADDRESS[0].name}
             options={ADDRESS}
           />
-          <p className={style.change_address_text}>Хотите доставить по другому адресу? <a href='#'>Да изменить</a></p>
+          <p className={style.change_address_text}>Хотите доставить по другому адресу?<br /> <a href='#'>Да изменить</a></p>
         </div>
       </div>
       <div className={style.pickup_of_goods}>
