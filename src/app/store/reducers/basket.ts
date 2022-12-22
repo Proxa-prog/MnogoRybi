@@ -45,10 +45,22 @@ export const basketSlice = createSlice({
         }
       });
     },
+    removeProduct: (state, action) => {
+      state.basketState.basket.map((item, index) => {
+        if (item.id === action.payload) {
+          state.basketState.basket.splice(index, 1);
+        }
+      });
+    },
   },
 });
 
-export const { addProductInBasket, openBasketBlock, changeAmount, changeCost } =
-  basketSlice.actions;
+export const {
+  addProductInBasket,
+  openBasketBlock,
+  changeAmount,
+  changeCost,
+  removeProduct,
+} = basketSlice.actions;
 
 export default basketSlice.reducer;

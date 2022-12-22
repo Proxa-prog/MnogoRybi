@@ -1,24 +1,20 @@
 import React, { FC } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
 
+import { IAmountProduct } from 'app/store/reducers/amountProduct';
 import {
-  IAmountProduct,
-  setAmountProduct,
-  setCostProduct
-} from 'app/store/reducers/amountProduct';
+  changeAmount,
+  changeCost,
+  removeProduct
+} from 'app/store/reducers/basket';
 
 import Svg from 'shared/ui/Svg/Svg';
 import Button from 'shared/ui/Button/Button';
 
 import ProductCounter from 'widgets/ui/ProductCounter/ProductCounter';
 
-import { openProductsCard } from 'entities/openProductsCard/model/selectors';
-import { getAmountProduct } from 'entities/amountProduct/model';
-
 import style from './BasketCard.module.scss';
-import { changeAmount, changeCost } from 'app/store/reducers/basket';
-import { openBasket } from 'entities/basket/model';
 
 export interface BasketCardProps {
   product: IAmountProduct;
@@ -33,23 +29,28 @@ const BasketCard: FC<BasketCardProps> = (props) => {
 
 
   // Увеличить количество товара в корзине
-  const addAmountProduct = () => {
+  const handlerButtonAddAmountProduct = () => {
     const addAmount = product.amount + 1;
     const addCost = Number(product.baseCost) * addAmount;
 
-    dispatch(changeAmount({addAmount: addAmount, id: product.id}));
-    dispatch(changeCost({addCost: addCost, id: product.id}));
+    dispatch(changeAmount({ addAmount: addAmount, id: product.id }));
+    dispatch(changeCost({ addCost: addCost, id: product.id }));
   };
 
   // Уменьшить количество товара в корзине
-  const removeAmountProduct = () => {
+  const handlerButtonRemoveAmountProduct = () => {
     if (product.amount > 1) {
       const addAmount = product.amount - 1;
       const addCost = Number(product.baseCost) * addAmount;
 
-      dispatch(changeAmount({addAmount: addAmount, id: product.id}));
-      dispatch(changeCost({addCost: addCost, id: product.id}));
+      dispatch(changeAmount({ addAmount: addAmount, id: product.id }));
+      dispatch(changeCost({ addCost: addCost, id: product.id }));
     }
+  };
+
+  // Удалить товар в корзине
+  const handlerButtonRemoveProduct = () => {
+    dispatch(removeProduct(product.id));
   };
 
   return (
@@ -70,6 +71,7 @@ const BasketCard: FC<BasketCardProps> = (props) => {
           <Button
             className={style.trash_button}
             type='button'
+            onClick={handlerButtonRemoveProduct}
           >
             <Svg
               name='trash'
@@ -87,8 +89,8 @@ const BasketCard: FC<BasketCardProps> = (props) => {
         <span>{`${product.cost} ₽`}</span>
         <ProductCounter
           wrapperClassName={style.counter_wrapper}
-          removeAmountProduct={removeAmountProduct}
-          addAmountProduct={addAmountProduct}
+          removeAmountProduct={handlerButtonRemoveAmountProduct}
+          addAmountProduct={handlerButtonAddAmountProduct}
           amount={product.amount}
         />
       </div>
