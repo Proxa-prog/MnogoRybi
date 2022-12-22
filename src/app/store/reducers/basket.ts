@@ -10,7 +10,7 @@ export interface IBasketArray {
   basketState: {
     basket: IAmountProduct[];
     isBasketOpen: boolean;
-  }
+  };
 }
 
 const initialState: IBasketArray = {
@@ -31,9 +31,24 @@ export const basketSlice = createSlice({
     openBasketBlock: (state, action) => {
       state.basketState.isBasketOpen = !action.payload;
     },
+    changeAmount: (state, action) => {
+      state.basketState.basket.map((item) => {
+        if (item.id === action.payload.id) {
+          item.amount = action.payload.addAmount;
+        }
+      });
+    },
+    changeCost: (state, action) => {
+      state.basketState.basket.map((item) => {
+        if (item.id === action.payload.id) {
+          item.cost = action.payload.addCost;
+        }
+      });
+    },
   },
 });
 
-export const { addProductInBasket, openBasketBlock } = basketSlice.actions;
+export const { addProductInBasket, openBasketBlock, changeAmount, changeCost } =
+  basketSlice.actions;
 
 export default basketSlice.reducer;

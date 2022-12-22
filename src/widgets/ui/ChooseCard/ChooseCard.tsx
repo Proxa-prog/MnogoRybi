@@ -57,14 +57,18 @@ const ChooseCard: FC<ChooseCardProps> = (props) => {
 
   // Добавить товар в корзину
   const addProductOnBasket = () => {
+    const id = nanoid();
+
     dispatch(addProductInBasket({
       name: amountProduct.name,
       amount: amountProduct.amount,
       cost: amountProduct.cost,
+      baseCost: productsCard.cost,
       baseProduct: amountProduct.baseProduct,
       sauce: amountProduct.sauce,
       imageUrl: productsCard.imageUrl,
       description: productsCard.description,
+      id: id,
     }));
   };
 

@@ -1,18 +1,24 @@
 import React, { FC } from 'react';
-import { nanoid } from '@reduxjs/toolkit';
+import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 
-import { IAmountProduct, setAmountProduct, setCostProduct } from 'app/store/reducers/amountProduct';
+import {
+  IAmountProduct,
+  setAmountProduct,
+  setCostProduct
+} from 'app/store/reducers/amountProduct';
 
 import Svg from 'shared/ui/Svg/Svg';
 import Button from 'shared/ui/Button/Button';
 
 import ProductCounter from 'widgets/ui/ProductCounter/ProductCounter';
 
-import style from './BasketCard.module.scss';
-import { useDispatch, useSelector } from 'react-redux';
 import { openProductsCard } from 'entities/openProductsCard/model/selectors';
 import { getAmountProduct } from 'entities/amountProduct/model';
+
+import style from './BasketCard.module.scss';
+import { changeAmount, changeCost } from 'app/store/reducers/basket';
+import { openBasket } from 'entities/basket/model';
 
 export interface BasketCardProps {
   product: IAmountProduct;
@@ -22,31 +28,30 @@ const BasketCard: FC<BasketCardProps> = (props) => {
   const {
     product,
   } = props;
+
   const dispatch = useDispatch();
-  const productsCard = useSelector(openProductsCard);
-  const amountProduct = useSelector(getAmountProduct);
 
-   // Увеличить количество товараx
-   const addAmountProduct = () => {
-    const addAmount = amountProduct.amount + 1;
-    const addCost = Number(productsCard.cost) * addAmount;
 
-    dispatch(setAmountProduct(addAmount));
-    dispatch(setCostProduct(addCost));
+  // Увеличить количество товара в корзине
+  const addAmountProduct = () => {
+    const addAmount = product.amount + 1;
+    const addCost = Number(product.baseCost) * addAmount;
+
+    dispatch(changeAmount({addAmount: addAmount, id: product.id}));
+    dispatch(changeCost({addCost: addCost, id: product.id}));
   };
 
-  // Уменьшить количество товара
+  // Уменьшить количество товара в корзине
   const removeAmountProduct = () => {
-    if (amountProduct.amount > 1) {
-      const addAmount = amountProduct.amount - 1;
-      const addCost = Number(productsCard.cost) * addAmount;
+    if (product.amount > 1) {
+      const addAmount = product.amount - 1;
+      const addCost = Number(product.baseCost) * addAmount;
 
-      dispatch(setAmountProduct(addAmount));
-      dispatch(setCostProduct(addCost));
+      dispatch(changeAmount({addAmount: addAmount, id: product.id}));
+      dispatch(changeCost({addCost: addCost, id: product.id}));
     }
   };
 
-  console.log(product);
   return (
     <div className={style.basket_card_wrapper}>
       <div className={style.basket_card}>

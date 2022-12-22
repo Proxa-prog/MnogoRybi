@@ -2,8 +2,6 @@ import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 
-import { useAppDispatch } from 'app/store';
-
 import { openBasket } from 'entities/basket/model';
 
 import BasketCard from 'widgets/ui/BasketCard/BasketCard';
@@ -14,10 +12,7 @@ export interface ShowOrderProps {
 }
 
 const ShowOrder: FC<ShowOrderProps> = (props) => {
-  const dispatch = useAppDispatch();
   const basket = useSelector(openBasket);
-  console.log(basket.basket);
-
 
   return (
     <div className={style.user_order}>
