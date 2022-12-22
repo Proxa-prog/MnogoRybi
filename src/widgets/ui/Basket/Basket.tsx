@@ -18,6 +18,16 @@ export interface BasketProps {
 
 const Basket: FC<BasketProps> = (props) => {
   const basket = useSelector(openBasket);
+  const costOfDelivery = 200;
+
+  const setTotalCost = () => {
+    return basket.basket.reduce((totalCost, currentValue) => {
+
+      return totalCost + Number(currentValue.cost);
+    }, 0);
+  };
+
+  const totalCost = setTotalCost();
 
   return (
     <div className={style.basket_wrapper}>
@@ -27,13 +37,21 @@ const Basket: FC<BasketProps> = (props) => {
         <Delivery />
         <Payment />
       </div>
-      <BasketSumm />
+      <BasketSumm
+        basket={basket.basket}
+        totalCost={totalCost}
+        costOfDelivery={costOfDelivery}
+      />
       <div className={style.button_to_order_wrapper}>
         <Button
           className={style.button_to_order}
           type='button'
           color='yellow'
-          children={`Заказать на ${basket.isBasketOpen} ₽`}
+          children={
+            totalCost === 0
+            ? `Заказать на ${totalCost} ₽`
+            : `Заказать на ${totalCost + costOfDelivery} ₽`
+          }
         />
       </div>
     </div>
