@@ -5,8 +5,8 @@ const setAmountProduct = (state: RootState) => state.amountProduct.amountProduct
 
 export const getAmountProduct = createSelector(
   [ setAmountProduct ],
-  (setAmountProduct) => {
+  (amountProduct) => {
 
-    return setAmountProduct;
+    return amountProduct;
   }
 );

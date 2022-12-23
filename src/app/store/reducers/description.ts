@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { DESCRIPTION_IMAGES_LINKS } from "entities/constants/constants";
 
 export interface IDescription {
@@ -27,7 +27,7 @@ export const descriptionSlice = createSlice({
   name: 'descriptions',
   initialState,
   reducers: {
-    changeDescription: (state, action) => {
+    changeDescription: (state, action: PayloadAction<IDescription[]>) => {
       state.descriptions = action.payload
     },
   },

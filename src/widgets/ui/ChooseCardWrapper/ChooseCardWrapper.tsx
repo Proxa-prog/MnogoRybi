@@ -26,7 +26,12 @@ const ChooseCardWrapper: FC<ChooseCardWrapperProps> = (props) => {
     if (event.target.id === cardWrapperId ||
       event.target.id === buttonCloseId
     ) {
-      dispatch(setOpenProductsCard({ imageUrl: '', isOpen: false }));
+      dispatch(setOpenProductsCard(
+        {
+          imageUrl: '',
+          isOpen: false
+        }
+      ));
     }
   };
 

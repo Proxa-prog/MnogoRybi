@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IAmountProduct } from "./amountProduct";
 
 export enum IBasketAction {
@@ -13,6 +13,16 @@ export interface IBasketArray {
   };
 }
 
+interface IChangeAmountAction {
+  addAmount: number;
+  id: string | undefined;
+}
+
+interface IChangeCostAction {
+  addCost: number;
+  id: string | undefined;
+}
+
 const initialState: IBasketArray = {
   basketState: {
     basket: [],
@@ -24,28 +34,28 @@ export const basketSlice = createSlice({
   name: "basket",
   initialState,
   reducers: {
-    addProductInBasket: (state, action) => {
+    addProductInBasket: (state, action: PayloadAction<IAmountProduct>) => {
       state.basketState.basket = [...state.basketState.basket, action.payload];
       state.basketState.isBasketOpen = state.basketState.isBasketOpen;
     },
-    openBasketBlock: (state, action) => {
+    openBasketBlock: (state, action: PayloadAction<boolean>) => {
       state.basketState.isBasketOpen = !action.payload;
     },
-    changeAmount: (state, action) => {
+    changeAmount: (state, action: PayloadAction<IChangeAmountAction>) => {
       state.basketState.basket.map((item) => {
         if (item.id === action.payload.id) {
           item.amount = action.payload.addAmount;
         }
       });
     },
-    changeCost: (state, action) => {
+    changeCost: (state, action: PayloadAction<IChangeCostAction>) => {
       state.basketState.basket.map((item) => {
         if (item.id === action.payload.id) {
           item.cost = action.payload.addCost;
         }
       });
     },
-    removeProduct: (state, action) => {
+    removeProduct: (state, action: PayloadAction<string | undefined>) => {
       state.basketState.basket.map((item, index) => {
         if (item.id === action.payload) {
           state.basketState.basket.splice(index, 1);

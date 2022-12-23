@@ -5,8 +5,8 @@ const setOpenProductsCard = (state: RootState) => state.openProductsCard.openPro
 
 export const openProductsCard = createSelector(
   [ setOpenProductsCard ],
-  (getOpenProductsCard) => {
+  (openProductsCard) => {
 
-    return getOpenProductsCard;
+    return openProductsCard;
   }
 );

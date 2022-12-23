@@ -1,14 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { StatusMarkerProps } from "shared/ui/StatusMarker/StatusMarker";
 
 export interface IOpenProductsCard {
   isOpen: boolean;
-  imageUrl: string;
-  header: string;
+  imageUrl: string | undefined;
+  header?: string;
   description?: string;
-  cost: string;
-  statuses: StatusMarkerProps[];
+  cost?: string;
+  statuses?: StatusMarkerProps[];
 }
 
 export interface OpenProductsCardArray {
@@ -39,7 +39,7 @@ export const openProductsCardSlice = createSlice({
   name: "openProductsCard",
   initialState,
   reducers: {
-    setOpenProductsCard: (state, action) => {
+    setOpenProductsCard: (state, action: PayloadAction<IOpenProductsCard>) => {
       state.openProductsCard = action.payload;
     },
   },

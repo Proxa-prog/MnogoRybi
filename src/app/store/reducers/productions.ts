@@ -1,9 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { fetchProductions } from "entities/productions/model/services/getProductions";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
 import { CardProps } from "widgets/ui/Card/Card";
 
 export enum ProductionAction {
-  GET_PRODUCTIONS = 'GET_PRODUCTIONS',
+  GET_PRODUCTIONS = "GET_PRODUCTIONS",
 }
 
 export interface IProductionsAction {
@@ -11,16 +11,18 @@ export interface IProductionsAction {
   payload: CardProps[];
 }
 
+export interface IProductions {
+  poke: CardProps[];
+  rolls: CardProps[];
+  wok: CardProps[];
+  curry: CardProps[];
+  sandwich: CardProps[];
+  deserts: CardProps[];
+  beverages: CardProps[];
+}
+
 export interface IProductionsArray {
-  productions: {
-    poke: CardProps[],
-    rolls: CardProps[],
-    wok: CardProps[],
-    curry: CardProps[],
-    sandwich: CardProps[],
-    deserts: CardProps[],
-    beverages: CardProps[],
-  };
+  productions: IProductions;
 }
 
 const initialState: IProductionsArray = {
@@ -33,15 +35,14 @@ const initialState: IProductionsArray = {
     deserts: [],
     beverages: [],
   },
-}
-
+};
 
 export const productionsSlice = createSlice({
-  name: 'productions',
+  name: "productions",
   initialState,
   reducers: {
-    getProductionsAction: (state, action) => {
-      state.productions = action.payload
+    getProductionsAction: (state, action: PayloadAction<IProductions>) => {
+      state.productions = action.payload;
     },
   },
 });

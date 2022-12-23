@@ -34,6 +34,7 @@ const ChooseCard: FC<ChooseCardProps> = (props) => {
   const productsCard = useSelector(openProductsCard);
   const amountProduct = useSelector(getAmountProduct);
   const basket = useSelector(openBasket);
+  console.log(amountProduct);
 
   // Увеличить количество товараx
   const addAmountProduct = () => {
@@ -63,7 +64,7 @@ const ChooseCard: FC<ChooseCardProps> = (props) => {
       name: amountProduct.name,
       amount: amountProduct.amount,
       cost: amountProduct.cost,
-      baseCost: productsCard.cost,
+      baseCost: Number(productsCard.cost),
       baseProduct: amountProduct.baseProduct,
       sauce: amountProduct.sauce,
       imageUrl: productsCard.imageUrl,
@@ -86,9 +87,8 @@ const ChooseCard: FC<ChooseCardProps> = (props) => {
     dispatch(setNewProduct({
       name: productsCard.header,
       amount: 1,
-      cost: productsCard.cost,
+      cost: Number(productsCard.cost),
       imageUrl: productsCard.imageUrl,
-      description: productsCard.description,
     }));
   }, []);
 

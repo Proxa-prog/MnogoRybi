@@ -64,7 +64,7 @@ const Card: FC<CardProps> = (props) => {
         isOpen: true,
         header: header,
         description: description,
-        cost: cost,
+        cost: String(cost),
         statuses: statuses,
       }));
     }
