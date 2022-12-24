@@ -1,17 +1,53 @@
 import React, { FC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 
-import Input from 'shared/ui/Input/Input';
+import {
+  addRecipientCardCvc,
+  addRecipientCardDate,
+  addRecipientCardNumber,
+  changePaymentToTheCourier,
+  changeSaveCardDate
+} from 'app/store/reducers/basket';
 
+import Input from 'shared/ui/Input/Input';
 import Checkbox from 'shared/ui/Checkbox/Checkbox';
-import LabelText from 'shared/ui/LabelText/LabelText';
+
+import { openBasket } from 'entities/basket/model';
+
 import style from './Payment.module.scss';
 
 export interface PaymentProps {
 }
 
 const Payment: FC<PaymentProps> = (props) => {
+  const dispatch = useDispatch();
   const labelPaymentCheckboxId = nanoid();
+  const basket = useSelector(openBasket);
+
+  const handlerChangeInputCardNumber = (cardNumber: string | undefined) => {
+    dispatch(addRecipientCardNumber(cardNumber));
+  };
+
+  const handlerChangeInputCardDate = (cardDate: string | undefined) => {
+    dispatch(addRecipientCardDate(cardDate));
+  };
+
+  const handlerChangeInputCardCvc = (cardCvc: string | undefined) => {
+    dispatch(addRecipientCardCvc(cardCvc));
+  };
+
+  const handlerChangeCheckboxPaymentToTheCourier = (isTrue: boolean) => {
+    return () => {
+      dispatch(changePaymentToTheCourier(isTrue));
+    }
+  };
+
+  const handlerChangeCheckboxSaveCardDate = (isTrue: boolean) => {
+    return () => {
+      dispatch(changeSaveCardDate(isTrue));
+    }
+  };
 
   return (
     <div className={style.payment_wrapper}>
@@ -38,6 +74,8 @@ const Payment: FC<PaymentProps> = (props) => {
               placeholder='Номер карты'
               label=''
               name='Номер карты'
+              type='number'
+              onChange={handlerChangeInputCardNumber}
             />
             <Input
               classNameWrapper={style.validity_wrapper}
@@ -45,6 +83,8 @@ const Payment: FC<PaymentProps> = (props) => {
               placeholder='Срок действия'
               label=''
               name='Срок действия'
+              type='number'
+              onChange={handlerChangeInputCardDate}
             />
             <Input
               classNameWrapper={style.cvc_wrapper}
@@ -52,13 +92,14 @@ const Payment: FC<PaymentProps> = (props) => {
               placeholder='CVC'
               label=''
               name='CVC'
+              type='number'
+              onChange={handlerChangeInputCardCvc}
             />
           </div>
           <div className={style.agreement}>
             <Checkbox
               className={style.agreement_checkbox}
-              checked
-              onChange={() => { }}
+              onChange={handlerChangeCheckboxSaveCardDate(basket.saveCardDate)}
             />
             <span>Привязать карту к кабинету для быстрой оплаты</span>
           </div>
@@ -67,9 +108,7 @@ const Payment: FC<PaymentProps> = (props) => {
       <div className={style.courier}>
         <Checkbox
           isCircle
-          onChange={
-            () => { }
-          } />
+          onChange={handlerChangeCheckboxPaymentToTheCourier(basket.paymentToTheCourier)} />
         <span>Курьеру при получении</span>
       </div>
     </div>

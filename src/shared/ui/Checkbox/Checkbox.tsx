@@ -46,7 +46,7 @@ const Checkbox: FC<CheckboxProps> = (props) => {
         )}
         disabled={disabled}
         onChange={handleOnChange}
-        checked={checked}
+        onClick={(event) => {!event.currentTarget.checked}}
       />
     </>
   );

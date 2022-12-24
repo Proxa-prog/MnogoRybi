@@ -1,20 +1,36 @@
 import React, { FC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
+import classNames from 'classnames';
+
+import { addRecipientAddress, changePickupOfGoods } from 'app/store/reducers/basket';
 
 import Select from 'shared/ui/Select/Select';
 import Checkbox from 'shared/ui/Checkbox/Checkbox';
+import LabelText from 'shared/ui/LabelText/LabelText';
 
 import { ADDRESS } from 'entities/constants/constants';
 
 import style from './Delivery.module.scss';
-import LabelText from 'shared/ui/LabelText/LabelText';
-import classNames from 'classnames';
+import { openBasket } from 'entities/basket/model';
 
 export interface DeliveryProps {
 }
 
 const Delivery: FC<DeliveryProps> = (props) => {
+  const dispatch = useDispatch();
   const labelDeliveryCheckboxId = nanoid();
+  const basket = useSelector(openBasket);
+
+  const handlerChangeSelectAddress = (address: string) => {
+    dispatch(addRecipientAddress(address));
+  };
+
+  const handlerChangeCheckboxPickupOfGoods = (isTrue: boolean) => {
+    return () => {
+      dispatch(changePickupOfGoods(isTrue));
+    }
+  };
 
   return (
     <div className={style.delivery_wrapper}>
@@ -50,6 +66,7 @@ const Delivery: FC<DeliveryProps> = (props) => {
             className={style.delivery_address}
             promptOption={ADDRESS[0].name}
             options={ADDRESS}
+            onChange={handlerChangeSelectAddress}
           />
           <p className={style.change_address_text}>Хотите доставить по другому адресу?<br /> <a href='#'>Да изменить</a></p>
         </div>
@@ -57,9 +74,7 @@ const Delivery: FC<DeliveryProps> = (props) => {
       <div className={style.pickup_of_goods}>
         <Checkbox
           isCircle
-          onChange={
-            () => { }
-          } />
+          onChange={handlerChangeCheckboxPickupOfGoods(basket.pickupOfGoods)} />
         <span>Самовывоз</span>
       </div>
     </div>

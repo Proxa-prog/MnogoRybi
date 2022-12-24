@@ -28,6 +28,7 @@ const Basket: FC<BasketProps> = (props) => {
   };
 
   const totalCost = setTotalCost();
+console.log(basket);
 
   return (
     <div className={style.basket_wrapper}>

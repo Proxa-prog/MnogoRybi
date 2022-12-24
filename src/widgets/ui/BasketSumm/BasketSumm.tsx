@@ -1,12 +1,11 @@
-import { number } from '@storybook/addon-knobs';
-import { IAmountProduct } from 'app/store/reducers/amountProduct';
-import { openBasket } from 'entities/basket/model';
 import React, { FC } from 'react';
-import { useSelector } from 'react-redux';
+import { IAmountProduct } from 'app/store/reducers/amountProduct';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Input from 'shared/ui/Input/Input';
 
 import style from './BasketSumm.module.scss';
+import { addComment } from 'app/store/reducers/basket';
 
 export interface BasketSummProps {
   basket: IAmountProduct[];
@@ -20,6 +19,12 @@ const BasketSumm: FC<BasketSummProps> = (props) => {
     totalCost,
     costOfDelivery,
   } = props;
+  const dispatch = useDispatch();
+
+
+  const handlerChangeInputComment = (comment: string | undefined) => {
+    dispatch(addComment(comment));
+  };
 
   return (
     <div className={style.basket_summ_wrapper}>
@@ -41,6 +46,7 @@ const BasketSumm: FC<BasketSummProps> = (props) => {
         label=''
         name=''
         placeholder='Комментарий к заказу'
+        onChange={handlerChangeInputComment}
       />
     </div>
   )
