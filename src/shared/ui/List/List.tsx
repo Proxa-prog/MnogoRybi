@@ -1,6 +1,7 @@
+import React, { FC } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
 import classNames from 'classnames';
-import React, { FC } from 'react';
+
 import { IProducts } from 'entities/constants/constants';
 
 import style from './List.module.scss';
@@ -40,7 +41,7 @@ const List: FC<ListProps> = (props) => {
             >
               {
                 isLink
-                  ? <a href={`#${item}`}>{item.name}</a>
+                  ? <a href={`#${item.id}`}>{item.name}</a>
                   : <span>{item.name}</span>
               }
             </li>

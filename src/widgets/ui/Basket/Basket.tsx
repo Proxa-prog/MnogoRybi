@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 
 import { openBasket } from 'entities/basket/model';
+import { setTotalCost } from 'entities/setTotalCost';
 
 import Button from 'shared/ui/Button/Button';
 
@@ -20,15 +21,7 @@ const Basket: FC<BasketProps> = (props) => {
   const basket = useSelector(openBasket);
   const costOfDelivery = 200;
 
-  const setTotalCost = () => {
-    return basket.basket.reduce((totalCost, currentValue) => {
-
-      return totalCost + Number(currentValue.cost);
-    }, 0);
-  };
-
-  const totalCost = setTotalCost();
-console.log(basket);
+  const totalCost = setTotalCost(basket.basket);
 
   return (
     <div className={style.basket_wrapper}>

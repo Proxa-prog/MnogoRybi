@@ -29,30 +29,37 @@ const MainPage: FC<MainPageProps> = (props) => {
       <Description />
       <ComponentWrapper title='Наша продукция'>
         <Products
+          id="Poke"
           title='Поке'
           productCards={productions.poke}
         />
         <Products
+          id="Rolls"
           title='Роллы'
           productCards={productions.rolls}
         />
         <Products
+          id="Curry"
           title='Супы и карри'
           productCards={productions.curry}
         />
         <Products
+          id="Wok"
           title='Вок'
           productCards={productions.wok}
         />
         <Products
-          title='Роллы'
+          id="Sandwich"
+          title='Сэндвичи'
           productCards={productions.sandwich}
         />
         <Products
+          id="Deserts"
           title='Десерты'
           productCards={productions.deserts}
         />
         <Products
+          id="Drinks"
           title='Напитки'
           productCards={productions.beverages}
         />

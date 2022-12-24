@@ -39,8 +39,6 @@ const Header: FC<HeaderProps> = (props) => {
 
   const handlerButtonBasketClick = () => {
     dispatch(openBasketBlock(basket.isBasketOpen));
-    console.log("header");
-
   };
 
   const handleScroll = () => {

@@ -2,16 +2,38 @@ import { IDescription } from "app/store/reducers/description";
 
 export interface IProducts {
   name: string;
+  id?: string;
 }
 
 export const PRODUCTS = [
-  { name: "Поке" },
-  { name: "Роллы" },
-  { name: "Супы и карри" },
-  { name: "Вок" },
-  { name: "Сэндвичи" },
-  { name: "Десерты" },
-  { name: "Напитки" },
+  {
+    name: "Поке",
+    id: "Poke",
+  },
+  {
+    name: "Роллы",
+    id: "Rolls",
+  },
+  {
+    name: "Супы и карри",
+    id: "Curry",
+  },
+  {
+    name: "Вок",
+    id: "Wok",
+  },
+  {
+    name: "Сэндвичи",
+    id: "Sandwich",
+  },
+  {
+    name: "Десерты",
+    id: "Deserts",
+  },
+  {
+    name: "Напитки",
+    id: "Drinks",
+  },
 ];
 
 export const BASE_PRODUCT = [
