@@ -1,9 +1,42 @@
 import { IDescription } from "app/store/reducers/description";
 
+export const CENTER_LAT = 57.628497;
+export const CENTER_LNG = 39.905368;
+
 export interface IProducts {
   name: string;
   id?: string;
-}
+};
+
+export interface IContactsCard extends IPopupCoordinates {
+  name: string;
+  workTime: string;
+  phone: string;
+};
+
+export interface IPopupCoordinates {
+  lat: number;
+  lng: number;
+};
+
+export const POPUP_COORDINATES = [
+  {
+    lat: 57.64647,
+    lng: 39.85169,
+  },
+  {
+    lat: 57.622014,
+    lng: 39.822954,
+  },
+  {
+    lat: 57.641119,
+    lng: 39.910650,
+  },
+  {
+    lat: 57.623386,
+    lng: 39.960096,
+  },
+];
 
 export const PRODUCTS = [
   {
@@ -57,10 +90,22 @@ export const SAUCE = [
 ];
 
 export const INFO = [
-  { name: "Франшиза" },
-  { name: "Доставка" },
-  { name: "Новости" },
-  { name: "Контакты" },
+  {
+    name: "Франшиза",
+    id: "franchise",
+  },
+  {
+    name: "Доставка",
+    id: "delivery",
+  },
+  {
+    name: "Новости",
+    id: "news",
+  },
+  {
+    name: "Контакты",
+    id: "contacts",
+  },
 ];
 
 export const INFO_FOOTER = [
@@ -71,11 +116,35 @@ export const INFO_FOOTER = [
   { name: "Личный кабинет" },
 ];
 
-export const ADDRESS = [
-  { name: "Ярославль, Некрасова 52/35" },
-  { name: "Ярославль, Тургенева 1а" },
-  { name: "Ярославль, Свободы 52/39" },
-  { name: "Ярославль, Урицкого 39" },
+export const ADDRESS: IContactsCard[] = [
+  {
+    name: "Ярославль, Тургенева 1а",
+    workTime: "пн-вс: 9:00—22:00",
+    phone: "Телефон: 8 (4852) 980-100",
+    lat: 57.64647,
+    lng: 39.85169,
+  },
+  {
+    name: "Ярославль, Некрасова 52/35",
+    workTime: "пн-вс: 11:00—23:00",
+    phone: "Телефон: 8 (4852) 980-100",
+    lat: 57.622014,
+    lng: 39.822954,
+  },
+  {
+    name: "Ярославль, Свободы 52/39",
+    workTime: "пн-вс: 9:00—22:00",
+    phone: "Телефон: 8 (4852) 980-100",
+    lat: 57.641119,
+    lng: 39.910650,
+  },
+  {
+    name: "Ярославль, Урицкого 39",
+    workTime: "пн-вс: 9:00—22:00",
+    phone: "Телефон: 8 (4852) 980-100",
+    lat: 57.623386,
+    lng: 39.960096,
+  },
 ];
 
 export const PHONES = [{ name: "8 (4852) 980-100" }];

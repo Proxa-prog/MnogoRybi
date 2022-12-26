@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { IProducts } from 'entities/constants/constants';
 
 import style from './List.module.scss';
+import { Link } from 'react-router-dom';
 
 export interface ListProps {
   classNameItem?: string;
@@ -41,7 +42,7 @@ const List: FC<ListProps> = (props) => {
             >
               {
                 isLink
-                  ? <a href={`#${item.id}`}>{item.name}</a>
+                  ? <Link to={`/${item.id}`}>{item.name}</Link>
                   : <span>{item.name}</span>
               }
             </li>

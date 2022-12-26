@@ -85,4 +85,10 @@ $purpul-100:                   #C028CD;
     clip-path: inset(100%);
     clip: rect(0 0 0 0);
     overflow: hidden;
-  }
+}
+
+.leaflet-container {
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
