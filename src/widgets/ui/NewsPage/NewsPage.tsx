@@ -35,7 +35,6 @@ const NewsPage: FC<NewsPageProps> = () => {
                   <div key={news.id}>
                     <div
                       className={style.image}
-                      // style={{ backgroundImage: `url(images/${news.imageUrl})` }}
                     >
                       <img src={`images/${news.imageUrl}`} alt="" width="100%" height={450} />
                     </div>

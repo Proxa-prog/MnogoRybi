@@ -28,6 +28,7 @@ import Header from 'widgets/ui/Header/Header';
 import RecenterAutomatically from 'widgets/ui/RecenterAutomatically/RecenterAutomatically';
 
 import style from './Contacts.module.scss';
+import { nanoid } from '@reduxjs/toolkit';
 
 export interface ContactsProps {
 
@@ -36,6 +37,7 @@ export interface ContactsProps {
 const Contacts: FC<ContactsProps> = (props) => {
   const dispatch = useDispatch();
   const map = useSelector(setMap);
+
   const createPopup = (PopupCoordinates: IPopupCoordinates) => {
     let Icon = L.icon({
       iconUrl: PopupIcon,
@@ -67,8 +69,11 @@ const Contacts: FC<ContactsProps> = (props) => {
         <div className={style.our_contacts}>
           {
             ADDRESS.map((card: IContactsCard) => {
+              const id = nanoid();
+
               return (
                 <ContactsCard
+                  key={id}
                   card={card}
                   onClick={setMapAddress(card)}
                 />
