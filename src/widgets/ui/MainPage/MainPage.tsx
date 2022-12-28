@@ -17,6 +17,8 @@ import { getProd } from 'entities/productions/model/selectors';
 import { fetchProductions } from 'entities/productions/model/services/getProductions';
 
 import style from './MainPage.module.scss';
+import ModalRegistration from '../ModalRegistration/ModalRegistration';
+import { getRegistration } from 'entities/registration/model';
 
 export interface MainPageProps {
 
@@ -25,6 +27,7 @@ export interface MainPageProps {
 const MainPage: FC<MainPageProps> = (props) => {
   const dispatch = useAppDispatch();
   const productions = useSelector(getProd);
+  const registration = useSelector(getRegistration);
 
   useEffect(() => {
     dispatch(fetchProductions(dispatch));
@@ -33,6 +36,7 @@ const MainPage: FC<MainPageProps> = (props) => {
   return (
     <>
       <Header isAuth />
+      {registration.isOpen && <ModalRegistration />}
       <div>
         <Description />
         <ComponentWrapper title='Наша продукция'>

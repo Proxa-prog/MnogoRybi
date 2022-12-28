@@ -26,9 +26,11 @@ import ContactsCard from 'widgets/ui/ContactsCard/ContactsCard';
 import BlockHeader from 'widgets/ui/BlockHeader/BlockHeader';
 import Header from 'widgets/ui/Header/Header';
 import RecenterAutomatically from 'widgets/ui/RecenterAutomatically/RecenterAutomatically';
+import ModalRegistration from 'widgets/ui/ModalRegistration/ModalRegistration';
 
 import style from './Contacts.module.scss';
 import { nanoid } from '@reduxjs/toolkit';
+import { getRegistration } from 'entities/registration/model';
 
 export interface ContactsProps {
 
@@ -37,6 +39,7 @@ export interface ContactsProps {
 const Contacts: FC<ContactsProps> = (props) => {
   const dispatch = useDispatch();
   const map = useSelector(setMap);
+  const registration = useSelector(getRegistration);
 
   const createPopup = (PopupCoordinates: IPopupCoordinates) => {
     let Icon = L.icon({
@@ -62,6 +65,7 @@ const Contacts: FC<ContactsProps> = (props) => {
 
   return (
     <>
+      {registration.isOpen && <ModalRegistration />}
       <Header isAuth />
       <BlockHeader
         pageName='Контакты'

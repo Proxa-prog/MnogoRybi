@@ -12,12 +12,14 @@ import Header from 'widgets/ui/Header/Header';
 import BlockHeader from 'widgets/ui/BlockHeader/BlockHeader';
 import Footer from 'widgets/ui/Footer/Footer';
 import Card from 'widgets/ui/Card/Card';
+import ModalRegistration from 'widgets/ui/ModalRegistration/ModalRegistration';
 
 import { fetchNews } from 'entities/productions/model/services/getNews';
 import { getNews } from 'entities/news/model';
 import { NEWS_LIMIT } from 'entities/constants/constants';
 
 import style from './News.module.scss';
+import { getRegistration } from 'entities/registration/model';
 
 export interface NewsProps {
 
@@ -27,6 +29,7 @@ const News: FC<NewsProps> = (props) => {
   const dispatch = useAppDispatch();
   const router = useNavigate();
   const news = useSelector(getNews);
+  const registration = useSelector(getRegistration);
 
   const handleButtonShowMore = () => {
     dispatch(addLimit(NEWS_LIMIT));
@@ -47,6 +50,7 @@ const News: FC<NewsProps> = (props) => {
 
   return (
     <>
+      {registration.isOpen && <ModalRegistration />}
       <Header isAuth />
       <BlockHeader
         pageName='Новости и акции'

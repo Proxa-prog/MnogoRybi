@@ -1,7 +1,13 @@
-import { ONE_HUNDRED_PIXEL_SCROLL } from 'entities/constants/constants';
 import React, { FC } from 'react';
+import { useSelector } from "react-redux";
+
+import { useAppDispatch } from "app/store";
+import { changeIsOpen } from "app/store/reducers/registration";
 
 import Button from 'shared/ui/Button/Button';
+
+import { getRegistration } from "entities/registration/model";
+import { ONE_HUNDRED_PIXEL_SCROLL } from 'entities/constants/constants';
 
 import style from 'widgets/ui/Header/Header.module.scss';
 
@@ -16,6 +22,13 @@ const MenuButtonEnter: FC<MenuButtonEnterProps> = (props) => {
     scroll,
   } = props;
 
+  const registration = useSelector(getRegistration);
+  const dispatch = useAppDispatch();
+
+  const handleCheckboxAgreementChange = () => {
+    dispatch(changeIsOpen(registration.isOpen))
+  };
+
   return (
     isAuth
       ? (
@@ -28,18 +41,14 @@ const MenuButtonEnter: FC<MenuButtonEnterProps> = (props) => {
           }
           type="button"
           isGrayTheme
-          onClick={() => {
-            console.log('Button enter header');
-          }}
+          onClick={handleCheckboxAgreementChange}
         />
       )
       : (
         <Button
           type="button"
           isGrayTheme
-          onClick={() => {
-            console.log('Button enter header');
-          }}
+          onClick={handleCheckboxAgreementChange}
         >
           Войти
         </Button>

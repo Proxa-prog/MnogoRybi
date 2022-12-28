@@ -45,7 +45,7 @@ const initialState: IBasketArray = {
     recipientCvc: '',
     pickupOfGoods: false,
     paymentToTheCourier: false,
-    saveCardDate: false,
+    saveCardDate: true,
     comment: '',
   },
 };

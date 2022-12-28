@@ -8,6 +8,7 @@ import amountProductReduser from "./reducers/amountProduct";
 import basketReduser from "./reducers/basket";
 import mapReduser from "./reducers/map";
 import newsReduser from "./reducers/news";
+import registrationReduser from "./reducers/registration";
 
 const rootReducer = combineReducers({
   description: descriptionReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   basket: basketReduser,
   map: mapReduser,
   news: newsReduser,
+  registration: registrationReduser,
 });
 
 export const store = configureStore({

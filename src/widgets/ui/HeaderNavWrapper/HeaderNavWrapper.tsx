@@ -18,6 +18,7 @@ import {
 
 import style from 'widgets/ui/Header/Header.module.scss';
 
+
 interface HeaderNavWrapperProps {
   isHeaderMenuActive: boolean;
   windowWidth: number;
@@ -44,6 +45,7 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
   } = props;
 
   const [buttonMoreIsOpen, setButtonMoreIsOpen] = useState(true);
+
 
   return (
     <div className={classNames(

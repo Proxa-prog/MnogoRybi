@@ -15,6 +15,10 @@ import {
 } from "entities/constants/constants";
 
 import style from 'widgets/ui/Header/Header.module.scss';
+import { useSelector } from "react-redux";
+import { getRegistration } from "entities/registration/model";
+import { useAppDispatch } from "app/store";
+import { changeAgreement, changeIsOpen } from "app/store/reducers/registration";
 
 interface HeaderOrderDataWrapperProps {
   isHeaderMenuActive: boolean;
@@ -36,6 +40,12 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
     onClick,
     onBasketButtonClick,
   } = props;
+  const registration = useSelector(getRegistration);
+  const dispatch = useAppDispatch();
+
+  const handleCheckboxAgreementChange = () => {
+    dispatch(changeIsOpen(registration.isOpen))
+  };
 
   return (
     <div className={classNames(
@@ -113,17 +123,13 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
                   imageWidth={24}
                   className={style.header__user_auth}
                   type="button"
-                  onClick={() => {
-                    console.log('Button enter header');
-                  }}
+                  onClick={handleCheckboxAgreementChange}
                 />
               )
               : (
                 <Button
                   type="button"
-                  onClick={() => {
-                    console.log('Button enter header');
-                  }}
+                  onClick={handleCheckboxAgreementChange}
                 >
                   Войти
                 </Button>
