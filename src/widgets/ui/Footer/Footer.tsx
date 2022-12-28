@@ -45,7 +45,7 @@ const Footer: FC<FooterProps> = (props) => {
           )}>
             <h3>Меню poke-room</h3>
             <List
-              isLink
+              isNavigate
               items={PRODUCTS}
               classNameList={classNames(
                 style.footer__list,

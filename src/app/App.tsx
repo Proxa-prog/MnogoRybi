@@ -4,14 +4,10 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { store } from './store';
 
-import Header from 'widgets/ui/Header/Header';
 import MainPage from 'widgets/ui/MainPage/MainPage';
-import AboutCompany from 'widgets/ui/AboutCompany/AboutCompany';
-import Franchise from 'widgets/ui/Franchise/Franchise';
-import ChooseCardWrapper from 'widgets/ui/ChooseCardWrapper/ChooseCardWrapper';
-import Footer from 'widgets/ui/Footer/Footer';
-import BasketWrapper from 'widgets/ui/BasketWrapper/BasketWrapper';
+import News from 'widgets/ui/News/News';
 import Contacts from 'widgets/ui/Contacts/Contacts';
+import NewsPage from 'widgets/ui/NewsPage/NewsPage';
 
 import 'fonts/style.css';
 import './styles/index.scss';
@@ -24,8 +20,10 @@ const App: React.FC = () => {
       <Provider store={store}>
         <BrowserRouter>
           <Routes>
-            <Route path='/contacts' element={<Contacts />} />
             <Route path='/' element={<MainPage />} />
+            <Route path='/contacts' element={<Contacts />} />
+            <Route path='/news' element={<News />} />
+            <Route path='/:newsId' element={<NewsPage />} />
           </Routes>
         </BrowserRouter>
       </Provider>

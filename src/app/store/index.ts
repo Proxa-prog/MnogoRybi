@@ -7,6 +7,7 @@ import openProductsCardReducer from "./reducers/openProductsCard";
 import amountProductReduser from "./reducers/amountProduct";
 import basketReduser from "./reducers/basket";
 import mapReduser from "./reducers/map";
+import newsReduser from "./reducers/news";
 
 const rootReducer = combineReducers({
   description: descriptionReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   amountProduct: amountProductReduser,
   basket: basketReduser,
   map: mapReduser,
+  news: newsReduser,
 });
 
 export const store = configureStore({

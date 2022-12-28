@@ -94,7 +94,7 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
               )
             }
             <List
-              isLink
+              isNavigate
               classNameList={classNames(
                 style.header__products_list,
                 { [style.header__products_list__open]: isProductsMenuActive }

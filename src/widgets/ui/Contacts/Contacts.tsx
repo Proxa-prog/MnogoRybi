@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import {
   MapContainer,
   Marker,
@@ -24,6 +23,7 @@ import { setMap } from 'entities/map/model/map';
 
 import Footer from 'widgets/ui/Footer/Footer';
 import ContactsCard from 'widgets/ui/ContactsCard/ContactsCard';
+import BlockHeader from 'widgets/ui/BlockHeader/BlockHeader';
 import Header from 'widgets/ui/Header/Header';
 import RecenterAutomatically from 'widgets/ui/RecenterAutomatically/RecenterAutomatically';
 
@@ -61,15 +61,9 @@ const Contacts: FC<ContactsProps> = (props) => {
   return (
     <>
       <Header isAuth />
-      <div className={style.contacts}>
-        <p className={style.nav}>
-          <Link to='/'>
-            <span>Главная</span>
-          </Link>
-          &nbsp; &mdash; &nbsp;
-          Контакты
-        </p>
-        <h1>Контакты</h1>
+      <BlockHeader
+        pageName='Контакты'
+      >
         <div className={style.our_contacts}>
           {
             ADDRESS.map((card: IContactsCard) => {
@@ -82,7 +76,7 @@ const Contacts: FC<ContactsProps> = (props) => {
             })
           }
         </div>
-      </div>
+      </BlockHeader>
       <div className={style.map}>
         <MapContainer
           center={[map.lat, map.lng]}
@@ -101,7 +95,10 @@ const Contacts: FC<ContactsProps> = (props) => {
               })
             }
           </>
-          <RecenterAutomatically lat={map.lat} lng={map.lng} />
+          <RecenterAutomatically
+            lat={map.lat}
+            lng={map.lng}
+          />
         </MapContainer>
       </div>
       <Footer />

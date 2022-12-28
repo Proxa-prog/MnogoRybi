@@ -12,6 +12,8 @@ export interface ListProps {
   classNameList?: string;
   items: IProducts[];
   isLink?: boolean;
+  isNavigate?: boolean;
+  isText?: boolean;
 }
 
 const List: FC<ListProps> = (props) => {
@@ -20,6 +22,8 @@ const List: FC<ListProps> = (props) => {
     classNameList,
     items,
     isLink = false,
+    isNavigate = false,
+    isText = false,
   } = props;
 
   return (
@@ -41,9 +45,13 @@ const List: FC<ListProps> = (props) => {
               key={id}
             >
               {
-                isLink
-                  ? <Link to={`/${item.id}`}>{item.name}</Link>
-                  : <span>{item.name}</span>
+                isLink && <Link to={`/${item.id}`}>{item.name}</Link>
+              }
+              {
+                isNavigate && <a href={`/#${item.id}`}>{item.name}</a>
+              }
+              {
+                isText && <span>{item.name}</span>
               }
             </li>
           )
