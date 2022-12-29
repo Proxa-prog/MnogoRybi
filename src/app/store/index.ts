@@ -9,6 +9,7 @@ import basketReduser from "./reducers/basket";
 import mapReduser from "./reducers/map";
 import newsReduser from "./reducers/news";
 import registrationReduser from "./reducers/registration";
+import userEnterReduser from "./reducers/userEnter";
 
 const rootReducer = combineReducers({
   description: descriptionReducer,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   map: mapReduser,
   news: newsReduser,
   registration: registrationReduser,
+  userEnter: userEnterReduser,
 });
 
 export const store = configureStore({

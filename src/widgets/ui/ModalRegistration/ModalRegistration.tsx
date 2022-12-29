@@ -8,7 +8,7 @@ import {
   changeAgreement,
   changeEmail,
   changeFirstName,
-  changeIsOpen,
+  changeIsOpenRegistration,
   changePhone
 } from 'app/store/reducers/registration';
 
@@ -20,18 +20,26 @@ import Checkbox from 'shared/ui/Checkbox/Checkbox';
 import Input from 'shared/ui/Input/Input';
 
 import style from './ModalRegistration.module.scss';
+import userEnter, { changeIsOpenUserEnter } from 'app/store/reducers/userEnter';
+import { openModalUserEnter } from 'entities/userEnter/model';
 
 const ModalRegistration: React.FC = () => {
   const dispatch = useAppDispatch();
-  const registration = useSelector(getRegistration);
   const buttonCloseId = nanoid();
+  const registration = useSelector(getRegistration);
+  const userEnter = useSelector(openModalUserEnter);
+
+  const handleButtonUserEnterClick = () => {
+    dispatch(changeIsOpenRegistration(registration.isOpen));
+    dispatch(changeIsOpenUserEnter(userEnter.isOpen));
+  };
 
   const handleCheckboxAgreementChange = () => {
     dispatch(changeAgreement(registration.agreement));
   };
 
   const handleButtonCloseChange = () => {
-    dispatch(changeIsOpen(registration.isOpen));
+    dispatch(changeIsOpenRegistration(registration.isOpen));
   };
 
   const handleInputNameChange = (firstName: string | undefined) => {
@@ -112,7 +120,13 @@ const ModalRegistration: React.FC = () => {
       </Button>
       <div className={style.have_account_wrapper}>
         <span className={style.have_account}>Уже есть учетная запись?&nbsp;&nbsp;</span>
-        <Link className={style.button_have_account} to={'#'}>Войти</Link>
+        <Button
+          className={style.button_have_account}
+          onClick={handleButtonUserEnterClick}
+          type='button'
+        >
+          Войти
+        </Button>
       </div>
     </form>
   )

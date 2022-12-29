@@ -12,14 +12,14 @@ import Franchise from 'widgets/ui/Franchise/Franchise';
 import ChooseCardWrapper from 'widgets/ui/ChooseCardWrapper/ChooseCardWrapper';
 import Footer from 'widgets/ui/Footer/Footer';
 import BasketWrapper from 'widgets/ui/BasketWrapper/BasketWrapper';
+import UserEnter from 'widgets/ui/UserEnter/UserEnter';
+import ModalRegistration from 'widgets/ui/ModalRegistration/ModalRegistration';
 
 import { getProd } from 'entities/productions/model/selectors';
 import { fetchProductions } from 'entities/productions/model/services/getProductions';
-
-import style from './MainPage.module.scss';
-import ModalRegistration from '../ModalRegistration/ModalRegistration';
 import { getRegistration } from 'entities/registration/model';
-import Confirmation from '../Confirmation/Confirmation';
+import { openModalUserEnter } from 'entities/userEnter/model';
+
 
 export interface MainPageProps {
 
@@ -29,6 +29,7 @@ const MainPage: FC<MainPageProps> = (props) => {
   const dispatch = useAppDispatch();
   const productions = useSelector(getProd);
   const registration = useSelector(getRegistration);
+  const userEnter = useSelector(openModalUserEnter);
 
   useEffect(() => {
     dispatch(fetchProductions(dispatch));
@@ -36,9 +37,9 @@ const MainPage: FC<MainPageProps> = (props) => {
 
   return (
     <>
-    <Confirmation />
-      <Header isAuth />
+      <Header />
       {registration.isOpen && <ModalRegistration />}
+      {userEnter.isOpen && <UserEnter />}
       <div>
         <Description />
         <ComponentWrapper title='Наша продукция'>

@@ -36,7 +36,7 @@ export const registrationSlice = createSlice({
     changeAgreement: (state, action: PayloadAction<boolean>) => {
       state.registration.agreement = !action.payload;
     },
-    changeIsOpen: (state, action: PayloadAction<boolean>) => {
+    changeIsOpenRegistration: (state, action: PayloadAction<boolean>) => {
       state.registration.isOpen = !action.payload;
     },
     changeFirstName: (state, action: PayloadAction<string | undefined>) => {
@@ -53,7 +53,7 @@ export const registrationSlice = createSlice({
 
 export const {
   changeAgreement,
-  changeIsOpen,
+  changeIsOpenRegistration,
   changeFirstName,
   changeEmail,
   changePhone,

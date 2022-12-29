@@ -2,11 +2,12 @@ import React, { FC } from 'react';
 import { useSelector } from "react-redux";
 
 import { useAppDispatch } from "app/store";
-import { changeIsOpen } from "app/store/reducers/registration";
+import { changeIsOpenRegistration } from "app/store/reducers/registration";
+import { changeIsOpenUserEnter } from 'app/store/reducers/userEnter';
 
 import Button from 'shared/ui/Button/Button';
 
-import { getRegistration } from "entities/registration/model";
+import { openModalUserEnter } from 'entities/userEnter/model';
 import { ONE_HUNDRED_PIXEL_SCROLL } from 'entities/constants/constants';
 
 import style from 'widgets/ui/Header/Header.module.scss';
@@ -22,11 +23,12 @@ const MenuButtonEnter: FC<MenuButtonEnterProps> = (props) => {
     scroll,
   } = props;
 
-  const registration = useSelector(getRegistration);
+  const userEnter = useSelector(openModalUserEnter);
   const dispatch = useAppDispatch();
 
   const handleCheckboxAgreementChange = () => {
-    dispatch(changeIsOpen(registration.isOpen))
+    dispatch(changeIsOpenRegistration(true));
+    dispatch(changeIsOpenUserEnter(userEnter.isOpen));
   };
 
   return (

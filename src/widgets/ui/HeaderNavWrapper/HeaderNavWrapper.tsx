@@ -46,7 +46,6 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
 
   const [buttonMoreIsOpen, setButtonMoreIsOpen] = useState(true);
 
-
   return (
     <div className={classNames(
       style.nav,

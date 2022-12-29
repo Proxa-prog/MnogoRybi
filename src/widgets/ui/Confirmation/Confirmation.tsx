@@ -15,6 +15,7 @@ const Confirmation: FC<ConfirmationProps> = () => {
         className={style.button_back}
         isTurn="back"
         type="button"
+        isGrayTheme
         onClick={() => { }}
       />
       <Button
