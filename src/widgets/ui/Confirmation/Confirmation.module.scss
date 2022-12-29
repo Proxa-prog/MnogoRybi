@@ -1,0 +1,115 @@
+.confirmation {
+    width: 500px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $white-00;
+    border-radius: 10px;
+    padding: 40px;
+    z-index: 10003;
+
+    h3 {
+        font-weight: 600;
+        font-size: 26px;
+        line-height: 120%;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 150%;
+        margin-bottom: 20px;
+    }
+
+    @media (max-width: 767px) {
+        width: 290px;
+        padding: 20px;
+        padding-top: 30px;
+        h3 {
+            font-size: 22px;
+        }
+    
+        p {
+            font-size: 12px;
+        }
+    }
+}
+
+.button_back {
+    position: absolute;
+    left: -59px;
+    top: 0;
+
+    @media (max-width: 767px) {
+        width: 20px;
+        height: 20px;
+        left: 5px;
+        top: 5px;
+
+        &::before {
+            width: 9px;
+            height: 2px;
+            bottom: 6px;
+            left: 7px;
+        }
+
+        &::after {
+            width: 9px;
+            height: 2px;
+            top: 6px;
+            left: 7px;
+        }
+    }
+}
+
+.button_close {
+    position: absolute;
+    right: -45px;
+    top: 0;
+
+    @media (max-width: 767px) {
+        width: 20px;
+        height: 20px;
+        right: 5px;
+        top: 5px;
+
+        
+        &::before {
+            top: 9px;
+            left: 4px;
+        }
+
+        &::after {
+            top: 9px;
+            left: 4px;
+        }
+    }
+}
+
+.button_enter {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .button_text_mobile {
+        display: none;
+    }
+
+    @media (max-width: 767px) {
+        .button_text_mobile {
+            display: inline;
+        }
+
+        .button_text_desktop {
+            display: none;
+        }
+    }
+}
+
+.input_password {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 30px;
+}

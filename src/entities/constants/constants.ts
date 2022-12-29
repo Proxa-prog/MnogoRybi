@@ -177,3 +177,4 @@ export enum ViewPorts {
 
 export const POKE_URL = "http://localhost:3001/productions";
 export const NEWS_URL = "http://localhost:3001/news";
+export const USER_DATA = "http://localhost:3001/users";

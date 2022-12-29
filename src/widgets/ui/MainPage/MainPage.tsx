@@ -19,6 +19,7 @@ import { fetchProductions } from 'entities/productions/model/services/getProduct
 import style from './MainPage.module.scss';
 import ModalRegistration from '../ModalRegistration/ModalRegistration';
 import { getRegistration } from 'entities/registration/model';
+import Confirmation from '../Confirmation/Confirmation';
 
 export interface MainPageProps {
 
@@ -35,6 +36,7 @@ const MainPage: FC<MainPageProps> = (props) => {
 
   return (
     <>
+    <Confirmation />
       <Header isAuth />
       {registration.isOpen && <ModalRegistration />}
       <div>

@@ -4,6 +4,9 @@ export interface IRegistration {
   registration: {
     agreement: boolean;
     isOpen: boolean;
+    firstName: string | undefined;
+    email: string | undefined;
+    phone: string | undefined;
   }
 }
 
@@ -20,6 +23,9 @@ const initialState: IRegistration =  {
   registration: {
     agreement: true,
     isOpen: false,
+    firstName: '',
+    email: '',
+    phone: '',
   }
 };
 
@@ -33,12 +39,24 @@ export const registrationSlice = createSlice({
     changeIsOpen: (state, action: PayloadAction<boolean>) => {
       state.registration.isOpen = !action.payload;
     },
+    changeFirstName: (state, action: PayloadAction<string | undefined>) => {
+      state.registration.firstName = action.payload;
+    },
+    changeEmail: (state, action: PayloadAction<string | undefined>) => {
+      state.registration.email = action.payload;
+    },
+    changePhone: (state, action: PayloadAction<string | undefined>) => {
+      state.registration.phone = action.payload;
+    },
   },
 });
 
 export const {
   changeAgreement,
   changeIsOpen,
+  changeFirstName,
+  changeEmail,
+  changePhone,
  } = registrationSlice.actions;
 
 export default registrationSlice.reducer;
