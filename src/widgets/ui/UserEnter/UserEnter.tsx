@@ -1,15 +1,18 @@
-import { useAppDispatch } from "app/store";
-import { changeIsOpenRegistration } from "app/store/reducers/registration";
-import { changeIsOpenUserEnter } from "app/store/reducers/userEnter";
-import { getRegistration } from "entities/registration/model";
-import { openModalUserEnter } from "entities/userEnter/model";
 import React, { FC } from "react";
 import { useSelector } from "react-redux";
+
+import { useAppDispatch } from "app/store";
+import { changeIsOpenRegistration } from "app/store/reducers/registration";
+import { changeEmailUserEnter, changeIsOpenUserEnter, changePasswordUserEnter } from "app/store/reducers/userEnter";
+
+import { getRegistration } from "entities/registration/model";
+import { openModalUserEnter } from "entities/userEnter/model";
 
 import Button from "shared/ui/Button/Button";
 import Input from "shared/ui/Input/Input";
 
 import style from './UserEnter.module.scss';
+import { findUserAccount } from "entities/productions/model/services/findUserAccount";
 
 interface UserEnterProps {
 
@@ -25,13 +28,32 @@ const UserEnter: FC<UserEnterProps> = () => {
     dispatch(changeIsOpenUserEnter(userEnter.isOpen));
   };
 
+  const handleUserEnterButtonClose = () => {
+    dispatch(changeIsOpenUserEnter(userEnter.isOpen));
+  };
+
+  const handleUserEnterEmail = (email: string | undefined) => {
+    dispatch(changeEmailUserEnter(email));
+  };
+
+  const handleUserEnterPassword = (email: string | undefined) => {
+    dispatch(changePasswordUserEnter(email));
+  };
+
+  const handleButtonUserEnter = () => {
+    findUserAccount({
+      email: userEnter.email,
+      password: userEnter.password,
+    });
+  };
+
   return (
-    <div className={style.user_enter}>
+    <form className={style.user_enter}>
       <Button
         className={style.button_close}
         isClose='close'
         type="button"
-        onClick={() => { }}
+        onClick={handleUserEnterButtonClose}
       />
       <h3>Вход</h3>
       <Input
@@ -41,20 +63,24 @@ const UserEnter: FC<UserEnterProps> = () => {
         label="Email"
         name="email"
         placeholder="Введите email"
+        onChange={handleUserEnterEmail}
       />
+      <a href="#">Забыли пароль?</a>
       <Input
+        classNameWrapper={style.email_wrapper}
         className={style.input_password}
         required
         type="password"
         label="Пароль"
         name="Пароль"
         placeholder="Введите пароль"
+        onChange={handleUserEnterPassword}
       />
       <Button
         className={style.button_enter}
-        type="button"
+        type="submit"
         color="yellow"
-        onClick={() => { }}
+        onClick={handleButtonUserEnter}
       >
         Войти
       </Button>
@@ -73,7 +99,7 @@ const UserEnter: FC<UserEnterProps> = () => {
           Зарегистрироваться
         </Button>
       </div>
-    </div>
+    </form>
   )
 };
 

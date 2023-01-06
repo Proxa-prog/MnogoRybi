@@ -65,7 +65,6 @@ const Input: FC<InputProps> = (props) => {
             onChange(event.target.value, name);
           }
         }}
-
       />
       <label
         htmlFor={name}

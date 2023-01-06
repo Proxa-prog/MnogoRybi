@@ -1,29 +1,6 @@
 {
   "users": [
-    {
-      "firstName": "",
-      "email": "",
-      "phone": 0,
-      "id": 1
-    },
-    {
-      "firstName": "",
-      "email": "",
-      "phone": 0,
-      "id": 2
-    },
-    {
-      "firstName": "DFA",
-      "email": "ASDF@MAIL.RU",
-      "phone": "3457",
-      "id": 3
-    },
-    {
-      "firstName": "DFA",
-      "email": "ASDF@MAIL.RU",
-      "phone": "3457",
-      "id": 4
-    }
+
   ],
   "productions": {
     "poke": [

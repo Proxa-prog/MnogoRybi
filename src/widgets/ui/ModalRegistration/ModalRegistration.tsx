@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { nanoid } from '@reduxjs/toolkit';
 
 import { useAppDispatch } from 'app/store';
@@ -9,25 +8,30 @@ import {
   changeEmail,
   changeFirstName,
   changeIsOpenRegistration,
-  changePhone
+  changePhone,
+  setPassword
 } from 'app/store/reducers/registration';
+import { changeIsOpenUserEnter } from 'app/store/reducers/userEnter';
+import { changeIsOpenConfirmation } from 'app/store/reducers/confirmation';
 
 import { getRegistration } from 'entities/registration/model';
 import { userRigistration } from 'entities/productions/model/services/setUserData';
+import { openConfirmation } from 'entities/confirmation/model';
+import { openModalUserEnter } from 'entities/userEnter/model';
+import { MOK_PASSWORD } from 'entities/constants/constants';
 
 import Button from 'shared/ui/Button/Button';
 import Checkbox from 'shared/ui/Checkbox/Checkbox';
 import Input from 'shared/ui/Input/Input';
 
 import style from './ModalRegistration.module.scss';
-import userEnter, { changeIsOpenUserEnter } from 'app/store/reducers/userEnter';
-import { openModalUserEnter } from 'entities/userEnter/model';
 
 const ModalRegistration: React.FC = () => {
   const dispatch = useAppDispatch();
   const buttonCloseId = nanoid();
   const registration = useSelector(getRegistration);
   const userEnter = useSelector(openModalUserEnter);
+  const confirmation = useSelector(openConfirmation);
 
   const handleButtonUserEnterClick = () => {
     dispatch(changeIsOpenRegistration(registration.isOpen));
@@ -54,16 +58,26 @@ const ModalRegistration: React.FC = () => {
     dispatch(changePhone(phone));
   };
 
+  const handleFormSubmit = () => {
+    dispatch(changeIsOpenConfirmation(confirmation.isOpen));
+    dispatch(changeIsOpenRegistration(registration.isOpen));
+  };
+
   const handleButtonRegistrationClick = () => {
+    dispatch(setPassword(MOK_PASSWORD));
+
     userRigistration({
       firstName: registration.firstName,
       email: registration.email,
       phone: registration.phone,
+      password: MOK_PASSWORD,
     });
   };
 
   return (
-    <form className={style.modal}
+    <form
+      className={style.modal}
+      onSubmit={handleFormSubmit}
     >
       <Button
         id={buttonCloseId}
@@ -81,6 +95,7 @@ const ModalRegistration: React.FC = () => {
         type='text'
         required
         onChange={handleInputNameChange}
+        value={registration.firstName}
       />
       <Input
         className={style.input_text}
@@ -90,6 +105,7 @@ const ModalRegistration: React.FC = () => {
         type='email'
         required
         onChange={handleInputEmailChange}
+        value={registration.email}
       />
       <Input
         className={style.input_text}
@@ -99,6 +115,7 @@ const ModalRegistration: React.FC = () => {
         type='number'
         required
         onChange={handleInputPhoneChange}
+        value={registration.phone}
       />
       <div className={style.agreement_wrapper}>
         <Checkbox
@@ -111,7 +128,7 @@ const ModalRegistration: React.FC = () => {
       </div>
       <Button
         className={style.button_registration}
-        type='button'
+        type='submit'
         color='yellow'
         disabled={!registration.agreement}
         onClick={handleButtonRegistrationClick}

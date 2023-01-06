@@ -14,11 +14,13 @@ import Footer from 'widgets/ui/Footer/Footer';
 import BasketWrapper from 'widgets/ui/BasketWrapper/BasketWrapper';
 import UserEnter from 'widgets/ui/UserEnter/UserEnter';
 import ModalRegistration from 'widgets/ui/ModalRegistration/ModalRegistration';
+import Confirmation from 'widgets/ui/Confirmation/Confirmation';
 
 import { getProd } from 'entities/productions/model/selectors';
 import { fetchProductions } from 'entities/productions/model/services/getProductions';
 import { getRegistration } from 'entities/registration/model';
 import { openModalUserEnter } from 'entities/userEnter/model';
+import { openConfirmation } from 'entities/confirmation/model';
 
 
 export interface MainPageProps {
@@ -30,16 +32,19 @@ const MainPage: FC<MainPageProps> = (props) => {
   const productions = useSelector(getProd);
   const registration = useSelector(getRegistration);
   const userEnter = useSelector(openModalUserEnter);
+  const confirmation = useSelector(openConfirmation);
 
   useEffect(() => {
     dispatch(fetchProductions(dispatch));
   }, []);
+console.log(confirmation);
 
   return (
     <>
       <Header />
       {registration.isOpen && <ModalRegistration />}
       {userEnter.isOpen && <UserEnter />}
+      {confirmation.isOpen && <Confirmation />}
       <div>
         <Description />
         <ComponentWrapper title='Наша продукция'>

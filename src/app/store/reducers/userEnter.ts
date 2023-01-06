@@ -3,6 +3,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export interface IUserEnter {
   userEnter: {
     isOpen: boolean;
+    email: string | undefined;
+    password: string | undefined;
   }
 }
 
@@ -18,6 +20,8 @@ export interface IUserEnterAction {
 const initialState: IUserEnter =  {
   userEnter: {
     isOpen: false,
+    email: '',
+    password: '',
   }
 };
 
@@ -28,11 +32,19 @@ export const userEnterSlice = createSlice({
     changeIsOpenUserEnter: (state, action: PayloadAction<boolean>) => {
       state.userEnter.isOpen = !action.payload;
     },
+    changeEmailUserEnter: (state, action: PayloadAction<string | undefined>) => {
+      state.userEnter.email = action.payload;
+    },
+    changePasswordUserEnter: (state, action: PayloadAction<string | undefined>) => {
+      state.userEnter.password = action.payload;
+    },
   },
 });
 
 export const {
   changeIsOpenUserEnter,
+  changeEmailUserEnter,
+  changePasswordUserEnter,
  } = userEnterSlice.actions;
 
 export default userEnterSlice.reducer;
