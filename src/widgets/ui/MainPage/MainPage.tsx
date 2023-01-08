@@ -21,6 +21,7 @@ import { fetchProductions } from 'entities/productions/model/services/getProduct
 import { getRegistration } from 'entities/registration/model';
 import { openModalUserEnter } from 'entities/userEnter/model';
 import { openConfirmation } from 'entities/confirmation/model';
+import { setUserAccountState } from 'entities/userAccount/model/userAccount';
 
 
 export interface MainPageProps {
@@ -33,15 +34,15 @@ const MainPage: FC<MainPageProps> = (props) => {
   const registration = useSelector(getRegistration);
   const userEnter = useSelector(openModalUserEnter);
   const confirmation = useSelector(openConfirmation);
+  const userAccount = useSelector(setUserAccountState);
 
   useEffect(() => {
     dispatch(fetchProductions(dispatch));
   }, []);
-console.log(confirmation);
 
   return (
     <>
-      <Header />
+      <Header isAuth={userAccount.isLogin} />
       {registration.isOpen && <ModalRegistration />}
       {userEnter.isOpen && <UserEnter />}
       {confirmation.isOpen && <Confirmation />}

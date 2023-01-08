@@ -1,10 +1,17 @@
 import React, { FC } from "react";
 import { useSelector } from "react-redux";
 
-import { useAppDispatch } from "app/store";
 import { changeIsOpenRegistration } from "app/store/reducers/registration";
-import { changeEmailUserEnter, changeIsOpenUserEnter, changePasswordUserEnter } from "app/store/reducers/userEnter";
+import { changeIsLoginUserAccount } from "app/store/reducers/userAccount";
+import { useAppDispatch } from "app/store";
+import {
+  changeEmailUserEnter,
+  changeIsOpenUserEnter,
+  changePasswordUserEnter
+} from "app/store/reducers/userEnter";
 
+import { findUserAccount } from "entities/productions/model/services/findUserAccount";
+import { setUserAccountState } from "entities/userAccount/model/userAccount";
 import { getRegistration } from "entities/registration/model";
 import { openModalUserEnter } from "entities/userEnter/model";
 
@@ -12,7 +19,6 @@ import Button from "shared/ui/Button/Button";
 import Input from "shared/ui/Input/Input";
 
 import style from './UserEnter.module.scss';
-import { findUserAccount } from "entities/productions/model/services/findUserAccount";
 
 interface UserEnterProps {
 
@@ -22,6 +28,7 @@ const UserEnter: FC<UserEnterProps> = () => {
   const dispatch = useAppDispatch();
   const registration = useSelector(getRegistration);
   const userEnter = useSelector(openModalUserEnter);
+  const userAccount = useSelector(setUserAccountState);
 
   const handleCheckboxAgreementChange = () => {
     dispatch(changeIsOpenRegistration(registration.isOpen));
@@ -40,15 +47,25 @@ const UserEnter: FC<UserEnterProps> = () => {
     dispatch(changePasswordUserEnter(email));
   };
 
-  const handleButtonUserEnter = () => {
-    findUserAccount({
+  const handleButtonUserEnter = async (event: any) => {
+    event.preventDefault();
+
+    const isSubmit = await findUserAccount({
       email: userEnter.email,
       password: userEnter.password,
     });
+
+    if (isSubmit) {
+      dispatch(changeIsOpenUserEnter(userEnter.isOpen));
+      dispatch(changeIsLoginUserAccount(userAccount.isLogin));
+    }
   };
 
   return (
-    <form className={style.user_enter}>
+    <form
+      className={style.user_enter}
+      onSubmit={handleButtonUserEnter}
+    >
       <Button
         className={style.button_close}
         isClose='close'
@@ -80,7 +97,7 @@ const UserEnter: FC<UserEnterProps> = () => {
         className={style.button_enter}
         type="submit"
         color="yellow"
-        onClick={handleButtonUserEnter}
+        onClick={() => { }}
       >
         Войти
       </Button>

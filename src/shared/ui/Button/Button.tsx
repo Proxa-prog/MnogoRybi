@@ -18,7 +18,7 @@ export interface ButtonProps {
   type: ButtonType;
   color?: ButtonColor;
   isGrayTheme?: boolean;
-  onClick?: () => void;
+  onClick?: (event?: any) => void;
   isTurn?: ButtonTurn;
   isClose?: ButtonClose;
   imageLeft?: string;

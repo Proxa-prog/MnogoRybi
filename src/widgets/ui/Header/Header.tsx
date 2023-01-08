@@ -11,6 +11,7 @@ import classNames from 'classnames';
 import { useAppDispatch } from 'app/store';
 import { openBasketBlock } from 'app/store/reducers/basket';
 import { changeIsOpenUserEnter } from 'app/store/reducers/userEnter';
+import { changeIsOpenRegistration } from 'app/store/reducers/registration';
 
 import { ViewPorts } from 'entities/constants/constants';
 import { openBasket } from 'entities/basket/model';
@@ -20,8 +21,6 @@ import HeaderOrderDataWrapper from 'widgets/ui/HeaderOrderDataWrapper/HeaderOrde
 import HeaderNavWrapper from 'widgets/ui/HeaderNavWrapper/HeaderNavWrapper';
 
 import style from './Header.module.scss';
-import { changeIsOpenRegistration } from 'app/store/reducers/registration';
-import { getRegistration } from 'entities/registration/model';
 
 export interface HeaderProps {
   itemsInTheBasket?: any;
@@ -85,7 +84,7 @@ const Header: FC<HeaderProps> = (props) => {
       <HeaderOrderDataWrapper
         isHeaderMenuActive={isHeaderMenuActive}
         windowWidth={windowWidth}
-        isAuth
+        isAuth={isAuth}
         itemsInTheBasket={itemsInTheBasket}
         onHeaderMenuClick={onHeaderMenuClick}
         onBasketButtonClick={handlerButtonBasketClick}

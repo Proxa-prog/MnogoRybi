@@ -1,6 +1,12 @@
 {
   "users": [
-
+    {
+      "firstName": "DFA",
+      "email": "ewrt@mail.ru",
+      "phone": "123123",
+      "password": "qwerty",
+      "id": 1
+    }
   ],
   "productions": {
     "poke": [

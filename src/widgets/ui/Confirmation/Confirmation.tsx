@@ -1,13 +1,15 @@
-import React, { FC, useState } from "react";
+import React, { createRef, FC, useState } from "react";
 import { useSelector } from "react-redux";
 
 import { changeIsOpenConfirmation } from "app/store/reducers/confirmation";
 import { changeIsOpenRegistration } from "app/store/reducers/registration";
+import { changeIsLoginUserAccount } from "app/store/reducers/userAccount";
 import { useAppDispatch } from "app/store";
 
 import Button from "shared/ui/Button/Button";
 import Input from "shared/ui/Input/Input";
 
+import { setUserAccountState } from "entities/userAccount/model/userAccount";
 import { getRegistration } from "entities/registration/model";
 import { openConfirmation } from "entities/confirmation/model";
 
@@ -21,6 +23,7 @@ const Confirmation: FC<ConfirmationProps> = () => {
   const dispatch = useAppDispatch();
   const registration = useSelector(getRegistration);
   const confirmation = useSelector(openConfirmation);
+  const userAccount = useSelector(setUserAccountState);
   const [repeatPassword, setRepeatPassword] = useState('');
 
   const handleButtonCloseClick = () => {
@@ -29,12 +32,11 @@ const Confirmation: FC<ConfirmationProps> = () => {
 
   const handleButtonEnterClick = (password: string | undefined) => {
     return () => {
-      console.log("password",password);
-      console.log("registration.password",registration.password);
       if (password === registration.password) {
-        console.log("Enter");
+        dispatch(changeIsLoginUserAccount(userAccount.isLogin));
+        dispatch(changeIsOpenConfirmation(confirmation.isOpen));
       }
-      console.log("error");
+      console.log("Неверный пароль");
     }
   };
 
@@ -42,7 +44,6 @@ const Confirmation: FC<ConfirmationProps> = () => {
     dispatch(changeIsOpenRegistration(registration.isOpen));
     dispatch(changeIsOpenConfirmation(confirmation.isOpen));
   };
-console.log(registration);
 
   return (
     <div className={style.confirmation}>
@@ -68,7 +69,7 @@ console.log(registration);
         label="Пароль"
         name="Пароль"
         placeholder="Введите пароль"
-        onChange={(password) => {password && setRepeatPassword(password)}}
+        onChange={(password) => { password && setRepeatPassword(password) }}
       />
       <Button
         className={style.button_enter}

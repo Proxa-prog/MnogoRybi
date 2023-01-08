@@ -37,7 +37,6 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
     onBasketButtonClick,
   } = props;
 
-
   return (
     <div className={classNames(
       style.header__order_data_wrapper,
@@ -106,7 +105,7 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
       <div className={style.header__button_wrapper}>
         {
           isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP || (
-            !isAuth
+            isAuth
               ? (
                 <Button
                   imageLeft="user_fill.svg"
@@ -129,7 +128,7 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
         }
         {
           isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP || (
-            isAuth && (
+            !isAuth && (
               <Button
                 type="button"
                 className={style.header__button_orders}
