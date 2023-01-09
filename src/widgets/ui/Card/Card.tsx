@@ -16,6 +16,7 @@ import style from './Card.module.scss';
 
 export interface CardProps {
   className?: string;
+  imageWrapperClassName?: string;
   imageUrl?: string;
   header?: string;
   description?: string;
@@ -27,13 +28,14 @@ export interface CardProps {
   buttonColor?: ButtonColor;
   isGrayTheme?: boolean;
   disabled?: boolean;
-  onClick?: (image: string) => JSX.Element;
+  onClick?: () => void;
   id?: string;
 }
 
 const Card: FC<CardProps> = (props) => {
   const {
     className = '',
+    imageWrapperClassName = '',
     imageUrl = '',
     header,
     description,
@@ -51,9 +53,9 @@ const Card: FC<CardProps> = (props) => {
 
   const dispatch = useAppDispatch();
 
-  const handleButtonClick = (image: string) => {
+  const handleButtonClick = () => {
     if (onClick) {
-      onClick(image);
+      onClick();
     }
   };
 
@@ -81,7 +83,10 @@ const Card: FC<CardProps> = (props) => {
       onClick={() => { }}
     >
       <div
-        className={style.image_wrapper}
+        className={classnames(
+          style.image_wrapper,
+          imageWrapperClassName,
+        )}
         style={{
           backgroundImage: `url(images/${imageUrl})`,
         }}
@@ -137,7 +142,7 @@ const Card: FC<CardProps> = (props) => {
             isGrayTheme={isGrayTheme}
             type="button"
             disabled={disabled}
-            onClick={handleCardClick(imageUrl)}
+            onClick={onClick && handleButtonClick || handleCardClick(imageUrl)}
           >
             {buttonText}
           </Button>

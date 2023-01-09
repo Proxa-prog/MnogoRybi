@@ -113,17 +113,13 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
                   imageWidth={24}
                   className={style.header__user_auth}
                   type="button"
-                  onClick={() => {
-                    console.log('Button enter header');
-                  }}
+                  onClick={onClick}
                 />
               )
               : (
                 <Button
                   type="button"
-                  onClick={() => {
-                    console.log('Button enter header');
-                  }}
+                  onClick={onClick}
                 >
                   Войти
                 </Button>
@@ -132,7 +128,7 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
         }
         {
           isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP || (
-            isAuth && (
+            !isAuth && (
               <Button
                 type="button"
                 className={style.header__button_orders}

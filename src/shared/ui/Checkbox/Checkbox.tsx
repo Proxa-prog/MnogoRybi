@@ -37,6 +37,7 @@ const Checkbox: FC<CheckboxProps> = (props) => {
         {label}
       </label>
       <input
+        checked={checked}
         id="checkbox"
         type="checkbox"
         className={classNames(
@@ -46,7 +47,7 @@ const Checkbox: FC<CheckboxProps> = (props) => {
         )}
         disabled={disabled}
         onChange={handleOnChange}
-        onClick={(event) => {!event.currentTarget.checked}}
+        onClick={(event) => { !event.currentTarget.checked }}
       />
     </>
   );

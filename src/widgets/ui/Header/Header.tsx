@@ -10,9 +10,12 @@ import classNames from 'classnames';
 
 import { useAppDispatch } from 'app/store';
 import { openBasketBlock } from 'app/store/reducers/basket';
+import { changeIsOpenUserEnter } from 'app/store/reducers/userEnter';
+import { changeIsOpenRegistration } from 'app/store/reducers/registration';
 
 import { ViewPorts } from 'entities/constants/constants';
 import { openBasket } from 'entities/basket/model';
+import { openModalUserEnter } from 'entities/userEnter/model';
 
 import HeaderOrderDataWrapper from 'widgets/ui/HeaderOrderDataWrapper/HeaderOrderDataWrapper';
 import HeaderNavWrapper from 'widgets/ui/HeaderNavWrapper/HeaderNavWrapper';
@@ -36,6 +39,7 @@ const Header: FC<HeaderProps> = (props) => {
   const [isProductsMenuActive, setIsProductsMenuActive] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const basket = useSelector(openBasket);
+  const userEnter = useSelector(openModalUserEnter);
 
   const handlerButtonBasketClick = () => {
     dispatch(openBasketBlock(basket.isBasketOpen));
@@ -51,6 +55,11 @@ const Header: FC<HeaderProps> = (props) => {
 
   const onHeaderMenuClick = () => {
     setIsHeaderMenuActive((prevState) => !prevState);
+  };
+
+  const onHeaderEnterClick = () => {
+    dispatch(changeIsOpenUserEnter(userEnter.isOpen));
+    dispatch(changeIsOpenRegistration(true));
   };
 
   const getWindowWidth = () => {
@@ -75,10 +84,11 @@ const Header: FC<HeaderProps> = (props) => {
       <HeaderOrderDataWrapper
         isHeaderMenuActive={isHeaderMenuActive}
         windowWidth={windowWidth}
-        isAuth
+        isAuth={isAuth}
         itemsInTheBasket={itemsInTheBasket}
         onHeaderMenuClick={onHeaderMenuClick}
         onBasketButtonClick={handlerButtonBasketClick}
+        onClick={onHeaderEnterClick}
       />
       <HeaderNavWrapper
         isHeaderMenuActive={isHeaderMenuActive}

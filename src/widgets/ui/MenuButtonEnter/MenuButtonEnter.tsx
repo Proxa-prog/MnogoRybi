@@ -1,7 +1,14 @@
-import { ONE_HUNDRED_PIXEL_SCROLL } from 'entities/constants/constants';
 import React, { FC } from 'react';
+import { useSelector } from "react-redux";
+
+import { useAppDispatch } from "app/store";
+import { changeIsOpenRegistration } from "app/store/reducers/registration";
+import { changeIsOpenUserEnter } from 'app/store/reducers/userEnter';
 
 import Button from 'shared/ui/Button/Button';
+
+import { openModalUserEnter } from 'entities/userEnter/model';
+import { ONE_HUNDRED_PIXEL_SCROLL } from 'entities/constants/constants';
 
 import style from 'widgets/ui/Header/Header.module.scss';
 
@@ -16,6 +23,14 @@ const MenuButtonEnter: FC<MenuButtonEnterProps> = (props) => {
     scroll,
   } = props;
 
+  const userEnter = useSelector(openModalUserEnter);
+  const dispatch = useAppDispatch();
+
+  const handleCheckboxAgreementChange = () => {
+    dispatch(changeIsOpenRegistration(true));
+    dispatch(changeIsOpenUserEnter(userEnter.isOpen));
+  };
+
   return (
     isAuth
       ? (
@@ -28,18 +43,14 @@ const MenuButtonEnter: FC<MenuButtonEnterProps> = (props) => {
           }
           type="button"
           isGrayTheme
-          onClick={() => {
-            console.log('Button enter header');
-          }}
+          onClick={handleCheckboxAgreementChange}
         />
       )
       : (
         <Button
           type="button"
           isGrayTheme
-          onClick={() => {
-            console.log('Button enter header');
-          }}
+          onClick={handleCheckboxAgreementChange}
         >
           Войти
         </Button>

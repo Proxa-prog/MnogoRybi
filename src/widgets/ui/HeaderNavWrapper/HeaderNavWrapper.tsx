@@ -18,6 +18,7 @@ import {
 
 import style from 'widgets/ui/Header/Header.module.scss';
 
+
 interface HeaderNavWrapperProps {
   isHeaderMenuActive: boolean;
   windowWidth: number;
@@ -94,7 +95,7 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
               )
             }
             <List
-              isLink
+              isNavigate
               classNameList={classNames(
                 style.header__products_list,
                 { [style.header__products_list__open]: isProductsMenuActive }

@@ -2,6 +2,7 @@ import { IDescription } from "app/store/reducers/description";
 
 export const CENTER_LAT = 57.628497;
 export const CENTER_LNG = 39.905368;
+export const NEWS_LIMIT = 3;
 
 export interface IProducts {
   name: string;
@@ -175,3 +176,7 @@ export enum ViewPorts {
 }
 
 export const POKE_URL = "http://localhost:3001/productions";
+export const NEWS_URL = "http://localhost:3001/news";
+export const USER_DATA = "http://localhost:3001/users";
+
+export const MOK_PASSWORD = 'qwerty';

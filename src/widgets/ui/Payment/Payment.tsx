@@ -98,6 +98,7 @@ const Payment: FC<PaymentProps> = (props) => {
           </div>
           <div className={style.agreement}>
             <Checkbox
+              checked={basket.saveCardDate}
               className={style.agreement_checkbox}
               onChange={handlerChangeCheckboxSaveCardDate(basket.saveCardDate)}
             />
