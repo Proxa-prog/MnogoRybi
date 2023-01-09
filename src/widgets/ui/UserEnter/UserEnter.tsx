@@ -60,6 +60,7 @@ const UserEnter: FC<UserEnterProps> = () => {
       dispatch(changeIsLoginUserAccount(userAccount.isLogin));
     }
   };
+  // dispatch(changeIsOpenRecovery(userAccount.recoveryIsOpen));
 
   return (
     <form
@@ -82,7 +83,13 @@ const UserEnter: FC<UserEnterProps> = () => {
         placeholder="Введите email"
         onChange={handleUserEnterEmail}
       />
-      <a href="#">Забыли пароль?</a>
+      <Button
+        className={style.button_forgot_password}
+        type="button"
+        onClick={() => { }}
+      >
+        Забыли пароль?
+      </Button>
       <Input
         classNameWrapper={style.email_wrapper}
         className={style.input_password}
