@@ -1,0 +1,86 @@
+.payment {
+    @include basket_block_wrapper;
+}
+
+.payment_block_wrapepr {
+    padding: 10px;
+}
+
+.payment_header_wrapper {
+    @include basket_block_header;
+}
+
+p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: $gray-70;
+
+    @media (max-width: 767px) {
+        font-size: 12px;
+        line-height: 18px;
+    }
+}
+
+hr {
+    width: 100%;
+    border: 1px solid $gray-10;
+}
+
+.card_data {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.user_name {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.validity_wrapper {
+    width: 65%;
+}
+
+.card_validity {
+    width: 100%;
+}
+
+.cvc_wrapper {
+    width: 32%;
+}
+
+.card_cvc {
+    width: 100%;
+}
+
+.agreement {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+
+    span {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        color: $gray-70;
+        margin-left: 10px;
+    }
+    
+    @media (max-width: 767px) {
+        span {
+            font-size: 12px;
+            line-height: 18px;
+        }
+    }
+}
+
+.agreement_checkbox {
+    @media (max-width: 767px) {
+        width: 24px;
+    }
+}
+
+.courier {
+    @include checkbox_block;
+}

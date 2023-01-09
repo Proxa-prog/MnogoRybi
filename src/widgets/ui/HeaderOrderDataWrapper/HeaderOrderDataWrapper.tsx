@@ -10,7 +10,7 @@ import Button from "shared/ui/Button/Button";
 import MenuButtonBasket from "widgets/ui/MenuButtonBasket/MenuButtonBasket";
 
 import {
-  PRODUCTS,
+  ADDRESS,
   ViewPorts
 } from "entities/constants/constants";
 
@@ -22,6 +22,8 @@ interface HeaderOrderDataWrapperProps {
   isAuth: boolean;
   itemsInTheBasket: any;
   onHeaderMenuClick: () => void;
+  onClick?: () => void;
+  onBasketButtonClick?: () => void;
 }
 
 const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
@@ -31,6 +33,8 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
     isAuth,
     itemsInTheBasket,
     onHeaderMenuClick,
+    onClick,
+    onBasketButtonClick,
   } = props;
 
   return (
@@ -78,7 +82,7 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
           )}>
             <LabelText>Доставка по адресу</LabelText>
             <Select
-              options={PRODUCTS}
+              options={ADDRESS}
               promptOption="Адрес не выбран"
             />
           </div>
@@ -150,6 +154,7 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
               <MenuButtonBasket
                 itemsInTheBasket={itemsInTheBasket}
                 windowWidth={windowWidth}
+                onBasketButtonClick={onBasketButtonClick}
               />
             </div>
           )

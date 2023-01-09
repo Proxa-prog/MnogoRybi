@@ -127,6 +127,8 @@
     font-weight: 700;
     font-size: 16px;
     line-height: 24px;
+    display: flex;
+    flex-direction: column;
 
     a[href^="tel:"] {
         text-decoration: none;
@@ -290,6 +292,42 @@
     }
 }
 
+.list_more_info {
+    display: none;
+}
+
+.list_more_info_open {
+    position: relative;
+}
+
+.info_list_scroll_more_info {
+    position: absolute;
+    bottom: -95px;
+    left: -80px;
+    background-color: $white-00;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 25px rgba(5, 5, 5, 0.15);
+}
+
+.info_item_scroll_more_info {
+    display: none;
+
+    &:nth-child(n + 4) {
+        display: block;
+        margin-bottom: 5px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        margin-right: 20px;
+    
+        a {
+            color: $gray-100;
+        }
+    }
+}
+
 .header__info_list__open {
     display: block;
 }
@@ -432,6 +470,5 @@
 
 .header__button_basket_scroll {
     padding: 10px;
-    width: 64px;
     height: 40px;
 }

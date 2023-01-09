@@ -4,29 +4,25 @@ import { nanoid } from '@reduxjs/toolkit';
 import Card, { CardProps } from '../Card/Card';
 
 import style from './Products.module.scss';
-import ChooseCard from '../ChooseCard/ChooseCard';
 
 export interface ProductsProps {
   title?: string;
   productCards?: CardProps[];
+  id?: string;
 }
 
 const Products: FC<ProductsProps> = (props) => {
   const {
     title,
     productCards,
+    id,
   } = props;
 
-  const buttonHandleClick = (images: string) => {
-    console.log("dsfg");
-
-    // return (
-    //   <ChooseCard imageUrl={images}/>
-    // )
-  }
-
   return (
-    <div className={style.products_wrapper}>
+    <div
+      className={style.products_wrapper}
+      id={id}
+    >
       <h2 className={style.title}>{title}</h2>
       {
         productCards && productCards.map((productCard: CardProps) => {
@@ -45,7 +41,6 @@ const Products: FC<ProductsProps> = (props) => {
               description={productCard.description}
               imageUrl={productCard.imageUrl}
               statuses={productCard.statuses}
-              // onClick={buttonHandleClick}
             />
           )
         })

@@ -1,0 +1,24 @@
+.recipient {
+    margin-bottom: 30px;
+}
+
+.recipient_data_wrapper {
+    width: 100%;
+    padding: 15px;
+    background-color: $white-00;
+
+    @media (max-width: 767px) {
+        padding: 10px;
+    }
+}
+
+.user_name,
+.user_phone {
+    min-width: auto;
+    width: 100%;
+    margin-bottom: 20px;
+
+    @media (max-width: 767px) {
+        margin-bottom: 15px;
+    }
+}

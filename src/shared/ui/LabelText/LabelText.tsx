@@ -6,23 +6,26 @@ import style from './LabelText.module.scss';
 export interface LabelTextProps {
   className?: string;
   children: string;
+  id?: string;
 }
 
 const LabelText: FC<LabelTextProps> = (props) => {
   const {
     className,
     children,
+    id,
   } = props;
 
   return (
-    <p
+    <label
       className={classNames(
         style.label_text,
         className,
       )}
+      htmlFor={id}
     >
       {children}
-    </p>
+    </label>
   );
 };
 

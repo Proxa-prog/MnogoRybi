@@ -52,7 +52,10 @@ const Button: FC<ButtonProps> = (props) => {
   const defaultButtonColor = isGrayTheme ? 'default_white' : '';
 
   const handleOnClick = () => {
+    console.log("Button");
+
     if (onClick) {
+      console.log("onClick");
       onClick();
     }
   };

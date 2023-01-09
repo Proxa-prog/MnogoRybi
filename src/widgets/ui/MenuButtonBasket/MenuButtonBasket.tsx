@@ -1,8 +1,15 @@
 import React, { FC } from 'react';
-import { ONE_HUNDRED_PIXEL_SCROLL, ViewPorts } from 'entities/constants/constants';
+import { useSelector } from 'react-redux';
 
 import Button from 'shared/ui/Button/Button';
 import StatusMarker from 'shared/ui/StatusMarker/StatusMarker';
+
+import { openBasket } from 'entities/basket/model';
+import { setTotalCost } from 'entities/setTotalCost';
+import {
+  ONE_HUNDRED_PIXEL_SCROLL,
+  ViewPorts
+} from 'entities/constants/constants';
 
 import style from 'widgets/ui/Header/Header.module.scss';
 
@@ -10,6 +17,8 @@ interface MenuButtonBasketProps {
   itemsInTheBasket: number;
   scroll?: number;
   windowWidth: number;
+  onBasketButtonClick?: () => void;
+  onClick?: () => void;
 }
 
 const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
@@ -17,7 +26,12 @@ const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
     itemsInTheBasket,
     scroll,
     windowWidth,
+    onBasketButtonClick,
+    onClick,
   } = props;
+
+  const basket = useSelector(openBasket);
+  const totalCost = setTotalCost(basket.basket);
 
   if (
     scroll
@@ -36,11 +50,9 @@ const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
         type="button"
         color="yellow"
         imageLeft="property_bag_alt_fill.svg"
-        onClick={() => {
-          console.log('Button enter header');
-        }}
+        onClick={onBasketButtonClick}
       >
-        0 &#8381;
+        {totalCost} &#8381;
       </Button>
     );
   }
@@ -64,7 +76,7 @@ const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
               color="blue"
               className={style.header__amount_items}
             >
-              0
+              {basket.basket.length}
             </StatusMarker>
           )
       }
@@ -78,11 +90,9 @@ const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
         type="button"
         color="yellow"
         imageLeft="property_bag_alt_fill.svg"
-        onClick={() => {
-          console.log('Button enter header');
-        }}
+        onClick={onBasketButtonClick}
       >
-        0 &#8381;
+        {totalCost} &#8381;
       </Button>
     </>
   );

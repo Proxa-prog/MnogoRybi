@@ -76,54 +76,6 @@
     }
 }
 
-.amount_wrapper {
-    padding: 20px 30px;
-    background-color: $yellow-10;
-    display: flex;
-
-    @media (max-width: 767px) {
-        padding: 15px;
-        justify-content: space-between;
-    }
-}
-
-.amount {
-    width: 56px;
-    text-align: center;
-}
-
-.button_amount {
-    width: 24px;
-    height: 24px;
-    padding: 5px;
-    margin: 0;
-}
-
-.how_much_wrapper {
-    background: $white-00;
-    border: 1px solid $gray-30;
-    border-radius: 30px;
-    padding: 18px;
-    width: 160px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    @media (max-width: 767px) {
-        padding: 8px;
-        width: 110px;
-    }
-}
-
-.button_basket {
-    padding: 18px 58px;
-    border-radius: 30px;
-
-    @media (max-width: 767px) {
-        padding: 8px 22px;
-    }
-}
-
 .compaund {
     margin-bottom: 30px;
 
@@ -148,14 +100,20 @@
 
         &::after {
             position: absolute;
-            right: 15px;
-            top: 47px;
+            right: -290px;
+            top: 42px;
             content: "";
             width: 20px;
             height: 20px;
             background-image: url("/public/images/arrow_down.svg");
             background-repeat: no-repeat;
             background-position: center;
+        }
+    }
+
+    .sauce_label {
+        &::after {   
+            right: -314px;
         }
     }
 
@@ -167,6 +125,17 @@
         padding: 15px;
         margin-bottom: 15px;
         appearance: none;
+    }
+}
+
+.amount_wrapper {
+    padding: 20px 30px;
+    background-color: $yellow-10;
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: 767px) {
+        padding: 15px;
     }
 }
 

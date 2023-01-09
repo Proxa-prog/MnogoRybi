@@ -1,9 +1,11 @@
+import React, { FC } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
 import classNames from 'classnames';
-import React, { FC } from 'react';
+
 import { IProducts } from 'entities/constants/constants';
 
 import style from './List.module.scss';
+import { Link } from 'react-router-dom';
 
 export interface ListProps {
   classNameItem?: string;
@@ -40,7 +42,7 @@ const List: FC<ListProps> = (props) => {
             >
               {
                 isLink
-                  ? <a href={`#${item}`}>{item.name}</a>
+                  ? <Link to={`/${item.id}`}>{item.name}</Link>
                   : <span>{item.name}</span>
               }
             </li>
