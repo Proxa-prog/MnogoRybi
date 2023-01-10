@@ -12,6 +12,7 @@ import registrationReduser from "./reducers/registration";
 import userEnterReduser from "./reducers/userEnter";
 import configmationReduser from "./reducers/confirmation";
 import userAccountReduser from "./reducers/userAccount";
+import siteDataReduser from "./reducers/siteData";
 
 const rootReducer = combineReducers({
   description: descriptionReducer,
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   userEnter: userEnterReduser,
   configmation: configmationReduser,
   userAccount: userAccountReduser,
+  siteData: siteDataReduser,
 });
 
 export const store = configureStore({

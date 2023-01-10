@@ -1,0 +1,20 @@
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+
+import { getSiteData } from 'app/store/reducers/siteData';
+
+import { SITE_DATA } from "entities/constants/constants";
+
+export const fetchSiteData = createAsyncThunk(SITE_DATA, async (dispatch: any) => {
+  const response = await axios.get(SITE_DATA);
+  const responseToNumber = response.data.popupCoordinates.map((item: any) => {
+    item.lat = Number(item.lat);
+    item.lng = Number(item.lng);
+
+    return item;
+  });
+
+  response.data.popupCoordinates = responseToNumber;
+
+  dispatch(getSiteData(response.data));
+});

@@ -20,6 +20,12 @@ import { NEWS_LIMIT } from 'entities/constants/constants';
 
 import style from './News.module.scss';
 import { getRegistration } from 'entities/registration/model';
+import { openModalUserEnter } from 'entities/userEnter/model';
+import { openConfirmation } from 'entities/confirmation/model';
+import { setUserAccountState } from 'entities/userAccount/model/userAccount';
+import UserEnter from 'widgets/ui/UserEnter/UserEnter';
+import Confirmation from 'widgets/ui/Confirmation/Confirmation';
+import Recovery from 'widgets/ui/Recovery/Recovery';
 
 export interface NewsProps {
 
@@ -30,6 +36,9 @@ const News: FC<NewsProps> = (props) => {
   const router = useNavigate();
   const news = useSelector(getNews);
   const registration = useSelector(getRegistration);
+  const userEnter = useSelector(openModalUserEnter);
+  const confirmation = useSelector(openConfirmation);
+  const userAccount = useSelector(setUserAccountState);
 
   const handleButtonShowMore = () => {
     dispatch(addLimit(NEWS_LIMIT));
@@ -51,7 +60,10 @@ const News: FC<NewsProps> = (props) => {
   return (
     <>
       {registration.isOpen && <ModalRegistration />}
-      <Header isAuth />
+      {userEnter.isOpen && <UserEnter />}
+      {confirmation.isOpen && <Confirmation />}
+      {userAccount.recoveryIsOpen && <Recovery />}
+      <Header isAuth={userAccount.isLogin} />
       <BlockHeader
         pageName='Новости и акции'
       >

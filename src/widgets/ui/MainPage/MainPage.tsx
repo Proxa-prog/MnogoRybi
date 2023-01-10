@@ -23,7 +23,9 @@ import { getRegistration } from 'entities/registration/model';
 import { openModalUserEnter } from 'entities/userEnter/model';
 import { openConfirmation } from 'entities/confirmation/model';
 import { setUserAccountState } from 'entities/userAccount/model/userAccount';
-
+import { fetchSiteData } from 'entities/productions/model/services/fetchSiteData';
+import { getSiteDataSelector } from 'entities/siteData/model';
+import { changeDescription } from 'app/store/reducers/description';
 
 export interface MainPageProps {
 
@@ -36,10 +38,13 @@ const MainPage: FC<MainPageProps> = (props) => {
   const userEnter = useSelector(openModalUserEnter);
   const confirmation = useSelector(openConfirmation);
   const userAccount = useSelector(setUserAccountState);
+  const siteData = useSelector(getSiteDataSelector);
 
   useEffect(() => {
     dispatch(fetchProductions(dispatch));
+    dispatch(fetchSiteData(dispatch));
   }, []);
+  console.log(siteData);
 
   return (
     <>

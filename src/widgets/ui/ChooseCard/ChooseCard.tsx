@@ -13,17 +13,17 @@ import {
 } from 'app/store/reducers/amountProduct';
 import { addProductInBasket } from 'app/store/reducers/basket';
 
+import ProductCounter from 'widgets/ui/ProductCounter/ProductCounter';
+
 import { openProductsCard } from 'entities/openProductsCard/model/selectors';
-import { BASE_PRODUCT, SAUCE } from 'entities/constants/constants';
 import { getAmountProduct } from 'entities/amountProduct/model';
-import { openBasket } from 'entities/basket/model';
+import { getSiteDataSelector } from 'entities/siteData/model';
 
 import Select from 'shared/ui/Select/Select';
 import LabelText from 'shared/ui/LabelText/LabelText';
 import StatusMarker, { StatusMarkerProps } from 'shared/ui/StatusMarker/StatusMarker';
 import Button from 'shared/ui/Button/Button';
 
-import ProductCounter from 'widgets/ui/ProductCounter/ProductCounter';
 import style from './ChooseCard.module.scss';
 
 export interface ChooseCardProps {
@@ -33,8 +33,7 @@ const ChooseCard: FC<ChooseCardProps> = (props) => {
   const dispatch = useAppDispatch();
   const productsCard = useSelector(openProductsCard);
   const amountProduct = useSelector(getAmountProduct);
-  const basket = useSelector(openBasket);
-  console.log(amountProduct);
+  const siteData = useSelector(getSiteDataSelector);
 
   // Увеличить количество товараx
   const addAmountProduct = () => {
@@ -137,8 +136,8 @@ const ChooseCard: FC<ChooseCardProps> = (props) => {
               className={style.ingredients_label}
             />
             <Select
-              options={BASE_PRODUCT}
-              promptOption={BASE_PRODUCT[0].name}
+              options={siteData.baseProduct}
+              promptOption={siteData.baseProduct[0].name}
               className={style.ingredients_select}
               onChange={changeBaseProduct}
             />
@@ -151,8 +150,8 @@ const ChooseCard: FC<ChooseCardProps> = (props) => {
               )}
             />
             <Select
-              options={SAUCE}
-              promptOption={SAUCE[0].name}
+              options={siteData.sauce}
+              promptOption={siteData.sauce[0].name}
               className={style.ingredients_select}
               onChange={changeSauce}
             />

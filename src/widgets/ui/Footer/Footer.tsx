@@ -1,15 +1,13 @@
 import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import classNames from 'classnames';
 
 import ImageWrapper from 'shared/ui/ImageWrapper/ImageWrapper';
 import List from 'shared/ui/List/List';
 
-import {
-  ADDRESS,
-  INFO_FOOTER,
-  PRODUCTS
-} from 'entities/constants/constants';
+import { getSiteDataSelector } from 'entities/siteData/model';
 
 import style from './Footer.module.scss';
 
@@ -18,6 +16,7 @@ export interface FooterProps {
 }
 
 const Footer: FC<FooterProps> = (props) => {
+  const siteData = useSelector(getSiteDataSelector);
 
   return (
     <footer className={classNames(
@@ -29,13 +28,15 @@ const Footer: FC<FooterProps> = (props) => {
         <div className={classNames(
           style.footer__logo_wrapper
         )}>
-          <ImageWrapper
-            className={style.footer__logo}
-            alt="Логотип Много Рыбы"
-            name="logo_white.svg"
-            width={235.9}
-            height={70}
-          />
+          <Link to='/'>
+            <ImageWrapper
+              className={style.footer__logo}
+              alt="Логотип Много Рыбы"
+              name="logo_white.svg"
+              width={235.9}
+              height={70}
+            />
+          </Link>
         </div>
         <div className={classNames(
           style.footer__info_wrapper
@@ -46,7 +47,7 @@ const Footer: FC<FooterProps> = (props) => {
             <h3>Меню poke-room</h3>
             <List
               isNavigate
-              items={PRODUCTS}
+              items={siteData.products}
               classNameList={classNames(
                 style.footer__list,
               )}
@@ -61,7 +62,7 @@ const Footer: FC<FooterProps> = (props) => {
             <h3>О нас</h3>
             <List
               isLink
-              items={INFO_FOOTER}
+              items={siteData.info_footer}
               classNameList={classNames(
                 style.footer__list,
               )}
@@ -76,7 +77,8 @@ const Footer: FC<FooterProps> = (props) => {
           )}>
             <h3>Контакты</h3>
             <List
-              items={ADDRESS}
+              isLink
+              items={siteData.address}
               classNameList={classNames(
                 style.footer__list,
                 { [style.footer__address_list]: true }

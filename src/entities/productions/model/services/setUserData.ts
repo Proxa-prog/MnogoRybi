@@ -16,9 +16,6 @@ export const userRigistration = async (userData: any) => {
     phone: phone,
     password: password,
   })
-  .then(function (response) {
-    console.log(response);
-  })
   .catch(function (error) {
     console.log(error);
   });

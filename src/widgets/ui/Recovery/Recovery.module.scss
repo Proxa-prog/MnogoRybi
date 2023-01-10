@@ -1,0 +1,80 @@
+.recovery {
+    @include modal;
+}
+
+.button_back {
+    position: absolute;
+    left: -59px;
+    top: 0;
+
+    @media (max-width: 767px) {
+        width: 20px;
+        height: 20px;
+        left: 5px;
+        top: 5px;
+
+        &::before {
+            width: 9px;
+            height: 2px;
+            bottom: 6px;
+            left: 7px;
+        }
+
+        &::after {
+            width: 9px;
+            height: 2px;
+            top: 6px;
+            left: 7px;
+        }
+    }
+}
+
+.button_close {
+    position: absolute;
+    right: -45px;
+    top: 0;
+
+    @media (max-width: 767px) {
+        width: 20px;
+        height: 20px;
+        right: 5px;
+        top: 5px;
+
+        
+        &::before {
+            top: 9px;
+            left: 4px;
+        }
+
+        &::after {
+            top: 9px;
+            left: 4px;
+        }
+    }
+}
+
+.button_enter {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .button_text_mobile {
+        display: none;
+    }
+
+    @media (max-width: 767px) {
+        .button_text_mobile {
+            display: inline;
+        }
+
+        .button_text_desktop {
+            display: none;
+        }
+    }
+}
+
+.input_password {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 30px;
+}
