@@ -1,4 +1,6 @@
 import React, { FC, useState } from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import classNames from "classnames";
 
@@ -9,10 +11,9 @@ import List from "shared/ui/List/List";
 import MenuButtonBasket from "widgets/ui/MenuButtonBasket/MenuButtonBasket";
 import MenuButtonEnter from "widgets/ui/MenuButtonEnter/MenuButtonEnter";
 
+import { getSiteDataSelector } from "entities/siteData/model";
 import {
-  INFO,
   ONE_HUNDRED_PIXEL_SCROLL,
-  PRODUCTS,
   ViewPorts
 } from "entities/constants/constants";
 
@@ -43,7 +44,7 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
     onClick,
     onBasketButtonClick,
   } = props;
-
+  const siteData = useSelector(getSiteDataSelector);
   const [buttonMoreIsOpen, setButtonMoreIsOpen] = useState(true);
 
   return (
@@ -85,13 +86,15 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
           >
             {
               (scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL && windowWidth >= ViewPorts.DESKTOP) && (
-                <ImageWrapper
-                  className={style.header__logo_scroll}
-                  name="logo_only_image.svg"
-                  alt="Логотип тарелка, рыба, китайские палочки"
-                  width={38.25}
-                  height={45}
-                />
+                <Link to='/'>
+                  <ImageWrapper
+                    className={style.header__logo_scroll}
+                    name="logo_only_image.svg"
+                    alt="Логотип тарелка, рыба, китайские палочки"
+                    width={38.25}
+                    height={45}
+                  />
+                </Link>
               )
             }
             <List
@@ -104,7 +107,7 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
                 style.header__products_item,
                 { [style.header__products_item__open]: isProductsMenuActive }
               )}
-              items={PRODUCTS}
+              items={siteData.products}
             />
             <div className={style.header__vertical_line} />
             {
@@ -115,7 +118,7 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
                       isLink
                       classNameList={style.header__info_list_scroll}
                       classNameItem={style.header__info_item_scroll}
-                      items={INFO}
+                      items={siteData.info}
                     />
                     <Button
                       className={style.header__button_more}
@@ -123,7 +126,7 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
                       imageRight="property_expand_down.svg"
                       imageHeight={24}
                       imageWidth={24}
-                      onClick={() => {setButtonMoreIsOpen(prev => !prev)}}
+                      onClick={() => { setButtonMoreIsOpen(prev => !prev) }}
                     >
                       Ещё
                     </Button>
@@ -135,7 +138,7 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
                         isLink
                         classNameList={style.info_list_scroll_more_info}
                         classNameItem={style.info_item_scroll_more_info}
-                        items={INFO}
+                        items={siteData.info}
                       />
                     </div>
                   </>
@@ -151,7 +154,7 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
                       style.header__info_item,
                       { [style.header__info_item__open]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP }
                     )}
-                    items={INFO}
+                    items={siteData.info}
                   />
                 )
             }

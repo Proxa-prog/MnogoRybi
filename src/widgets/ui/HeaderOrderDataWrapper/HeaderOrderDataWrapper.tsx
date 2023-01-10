@@ -1,4 +1,6 @@
 import React, { FC } from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import classNames from "classnames";
 
@@ -7,12 +9,11 @@ import LabelText from "shared/ui/LabelText/LabelText";
 import Select from "shared/ui/Select/Select";
 import Button from "shared/ui/Button/Button";
 
+import { getSiteDataSelector } from "entities/siteData/model";
+
 import MenuButtonBasket from "widgets/ui/MenuButtonBasket/MenuButtonBasket";
 
-import {
-  ADDRESS,
-  ViewPorts
-} from "entities/constants/constants";
+import {ViewPorts} from "entities/constants/constants";
 
 import style from 'widgets/ui/Header/Header.module.scss';
 
@@ -36,6 +37,7 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
     onClick,
     onBasketButtonClick,
   } = props;
+  const siteData = useSelector(getSiteDataSelector);
 
   return (
     <div className={classNames(
@@ -59,13 +61,15 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
         onClick={onHeaderMenuClick}
       />
       {isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP || (
-        <ImageWrapper
-          className={style.header__logo}
-          alt="Логотип Много Рыбы"
-          name="logo.svg"
-          width={236}
-          height={70}
-        />
+        <Link to='/'>
+          <ImageWrapper
+            className={style.header__logo}
+            alt="Логотип Много Рыбы"
+            name="logo.svg"
+            width={236}
+            height={70}
+          />
+        </Link>
       )}
 
       <div className={classNames(
@@ -82,7 +86,7 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
           )}>
             <LabelText>Доставка по адресу</LabelText>
             <Select
-              options={ADDRESS}
+              options={siteData.address}
               promptOption="Адрес не выбран"
             />
           </div>

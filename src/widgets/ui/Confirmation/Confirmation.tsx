@@ -1,4 +1,4 @@
-import React, { createRef, FC, useState } from "react";
+import React, { FC, useState } from "react";
 import { useSelector } from "react-redux";
 
 import { changeIsOpenConfirmation } from "app/store/reducers/confirmation";
@@ -35,8 +35,11 @@ const Confirmation: FC<ConfirmationProps> = () => {
       if (password === registration.password) {
         dispatch(changeIsLoginUserAccount(userAccount.isLogin));
         dispatch(changeIsOpenConfirmation(confirmation.isOpen));
+        console.log("Успешно!");
+      } else {
+        console.log("Неверный пароль");
       }
-      console.log("Неверный пароль");
+
     }
   };
 

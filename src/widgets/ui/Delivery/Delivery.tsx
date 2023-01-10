@@ -9,10 +9,9 @@ import Select from 'shared/ui/Select/Select';
 import Checkbox from 'shared/ui/Checkbox/Checkbox';
 import LabelText from 'shared/ui/LabelText/LabelText';
 
-import { ADDRESS } from 'entities/constants/constants';
-
 import style from './Delivery.module.scss';
 import { openBasket } from 'entities/basket/model';
+import { getSiteDataSelector } from 'entities/siteData/model';
 
 export interface DeliveryProps {
 }
@@ -21,6 +20,7 @@ const Delivery: FC<DeliveryProps> = (props) => {
   const dispatch = useDispatch();
   const labelDeliveryCheckboxId = nanoid();
   const basket = useSelector(openBasket);
+  const siteData = useSelector(getSiteDataSelector);
 
   const handlerChangeSelectAddress = (address: string) => {
     dispatch(addRecipientAddress(address));
@@ -64,8 +64,8 @@ const Delivery: FC<DeliveryProps> = (props) => {
           />
           <Select
             className={style.delivery_address}
-            promptOption={ADDRESS[0].name}
-            options={ADDRESS}
+            promptOption={siteData.address[0].name}
+            options={siteData.address}
             onChange={handlerChangeSelectAddress}
           />
           <p className={style.change_address_text}>Хотите доставить по другому адресу?<br /> <a href='#'>Да изменить</a></p>

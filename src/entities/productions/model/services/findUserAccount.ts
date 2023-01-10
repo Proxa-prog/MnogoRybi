@@ -8,21 +8,19 @@ export const findUserAccount = async (userData: any) => {
   const data = await axios
     .get(USER_DATA)
     .then((resp) => {
-      console.log(resp.data);
-      resp.data.find((item: any) => {
-        if (item.email === email && item.password === password) {
-          console.log("Find!");
-          isTrue = true;
+      const isFind = resp.data.find(
+        (item: any) => item.email === email && item.password === password
+      );
 
-        } else {
-          console.log("nothing!");
-          isTrue = false;
-        }
-      });
+      if (isFind) {
+        isTrue = true;
+      } else {
+        isTrue = false;
+      }
     })
     .catch((error) => {
       console.log(error);
     });
 
-    return isTrue;
+  return isTrue;
 };

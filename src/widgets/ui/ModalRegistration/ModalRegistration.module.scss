@@ -1,13 +1,5 @@
 .modal {
-    width: 500px;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    padding: 40px;
-    background: $white-00;
-    border-radius: 20px;
-    z-index: 10002;
+    @include modal;
     
     h3 {
         margin-bottom: 20px;

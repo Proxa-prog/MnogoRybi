@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { DESCRIPTION_IMAGES_LINKS } from "entities/constants/constants";
 
 export interface IDescription {
   name: string;
@@ -20,7 +19,7 @@ export interface IDescriptionsAction {
 }
 
 const initialState: DescriprionsArray =  {
-  descriptions: DESCRIPTION_IMAGES_LINKS,
+  descriptions: [],
 };
 
 export const descriptionSlice = createSlice({

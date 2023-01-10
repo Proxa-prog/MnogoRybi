@@ -14,6 +14,7 @@ import { DESCRIPTION_COUNT_LENGTS } from 'entities/constants/constants';
 
 
 import style from './Description.module.scss';
+import { getSiteDataSelector } from 'entities/siteData/model';
 
 export interface DescriptionProps {
 
@@ -26,6 +27,7 @@ const Description: FC<DescriptionProps> = (props) => {
   const [buttonClickCounter, setButtonClickCounter] = useState(0);
   const [isButtonPrevDisabled, setIsButtonPrevDisabled] = useState(true);
   const [isButtonForwardDisabled, setIsButtonForwardDisabled] = useState(false);
+  const siteData = useSelector(getSiteDataSelector);
 
   const chooseCurrentDescription = (counter: number, descriptionsArray: IDescription[]) => {
     const copy = JSON.parse(JSON.stringify(descriptionsArray))
@@ -68,7 +70,11 @@ const Description: FC<DescriptionProps> = (props) => {
 
   useEffect(() => {
     chooseCurrentDescription(buttonClickCounter, descriptions);
-  }, [buttonClickCounter])
+  }, [buttonClickCounter]);
+
+  useEffect(() => {
+    dispatch(changeDescription(siteData.descriptionImagesLinks));
+  }, [siteData.descriptionImagesLinks]);
 
   return (
     <section className={style.description}>

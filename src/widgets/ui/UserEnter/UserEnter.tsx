@@ -2,7 +2,8 @@ import React, { FC } from "react";
 import { useSelector } from "react-redux";
 
 import { changeIsOpenRegistration } from "app/store/reducers/registration";
-import { changeIsLoginUserAccount } from "app/store/reducers/userAccount";
+import { changeIsLoginUserAccount, changeIsOpenRecovery } from "app/store/reducers/userAccount";
+import { changeIsOpenConfirmation } from "app/store/reducers/confirmation";
 import { useAppDispatch } from "app/store";
 import {
   changeEmailUserEnter,
@@ -47,6 +48,11 @@ const UserEnter: FC<UserEnterProps> = () => {
     dispatch(changePasswordUserEnter(email));
   };
 
+  const handleConfirmationButtonClick= () => {
+    dispatch(changeIsOpenRecovery(userAccount.recoveryIsOpen));
+    dispatch(changeIsOpenUserEnter(userEnter.isOpen));
+  };
+
   const handleButtonUserEnter = async (event: any) => {
     event.preventDefault();
 
@@ -82,7 +88,13 @@ const UserEnter: FC<UserEnterProps> = () => {
         placeholder="Введите email"
         onChange={handleUserEnterEmail}
       />
-      <a href="#">Забыли пароль?</a>
+      <Button
+        className={style.button_forgot_password}
+        type="button"
+        onClick={handleConfirmationButtonClick}
+      >
+        Забыли пароль?
+      </Button>
       <Input
         classNameWrapper={style.email_wrapper}
         className={style.input_password}

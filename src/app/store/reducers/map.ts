@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CENTER_LAT, CENTER_LNG } from "entities/constants/constants";
 
 export interface IMap {
   lat: number;
@@ -16,8 +15,8 @@ export interface IMapAction {
 }
 
 const initialState: IMap =  {
-  lat: CENTER_LAT,
-  lng: CENTER_LNG,
+  lat: 0,
+  lng: 0,
 };
 
 export const mapSlice = createSlice({
