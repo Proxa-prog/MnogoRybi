@@ -3,13 +3,13 @@ import { useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 
 import { useAppDispatch } from 'app/store';
-import { setOpenProductsCard } from 'app/store/reducers/openProductsCard';
 
-import { openProductsCard } from 'entities/openProductsCard/model/selectors';
+import { setOpenProductsCard } from 'features/openProductsCard/model/slice/openProductsCardSlice';
+import { openProductsCardSelector } from 'features/openProductsCard/model/slice/openProductsCardSelector';
+import ChooseCard from 'features/ChooseCard/ChooseCard';
 
 import Button from 'shared/ui/Button/Button';
 
-import ChooseCard from 'widgets/ui/ChooseCard/ChooseCard';
 
 import style from './ChooseCardWrapper.module.scss';
 
@@ -18,7 +18,7 @@ export interface ChooseCardWrapperProps {
 
 const ChooseCardWrapper: FC<ChooseCardWrapperProps> = (props) => {
   const dispatch = useAppDispatch();
-  const productsCard = useSelector(openProductsCard);
+  const productsCard = useSelector(openProductsCardSelector);
   const cardWrapperId = nanoid();
   const buttonCloseId = nanoid();
 

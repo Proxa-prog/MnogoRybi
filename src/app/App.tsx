@@ -13,14 +13,14 @@ import {
   DELIVERY_ROUTE,
 } from 'entities/constants/constants';
 
-import MainPage from 'widgets/ui/MainPage/MainPage';
-import News from 'widgets/ui/News/News';
-import Contacts from 'widgets/ui/Contacts/Contacts';
-import NewsPage from 'widgets/ui/NewsPage/NewsPage';
+import MainPage from 'pages/MainPage/MainPage';
+import News from 'pages/News/News';
+import Contacts from 'pages/Contacts/Contacts';
+import NewsPage from 'pages/NewsPage/NewsPage';
 // import FranchisePage from 'widgets/ui/FranchisePage/FranchisePage';
 // import DeliveryPage from 'widgets/ui/DeliveryPage/DeliveryPage';
 
-import 'fonts/style.css';
+import 'shared/assets/fonts/style.css';
 import './styles/index.scss';
 import style from './App.module.scss';
 

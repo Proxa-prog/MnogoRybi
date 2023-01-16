@@ -5,20 +5,19 @@ import React,
   useState
 } from 'react';
 import { useSelector } from 'react-redux';
-
 import classNames from 'classnames';
 
 import { useAppDispatch } from 'app/store';
-import { openBasketBlock } from 'app/store/reducers/basket';
 import { changeIsOpenUserEnter } from 'app/store/reducers/userEnter';
 import { changeIsOpenRegistration } from 'app/store/reducers/registration';
 
+import { openBasketBlock } from 'entities/basket/model/slice/basketReducer';
 import { ViewPorts } from 'entities/constants/constants';
-import { openBasket } from 'entities/basket/model';
+import { openBasket } from 'entities/basket/model/slice/openBasket';
 import { openModalUserEnter } from 'entities/userEnter/model';
 
-import HeaderOrderDataWrapper from 'widgets/ui/HeaderOrderDataWrapper/HeaderOrderDataWrapper';
-import HeaderNavWrapper from 'widgets/ui/HeaderNavWrapper/HeaderNavWrapper';
+import HeaderOrderDataWrapper from 'widgets/ui/Header/ui/HeaderOrderDataWrapper/HeaderOrderDataWrapper';
+import HeaderNavWrapper from 'widgets/ui/Header/ui/HeaderNavWrapper/HeaderNavWrapper';
 
 import style from './Header.module.scss';
 

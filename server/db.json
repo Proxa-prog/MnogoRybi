@@ -1,32 +1,14 @@
 {
   "users": [
     {
-      "firstName": "DFA",
-      "email": "ewrt@mail.ru",
-      "phone": "123123",
-      "password": "qwerty",
-      "id": 1
-    },
-    {
-      "firstName": "DsdfgFA",
-      "email": "ewrsdfgdsfgt@mail.ru",
-      "phone": "123123",
-      "password": "qwerty",
-      "id": 2
-    },
-    {
       "firstName": "qwer",
       "email": "ASDF@MAIL.RU",
-      "phone": "234",
+      "phone": "213",
       "password": "qwerty",
-      "id": 3
-    },
-    {
-      "firstName": "sdfagdsaf",
-      "email": "",
-      "phone": "324",
-      "password": "qwerty",
-      "id": 4
+      "orders": [
+        
+      ],
+      "id": 1
     }
   ],
   "productions": {
@@ -803,11 +785,26 @@
       }
     ],
     "info_footer": [
-      { "name": "Доставка и оплата", "id": "delivery" },
-      { "name": "Новости", "id": "news" },
-      { "name": "Франшиза", "id": "franchise" },
-      { "name": "Контакты", "id": "contacts" },
-      { "name": "Личный кабинет", "id": "personalArea" }
+      {
+        "name": "Доставка и оплата",
+        "id": "delivery"
+      },
+      {
+        "name": "Новости",
+        "id": "news"
+      },
+      {
+        "name": "Франшиза",
+        "id": "franchise"
+      },
+      {
+        "name": "Контакты",
+        "id": "contacts"
+      },
+      {
+        "name": "Личный кабинет",
+        "id": "personalArea"
+      }
     ],
     "address": [
       {
@@ -829,7 +826,7 @@
         "workTime": "пн-вс: 9:00—22:00",
         "phone": "Телефон: 8 (4852) 980-100",
         "lat": 57.641119,
-        "lng": 39.910650
+        "lng": 39.91065
       },
       {
         "name": "Ярославль, Урицкого 39",

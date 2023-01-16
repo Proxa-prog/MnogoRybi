@@ -1,9 +1,9 @@
 import { nanoid } from '@reduxjs/toolkit';
 import classNames from 'classnames';
 import React,
-{ FC, SelectHTMLAttributes }
+{ FC, SelectHTMLAttributes, useState }
   from 'react';
-import { IProducts } from 'entities/constants/constants';
+import { IProducts } from 'types/types';
 
 import style from './Select.module.scss';
 
@@ -29,37 +29,74 @@ const Select: FC<SelectProps> = (props) => {
     promptOption,
     onChange,
   } = props;
+  const [value, setValue] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectOption, setSelectOption] = useState(promptOption);
+
+  const handleSelectClick = () => {
+    setIsOpen(prev => !prev);
+  };
+
+  const handleOptionClick = (option: any) => {
+
+    return () => {
+      onChange && onChange(option.name);
+      setValue(option.name);
+      setSelectOption(option.name)
+      setIsOpen(prev => !prev);
+    }
+  };
 
   return (
-    <select
-      className={classNames(
-        style.select_default,
-        className,
-      )}
+    <>
+      <select
+        className={classNames(
+          style.select_default,
+          className,
+          {
+            // [style.closed]: isOpen,
+          }
+        )}
+      hidden={isOpen}
       name={name}
       id={id}
       required
       disabled={disabled}
       defaultValue="Default"
-      onChange={(event) => onChange && onChange(event.target.value)}
-    >
+      onChange={(event) => {
+        onChange && onChange(event.target.value);
+        setValue(event.target.value);
+      }}
+      value={value}
+      onClick={handleSelectClick}
+      >
       <option
         value="Default"
         disabled={disabled}
         hidden
       >
-        {promptOption}
+        {selectOption}
       </option>
-      {options.map((option: IProducts) => {
-        const id = nanoid();
-
-        return (
-          <option key={id}>
-            {option.name}
-          </option>
-        )
-      })}
     </select>
+      {
+    isOpen &&
+      <ul className={style.isOpen}>
+        {options.map((option: IProducts) => {
+          const id = nanoid();
+
+          return (
+            <li
+              className={style.list_item}
+              key={id}
+              onClick={handleOptionClick(option)}
+            >
+              {option.name}
+            </li>
+          )
+        })}
+      </ul>
+  }
+    </>
   );
 };
 

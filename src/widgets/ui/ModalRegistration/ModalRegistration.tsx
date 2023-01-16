@@ -12,11 +12,11 @@ import {
   setPassword
 } from 'app/store/reducers/registration';
 import { changeIsOpenUserEnter } from 'app/store/reducers/userEnter';
-import { changeIsOpenConfirmation } from 'app/store/reducers/confirmation';
+import { changeIsOpenConfirmation } from 'features/Confirmation/model/slice/confirmationReducer';
 
 import { getRegistration } from 'entities/registration/model';
 import { userRigistration } from 'entities/productions/model/services/setUserData';
-import { openConfirmation } from 'entities/confirmation/model';
+import { openConfirmationSelector } from 'features/Confirmation/model/selectors/openConfirmationSelector';
 import { openModalUserEnter } from 'entities/userEnter/model';
 import { MOK_PASSWORD } from 'entities/constants/constants';
 
@@ -31,7 +31,7 @@ const ModalRegistration: React.FC = () => {
   const buttonCloseId = nanoid();
   const registration = useSelector(getRegistration);
   const userEnter = useSelector(openModalUserEnter);
-  const confirmation = useSelector(openConfirmation);
+  const confirmation = useSelector(openConfirmationSelector);
 
   const handleButtonUserEnterClick = () => {
     dispatch(changeIsOpenRegistration(registration.isOpen));
@@ -58,12 +58,13 @@ const ModalRegistration: React.FC = () => {
     dispatch(changePhone(phone));
   };
 
-  const handleFormSubmit = () => {
+  const closeWindow = () => {
     dispatch(changeIsOpenConfirmation(confirmation.isOpen));
     dispatch(changeIsOpenRegistration(registration.isOpen));
   };
 
-  const handleButtonRegistrationClick = () => {
+  const handleButtonRegistrationClick = (event: any) => {
+    event.preventDefault();
     dispatch(setPassword(MOK_PASSWORD));
 
     userRigistration({
@@ -71,13 +72,15 @@ const ModalRegistration: React.FC = () => {
       email: registration.email,
       phone: registration.phone,
       password: MOK_PASSWORD,
+      orders: [],
+      closeWindow: closeWindow,
     });
   };
 
   return (
     <form
       className={style.modal}
-      onSubmit={handleFormSubmit}
+      onSubmit={handleButtonRegistrationClick}
     >
       <Button
         id={buttonCloseId}
@@ -131,7 +134,7 @@ const ModalRegistration: React.FC = () => {
         type='submit'
         color='yellow'
         disabled={!registration.agreement}
-        onClick={handleButtonRegistrationClick}
+        onClick={() => {}}
       >
         Зарегистрироваться
       </Button>

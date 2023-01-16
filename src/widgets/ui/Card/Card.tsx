@@ -1,15 +1,13 @@
 import React, { FC } from 'react';
-
 import { nanoid } from '@reduxjs/toolkit';
-
 import classnames from 'classnames';
 
 import { useAppDispatch } from 'app/store';
-import { setOpenProductsCard } from 'app/store/reducers/openProductsCard';
+
+import { setOpenProductsCard } from 'features/openProductsCard/model/slice/openProductsCardSlice';
 
 import Button, { ButtonColor } from 'shared/ui/Button/Button';
 import StatusMarker, { StatusMarkerProps } from 'shared/ui/StatusMarker/StatusMarker';
-
 
 import style from './Card.module.scss';
 

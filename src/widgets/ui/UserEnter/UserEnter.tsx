@@ -1,9 +1,8 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import { changeIsOpenRegistration } from "app/store/reducers/registration";
-import { changeIsLoginUserAccount, changeIsOpenRecovery } from "app/store/reducers/userAccount";
-import { changeIsOpenConfirmation } from "app/store/reducers/confirmation";
+import { changeEmailUserAccount, changeIsLoginUserAccount, changeIsOpenRecovery } from "app/store/reducers/userAccount";
 import { useAppDispatch } from "app/store";
 import {
   changeEmailUserEnter,
@@ -64,9 +63,15 @@ const UserEnter: FC<UserEnterProps> = () => {
     if (isSubmit) {
       dispatch(changeIsOpenUserEnter(userEnter.isOpen));
       dispatch(changeIsLoginUserAccount(userAccount.isLogin));
+      dispatch(changeEmailUserAccount(userEnter.email));
+      console.log(userAccount);
     }
   };
 
+
+  useEffect(() => {
+    console.log(userAccount);
+  },[userAccount])
   return (
     <form
       className={style.user_enter}

@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import Button from 'shared/ui/Button/Button';
 import StatusMarker from 'shared/ui/StatusMarker/StatusMarker';
 
-import { openBasket } from 'entities/basket/model';
+import { openBasket } from 'entities/basket/model/slice/openBasket';
 import { setTotalCost } from 'entities/setTotalCost';
 import {
   ONE_HUNDRED_PIXEL_SCROLL,

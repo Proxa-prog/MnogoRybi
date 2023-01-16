@@ -4,25 +4,9 @@ export enum ViewPorts {
   "DESKTOP" = 1024,
 }
 
-export interface IProducts {
-  name: string;
-  id?: string;
-}
-
-export interface IContactsCard extends IPopupCoordinates {
-  name: string;
-  workTime?: string;
-  phone?: string;
-}
-
-export interface IPopupCoordinates {
-  lat: number;
-  lng: number;
-}
+export const COST_OF_DELIVERY = 200;
 
 export const NEWS_LIMIT = 3;
-
-export const DESCRIPTION_COUNT_LENGTS = 2;
 
 export const ONE_HUNDRED_PIXEL_SCROLL = 100;
 
@@ -73,4 +57,3 @@ export const PRODUCTS = [
   },
 ];
 
-export const PHONES = [{ name: "8 (4852) 980-100" }];

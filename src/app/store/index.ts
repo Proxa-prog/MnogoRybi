@@ -1,18 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import { combineReducers } from "redux";
-import descriptionReducer from "./reducers/description";
-import productionsReducer from "./reducers/productions";
-import openProductsCardReducer from "./reducers/openProductsCard";
-import amountProductReduser from "./reducers/amountProduct";
-import basketReduser from "./reducers/basket";
-import mapReduser from "./reducers/map";
-import newsReduser from "./reducers/news";
+import descriptionReducer from "../../entities/Description/modal/slice/descriptionSlice";
+import productionsReducer from "../../features/productions/model/slice/productionsReducer";
+import openProductsCardReducer from "../../features/openProductsCard/model/slice/openProductsCardSlice";
+import amountProductReduser from "../../entities/amountProduct/model/slice/amountProductReduser";
+import basketReduser from "../../entities/basket/model/slice/basketReducer";
+import mapReduser from "../../features/map/model/slice/mapReducer";
+import newsReduser from "../../features/news/model/slice/newsReducer";
 import registrationReduser from "./reducers/registration";
 import userEnterReduser from "./reducers/userEnter";
-import configmationReduser from "./reducers/confirmation";
+import configmationReduser from "../../features/Confirmation/model/slice/confirmationReducer";
 import userAccountReduser from "./reducers/userAccount";
-import siteDataReduser from "./reducers/siteData";
+import siteDataReduser from "../../features/siteData/model/slice/siteDataSlice";
 
 const rootReducer = combineReducers({
   description: descriptionReducer,

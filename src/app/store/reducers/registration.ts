@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IBasketState } from "entities/basket/model/types/basketTypes";
 
 export interface IRegistration {
   registration: {
@@ -8,11 +9,12 @@ export interface IRegistration {
     email: string | undefined;
     password: string | undefined;
     phone: string | undefined;
-  }
+    orders: IBasketState[];
+  };
 }
 
 export enum RegistrationAction {
-  CHANGE_AGREEMENT = 'CHANGE_AGREEMENT',
+  CHANGE_AGREEMENT = "CHANGE_AGREEMENT",
 }
 
 export interface IDescriptionsAction {
@@ -20,19 +22,20 @@ export interface IDescriptionsAction {
   payload: IRegistration;
 }
 
-const initialState: IRegistration =  {
+const initialState: IRegistration = {
   registration: {
     agreement: true,
     isOpen: false,
-    firstName: '',
-    email: '',
-    password: '',
-    phone: '',
-  }
+    firstName: "",
+    email: "",
+    password: "",
+    phone: "",
+    orders: [],
+  },
 };
 
 export const registrationSlice = createSlice({
-  name: 'registration',
+  name: "registration",
   initialState,
   reducers: {
     changeAgreement: (state, action: PayloadAction<boolean>) => {
@@ -67,6 +70,6 @@ export const {
   changePassword,
   changePhone,
   setPassword,
- } = registrationSlice.actions;
+} = registrationSlice.actions;
 
 export default registrationSlice.reducer;

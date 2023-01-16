@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import ImageWrapper from 'shared/ui/ImageWrapper/ImageWrapper';
 import List from 'shared/ui/List/List';
 
-import { getSiteDataSelector } from 'entities/siteData/model';
+import { getSiteDataSelector } from 'features/siteData/model/selectors/siteDataSelector';
 
 import style from './Footer.module.scss';
 

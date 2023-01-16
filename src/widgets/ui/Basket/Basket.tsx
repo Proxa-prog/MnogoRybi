@@ -1,16 +1,21 @@
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 
-import { openBasket } from 'entities/basket/model';
+import { useAppDispatch } from 'app/store';
+
+import Delivery from 'features/Delivery/Delivery';
+import Payment from 'features/Payment/Payment';
+import Recipient from 'features/Recipient/Recipient';
+import ShowOrder from 'features/ShowOrder/ShowOrder';
+import BasketSumm from 'features/BasketSumm/BasketSumm';
+
+import { openBasket } from 'entities/basket/model/slice/openBasket';
 import { setTotalCost } from 'entities/setTotalCost';
+import { COST_OF_DELIVERY } from 'entities/constants/constants';
+import { addOrderToUser } from 'entities/productions/model/services/addOrderToUser';
+import { setUserAccountState } from 'entities/userAccount/model/userAccount';
 
 import Button from 'shared/ui/Button/Button';
-
-import Delivery from 'widgets/ui/Delivery/Delivery';
-import Payment from 'widgets/ui/Payment/Payment';
-import Recipient from 'widgets/ui/Recipient/Recipient';
-import BasketSumm from 'widgets/ui/BasketSumm/BasketSumm';
-import ShowOrder from 'widgets/ui/ShowOrder/ShowOrder';
 
 import style from './Basket.module.scss';
 
@@ -18,13 +23,28 @@ export interface BasketProps {
 }
 
 const Basket: FC<BasketProps> = (props) => {
+  const dispatch = useAppDispatch();
   const basket = useSelector(openBasket);
-  const costOfDelivery = 200;
-
   const totalCost = setTotalCost(basket.basket);
+  const userAccount = useSelector(setUserAccountState);
+
+  console.log(basket)
+  console.log('userAccount', userAccount)
+
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+
+    dispatch(addOrderToUser({
+      userEmail: userAccount.email,
+      basket: basket,
+    }))
+  };
 
   return (
-    <div className={style.basket_wrapper}>
+    <form
+      className={style.basket_wrapper}
+      onSubmit={handleSubmit}
+    >
       <div className={style.basket_info}>
         <ShowOrder />
         <Recipient />
@@ -34,21 +54,22 @@ const Basket: FC<BasketProps> = (props) => {
       <BasketSumm
         basket={basket.basket}
         totalCost={totalCost}
-        costOfDelivery={costOfDelivery}
+        costOfDelivery={COST_OF_DELIVERY}
       />
       <div className={style.button_to_order_wrapper}>
         <Button
           className={style.button_to_order}
-          type='button'
+          type='submit'
           color='yellow'
           children={
             totalCost === 0
               ? `Заказать на ${totalCost} ₽`
-              : `Заказать на ${totalCost + costOfDelivery} ₽`
+              : `Заказать на ${totalCost + COST_OF_DELIVERY} ₽`
           }
+          onClick={(event) => { }}
         />
       </div>
-    </div>
+    </form>
   )
 }
 
