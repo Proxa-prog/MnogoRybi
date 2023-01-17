@@ -3,7 +3,7 @@ import axios from "axios";
 
 import { getNewsArray } from "features/news/model/slice/newsReducer";
 
-import { NEWS_URL } from "entities/constants/constants";
+import { NEWS_URL } from "shared/assets/constants/constants";
 
 export const fetchNews = createAsyncThunk(NEWS_URL, async (data: any) => {
   const {dispatch, limit} = data;

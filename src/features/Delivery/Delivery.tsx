@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { addRecipientAddress, changePickupOfGoods } from 'entities/basket/model/slice/basketReducer';
 
 import { getSiteDataSelector } from 'features/siteData/model/selectors/siteDataSelector';
-import { openBasket } from 'entities/basket/model/slice/openBasket';
+import { openBasketSelector } from 'entities/basket/model/selectors/openBasketSelector';
 
 import Select from 'shared/ui/Select/Select';
 import Checkbox from 'shared/ui/Checkbox/Checkbox';
@@ -20,7 +20,7 @@ export interface DeliveryProps {
 const Delivery: FC<DeliveryProps> = (props) => {
   const dispatch = useDispatch();
   const labelDeliveryCheckboxId = nanoid();
-  const basket = useSelector(openBasket);
+  const basket = useSelector(openBasketSelector);
   const siteData = useSelector(getSiteDataSelector);
 
   const handlerChangeSelectAddress = (address: string) => {

@@ -1,13 +1,14 @@
 import React, { FC, useState } from "react";
 import { useSelector } from "react-redux";
 
-import { changeIsOpenRegistration } from "app/store/reducers/registration";
-import { changeEmailUserAccount, changeIsLoginUserAccount } from "app/store/reducers/userAccount";
+import { changeEmailUserAccount, changeIsLoginUserAccount } from "entities/user/model/slice/userAccountSlice";
 import { useAppDispatch } from "app/store";
 
-import { setUserAccountState } from "entities/userAccount/model/userAccount";
-import { getRegistration } from "entities/registration/model";
 import { openConfirmationSelector } from "features/Confirmation/model/selectors/openConfirmationSelector";
+
+import { setUserAccountStateSelector } from "entities/user/model/selectors/setUserAccountStateSelector";
+import { getRegistrationSelector } from "features/ModalRegistration/model/selectors/getRegistrationSelector";
+import { changeIsOpenRegistration } from "features/ModalRegistration/model/slice/registrationReducer";
 
 import Button from "shared/ui/Button/Button";
 import Input from "shared/ui/Input/Input";
@@ -22,9 +23,9 @@ interface ConfirmationProps {
 
 const Confirmation: FC<ConfirmationProps> = () => {
   const dispatch = useAppDispatch();
-  const registration = useSelector(getRegistration);
+  const registration = useSelector(getRegistrationSelector);
   const confirmation = useSelector(openConfirmationSelector);
-  const userAccount = useSelector(setUserAccountState);
+  const userAccount = useSelector(setUserAccountStateSelector);
   const [repeatPassword, setRepeatPassword] = useState('');
 
   const handleButtonCloseClick = () => {

@@ -3,15 +3,14 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 
-import Header from 'widgets/ui/Header/Header';
-import Footer from 'widgets/ui/Footer/Footer';
-import BlockHeader from "widgets/ui/Header/ui/BlockHeader/BlockHeader";
-import ModalRegistration from "widgets/ui/ModalRegistration/ModalRegistration";
+import Footer from 'widgets/Footer/Footer';
+import Header from "widgets/Header/Header";
+import BlockHeader from "widgets/Header/ui/BlockHeader/BlockHeader";
 
+import ModalRegistration from "features/ModalRegistration/ModalRegistration";
 import { INews } from "features/news/model/types/newsTypes";
 import { getNewsSelector } from "features/news/model/selectors/getNewsSelector";
-
-import { getRegistration } from "entities/registration/model";
+import { getRegistrationSelector } from "features/ModalRegistration/model/selectors/getRegistrationSelector";
 
 import style from './NewsPage.module.scss';
 
@@ -22,7 +21,7 @@ interface NewsPageProps {
 const NewsPage: FC<NewsPageProps> = () => {
   const news = useSelector(getNewsSelector);
   const params = useParams();
-  const registration = useSelector(getRegistration);
+  const registration = useSelector(getRegistrationSelector);
 
   return (
     <section>

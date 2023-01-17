@@ -5,25 +5,26 @@ import { nanoid } from '@reduxjs/toolkit';
 
 import { useAppDispatch } from 'app/store';
 
+import Footer from 'widgets/Footer/Footer';
+import Card from 'widgets/Card/Card';
+import Recovery from 'widgets/Recovery/Recovery';
+import BlockHeader from 'widgets/Header/ui/BlockHeader/BlockHeader';
+import Header from 'widgets/Header/Header';
+
 import { addLimit } from 'features/news/model/slice/newsReducer';
 import { INews } from 'features/news/model/types/newsTypes';
 import { getNewsSelector } from 'features/news/model/selectors/getNewsSelector';
 import Confirmation from 'features/Confirmation/Confirmation';
 import { openConfirmationSelector } from 'features/Confirmation/model/selectors/openConfirmationSelector';
-
-import Header from 'widgets/ui/Header/Header';
-import BlockHeader from 'widgets/ui/Header/ui/BlockHeader/BlockHeader';
-import Footer from 'widgets/ui/Footer/Footer';
-import Card from 'widgets/ui/Card/Card';
-import ModalRegistration from 'widgets/ui/ModalRegistration/ModalRegistration';
-import UserEnter from 'widgets/ui/UserEnter/UserEnter';
-import Recovery from 'widgets/ui/Recovery/Recovery';
-
+import ModalRegistration from 'features/ModalRegistration/ModalRegistration';
+import UserEnter from 'features/UserEnter/UserEnter';
 import { fetchNews } from 'features/news/model/services/getNews';
-import { NEWS_LIMIT } from 'entities/constants/constants';
-import { getRegistration } from 'entities/registration/model';
-import { openModalUserEnter } from 'entities/userEnter/model';
-import { setUserAccountState } from 'entities/userAccount/model/userAccount';
+import { getRegistrationSelector } from 'features/ModalRegistration/model/selectors/getRegistrationSelector';
+
+import { openModalUserEnterSelector } from 'entities/user/model/selectors/openModalUserEnterSelector';
+import { setUserAccountStateSelector } from 'entities/user/model/selectors/setUserAccountStateSelector';
+
+import { NEWS_LIMIT } from 'shared/assets/constants/constants';
 
 import Button from 'shared/ui/Button/Button';
 
@@ -37,10 +38,10 @@ const News: FC<NewsProps> = (props) => {
   const dispatch = useAppDispatch();
   const router = useNavigate();
   const news = useSelector(getNewsSelector);
-  const registration = useSelector(getRegistration);
-  const userEnter = useSelector(openModalUserEnter);
+  const registration = useSelector(getRegistrationSelector);
+  const userEnter = useSelector(openModalUserEnterSelector);
   const confirmation = useSelector(openConfirmationSelector);
-  const userAccount = useSelector(setUserAccountState);
+  const userAccount = useSelector(setUserAccountStateSelector);
 
   const handleButtonShowMore = () => {
     dispatch(addLimit(NEWS_LIMIT));

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { addComment } from 'entities/basket/model/slice/basketReducer';
 
-import { IAmountProduct } from 'entities/amountProduct/model/slice/amountProductReduser';
+import { IAmountProduct } from "entities/basket/model/types/basketTypes";
 
 import Input from 'shared/ui/Input/Input';
 

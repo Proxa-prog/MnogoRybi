@@ -2,9 +2,9 @@ import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 
-import BasketCard from 'widgets/ui/Basket/ui/BasketCard/BasketCard';
+import BasketCard from 'widgets/Basket/ui/BasketCard/BasketCard';
 
-import { openBasket } from 'entities/basket/model/slice/openBasket';
+import { openBasketSelector } from 'entities/basket/model/selectors/openBasketSelector';
 
 import style from './ShowOrder.module.scss';
 
@@ -13,7 +13,7 @@ export interface ShowOrderProps {
 }
 
 const ShowOrder: FC<ShowOrderProps> = (props) => {
-  const basket = useSelector(openBasket);
+  const basket = useSelector(openBasketSelector);
 
   return (
     <div className={style.user_order}>

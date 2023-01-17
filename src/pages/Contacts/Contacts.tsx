@@ -13,27 +13,27 @@ import { useAppDispatch } from 'app/store';
 
 import PopupIcon from '/public/images/location_marker.png'
 
+import Footer from 'widgets/Footer/Footer';
+import BlockHeader from 'widgets/Header/ui/BlockHeader/BlockHeader';
+import Header from 'widgets/Header/Header';
+import Recovery from 'widgets/Recovery/Recovery';
+
+import RecenterAutomatically from 'features/map/model/api/utils/RecenterAutomatically/RecenterAutomatically';
+import ModalRegistration from 'features/ModalRegistration/ModalRegistration';
+import UserEnter from 'features/UserEnter/UserEnter';
 import { changeMapCenter } from 'features/map/model/slice/mapReducer';
 import { fetchMapCenter } from 'features/map/model/services/fetchMapCenter';
 import { setMapSelector } from 'features/map/model/slice/setMapSelector';
 import { openConfirmationSelector } from 'features/Confirmation/model/selectors/openConfirmationSelector';
-
-import { IContactsCard, IPopupCoordinates } from 'entities/ContactsCard/model/types/ContactsCardTypes';
-import { getRegistration } from 'entities/registration/model';
-import { openModalUserEnter } from 'entities/userEnter/model';
-import { setUserAccountState } from 'entities/userAccount/model/userAccount';
 import { getSiteDataSelector } from 'features/siteData/model/selectors/siteDataSelector';
 import { fetchSiteData } from 'features/siteData/model/services/fetchSiteData';
-import ContactsCard from 'entities/ContactsCard/ContactsCard';
-
-import Footer from 'widgets/ui/Footer/Footer';
-import BlockHeader from 'widgets/ui/Header/ui/BlockHeader/BlockHeader';
-import Header from 'widgets/ui/Header/Header';
-import RecenterAutomatically from 'widgets/ui/RecenterAutomatically/RecenterAutomatically';
-import ModalRegistration from 'widgets/ui/ModalRegistration/ModalRegistration';
-import UserEnter from 'widgets/ui/UserEnter/UserEnter';
 import Confirmation from 'features/Confirmation/Confirmation';
-import Recovery from 'widgets/ui/Recovery/Recovery';
+import { getRegistrationSelector } from 'features/ModalRegistration/model/selectors/getRegistrationSelector';
+
+import { IContactsCard, IPopupCoordinates } from 'entities/ContactsCard/model/types/ContactsCardTypes';
+import { openModalUserEnterSelector } from 'entities/user/model/selectors/openModalUserEnterSelector';
+import { setUserAccountStateSelector } from 'entities/user/model/selectors/setUserAccountStateSelector';
+import ContactsCard from 'entities/ContactsCard/ContactsCard';
 
 import style from './Contacts.module.scss';
 
@@ -44,10 +44,10 @@ export interface ContactsProps {
 const Contacts: FC<ContactsProps> = (props) => {
   const dispatch = useAppDispatch();
   const map = useSelector(setMapSelector);
-  const registration = useSelector(getRegistration);
-  const userEnter = useSelector(openModalUserEnter);
+  const registration = useSelector(getRegistrationSelector);
+  const userEnter = useSelector(openModalUserEnterSelector);
   const confirmation = useSelector(openConfirmationSelector);
-  const userAccount = useSelector(setUserAccountState);
+  const userAccount = useSelector(setUserAccountStateSelector);
   const siteData = useSelector(getSiteDataSelector);
 
   const createPopup = (PopupCoordinates: IPopupCoordinates) => {

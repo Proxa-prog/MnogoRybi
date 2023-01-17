@@ -9,9 +9,9 @@ import { getSiteDataSelector } from 'features/siteData/model/selectors/siteDataS
 
 import Button from 'shared/ui/Button/Button';
 
-import { changeDescription } from './modal/slice/descriptionSlice';
-import { DESCRIPTION_COUNT_LENGTS } from './modal/constants/descriptionConstants';
-import { IDescription } from './modal/types/descriptionsTypes';
+import { changeDescription } from './model/slice/descriptionSlice';
+import { DESCRIPTION_COUNT_LENGTS } from './model/constants/descriptionConstants';
+import { IDescription } from './model/types/descriptionsTypes';
 
 import style from './Description.module.scss';
 

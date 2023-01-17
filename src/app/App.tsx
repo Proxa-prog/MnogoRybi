@@ -11,7 +11,7 @@ import {
   NEWS_ROUTE,
   FRANCHISE_ROUTE,
   DELIVERY_ROUTE,
-} from 'entities/constants/constants';
+} from 'shared/assets/constants/constants';
 
 import MainPage from 'pages/MainPage/MainPage';
 import News from 'pages/News/News';

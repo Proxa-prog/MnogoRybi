@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { IAmountProduct } from "entities/amountProduct/model/slice/amountProductReduser";
+import { IAmountProduct } from "entities/basket/model/types/basketTypes";
 import {
   IBasketArray,
   IChangeAmountAction,

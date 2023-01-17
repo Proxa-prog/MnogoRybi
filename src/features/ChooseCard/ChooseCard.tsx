@@ -11,10 +11,10 @@ import {
   setSauce,
   setAmountProduct,
   setCostProduct
-} from 'entities/amountProduct/model/slice/amountProductReduser';
-import ProductCounter from 'entities/ui/ProductCounter/ProductCounter';
+} from 'entities/basket/model/slice/amountProductReduser';
+import ProductCounter from 'entities/ProductCounter/ProductCounter';
 import { openProductsCardSelector } from 'features/openProductsCard/model/slice/openProductsCardSelector';
-import { getAmountProduct } from 'entities/amountProduct/model';
+import { getAmountProductSelector } from 'entities/basket/model/services/getAmountProductSelector';
 import { getSiteDataSelector } from 'features/siteData/model/selectors/siteDataSelector';
 import { addProductInBasket } from 'entities/basket/model/slice/basketReducer';
 
@@ -31,7 +31,7 @@ export interface ChooseCardProps {
 const ChooseCard: FC<ChooseCardProps> = (props) => {
   const dispatch = useAppDispatch();
   const productsCard = useSelector(openProductsCardSelector);
-  const amountProduct = useSelector(getAmountProduct);
+  const amountProduct = useSelector(getAmountProductSelector);
   const siteData = useSelector(getSiteDataSelector);
 
   // Увеличить количество товараx

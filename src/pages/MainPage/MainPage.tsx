@@ -3,28 +3,28 @@ import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from 'app/store';
 
-import ComponentWrapper from 'widgets/ui/ProductsWrapper/ComponentWrapper';
-import ChooseCardWrapper from 'widgets/ui/ChooseCardWrapper/ChooseCardWrapper';
-import AboutCompany from 'widgets/ui/AboutCompany/AboutCompany';
-import Description from 'entities/Description/Description';
-import Products from 'widgets/ui/Products/Products';
-import Header from 'widgets/ui/Header/Header';
-import Franchise from 'widgets/ui/Franchise/Franchise';
-import Footer from 'widgets/ui/Footer/Footer';
-import BasketWrapper from 'widgets/ui/Basket/ui/BasketWrapper/BasketWrapper';
-import UserEnter from 'widgets/ui/UserEnter/UserEnter';
-import ModalRegistration from 'widgets/ui/ModalRegistration/ModalRegistration';
-import Confirmation from 'features/Confirmation/Confirmation';
-import Recovery from 'widgets/ui/Recovery/Recovery';
+import ComponentWrapper from 'widgets/ProductsWrapper/ComponentWrapper';
+import ChooseCardWrapper from 'widgets/ChooseCardWrapper/ChooseCardWrapper';
+import AboutCompany from 'widgets/AboutCompany/AboutCompany';
+import Products from 'widgets/Products/Products';
+import Franchise from 'widgets/Franchise/Franchise';
+import Footer from 'widgets/Footer/Footer';
+import Recovery from 'widgets/Recovery/Recovery';
+import Header from 'widgets/Header/Header';
+import BasketWrapper from 'widgets/Basket/ui/BasketWrapper/BasketWrapper';
 
+import UserEnter from 'features/UserEnter/UserEnter';
+import ModalRegistration from 'features/ModalRegistration/ModalRegistration';
+import Confirmation from 'features/Confirmation/Confirmation';
 import { getProdSelector } from 'features/productions/model/selectors/getProdSelector';
 import { fetchProductions } from 'features/productions/model/services/getProductions';
 import { openConfirmationSelector } from 'features/Confirmation/model/selectors/openConfirmationSelector';
-
-import { getRegistration } from 'entities/registration/model';
-import { openModalUserEnter } from 'entities/userEnter/model';
-import { setUserAccountState } from 'entities/userAccount/model/userAccount';
+import { getRegistrationSelector } from 'features/ModalRegistration/model/selectors/getRegistrationSelector';
 import { fetchSiteData } from 'features/siteData/model/services/fetchSiteData';
+
+import Description from 'entities/Description/Description';
+import { openModalUserEnterSelector } from 'entities/user/model/selectors/openModalUserEnterSelector';
+import { setUserAccountStateSelector } from 'entities/user/model/selectors/setUserAccountStateSelector';
 
 export interface MainPageProps {
 
@@ -33,10 +33,10 @@ export interface MainPageProps {
 const MainPage: FC<MainPageProps> = (props) => {
   const dispatch = useAppDispatch();
   const productions = useSelector(getProdSelector);
-  const registration = useSelector(getRegistration);
-  const userEnter = useSelector(openModalUserEnter);
+  const registration = useSelector(getRegistrationSelector);
+  const userEnter = useSelector(openModalUserEnterSelector);
   const confirmation = useSelector(openConfirmationSelector);
-  const userAccount = useSelector(setUserAccountState);
+  const userAccount = useSelector(setUserAccountStateSelector);
 
   useEffect(() => {
     dispatch(fetchProductions(dispatch));

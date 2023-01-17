@@ -3,7 +3,7 @@ import { nanoid } from '@reduxjs/toolkit';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { IProducts } from 'types/types';
+import { IProducts } from 'entities/basket/model/types/basketTypes';
 
 import style from './List.module.scss';
 

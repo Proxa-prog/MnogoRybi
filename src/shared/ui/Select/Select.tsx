@@ -2,8 +2,9 @@ import { nanoid } from '@reduxjs/toolkit';
 import classNames from 'classnames';
 import React,
 { FC, SelectHTMLAttributes, useState }
-  from 'react';
-import { IProducts } from 'types/types';
+from 'react';
+
+import { IProducts } from 'entities/basket/model/types/basketTypes';
 
 import style from './Select.module.scss';
 

@@ -10,7 +10,7 @@ import {
   changeSaveCardDate
 } from 'entities/basket/model/slice/basketReducer';
 
-import { openBasket } from 'entities/basket/model/slice/openBasket';
+import { openBasketSelector } from 'entities/basket/model/selectors/openBasketSelector';
 
 import Input from 'shared/ui/Input/Input';
 import Checkbox from 'shared/ui/Checkbox/Checkbox';
@@ -24,7 +24,7 @@ export interface PaymentProps {
 const Payment: FC<PaymentProps> = (props) => {
   const dispatch = useDispatch();
   const labelPaymentCheckboxId = nanoid();
-  const basket = useSelector(openBasket);
+  const basket = useSelector(openBasketSelector);
 
   const handlerChangeInputCardNumber = (cardNumber: string | undefined) => {
     dispatch(addRecipientCardNumber(cardNumber));

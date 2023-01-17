@@ -3,7 +3,7 @@ import axios from "axios";
 
 import { changeMapCenter } from "features/map/model/slice/mapReducer";
 
-import { SITE_DATA } from "entities/constants/constants";
+import { SITE_DATA } from "shared/assets/constants/constants";
 
 export const fetchMapCenter = createAsyncThunk(SITE_DATA, async (dispatch: any) => {
   const response = await axios.get(SITE_DATA);
