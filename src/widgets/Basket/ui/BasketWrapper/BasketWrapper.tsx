@@ -6,7 +6,7 @@ import { useAppDispatch } from 'app/store';
 
 import Basket from 'widgets/Basket/Basket';
 
-import { openBasketSelector } from 'entities/basket/model/selectors/openBasketSelector';
+import { openBasketSelector } from 'entities/basket';
 import { openBasketBlock } from 'entities/basket/model/slice/basketReducer';
 
 import Button from 'shared/ui/Button/Button';

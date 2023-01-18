@@ -18,22 +18,23 @@ import BlockHeader from 'widgets/Header/ui/BlockHeader/BlockHeader';
 import Header from 'widgets/Header/Header';
 import Recovery from 'widgets/Recovery/Recovery';
 
+import ModalRegistration from 'features/registration/ui/ModalRegistration/ModalRegistration';
+import UserEnter from 'features/user/ui/UserEnter/UserEnter';
 import RecenterAutomatically from 'features/map/model/api/utils/RecenterAutomatically/RecenterAutomatically';
-import ModalRegistration from 'features/ModalRegistration/ModalRegistration';
-import UserEnter from 'features/UserEnter/UserEnter';
-import { changeMapCenter } from 'features/map/model/slice/mapReducer';
-import { fetchMapCenter } from 'features/map/model/services/fetchMapCenter';
-import { setMapSelector } from 'features/map/model/slice/setMapSelector';
-import { openConfirmationSelector } from 'features/Confirmation/model/selectors/openConfirmationSelector';
+import {
+  fetchMapCenter,
+  setMapSelector,
+  changeMapCenter,
+} from 'features/map';
+import {  } from 'features/map/model/slice/setMapSelector';
 import { getSiteDataSelector } from 'features/siteData/model/selectors/siteDataSelector';
-import { fetchSiteData } from 'features/siteData/model/services/fetchSiteData';
-import Confirmation from 'features/Confirmation/Confirmation';
-import { getRegistrationSelector } from 'features/ModalRegistration/model/selectors/getRegistrationSelector';
+import { fetchSiteData } from 'features/siteData/index';
+import { getRegistrationSelector, openConfirmationSelector } from 'features/registration';
+import Confirmation from 'features/registration/ui/Confirmation/Confirmation';
 
-import { IContactsCard, IPopupCoordinates } from 'entities/ContactsCard/model/types/ContactsCardTypes';
-import { openModalUserEnterSelector } from 'entities/user/model/selectors/openModalUserEnterSelector';
-import { setUserAccountStateSelector } from 'entities/user/model/selectors/setUserAccountStateSelector';
-import ContactsCard from 'entities/ContactsCard/ContactsCard';
+import { openModalUserEnterSelector, setUserAccountStateSelector } from 'entities/user';
+import { IContactsCard, IPopupCoordinates } from 'entities/contact';
+import ContactsCard from 'entities/contact/ui/ContactsCard/ContactsCard';
 
 import style from './Contacts.module.scss';
 

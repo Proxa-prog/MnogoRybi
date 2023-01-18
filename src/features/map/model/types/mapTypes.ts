@@ -6,3 +6,8 @@ export interface IMap {
 export interface IMapAction {
   payload: IMap;
 }
+
+export interface RecenterAutomaticallyProps {
+  lat: number;
+  lng: number;
+}

@@ -7,12 +7,12 @@ import Footer from 'widgets/Footer/Footer';
 import Header from "widgets/Header/Header";
 import BlockHeader from "widgets/Header/ui/BlockHeader/BlockHeader";
 
-import ModalRegistration from "features/ModalRegistration/ModalRegistration";
 import { INews } from "features/news/model/types/newsTypes";
 import { getNewsSelector } from "features/news/model/selectors/getNewsSelector";
-import { getRegistrationSelector } from "features/ModalRegistration/model/selectors/getRegistrationSelector";
+import { getRegistrationSelector } from "features/registration/model/selectors/getRegistrationSelector";
 
 import style from './NewsPage.module.scss';
+import ModalRegistration from "features/registration/ui/ModalRegistration/ModalRegistration";
 
 interface NewsPageProps {
 

@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 import Button from 'shared/ui/Button/Button';
 import StatusMarker from 'shared/ui/StatusMarker/StatusMarker';
 
-import { openBasketSelector } from 'entities/basket/model/selectors/openBasketSelector';
-import { setTotalCost } from 'entities/basket/model/services/setTotalCost';
+import { openBasketSelector } from 'entities/basket';
+import { setTotalCost } from 'entities/basket';
 import {
   ONE_HUNDRED_PIXEL_SCROLL,
   ViewPorts

@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-import { changeMapCenter } from "features/map/model/slice/mapReducer";
+import { changeMapCenter } from "features/map";
 
 import { SITE_DATA } from "shared/assets/constants/constants";
 

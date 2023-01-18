@@ -1,13 +1,15 @@
 import React, { FC, useState } from "react";
 import { useSelector } from "react-redux";
 
-import { changeIsOpenRecovery } from "entities/user/model/slice/userAccountSlice";
 import { useAppDispatch } from "app/store";
 
-import { changeIsOpenUserEnter } from "entities/user/model/slice/userEnterSlice";
-import { passwordRecovery } from "entities/user/model/services/passwordRecovery";
-import { setUserAccountStateSelector } from "entities/user/model/selectors/setUserAccountStateSelector";
-import { openModalUserEnterSelector } from "entities/user/model/selectors/openModalUserEnterSelector";
+import {
+  setUserAccountStateSelector,
+  openModalUserEnterSelector,
+  passwordRecovery,
+  changeIsOpenUserEnter,
+  changeIsOpenRecovery,
+} from "entities/user";
 
 import Button from "shared/ui/Button/Button";
 import Input from "shared/ui/Input/Input";

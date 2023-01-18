@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 import { useAppDispatch } from 'app/store';
 
-import { setOpenProductsCard } from 'features/openProductsCard/model/slice/openProductsCardSlice';
+import { setOpenProductsCard } from 'features/productions';
 
 import Button, { ButtonColor } from 'shared/ui/Button/Button';
 import StatusMarker, { StatusMarkerProps } from 'shared/ui/StatusMarker/StatusMarker';

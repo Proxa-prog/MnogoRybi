@@ -8,16 +8,21 @@ import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 
 import { useAppDispatch } from 'app/store';
-import { changeIsOpenUserEnter } from 'entities/user/model/slice/userEnterSlice';
-import { changeIsOpenRegistration } from 'features/ModalRegistration/model/slice/registrationReducer';
-
-import { openBasketBlock } from 'entities/basket/model/slice/basketReducer';
-import { ViewPorts } from 'shared/assets/constants/constants';
-import { openBasketSelector } from 'entities/basket/model/selectors/openBasketSelector';
-import { openModalUserEnterSelector } from 'entities/user/model/selectors/openModalUserEnterSelector';
-
 import HeaderOrderDataWrapper from 'widgets/Header/ui/HeaderOrderDataWrapper/HeaderOrderDataWrapper';
 import HeaderNavWrapper from 'widgets/Header/ui/HeaderNavWrapper/HeaderNavWrapper';
+
+import { changeIsOpenRegistration } from 'features/registration/model/slice/registrationReducer';
+
+import {
+  openBasketSelector,
+  openBasketBlock
+} from 'entities/basket';
+import {
+  openModalUserEnterSelector,
+  changeIsOpenUserEnter,
+} from 'entities/user';
+
+import { ViewPorts } from 'shared/assets/constants/constants';
 
 import style from './Header.module.scss';
 

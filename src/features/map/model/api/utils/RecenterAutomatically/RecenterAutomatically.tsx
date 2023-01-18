@@ -1,10 +1,8 @@
 import { FC, useEffect } from 'react';
 import { useMap } from 'react-leaflet';
+import { RecenterAutomaticallyProps } from 'features/map';
 
-export interface RecenterAutomaticallyProps {
-  lat: number;
-  lng: number;
-}
+
 
 const RecenterAutomatically: FC<RecenterAutomaticallyProps> = ({ lat, lng }) => {
   const map = useMap();

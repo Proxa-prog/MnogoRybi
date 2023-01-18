@@ -1,6 +1,6 @@
 import { IProducts } from "entities/basket/model/types/basketTypes";
-import { IContactsCard, IPopupCoordinates } from "entities/ContactsCard/model/types/ContactsCardTypes";
-import { IDescription } from "entities/Description/model/types/descriptionsTypes";
+import { IContactsCard, IPopupCoordinates } from "entities/contact";
+import { IDescription } from "entities/descriptions";
 
 export interface ISiteData {
   popupCoordinates: IPopupCoordinates[];

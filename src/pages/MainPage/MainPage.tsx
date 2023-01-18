@@ -13,18 +13,15 @@ import Recovery from 'widgets/Recovery/Recovery';
 import Header from 'widgets/Header/Header';
 import BasketWrapper from 'widgets/Basket/ui/BasketWrapper/BasketWrapper';
 
-import UserEnter from 'features/UserEnter/UserEnter';
-import ModalRegistration from 'features/ModalRegistration/ModalRegistration';
-import Confirmation from 'features/Confirmation/Confirmation';
-import { getProdSelector } from 'features/productions/model/selectors/getProdSelector';
-import { fetchProductions } from 'features/productions/model/services/getProductions';
-import { openConfirmationSelector } from 'features/Confirmation/model/selectors/openConfirmationSelector';
-import { getRegistrationSelector } from 'features/ModalRegistration/model/selectors/getRegistrationSelector';
+import { getProdSelector, fetchProductions } from 'features/productions';
+import { getRegistrationSelector, openConfirmationSelector } from 'features/registration';
 import { fetchSiteData } from 'features/siteData/model/services/fetchSiteData';
 
-import Description from 'entities/Description/Description';
-import { openModalUserEnterSelector } from 'entities/user/model/selectors/openModalUserEnterSelector';
-import { setUserAccountStateSelector } from 'entities/user/model/selectors/setUserAccountStateSelector';
+import { openModalUserEnterSelector, setUserAccountStateSelector } from 'entities/user';
+import Description from 'entities/descriptions/ui/Description/Description';
+import UserEnter from 'features/user/ui/UserEnter/UserEnter';
+import ModalRegistration from 'features/registration/ui/ModalRegistration/ModalRegistration';
+import Confirmation from 'features/registration/ui/Confirmation/Confirmation';
 
 export interface MainPageProps {
 

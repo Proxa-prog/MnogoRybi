@@ -8,3 +8,16 @@ export interface IUserAccount {
     basket: IAmountProduct[];
   }
 }
+
+export interface IUserRegistration {
+  firstName: string | undefined;
+  email: string | undefined;
+  phone: string | undefined;
+  password: string | undefined;
+  orders: IAmountProduct[];
+  closeWindow: () => void;
+}
+
+export interface IResponse {
+  data: IUserRegistration[];
+}

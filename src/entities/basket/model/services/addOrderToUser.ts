@@ -1,16 +1,15 @@
 import { createAsyncThunk, nanoid } from "@reduxjs/toolkit";
 import axios from "axios";
 
-import { IAmountProduct } from "entities/basket/model/types/basketTypes";
-import { IBasketState } from "entities/basket/model/types/basketTypes";
-import { IUserRegistration } from "entities/user/model/services/setUserData";
+import {
+  IAmountProduct,
+  IUserOrder,
+} from "entities/basket";
+import { IUserRegistration } from "entities/user";
 
 import { USER_DATA } from "shared/assets/constants/constants";
 
-export interface IUserOrder {
-  userEmail: string | undefined;
-  basket: IBasketState;
-}
+
 
 export const addOrderToUser = createAsyncThunk(USER_DATA, async (userOrder: IUserOrder) => {
   const {

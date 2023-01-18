@@ -14,21 +14,19 @@ import Header from 'widgets/Header/Header';
 import { addLimit } from 'features/news/model/slice/newsReducer';
 import { INews } from 'features/news/model/types/newsTypes';
 import { getNewsSelector } from 'features/news/model/selectors/getNewsSelector';
-import Confirmation from 'features/Confirmation/Confirmation';
-import { openConfirmationSelector } from 'features/Confirmation/model/selectors/openConfirmationSelector';
-import ModalRegistration from 'features/ModalRegistration/ModalRegistration';
-import UserEnter from 'features/UserEnter/UserEnter';
+import { openConfirmationSelector } from 'features/registration/model/selectors/openConfirmationSelector';
 import { fetchNews } from 'features/news/model/services/getNews';
-import { getRegistrationSelector } from 'features/ModalRegistration/model/selectors/getRegistrationSelector';
+import UserEnter from 'features/user/ui/UserEnter/UserEnter';
+import { getRegistrationSelector } from 'features/registration/model/selectors/getRegistrationSelector';
 
-import { openModalUserEnterSelector } from 'entities/user/model/selectors/openModalUserEnterSelector';
-import { setUserAccountStateSelector } from 'entities/user/model/selectors/setUserAccountStateSelector';
+import { openModalUserEnterSelector, setUserAccountStateSelector } from 'entities/user';
 
 import { NEWS_LIMIT } from 'shared/assets/constants/constants';
-
 import Button from 'shared/ui/Button/Button';
 
 import style from './News.module.scss';
+import ModalRegistration from 'features/registration/ui/ModalRegistration/ModalRegistration';
+import Confirmation from 'features/registration/ui/Confirmation/Confirmation';
 
 export interface NewsProps {
 

@@ -3,13 +3,13 @@ import { useSelector } from "react-redux";
 
 import { useAppDispatch } from "app/store";
 
-import { changeIsOpenRegistration } from "features/ModalRegistration/model/slice/registrationReducer";
-import { openModalUserEnterSelector } from 'entities/user/model/selectors/openModalUserEnterSelector';
-
-import { changeIsOpenUserEnter } from 'entities/user/model/slice/userEnterSlice';
+import { changeIsOpenRegistration } from "features/registration/model/slice/registrationReducer";
+import {
+  openModalUserEnterSelector,
+  changeIsOpenUserEnter,
+} from 'entities/user';
 
 import { ONE_HUNDRED_PIXEL_SCROLL } from 'shared/assets/constants/constants';
-
 import Button from 'shared/ui/Button/Button';
 
 import style from 'widgets/Header/Header.module.scss';

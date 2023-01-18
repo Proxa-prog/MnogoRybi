@@ -59,3 +59,8 @@ export interface AmountProductArray {
 export interface IAmountProductAction {
   payload: IAmountProduct;
 }
+
+export interface IUserOrder {
+  userEmail: string | undefined;
+  basket: IBasketState;
+}

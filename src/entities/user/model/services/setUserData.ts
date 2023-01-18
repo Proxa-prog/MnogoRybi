@@ -1,21 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-import { IAmountProduct } from "entities/basket/model/types/basketTypes";
+import { IResponse, IUserRegistration } from "entities/user";
+
 import { USER_DATA } from "shared/assets/constants/constants";
-
-export interface IUserRegistration {
-  firstName: string | undefined;
-  email: string | undefined;
-  phone: string | undefined;
-  password: string | undefined;
-  orders: IAmountProduct[];
-  closeWindow: () => void;
-}
-
-export interface IResponse {
-  data: IUserRegistration[];
-}
 
 const checkEmail = (resp: IResponse, email: string | undefined) => {
   const emailIsBusy = resp.data.some((item: IUserRegistration) => {
