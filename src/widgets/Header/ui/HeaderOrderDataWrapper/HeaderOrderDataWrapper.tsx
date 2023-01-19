@@ -8,14 +8,17 @@ import { useAppDispatch } from "app/store";
 
 import MenuButtonBasket from "widgets/MenuButtonBasket/MenuButtonBasket";
 
-import { addRecipientAddress } from "entities/basket/model/slice/basketReducer";
-import { getSiteDataSelector } from "features/siteData/model/selectors/siteDataSelector";
-import {ViewPorts} from "shared/assets/constants/constants";
+import { addRecipientAddress } from "entities/basket";
 
-import ImageWrapper from "shared/ui/ImageWrapper/ImageWrapper";
-import LabelText from "shared/ui/LabelText/LabelText";
-import Select from "shared/ui/Select/Select";
-import Button from "shared/ui/Button/Button";
+import { getSiteDataSelector } from "features/siteData/model/selectors/siteDataSelector";
+
+import {
+  ViewPorts,
+  ImageWrapper,
+  LabelText,
+  Select,
+  Button,
+} from "shared";
 
 import style from 'widgets/Header/Header.module.scss';
 
@@ -23,7 +26,7 @@ interface HeaderOrderDataWrapperProps {
   isHeaderMenuActive: boolean;
   windowWidth: number;
   isAuth: boolean;
-  itemsInTheBasket: any;
+  itemsInTheBasket: number | undefined;
   onHeaderMenuClick: () => void;
   onClick?: () => void;
   onBasketButtonClick?: () => void;

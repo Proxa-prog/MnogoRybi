@@ -8,7 +8,7 @@ import {
   addRecipientCardNumber,
   changePaymentToTheCourier,
   changeSaveCardDate
-} from 'entities/basket/model/slice/basketReducer';
+} from 'entities/basket';
 
 import { openBasketSelector } from 'entities/basket';
 

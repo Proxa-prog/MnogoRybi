@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import Advanced from 'shared/ui/Advanced/Advanced';
+import { Advanced } from 'shared';
 
 import style from './AboutCompany.module.scss';
 

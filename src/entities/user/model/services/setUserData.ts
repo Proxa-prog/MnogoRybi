@@ -3,7 +3,7 @@ import axios from "axios";
 
 import { IResponse, IUserRegistration } from "entities/user";
 
-import { USER_DATA } from "shared/assets/constants/constants";
+import { USER_DATA } from "shared";
 
 const checkEmail = (resp: IResponse, email: string | undefined) => {
   const emailIsBusy = resp.data.some((item: IUserRegistration) => {

@@ -11,11 +11,11 @@ import { getSiteDataSelector } from "features/siteData/model/selectors/siteDataS
 
 import {
   ONE_HUNDRED_PIXEL_SCROLL,
-  ViewPorts
-} from "shared/assets/constants/constants";
-import ImageWrapper from "shared/ui/ImageWrapper/ImageWrapper";
-import Button from "shared/ui/Button/Button";
-import List from "shared/ui/List/List";
+  ViewPorts,
+  ImageWrapper,
+  Button,
+  List,
+} from "shared";
 
 import style from 'widgets/Header/Header.module.scss';
 
@@ -23,7 +23,7 @@ interface HeaderNavWrapperProps {
   isHeaderMenuActive: boolean;
   windowWidth: number;
   isAuth: boolean;
-  itemsInTheBasket: any;
+  itemsInTheBasket: number | undefined;
   scrollHeight: number;
   isProductsMenuActive: boolean;
   onProductsMenuClick: () => void;

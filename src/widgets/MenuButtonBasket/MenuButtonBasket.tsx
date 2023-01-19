@@ -1,20 +1,18 @@
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 
-import Button from 'shared/ui/Button/Button';
-import StatusMarker from 'shared/ui/StatusMarker/StatusMarker';
-
-import { openBasketSelector } from 'entities/basket';
-import { setTotalCost } from 'entities/basket';
+import { openBasketSelector, setTotalCost } from 'entities/basket';
 import {
   ONE_HUNDRED_PIXEL_SCROLL,
-  ViewPorts
-} from 'shared/assets/constants/constants';
+  ViewPorts,
+  Button,
+  StatusMarker
+} from 'shared';
 
 import style from 'widgets/Header/Header.module.scss';
 
 interface MenuButtonBasketProps {
-  itemsInTheBasket: number;
+  itemsInTheBasket: number | undefined;
   scroll?: number;
   windowWidth: number;
   onBasketButtonClick?: () => void;

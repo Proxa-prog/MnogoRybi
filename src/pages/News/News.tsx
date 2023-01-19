@@ -11,13 +11,19 @@ import Recovery from 'widgets/Recovery/Recovery';
 import BlockHeader from 'widgets/Header/ui/BlockHeader/BlockHeader';
 import Header from 'widgets/Header/Header';
 
-import { addLimit } from 'features/news/model/slice/newsReducer';
-import { INews } from 'features/news/model/types/newsTypes';
-import { getNewsSelector } from 'features/news/model/selectors/getNewsSelector';
-import { openConfirmationSelector } from 'features/registration/model/selectors/openConfirmationSelector';
-import { fetchNews } from 'features/news/model/services/getNews';
-import UserEnter from 'features/user/ui/UserEnter/UserEnter';
-import { getRegistrationSelector } from 'features/registration/model/selectors/getRegistrationSelector';
+import {
+  INews,
+  addLimit,
+  getNewsSelector,
+  fetchNews,
+} from 'features/news';
+import {
+  getRegistrationSelector,
+  openConfirmationSelector,
+  ModalRegistration,
+  Confirmation
+} from 'features/registration';
+import { UserEnter } from 'features/user';
 
 import { openModalUserEnterSelector, setUserAccountStateSelector } from 'entities/user';
 
@@ -25,8 +31,6 @@ import { NEWS_LIMIT } from 'shared/assets/constants/constants';
 import Button from 'shared/ui/Button/Button';
 
 import style from './News.module.scss';
-import ModalRegistration from 'features/registration/ui/ModalRegistration/ModalRegistration';
-import Confirmation from 'features/registration/ui/Confirmation/Confirmation';
 
 export interface NewsProps {
 

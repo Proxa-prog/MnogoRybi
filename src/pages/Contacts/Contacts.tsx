@@ -18,23 +18,28 @@ import BlockHeader from 'widgets/Header/ui/BlockHeader/BlockHeader';
 import Header from 'widgets/Header/Header';
 import Recovery from 'widgets/Recovery/Recovery';
 
-import ModalRegistration from 'features/registration/ui/ModalRegistration/ModalRegistration';
-import UserEnter from 'features/user/ui/UserEnter/UserEnter';
-import RecenterAutomatically from 'features/map/model/api/utils/RecenterAutomatically/RecenterAutomatically';
+import { UserEnter } from 'features/user';
 import {
   fetchMapCenter,
   setMapSelector,
   changeMapCenter,
+  RecenterAutomatically,
 } from 'features/map';
-import {  } from 'features/map/model/slice/setMapSelector';
 import { getSiteDataSelector } from 'features/siteData/model/selectors/siteDataSelector';
 import { fetchSiteData } from 'features/siteData/index';
-import { getRegistrationSelector, openConfirmationSelector } from 'features/registration';
-import Confirmation from 'features/registration/ui/Confirmation/Confirmation';
+import {
+  getRegistrationSelector,
+  openConfirmationSelector,
+  ModalRegistration,
+  Confirmation,
+} from 'features/registration';
 
 import { openModalUserEnterSelector, setUserAccountStateSelector } from 'entities/user';
-import { IContactsCard, IPopupCoordinates } from 'entities/contact';
-import ContactsCard from 'entities/contact/ui/ContactsCard/ContactsCard';
+import {
+  IContactsCard,
+  IPopupCoordinates,
+  ContactsCard,
+} from 'entities/contact';
 
 import style from './Contacts.module.scss';
 

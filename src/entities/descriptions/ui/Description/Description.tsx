@@ -7,9 +7,11 @@ import { RootState } from 'app/store';
 
 import { siteDataSelector } from 'features/siteData';
 
-import { changeDescription } from 'entities/descriptions';
-import { DESCRIPTION_COUNT_LENGTS } from 'entities/descriptions';
-import { IDescription } from 'entities/descriptions';
+import {
+ IDescription,
+ changeDescription,
+ DESCRIPTION_COUNT_LENGTS,
+ } from 'entities/descriptions';
 
 import Button from 'shared/ui/Button/Button';
 

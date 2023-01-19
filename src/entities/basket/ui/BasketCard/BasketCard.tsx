@@ -5,11 +5,11 @@ import classNames from 'classnames';
 import {
   changeAmount,
   changeCost,
-  removeProduct
-} from 'entities/basket/model/slice/basketReducer';
+  removeProduct,
+  IAmountProduct,
+} from 'entities/basket';
 
-import { IAmountProduct } from "entities/basket/model/types/basketTypes";
-import ProductCounter from 'entities/counter/ui/ProductCounter/ProductCounter';
+import { ProductCounter } from 'entities/counter';
 
 import Svg from 'shared/ui/Svg/Svg';
 import Button from 'shared/ui/Button/Button';
@@ -24,9 +24,7 @@ const BasketCard: FC<BasketCardProps> = (props) => {
   const {
     product,
   } = props;
-
   const dispatch = useDispatch();
-
 
   // Увеличить количество товара в корзине
   const handlerButtonAddAmountProduct = () => {

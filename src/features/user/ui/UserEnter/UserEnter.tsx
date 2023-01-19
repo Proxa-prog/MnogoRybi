@@ -3,8 +3,10 @@ import { useSelector } from "react-redux";
 
 import { useAppDispatch } from "app/store";
 
-import { getRegistrationSelector } from "features/registration/model/selectors/getRegistrationSelector";
-import { changeIsOpenRegistration } from "features/registration/model/slice/registrationReducer";
+import {
+  getRegistrationSelector,
+  changeIsOpenRegistration
+} from "features/registration";
 import {
   findUserAccount,
   setUserAccountStateSelector,
@@ -17,8 +19,7 @@ import {
   changeIsOpenRecovery,
 } from "entities/user";
 
-import Button from "shared/ui/Button/Button";
-import Input from "shared/ui/Input/Input";
+import {Button, Input} from "shared";
 
 import style from './UserEnter.module.scss';
 
@@ -49,7 +50,7 @@ const UserEnter: FC<UserEnterProps> = () => {
     dispatch(changePasswordUserEnter(email));
   };
 
-  const handleConfirmationButtonClick= () => {
+  const handleConfirmationButtonClick = () => {
     dispatch(changeIsOpenRecovery(userAccount.recoveryIsOpen));
     dispatch(changeIsOpenUserEnter(userEnter.isOpen));
   };
@@ -73,7 +74,7 @@ const UserEnter: FC<UserEnterProps> = () => {
 
   useEffect(() => {
     console.log(userAccount);
-  },[userAccount]);
+  }, [userAccount]);
 
   return (
     <form

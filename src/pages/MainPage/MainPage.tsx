@@ -14,14 +14,20 @@ import Header from 'widgets/Header/Header';
 import BasketWrapper from 'widgets/Basket/ui/BasketWrapper/BasketWrapper';
 
 import { getProdSelector, fetchProductions } from 'features/productions';
-import { getRegistrationSelector, openConfirmationSelector } from 'features/registration';
+import {
+  getRegistrationSelector,
+  openConfirmationSelector,
+  ModalRegistration,
+  Confirmation
+} from 'features/registration';
 import { fetchSiteData } from 'features/siteData/model/services/fetchSiteData';
+import {UserEnter} from 'features/user';
 
-import { openModalUserEnterSelector, setUserAccountStateSelector } from 'entities/user';
-import Description from 'entities/descriptions/ui/Description/Description';
-import UserEnter from 'features/user/ui/UserEnter/UserEnter';
-import ModalRegistration from 'features/registration/ui/ModalRegistration/ModalRegistration';
-import Confirmation from 'features/registration/ui/Confirmation/Confirmation';
+import {
+  openModalUserEnterSelector,
+  setUserAccountStateSelector
+} from 'entities/user';
+import { Description } from 'entities/descriptions';
 
 export interface MainPageProps {
 

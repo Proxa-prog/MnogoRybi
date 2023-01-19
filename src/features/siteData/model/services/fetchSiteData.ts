@@ -3,7 +3,7 @@ import axios from "axios";
 
 import { getSiteData } from 'features/siteData/model/slice/siteDataSlice';
 
-import { SITE_DATA } from "shared/assets/constants/constants";
+import { SITE_DATA } from "shared";
 
 export const fetchSiteData = createAsyncThunk(SITE_DATA, async (dispatch: any) => {
   const response = await axios.get(SITE_DATA);

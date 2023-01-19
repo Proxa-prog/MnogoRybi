@@ -2,17 +2,15 @@ import React, { FC } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-
 import Footer from 'widgets/Footer/Footer';
 import Header from "widgets/Header/Header";
 import BlockHeader from "widgets/Header/ui/BlockHeader/BlockHeader";
 
 import { INews } from "features/news/model/types/newsTypes";
 import { getNewsSelector } from "features/news/model/selectors/getNewsSelector";
-import { getRegistrationSelector } from "features/registration/model/selectors/getRegistrationSelector";
+import { getRegistrationSelector, ModalRegistration } from "features/registration";
 
 import style from './NewsPage.module.scss';
-import ModalRegistration from "features/registration/ui/ModalRegistration/ModalRegistration";
 
 interface NewsPageProps {
 

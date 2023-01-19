@@ -8,7 +8,6 @@ import { useAppDispatch } from 'app/store';
 import { openProductsCardSelector } from 'features/productions';
 import { getSiteDataSelector } from 'features/siteData/model/selectors/siteDataSelector';
 
-import ProductCounter from 'entities/counter/ui/ProductCounter/ProductCounter';
 import {
   getAmountProductSelector,
   addProductInBasket,
@@ -18,6 +17,7 @@ import {
   setAmountProduct,
   setCostProduct
 } from 'entities/basket';
+import { ProductCounter } from 'entities/counter';
 
 import Select from 'shared/ui/Select/Select';
 import LabelText from 'shared/ui/LabelText/LabelText';

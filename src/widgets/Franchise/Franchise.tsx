@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
-import Button from 'shared/ui/Button/Button';
 
 import Image from '/public/images/lace.png';
+
+import { Button } from 'shared';
 
 import style from './Franchise.module.scss';
 

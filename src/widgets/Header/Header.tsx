@@ -11,7 +11,7 @@ import { useAppDispatch } from 'app/store';
 import HeaderOrderDataWrapper from 'widgets/Header/ui/HeaderOrderDataWrapper/HeaderOrderDataWrapper';
 import HeaderNavWrapper from 'widgets/Header/ui/HeaderNavWrapper/HeaderNavWrapper';
 
-import { changeIsOpenRegistration } from 'features/registration/model/slice/registrationReducer';
+import { changeIsOpenRegistration } from 'features/registration';
 
 import {
   openBasketSelector,
@@ -22,12 +22,12 @@ import {
   changeIsOpenUserEnter,
 } from 'entities/user';
 
-import { ViewPorts } from 'shared/assets/constants/constants';
+import { ViewPorts } from 'shared';
 
 import style from './Header.module.scss';
 
 export interface HeaderProps {
-  itemsInTheBasket?: any;
+  itemsInTheBasket?: number | undefined;
   isAuth?: boolean;
 }
 

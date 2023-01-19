@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-interface ImageWrapperProps {
+export interface ImageWrapperProps {
   name: string;
   alt: string;
   className?: string;

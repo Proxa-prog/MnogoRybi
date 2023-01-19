@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { addRecipientName, addRecipientPhone } from 'entities/basket/model/slice/basketReducer';
+import { addRecipientName, addRecipientPhone } from 'entities/basket';
 
 import Input from 'shared/ui/Input/Input';
 

@@ -4,10 +4,13 @@ import { nanoid } from '@reduxjs/toolkit';
 
 import { useAppDispatch } from 'app/store';
 
-import { setOpenProductsCard, openProductsCardSelector } from 'features/productions';
-import ChooseCard from 'features/productions/ui/ChooseCard/ChooseCard';
+import {
+  setOpenProductsCard,
+  openProductsCardSelector,
+  ChooseCard,
+} from 'features/productions';
 
-import Button from 'shared/ui/Button/Button';
+import { Button } from 'shared';
 
 import style from './ChooseCardWrapper.module.scss';
 

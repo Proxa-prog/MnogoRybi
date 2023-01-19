@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
 
-import Card, { CardProps } from '../Card/Card';
+import Card, { CardProps } from 'widgets/Card/Card';
 
 import style from './Products.module.scss';
 

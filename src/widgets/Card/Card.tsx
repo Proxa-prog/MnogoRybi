@@ -6,11 +6,14 @@ import { useAppDispatch } from 'app/store';
 
 import { setOpenProductsCard } from 'features/productions';
 
-import Button, { ButtonColor } from 'shared/ui/Button/Button';
-import StatusMarker, { StatusMarkerProps } from 'shared/ui/StatusMarker/StatusMarker';
+import {
+  ButtonColor,
+  StatusMarker,
+  Button,
+  StatusMarkerProps
+} from 'shared';
 
 import style from './Card.module.scss';
-
 
 export interface CardProps {
   className?: string;

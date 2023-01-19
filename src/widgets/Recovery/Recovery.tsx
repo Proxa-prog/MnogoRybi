@@ -11,8 +11,7 @@ import {
   changeIsOpenRecovery,
 } from "entities/user";
 
-import Button from "shared/ui/Button/Button";
-import Input from "shared/ui/Input/Input";
+import { Button, Input } from "shared";
 
 import style from "./Recovery.module.scss";
 
@@ -61,13 +60,13 @@ const Recovery: FC<RecoveryProps> = () => {
         label="Email"
         name="email"
         placeholder="Введите email"
-        onChange={(email) => {email && setEmail(email)}}
+        onChange={(email) => { email && setEmail(email) }}
       />
       <Button
         className={style.button_enter}
         type="button"
         color="yellow"
-        onClick={() => {handleButtonSendClick(email)}}
+        onClick={() => { handleButtonSendClick(email) }}
       >
         <span className={style.button_text_desktop}>Отправить</span>
       </Button>

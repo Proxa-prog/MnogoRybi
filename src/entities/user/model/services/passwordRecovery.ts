@@ -1,5 +1,5 @@
 import axios from "axios";
-import { NEW_PASSWORD, USER_DATA } from "shared/assets/constants/constants";
+import { NEW_PASSWORD, USER_DATA } from "shared";
 
 const newPassword = async (item: any) => {
   await axios.patch(`${USER_DATA}/${item.id}`, { password: NEW_PASSWORD });

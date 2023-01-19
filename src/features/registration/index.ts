@@ -15,3 +15,6 @@ export {
 export { IConfirmation } from "./model/types/confirmationTypes";
 export { openConfirmationSelector } from "./model/selectors/openConfirmationSelector";
 export { changeIsOpenConfirmation } from "./model/slice/confirmationReducer";
+export { default as Confirmation } from "./ui/Confirmation/Confirmation";
+export { default as ModalRegistration } from "./ui/ModalRegistration/ModalRegistration";
+

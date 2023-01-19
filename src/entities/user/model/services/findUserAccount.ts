@@ -1,5 +1,5 @@
 import axios from "axios";
-import { USER_DATA } from "shared/assets/constants/constants";
+import { USER_DATA } from "shared";
 
 export const findUserAccount = async (userData: any) => {
   const { email, password } = userData;

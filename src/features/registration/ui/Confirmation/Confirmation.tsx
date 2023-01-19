@@ -16,8 +16,7 @@ import {
   changeIsLoginUserAccount
 } from "entities/user";
 
-import Button from "shared/ui/Button/Button";
-import Input from "shared/ui/Input/Input";
+import { Button, Input } from "shared";
 
 import style from './Confirmation.module.scss';
 

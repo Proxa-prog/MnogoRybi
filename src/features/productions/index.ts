@@ -13,3 +13,4 @@ export {
   IProductions,
   IProductionsArray
 } from "./model/types/productionTypes";
+export { default as ChooseCard } from "./ui/ChooseCard/ChooseCard";

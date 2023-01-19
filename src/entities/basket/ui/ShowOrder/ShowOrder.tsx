@@ -2,9 +2,7 @@ import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 
-
-import BasketCard from 'entities/basket/ui/BasketCard/BasketCard';
-import { openBasketSelector } from 'entities/basket';
+import { openBasketSelector, BasketCard } from 'entities/basket';
 
 import style from './ShowOrder.module.scss';
 

@@ -3,14 +3,16 @@ import { useSelector } from "react-redux";
 
 import { useAppDispatch } from "app/store";
 
-import { changeIsOpenRegistration } from "features/registration/model/slice/registrationReducer";
+import { changeIsOpenRegistration } from "features/registration";
 import {
   openModalUserEnterSelector,
   changeIsOpenUserEnter,
 } from 'entities/user';
 
-import { ONE_HUNDRED_PIXEL_SCROLL } from 'shared/assets/constants/constants';
-import Button from 'shared/ui/Button/Button';
+import {
+  ONE_HUNDRED_PIXEL_SCROLL,
+  Button,
+} from 'shared';
 
 import style from 'widgets/Header/Header.module.scss';
 
@@ -40,8 +42,8 @@ const MenuButtonEnter: FC<MenuButtonEnterProps> = (props) => {
           imageLeft="user_fill.svg"
           className={
             (scroll && scroll >= ONE_HUNDRED_PIXEL_SCROLL)
-            ? style.user_auth_scroll
-            : style.user_auth
+              ? style.user_auth_scroll
+              : style.user_auth
           }
           type="button"
           isGrayTheme

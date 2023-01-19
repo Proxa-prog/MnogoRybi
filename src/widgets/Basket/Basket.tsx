@@ -3,21 +3,20 @@ import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from 'app/store';
 
-import Delivery from 'features/delivery/ui/Delivery/Delivery';
-import Payment from 'features/payment/ui/Payment/Payment';
-import Recipient from 'features/recipient/ui/Recipient/Recipient';
+import { Delivery } from 'features/delivery';
+import { Payment } from 'features/payment';
+import { Recipient } from 'features/recipient';
 
 import { setUserAccountStateSelector } from 'entities/user';
 import {
   openBasketSelector,
   setTotalCost,
   addOrderToUser,
+  BasketSumm,
+  ShowOrder,
 } from 'entities/basket';
-import BasketSumm from 'entities/basket/ui/BasketSumm/BasketSumm';
-import ShowOrder from 'entities/basket/ui/ShowOrder/ShowOrder';
 
-import { COST_OF_DELIVERY } from 'shared/assets/constants/constants';
-import Button from 'shared/ui/Button/Button';
+import { COST_OF_DELIVERY, Button } from 'shared';
 
 import style from './Basket.module.scss';
 
