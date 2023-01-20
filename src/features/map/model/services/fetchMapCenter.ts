@@ -5,12 +5,12 @@ import { changeMapCenter } from "features/map";
 
 import { SITE_DATA } from "shared";
 
-export const fetchMapCenter = createAsyncThunk(SITE_DATA, async (dispatch: any) => {
+export const fetchMapCenter = createAsyncThunk(SITE_DATA, async (_, thunkAPI) => {
   const response = await axios.get(SITE_DATA);
   const mapCenter = response.data.mapCenter;
 
   mapCenter.lat = Number(mapCenter.lat);
   mapCenter.lng = Number(mapCenter.lng);
 
-  dispatch(changeMapCenter(mapCenter));
+  thunkAPI.dispatch(changeMapCenter(mapCenter));
 });

@@ -5,7 +5,7 @@ import { getProductionsAction } from "features/productions";
 
 import { POKE_URL } from "shared";
 
-export const fetchProductions = createAsyncThunk(POKE_URL, async (dispatch: any) => {
+export const fetchProductions = createAsyncThunk(POKE_URL, async (_, thunkAPI) => {
   const response = await axios.get(POKE_URL);
-  dispatch(getProductionsAction(response.data));
+  thunkAPI.dispatch(getProductionsAction(response.data));
 });

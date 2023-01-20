@@ -87,8 +87,8 @@ const Contacts: FC<ContactsProps> = (props) => {
   };
 
   useEffect(() => {
-    dispatch(fetchSiteData(dispatch));
-    dispatch(fetchMapCenter(dispatch));
+    dispatch(fetchSiteData());
+    dispatch(fetchMapCenter());
   }, []);
 
   return (

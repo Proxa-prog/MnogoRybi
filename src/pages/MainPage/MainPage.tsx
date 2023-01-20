@@ -42,8 +42,8 @@ const MainPage: FC<MainPageProps> = (props) => {
   const userAccount = useSelector(setUserAccountStateSelector);
 
   useEffect(() => {
-    dispatch(fetchProductions(dispatch));
-    dispatch(fetchSiteData(dispatch));
+    dispatch(fetchProductions());
+    dispatch(fetchSiteData());
   }, []);
 
   return (
