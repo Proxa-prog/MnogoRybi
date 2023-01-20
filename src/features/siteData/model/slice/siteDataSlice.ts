@@ -13,10 +13,6 @@ import { IAllData, ISiteData } from "../types/siteDataTypes";
 const initialState: IAllData = {
   siteData: {
     popupCoordinates: [],
-    mapCenter: {
-      lat: 0,
-      lng: 0,
-    },
     products: [],
     baseProduct: [],
     sauce: [],
@@ -33,9 +29,6 @@ export const siteDataSlice = createSlice({
   reducers: {
     getSiteData: (state, action: PayloadAction<ISiteData>) => {
       state.siteData = action.payload;
-    },
-    getMapCenter: (state, action: PayloadAction<IPopupCoordinates>) => {
-      state.siteData.mapCenter = action.payload;
     },
     getProducts: (state, action: PayloadAction<IProducts[]>) => {
       state.siteData.products = action.payload;
@@ -66,7 +59,6 @@ export const siteDataSlice = createSlice({
 
 export const {
   getSiteData,
-  getMapCenter,
   getProducts,
   getBaseProduct,
   getSauce,

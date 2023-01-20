@@ -3,11 +3,11 @@ import axios from "axios";
 
 import { changeMapCenter } from "features/map";
 
-import { SITE_DATA } from "shared";
+import { RESTAURANT_LOCATION_URL } from "shared";
 
-export const fetchMapCenter = createAsyncThunk(SITE_DATA, async (_, thunkAPI) => {
-  const response = await axios.get(SITE_DATA);
-  const mapCenter = response.data.mapCenter;
+export const fetchMapCenter = createAsyncThunk(RESTAURANT_LOCATION_URL, async (_, thunkAPI) => {
+  const response = await axios.get(RESTAURANT_LOCATION_URL);
+  const mapCenter = response.data.restautantMapCenter;
 
   mapCenter.lat = Number(mapCenter.lat);
   mapCenter.lng = Number(mapCenter.lng);

@@ -20,7 +20,7 @@ import {
   ModalRegistration,
   Confirmation
 } from 'features/registration';
-import { fetchSiteData } from 'features/siteData/model/services/fetchSiteData';
+import { fetchSiteData } from 'features/restaurant/model/services/fetchSiteData';
 import {UserEnter} from 'features/user';
 
 import {
@@ -44,6 +44,7 @@ const MainPage: FC<MainPageProps> = (props) => {
   useEffect(() => {
     dispatch(fetchProductions());
     dispatch(fetchSiteData());
+    // dispatch(fetchRestaurantLocation());
   }, []);
 
   return (

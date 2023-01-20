@@ -33,6 +33,7 @@ import {
   ModalRegistration,
   Confirmation,
 } from 'features/registration';
+import { getRestaurantLocationSelector, fetchRestaurantLocation } from 'features/restaurant';
 
 import { openModalUserEnterSelector, setUserAccountStateSelector } from 'entities/user';
 import {
@@ -55,6 +56,7 @@ const Contacts: FC<ContactsProps> = (props) => {
   const confirmation = useSelector(openConfirmationSelector);
   const userAccount = useSelector(setUserAccountStateSelector);
   const siteData = useSelector(getSiteDataSelector);
+  const restaurantLocation = useSelector(getRestaurantLocationSelector);
 
   const createPopup = (PopupCoordinates: IPopupCoordinates) => {
     const id = nanoid();
@@ -88,6 +90,7 @@ const Contacts: FC<ContactsProps> = (props) => {
 
   useEffect(() => {
     dispatch(fetchSiteData());
+    dispatch(fetchRestaurantLocation());
     dispatch(fetchMapCenter());
   }, []);
 
@@ -119,7 +122,7 @@ const Contacts: FC<ContactsProps> = (props) => {
       </BlockHeader>
       <div className={style.map}>
         <MapContainer
-          center={[map.lat, map.lng]}
+          center={[restaurantLocation.restautantMapCenter.lat, restaurantLocation.restautantMapCenter.lng]}
           zoom={13}
           scrollWheelZoom={false}
         >
@@ -130,7 +133,7 @@ const Contacts: FC<ContactsProps> = (props) => {
           />
           <>
             {
-              siteData && siteData.popupCoordinates.map((coordinates) => {
+              restaurantLocation && restaurantLocation.restautantPopupCoordinates.map((coordinates) => {
 
                 return createPopup(coordinates);
               })
