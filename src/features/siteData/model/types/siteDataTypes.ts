@@ -4,6 +4,7 @@ import { IDescription } from "entities/descriptions";
 
 export interface ISiteData {
   popupCoordinates: IPopupCoordinates[];
+  mapCenter: IPopupCoordinates;
   products: IProducts[];
   baseProduct: IProducts[];
   sauce: IProducts[];

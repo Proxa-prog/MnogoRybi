@@ -8,6 +8,7 @@ import MenuButtonBasket from "widgets/MenuButtonBasket/MenuButtonBasket";
 import MenuButtonEnter from "widgets/MenuButtonEnter/MenuButtonEnter";
 
 import { getSiteDataSelector } from "features/siteData/model/selectors/siteDataSelector";
+import { getRestaurantProductionsSelector } from "features/restaurant";
 
 import {
   ONE_HUNDRED_PIXEL_SCROLL,
@@ -44,6 +45,7 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
     onBasketButtonClick,
   } = props;
   const siteData = useSelector(getSiteDataSelector);
+  const restaurantProductions = useSelector(getRestaurantProductionsSelector);
   const [buttonMoreIsOpen, setButtonMoreIsOpen] = useState(true);
 
   return (
@@ -106,7 +108,7 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
                 style.header__products_item,
                 { [style.header__products_item__open]: isProductsMenuActive }
               )}
-              items={siteData.products}
+              items={restaurantProductions.products}
             />
             <div className={style.header__vertical_line} />
             {

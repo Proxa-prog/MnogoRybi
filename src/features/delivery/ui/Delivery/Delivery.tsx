@@ -5,6 +5,7 @@ import classNames from 'classnames';
 
 
 import { getSiteDataSelector } from 'features/siteData/model/selectors/siteDataSelector';
+import { getRestaurantProductionsSelector } from 'features/restaurant';
 
 import {
   openBasketSelector,
@@ -26,6 +27,7 @@ const Delivery: FC<DeliveryProps> = (props) => {
   const labelDeliveryCheckboxId = nanoid();
   const basket = useSelector(openBasketSelector);
   const siteData = useSelector(getSiteDataSelector);
+  const restaurantProductions = useSelector(getRestaurantProductionsSelector);
 
   const handlerChangeSelectAddress = (address: string) => {
     dispatch(addRecipientAddress(address));

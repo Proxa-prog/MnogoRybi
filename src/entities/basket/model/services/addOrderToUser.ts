@@ -15,11 +15,13 @@ export const addOrderToUser = createAsyncThunk(
 
     const response = await axios.get(`${USER_DATA}`);
     const actualUserId = response.data.find((user: IUserRegistration) => {
+
       return user.email === userEmail;
     });
 
     // Убрал не нужные поля
     const orderInfo = basket.basket.map((currnetOrder: IAmountProduct) => {
+
       return {
         amount: currnetOrder.amount,
         baseCost: currnetOrder.baseCost,

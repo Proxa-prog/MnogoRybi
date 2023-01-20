@@ -14,6 +14,7 @@ import configmationReduser from "features/registration/model/slice/confirmationR
 import userAccountReduser from "entities/user/model/slice/userAccountSlice";
 import siteDataReduser from "features/siteData/model/slice/siteDataSlice";
 import restaurantLocationReduser from "features/restaurant/model/slice/restaurantSlice";
+import restaurantProductionsReduser from "features/restaurant/model/slice/restaurantProductionsSlice";
 
 const rootReducer = combineReducers({
   description: descriptionReducer,
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
   userAccount: userAccountReduser,
   siteData: siteDataReduser,
   restaurantLocation: restaurantLocationReduser,
+  restaurantProductions: restaurantProductionsReduser,
 });
 
 export const store = configureStore({

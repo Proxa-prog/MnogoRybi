@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { useAppDispatch } from 'app/store';
 
 import { openProductsCardSelector } from 'features/productions';
-import { getSiteDataSelector } from 'features/siteData/model/selectors/siteDataSelector';
+import { getRestaurantProductionsSelector } from 'features/restaurant';
 
 import {
   getAmountProductSelector,
@@ -33,7 +33,7 @@ const ChooseCard: FC<ChooseCardProps> = (props) => {
   const dispatch = useAppDispatch();
   const productsCard = useSelector(openProductsCardSelector);
   const amountProduct = useSelector(getAmountProductSelector);
-  const siteData = useSelector(getSiteDataSelector);
+  const restaurantProductions = useSelector(getRestaurantProductionsSelector);
 
   // Увеличить количество товараx
   const addAmountProduct = () => {
@@ -89,8 +89,8 @@ const ChooseCard: FC<ChooseCardProps> = (props) => {
       cost: Number(productsCard.cost),
       imageUrl: productsCard.imageUrl,
     }));
-    dispatch(setBaseProduct(siteData.baseProduct[0].name));
-    dispatch(setSauce(siteData.sauce[0].name));
+    dispatch(setBaseProduct(restaurantProductions.baseProduct[0].name));
+    dispatch(setSauce(restaurantProductions.sauce[0].name));
   }, []);
 
   return (
@@ -138,8 +138,8 @@ const ChooseCard: FC<ChooseCardProps> = (props) => {
               className={style.ingredients_label}
             />
             <Select
-              options={siteData.baseProduct}
-              promptOption={siteData.baseProduct[0].name}
+              options={restaurantProductions.baseProduct}
+              promptOption={restaurantProductions.baseProduct[0].name}
               className={style.ingredients_select}
               onChange={changeBaseProduct}
             />
@@ -152,8 +152,8 @@ const ChooseCard: FC<ChooseCardProps> = (props) => {
               )}
             />
             <Select
-              options={siteData.sauce}
-              promptOption={siteData.sauce[0].name}
+              options={restaurantProductions.sauce}
+              promptOption={restaurantProductions.sauce[0].name}
               className={style.ingredients_select}
               onChange={changeSauce}
             />

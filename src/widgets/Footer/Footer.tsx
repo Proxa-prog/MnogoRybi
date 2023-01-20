@@ -9,6 +9,7 @@ import { getSiteDataSelector } from 'features/siteData/model/selectors/siteDataS
 import { ImageWrapper, List } from 'shared';
 
 import style from './Footer.module.scss';
+import { getRestaurantProductionsSelector } from 'features/restaurant';
 
 export interface FooterProps {
 
@@ -16,6 +17,7 @@ export interface FooterProps {
 
 const Footer: FC<FooterProps> = (props) => {
   const siteData = useSelector(getSiteDataSelector);
+  const restaurantProductions = useSelector(getRestaurantProductionsSelector);
 
   return (
     <footer className={classNames(
@@ -46,7 +48,7 @@ const Footer: FC<FooterProps> = (props) => {
             <h3>Меню poke-room</h3>
             <List
               isNavigate
-              items={siteData.products}
+              items={restaurantProductions.products}
               classNameList={classNames(
                 style.footer__list,
               )}
