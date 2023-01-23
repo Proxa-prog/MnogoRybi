@@ -1,23 +1,25 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import classNames from 'classnames';
 
-import { getSiteDataSelector } from 'features/siteData/model/selectors/siteDataSelector';
+import {
+  getRestaurantPagesInfoSelector,
+  getRestaurantProductionsSelector
+} from 'features/restaurant';
 
 import { ImageWrapper, List } from 'shared';
 
 import style from './Footer.module.scss';
-import { getRestaurantProductionsSelector } from 'features/restaurant';
 
 export interface FooterProps {
 
 }
 
 const Footer: FC<FooterProps> = (props) => {
-  const siteData = useSelector(getSiteDataSelector);
   const restaurantProductions = useSelector(getRestaurantProductionsSelector);
+  const pagesInfo = useSelector(getRestaurantPagesInfoSelector);
 
   return (
     <footer className={classNames(
@@ -63,7 +65,7 @@ const Footer: FC<FooterProps> = (props) => {
             <h3>О нас</h3>
             <List
               isLink
-              items={siteData.info_footer}
+              items={pagesInfo.footerLinksNames}
               classNameList={classNames(
                 style.footer__list,
               )}
@@ -79,7 +81,7 @@ const Footer: FC<FooterProps> = (props) => {
             <h3>Контакты</h3>
             <List
               isLink
-              items={siteData.address}
+              items={pagesInfo.restaurantAddress}
               classNameList={classNames(
                 style.footer__list,
                 { [style.footer__address_list]: true }

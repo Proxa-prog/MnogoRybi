@@ -24,8 +24,13 @@ import {
   Confirmation
 } from 'features/registration';
 import { UserEnter } from 'features/user';
+import { fetchProductions } from 'features/productions';
+import { fetchPagesInfo, fetchRestaurantProductions } from 'features/restaurant';
 
-import { openModalUserEnterSelector, setUserAccountStateSelector } from 'entities/user';
+import {
+  openModalUserEnterSelector,
+  setUserAccountStateSelector
+} from 'entities/user';
 
 import { NEWS_LIMIT } from 'shared/assets/constants/constants';
 import Button from 'shared/ui/Button/Button';
@@ -50,12 +55,16 @@ const News: FC<NewsProps> = (props) => {
   };
 
   const handleCardButtonClick = (id: string) => {
+
     return () => {
       router(`/${id}`)
     }
   };
 
   useEffect(() => {
+    dispatch(fetchProductions());
+    dispatch(fetchRestaurantProductions());
+    dispatch(fetchPagesInfo());
     dispatch(fetchNews({
       dispatch: dispatch,
       limit: news.limit

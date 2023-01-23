@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 import classNames from 'classnames';
 
-import { RootState } from 'app/store';
-
-import { siteDataSelector } from 'features/siteData';
+import { RootState, useAppDispatch } from 'app/store';
 
 import {
  IDescription,
@@ -16,19 +14,20 @@ import {
 import Button from 'shared/ui/Button/Button';
 
 import style from './Description.module.scss';
+import { getRestaurantPagesInfoSelector } from 'features/restaurant';
 
 export interface DescriptionProps {
 
 }
 
 const Description: FC<DescriptionProps> = (props) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const descriptions = useSelector((state: RootState) => state.description.descriptions);
   const [windowWidth, setWindowWidth] = useState(0);
   const [buttonClickCounter, setButtonClickCounter] = useState(0);
   const [isButtonPrevDisabled, setIsButtonPrevDisabled] = useState(true);
   const [isButtonForwardDisabled, setIsButtonForwardDisabled] = useState(false);
-  const siteData = useSelector(siteDataSelector);
+  const pagesInfo = useSelector(getRestaurantPagesInfoSelector);
 
   const chooseCurrentDescription = (counter: number, descriptionsArray: IDescription[]) => {
     const copy = JSON.parse(JSON.stringify(descriptionsArray))
@@ -74,8 +73,8 @@ const Description: FC<DescriptionProps> = (props) => {
   }, [buttonClickCounter]);
 
   useEffect(() => {
-    dispatch(changeDescription(siteData.descriptionImagesLinks));
-  }, [siteData.descriptionImagesLinks]);
+    dispatch(changeDescription(pagesInfo.mainPageDescriptionImagesLinks));
+  }, [pagesInfo.mainPageDescriptionImagesLinks]);
 
   return (
     <section className={style.description}>

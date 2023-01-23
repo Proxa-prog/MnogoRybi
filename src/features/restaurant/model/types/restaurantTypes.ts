@@ -1,5 +1,10 @@
 import { IProducts } from "entities/basket";
-import { IPopupCoordinates } from "entities/contact";
+import { IContactsCard, IPopupCoordinates } from "entities/contact";
+import { IDescription } from "entities/descriptions";
+
+export interface IName {
+  name: string;
+}
 
 export interface IrestaurantLocation {
   restautantPopupCoordinates: IPopupCoordinates[];
@@ -11,11 +16,22 @@ export interface IAllIrestaurantLocationData {
 }
 
 export interface IrRstaurantProductions {
-  products: IProducts[],
-  baseProduct: IProducts[],
-  sauce: IProducts[],
+  products: IProducts[];
+  baseProduct: IProducts[];
+  sauce: IProducts[];
 }
 
 export interface IAllIRestaurantProductionsData {
-restaurantProductions: IrRstaurantProductions;
+  restaurantProductions: IrRstaurantProductions;
+}
+
+export interface IAllRestaurantPagesInfo {
+  restaurantPagesInfo: IrestaurantPagesInfo;
+}
+
+export interface IrestaurantPagesInfo {
+  pagesNames: IName[];
+  footerLinksNames: IName[];
+  restaurantAddress: IContactsCard[];
+  mainPageDescriptionImagesLinks: IDescription[];
 }

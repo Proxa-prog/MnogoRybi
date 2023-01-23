@@ -25,17 +25,25 @@ import {
   changeMapCenter,
   RecenterAutomatically,
 } from 'features/map';
-import { getSiteDataSelector } from 'features/siteData/model/selectors/siteDataSelector';
-import { fetchSiteData } from 'features/siteData/index';
+import { fetchProductions } from 'features/productions';
 import {
   getRegistrationSelector,
   openConfirmationSelector,
   ModalRegistration,
   Confirmation,
 } from 'features/registration';
-import { getRestaurantLocationSelector, fetchRestaurantLocation } from 'features/restaurant';
+import {
+  getRestaurantLocationSelector,
+  fetchRestaurantLocation,
+  fetchPagesInfo,
+  fetchRestaurantProductions,
+  getRestaurantPagesInfoSelector
+} from 'features/restaurant';
 
-import { openModalUserEnterSelector, setUserAccountStateSelector } from 'entities/user';
+import {
+  openModalUserEnterSelector,
+  setUserAccountStateSelector
+} from 'entities/user';
 import {
   IContactsCard,
   IPopupCoordinates,
@@ -55,7 +63,7 @@ const Contacts: FC<ContactsProps> = (props) => {
   const userEnter = useSelector(openModalUserEnterSelector);
   const confirmation = useSelector(openConfirmationSelector);
   const userAccount = useSelector(setUserAccountStateSelector);
-  const siteData = useSelector(getSiteDataSelector);
+  const pagesInfo = useSelector(getRestaurantPagesInfoSelector);
   const restaurantLocation = useSelector(getRestaurantLocationSelector);
 
   const createPopup = (PopupCoordinates: IPopupCoordinates) => {
@@ -89,9 +97,11 @@ const Contacts: FC<ContactsProps> = (props) => {
   };
 
   useEffect(() => {
-    dispatch(fetchSiteData());
     dispatch(fetchRestaurantLocation());
     dispatch(fetchMapCenter());
+    dispatch(fetchProductions());
+    dispatch(fetchRestaurantProductions());
+    dispatch(fetchPagesInfo());
   }, []);
 
   return (
@@ -106,7 +116,7 @@ const Contacts: FC<ContactsProps> = (props) => {
       >
         <div className={style.our_contacts}>
           {
-            siteData.address.map((card: IContactsCard) => {
+            pagesInfo.restaurantAddress.map((card: IContactsCard) => {
               const id = nanoid();
 
               return (

@@ -20,9 +20,11 @@ import {
   ModalRegistration,
   Confirmation
 } from 'features/registration';
-import { fetchSiteData } from 'features/restaurant/model/services/fetchSiteData';
-import {UserEnter} from 'features/user';
-import { fetchRestaurantProductions } from 'features/restaurant';
+import { UserEnter } from 'features/user';
+import {
+  fetchPagesInfo,
+  fetchRestaurantProductions,
+} from 'features/restaurant';
 
 import {
   openModalUserEnterSelector,
@@ -44,8 +46,8 @@ const MainPage: FC<MainPageProps> = (props) => {
 
   useEffect(() => {
     dispatch(fetchProductions());
-    dispatch(fetchSiteData());
     dispatch(fetchRestaurantProductions());
+    dispatch(fetchPagesInfo());
   }, []);
 
   return (

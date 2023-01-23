@@ -16,6 +16,7 @@ export const USER_DATA = "http://localhost:3001/users";
 export const SITE_DATA = "http://localhost:3001/siteData";
 export const RESTAURANT_LOCATION_URL = "http://localhost:3001/restaurantLocation";
 export const RESTAURANT_PRODUCTIONS_URL = "http://localhost:3001/restaurantProductions";
+export const RESTAURANT_PAGES_INFO_URL = "http://localhost:3001/restaurantPagesInfo";
 
 export const MOK_PASSWORD = "qwerty";
 export const NEW_PASSWORD = "12345";

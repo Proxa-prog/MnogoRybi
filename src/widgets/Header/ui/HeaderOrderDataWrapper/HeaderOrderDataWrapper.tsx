@@ -1,16 +1,15 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 
 import { useAppDispatch } from "app/store";
 
-
 import MenuButtonBasket from "widgets/MenuButtonBasket/MenuButtonBasket";
 
-import { addRecipientAddress } from "entities/basket";
+import { getRestaurantPagesInfoSelector } from "features/restaurant";
 
-import { getSiteDataSelector } from "features/siteData/model/selectors/siteDataSelector";
+import { addRecipientAddress } from "entities/basket";
 
 import {
   ViewPorts,
@@ -43,7 +42,7 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
     onBasketButtonClick,
   } = props;
   const dispatch = useAppDispatch();
-  const siteData = useSelector(getSiteDataSelector);
+  const pagesInfo = useSelector(getRestaurantPagesInfoSelector);
 
   const handlerChangeSelectAddress = (address: string) => {
     dispatch(addRecipientAddress(address));
@@ -97,7 +96,7 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
             <LabelText>Доставка по адресу</LabelText>
             <Select
               className={style.open}
-              options={siteData.address}
+              options={pagesInfo.restaurantAddress}
               promptOption="Адрес не выбран"
               onChange={handlerChangeSelectAddress}
             />

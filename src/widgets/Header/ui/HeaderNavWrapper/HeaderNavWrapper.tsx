@@ -7,8 +7,7 @@ import classNames from "classnames";
 import MenuButtonBasket from "widgets/MenuButtonBasket/MenuButtonBasket";
 import MenuButtonEnter from "widgets/MenuButtonEnter/MenuButtonEnter";
 
-import { getSiteDataSelector } from "features/siteData/model/selectors/siteDataSelector";
-import { getRestaurantProductionsSelector } from "features/restaurant";
+import { getRestaurantPagesInfoSelector, getRestaurantProductionsSelector } from "features/restaurant";
 
 import {
   ONE_HUNDRED_PIXEL_SCROLL,
@@ -44,8 +43,8 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
     onClick,
     onBasketButtonClick,
   } = props;
-  const siteData = useSelector(getSiteDataSelector);
   const restaurantProductions = useSelector(getRestaurantProductionsSelector);
+  const pagesInfo = useSelector(getRestaurantPagesInfoSelector);
   const [buttonMoreIsOpen, setButtonMoreIsOpen] = useState(true);
 
   return (
@@ -119,7 +118,7 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
                       isLink
                       classNameList={style.header__info_list_scroll}
                       classNameItem={style.header__info_item_scroll}
-                      items={siteData.info}
+                      items={pagesInfo.pagesNames}
                     />
                     <Button
                       className={style.header__button_more}
@@ -139,7 +138,7 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
                         isLink
                         classNameList={style.info_list_scroll_more_info}
                         classNameItem={style.info_item_scroll_more_info}
-                        items={siteData.info}
+                        items={pagesInfo.pagesNames}
                       />
                     </div>
                   </>
@@ -155,7 +154,7 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
                       style.header__info_item,
                       { [style.header__info_item__open]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP }
                     )}
-                    items={siteData.info}
+                    items={pagesInfo.pagesNames}
                   />
                 )
             }

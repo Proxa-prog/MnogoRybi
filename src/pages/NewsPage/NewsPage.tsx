@@ -1,14 +1,17 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+
+import { useAppDispatch } from "app/store";
 
 import Footer from 'widgets/Footer/Footer';
 import Header from "widgets/Header/Header";
 import BlockHeader from "widgets/Header/ui/BlockHeader/BlockHeader";
 
-import { INews } from "features/news/model/types/newsTypes";
-import { getNewsSelector } from "features/news/model/selectors/getNewsSelector";
+import { getNewsSelector, INews } from "features/news";
 import { getRegistrationSelector, ModalRegistration } from "features/registration";
+import { fetchMapCenter } from "features/map";
+import { fetchRestaurantLocation } from "features/restaurant";
 
 import style from './NewsPage.module.scss';
 
@@ -17,9 +20,15 @@ interface NewsPageProps {
 }
 
 const NewsPage: FC<NewsPageProps> = () => {
+  const dispatch = useAppDispatch();
   const news = useSelector(getNewsSelector);
   const params = useParams();
   const registration = useSelector(getRegistrationSelector);
+
+  useEffect(() => {
+    dispatch(fetchRestaurantLocation());
+    dispatch(fetchMapCenter());
+  }, []);
 
   return (
     <section>

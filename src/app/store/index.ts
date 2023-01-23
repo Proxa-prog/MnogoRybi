@@ -12,9 +12,9 @@ import registrationReduser from "features/registration/model/slice/registrationR
 import userEnterReduser from "entities/user/model/slice/userEnterSlice";
 import configmationReduser from "features/registration/model/slice/confirmationReducer";
 import userAccountReduser from "entities/user/model/slice/userAccountSlice";
-import siteDataReduser from "features/siteData/model/slice/siteDataSlice";
 import restaurantLocationReduser from "features/restaurant/model/slice/restaurantSlice";
 import restaurantProductionsReduser from "features/restaurant/model/slice/restaurantProductionsSlice";
+import restaurantPagesInfoReduser from "features/restaurant/model/slice/restaurantPagesInfo";
 
 const rootReducer = combineReducers({
   description: descriptionReducer,
@@ -28,9 +28,9 @@ const rootReducer = combineReducers({
   userEnter: userEnterReduser,
   configmation: configmationReduser,
   userAccount: userAccountReduser,
-  siteData: siteDataReduser,
   restaurantLocation: restaurantLocationReduser,
   restaurantProductions: restaurantProductionsReduser,
+  restaurantPagesInfo: restaurantPagesInfoReduser,
 });
 
 export const store = configureStore({

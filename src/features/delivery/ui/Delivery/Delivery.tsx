@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 import classNames from 'classnames';
 
-
-import { getSiteDataSelector } from 'features/siteData/model/selectors/siteDataSelector';
-import { getRestaurantProductionsSelector } from 'features/restaurant';
+import { getRestaurantPagesInfoSelector } from 'features/restaurant';
 
 import {
   openBasketSelector,
@@ -13,9 +11,11 @@ import {
   changePickupOfGoods,
 } from 'entities/basket';
 
-import Select from 'shared/ui/Select/Select';
-import Checkbox from 'shared/ui/Checkbox/Checkbox';
-import LabelText from 'shared/ui/LabelText/LabelText';
+import {
+  Select,
+  Checkbox,
+  LabelText
+} from 'shared';
 
 import style from './Delivery.module.scss';
 
@@ -26,8 +26,7 @@ const Delivery: FC<DeliveryProps> = (props) => {
   const dispatch = useDispatch();
   const labelDeliveryCheckboxId = nanoid();
   const basket = useSelector(openBasketSelector);
-  const siteData = useSelector(getSiteDataSelector);
-  const restaurantProductions = useSelector(getRestaurantProductionsSelector);
+  const pagesInfo = useSelector(getRestaurantPagesInfoSelector);
 
   const handlerChangeSelectAddress = (address: string) => {
     dispatch(addRecipientAddress(address));
@@ -41,7 +40,7 @@ const Delivery: FC<DeliveryProps> = (props) => {
   };
 
   useEffect(() => {
-    dispatch(addRecipientAddress(siteData.address[0].name));
+    dispatch(addRecipientAddress(pagesInfo.restaurantAddress[0].name));
   }, []);
 
   return (
@@ -77,8 +76,8 @@ const Delivery: FC<DeliveryProps> = (props) => {
               style.delivery_address,
               style.delivery_open,
             )}
-            promptOption={siteData.address[0].name}
-            options={siteData.address}
+            promptOption={pagesInfo.restaurantAddress[0].name}
+            options={pagesInfo.restaurantAddress}
             onChange={handlerChangeSelectAddress}
             required
           />
