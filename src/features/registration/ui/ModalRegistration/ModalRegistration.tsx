@@ -9,11 +9,11 @@ import {
   changeFirstName,
   changeIsOpenRegistration,
   changePhone,
-  setPassword
-} from 'features/registration/model/slice/registrationReducer';
-import { changeIsOpenConfirmation } from 'features/registration/model/slice/confirmationReducer';
-import { openConfirmationSelector } from 'features/registration/model/selectors/openConfirmationSelector';
-import { getRegistrationSelector } from 'features/registration/model/selectors/getRegistrationSelector';
+  setPassword,
+  changeIsOpenConfirmation,
+  openConfirmationSelector,
+  getRegistrationSelector,
+} from 'features/registration';
 
 import {
   openModalUserEnterSelector,
@@ -21,10 +21,13 @@ import {
   userRigistration,
 } from "entities/user";
 
-import { MOK_PASSWORD } from 'shared/assets/constants/constants';
-import Button from 'shared/ui/Button/Button';
-import Checkbox from 'shared/ui/Checkbox/Checkbox';
-import Input from 'shared/ui/Input/Input';
+import {
+  MOK_PASSWORD,
+  Button,
+  Checkbox,
+  Input,
+  USER_DATA,
+} from 'shared';
 
 import style from './ModalRegistration.module.scss';
 
@@ -76,6 +79,7 @@ const ModalRegistration: React.FC = () => {
       password: MOK_PASSWORD,
       orders: [],
       closeWindow: closeWindow,
+      userUrl: USER_DATA,
     });
   };
 

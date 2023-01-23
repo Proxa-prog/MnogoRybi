@@ -16,6 +16,7 @@ export interface IUserRegistration {
   password: string | undefined;
   orders: IAmountProduct[];
   closeWindow: () => void;
+  userUrl: string;
 }
 
 export interface IResponse {

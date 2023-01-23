@@ -6,9 +6,86 @@
       "phone": "213",
       "password": "qwerty",
       "orders": [
-        
+        {
+          "orders": [
+            {
+              "amount": 3,
+              "baseCost": 360,
+              "baseProduct": "Рисовая лапша",
+              "cost": 1080,
+              "description": "Состав на усмотрение шеф-повара от 320 гр. до 450 гр.",
+              "name": "Фирменный поке с креветками",
+              "sauce": "Унаги соус"
+            }
+          ],
+          "orderDay": "23.01.2023",
+          "orderTime": "14:04:18",
+          "comment": "234",
+          "paymentToTheCourier": false,
+          "pickupOfGoods": false,
+          "recipientAddress": "Ярославль, Свободы 52/39",
+          "recipientCardDate": "324",
+          "recipientCardNumber": "324",
+          "recipientCvc": "321",
+          "recipientName": "234",
+          "recipientPhone": "324",
+          "saveCardDate": true,
+          "orderId": "O0at1rL6E4WsnZMiCtV3u"
+        }
       ],
       "id": 1
+    },
+    {
+      "firstName": "sdfagdsaf",
+      "email": "asdfsdaf@mail.ru",
+      "phone": "123",
+      "password": "qwerty",
+      "orders": [],
+      "id": 2
+    },
+    {
+      "firstName": "qwer",
+      "email": "qwerrty@mail.ru",
+      "phone": "123123",
+      "password": "qwerty",
+      "orders": [
+        {
+          "orders": [
+            {
+              "amount": 5,
+              "baseCost": 360,
+              "baseProduct": "Рисовая лапша",
+              "cost": 1800,
+              "description": "Состав на усмотрение шеф-повара от 320 гр. до 450 гр.",
+              "name": "Фирменный поке с креветками",
+              "sauce": "Соевый соус"
+            },
+            {
+              "amount": 3,
+              "baseCost": 360,
+              "baseProduct": "Рисовая лапша",
+              "cost": 1080,
+              "description": "Состав на усмотрение шеф-повара",
+              "name": "Фирменный поке с индейкой",
+              "sauce": "Соевый соус"
+            }
+          ],
+          "orderDay": "23.01.2023",
+          "orderTime": "15:18:58",
+          "comment": "awe",
+          "paymentToTheCourier": true,
+          "pickupOfGoods": true,
+          "recipientAddress": "Ярославль, Некрасова 52/35",
+          "recipientCardDate": "123",
+          "recipientCardNumber": "213",
+          "recipientCvc": "209",
+          "recipientName": "123",
+          "recipientPhone": "120",
+          "saveCardDate": true,
+          "orderId": "n5SROCi0m4CjMtSO0-M9K"
+        }
+      ],
+      "id": 3
     }
   ],
   "productions": {
@@ -841,168 +918,6 @@
       }
     ],
     "mainPageDescriptionImagesLinks": [
-      {
-        "name": "description_background.jpg",
-        "isCurrent": true
-      },
-      {
-        "name": "cheesecake.jpg",
-        "isCurrent": false
-      },
-      {
-        "name": "poke/poke_with_turkey.jpg",
-        "isCurrent": false
-      }
-    ]
-  },
-  "siteData": {
-    "products": [
-      {
-        "name": "Поке",
-        "id": "Poke"
-      },
-      {
-        "name": "Роллы",
-        "id": "Rolls"
-      },
-      {
-        "name": "Супы и карри",
-        "id": "Curry"
-      },
-      {
-        "name": "Вок",
-        "id": "Wok"
-      },
-      {
-        "name": "Сэндвичи",
-        "id": "Sandwich"
-      },
-      {
-        "name": "Десерты",
-        "id": "Deserts"
-      },
-      {
-        "name": "Напитки",
-        "id": "Drinks"
-      }
-    ],
-    "baseProduct": [
-      {
-        "name": "Рисовая лапша"
-      },
-      {
-        "name": "Пшеничная лапша"
-      },
-      {
-        "name": "Лапша удон"
-      },
-      {
-        "name": "Лапша сомен"
-      },
-      {
-        "name": "Лапша рамен"
-      },
-      {
-        "name": "Лапша соба"
-      },
-      {
-        "name": "Фунчоза"
-      }
-    ],
-    "sauce": [
-      {
-        "name": "Соевый соус"
-      },
-      {
-        "name": "Сливочный-чили соус"
-      },
-      {
-        "name": "Медовый соус"
-      },
-      {
-        "name": "Терияки соус"
-      },
-      {
-        "name": "Унаги соус"
-      },
-      {
-        "name": "Спайси соус"
-      },
-      {
-        "name": "Кимчи соус"
-      }
-    ],
-    "info": [
-      {
-        "name": "Франшиза",
-        "id": "franchise"
-      },
-      {
-        "name": "Доставка",
-        "id": "delivery"
-      },
-      {
-        "name": "Новости",
-        "id": "news"
-      },
-      {
-        "name": "Контакты",
-        "id": "contacts"
-      }
-    ],
-    "info_footer": [
-      {
-        "name": "Доставка и оплата",
-        "id": "delivery"
-      },
-      {
-        "name": "Новости",
-        "id": "news"
-      },
-      {
-        "name": "Франшиза",
-        "id": "franchise"
-      },
-      {
-        "name": "Контакты",
-        "id": "contacts"
-      },
-      {
-        "name": "Личный кабинет",
-        "id": "personalArea"
-      }
-    ],
-    "address": [
-      {
-        "name": "Ярославль, Тургенева 1а",
-        "workTime": "пн-вс: 9:00—22:00",
-        "phone": "Телефон: 8 (4852) 980-100",
-        "lat": 57.64647,
-        "lng": 39.85169
-      },
-      {
-        "name": "Ярославль, Некрасова 52/35",
-        "workTime": "пн-вс: 11:00—23:00",
-        "phone": "Телефон: 8 (4852) 980-100",
-        "lat": 57.622014,
-        "lng": 39.822954
-      },
-      {
-        "name": "Ярославль, Свободы 52/39",
-        "workTime": "пн-вс: 9:00—22:00",
-        "phone": "Телефон: 8 (4852) 980-100",
-        "lat": 57.641119,
-        "lng": 39.91065
-      },
-      {
-        "name": "Ярославль, Урицкого 39",
-        "workTime": "пн-вс: 9:00—22:00",
-        "phone": "Телефон: 8 (4852) 980-100",
-        "lat": 57.623386,
-        "lng": 39.960096
-      }
-    ],
-    "descriptionImagesLinks": [
       {
         "name": "description_background.jpg",
         "isCurrent": true

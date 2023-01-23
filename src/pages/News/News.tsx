@@ -65,10 +65,7 @@ const News: FC<NewsProps> = (props) => {
     dispatch(fetchProductions());
     dispatch(fetchRestaurantProductions());
     dispatch(fetchPagesInfo());
-    dispatch(fetchNews({
-      dispatch: dispatch,
-      limit: news.limit
-    }));
+    dispatch(fetchNews(news.limit));
   }, [news.limit]);
 
   return (

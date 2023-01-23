@@ -1,20 +1,18 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 import { IResponse, IUserRegistration } from "entities/user";
 
-import { USER_DATA } from "shared";
 
 const checkEmail = (resp: IResponse, email: string | undefined) => {
   const emailIsBusy = resp.data.some((item: IUserRegistration) => {
 
-    return item.email === email
+    return item.email === email;
   });
 
    return emailIsBusy;
-}
+};
 
-export const userRigistration = createAsyncThunk(USER_DATA, async (userData: IUserRegistration) => {
+export const userRigistration = async (userData: IUserRegistration) => {
   const {
     firstName,
     email,
@@ -22,10 +20,11 @@ export const userRigistration = createAsyncThunk(USER_DATA, async (userData: IUs
     password,
     orders,
     closeWindow,
+    userUrl,
   } = userData;
 
   const createUser = () => axios
-  .post(USER_DATA, {
+  .post(userUrl, {
     firstName: firstName,
     email: email,
     phone: phone,
@@ -33,7 +32,7 @@ export const userRigistration = createAsyncThunk(USER_DATA, async (userData: IUs
     orders,
   });
 
-  const data = await axios.get(USER_DATA);
+  const data = await axios.get(userUrl);
 
   const check = checkEmail(data, email);
 
@@ -43,4 +42,4 @@ export const userRigistration = createAsyncThunk(USER_DATA, async (userData: IUs
   } else {
     console.log("Пользователь с таким email уже существует.");
   }
-});
+};

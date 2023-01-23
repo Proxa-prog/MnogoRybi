@@ -13,7 +13,6 @@ export const ONE_HUNDRED_PIXEL_SCROLL = 100;
 export const POKE_URL = "http://localhost:3001/productions";
 export const NEWS_URL = "http://localhost:3001/news";
 export const USER_DATA = "http://localhost:3001/users";
-export const SITE_DATA = "http://localhost:3001/siteData";
 export const RESTAURANT_LOCATION_URL = "http://localhost:3001/restaurantLocation";
 export const RESTAURANT_PRODUCTIONS_URL = "http://localhost:3001/restaurantProductions";
 export const RESTAURANT_PAGES_INFO_URL = "http://localhost:3001/restaurantPagesInfo";
