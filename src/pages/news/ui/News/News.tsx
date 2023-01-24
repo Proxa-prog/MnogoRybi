@@ -5,11 +5,10 @@ import { nanoid } from '@reduxjs/toolkit';
 
 import { useAppDispatch } from 'app/store';
 
-import Footer from 'widgets/Footer/Footer';
-import Card from 'widgets/Card/Card';
-import Recovery from 'widgets/Recovery/Recovery';
-import BlockHeader from 'widgets/Header/ui/BlockHeader/BlockHeader';
-import Header from 'widgets/Header/Header';
+import { Footer } from 'widgets/Footer';
+import { Card } from 'widgets/Card';
+import { Recovery } from 'widgets/Recovery';
+import { Header, BlockHeader } from 'widgets/Header';
 
 import {
   INews,
@@ -32,8 +31,7 @@ import {
   setUserAccountStateSelector
 } from 'entities/user';
 
-import { NEWS_LIMIT } from 'shared/assets/constants/constants';
-import Button from 'shared/ui/Button/Button';
+import { Button, NEWS_LIMIT } from 'shared';
 
 import style from './News.module.scss';
 

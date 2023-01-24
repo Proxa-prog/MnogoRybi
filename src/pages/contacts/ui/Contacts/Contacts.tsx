@@ -13,10 +13,9 @@ import { useAppDispatch } from 'app/store';
 
 import PopupIcon from '/public/images/location_marker.png'
 
-import Footer from 'widgets/Footer/Footer';
-import BlockHeader from 'widgets/Header/ui/BlockHeader/BlockHeader';
-import Header from 'widgets/Header/Header';
-import Recovery from 'widgets/Recovery/Recovery';
+import { Footer } from 'widgets/Footer';
+import { Header, BlockHeader } from 'widgets/Header';
+import { Recovery } from 'widgets/Recovery';
 
 import { UserEnter } from 'features/user';
 import {

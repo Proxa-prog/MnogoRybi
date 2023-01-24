@@ -1,4 +1,4 @@
-import { CardProps } from "widgets/Card/Card";
+import { CardProps } from "widgets/Card";
 
 export interface IProductionsAction {
   payload: CardProps[];

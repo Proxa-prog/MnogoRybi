@@ -9,7 +9,7 @@ import {
   StatusMarker
 } from 'shared';
 
-import style from 'widgets/Header/Header.module.scss';
+import style from 'widgets/Header/ui/Header/Header.module.scss';
 
 interface MenuButtonBasketProps {
   itemsInTheBasket: number | undefined;

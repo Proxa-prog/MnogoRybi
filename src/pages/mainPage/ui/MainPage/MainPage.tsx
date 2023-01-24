@@ -3,15 +3,15 @@ import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from 'app/store';
 
-import ComponentWrapper from 'widgets/ProductsWrapper/ComponentWrapper';
-import ChooseCardWrapper from 'widgets/ChooseCardWrapper/ChooseCardWrapper';
-import AboutCompany from 'widgets/AboutCompany/AboutCompany';
-import Products from 'widgets/Products/Products';
-import Franchise from 'widgets/Franchise/Franchise';
-import Footer from 'widgets/Footer/Footer';
-import Recovery from 'widgets/Recovery/Recovery';
-import Header from 'widgets/Header/Header';
-import BasketWrapper from 'widgets/Basket/ui/BasketWrapper/BasketWrapper';
+import { BasketWrapper } from 'widgets/Basket';
+import { Header } from 'widgets/Header';
+import { Recovery } from 'widgets/Recovery';
+import { ComponentWrapper } from 'widgets/ProductsWrapper';
+import { Products } from 'widgets/Products';
+import { AboutCompany } from 'widgets/AboutCompany';
+import { ChooseCardWrapper } from 'widgets/ChooseCardWrapper';
+import { Footer } from 'widgets/Footer';
+import { Franchise } from 'widgets/Franchise';
 
 import { getProdSelector, fetchProductions } from 'features/productions';
 import {

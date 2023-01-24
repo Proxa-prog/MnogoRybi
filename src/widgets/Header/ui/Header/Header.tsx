@@ -8,8 +8,10 @@ import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 
 import { useAppDispatch } from 'app/store';
-import HeaderOrderDataWrapper from 'widgets/Header/ui/HeaderOrderDataWrapper/HeaderOrderDataWrapper';
-import HeaderNavWrapper from 'widgets/Header/ui/HeaderNavWrapper/HeaderNavWrapper';
+import {
+  HeaderOrderDataWrapper,
+  HeaderNavWrapper
+} from 'widgets/Header';
 
 import { changeIsOpenRegistration } from 'features/registration';
 

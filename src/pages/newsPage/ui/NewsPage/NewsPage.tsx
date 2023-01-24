@@ -4,9 +4,8 @@ import { useParams } from "react-router-dom";
 
 import { useAppDispatch } from "app/store";
 
-import Footer from 'widgets/Footer/Footer';
-import Header from "widgets/Header/Header";
-import BlockHeader from "widgets/Header/ui/BlockHeader/BlockHeader";
+import { Footer } from 'widgets/Footer';
+import { Header, BlockHeader } from "widgets/Header";
 
 import { getNewsSelector, INews } from "features/news";
 import { getRegistrationSelector, ModalRegistration } from "features/registration";

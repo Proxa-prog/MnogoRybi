@@ -4,8 +4,8 @@ import { useSelector } from "react-redux";
 
 import classNames from "classnames";
 
-import MenuButtonBasket from "widgets/MenuButtonBasket/MenuButtonBasket";
-import MenuButtonEnter from "widgets/MenuButtonEnter/MenuButtonEnter";
+import { MenuButtonBasket } from "widgets/MenuButtonBasket";
+import { MenuButtonEnter } from "widgets/MenuButtonEnter";
 
 import { getRestaurantPagesInfoSelector, getRestaurantProductionsSelector } from "features/restaurant";
 
@@ -17,7 +17,7 @@ import {
   List,
 } from "shared";
 
-import style from 'widgets/Header/Header.module.scss';
+import style from 'widgets/Header/ui/Header/Header.module.scss';
 
 interface HeaderNavWrapperProps {
   isHeaderMenuActive: boolean;

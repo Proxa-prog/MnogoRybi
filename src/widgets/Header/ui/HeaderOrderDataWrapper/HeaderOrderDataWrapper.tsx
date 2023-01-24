@@ -5,7 +5,7 @@ import classNames from "classnames";
 
 import { useAppDispatch } from "app/store";
 
-import MenuButtonBasket from "widgets/MenuButtonBasket/MenuButtonBasket";
+import { MenuButtonBasket } from "widgets/MenuButtonBasket";
 
 import { getRestaurantPagesInfoSelector } from "features/restaurant";
 
@@ -19,7 +19,7 @@ import {
   Button,
 } from "shared";
 
-import style from 'widgets/Header/Header.module.scss';
+import style from 'widgets/Header/ui/Header/Header.module.scss';
 
 interface HeaderOrderDataWrapperProps {
   isHeaderMenuActive: boolean;

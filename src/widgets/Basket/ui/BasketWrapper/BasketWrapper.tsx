@@ -4,11 +4,11 @@ import { nanoid } from '@reduxjs/toolkit';
 
 import { useAppDispatch } from 'app/store';
 
-import Basket from 'widgets/Basket/Basket';
+import { Basket } from 'widgets/Basket';
 
 import { openBasketSelector, openBasketBlock } from 'entities/basket';
 
-import Button from 'shared/ui/Button/Button';
+import { Button } from 'shared';
 
 import style from './BasketWrapper.module.scss';
 

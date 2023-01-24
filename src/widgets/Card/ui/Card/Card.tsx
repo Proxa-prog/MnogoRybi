@@ -4,34 +4,17 @@ import classnames from 'classnames';
 
 import { useAppDispatch } from 'app/store';
 
+import { CardProps } from 'widgets/Card';
+
 import { setOpenProductsCard } from 'features/productions';
 
 import {
-  ButtonColor,
   StatusMarker,
   Button,
   StatusMarkerProps
 } from 'shared';
 
 import style from './Card.module.scss';
-
-export interface CardProps {
-  className?: string;
-  imageWrapperClassName?: string;
-  imageUrl?: string;
-  header?: string;
-  description?: string;
-  cost?: number;
-  previousCost?: number;
-  statuses?: StatusMarkerProps[];
-  isInfo?: boolean;
-  buttonText?: string;
-  buttonColor?: ButtonColor;
-  isGrayTheme?: boolean;
-  disabled?: boolean;
-  onClick?: () => void;
-  id?: string;
-}
 
 const Card: FC<CardProps> = (props) => {
   const {
