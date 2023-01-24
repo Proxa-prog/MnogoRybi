@@ -13,10 +13,10 @@ import {
   DELIVERY_ROUTE,
 } from 'shared/assets/constants/constants';
 
-import MainPage from 'pages/MainPage/MainPage';
-import News from 'pages/News/News';
-import Contacts from 'pages/Contacts/Contacts';
-import NewsPage from 'pages/NewsPage/NewsPage';
+import { MainPage } from 'pages/mainPage';
+import { News } from 'pages/news';
+import { Contacts } from 'pages/contacts';
+import { NewsPage } from 'pages/newsPage';
 // import FranchisePage from 'widgets/ui/FranchisePage/FranchisePage';
 // import DeliveryPage from 'widgets/ui/DeliveryPage/DeliveryPage';
 

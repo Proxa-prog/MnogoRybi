@@ -7,6 +7,7 @@ from 'react';
 import { IProducts } from 'entities/basket/model/types/basketTypes';
 
 import style from './Select.module.scss';
+import { IContactsCard } from 'entities/contact';
 
 type HtmlSelectProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'onChange'>;
 
@@ -38,7 +39,8 @@ const Select: FC<SelectProps> = (props) => {
     setIsOpen(prev => !prev);
   };
 
-  const handleOptionClick = (option: any) => {
+  const handleOptionClick = (option: IContactsCard | IProducts) => {
+    console.log(option);
 
     return () => {
       onChange && onChange(option.name);

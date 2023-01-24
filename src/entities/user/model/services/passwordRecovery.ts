@@ -1,15 +1,19 @@
 import axios from "axios";
+
+import { IUserRegistration } from "entities/user";
 import { NEW_PASSWORD, USER_DATA } from "shared";
 
-const newPassword = async (item: any) => {
+const newPassword = async (item: IUserRegistration) => {
   await axios.patch(`${USER_DATA}/${item.id}`, { password: NEW_PASSWORD });
 };
 
-export const passwordRecovery = async (userEmail: any) => {
+export const passwordRecovery = async (userEmail: string) => {
   try {
     const response = await axios.get(USER_DATA);
 
-    const isFind = response.data.map((item: any) => {
+    const isFind = response.data.map((item: IUserRegistration) => {
+      console.log("item", item);
+
       if (item.email === userEmail) {
         newPassword(item);
       } else {

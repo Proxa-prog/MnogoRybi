@@ -32,7 +32,7 @@ const Basket: FC<BasketProps> = (props) => {
   console.log(basket)
   console.log('userAccount', userAccount)
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
     dispatch(addOrderToUser({

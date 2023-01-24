@@ -68,7 +68,7 @@ const ModalRegistration: React.FC = () => {
     dispatch(changeIsOpenRegistration(registration.isOpen));
   };
 
-  const handleButtonRegistrationClick = (event: any) => {
+  const handleButtonRegistrationClick = (event: React.FormEvent) => {
     event.preventDefault();
     dispatch(setPassword(MOK_PASSWORD));
 

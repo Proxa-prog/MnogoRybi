@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import { useSelector } from "react-redux";
 
 import { useAppDispatch } from "app/store";
@@ -14,12 +14,10 @@ import {
   changeEmailUserEnter,
   changeIsOpenUserEnter,
   changePasswordUserEnter,
-  changeEmailUserAccount,
-  changeIsLoginUserAccount,
   changeIsOpenRecovery,
 } from "entities/user";
 
-import {Button, Input} from "shared";
+import { Button, Input } from "shared";
 
 import style from './UserEnter.module.scss';
 
@@ -55,26 +53,16 @@ const UserEnter: FC<UserEnterProps> = () => {
     dispatch(changeIsOpenUserEnter(userEnter.isOpen));
   };
 
-  const handleButtonUserEnter = async (event: any) => {
+  const handleButtonUserEnter = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    const isSubmit = await findUserAccount({
+    dispatch(findUserAccount({
       email: userEnter.email,
       password: userEnter.password,
-    });
-
-    if (isSubmit) {
-      dispatch(changeIsOpenUserEnter(userEnter.isOpen));
-      dispatch(changeIsLoginUserAccount(userAccount.isLogin));
-      dispatch(changeEmailUserAccount(userEnter.email));
-      console.log(userAccount);
-    }
+      isWindowUserEnterOpen: userEnter.isOpen,
+      isUserLogin: userAccount.isLogin,
+    }));
   };
-
-
-  useEffect(() => {
-    console.log(userAccount);
-  }, [userAccount]);
 
   return (
     <form

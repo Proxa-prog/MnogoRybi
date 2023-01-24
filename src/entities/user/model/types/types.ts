@@ -17,8 +17,16 @@ export interface IUserRegistration {
   orders: IAmountProduct[];
   closeWindow: () => void;
   userUrl: string;
+  id?: string;
 }
 
 export interface IResponse {
   data: IUserRegistration[];
+}
+
+export interface IUserData {
+  email: string | undefined;
+  password: string | undefined;
+  isWindowUserEnterOpen: boolean;
+  isUserLogin: boolean;
 }

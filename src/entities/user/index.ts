@@ -8,7 +8,11 @@ export {
 export { findUserAccount } from "./model/services/findUserAccount";
 export { passwordRecovery } from "./model/services/passwordRecovery";
 export { userRigistration } from "./model/services/setUserData";
-export { IUserRegistration, IResponse } from "./model/types/types";
+export {
+  IUserRegistration,
+  IResponse,
+  IUserData,
+} from "./model/types/types";
 export {
   changeEmailUserEnter,
   changeIsOpenUserEnter,
