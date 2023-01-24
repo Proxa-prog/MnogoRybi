@@ -1,3 +1,12 @@
+import { IUserRegistration } from "entities/user";
+import { INews } from "features/news";
+import { IProductions } from "features/productions";
+import {
+  IrestaurantLocation,
+  IrestaurantPagesInfo,
+  IRestaurantProductions,
+} from "features/restaurant";
+
 export interface IProducts {
   name: string;
   id?: string;
@@ -63,4 +72,39 @@ export interface IAmountProductAction {
 export interface IUserOrder {
   userEmail: string | undefined;
   basket: IBasketState;
+}
+
+export interface ResponseApi {
+  status: string;
+  data: IUserRegistration[];
+}
+
+export interface ResponseApiMap {
+  status: string;
+  data: IrestaurantLocation;
+}
+
+export interface ResponseApiNews {
+  status: string;
+  data: INews[];
+}
+
+export interface ResponseApiProductions {
+  status: string;
+  data: IProductions;
+}
+
+export interface ResponseApiRestaurantLocation {
+  status: string;
+  data: IrestaurantLocation;
+}
+
+export interface ResponseApiRestaurantPagesInfo {
+  status: string;
+  data: IrestaurantPagesInfo;
+}
+
+export interface ResponseApiRestaurantProductions {
+  status: string;
+  data: IRestaurantProductions;
 }

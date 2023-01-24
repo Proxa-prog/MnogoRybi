@@ -41,4 +41,11 @@ export {
   AmountProductArray,
   IAmountProductAction,
   IUserOrder,
+  ResponseApi,
+  ResponseApiMap,
+  ResponseApiNews,
+  ResponseApiProductions,
+  ResponseApiRestaurantLocation,
+  ResponseApiRestaurantPagesInfo,
+  ResponseApiRestaurantProductions,
 } from "./model/types/basketTypes";

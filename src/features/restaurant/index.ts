@@ -14,7 +14,7 @@ export {
 export {
   IrestaurantLocation,
   IAllIrestaurantLocationData,
-  IrRstaurantProductions,
+  IRestaurantProductions,
   IAllIRestaurantProductionsData,
   IrestaurantPagesInfo,
   IAllRestaurantPagesInfo,

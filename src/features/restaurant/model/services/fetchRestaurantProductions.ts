@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { ResponseApiRestaurantProductions } from "entities/basket";
 
 import {
   getRestaurantBaseProduct,
@@ -9,8 +10,8 @@ import {
 
 import { RESTAURANT_PRODUCTIONS_URL } from "shared";
 
-export const fetchRestaurantProductions = createAsyncThunk(RESTAURANT_PRODUCTIONS_URL, async (_, thunkAPI) => {
-  const response = await axios.get(RESTAURANT_PRODUCTIONS_URL);
+export const fetchRestaurantProductions = createAsyncThunk<void, undefined, {}>(RESTAURANT_PRODUCTIONS_URL, async (_, thunkAPI) => {
+  const response = await axios.get<string, ResponseApiRestaurantProductions>(RESTAURANT_PRODUCTIONS_URL);
 
   thunkAPI.dispatch(getRestaurantProducts(response.data.products));
   thunkAPI.dispatch(getRestaurantBaseProduct(response.data.baseProduct));

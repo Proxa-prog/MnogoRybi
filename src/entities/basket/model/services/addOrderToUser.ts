@@ -1,19 +1,20 @@
 import { createAsyncThunk, nanoid } from "@reduxjs/toolkit";
 import axios from "axios";
 
-import { IAmountProduct, IUserOrder } from "entities/basket";
+import { IAmountProduct, IUserOrder, ResponseApi } from "entities/basket";
 import { IUserRegistration } from "entities/user";
 
 import { USER_DATA } from "shared";
 
-export const addOrderToUser = createAsyncThunk(
+export const addOrderToUser = createAsyncThunk<void, IUserOrder, {}>(
   USER_DATA,
-  async (userOrder: IUserOrder) => {
+  async (userOrder) => {
     const { userEmail, basket } = userOrder;
     const orderTime = new Date();
     const id = nanoid();
 
-    const response = await axios.get(`${USER_DATA}`);
+    const response = await axios.get<string, ResponseApi>(`${USER_DATA}`);
+
     const actualUserId = response.data.find((user: IUserRegistration) => {
 
       return user.email === userEmail;
@@ -49,8 +50,8 @@ export const addOrderToUser = createAsyncThunk(
       saveCardDate: basket.saveCardDate,
       orderId: id,
     };
-    console.log("newOrder", newOrder);
-    await axios.patch(`${USER_DATA}/${actualUserId.id}`, {
+
+    actualUserId && await axios.patch<string, IAmountProduct>(`${USER_DATA}/${actualUserId.id}`, {
       orders: [...actualUserId.orders, newOrder],
     });
   }

@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { ResponseApiRestaurantLocation } from "entities/basket";
 import { IPopupCoordinates } from "entities/contact";
 import {
   getRestaurantLocation,
@@ -15,10 +16,10 @@ const coordinatesToNumber = (coordinates: IPopupCoordinates) => {
   return coordinates;
 };
 
-export const fetchRestaurantLocation = createAsyncThunk(
+export const fetchRestaurantLocation = createAsyncThunk<void, undefined, {}>(
   RESTAURANT_LOCATION_URL,
   async (_, thunkAPI) => {
-    const response = await axios.get(RESTAURANT_LOCATION_URL);
+    const response = await axios.get<string, ResponseApiRestaurantLocation>(RESTAURANT_LOCATION_URL);
 
     const restautantPopupCoordinatesToNumber =
       response.data.restautantPopupCoordinates.map(
@@ -34,9 +35,7 @@ export const fetchRestaurantLocation = createAsyncThunk(
       lng: Number(response.data.restautantMapCenter.lng),
     };
 
-    thunkAPI.dispatch(
-      getRestaurantLocation(restautantPopupCoordinatesToNumber)
-    );
+    thunkAPI.dispatch(getRestaurantLocation(restautantPopupCoordinatesToNumber));
     thunkAPI.dispatch(getRestaurantMapCenter(restautantMapCenterToNumber));
   }
 );

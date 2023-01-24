@@ -1,4 +1,5 @@
 import axios from "axios";
+import { ResponseApi } from "entities/basket";
 
 import { IResponse, IUserRegistration } from "entities/user";
 
@@ -24,7 +25,7 @@ export const userRigistration = async (userData: IUserRegistration) => {
   } = userData;
 
   const createUser = () => axios
-  .post(userUrl, {
+  .post<string, ResponseApi>(userUrl, {
     firstName: firstName,
     email: email,
     phone: phone,
@@ -32,7 +33,7 @@ export const userRigistration = async (userData: IUserRegistration) => {
     orders,
   });
 
-  const data = await axios.get(userUrl);
+  const data = await axios.get<string, ResponseApi>(userUrl);
 
   const check = checkEmail(data, email);
 

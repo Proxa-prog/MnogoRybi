@@ -15,14 +15,14 @@ export interface IAllIrestaurantLocationData {
   restaurantLocation: IrestaurantLocation;
 }
 
-export interface IrRstaurantProductions {
+export interface IRestaurantProductions {
   products: IProducts[];
   baseProduct: IProducts[];
   sauce: IProducts[];
 }
 
 export interface IAllIRestaurantProductionsData {
-  restaurantProductions: IrRstaurantProductions;
+  restaurantProductions: IRestaurantProductions;
 }
 
 export interface IAllRestaurantPagesInfo {
