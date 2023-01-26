@@ -19,23 +19,27 @@ const coordinatesToNumber = (coordinates: IPopupCoordinates) => {
 export const fetchRestaurantLocation = createAsyncThunk<void, undefined, {}>(
   RESTAURANT_LOCATION_URL,
   async (_, thunkAPI) => {
-    const response = await axios.get<string, ResponseApiRestaurantLocation>(RESTAURANT_LOCATION_URL);
+    try {
+      const response = await axios.get<string, ResponseApiRestaurantLocation>(RESTAURANT_LOCATION_URL);
 
-    const restautantPopupCoordinatesToNumber =
-      response.data.restautantPopupCoordinates.map(
-        (item: IPopupCoordinates) => {
-          coordinatesToNumber(item);
+      const restautantPopupCoordinatesToNumber =
+        response.data.restautantPopupCoordinates.map(
+          (item: IPopupCoordinates) => {
+            coordinatesToNumber(item);
 
-          return item;
-        }
-      );
+            return item;
+          }
+        );
 
-    const restautantMapCenterToNumber = {
-      lat: Number(response.data.restautantMapCenter.lat),
-      lng: Number(response.data.restautantMapCenter.lng),
-    };
+      const restautantMapCenterToNumber = {
+        lat: Number(response.data.restautantMapCenter.lat),
+        lng: Number(response.data.restautantMapCenter.lng),
+      };
 
-    thunkAPI.dispatch(getRestaurantLocation(restautantPopupCoordinatesToNumber));
-    thunkAPI.dispatch(getRestaurantMapCenter(restautantMapCenterToNumber));
+      thunkAPI.dispatch(getRestaurantLocation(restautantPopupCoordinatesToNumber));
+      thunkAPI.dispatch(getRestaurantMapCenter(restautantMapCenterToNumber));
+    } catch (error) {
+      console.error(error)
+    }
   }
 );

@@ -8,7 +8,11 @@ import { ResponseApiNews } from "entities/basket/model/types/basketTypes";
 import { NEWS_URL } from "shared";
 
 export const fetchNews = createAsyncThunk<void, number, {}>(NEWS_URL, async (limit: number, thunkAPI) => {
-  const response = await axios.get<string, ResponseApiNews>(`${NEWS_URL}?_limit=${limit}`);
+  try {
+    const response = await axios.get<string, ResponseApiNews>(`${NEWS_URL}?_limit=${limit}`);
 
-  thunkAPI.dispatch(getNewsArray(response.data));
+    thunkAPI.dispatch(getNewsArray(response.data));
+  } catch (error) {
+    console.error(error)
+  }
 });

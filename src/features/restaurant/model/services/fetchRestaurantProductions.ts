@@ -11,10 +11,14 @@ import {
 import { RESTAURANT_PRODUCTIONS_URL } from "shared";
 
 export const fetchRestaurantProductions = createAsyncThunk<void, undefined, {}>(RESTAURANT_PRODUCTIONS_URL, async (_, thunkAPI) => {
-  const response = await axios.get<string, ResponseApiRestaurantProductions>(RESTAURANT_PRODUCTIONS_URL);
+  try {
+    const response = await axios.get<string, ResponseApiRestaurantProductions>(RESTAURANT_PRODUCTIONS_URL);
 
-  thunkAPI.dispatch(getRestaurantProducts(response.data.products));
-  thunkAPI.dispatch(getRestaurantBaseProduct(response.data.baseProduct));
-  thunkAPI.dispatch(getRestaurantSauce(response.data.sauce));
+    thunkAPI.dispatch(getRestaurantProducts(response.data.products));
+    thunkAPI.dispatch(getRestaurantBaseProduct(response.data.baseProduct));
+    thunkAPI.dispatch(getRestaurantSauce(response.data.sauce));
+  } catch (error) {
+    console.error(error)
   }
+}
 );

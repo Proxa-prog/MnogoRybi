@@ -10,7 +10,7 @@ const checkEmail = (resp: IResponse, email: string | undefined) => {
     return item.email === email;
   });
 
-   return emailIsBusy;
+  return emailIsBusy;
 };
 
 export const userRigistration = async (userData: IUserRegistration) => {
@@ -24,23 +24,27 @@ export const userRigistration = async (userData: IUserRegistration) => {
     userUrl,
   } = userData;
 
-  const createUser = () => axios
-  .post<string, ResponseApi>(userUrl, {
-    firstName: firstName,
-    email: email,
-    phone: phone,
-    password: password,
-    orders,
-  });
+  try {
+    const createUser = () => axios
+      .post<string, ResponseApi>(userUrl, {
+        firstName: firstName,
+        email: email,
+        phone: phone,
+        password: password,
+        orders,
+      });
 
-  const data = await axios.get<string, ResponseApi>(userUrl);
+    const data = await axios.get<string, ResponseApi>(userUrl);
 
-  const check = checkEmail(data, email);
+    const check = checkEmail(data, email);
 
-  if (!check) {
-    createUser();
-    closeWindow();
-  } else {
-    console.log("Пользователь с таким email уже существует.");
+    if (!check) {
+      createUser();
+      closeWindow();
+    } else {
+      console.log("Пользователь с таким email уже существует.");
+    }
+  } catch (error) {
+    console.error(error);
   }
 };
