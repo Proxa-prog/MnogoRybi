@@ -19,10 +19,7 @@ import {
 
 import style from './Delivery.module.scss';
 
-export interface DeliveryProps {
-}
-
-const Delivery: FC<DeliveryProps> = (props) => {
+const Delivery: FC = () => {
   const dispatch = useDispatch();
   const labelDeliveryCheckboxId = nanoid();
   const basket = useSelector(openBasketSelector);

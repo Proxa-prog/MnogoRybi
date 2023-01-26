@@ -1,17 +1,13 @@
-import React, { FC } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { FC } from "react";
+import { useDispatch } from "react-redux";
 
-import { addRecipientName, addRecipientPhone } from 'entities/basket';
+import { addRecipientName, addRecipientPhone } from "entities/basket";
 
-import Input from 'shared/ui/Input/Input';
+import Input from "shared/ui/Input/Input";
 
-import style from './Recipient.module.scss';
+import style from "./Recipient.module.scss";
 
-export interface RecipientProps {
-
-}
-
-const Recipient: FC<RecipientProps> = (props) => {
+const Recipient: FC = () => {
   const dispatch = useDispatch();
 
   const handleInputNameChange = (name: string | undefined) => {
@@ -28,24 +24,24 @@ const Recipient: FC<RecipientProps> = (props) => {
       <div className={style.recipient_data_wrapper}>
         <Input
           className={style.user_name}
-          label='Имя'
-          placeholder='Иванов Иван Иванович'
+          label="Имя"
+          placeholder="Иванов Иван Иванович"
           required
-          name='recipient_name'
+          name="recipient_name"
           onChange={handleInputNameChange}
         />
         <Input
           className={style.user_phone}
-          label='Телефон'
-          placeholder='+7 986 456 75 34'
+          label="Телефон"
+          placeholder="+7 986 456 75 34"
           required
-          type='number'
-          name='recipient_phone'
+          type="number"
+          name="recipient_phone"
           onChange={handleInputPhoneChange}
         />
       </div>
     </div>
-  )
+  );
 };
 
 export default Recipient;

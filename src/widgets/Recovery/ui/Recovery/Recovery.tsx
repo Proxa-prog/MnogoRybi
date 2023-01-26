@@ -6,7 +6,7 @@ import { useAppDispatch } from "app/store";
 import {
   setUserAccountStateSelector,
   openModalUserEnterSelector,
-  passwordRecovery,
+  restorePassword,
   changeIsOpenUserEnter,
   changeIsOpenRecovery,
 } from "entities/user";
@@ -15,9 +15,7 @@ import { Button, Input } from "shared";
 
 import style from "./Recovery.module.scss";
 
-interface RecoveryProps { }
-
-const Recovery: FC<RecoveryProps> = () => {
+const Recovery: FC = () => {
   const dispatch = useAppDispatch();
   const userAccount = useSelector(setUserAccountStateSelector);
   const userEnter = useSelector(openModalUserEnterSelector);
@@ -28,7 +26,7 @@ const Recovery: FC<RecoveryProps> = () => {
   };
 
   const handleButtonSendClick = (email: string) => {
-    passwordRecovery(email);
+    restorePassword(email);
   };
 
   const handleButtonBackClick = () => {
@@ -60,13 +58,17 @@ const Recovery: FC<RecoveryProps> = () => {
         label="Email"
         name="email"
         placeholder="Введите email"
-        onChange={(email) => { email && setEmail(email) }}
+        onChange={(email) => {
+          email && setEmail(email);
+        }}
       />
       <Button
         className={style.button_enter}
         type="button"
         color="yellow"
-        onClick={() => { handleButtonSendClick(email) }}
+        onClick={() => {
+          handleButtonSendClick(email);
+        }}
       >
         <span className={style.button_text_desktop}>Отправить</span>
       </Button>

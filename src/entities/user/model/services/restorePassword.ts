@@ -5,11 +5,11 @@ import { IUserRegistration } from "entities/user";
 
 import { NEW_PASSWORD, USER_DATA } from "shared";
 
-const newPassword = async (item: IUserRegistration) => {
+const setNewPassword = async (item: IUserRegistration) => {
   await axios.patch<string, string>(`${USER_DATA}/${item.id}`, { password: NEW_PASSWORD });
 };
 
-export const passwordRecovery = async (userEmail: string) => {
+export const restorePassword = async (userEmail: string) => {
   try {
     const response = await axios.get<string, ResponseApi>(USER_DATA);
 
@@ -17,7 +17,7 @@ export const passwordRecovery = async (userEmail: string) => {
       console.log("item", item);
 
       if (item.email === userEmail) {
-        newPassword(item);
+        setNewPassword(item);
       } else {
         console.log("No Email!");
       }

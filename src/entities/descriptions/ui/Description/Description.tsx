@@ -1,9 +1,11 @@
 import React, { FC, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 import classNames from 'classnames';
 
 import { RootState, useAppDispatch } from 'app/store';
+
+import { getRestaurantPagesInfoSelector } from 'features/restaurant';
 
 import {
  IDescription,
@@ -11,10 +13,9 @@ import {
  DESCRIPTION_COUNT_LENGTS,
  } from 'entities/descriptions';
 
-import Button from 'shared/ui/Button/Button';
+import { Button } from 'shared';
 
 import style from './Description.module.scss';
-import { getRestaurantPagesInfoSelector } from 'features/restaurant';
 
 export interface DescriptionProps {
 

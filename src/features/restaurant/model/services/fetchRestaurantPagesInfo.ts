@@ -10,9 +10,9 @@ import {
 
 import { ResponseApiRestaurantPagesInfo } from "entities/basket";
 
-import { RESTAURANT_PAGES_INFO_URL } from "shared";
+import { RESTAURANT_PAGES_INFO_URL, ThunkConfig } from "shared";
 
-export const fetchPagesInfo = createAsyncThunk<void, undefined, {}>(RESTAURANT_PAGES_INFO_URL, async (_, thunkAPI) => {
+export const fetchPagesInfo = createAsyncThunk<void, void, ThunkConfig<void>>(RESTAURANT_PAGES_INFO_URL, async (_, thunkAPI) => {
   try {
     const response = await axios.get<string, ResponseApiRestaurantPagesInfo>(RESTAURANT_PAGES_INFO_URL);
 

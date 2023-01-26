@@ -6,8 +6,8 @@ export {
   changeIsOpenRecovery,
 } from "./model/slice/userAccountSlice";
 export { findUserAccount } from "./model/services/findUserAccount";
-export { passwordRecovery } from "./model/services/passwordRecovery";
-export { userRigistration } from "./model/services/setUserData";
+export { restorePassword } from "./model/services/restorePassword";
+export { registerUser } from "./model/services/setUserData";
 export {
   IUserRegistration,
   IResponse,

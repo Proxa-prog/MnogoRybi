@@ -5,9 +5,9 @@ import { changeMapCenter } from "features/map";
 
 import { ResponseApiMap } from "entities/basket";
 
-import { RESTAURANT_LOCATION_URL } from "shared";
+import { RESTAURANT_LOCATION_URL, ThunkConfig } from "shared";
 
-export const fetchMapCenter = createAsyncThunk<void, undefined, {}>(RESTAURANT_LOCATION_URL, async (_, thunkAPI) => {
+export const fetchMapCenter = createAsyncThunk<void, void, ThunkConfig<void>>(RESTAURANT_LOCATION_URL, async (_, thunkAPI) => {
   try {
     const response = await axios.get<string, ResponseApiMap>(RESTAURANT_LOCATION_URL);
     const mapCenter = response.data.restautantMapCenter;

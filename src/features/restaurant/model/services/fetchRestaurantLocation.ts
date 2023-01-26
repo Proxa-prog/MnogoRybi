@@ -7,7 +7,7 @@ import {
   getRestaurantMapCenter,
 } from "features/restaurant";
 
-import { RESTAURANT_LOCATION_URL } from "shared";
+import { RESTAURANT_LOCATION_URL, ThunkConfig } from "shared";
 
 const coordinatesToNumber = (coordinates: IPopupCoordinates) => {
   coordinates.lat = Number(coordinates.lat);
@@ -16,7 +16,7 @@ const coordinatesToNumber = (coordinates: IPopupCoordinates) => {
   return coordinates;
 };
 
-export const fetchRestaurantLocation = createAsyncThunk<void, undefined, {}>(
+export const fetchRestaurantLocation = createAsyncThunk<void, void, ThunkConfig<void>>(
   RESTAURANT_LOCATION_URL,
   async (_, thunkAPI) => {
     try {

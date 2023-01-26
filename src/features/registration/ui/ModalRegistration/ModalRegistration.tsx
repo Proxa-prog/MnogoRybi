@@ -18,7 +18,7 @@ import {
 import {
   openModalUserEnterSelector,
   changeIsOpenUserEnter,
-  userRigistration,
+  registerUser,
 } from "entities/user";
 
 import {
@@ -72,7 +72,7 @@ const ModalRegistration: React.FC = () => {
     event.preventDefault();
     dispatch(setPassword(MOK_PASSWORD));
 
-    userRigistration({
+    registerUser({
       firstName: registration.firstName,
       email: registration.email,
       phone: registration.phone,

@@ -8,9 +8,9 @@ import {
 } from "entities/basket";
 import { IUserRegistration } from "entities/user";
 
-import { USER_DATA } from "shared";
+import { ThunkConfig, USER_DATA } from "shared";
 
-export const addOrderToUser = createAsyncThunk<void, IUserOrder, {}>(
+export const addOrderToUser = createAsyncThunk<void, IUserOrder, ThunkConfig<void>>(
   USER_DATA,
   async (userOrder) => {
     const { userEmail, basket } = userOrder;

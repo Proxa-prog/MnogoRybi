@@ -20,11 +20,7 @@ import { Button, Input } from "shared";
 
 import style from './Confirmation.module.scss';
 
-interface ConfirmationProps {
-
-}
-
-const Confirmation: FC<ConfirmationProps> = () => {
+const Confirmation: FC = () => {
   const dispatch = useAppDispatch();
   const registration = useSelector(getRegistrationSelector);
   const confirmation = useSelector(openConfirmationSelector);

@@ -32,11 +32,7 @@ import {
 } from 'entities/user';
 import { Description } from 'entities/descriptions';
 
-export interface MainPageProps {
-
-}
-
-const MainPage: FC<MainPageProps> = (props) => {
+const MainPage: FC = () => {
   const dispatch = useAppDispatch();
   const productions = useSelector(getProdSelector);
   const registration = useSelector(getRegistrationSelector);

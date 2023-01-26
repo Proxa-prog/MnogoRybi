@@ -6,11 +6,7 @@ import { openBasketSelector, BasketCard } from 'entities/basket';
 
 import style from './ShowOrder.module.scss';
 
-export interface ShowOrderProps {
-
-}
-
-const ShowOrder: FC<ShowOrderProps> = (props) => {
+const ShowOrder: FC = () => {
   const basket = useSelector(openBasketSelector);
 
   return (

@@ -1,61 +1,54 @@
-import React, { FC, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { nanoid } from '@reduxjs/toolkit';
-import {
-  MapContainer,
-  Marker,
-  Popup,
-  TileLayer,
-} from 'react-leaflet';
-import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
-import { useAppDispatch } from 'app/store';
+import React, { FC, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { nanoid } from "@reduxjs/toolkit";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+import { useAppDispatch } from "app/store";
 
-import PopupIcon from '/public/images/location_marker.png'
+import PopupIcon from "/public/images/location_marker.png";
 
-import { Footer } from 'widgets/Footer';
-import { Header, BlockHeader } from 'widgets/Header';
-import { Recovery } from 'widgets/Recovery';
+import { Footer } from "widgets/Footer";
+import { Header, BlockHeader } from "widgets/Header";
+import { Recovery } from "widgets/Recovery";
 
-import { UserEnter } from 'features/user';
+import { UserEnter } from "features/user";
 import {
   fetchMapCenter,
   setMapSelector,
   changeMapCenter,
   RecenterAutomatically,
-} from 'features/map';
-import { fetchProductions } from 'features/productions';
+} from "features/map";
+import { fetchProductions } from "features/productions";
 import {
   getRegistrationSelector,
   openConfirmationSelector,
   ModalRegistration,
   Confirmation,
-} from 'features/registration';
+} from "features/registration";
 import {
   getRestaurantLocationSelector,
   fetchRestaurantLocation,
   fetchPagesInfo,
   fetchRestaurantProductions,
-  getRestaurantPagesInfoSelector
-} from 'features/restaurant';
+  getRestaurantPagesInfoSelector,
+} from "features/restaurant";
 
 import {
   openModalUserEnterSelector,
-  setUserAccountStateSelector
-} from 'entities/user';
+  setUserAccountStateSelector,
+} from "entities/user";
 import {
   IContactsCard,
   IPopupCoordinates,
   ContactsCard,
-} from 'entities/contact';
+} from "entities/contact";
 
-import style from './Contacts.module.scss';
+import { MAP_ICON_SIZE, MAP_ZOOM } from "shared";
 
-export interface ContactsProps {
+import style from "./Contacts.module.scss";
 
-}
-
-const Contacts: FC<ContactsProps> = (props) => {
+const Contacts: FC = () => {
   const dispatch = useAppDispatch();
   const map = useSelector(setMapSelector);
   const registration = useSelector(getRegistrationSelector);
@@ -72,7 +65,7 @@ const Contacts: FC<ContactsProps> = (props) => {
       iconUrl: PopupIcon,
       iconRetinaUrl: PopupIcon,
       iconAnchor: [PopupCoordinates.lat, PopupCoordinates.lng],
-      iconSize: [60, 60],
+      iconSize: [MAP_ICON_SIZE, MAP_ICON_SIZE],
     });
 
     return (
@@ -81,18 +74,15 @@ const Contacts: FC<ContactsProps> = (props) => {
         position={[PopupCoordinates.lat, PopupCoordinates.lng]}
         icon={Icon}
       >
-        <Popup>
-          Наш магазин.
-        </Popup>
+        <Popup>Наш магазин.</Popup>
       </Marker>
-    )
+    );
   };
 
   const setMapAddress = (card: IContactsCard) => {
-
     return () => {
       dispatch(changeMapCenter(card));
-    }
+    };
   };
 
   useEffect(() => {
@@ -110,29 +100,28 @@ const Contacts: FC<ContactsProps> = (props) => {
       {confirmation.isOpen && <Confirmation />}
       {userAccount.recoveryIsOpen && <Recovery />}
       <Header isAuth={userAccount.isLogin} />
-      <BlockHeader
-        pageName='Контакты'
-      >
+      <BlockHeader pageName="Контакты">
         <div className={style.our_contacts}>
-          {
-            pagesInfo.restaurantAddress.map((card: IContactsCard) => {
-              const id = nanoid();
+          {pagesInfo.restaurantAddress.map((card: IContactsCard) => {
+            const id = nanoid();
 
-              return (
-                <ContactsCard
-                  key={id}
-                  card={card}
-                  onClick={setMapAddress(card)}
-                />
-              )
-            })
-          }
+            return (
+              <ContactsCard
+                key={id}
+                card={card}
+                onClick={setMapAddress(card)}
+              />
+            );
+          })}
         </div>
       </BlockHeader>
       <div className={style.map}>
         <MapContainer
-          center={[restaurantLocation.restautantMapCenter.lat, restaurantLocation.restautantMapCenter.lng]}
-          zoom={13}
+          center={[
+            restaurantLocation.restautantMapCenter.lat,
+            restaurantLocation.restautantMapCenter.lng,
+          ]}
+          zoom={MAP_ZOOM}
           scrollWheelZoom={false}
         >
           <TileLayer
@@ -141,22 +130,19 @@ const Contacts: FC<ContactsProps> = (props) => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           <>
-            {
-              restaurantLocation && restaurantLocation.restautantPopupCoordinates.map((coordinates) => {
-
-                return createPopup(coordinates);
-              })
-            }
+            {restaurantLocation &&
+              restaurantLocation.restautantPopupCoordinates.map(
+                (coordinates) => {
+                  return createPopup(coordinates);
+                }
+              )}
           </>
-          <RecenterAutomatically
-            lat={map.lat}
-            lng={map.lng}
-          />
+          <RecenterAutomatically lat={map.lat} lng={map.lng} />
         </MapContainer>
       </div>
       <Footer />
     </>
-  )
-}
+  );
+};
 
 export default Contacts;

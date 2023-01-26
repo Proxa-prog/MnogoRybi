@@ -11,6 +11,7 @@ export { default as Select } from './ui/Select/Select';
 export { default as StatusMarker } from './ui/StatusMarker/StatusMarker';
 export { StatusMarkerProps } from './ui/StatusMarker/StatusMarker';
 export { default as Svg } from './ui/Svg/Svg';
+export { ThunkConfig } from './assets/api/types/types';
 export {
   ViewPorts,
   COST_OF_DELIVERY,
@@ -31,5 +32,10 @@ export {
   NEWS_PAGE_ROUTE,
   DELIVERY_ROUTE,
   PRODUCTS,
+  MAP_ICON_SIZE,
+  MAP_ZOOM,
+  IMAGE_NEWS_HEIGHT,
+  LOGO_WIDTH,
+  LOGO_HEIGHT,
 } from './assets/constants/constants';
 

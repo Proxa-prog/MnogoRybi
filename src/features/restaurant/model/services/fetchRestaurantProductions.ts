@@ -8,9 +8,9 @@ import {
   getRestaurantSauce,
 } from "features/restaurant";
 
-import { RESTAURANT_PRODUCTIONS_URL } from "shared";
+import { RESTAURANT_PRODUCTIONS_URL, ThunkConfig } from "shared";
 
-export const fetchRestaurantProductions = createAsyncThunk<void, undefined, {}>(RESTAURANT_PRODUCTIONS_URL, async (_, thunkAPI) => {
+export const fetchRestaurantProductions = createAsyncThunk<void, void, ThunkConfig<void>>(RESTAURANT_PRODUCTIONS_URL, async (_, thunkAPI) => {
   try {
     const response = await axios.get<string, ResponseApiRestaurantProductions>(RESTAURANT_PRODUCTIONS_URL);
 

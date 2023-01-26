@@ -1,12 +1,12 @@
-import React, { FC, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { nanoid } from '@reduxjs/toolkit';
-import classNames from 'classnames';
+import React, { FC, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { nanoid } from "@reduxjs/toolkit";
+import classNames from "classnames";
 
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from "app/store";
 
-import { openProductsCardSelector } from 'features/productions';
-import { getRestaurantProductionsSelector } from 'features/restaurant';
+import { openProductsCardSelector } from "features/productions";
+import { getRestaurantProductionsSelector } from "features/restaurant";
 
 import {
   getAmountProductSelector,
@@ -15,21 +15,21 @@ import {
   setBaseProduct,
   setSauce,
   setAmountProduct,
-  setCostProduct
-} from 'entities/basket';
-import { ProductCounter } from 'entities/counter';
+  setCostProduct,
+} from "entities/basket";
+import { ProductCounter } from "entities/counter";
 
-import Select from 'shared/ui/Select/Select';
-import LabelText from 'shared/ui/LabelText/LabelText';
-import StatusMarker, { StatusMarkerProps } from 'shared/ui/StatusMarker/StatusMarker';
-import Button from 'shared/ui/Button/Button';
+import {
+  Select,
+  LabelText,
+  StatusMarker,
+  Button,
+  StatusMarkerProps,
+} from "shared";
 
-import style from './ChooseCard.module.scss';
+import style from "./ChooseCard.module.scss";
 
-export interface ChooseCardProps {
-}
-
-const ChooseCard: FC<ChooseCardProps> = (props) => {
+const ChooseCard: FC = () => {
   const dispatch = useAppDispatch();
   const productsCard = useSelector(openProductsCardSelector);
   const amountProduct = useSelector(getAmountProductSelector);
@@ -59,17 +59,19 @@ const ChooseCard: FC<ChooseCardProps> = (props) => {
   const addProductOnBasket = () => {
     const id = nanoid();
 
-    dispatch(addProductInBasket({
-      name: amountProduct.name,
-      amount: amountProduct.amount,
-      cost: amountProduct.cost,
-      baseCost: Number(productsCard.cost),
-      baseProduct: amountProduct.baseProduct,
-      sauce: amountProduct.sauce,
-      imageUrl: productsCard.imageUrl,
-      description: productsCard.description,
-      id: id,
-    }));
+    dispatch(
+      addProductInBasket({
+        name: amountProduct.name,
+        amount: amountProduct.amount,
+        cost: amountProduct.cost,
+        baseCost: Number(productsCard.cost),
+        baseProduct: amountProduct.baseProduct,
+        sauce: amountProduct.sauce,
+        imageUrl: productsCard.imageUrl,
+        description: productsCard.description,
+        id: id,
+      })
+    );
   };
 
   // Установить значение основы блюда
@@ -83,12 +85,14 @@ const ChooseCard: FC<ChooseCardProps> = (props) => {
   };
 
   useEffect(() => {
-    dispatch(setNewProduct({
-      name: productsCard.header,
-      amount: 1,
-      cost: Number(productsCard.cost),
-      imageUrl: productsCard.imageUrl,
-    }));
+    dispatch(
+      setNewProduct({
+        name: productsCard.header,
+        amount: 1,
+        cost: Number(productsCard.cost),
+        imageUrl: productsCard.imageUrl,
+      })
+    );
     dispatch(setBaseProduct(restaurantProductions.baseProduct[0].name));
     dispatch(setSauce(restaurantProductions.sauce[0].name));
   }, []);
@@ -102,20 +106,20 @@ const ChooseCard: FC<ChooseCardProps> = (props) => {
         }}
       >
         <div className={style.statuses_wrapper}>
-          {(productsCard.statuses) && productsCard.statuses.map((status: StatusMarkerProps) => {
-            const id = nanoid();
+          {productsCard.statuses &&
+            productsCard.statuses.map((status: StatusMarkerProps) => {
+              const id = nanoid();
 
-            return (
-              <StatusMarker
-                key={id}
-                color={status.color}
-                className={style.card_status}
-              >
-                {status.children}
-              </StatusMarker>
-            )
-          }
-          )}
+              return (
+                <StatusMarker
+                  key={id}
+                  color={status.color}
+                  className={style.card_status}
+                >
+                  {status.children}
+                </StatusMarker>
+              );
+            })}
         </div>
       </div>
       <div className={style.info_wrapper}>
@@ -146,10 +150,7 @@ const ChooseCard: FC<ChooseCardProps> = (props) => {
 
             <LabelText
               children="Выберите соус"
-              className={classNames(
-                style.ingredients_label,
-                style.sauce_label,
-              )}
+              className={classNames(style.ingredients_label, style.sauce_label)}
             />
             <Select
               options={restaurantProductions.sauce}
@@ -167,15 +168,15 @@ const ChooseCard: FC<ChooseCardProps> = (props) => {
           />
           <Button
             className={style.button_basket}
-            type='button'
-            color='yellow'
+            type="button"
+            color="yellow"
             children={`В корзину за ${amountProduct.cost} ₽`}
             onClick={addProductOnBasket}
           />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default ChooseCard;

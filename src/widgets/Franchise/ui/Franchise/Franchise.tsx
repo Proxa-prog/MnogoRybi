@@ -1,17 +1,12 @@
-import React, { FC } from 'react';
+import React, { FC } from "react";
 
-import Image from '/public/images/lace.png';
+import Image from "/public/images/lace.png";
 
-import { Button } from 'shared';
+import { Button } from "shared";
 
-import style from './Franchise.module.scss';
+import style from "./Franchise.module.scss";
 
-export interface FranchiseProps {
-
-}
-
-const Franchise: FC<FranchiseProps> = (props) => {
-
+const Franchise: FC = () => {
   return (
     <section
       className={style.franchise}
@@ -20,14 +15,14 @@ const Franchise: FC<FranchiseProps> = (props) => {
       <h3>Открой свой poke-room «МногоРыбы»</h3>
       <Button
         className={style.button_show_more}
-        color='white'
-        type={'button'}
-        onClick={() => { }}
+        color="white"
+        type={"button"}
+        onClick={() => {}}
       >
         Подробнее
       </Button>
     </section>
-  )
-}
+  );
+};
 
 export default Franchise;

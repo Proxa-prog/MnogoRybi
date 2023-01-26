@@ -12,13 +12,11 @@ import { getRegistrationSelector, ModalRegistration } from "features/registratio
 import { fetchMapCenter } from "features/map";
 import { fetchRestaurantLocation } from "features/restaurant";
 
+import { IMAGE_NEWS_HEIGHT } from "shared";
+
 import style from './NewsPage.module.scss';
 
-interface NewsPageProps {
-
-}
-
-const NewsPage: FC<NewsPageProps> = () => {
+const NewsPage: FC = () => {
   const dispatch = useAppDispatch();
   const news = useSelector(getNewsSelector);
   const params = useParams();
@@ -46,7 +44,7 @@ const NewsPage: FC<NewsPageProps> = () => {
                     <div
                       className={style.image}
                     >
-                      <img src={`images/${news.imageUrl}`} alt="" width="100%" height={450} />
+                      <img src={`images/${news.imageUrl}`} alt="" width="100%" height={IMAGE_NEWS_HEIGHT} />
                     </div>
                     <div className={style.description}>
                       {news.text}

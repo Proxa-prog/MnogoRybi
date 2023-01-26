@@ -1,34 +1,30 @@
-import React, { FC } from 'react';
-import { nanoid } from '@reduxjs/toolkit';
-import classnames from 'classnames';
+import React, { FC } from "react";
+import { nanoid } from "@reduxjs/toolkit";
+import classnames from "classnames";
 
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from "app/store";
 
-import { CardProps } from 'widgets/Card';
+import { CardProps } from "widgets/Card";
 
-import { setOpenProductsCard } from 'features/productions';
+import { setOpenProductsCard } from "features/productions";
 
-import {
-  StatusMarker,
-  Button,
-  StatusMarkerProps
-} from 'shared';
+import { StatusMarker, Button, StatusMarkerProps } from "shared";
 
-import style from './Card.module.scss';
+import style from "./Card.module.scss";
 
 const Card: FC<CardProps> = (props) => {
   const {
-    className = '',
-    imageWrapperClassName = '',
-    imageUrl = '',
+    className = "",
+    imageWrapperClassName = "",
+    imageUrl = "",
     header,
     description,
     cost = null,
     previousCost = null,
     statuses,
     isInfo,
-    buttonText = 'В корзину',
-    buttonColor = 'default',
+    buttonText = "В корзину",
+    buttonColor = "default",
     isGrayTheme = false,
     disabled = false,
     onClick,
@@ -45,77 +41,68 @@ const Card: FC<CardProps> = (props) => {
 
   const handleCardClick = (image: string) => {
     return () => {
-      dispatch(setOpenProductsCard({
-        imageUrl: image,
-        isOpen: true,
-        header: header,
-        description: description,
-        cost: String(cost),
-        statuses: statuses,
-      }));
-    }
+      dispatch(
+        setOpenProductsCard({
+          imageUrl: image,
+          isOpen: true,
+          header: header,
+          description: description,
+          cost: String(cost),
+          statuses: statuses,
+        })
+      );
+    };
   };
 
   return (
     <div
-      className={classnames(
-        style.card,
-        { [style.info]: isInfo },
-        [className],
-      )}
+      className={classnames(style.card, { [style.info]: isInfo }, [className])}
       id={id}
-      onClick={() => { }}
+      onClick={() => {}}
     >
       <div
-        className={classnames(
-          style.image_wrapper,
-          imageWrapperClassName,
-        )}
+        className={classnames(style.image_wrapper, imageWrapperClassName)}
         style={{
           backgroundImage: `url(images/${imageUrl})`,
         }}
       >
         <div className={style.card_status_wrapper}>
-          {(statuses) && statuses.map((status: StatusMarkerProps) => {
-            const id = nanoid();
+          {statuses &&
+            statuses.map((status: StatusMarkerProps) => {
+              const id = nanoid();
 
-            return (
-              <StatusMarker
-                key={id}
-                color={status.color}
-                className={style.card_status}
-              >
-                {status.children}
-              </StatusMarker>
-            )
-          }
-          )}
+              return (
+                <StatusMarker
+                  key={id}
+                  color={status.color}
+                  className={style.card_status}
+                >
+                  {status.children}
+                </StatusMarker>
+              );
+            })}
         </div>
       </div>
-      <div className={classnames(
-        style.description_wrapper,
-        { [style.description_wrapper_info]: isInfo },
-      )}
+      <div
+        className={classnames(style.description_wrapper, {
+          [style.description_wrapper_info]: isInfo,
+        })}
       >
         <h3>{header}</h3>
-        <p className={style.descriprion}>
-          {description}
-        </p>
+        <p className={style.descriprion}>{description}</p>
         <div className={style.cost_wrapper}>
           {(cost || previousCost) && (
             <div className={style.current_cost}>
-              {(cost) && (
+              {cost && (
                 <p>
                   {cost}
-                  &nbsp;
-                  &#8381;
+                  &nbsp; &#8381;
                 </p>
               )}
-              {(previousCost) && (
+              {previousCost && (
                 <span className={style.previousCost}>
                   {previousCost}
-                  &nbsp;
-                  &#8381;
+                  &nbsp; &#8381;
                 </span>
               )}
             </div>
@@ -126,7 +113,9 @@ const Card: FC<CardProps> = (props) => {
             isGrayTheme={isGrayTheme}
             type="button"
             disabled={disabled}
-            onClick={onClick && handleButtonClick || handleCardClick(imageUrl)}
+            onClick={
+              (onClick && handleButtonClick) || handleCardClick(imageUrl)
+            }
           >
             {buttonText}
           </Button>

@@ -4,7 +4,7 @@ import { ResponseApi } from "entities/basket";
 import { IResponse, IUserRegistration } from "entities/user";
 
 
-const checkEmail = (resp: IResponse, email: string | undefined) => {
+const checkEmailExistence = (resp: IResponse, email: string | undefined) => {
   const emailIsBusy = resp.data.some((item: IUserRegistration) => {
 
     return item.email === email;
@@ -13,7 +13,7 @@ const checkEmail = (resp: IResponse, email: string | undefined) => {
   return emailIsBusy;
 };
 
-export const userRigistration = async (userData: IUserRegistration) => {
+export const registerUser = async (userData: IUserRegistration) => {
   const {
     firstName,
     email,
@@ -36,7 +36,7 @@ export const userRigistration = async (userData: IUserRegistration) => {
 
     const data = await axios.get<string, ResponseApi>(userUrl);
 
-    const check = checkEmail(data, email);
+    const check = checkEmailExistence(data, email);
 
     if (!check) {
       createUser();

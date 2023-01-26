@@ -4,7 +4,15 @@ export enum ViewPorts {
   "DESKTOP" = 1024,
 }
 
+export const IMAGE_NEWS_HEIGHT = 450;
+
 export const COST_OF_DELIVERY = 200;
+
+export const MAP_ICON_SIZE = 60;
+export const MAP_ZOOM = 13;
+
+export const LOGO_WIDTH = 235.9;
+export const LOGO_HEIGHT = 70;
 
 export const NEWS_LIMIT = 3;
 

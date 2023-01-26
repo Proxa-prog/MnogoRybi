@@ -1,32 +1,21 @@
-import React,
-{
-  FC,
-  useEffect,
-  useState
-} from 'react';
-import { useSelector } from 'react-redux';
-import classNames from 'classnames';
+import React, { FC, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import classNames from "classnames";
 
-import { useAppDispatch } from 'app/store';
-import {
-  HeaderOrderDataWrapper,
-  HeaderNavWrapper
-} from 'widgets/Header';
+import { useAppDispatch } from "app/store";
+import { HeaderOrderDataWrapper, HeaderNavWrapper } from "widgets/Header";
 
-import { changeIsOpenRegistration } from 'features/registration';
+import { changeIsOpenRegistration } from "features/registration";
 
-import {
-  openBasketSelector,
-  openBasketBlock
-} from 'entities/basket';
+import { openBasketSelector, openBasketBlock } from "entities/basket";
 import {
   openModalUserEnterSelector,
   changeIsOpenUserEnter,
-} from 'entities/user';
+} from "entities/user";
 
-import { ViewPorts } from 'shared';
+import { ViewPorts } from "shared";
 
-import style from './Header.module.scss';
+import style from "./Header.module.scss";
 
 export interface HeaderProps {
   itemsInTheBasket?: number | undefined;
@@ -34,10 +23,7 @@ export interface HeaderProps {
 }
 
 const Header: FC<HeaderProps> = (props) => {
-  const {
-    itemsInTheBasket,
-    isAuth = false,
-  } = props;
+  const { itemsInTheBasket, isAuth = false } = props;
 
   const dispatch = useAppDispatch();
   const [scrollHeight, setScrollHeight] = useState(0);
@@ -73,20 +59,22 @@ const Header: FC<HeaderProps> = (props) => {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', getWindowWidth);
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", getWindowWidth);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', getWindowWidth);
-    }
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", getWindowWidth);
+    };
   }, []);
 
   return (
-    <header className={classNames(
-      style.header,
-      { [style.header__open]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP },
-    )}>
+    <header
+      className={classNames(style.header, {
+        [style.header__open]:
+          isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
+      })}
+    >
       <HeaderOrderDataWrapper
         isHeaderMenuActive={isHeaderMenuActive}
         windowWidth={windowWidth}
@@ -106,7 +94,7 @@ const Header: FC<HeaderProps> = (props) => {
         onProductsMenuClick={onProductsMenuClick}
         onBasketButtonClick={handlerButtonBasketClick}
       />
-    </header >
+    </header>
   );
 };
 

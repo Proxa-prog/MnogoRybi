@@ -35,11 +35,7 @@ import { Button, NEWS_LIMIT } from 'shared';
 
 import style from './News.module.scss';
 
-export interface NewsProps {
-
-}
-
-const News: FC<NewsProps> = (props) => {
+const News: FC = () => {
   const dispatch = useAppDispatch();
   const router = useNavigate();
   const news = useSelector(getNewsSelector);

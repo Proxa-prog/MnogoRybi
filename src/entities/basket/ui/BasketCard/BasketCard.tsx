@@ -1,29 +1,26 @@
-import React, { FC } from 'react';
-import { useDispatch } from 'react-redux';
-import classNames from 'classnames';
+import React, { FC } from "react";
+import { useDispatch } from "react-redux";
+import classNames from "classnames";
 
 import {
   changeAmount,
   changeCost,
   removeProduct,
   IAmountProduct,
-} from 'entities/basket';
+} from "entities/basket";
 
-import { ProductCounter } from 'entities/counter';
+import { ProductCounter } from "entities/counter";
 
-import Svg from 'shared/ui/Svg/Svg';
-import Button from 'shared/ui/Button/Button';
+import { Svg, Button } from "shared";
 
-import style from './BasketCard.module.scss';
+import style from "./BasketCard.module.scss";
 
 export interface BasketCardProps {
   product: IAmountProduct;
 }
 
 const BasketCard: FC<BasketCardProps> = (props) => {
-  const {
-    product,
-  } = props;
+  const { product } = props;
   const dispatch = useDispatch();
 
   // Увеличить количество товара в корзине
@@ -68,22 +65,15 @@ const BasketCard: FC<BasketCardProps> = (props) => {
         <div className={style.trash_wrapper}>
           <Button
             className={style.trash_button}
-            type='button'
+            type="button"
             onClick={handlerButtonRemoveProduct}
           >
-            <Svg
-              name='trash'
-              width='24'
-              height='24'
-            />
+            <Svg name="trash" width="24" height="24" />
           </Button>
         </div>
       </div>
       <hr />
-      <div className={classNames(
-        style.basket_card,
-        style.amount,
-      )}>
+      <div className={classNames(style.basket_card, style.amount)}>
         <span>{`${product.cost} ₽`}</span>
         <ProductCounter
           wrapperClassName={style.counter_wrapper}
@@ -93,7 +83,7 @@ const BasketCard: FC<BasketCardProps> = (props) => {
         />
       </div>
     </div>
-  )
+  );
 };
 
 export default BasketCard;

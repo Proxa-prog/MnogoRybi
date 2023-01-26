@@ -6,8 +6,9 @@ from 'react';
 
 import { IProducts } from 'entities/basket/model/types/basketTypes';
 
-import style from './Select.module.scss';
 import { IContactsCard } from 'entities/contact';
+
+import style from './Select.module.scss';
 
 type HtmlSelectProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'onChange'>;
 

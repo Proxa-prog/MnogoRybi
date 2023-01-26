@@ -5,7 +5,7 @@ import { useAppDispatch } from "app/store";
 
 import {
   getRegistrationSelector,
-  changeIsOpenRegistration
+  changeIsOpenRegistration,
 } from "features/registration";
 import {
   findUserAccount,
@@ -19,13 +19,9 @@ import {
 
 import { Button, Input } from "shared";
 
-import style from './UserEnter.module.scss';
+import style from "./UserEnter.module.scss";
 
-interface UserEnterProps {
-
-}
-
-const UserEnter: FC<UserEnterProps> = () => {
+const UserEnter: FC = () => {
   const dispatch = useAppDispatch();
   const registration = useSelector(getRegistrationSelector);
   const userEnter = useSelector(openModalUserEnterSelector);
@@ -56,22 +52,21 @@ const UserEnter: FC<UserEnterProps> = () => {
   const handleButtonUserEnter = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    dispatch(findUserAccount({
-      email: userEnter.email,
-      password: userEnter.password,
-      isWindowUserEnterOpen: userEnter.isOpen,
-      isUserLogin: userAccount.isLogin,
-    }));
+    dispatch(
+      findUserAccount({
+        email: userEnter.email,
+        password: userEnter.password,
+        isWindowUserEnterOpen: userEnter.isOpen,
+        isUserLogin: userAccount.isLogin,
+      })
+    );
   };
 
   return (
-    <form
-      className={style.user_enter}
-      onSubmit={handleButtonUserEnter}
-    >
+    <form className={style.user_enter} onSubmit={handleButtonUserEnter}>
       <Button
         className={style.button_close}
-        isClose='close'
+        isClose="close"
         type="button"
         onClick={handleUserEnterButtonClose}
       />
@@ -106,16 +101,14 @@ const UserEnter: FC<UserEnterProps> = () => {
         className={style.button_enter}
         type="submit"
         color="yellow"
-        onClick={() => { }}
+        onClick={() => {}}
       >
         Войти
       </Button>
       <div className={style.have_account_wrapper}>
         <span className={style.have_account}>
           Нет учетной записи?
-          <span className={style.space}>
-            &nbsp;&nbsp;
-          </span>
+          <span className={style.space}>&nbsp;&nbsp;</span>
         </span>
         <Button
           onClick={handleCheckboxAgreementChange}
@@ -126,7 +119,7 @@ const UserEnter: FC<UserEnterProps> = () => {
         </Button>
       </div>
     </form>
-  )
+  );
 };
 
 export default UserEnter;
