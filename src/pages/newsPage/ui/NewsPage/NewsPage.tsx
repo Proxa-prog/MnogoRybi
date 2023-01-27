@@ -33,6 +33,7 @@ const NewsPage: FC = () => {
       {
         news.newsArray.map((news: INews) => {
           if (params.newsId === news.id) {
+
             return (
               <>
                 <Header isAuth />
