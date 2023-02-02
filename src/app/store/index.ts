@@ -1,17 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import { combineReducers } from "redux";
-import descriptionReducer from "./reducers/description";
-import productionsReducer from "./reducers/productions";
-import openProductsCardReducer from "./reducers/openProductsCard";
-import amountProductReduser from "./reducers/amountProduct";
-import basketReduser from "./reducers/basket";
-import mapReduser from "./reducers/map";
-import newsReduser from "./reducers/news";
-import registrationReduser from "./reducers/registration";
-import userEnterReduser from "./reducers/userEnter";
-import configmationReduser from "./reducers/confirmation";
-import userAccountReduser from "./reducers/userAccount";
+import descriptionReducer from "entities/descriptions/model/slice/descriptionSlice";
+import productionsReducer from "features/productions/model/slice/productionsReducer";
+import openProductsCardReducer from "features/productions/model/slice/openProductsCardSlice";
+import amountProductReduser from "entities/basket/model/slice/amountProductReduser";
+import basketReduser from "entities/basket/model/slice/basketReducer";
+import mapReduser from "features/map/model/slice/mapReducer";
+import newsReduser from "features/news/model/slice/newsReducer";
+import registrationReduser from "features/registration/model/slice/registrationReducer";
+import userEnterReduser from "entities/user/model/slice/userEnterSlice";
+import configmationReduser from "features/registration/model/slice/confirmationReducer";
+import userAccountReduser from "entities/user/model/slice/userAccountSlice";
+import restaurantLocationReduser from "features/restaurant/model/slice/restaurantSlice";
+import restaurantProductionsReduser from "features/restaurant/model/slice/restaurantProductionsSlice";
+import restaurantPagesInfoReduser from "features/restaurant/model/slice/restaurantPagesInfo";
 
 const rootReducer = combineReducers({
   description: descriptionReducer,
@@ -25,6 +28,9 @@ const rootReducer = combineReducers({
   userEnter: userEnterReduser,
   configmation: configmationReduser,
   userAccount: userAccountReduser,
+  restaurantLocation: restaurantLocationReduser,
+  restaurantProductions: restaurantProductionsReduser,
+  restaurantPagesInfo: restaurantPagesInfoReduser,
 });
 
 export const store = configureStore({

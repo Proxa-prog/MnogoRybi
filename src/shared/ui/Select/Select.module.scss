@@ -8,3 +8,31 @@
     background-color: inherit;
     width: 161px;
 }
+
+.isOpen {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 400px;
+    padding: 5px 15px;
+    display: flex;
+    position: absolute;
+    bottom: 12px;
+    background: $white-00;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    z-index: 10000;
+}
+
+.closed {
+    display: none;
+}
+
+.list_item {
+    cursor: pointer;
+    width: 100%;
+
+    &:hover {
+        background-color: $gray-10;
+    }
+}

@@ -1,0 +1,98 @@
+.delivery_wrapper {
+    margin-bottom: 30px;
+}
+
+.delivery_block_wrapepr {
+    padding: 15px;
+    position: relative;
+
+    .delivery_open {
+        display: block;
+    }
+
+    @media (max-width: 767px) {
+        padding: 10px;
+    }
+}
+
+.delivery {
+    @include basket_block_wrapper;
+
+    a {
+        color: $blue-100;
+    }
+}
+
+.delivery_header_wrapper {
+    @include basket_block_header;
+}
+
+.delivery_checkbox_label {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: $gray-70;
+
+    @media (max-width: 767px) {
+        font-size: 12px;
+        line-height: 18px;
+    }
+}
+
+hr {
+    width: 100%;
+    border: 1px solid $gray-10;
+}
+
+.address_label {
+    position: relative;
+
+    &::after {
+        position: absolute;
+        right: -385px;
+        top: 17px;
+        content: "";
+        width: 20px;
+        height: 20px;
+        background-image: url("/public/images/arrow_down.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
+
+.delivery_address {
+    width: 100%;
+    background: $gray-10;
+    border: 1px solid $gray-30;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    appearance: none;
+
+    @media (max-width: 767px) {
+        font-size: 14px;
+        line-height: 20px;
+    }
+}
+
+.pickup_of_goods {
+  @include checkbox_block;
+}
+
+.change_address_text {
+    margin-bottom: 0;
+
+    br {
+        display: none;
+    }
+
+    @media (max-width: 767px) {
+        width: 213px;
+        text-align: center;
+        margin: 0 auto;
+
+        br {
+            display: block;
+        }
+      }
+}

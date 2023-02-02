@@ -1,0 +1,1 @@
+export const DESCRIPTION_COUNT_LENGTS = 2;

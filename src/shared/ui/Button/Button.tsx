@@ -18,7 +18,7 @@ export interface ButtonProps {
   type: ButtonType;
   color?: ButtonColor;
   isGrayTheme?: boolean;
-  onClick?: (event?: any) => void;
+  onClick?: (event?: React.MouseEvent<HTMLButtonElement>) => void;
   isTurn?: ButtonTurn;
   isClose?: ButtonClose;
   imageLeft?: string;

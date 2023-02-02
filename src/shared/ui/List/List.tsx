@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { IProducts } from 'entities/constants/constants';
+import { IProducts } from 'entities/basket/model/types/basketTypes';
 
 import style from './List.module.scss';
-import { Link } from 'react-router-dom';
 
 export interface ListProps {
   classNameItem?: string;
