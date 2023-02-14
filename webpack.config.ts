@@ -7,7 +7,9 @@ export default (env: BuildEnv) => {
   const paths: BuildPaths = {
     entry: path.resolve(__dirname, 'src', 'index.tsx'),
     output: path.resolve(__dirname, 'dist'),
+    images: path.resolve(__dirname, 'dist', 'images'),
     html: path.resolve(__dirname, 'public', 'index.html'),
+    public: path.resolve(__dirname, 'public', 'images'),
     src: path.resolve(__dirname, 'src'),
     root: path.resolve(__dirname, 'tsconfig.json'),
     global: path.resolve(__dirname, 'src', 'global.scss'),
