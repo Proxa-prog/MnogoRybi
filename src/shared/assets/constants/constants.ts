@@ -18,7 +18,7 @@ export const NEWS_LIMIT = 3;
 
 export const ONE_HUNDRED_PIXEL_SCROLL = 100;
 
-export const POKE_URL = "http://localhost:3001/productions";
+export const POKE_URL = "https://json-server-mnogo-rybi-ojxfzn67p-proxa-prog.vercel.app/productions";
 export const NEWS_URL = "http://localhost:3001/news";
 export const USER_DATA = "http://localhost:3001/users";
 export const RESTAURANT_LOCATION_URL = "http://localhost:3001/restaurantLocation";
