@@ -9,7 +9,7 @@ const plugins = (options: BuildOptions) => [
   }),
   new CopyWebpackPlugin({
     patterns: [
-      { from: options.paths.public, to: options.paths.images },
+      { from: options.paths.public, to: options.paths.outputImages },
     ],
   }),
 ];

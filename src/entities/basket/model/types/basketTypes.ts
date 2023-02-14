@@ -10,6 +10,7 @@ import {
 export interface IProducts {
   name: string;
   id?: string;
+  isCurrent?: boolean;
 }
 
 export interface IBasketState {

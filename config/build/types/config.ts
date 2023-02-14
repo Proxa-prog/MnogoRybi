@@ -5,7 +5,7 @@ export interface BuildPaths {
   output: string;
   html: string;
   public: string;
-  images: string;
+  outputImages: string;
   src: string;
   global: string;
   root: string;
