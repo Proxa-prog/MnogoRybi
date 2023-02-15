@@ -16,4 +16,5 @@ export interface CardProps {
   disabled?: boolean;
   onClick?: () => void;
   id?: string;
+  isPreview?: boolean;
 }
