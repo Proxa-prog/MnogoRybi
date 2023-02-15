@@ -39,7 +39,7 @@ const List: FC<ListProps> = (props) => {
         return {...item, isCurrent: !item.isCurrent};
       }
 
-      return {...item, isCurrent: f};
+      return {...item, isCurrent: false};
     })
 
     dispatch(getRestaurantProducts(newArray));
