@@ -41,6 +41,7 @@ const Card: FC<CardProps> = (props) => {
   };
 
   const handleCardClick = (image: string) => {
+
     return () => {
       dispatch(
         setOpenProductsCard({
@@ -61,7 +62,7 @@ const Card: FC<CardProps> = (props) => {
         style.card,
         {
           [style.info]: isInfo,
-          [style.preview_card]: true,
+          [style.preview_card]: isPreview,
         },
         [className])
       }
@@ -73,7 +74,7 @@ const Card: FC<CardProps> = (props) => {
         className={classnames(
           style.image_wrapper,
           imageWrapperClassName,
-          {[style.image_wrapper_preview]: true}
+          {[style.image_wrapper_preview]: isPreview}
         )}
         style={{
           backgroundImage: `url(images/${imageUrl})`,
@@ -102,21 +103,21 @@ const Card: FC<CardProps> = (props) => {
       <div
         className={classnames(style.description_wrapper, {
           [style.description_wrapper_info]: isInfo,
-          [style.preview_description_wrapper]: true,
+          [style.preview_description_wrapper]: isPreview,
         })}
       >
-        <h3 className={classnames({[style.preview_description]: true})}>
+        <h3 className={classnames({[style.preview_description]: isPreview})}>
           {header}
         </h3>
         <p className={classnames(
           style.description,
           {
-            [style.create_poke_description]: true,
+            [style.create_poke_description]: isPreview,
           }
         )}>{description}</p>
         <div className={classnames(
           style.cost_wrapper,
-          {[style.create_poke_cost_wrapper]: true}
+          {[style.create_poke_cost_wrapper]: isPreview}
         )}>
           {(cost || previousCost) && (
             <div className={style.current_cost}>
@@ -137,14 +138,14 @@ const Card: FC<CardProps> = (props) => {
           <Button
             className={classnames(
               style.button_buy,
-              {[style.create_poke_button]: true}
+              {[style.create_poke_button]: isPreview}
             )}
             color={buttonColor}
             isGrayTheme={isGrayTheme}
             type="button"
             disabled={disabled}
             onClick={
-              (onClick && handleButtonClick) || handleCardClick(imageUrl)
+              (onClick && isPreview && handleButtonClick) || handleCardClick(imageUrl)
             }
           >
             {buttonText}

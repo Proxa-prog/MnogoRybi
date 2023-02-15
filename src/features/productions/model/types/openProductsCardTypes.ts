@@ -7,6 +7,7 @@ export interface IOpenProductsCard {
   description?: string;
   cost?: string;
   statuses?: StatusMarkerProps[];
+  isPreview?: boolean;
 }
 
 export interface OpenProductsCardArray {
