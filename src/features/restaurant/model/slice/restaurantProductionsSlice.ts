@@ -34,6 +34,7 @@ export const {
   getRestaurantProducts,
   getRestaurantBaseProduct,
   getRestaurantSauce,
+  changeCurrentProducts,
 } = restaurantProductionsSlice.actions;
 
 export default restaurantProductionsSlice.reducer;
