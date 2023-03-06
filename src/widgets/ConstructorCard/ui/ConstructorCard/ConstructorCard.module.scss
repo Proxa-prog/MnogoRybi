@@ -1,0 +1,55 @@
+.wrapper {
+  background: $gray-10;
+  border-radius: 10px;
+  padding: 30px;
+  display: flex;
+}
+
+.header {
+  width: 25.5%;
+  margin-right: auto;
+
+  span {
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 72px;
+    color: $yellow-100;
+    margin-right: 10px;
+  }
+}
+
+.description {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 120%;
+  margin-top: 23px;
+}
+
+.content_wrapper {
+  width: 75.5%;
+  display: flex;
+  justify-content: end;
+}
+.content {
+  flex-grow: 1;
+  flex-wrap: wrap;
+  gap: 10px;
+  display: flex;
+}
+
+.checkbox_wrapper {
+  background: $white-00;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 18px 15px;
+  width: 220px;
+
+  &:hover {
+    border: 2px solid $blue-100;
+  }
+}
+
+.checkbox {
+  margin-right: 12px;
+}

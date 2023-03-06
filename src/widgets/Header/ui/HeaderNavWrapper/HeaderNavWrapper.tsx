@@ -170,7 +170,12 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
                   console.log("Button Create");
                 }}
               >
-                Создать поке
+                <Link
+                  to={`/constructor`}
+                  className={style.create_poke_button}
+                >
+                  Создать поке
+                </Link>
               </Button>
             )}
             {scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL &&

@@ -18,10 +18,6 @@ const Products: FC<ProductsProps> = (props) => {
     id,
   } = props;
 
-  const handleButtonCreatePoke = () => {
-    console.log("Переход на страницу создать поке");
-  };
-
   return (
     <div
       className={style.products_wrapper}
@@ -46,7 +42,6 @@ const Products: FC<ProductsProps> = (props) => {
               imageUrl={productCard.imageUrl}
               statuses={productCard.statuses}
               isPreview={productCard.isPreview}
-              onClick={handleButtonCreatePoke}
             />
           )
         })

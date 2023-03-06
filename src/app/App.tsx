@@ -9,6 +9,7 @@ import {
   MAIN_PAGE_ROUTE,
   NEWS_PAGE_ROUTE,
   NEWS_ROUTE,
+  CONSTRUCTOR_PAGE_ROUTE,
   FRANCHISE_ROUTE,
   DELIVERY_ROUTE,
 } from 'shared/assets/constants/constants';
@@ -17,6 +18,7 @@ import { MainPage } from 'pages/mainPage';
 import { News } from 'pages/news';
 import { Contacts } from 'pages/contacts';
 import { NewsPage } from 'pages/newsPage';
+import {Constructor} from "pages/constructor";
 // import FranchisePage from 'widgets/ui/FranchisePage/FranchisePage';
 // import DeliveryPage from 'widgets/ui/DeliveryPage/DeliveryPage';
 
@@ -31,17 +33,19 @@ const App: React.FC = () => {
       <Provider store={store}>
         <BrowserRouter>
           <Routes>
-            <Route path={MAIN_PAGE_ROUTE} element={<MainPage />} />
-            <Route path={CONTACTS_ROUTE} element={<Contacts />} />
-            <Route path={NEWS_ROUTE} element={<News />} />
-            <Route path={NEWS_PAGE_ROUTE} element={<NewsPage />} />
+            <Route path={MAIN_PAGE_ROUTE} element={<MainPage/>}/>
+            <Route path={CONTACTS_ROUTE} element={<Contacts/>}/>
+            <Route path={NEWS_ROUTE} element={<News/>}/>
+            <Route path={NEWS_PAGE_ROUTE} element={<NewsPage/>}/>
+            <Route path={CONSTRUCTOR_PAGE_ROUTE} element={<Constructor/>}/>
             {/* <Route path={FRANCHISE_ROUTE} element={<FranchisePage />} />
             <Route path={DELIVERY_ROUTE} element={<DeliveryPage />} /> */}
           </Routes>
         </BrowserRouter>
       </Provider>
     </div>
-  )
+  );
+
 };
 
 export default App;

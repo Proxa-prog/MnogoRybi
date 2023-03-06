@@ -11,6 +11,7 @@ import {setOpenProductsCard} from "features/productions";
 import {StatusMarker, Button, StatusMarkerProps} from "shared";
 
 import style from "./Card.module.scss";
+import {Link} from "react-router-dom";
 
 const Card: FC<CardProps> = (props) => {
   const {
@@ -135,21 +136,33 @@ const Card: FC<CardProps> = (props) => {
               )}
             </div>
           )}
-          <Button
-            className={classnames(
-              style.button_buy,
-              {[style.create_poke_button]: isPreview}
-            )}
-            color={buttonColor}
-            isGrayTheme={isGrayTheme}
-            type="button"
-            disabled={disabled}
-            onClick={
-              (onClick && isPreview && handleButtonClick) || handleCardClick(imageUrl)
-            }
-          >
-            {buttonText}
-          </Button>
+          {
+            isPreview
+              ? (
+                <Button type="button">
+                  <Link
+                    to={`/constructor`}
+                    className={style.create_poke_button}
+                  >Создать поке
+                  </Link>
+                </Button>
+              )
+              : (
+                <Button
+                  className={classnames(style.button_buy)}
+                  color={buttonColor}
+                  isGrayTheme={isGrayTheme}
+                  type="button"
+                  disabled={disabled}
+                  onClick={
+                    (onClick && handleButtonClick) || handleCardClick(imageUrl)
+                  }
+                >
+                  {buttonText}
+                </Button>
+              )
+          }
+
         </div>
       </div>
     </div>

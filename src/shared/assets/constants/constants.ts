@@ -34,6 +34,7 @@ export const NEWS_ROUTE = "/news";
 export const NEWS_PAGE_ROUTE = "/:newsId";
 export const FRANCHISE_ROUTE = "/franchise";
 export const DELIVERY_ROUTE = "/delivery";
+export const CONSTRUCTOR_PAGE_ROUTE = "/constructor";
 
 // Для storybook.
 export const PRODUCTS = [
