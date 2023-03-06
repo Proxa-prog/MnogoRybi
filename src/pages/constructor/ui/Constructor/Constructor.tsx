@@ -14,6 +14,8 @@ import {setUserAccountStateSelector} from "entities/user";
 import {ImageWrapper} from "shared";
 
 import style from './Constructor.module.scss';
+import CheckboxArray from "../../../../widgets/ConstructorCard/ui/CheckboxArray/CheckboxArray";
+
 
 
 const basis = {
@@ -27,6 +29,12 @@ const basis = {
   ],
   stepNumber: 1,
   description: 'Выберите основу',
+  image: {
+    url: 'poke_bowl.svg',
+    width: 50,
+    height: 50,
+    alt: 'Альтернативный текст',
+  }
 };
 
 const protein = {
@@ -46,6 +54,12 @@ const protein = {
   ],
   stepNumber: 2,
   description: 'Протеин',
+  image: {
+    url: 'fish.svg',
+    width: 50,
+    height: 50,
+    alt: 'Альтернативный текст',
+  }
 };
 
 const sauce = {
@@ -63,6 +77,75 @@ const sauce = {
   ],
   stepNumber: 5,
   description: 'Соус',
+  image: {
+    url: 'sauces.svg',
+    width: 50,
+    height: 50,
+    alt: 'Альтернативный текст',
+  }
+};
+
+const fillers = {
+  contentHeader: {
+    name: 'Наполнители',
+    howMuchIsLeft: 3,
+    total: 5,
+  },
+  productsType: [
+    'Морковь',
+    'Битые огурци',
+    'Красная капуста',
+    'Болгарский перец',
+    'Салат айсберг',
+    'Микс-салат',
+    'Соевое мясо',
+    'Тамаго',
+    'Красный лук',
+    'Томаты черри',
+    'Имбирь маринованный',
+    'Баклажан',
+    'Грибы',
+    'Чука',
+    'Кимчи',
+    'Соевые ростки',
+    'Спаржа фучжу',
+    'Морская капуста',
+    'Кукуруза',
+    'Свежий огурчик',
+  ],
+  stepNumber: 3,
+  description: 'Наполнитель',
+  image: {
+  url: 'carrot_2.svg',
+    width: 50,
+    height: 50,
+    alt: 'Альтернативный текст',
+}};
+
+const topping = {
+  contentHeader: {
+    name: 'Топпинг',
+    howMuchIsLeft: 1,
+    total: 1,
+  },
+  productsType: [
+    'Авокадо',
+    'Сливочный сыр',
+    'Ананас',
+    'Сыр Фета',
+    'Бобы адамаме',
+    'Маслины',
+    'Перец халапеньо',
+    'Манго',
+  ],
+  stepNumber: 4,
+  description: 'Топпинг',
+  image: {
+    url: 'pinapple.svg',
+    width: 50,
+    height: 50,
+    alt: 'Альтернативный текст',
+  }
 };
 
 const Constructor = () => {
@@ -95,9 +178,34 @@ const Constructor = () => {
             />
           </h2>
           <div className={style.constructor_inner}>
-            <ConstructorCard {...basis} />
-            <ConstructorCard {...protein} />
-            <ConstructorCard {...sauce} />
+            <ConstructorCard>
+              <CheckboxArray
+                {...basis}
+                isCircleCheckbox
+              />
+            </ConstructorCard>
+            <ConstructorCard>
+              <CheckboxArray
+                {...protein}
+                isCircleCheckbox
+              />
+            </ConstructorCard>
+            <ConstructorCard>
+              <CheckboxArray
+                {...fillers}
+              />
+            </ConstructorCard>
+            <ConstructorCard>
+              <CheckboxArray
+                {...topping}
+              />
+            </ConstructorCard>
+            <ConstructorCard>
+              <CheckboxArray
+                {...sauce}
+                isCircleCheckbox
+              />
+            </ConstructorCard>
           </div>
         </section>
       </BlockHeader>

@@ -1,0 +1,16 @@
+
+.list {
+  column-gap: 128px;
+  column-count: 2;
+  column-width: 305px;
+
+  li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.checkbox {
+  margin-right: 12px;
+}
