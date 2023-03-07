@@ -17,6 +17,7 @@ export interface SelectProps extends HtmlSelectProps {
   id?: string;
   options: IProducts[];
   className?: string;
+  classNameList?: string;
   disabled?: boolean;
   promptOption?: string;
   onChange?: (baseProd: string) => void;
@@ -28,6 +29,7 @@ const Select: FC<SelectProps> = (props) => {
     id,
     options,
     className,
+    classNameList,
     disabled,
     promptOption,
     onChange,
@@ -84,7 +86,7 @@ const Select: FC<SelectProps> = (props) => {
     </select>
       {
     isOpen &&
-      <ul className={style.isOpen}>
+      <ul className={classNames(style.isOpen, {}, [classNameList])}>
         {options.map((option: IProducts) => {
           const id = nanoid();
 

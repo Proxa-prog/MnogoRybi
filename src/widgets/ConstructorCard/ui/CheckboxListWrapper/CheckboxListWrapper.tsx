@@ -1,10 +1,15 @@
 import React, {FC} from "react";
+import classNames from "classnames";
 
 import {Checkbox, ImageWrapper} from "shared";
 
-import style from "./CheckboxArray.module.scss";
-import classNames from "classnames";
-import CheckboxListColumn from "../CheckboxListCircle/CheckboxListColumn";
+import CheckboxListColumnSquare from "../CheckboxListColumnSquare/CheckboxListColumnSquare";
+
+import CheckboxListCircle from "../CheckboxListCircle/CheckboxListCircle";
+
+import style from "./CheckboxListWrapper.module.scss";
+import {IProducts} from "../../../../entities/basket";
+import SelectList from "../SelectListWrapper/SelectList";
 
 interface imageTypes {
   url: string | undefined;
@@ -19,29 +24,35 @@ interface contentHeaderTypes {
   total?: number;
 }
 
-export interface  CheckboxArrayProps {
-  productsType?: string[];
+export interface  CheckboxListWrapperProps {
+  productsType?: IProducts[];
   stepNumber?: number;
-  description?: string;
+  header?: string;
   isCircleCheckbox?: boolean;
   image?: imageTypes;
   contentHeader?: contentHeaderTypes;
+  description?: string;
+  isSelectList?: boolean;
+  selectListArray?: any;
 }
 
-const CheckboxArray: FC<CheckboxArrayProps> = (props) => {
+const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
   const {
     productsType,
     stepNumber,
-    description,
+    header,
     image,
     isCircleCheckbox,
     contentHeader,
+    description,
+    isSelectList,
+    selectListArray,
   } = props;
 
   return (
     <div className={style.wrapper}>
-      <div className={style.header}>
-        <div>
+      <div className={style.header_wrapper}>
+        <div className={classNames({[style.hide]: isSelectList}, [])}>
           <span>{stepNumber}</span>
           {
             image
@@ -54,6 +65,9 @@ const CheckboxArray: FC<CheckboxArrayProps> = (props) => {
               height={image?.height}
             />
           }
+        </div>
+        <div className={style.header}>
+          {header}
         </div>
         <div className={style.description}>
           {description}
@@ -70,25 +84,40 @@ const CheckboxArray: FC<CheckboxArrayProps> = (props) => {
         <div className={classNames(style.content, {}, [])}>
           {
             !isCircleCheckbox
+            && !isSelectList
             && productsType
-            && <CheckboxListColumn
+            && <CheckboxListColumnSquare
               isCircleCheckbox={isCircleCheckbox}
               productsType={productsType}
             />
           }
           {
             isCircleCheckbox
+            && !isSelectList
             && productsType
-            && productsType.map((item: any) => (
-              <div className={classNames({[style.checkbox_wrapper]: isCircleCheckbox,}, [])}>
-                <Checkbox
-                  onChange={() => {}}
-                  isCircle={isCircleCheckbox}
-                  className={style.checkbox}
+            && <CheckboxListCircle
+              isCircleCheckbox={isCircleCheckbox}
+              productsType={productsType}
+            />
+          }
+          {
+            isSelectList
+            && productsType
+            && Object.entries(selectListArray).map(([key, value]) => {
+              if (key === 'basis' || key === 'additionally') {
+                return;
+              }
+
+              return (
+                <SelectList
+                  key={key}
+                  // @ts-ignore
+                  productsType={value.productsType}
+                  // @ts-ignore
+                  header={value?.header}
                 />
-                <span>{item}</span>
-              </div>
-            ))
+              )
+            })
           }
         </div>
       </div>
@@ -96,4 +125,4 @@ const CheckboxArray: FC<CheckboxArrayProps> = (props) => {
   )
 };
 
-export default CheckboxArray;
+export default CheckboxListWrapper;

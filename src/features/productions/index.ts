@@ -3,6 +3,7 @@ export { fetchProductions } from "./model/services/getProductions";
 export { setOpenProductsCard } from "./model/slice/openProductsCardSlice";
 export { openProductsCardSelector } from "./model/slice/openProductsCardSelector";
 export { getProductionsAction } from "./model/slice/productionsReducer";
+export { getIngredientsSelector } from "./model/selectors/getIngredientsSelector";
 export {
  IOpenProductsCard,
  OpenProductsCardArray,

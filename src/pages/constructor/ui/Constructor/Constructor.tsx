@@ -7,157 +7,29 @@ import {BlockHeader, Header} from "widgets/Header";
 import {ConstructorCard} from "widgets/ConstructorCard";
 import {Footer} from "widgets/Footer";
 
-import {fetchProductions} from "features/productions";
+import {fetchProductions, getIngredientsSelector} from "features/productions";
 import {fetchPagesInfo, fetchRestaurantProductions} from "features/restaurant";
 
 import {setUserAccountStateSelector} from "entities/user";
-import {ImageWrapper} from "shared";
+import {ImageWrapper, Select} from "shared";
+import CheckboxListWrapper from "../../../../widgets/ConstructorCard/ui/CheckboxListWrapper/CheckboxListWrapper";
 
+import {fetchIngredients} from "../../../../features/productions/model/services/getIngredients";
 import style from './Constructor.module.scss';
-import CheckboxArray from "../../../../widgets/ConstructorCard/ui/CheckboxArray/CheckboxArray";
-
-
-
-const basis = {
-  productsType: [
-    'Рис',
-    'Киноа',
-    'Удон',
-    'Киноа+рис',
-    'Айсберг',
-    'Соба',
-  ],
-  stepNumber: 1,
-  description: 'Выберите основу',
-  image: {
-    url: 'poke_bowl.svg',
-    width: 50,
-    height: 50,
-    alt: 'Альтернативный текст',
-  }
-};
-
-const protein = {
-  productsType: [
-    'Тунец',
-    'Лосось',
-    'Курица',
-    'Свинина',
-    'Креветки',
-    'Тофу',
-    'Краб',
-    'Кальмар',
-    'Коктейльные креветки',
-    'Угорь',
-    'Индейка',
-    'Морской гребешок',
-  ],
-  stepNumber: 2,
-  description: 'Протеин',
-  image: {
-    url: 'fish.svg',
-    width: 50,
-    height: 50,
-    alt: 'Альтернативный текст',
-  }
-};
-
-const sauce = {
-  productsType: [
-    'Терияки',
-    'Васаби',
-    'Японский',
-    'Гуакамоле',
-    'Спайс',
-    'Манго маракуйа',
-    'Цезарь',
-    'Ореховый',
-    'Сладкий чили',
-    'Медово-горчичный',
-  ],
-  stepNumber: 5,
-  description: 'Соус',
-  image: {
-    url: 'sauces.svg',
-    width: 50,
-    height: 50,
-    alt: 'Альтернативный текст',
-  }
-};
-
-const fillers = {
-  contentHeader: {
-    name: 'Наполнители',
-    howMuchIsLeft: 3,
-    total: 5,
-  },
-  productsType: [
-    'Морковь',
-    'Битые огурци',
-    'Красная капуста',
-    'Болгарский перец',
-    'Салат айсберг',
-    'Микс-салат',
-    'Соевое мясо',
-    'Тамаго',
-    'Красный лук',
-    'Томаты черри',
-    'Имбирь маринованный',
-    'Баклажан',
-    'Грибы',
-    'Чука',
-    'Кимчи',
-    'Соевые ростки',
-    'Спаржа фучжу',
-    'Морская капуста',
-    'Кукуруза',
-    'Свежий огурчик',
-  ],
-  stepNumber: 3,
-  description: 'Наполнитель',
-  image: {
-  url: 'carrot_2.svg',
-    width: 50,
-    height: 50,
-    alt: 'Альтернативный текст',
-}};
-
-const topping = {
-  contentHeader: {
-    name: 'Топпинг',
-    howMuchIsLeft: 1,
-    total: 1,
-  },
-  productsType: [
-    'Авокадо',
-    'Сливочный сыр',
-    'Ананас',
-    'Сыр Фета',
-    'Бобы адамаме',
-    'Маслины',
-    'Перец халапеньо',
-    'Манго',
-  ],
-  stepNumber: 4,
-  description: 'Топпинг',
-  image: {
-    url: 'pinapple.svg',
-    width: 50,
-    height: 50,
-    alt: 'Альтернативный текст',
-  }
-};
+import AddCreatedPoke from "../../../../widgets/ConstructorCard/ui/BlockReady/AddCreatedPoke";
 
 const Constructor = () => {
   const dispatch = useAppDispatch();
   const userAccount = useSelector(setUserAccountStateSelector);
+  const ingredients = useSelector(getIngredientsSelector);
 
   useEffect(() => {
     dispatch(fetchProductions());
     dispatch(fetchRestaurantProductions());
     dispatch(fetchPagesInfo());
+    dispatch(fetchIngredients());
   }, []);
-
+  // console.log(ingredients);
   return (
     <div>
       <Header isAuth={userAccount.isLogin}/>
@@ -179,33 +51,47 @@ const Constructor = () => {
           </h2>
           <div className={style.constructor_inner}>
             <ConstructorCard>
-              <CheckboxArray
-                {...basis}
+              <CheckboxListWrapper
+                {...ingredients.basis}
                 isCircleCheckbox
               />
             </ConstructorCard>
             <ConstructorCard>
-              <CheckboxArray
-                {...protein}
+              <CheckboxListWrapper
+                {...ingredients.protein}
+                isCircleCheckbox
+              />
+            </ConstructorCard>
+            <ConstructorCard className={style.withoutMargin}>
+              <CheckboxListWrapper
+                {...ingredients.fillers}
+              />
+            </ConstructorCard>
+            <ConstructorCard>
+              <CheckboxListWrapper
+                {...ingredients.topping}
+              />
+            </ConstructorCard>
+            <ConstructorCard>
+              <CheckboxListWrapper
+                {...ingredients.sauce}
                 isCircleCheckbox
               />
             </ConstructorCard>
             <ConstructorCard>
-              <CheckboxArray
-                {...fillers}
-              />
-            </ConstructorCard>
-            <ConstructorCard>
-              <CheckboxArray
-                {...topping}
-              />
-            </ConstructorCard>
-            <ConstructorCard>
-              <CheckboxArray
-                {...sauce}
+              <CheckboxListWrapper
+                {...ingredients.crunch}
                 isCircleCheckbox
               />
             </ConstructorCard>
+            <ConstructorCard>
+              <CheckboxListWrapper
+                selectListArray={ingredients}
+                isSelectList
+                {...ingredients.additionally}
+              />
+            </ConstructorCard>
+            <AddCreatedPoke />
           </div>
         </section>
       </BlockHeader>

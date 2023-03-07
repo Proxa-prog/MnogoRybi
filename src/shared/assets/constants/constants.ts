@@ -24,6 +24,7 @@ export const USER_DATA = "https://json-server-mnogo.vercel.app/users";
 export const RESTAURANT_LOCATION_URL = "https://json-server-mnogo.vercel.app/restaurantLocation";
 export const RESTAURANT_PRODUCTIONS_URL = "https://json-server-mnogo.vercel.app/restaurantProductions";
 export const RESTAURANT_PAGES_INFO_URL = "https://json-server-mnogo.vercel.app/restaurantPagesInfo";
+export const RESTAURANT_INGREDIENTS_URL = "https://json-server-mnogo.vercel.app/pokeIngredients";
 
 export const MOK_PASSWORD = "qwerty";
 export const NEW_PASSWORD = "12345";

@@ -95,6 +95,11 @@ export interface ResponseApiProductions {
   data: IProductions;
 }
 
+export interface ResponseApiIngredients {
+  status: string;
+  data: any;
+}
+
 export interface ResponseApiRestaurantLocation {
   status: string;
   data: IrestaurantLocation;

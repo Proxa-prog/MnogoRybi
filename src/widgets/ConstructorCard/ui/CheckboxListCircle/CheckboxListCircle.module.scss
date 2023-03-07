@@ -1,0 +1,17 @@
+.checkbox_wrapper {
+  background: $white-00;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  padding: 18px 15px;
+  width: 220px;
+
+  &:hover {
+    outline: 2px solid $blue-100;
+  }
+}
+
+.checkbox {
+  margin-right: 12px;
+}
