@@ -3,13 +3,14 @@ import classNames from "classnames";
 
 import {Checkbox, ImageWrapper} from "shared";
 
-import CheckboxListColumnSquare from "../CheckboxListColumnSquare/CheckboxListColumnSquare";
+import {IProducts} from "entities/basket";
 
+import CheckboxListColumnSquare from "../CheckboxListColumnSquare/CheckboxListColumnSquare";
 import CheckboxListCircle from "../CheckboxListCircle/CheckboxListCircle";
+import SelectList from "../SelectListWrapper/SelectList";
+
 
 import style from "./CheckboxListWrapper.module.scss";
-import {IProducts} from "../../../../entities/basket";
-import SelectList from "../SelectListWrapper/SelectList";
 
 interface imageTypes {
   url: string | undefined;

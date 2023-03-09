@@ -80,6 +80,7 @@ const Select: FC<SelectProps> = (props) => {
         value="Default"
         disabled={disabled}
         hidden
+        className={style.with_cost}
       >
         {selectOption}
       </option>

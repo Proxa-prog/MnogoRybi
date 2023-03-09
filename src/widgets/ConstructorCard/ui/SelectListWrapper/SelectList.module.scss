@@ -3,8 +3,23 @@
 }
 
 .select_wrapper {
-  //position: relative;
   width: 290px;
+}
+
+.isSelected {
+  position: relative;
+
+  &::after {
+    content: "+ 180₽";
+    position: absolute;
+    z-index: 1000;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: $yellow-100;
+    right: 40px;
+    top: 20px;
+  }
 }
 
 .select {
@@ -34,6 +49,7 @@
     background-image: url("/public/images/arrow_down.svg");
     background-repeat: no-repeat;
     background-position: center;
+    z-index: 1000;
   }
 }
 

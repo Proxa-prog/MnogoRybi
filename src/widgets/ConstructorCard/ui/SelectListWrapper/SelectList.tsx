@@ -10,12 +10,14 @@ import style from "./SelectList.module.scss";
 export interface  SelectListProps {
   productsType: IProducts[];
   header?: string;
+  isSelected?: boolean;
 }
 
 const SelectList: FC<SelectListProps> = (props) => {
   const {
     productsType,
     header,
+    isSelected,
   } = props;
 
   return (
@@ -23,13 +25,14 @@ const SelectList: FC<SelectListProps> = (props) => {
       {
         productsType
         && header
-        && <>
+        &&
+        <>
           <h4 className={classNames(
             style.label,
           )}>
             {header}
           </h4>
-          <div className={style.select_wrapper}>
+          <div className={classNames(style.select_wrapper, {[style.isSelected]: isSelected}, [])}>
             <Select
               classNameList={style.list}
               className={style.select}

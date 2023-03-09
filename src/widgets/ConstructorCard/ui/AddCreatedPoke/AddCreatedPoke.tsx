@@ -1,12 +1,13 @@
 import React, {FC} from "react";
+import { nanoid } from "@reduxjs/toolkit";
 
-import {Button} from "shared";
+import { Button } from "shared";
+
+import { ProductCounter } from "entities/counter";
+import {addProductInBasket, setAmountProduct, setCostProduct} from "../../../../entities/basket";
+import { useAppDispatch } from "app/store";
 
 import style from "./AddCreatedPoke.module.scss";
-import ProductCounter from "../../../../entities/counter/ui/ProductCounter/ProductCounter";
-import {addProductInBasket, setAmountProduct, setCostProduct} from "../../../../entities/basket";
-import {nanoid} from "@reduxjs/toolkit";
-import {useAppDispatch} from "../../../../app/store";
 
 const AddCreatedPoke: FC = () => {
   const dispatch = useAppDispatch();

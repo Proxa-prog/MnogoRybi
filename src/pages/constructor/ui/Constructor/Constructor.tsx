@@ -16,7 +16,7 @@ import CheckboxListWrapper from "../../../../widgets/ConstructorCard/ui/Checkbox
 
 import {fetchIngredients} from "../../../../features/productions/model/services/getIngredients";
 import style from './Constructor.module.scss';
-import AddCreatedPoke from "../../../../widgets/ConstructorCard/ui/BlockReady/AddCreatedPoke";
+import AddCreatedPoke from "../../../../widgets/ConstructorCard/ui/AddCreatedPoke/AddCreatedPoke";
 
 const Constructor = () => {
   const dispatch = useAppDispatch();
