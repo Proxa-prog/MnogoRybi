@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, useEffect, useState} from "react";
 import classNames from "classnames";
 
 import {Checkbox, ImageWrapper} from "shared";
@@ -8,7 +8,11 @@ import {IProducts} from "entities/basket";
 import CheckboxListColumnSquare from "../CheckboxListColumnSquare/CheckboxListColumnSquare";
 import CheckboxListCircle from "../CheckboxListCircle/CheckboxListCircle";
 import SelectList from "../SelectListWrapper/SelectList";
-
+import {
+  ConstructorType,
+  FillersType
+} from "entities/constructor/model/slice/constructorSlice";
+import {AnyAction} from "@reduxjs/toolkit";
 
 import style from "./CheckboxListWrapper.module.scss";
 
@@ -33,9 +37,55 @@ export interface  CheckboxListWrapperProps {
   image?: imageTypes;
   contentHeader?: contentHeaderTypes;
   description?: string;
+  howMuchIsLeft?: number;
   isSelectList?: boolean;
   selectListArray?: any;
+  hasHorizontalLine?: boolean;
+  hasFilters?: boolean;
+  checkboxState?: ConstructorType | FillersType;
+  fillersType?: ConstructorType;
+  changeChecked: () => AnyAction;
+  changeType: (name: string) => AnyAction;
+  changeFiltersType?: (name: string) => AnyAction;
 }
+
+type IProductsNew = Omit<IProducts, "id" | "isCurrent">;
+
+interface IIngredientsCount {
+  count: number,
+  name: string,
+}
+
+interface IIngredients extends IProductsNew {
+  ingredients: IIngredientsCount[];
+}
+
+const filters: IIngredients[] = [
+  {
+    name: '5 наполнителей + 1 топпинг',
+    ingredients: [
+      {
+        count: 5,
+        name: 'Наполнители',
+      },
+      {
+        count: 1,
+        name: 'Топпинг',
+      },]
+  },
+  {
+    name: '3 наполнителя + 2 топпинга',
+    ingredients: [
+      {
+        count: 3,
+        name: 'Наполнители',
+      },
+      {
+        count: 2,
+        name: 'Топпинг',
+      },]
+  },
+]
 
 const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
   const {
@@ -46,14 +96,30 @@ const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
     isCircleCheckbox,
     contentHeader,
     description,
+    howMuchIsLeft,
     isSelectList,
     selectListArray,
+    hasHorizontalLine,
+    hasFilters,
+    checkboxState,
+    fillersType,
+    changeChecked,
+    changeType,
+    changeFiltersType,
   } = props;
 
+  const isFillerChecked = (fillersType: string | string[] | undefined, fillerName: string) => {
+    if (fillersType === fillerName) {
+      return true;
+    }
+
+    return false
+  };
+
   return (
-    <div className={style.wrapper}>
+    <div className={classNames(style.wrapper, {[style.horizontal_line]: hasHorizontalLine}, [])}>
       <div className={style.header_wrapper}>
-        <div className={classNames({[style.hide]: isSelectList}, [])}>
+        <div className={classNames({[style.hide]: isSelectList}, [style.image_header])}>
           <span>{stepNumber}</span>
           {
             image
@@ -76,10 +142,51 @@ const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
       </div>
       <div className={style.content_wrapper}>
         {
+          hasFilters &&
+          productsType &&
+          <div className={style.filters_wrapper}>
+            {
+              filters.map((item) => {
+                checkboxState?.type && checkboxState?.type
+                return (
+                  <CheckboxListCircle
+                    isCircleCheckbox
+                    productsType={item}
+                    className={style.checkbox_wrapper}
+                    isFillers
+                    checked={isFillerChecked(checkboxState?.type, item.name)}
+                    isFillerChecked={isFillerChecked(checkboxState?.type, item.name)}
+                    changeChecked={changeChecked}
+                    // @ts-ignore
+                    changeType={changeFiltersType}
+                  />
+                )
+              })
+            }
+          </div>
+        }
+        {
           contentHeader &&
           <div className={style.content_header_wrapper}>
             <span className={style.contentHeader}>{contentHeader.name}</span>&nbsp;
-            <span className={style.howMuchIsLeft}>/ Осталось {contentHeader.howMuchIsLeft} из {contentHeader.total}</span>
+            <span className={style.howMuchIsLeft}>/ Осталось {howMuchIsLeft} из&nbsp;
+              {
+                filters.map((filter) => {
+                  if (filter.name === fillersType?.type) {
+
+                    return (
+                      filter.ingredients.map(
+                        (item) => {
+                          if (item.name === contentHeader.name) {
+
+                            return item.count
+                          }
+                        })
+                    )
+                  }
+                })
+              }
+            </span>
           </div>
         }
         <div className={classNames(style.content, {}, [])}>
@@ -87,19 +194,42 @@ const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
             !isCircleCheckbox
             && !isSelectList
             && productsType
-            && <CheckboxListColumnSquare
-              isCircleCheckbox={isCircleCheckbox}
-              productsType={productsType}
-            />
+            && <ul className={style.list}>
+              {
+                productsType.map((item) => {
+
+                  return (
+                    <CheckboxListColumnSquare
+                      isCircleCheckbox={isCircleCheckbox}
+                      productsType={item}
+                      className={style.checkbox_white_background}
+                      changeType={changeType}
+                      changeChecked={changeChecked}
+                      // disabled={howMuchIsLeft === (contentHeader && getFiltersCount(filters, contentHeader))}
+                    />
+                  )
+                })
+              }
+            </ul>
           }
           {
             isCircleCheckbox
             && !isSelectList
             && productsType
-            && <CheckboxListCircle
-              isCircleCheckbox={isCircleCheckbox}
-              productsType={productsType}
-            />
+            && productsType.map((item: any) => {
+
+              return (
+                <CheckboxListCircle
+                  isCircleCheckbox={isCircleCheckbox}
+                  productsType={item}
+                  isFillers
+                  checked={isFillerChecked(checkboxState?.type, item.name)}
+                  isFillerChecked={isFillerChecked(checkboxState?.type, item.name)}
+                  changeChecked={changeChecked}
+                  changeType={changeType}
+                />
+              )
+            })
           }
           {
             isSelectList

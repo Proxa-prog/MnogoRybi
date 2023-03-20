@@ -1,9 +1,21 @@
 .wrapper {
   position: relative;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 }
 
 .select_wrapper {
   width: 290px;
+
+  @media (max-width: 1023px) {
+    width: 201px;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 }
 
 .isSelected {
@@ -49,7 +61,7 @@
     background-image: url("/public/images/arrow_down.svg");
     background-repeat: no-repeat;
     background-position: center;
-    z-index: 1000;
+    z-index: 999;
   }
 }
 

@@ -5,6 +5,11 @@
     font-weight: 700;
     font-size: 40px;
     line-height: 120%;
+
+    @media (max-width: 767px) {
+      font-size: 32px;
+      line-height: 120%;
+    }
   }
 }
 
@@ -16,11 +21,26 @@
   color: $yellow-100;
 }
 
+.arrow_wrapper {
+  width: 85vw;
+}
+
 .arrow {
   position: absolute;
-  top: 25px;
-  right: 86px;
-  width: 91%;
+  bottom: -55px;
+  background-image: url("/public/images/desktop_constructor_arrow.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 85vw;
+  height: 78px;
+
+  @media (max-width: 1023px) {
+    background-image: url("/public/images/tablet_constructor_arrow.png");
+  }
+
+  @media (max-width: 768px) {
+    background-image: url("/public/images/mobile_constructor_arrow.png");
+  }
 }
 
 .constructor_inner {
@@ -31,4 +51,18 @@
 
 .withoutMargin {
   margin-bottom: 0;
+}
+
+.mobile_gap {
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+.mobile_gap_on {
+  display: none;
+
+  @media (max-width: 767px) {
+    display: inline;
+  }
 }

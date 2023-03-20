@@ -10,8 +10,29 @@
   &:hover {
     outline: 2px solid $blue-100;
   }
+
+  @media (max-width: 1023px) {
+    width: 201px;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+}
+
+.checkbox_wrapper_checked {
+  outline: 2px solid $blue-100;
 }
 
 .checkbox {
   margin-right: 12px;
+}
+
+.font_checked_style {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: $blue-100;
+  padding-top: 16px;
+  padding-bottom: 16px;
 }

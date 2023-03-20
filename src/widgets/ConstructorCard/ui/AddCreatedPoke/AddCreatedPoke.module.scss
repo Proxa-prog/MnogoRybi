@@ -6,10 +6,21 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-position: right;
+
+  @media (max-width: 1023px) {
+    background-position: 123%;
+  }
+
+  @media (max-width: 768px) {
+    background-size: auto;
+    background-position: 100% 100%;
+    background-image: url("/public/images/add_create_poke_image_mobile.png");
+  }
 }
 
 .header_wrapper {
   margin-bottom: 29px;
+
   h3 {
     font-weight: 600;
     font-size: 64px;
@@ -23,10 +34,35 @@
     font-size: 24px;
     line-height: 120%;
   }
+
+  @media (max-width: 767px) {
+    h3 {
+      font-weight: 600;
+      font-size: 40px;
+      line-height: 40px;
+    }
+
+    span {
+      font-size: 20px;
+      line-height: 120%;
+    }
+  }
 }
 
 .button_wrapper {
   display: flex;
+
+  @media (max-width: 767px) {
+    flex-wrap: wrap;
+    gap: 9px;
+  }
+}
+
+.counter_wrapper {
+  @media (max-width: 767px) {
+    width: 100%;
+    padding: 10px;
+  }
 }
 
 .button_basket {
@@ -35,4 +71,10 @@
   border-radius: 30px;
   display: flex;
   justify-content: center;
+
+  @media (max-width: 767px) {
+    min-width: auto;
+    width: 100%;
+    padding: 10px 20px;
+  }
 }

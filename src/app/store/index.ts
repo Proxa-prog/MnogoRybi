@@ -16,6 +16,7 @@ import restaurantLocationReduser from "features/restaurant/model/slice/restauran
 import restaurantProductionsReduser from "features/restaurant/model/slice/restaurantProductionsSlice";
 import restaurantPagesInfoReduser from "features/restaurant/model/slice/restaurantPagesInfo";
 import pokeIngredientsReducer from "features/productions/model/slice/pokeIngredientsSlice";
+import constructorReducer from "entities/constructor/model/slice/constructorSlice";
 
 const rootReducer = combineReducers({
   description: descriptionReducer,
@@ -33,6 +34,7 @@ const rootReducer = combineReducers({
   restaurantProductions: restaurantProductionsReduser,
   restaurantPagesInfo: restaurantPagesInfoReduser,
   ingredients: pokeIngredientsReducer,
+  constructorReducer: constructorReducer,
 });
 
 export const store = configureStore({
