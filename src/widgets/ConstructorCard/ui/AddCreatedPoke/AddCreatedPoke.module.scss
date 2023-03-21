@@ -2,7 +2,7 @@
   background: $yellow-10;
   border-radius: 10px;
   padding: 25px 30px;
-  background-image: url("/public/images/addCreatePokeImage.png");
+  background-image: url("../../../../../public/images/addCreatePokeImage.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: right;
@@ -14,7 +14,7 @@
   @media (max-width: 768px) {
     background-size: auto;
     background-position: 100% 100%;
-    background-image: url("/public/images/add_create_poke_image_mobile.png");
+    background-image: url("../../../../../public/images/add_create_poke_image_mobile.png");
   }
 }
 
