@@ -12,6 +12,7 @@ interface CheckboxProps extends HtmlInputProps {
   isCircle?: boolean;
   checked?: boolean;
   onChange: (event: boolean) => void;
+  onClick?: () => void;
 }
 
 const Checkbox: FC<CheckboxProps> = (props) => {
@@ -22,6 +23,7 @@ const Checkbox: FC<CheckboxProps> = (props) => {
     disabled,
     checked,
     onChange,
+    onClick,
   } = props;
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +49,7 @@ const Checkbox: FC<CheckboxProps> = (props) => {
         )}
         disabled={disabled}
         onChange={handleOnChange}
-        onClick={(event) => { !event.currentTarget.checked }}
+        onClick={(event) => { !event.currentTarget.checked; onClick && onClick() }}
       />
     </>
   );

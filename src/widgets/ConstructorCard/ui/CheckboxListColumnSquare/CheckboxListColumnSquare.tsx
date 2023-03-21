@@ -42,8 +42,9 @@ const CheckboxListColumnSquare: FC<CheckboxListColumnSquareProps> = (props) => {
   };
 
   return (
-    <li onClick={handleCheckboxClick}>
+    <li>
       <Checkbox
+        onClick={handleCheckboxClick}
         isCircle={isCircleCheckbox}
         className={classNames(style.checkbox, {}, [className])}
         disabled={disabled && !isChecked}
