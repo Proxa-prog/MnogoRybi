@@ -6,6 +6,9 @@ import {IProducts} from "entities/basket";
 import {Select} from "shared";
 
 import style from "./SelectList.module.scss";
+import {useDispatch, useSelector} from "react-redux";
+import {changeAdditionallyType} from "../../../../entities/constructor";
+import {additionallySelector} from "../../../../entities/constructor/model/selectors/additionallySelector";
 
 export interface  SelectListProps {
   productsType: IProducts[];
@@ -19,6 +22,14 @@ const SelectList: FC<SelectListProps> = (props) => {
     header,
     isSelected,
   } = props;
+  const dispatch = useDispatch();
+
+  const onChange = (name: string) => {
+    dispatch(changeAdditionallyType({
+      productType: header,
+      productName: name
+    }));
+  }
 
   return (
     <div className={style.wrapper}>
@@ -38,6 +49,7 @@ const SelectList: FC<SelectListProps> = (props) => {
               className={style.select}
               options={productsType}
               promptOption='Не выбран'
+              onChange={onChange}
             />
           </div>
         </>

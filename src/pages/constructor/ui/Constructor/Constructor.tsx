@@ -37,8 +37,10 @@ import {
   sauceSelector,
   toppingSelector,
 } from "entities/constructor";
+import {fetchFilters} from "entities/constructor/model/services/fetchFilters";
 
 import style from './Constructor.module.scss';
+import {filtersSelector} from "../../../../entities/constructor/model/selectors/filtersSelector";
 
 const Constructor = () => {
   const dispatch = useAppDispatch();
@@ -58,8 +60,9 @@ const Constructor = () => {
     dispatch(fetchProductions());
     dispatch(fetchRestaurantProductions());
     dispatch(fetchPagesInfo());
+    dispatch(fetchFilters());
   }, []);
-  console.log(fillers);
+
   return (
     <div>
       <Header isAuth={userAccount.isLogin}/>

@@ -12,7 +12,11 @@ export {
   changeSauceChecked,
   changeCrunchType,
   changeCrunchChecked,
+  changeAdditionallyType,
 } from "./model/slice/constructorSlice";
+export {
+  getFilters,
+} from "./model/slice/filtersSlice";
 export { fillersTypeSelector } from "./model/selectors/fillersTypeSelector";
 export { baseProductSelector } from "./model/selectors/baseProductSelector";
 export { sauceSelector } from "./model/selectors/sauceSelector";

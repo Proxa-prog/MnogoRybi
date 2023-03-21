@@ -30,21 +30,16 @@ const CheckboxListColumnSquare: FC<CheckboxListColumnSquareProps> = (props) => {
     changeType,
   } = props;
   const dispatch = useDispatch();
-  const [state, newState] = useState(false);
 
   const handleCheckboxClick = () => {
     dispatch(changeChecked());
     dispatch(changeType(productsType.name));
   };
 
-  const func = (event: boolean | undefined) => {
-    event && newState(event);
-  };
-
   return (
     <li onClick={handleCheckboxClick}>
       <Checkbox
-        onChange={func}
+        onChange={() => {}}
         isCircle={isCircleCheckbox}
         className={classNames(style.checkbox, {}, [className])}
         disabled={disabled}

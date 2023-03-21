@@ -43,7 +43,6 @@ const Select: FC<SelectProps> = (props) => {
   };
 
   const handleOptionClick = (option: IContactsCard | IProducts) => {
-    console.log(option);
 
     return () => {
       onChange && onChange(option.name);
