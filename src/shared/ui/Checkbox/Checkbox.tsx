@@ -11,7 +11,7 @@ interface CheckboxProps extends HtmlInputProps {
   disabled?: boolean;
   isCircle?: boolean;
   checked?: boolean;
-  onChange: (event?: boolean) => void;
+  onChange: (event: boolean) => void;
 }
 
 const Checkbox: FC<CheckboxProps> = (props) => {

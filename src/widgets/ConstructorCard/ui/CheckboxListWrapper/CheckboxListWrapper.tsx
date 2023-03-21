@@ -14,10 +14,13 @@ import {
 } from "entities/constructor/model/slice/constructorSlice";
 import {AnyAction} from "@reduxjs/toolkit";
 
-import style from "./CheckboxListWrapper.module.scss";
 import {IFiltersIngredients} from "../../model/types/types";
 import {useSelector} from "react-redux";
 import {filtersSelector} from "../../../../entities/constructor/model/selectors/filtersSelector";
+import {nanoid} from "nanoid";
+import {constructorSelector} from "../../../../entities/constructor";
+
+import style from "./CheckboxListWrapper.module.scss";
 
 interface imageTypes {
   url: string | undefined;
@@ -52,35 +55,6 @@ export interface  CheckboxListWrapperProps {
   changeFiltersType?: (name: IFiltersIngredients) => AnyAction;
 }
 
-// const filters: IFiltersIngredients[] = [
-//   {
-//     name: '5 наполнителей + 1 топпинг',
-//     ingredients: [
-//       {
-//         count: 5,
-//         name: 'Наполнители',
-//       },
-//       {
-//         count: 1,
-//         name: 'Топпинг',
-//       },
-//     ]
-//   },
-//   {
-//     name: '3 наполнителя + 2 топпинга',
-//     ingredients: [
-//       {
-//         count: 3,
-//         name: 'Наполнители',
-//       },
-//       {
-//         count: 2,
-//         name: 'Топпинг',
-//       },
-//     ]
-//   },
-// ];
-
 const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
   const {
     productsType,
@@ -101,8 +75,10 @@ const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
     changeType,
     changeFiltersType,
   } = props;
+  const constructor = useSelector(constructorSelector);
   const filters = useSelector(filtersSelector);
 
+  const func = fillersType?.ingredients.filter((filler) => filler.name === contentHeader?.name)
   const isFillerChecked = (fillersType: string | string[] | undefined, fillerName: string) => {
     if (fillersType === fillerName) {
       return true;
@@ -142,10 +118,11 @@ const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
           <div className={style.filters_wrapper}>
             {
               filters.filters.map((item: IFiltersIngredients) => {
-                checkboxState?.name && checkboxState?.name
+                const id = nanoid();
 
                 return (
                   <CheckboxListCircle
+                    key={id}
                     isCircleCheckbox
                     productsType={item}
                     className={style.checkbox_wrapper}
@@ -174,8 +151,6 @@ const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
                     return (
                       filter.ingredients.map(
                         (item) => {
-                            console.log(item.name);
-                            console.log(contentHeader.name);
                           if (item.name === contentHeader.name) {
                             return item.count
                           }
@@ -203,7 +178,7 @@ const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
                       className={style.checkbox_white_background}
                       changeType={changeType}
                       changeChecked={changeChecked}
-                      // disabled={howMuchIsLeft === (contentHeader && getFiltersCount(filters, contentHeader))}
+                      disabled={func && (howMuchIsLeft === func[0].count)}
                     />
                   )
                 })
@@ -215,9 +190,10 @@ const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
             && !isSelectList
             && productsType
             && productsType.map((item: any) => {
-
+              const id = nanoid();
               return (
                 <CheckboxListCircle
+                  key={id}
                   isCircleCheckbox={isCircleCheckbox}
                   productsType={item}
                   isFillers
