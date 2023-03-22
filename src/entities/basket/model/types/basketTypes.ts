@@ -64,6 +64,7 @@ export interface IHowMuchProduct {
 
 export interface AmountProductArray {
   amountProduct: IAmountProduct;
+  amountConstructorProduct: IAmountProduct;
 }
 
 export interface IAmountProductAction {

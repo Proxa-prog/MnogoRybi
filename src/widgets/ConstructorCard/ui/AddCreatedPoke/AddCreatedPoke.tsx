@@ -4,32 +4,42 @@ import { nanoid } from "@reduxjs/toolkit";
 import { Button } from "shared";
 
 import { ProductCounter } from "entities/counter";
-import {addProductInBasket, setAmountProduct, setCostProduct} from "../../../../entities/basket";
+import {
+  addProductInBasket, getAmountProductSelector,
+  setAmountConstructorProduct,
+  setAmountProduct,
+  setCostProduct
+} from "../../../../entities/basket";
 import { useAppDispatch } from "app/store";
 
 import style from "./AddCreatedPoke.module.scss";
+import {useSelector} from "react-redux";
+import {
+  getAmountConstructorProductSelector
+} from "../../../../entities/basket/model/selectors/getAmountProductSelector";
 
 const AddCreatedPoke: FC = () => {
   const dispatch = useAppDispatch();
+  const amountConstructorProduct = useSelector(getAmountConstructorProductSelector);
 
   // Увеличить количество товараx
   const addAmountProduct = () => {
-    // const addAmount = amountProduct.amount + 1;
+    const addAmount = amountConstructorProduct.amount + 1;
     // const addCost = Number(productsCard.cost) * addAmount;
-    //
-    // dispatch(setAmountProduct(addAmount));
+
+    dispatch(setAmountConstructorProduct(addAmount));
     // dispatch(setCostProduct(addCost));
   };
 
   // Уменьшить количество товара
   const removeAmountProduct = () => {
-    // if (amountProduct.amount > 1) {
-    //   const addAmount = amountProduct.amount - 1;
+    if (amountConstructorProduct.amount > 0) {
+      const addAmount = amountConstructorProduct.amount - 1;
     //   const addCost = Number(productsCard.cost) * addAmount;
     //
-    //   dispatch(setAmountProduct(addAmount));
+      dispatch(setAmountConstructorProduct(addAmount));
     //   dispatch(setCostProduct(addCost));
-    // }
+    }
   };
 
   // Добавить товар в корзину
@@ -62,7 +72,7 @@ const AddCreatedPoke: FC = () => {
           wrapperClassName={style.counter_wrapper}
           removeAmountProduct={removeAmountProduct}
           addAmountProduct={addAmountProduct}
-          amount={0}
+          amount={amountConstructorProduct.amount}
         />
         <Button
           className={style.button_basket}

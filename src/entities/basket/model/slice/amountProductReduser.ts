@@ -13,6 +13,11 @@ const initialState: AmountProductArray = {
     sauce: "",
     id: "",
   },
+  amountConstructorProduct: {
+    name: "",
+    amount: 0,
+    cost: 0,
+  }
 };
 
 export const amountProductSlice = createSlice({
@@ -34,6 +39,12 @@ export const amountProductSlice = createSlice({
     setSauce: (state, action: PayloadAction<string>) => {
       state.amountProduct.sauce = action.payload;
     },
+    setAmountConstructorProduct: (state, action: PayloadAction<number>) => {
+      state.amountConstructorProduct.amount = action.payload;
+    },
+    setCostConstructorProduct: (state, action: PayloadAction<number>) => {
+      state.amountConstructorProduct.cost = action.payload;
+    },
   },
 });
 
@@ -43,6 +54,8 @@ export const {
   setCostProduct,
   setBaseProduct,
   setSauce,
+  setAmountConstructorProduct,
+  setCostConstructorProduct,
 } = amountProductSlice.actions;
 
 export default amountProductSlice.reducer;

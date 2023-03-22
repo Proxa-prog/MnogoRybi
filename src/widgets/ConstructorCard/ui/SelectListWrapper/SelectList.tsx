@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, useState} from "react";
 import classNames from "classnames";
 
 import {IProducts} from "entities/basket";
@@ -23,12 +23,14 @@ const SelectList: FC<SelectListProps> = (props) => {
     isSelected,
   } = props;
   const dispatch = useDispatch();
+  const [isChecked, setIsChecked] = useState(false);
 
-  const onChange = (name: string) => {
+  const onChange = (name: string, isChecked: boolean) => {
     dispatch(changeAdditionallyType({
       productType: header,
       productName: name
     }));
+    setIsChecked(isChecked);
   }
 
   return (
@@ -43,7 +45,7 @@ const SelectList: FC<SelectListProps> = (props) => {
           )}>
             {header}
           </h4>
-          <div className={classNames(style.select_wrapper, {[style.isSelected]: isSelected}, [])}>
+          <div className={classNames(style.select_wrapper, {[style.isSelected]: isChecked}, [])}>
             <Select
               classNameList={style.list}
               className={style.select}

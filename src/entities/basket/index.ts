@@ -11,6 +11,8 @@ export {
   setCostProduct,
   setBaseProduct,
   setSauce,
+  setCostConstructorProduct,
+  setAmountConstructorProduct,
 } from "./model/slice/amountProductReduser";
 export {
   addProductInBasket,

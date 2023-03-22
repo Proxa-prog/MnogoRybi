@@ -24,7 +24,7 @@
   &::after {
     content: "+ 180₽";
     position: absolute;
-    z-index: 1000;
+    z-index: 999;
     font-weight: 600;
     font-size: 14px;
     line-height: 20px;
