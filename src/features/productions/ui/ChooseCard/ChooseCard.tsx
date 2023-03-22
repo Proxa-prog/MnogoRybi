@@ -91,6 +91,7 @@ const ChooseCard: FC = () => {
         amount: 1,
         cost: Number(productsCard.cost),
         imageUrl: productsCard.imageUrl,
+        baseCost: 0,
       })
     );
     dispatch(setBaseProduct(restaurantProductions.baseProduct[0].name));

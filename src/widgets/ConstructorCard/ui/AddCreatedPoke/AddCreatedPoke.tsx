@@ -1,44 +1,46 @@
-import React, {FC} from "react";
+import React, {FC, useEffect} from "react";
 import { nanoid } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
+
+import { useAppDispatch } from "app/store";
 
 import { Button } from "shared";
 
+import { constructorSelector } from "entities/constructor";
 import { ProductCounter } from "entities/counter";
 import {
-  addProductInBasket, getAmountProductSelector,
-  setAmountConstructorProduct,
-  setAmountProduct,
-  setCostProduct
-} from "../../../../entities/basket";
-import { useAppDispatch } from "app/store";
+  setAmountOfProductsInConstructor,
+  setCostOfProductsInConstructor,
+  getAmountConstructorProductSelector,
+  addProductInBasket, openBasketSelector,
+} from "entities/basket";
 
 import style from "./AddCreatedPoke.module.scss";
-import {useSelector} from "react-redux";
-import {
-  getAmountConstructorProductSelector
-} from "../../../../entities/basket/model/selectors/getAmountProductSelector";
 
 const AddCreatedPoke: FC = () => {
   const dispatch = useAppDispatch();
-  const amountConstructorProduct = useSelector(getAmountConstructorProductSelector);
+  const amountOfProductsInConstructor = useSelector(getAmountConstructorProductSelector);
+  const constructor = useSelector(constructorSelector);
+  const basket = useSelector(openBasketSelector);
 
-  // Увеличить количество товараx
+  console.log(basket);
+  // Увеличить количество товара
   const addAmountProduct = () => {
-    const addAmount = amountConstructorProduct.amount + 1;
-    // const addCost = Number(productsCard.cost) * addAmount;
+    const addAmount = amountOfProductsInConstructor.amount + 1;
+    const addCost = amountOfProductsInConstructor.baseCost * addAmount;
 
-    dispatch(setAmountConstructorProduct(addAmount));
-    // dispatch(setCostProduct(addCost));
+    dispatch(setAmountOfProductsInConstructor(addAmount));
+    dispatch(setCostOfProductsInConstructor(addCost));
   };
 
   // Уменьшить количество товара
   const removeAmountProduct = () => {
-    if (amountConstructorProduct.amount > 0) {
-      const addAmount = amountConstructorProduct.amount - 1;
-    //   const addCost = Number(productsCard.cost) * addAmount;
-    //
-      dispatch(setAmountConstructorProduct(addAmount));
-    //   dispatch(setCostProduct(addCost));
+    if (amountOfProductsInConstructor.amount > 0) {
+      const addAmount = amountOfProductsInConstructor.amount - 1;
+      const addCost = amountOfProductsInConstructor.baseCost * addAmount;
+
+      dispatch(setAmountOfProductsInConstructor(addAmount));
+      dispatch(setCostOfProductsInConstructor(addCost));
     }
   };
 
@@ -46,19 +48,22 @@ const AddCreatedPoke: FC = () => {
   const addProductOnBasket = () => {
     const id = nanoid();
 
-    // dispatch(
-    //   // addProductInBasket({
-    //   //   name: amountProduct.name,
-    //   //   amount: amountProduct.amount,
-    //   //   cost: amountProduct.cost,
-    //   //   baseCost: Number(productsCard.cost),
-    //   //   baseProduct: amountProduct.baseProduct,
-    //   //   sauce: amountProduct.sauce,
-    //   //   imageUrl: productsCard.imageUrl,
-    //   //   description: productsCard.description,
-    //   //   id: id,
-    //   // })
-    // );
+    dispatch(
+      addProductInBasket({
+        name: '',
+        amount: amountOfProductsInConstructor.amount,
+        cost: amountOfProductsInConstructor.cost,
+        baseCost: amountOfProductsInConstructor.baseCost,
+        baseProduct: constructor.baseProduct?.name,
+        sauce: constructor.sauce?.name,
+        crunch: constructor.crunch?.name,
+        protein: constructor.protein?.name,
+        fillers: constructor.fillers?.type,
+        topping: constructor.topping?.type,
+        additionally: constructor.additionally,
+        id: id,
+      })
+    );
   };
 
   return (
@@ -72,13 +77,13 @@ const AddCreatedPoke: FC = () => {
           wrapperClassName={style.counter_wrapper}
           removeAmountProduct={removeAmountProduct}
           addAmountProduct={addAmountProduct}
-          amount={amountConstructorProduct.amount}
+          amount={amountOfProductsInConstructor.amount}
         />
         <Button
           className={style.button_basket}
           type="button"
           color="yellow"
-          children={`В корзину за ${0} ₽`}
+          children={`В корзину за ${amountOfProductsInConstructor.cost} ₽`}
           onClick={addProductOnBasket}
         />
       </div>

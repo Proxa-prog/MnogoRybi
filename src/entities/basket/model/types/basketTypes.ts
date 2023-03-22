@@ -6,6 +6,7 @@ import {
   IrestaurantPagesInfo,
   IRestaurantProductions,
 } from "features/restaurant";
+import {AdditionallyType} from "../../../constructor/model/slice/constructorSlice";
 
 export interface IProducts {
   name: string;
@@ -42,16 +43,21 @@ export interface IChangeCostAction {
   id: string | undefined;
 }
 
-export interface IIngridients {
+export interface IIngredients {
   baseProduct?: string;
   sauce?: string;
+  protein?: string;
+  fillers?: string[];
+  topping?: string[];
+  crunch?: string;
+  additionally?: AdditionallyType[];
 }
 
-export interface IAmountProduct extends IIngridients {
+export interface IAmountProduct extends IIngredients {
   name: string | undefined;
   amount: number;
   cost: number;
-  baseCost?: number;
+  baseCost: number;
   imageUrl?: string;
   description?: string;
   id?: string;
@@ -64,7 +70,7 @@ export interface IHowMuchProduct {
 
 export interface AmountProductArray {
   amountProduct: IAmountProduct;
-  amountConstructorProduct: IAmountProduct;
+  AmountOfProductsInConstructor: IAmountProduct;
 }
 
 export interface IAmountProductAction {

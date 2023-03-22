@@ -1,14 +1,20 @@
-import React, {FC, useState} from "react";
+import React, {FC, useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import classNames from "classnames";
 
-import {IProducts} from "entities/basket";
+import {
+  getAmountConstructorProductSelector,
+  IProducts,
+  setAmountOfProductsInConstructor,
+  setBaseCostOfProductsInConstructor,
+  setCostOfProductsInConstructor
+} from "entities/basket";
 
 import {Select} from "shared";
 
+import {changeAdditionallyType, constructorSelector} from "entities/constructor";
+
 import style from "./SelectList.module.scss";
-import {useDispatch, useSelector} from "react-redux";
-import {changeAdditionallyType} from "../../../../entities/constructor";
-import {additionallySelector} from "../../../../entities/constructor/model/selectors/additionallySelector";
 
 export interface  SelectListProps {
   productsType: IProducts[];
@@ -24,6 +30,7 @@ const SelectList: FC<SelectListProps> = (props) => {
   } = props;
   const dispatch = useDispatch();
   const [isChecked, setIsChecked] = useState(false);
+  const constructor = useSelector(constructorSelector);
 
   const onChange = (name: string, isChecked: boolean) => {
     dispatch(changeAdditionallyType({
@@ -31,6 +38,9 @@ const SelectList: FC<SelectListProps> = (props) => {
       productName: name
     }));
     setIsChecked(isChecked);
+
+    const isIncludes = !constructor?.additionally?.some(item => item.productType === header);
+    isChecked && isIncludes && dispatch(setBaseCostOfProductsInConstructor(180));
   }
 
   return (
