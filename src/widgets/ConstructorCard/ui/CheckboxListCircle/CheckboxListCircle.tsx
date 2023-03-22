@@ -1,16 +1,18 @@
-import React, {FC, useEffect, useState} from "react";
+import React, {FC, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import classNames from "classnames";
+import {AnyAction} from "@reduxjs/toolkit";
+
+import {useAppDispatch} from "app/store";
 
 import {Checkbox} from "shared";
-import {IProducts} from "entities/basket";
 
-import {useDispatch, useSelector} from "react-redux";
-import {AnyAction} from "@reduxjs/toolkit";
-import style from "./CheckboxListCircle.module.scss";
+import {IProducts} from "entities/basket";
+import {filtersSelector} from "entities/constructor";
+
 import {IFiltersIngredients} from "../../model/types/types";
-import {filtersSelector} from "../../../../entities/constructor/model/selectors/filtersSelector";
-import {fetchFilters} from "../../../../entities/constructor/model/services/fetchFilters";
-import {useAppDispatch} from "../../../../app/store";
+
+import style from "./CheckboxListCircle.module.scss";
 
 interface CheckboxListCircleProps {
   productsType: IProducts;
@@ -23,35 +25,6 @@ interface CheckboxListCircleProps {
   changeType: (name: string) => AnyAction;
   changeFiltersType?: (item: IFiltersIngredients) => AnyAction;
 }
-
-// const filters: IFiltersIngredients[] = [
-//   {
-//     name: '5 наполнителей + 1 топпинг',
-//     ingredients: [
-//       {
-//         count: 5,
-//         name: 'Наполнители',
-//       },
-//       {
-//         count: 1,
-//         name: 'Топпинг',
-//       },
-//     ]
-//   },
-//   {
-//     name: '3 наполнителя + 2 топпинга',
-//     ingredients: [
-//       {
-//         count: 3,
-//         name: 'Наполнители',
-//       },
-//       {
-//         count: 2,
-//         name: 'Топпинг',
-//       },
-//     ]
-//   },
-// ];
 
 const CheckboxListCircle: FC<CheckboxListCircleProps> = (props) => {
   const {
@@ -84,6 +57,7 @@ const CheckboxListCircle: FC<CheckboxListCircleProps> = (props) => {
         {
           [style.checkbox_wrapper]: isCircleCheckbox,
           [style.font_checked_style]: isFillers ? isFillerChecked : isChecked,
+          [style.checkbox_wrapper_checked]: isFillers ? isFillerChecked : isChecked,
         },
         [className])}
       onClick={() => {isFillers && handleCheckboxClick()}}

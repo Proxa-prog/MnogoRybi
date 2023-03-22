@@ -19,6 +19,7 @@
 
 .yellow_header {
   color: $yellow-100;
+  background-color: white;
 }
 
 .arrow_wrapper {
@@ -28,18 +29,16 @@
 .arrow {
   position: absolute;
   bottom: -55px;
-  background-image: url("../../../../../public/images/desktop_constructor_arrow.png");
+  left: 44px;
+  z-index: -1;
   background-repeat: no-repeat;
   background-position: center;
-  width: 85vw;
+  width: 83vw;
   height: 78px;
 
-  @media (max-width: 1439px) {
-    background-image: url("../../../../../public/images/tablet_constructor_arrow.png");
-  }
-
   @media (max-width: 768px) {
-    background-image: url("../../../../../public/images/mobile_constructor_arrow.png");
+    width: 88vw;
+    left: 8px;
   }
 }
 

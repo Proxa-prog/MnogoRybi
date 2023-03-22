@@ -4,8 +4,8 @@ export interface ImageWrapperProps {
   name: string | undefined;
   alt: string;
   className?: string;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
 }
 
 const ImageWrapper: FC<ImageWrapperProps> = (props) => {

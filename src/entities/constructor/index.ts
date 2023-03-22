@@ -25,3 +25,4 @@ export { toppingSelector } from "./model/selectors/toppingSelector";
 export { crunchSelector } from "./model/selectors/crunchSelector";
 export { constructorSelector } from "./model/selectors/constructorSelector";
 export { fillersSelector } from "./model/selectors/fillersSelector";
+export { filtersSelector } from "./model/selectors/filtersSelector";
