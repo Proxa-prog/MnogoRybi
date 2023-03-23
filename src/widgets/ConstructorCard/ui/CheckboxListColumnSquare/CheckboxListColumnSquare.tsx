@@ -10,6 +10,9 @@ import {IProducts} from "entities/basket";
 
 import style from "./CheckboxListColumnSquare.module.scss";
 import {getIngredientsSelector} from "../../../../features/productions";
+import {constructorSelector} from "../../../../entities/constructor";
+import {log} from "util";
+import {ConstructorType} from "../../../../entities/constructor/model/slice/constructorSlice";
 
 interface CheckboxListColumnSquareProps {
   productsType: IProducts;
@@ -17,7 +20,8 @@ interface CheckboxListColumnSquareProps {
   className?: string;
   disabled?: boolean;
   changeChecked: () => AnyAction;
-  changeType: (name: string) => AnyAction;
+  changeType: (name: ConstructorType) => AnyAction;
+  name?: string;
 }
 
 const CheckboxListColumnSquare: FC<CheckboxListColumnSquareProps> = (props) => {
@@ -28,18 +32,41 @@ const CheckboxListColumnSquare: FC<CheckboxListColumnSquareProps> = (props) => {
     disabled,
     changeChecked,
     changeType,
+    name,
   } = props;
+
   const dispatch = useDispatch();
-  const [isChecked, setIsChecked] = useState(false);
+  const constructor = useSelector(constructorSelector);
 
   const handleCheckboxClick = () => {
+    const isChecked = constructor?.fillers?.type && constructor?.fillers?.type.find((item) => {
+      if (productsType.name === item.name) {
+        return item.isChecked
+      }
+    });
+
     dispatch(changeChecked());
-    dispatch(changeType(productsType.name));
+    dispatch(changeType({
+      name: productsType.name,
+      isChecked: isChecked ? !isChecked.isChecked : true,
+    }));
   };
 
   const onChange = (event: boolean) => {
-    setIsChecked(event);
+
   };
+
+  const isChecked = name === 'Наполнители'
+  ? constructor?.fillers?.type && constructor?.fillers?.type.find((item) => {
+    if (productsType.name === item.name) {
+      return item.isChecked
+    }
+  })
+    : constructor?.topping?.type && constructor?.topping?.type.find((item) => {
+    if (productsType.name === item.name) {
+      return item.isChecked
+    }
+  })
 
   return (
     <li>
@@ -49,6 +76,7 @@ const CheckboxListColumnSquare: FC<CheckboxListColumnSquareProps> = (props) => {
         className={classNames(style.checkbox, {}, [className])}
         disabled={disabled && !isChecked}
         onChange={onChange}
+        checked={isChecked?.isChecked}
       />
       <span>{productsType.name}</span>
     </li>

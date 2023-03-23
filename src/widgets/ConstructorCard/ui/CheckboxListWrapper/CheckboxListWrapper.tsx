@@ -16,7 +16,7 @@ import {AnyAction} from "@reduxjs/toolkit";
 
 import {IFiltersIngredients} from "../../model/types/types";
 import {useSelector} from "react-redux";
-import {filtersSelector} from "../../../../entities/constructor/model/selectors/filtersSelector";
+import {filtersSelector} from "entities/constructor/model/selectors/filtersSelector";
 import {nanoid} from "nanoid";
 import {constructorSelector} from "../../../../entities/constructor";
 
@@ -51,7 +51,7 @@ export interface  CheckboxListWrapperProps {
   checkboxState?: IFiltersIngredients | FillersType | ConstructorType;
   fillersType?: IFiltersIngredients;
   changeChecked: () => AnyAction;
-  changeType: (name: string) => AnyAction;
+  changeType: (name: ConstructorType | string) => AnyAction;
   changeFiltersType?: (name: IFiltersIngredients) => AnyAction;
 }
 
@@ -75,7 +75,7 @@ const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
     changeType,
     changeFiltersType,
   } = props;
-  const constructor = useSelector(constructorSelector);
+
   const filters = useSelector(filtersSelector);
 
   const func = fillersType?.ingredients.filter((filler) => filler.name === contentHeader?.name)
@@ -179,6 +179,7 @@ const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
                       changeType={changeType}
                       changeChecked={changeChecked}
                       disabled={func && (howMuchIsLeft === func[0].count)}
+                      name={contentHeader?.name}
                     />
                   )
                 })

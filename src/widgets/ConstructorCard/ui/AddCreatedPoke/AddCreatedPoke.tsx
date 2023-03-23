@@ -21,9 +21,7 @@ const AddCreatedPoke: FC = () => {
   const dispatch = useAppDispatch();
   const amountOfProductsInConstructor = useSelector(getAmountConstructorProductSelector);
   const constructor = useSelector(constructorSelector);
-  const basket = useSelector(openBasketSelector);
 
-  console.log(basket);
   // Увеличить количество товара
   const addAmountProduct = () => {
     const addAmount = amountOfProductsInConstructor.amount + 1;

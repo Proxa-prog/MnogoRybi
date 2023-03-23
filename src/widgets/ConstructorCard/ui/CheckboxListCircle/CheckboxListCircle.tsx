@@ -1,5 +1,5 @@
 import React, {FC, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import classNames from "classnames";
 import {AnyAction} from "@reduxjs/toolkit";
 
@@ -8,7 +8,7 @@ import {useAppDispatch} from "app/store";
 import {Checkbox} from "shared";
 
 import {IProducts} from "entities/basket";
-import {filtersSelector} from "entities/constructor";
+import {clearFillers, filtersSelector} from "entities/constructor";
 
 import {IFiltersIngredients} from "../../model/types/types";
 
@@ -49,6 +49,7 @@ const CheckboxListCircle: FC<CheckboxListCircleProps> = (props) => {
 
     const newFilterType = filters.filters.filter((item) => item.name === productsType.name);
     changeFiltersType && dispatch(changeFiltersType(newFilterType[0]));
+    changeFiltersType && dispatch(clearFillers());
   };
 
   return (

@@ -13,6 +13,7 @@ export {
   changeCrunchType,
   changeCrunchChecked,
   changeAdditionallyType,
+  clearFillers,
 } from "./model/slice/constructorSlice";
 export {
   getFilters,

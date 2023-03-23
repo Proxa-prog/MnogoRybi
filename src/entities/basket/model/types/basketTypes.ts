@@ -6,7 +6,7 @@ import {
   IrestaurantPagesInfo,
   IRestaurantProductions,
 } from "features/restaurant";
-import {AdditionallyType} from "../../../constructor/model/slice/constructorSlice";
+import {AdditionallyType, ConstructorType} from "../../../constructor/model/slice/constructorSlice";
 
 export interface IProducts {
   name: string;
@@ -47,8 +47,8 @@ export interface IIngredients {
   baseProduct?: string;
   sauce?: string;
   protein?: string;
-  fillers?: string[];
-  topping?: string[];
+  fillers?: ConstructorType[];
+  topping?: ConstructorType[];
   crunch?: string;
   additionally?: AdditionallyType[];
 }

@@ -119,6 +119,7 @@ const Constructor = () => {
                 isCircleCheckbox
                 checkboxState={baseProduct}
                 changeChecked={changeIsBaseProductChecked}
+                // @ts-ignore
                 changeType={changeBaseProductType}
               />
             </ConstructorCard>
@@ -128,6 +129,7 @@ const Constructor = () => {
                 isCircleCheckbox
                 checkboxState={protein}
                 changeChecked={changeProteinChecked}
+                // @ts-ignore
                 changeType={changeProteinType}
               />
             </ConstructorCard>
@@ -160,6 +162,7 @@ const Constructor = () => {
                 isCircleCheckbox
                 checkboxState={sauce}
                 changeChecked={changeSauceChecked}
+                // @ts-ignore
                 changeType={changeSauceType}
               />
             </ConstructorCard>
@@ -168,6 +171,7 @@ const Constructor = () => {
                 {...ingredients.crunch}
                 isCircleCheckbox
                 changeChecked={changeCrunchChecked}
+                // @ts-ignore
                 changeType={changeCrunchType}
                 checkboxState={crunch}
               />
@@ -178,6 +182,7 @@ const Constructor = () => {
                 isSelectList
                 {...ingredients.additionally}
                 changeChecked={changeCrunchChecked}
+                // @ts-ignore
                 changeType={changeCrunchType}
               />
             </ConstructorCard>

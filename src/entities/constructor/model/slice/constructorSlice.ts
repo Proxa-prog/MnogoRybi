@@ -1,10 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {IFiltersIngredients} from "../../../../widgets/ConstructorCard/model/types/types";
-
-export interface IIngredients {
-  name: string;
-  isChecked: boolean;
-}
+import {IFiltersIngredients} from "widgets/ConstructorCard/model/types/types";
 
 export interface ConstructorType {
   name?: string;
@@ -13,7 +8,7 @@ export interface ConstructorType {
 
 export interface FillersType {
   name?: string;
-  type?: string[];
+  type?: ConstructorType[];
   isChecked?: boolean;
 }
 
@@ -87,16 +82,19 @@ export const constructorSlice = createSlice({
     changeFillersType: (state, action: PayloadAction<IFiltersIngredients>) => {
       state.constructor.fillersType && (state.constructor.fillersType = action.payload);
     },
-    changeFillers: (state, action: PayloadAction<string>) => {
+    changeFillers: (state, action: PayloadAction<ConstructorType | string>) => {
       // @ts-ignore
-      if (!state.constructor.fillers.type.includes(action.payload)) {
+      if (!state.constructor.fillers.type.some(item => item.name === action.payload.name)) {
         // @ts-ignore
         state.constructor.fillers && (state.constructor.fillers.type = [...state.constructor.fillers.type, action.payload]);
       } else {
         // @ts-ignore
-        state.constructor.fillers && (state.constructor.fillers.type = state.constructor.fillers.type.filter(item => item !== action.payload));
+        state.constructor.fillers && (state.constructor.fillers.type = state.constructor.fillers.type.filter(item => item.name !== action.payload.name));
       }
-      console.log(state!.constructor!.fillers!.type);
+    },
+    clearFillers: (state) => {
+      state.constructor.fillers && (state.constructor.fillers.type = []);
+      state.constructor.topping && (state.constructor.topping.type = []);
     },
     changeIsFillerChecked: (state) => {
       state.constructor.fillers && (state.constructor.fillers.isChecked = !state.constructor?.baseProduct?.isChecked);
@@ -113,14 +111,14 @@ export const constructorSlice = createSlice({
     changeProteinChecked: (state) => {
       state.constructor.protein && (state.constructor.protein.isChecked = !state.constructor?.baseProduct?.isChecked);
     },
-    changeToppingType: (state, action: PayloadAction<string>) => {
+    changeToppingType: (state, action: PayloadAction<ConstructorType | string>) => {
       // @ts-ignore
-      if (!state.constructor.topping.type.includes(action.payload)) {
+      if (!state.constructor.topping.type.some(item => item.name === action.payload.name)) {
         // @ts-ignore
         state.constructor.topping && (state.constructor.topping.type = [...state.constructor.topping.type, action.payload]);
       } else {
         // @ts-ignore
-        state.constructor.topping && (state.constructor.topping.type = state.constructor.topping.type.filter(item => item !== action.payload));
+        state.constructor.topping && (state.constructor.topping.type = state.constructor.topping.type.filter(item => item.name !== action.payload.name));
       }
     },
     changeToppingChecked: (state) => {
@@ -160,6 +158,7 @@ export const {
   changeCrunchType,
   changeCrunchChecked,
   changeAdditionallyType,
+  clearFillers,
 } = constructorSlice.actions;
 
 export default constructorSlice.reducer;
