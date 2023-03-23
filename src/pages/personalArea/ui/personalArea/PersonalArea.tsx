@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, {FC, useEffect, useState} from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import classNames from "classnames";
@@ -9,7 +9,6 @@ import { Footer } from "widgets/Footer";
 import { Recovery } from "widgets/Recovery";
 import { Header, } from "widgets/Header";
 
-import { getNewsSelector } from "features/news";
 import {
   getRegistrationSelector,
   openConfirmationSelector,
@@ -23,9 +22,17 @@ import {
   setUserAccountStateSelector,
 } from "entities/user";
 
-import { Button, Input } from "shared";
+import {Button, Checkbox, ImageWrapper, Input, StatusMarker} from "shared";
 
 import style from "./PersonalArea.module.scss";
+import {
+  fetchPagesInfo,
+  fetchRestaurantProductions,
+  getRestaurantPagesInfoSelector
+} from "../../../../features/restaurant";
+import {fetchProductions} from "../../../../features/productions";
+import {nanoid} from "nanoid";
+import {DellFill} from "../../../../shared/assets/icons";
 
 interface IPersonalAreaPagesLinks {
   name: string;
@@ -39,12 +46,20 @@ const PersonalArea: FC = () => {
   const userEnter = useSelector(openModalUserEnterSelector);
   const confirmation = useSelector(openConfirmationSelector);
   const userAccount = useSelector(setUserAccountStateSelector);
-
+  const restaurant = useSelector(getRestaurantPagesInfoSelector);
+  console.log(restaurant);
   const [isButtonGenderActive, setIsButtonGenderActive] = useState(true);
+  const isChecked = true;
+
   const pageLinks: IPersonalAreaPagesLinks[] = [
     { name: "Личные данные", id: "personalData", isCurrent: true, },
     { name: "Мои заказы", id: "myOrders" },
   ];
+
+  useEffect(() => {
+    dispatch(fetchPagesInfo());
+  }, []);
+
   return (
     <>
       {registration.isOpen && <ModalRegistration />}
@@ -67,66 +82,113 @@ const PersonalArea: FC = () => {
             ))
           }
         </div>
-        <div className={style.myData}>
-          <h3>Мои данные</h3>
-          <Input
-            className={style.inputMyData}
-            required
-            placeholder="Иванов Иван Иванович"
-            label="Имя"
-            name="Имя"
-          />
-          <Input
-            className={style.inputMyData}
-            required
-            placeholder="+7 986 456 75 34"
-            label="Телефон"
-            name="Телефон"
-          />
-          <Input
-            className={style.inputMyData}
-            required
-            placeholder="ivanov@mail.ru"
-            label="Почта"
-            name="Почта"
-          />
-          <Input
-            className={style.inputMyData}
-            classNameWrapper={style.dateWrapper}
-            placeholder="__.__.____"
-            label="Дата рождения"
-            name="Дата рождения"
-          />
-          <div>
-            <h4>Пол</h4>
-            <div className={style.button_gender_wrapper}>
-              <Button
-                className={classNames(
-                  style.button_gender_man,
-                  { [style.button_gender_man_active]: isButtonGenderActive }
-                )}
-                type="button"
-                onClick={() => {setIsButtonGenderActive(prev => !prev)}}
-              >
-                Мужской
-              </Button>
-              <Button
+        <div className={style.myDataWrapper}>
+          <div className={style.myData}>
+            <h3>Мои данные</h3>
+            <Input
+              className={style.inputMyData}
+              required
+              placeholder="Иванов Иван Иванович"
+              label="Имя"
+              name="Имя"
+            />
+            <Input
+              className={style.inputMyData}
+              required
+              placeholder="+7 986 456 75 34"
+              label="Телефон"
+              name="Телефон"
+            />
+            <Input
+              className={style.inputMyData}
+              required
+              placeholder="ivanov@mail.ru"
+              label="Почта"
+              name="Почта"
+            />
+            <Input
+              className={style.inputMyData}
+              classNameWrapper={style.dateWrapper}
+              placeholder="__.__.____"
+              label="Дата рождения"
+              name="Дата рождения"
+            />
+            <div>
+              <h4>Пол</h4>
+              <div className={style.button_gender_wrapper}>
+                <Button
+                  className={classNames(
+                    style.button_gender_man,
+                    { [style.button_gender_man_active]: isButtonGenderActive }
+                  )}
+                  type="button"
+                  onClick={() => {setIsButtonGenderActive(prev => !prev)}}
+                >
+                  Мужской
+                </Button>
+                <Button
+                  className={classNames(
+                    style.button_gender_woman,
+                    { [style.button_gender_woman_active]: !isButtonGenderActive }
 
-                className={classNames(
-                  style.button_gender_woman,
-                  { [style.button_gender_woman_active]: !isButtonGenderActive }
+                  )}
+                  type="button"
+                  onClick={() => {setIsButtonGenderActive(prev => !prev)}}
+                >
+                  Женский
+                </Button>
+              </div>
+            </div>
+          </div>
+          <div className={style.deliveryAddress}>
+            <h3>Адреса доставки</h3>
+            <div>
+              {
+                restaurant.restaurantAddress.map((item) => {
+                  const id = nanoid();
 
-                )}
+                  return (
+                    <div className={style.checkboxWrapper}>
+                      <Checkbox
+                        key={id}
+                        onChange={() => {}}
+                        isCircle
+                        className={style.checkbox}
+                        label={item.name}
+                        id={id}
+                      />
+                      {
+                        item.name === 'Ярославль, Свободы 52/39'
+                        &&
+                        <div className={style.statusMarkerWrapper}>
+                          <StatusMarker
+                            className={style.statusMarker}
+                            children='По умолчанию'
+                          />
+                        </div>
+                      }
+                      <div className={style.buttonCloseWrapper}>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM12 13.4142L8.70711 16.7071L7.29289 15.2929L10.5858 12L7.29289 8.70711L8.70711 7.29289L12 10.5858L15.2929 7.29289L16.7071 8.70711L13.4142 12L16.7071 15.2929L15.2929 16.7071L12 13.4142Z" fill="#414042"/>
+                        </svg>
+                      </div>
+                      {/*<DellFill />*/}
+                    </div>
+                  )
+                })
+              }
+            </div>
+            <div>
+              <Button
                 type="button"
-                onClick={() => {setIsButtonGenderActive(prev => !prev)}}
+                color="blue"
+                className={style.buttonAddNewAddress}
               >
-                Женский
+                Добавить новый адрес
               </Button>
             </div>
           </div>
         </div>
-        <div></div>
-        <div></div>
       </section>
       <Footer />
     </>
