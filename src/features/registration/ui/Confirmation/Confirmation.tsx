@@ -35,7 +35,7 @@ const Confirmation: FC = () => {
 
     return () => {
       if (password === registration.password) {
-        dispatch(changeIsLoginUserAccount(userAccount.isLogin));
+        dispatch(changeIsLoginUserAccount(userAccount.userAccount.isLogin));
         dispatch(changeIsOpenConfirmation(confirmation.isOpen));
         dispatch(changeEmailUserAccount(registration.email));
 

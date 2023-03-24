@@ -1,11 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {IUserRegistration} from "../types/types";
+import {IUserEnterFull} from "./userAccountSlice";
 
-export interface IUserEnter {
-  userEnter: {
-    isOpen: boolean;
-    email: string | undefined;
-    password: string | undefined;
-  }
+export interface IUserEnter extends IUserEnterFull {
+  isOpen: boolean;
 }
 
 export enum UserEnterAction {
@@ -18,10 +16,20 @@ export interface IUserEnterAction {
 }
 
 const initialState: IUserEnter =  {
-  userEnter: {
-    isOpen: false,
+  isOpen: false,
+  userAccount: {
+    isLogin: false,
+    recoveryIsOpen: false,
     email: '',
     password: '',
+  },
+  userData: {
+    firstName: '',
+    phone: '',
+    orders: [],
+    closeWindow: () => {},
+    userUrl: '',
+    deliveryAddress: [],
   }
 };
 
@@ -29,19 +37,23 @@ export const userEnterSlice = createSlice({
   name: 'userEnter',
   initialState,
   reducers: {
+    setUserData: (state, action: PayloadAction<IUserEnter>) => {
+      state = action.payload;
+    },
     changeIsOpenUserEnter: (state, action: PayloadAction<boolean>) => {
-      state.userEnter.isOpen = !action.payload;
+      state.isOpen = !action.payload;
     },
     changeEmailUserEnter: (state, action: PayloadAction<string | undefined>) => {
-      state.userEnter.email = action.payload;
+      state.userAccount.email = action.payload;
     },
     changePasswordUserEnter: (state, action: PayloadAction<string | undefined>) => {
-      state.userEnter.password = action.payload;
+      state.userAccount.password = action.payload;
     },
   },
 });
 
 export const {
+  setUserData,
   changeIsOpenUserEnter,
   changeEmailUserEnter,
   changePasswordUserEnter,

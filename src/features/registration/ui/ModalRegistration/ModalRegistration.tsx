@@ -30,6 +30,7 @@ import {
 } from 'shared';
 
 import style from './ModalRegistration.module.scss';
+import {getRestaurantPagesInfoSelector} from "../../../restaurant";
 
 const ModalRegistration: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -37,6 +38,7 @@ const ModalRegistration: React.FC = () => {
   const registration = useSelector(getRegistrationSelector);
   const userEnter = useSelector(openModalUserEnterSelector);
   const confirmation = useSelector(openConfirmationSelector);
+  const restaurant = useSelector(getRestaurantPagesInfoSelector);
 
   const handleButtonUserEnterClick = () => {
     dispatch(changeIsOpenRegistration(registration.isOpen));
@@ -72,14 +74,26 @@ const ModalRegistration: React.FC = () => {
     event.preventDefault();
     dispatch(setPassword(MOK_PASSWORD));
 
+    const restaurantAddress = restaurant.restaurantAddress.map((item) => {
+
+      return item.name;
+    })
+
     registerUser({
-      firstName: registration.firstName,
-      email: registration.email,
-      phone: registration.phone,
-      password: MOK_PASSWORD,
-      orders: [],
-      closeWindow: closeWindow,
-      userUrl: USER_DATA,
+      userAccount: {
+        email: registration.email,
+        password: MOK_PASSWORD,
+        isLogin: false,
+        recoveryIsOpen: true,
+      },
+      userData: {
+        firstName: registration.firstName,
+        phone: registration.phone,
+        orders: [],
+        closeWindow: closeWindow,
+        userUrl: USER_DATA,
+        deliveryAddress: [...restaurantAddress],
+      },
     });
   };
 

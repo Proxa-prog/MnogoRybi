@@ -1,13 +1,25 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IUserAccount } from "../types/types";
+import {IUserAccount, IUserRegistration} from "../types/types";
 
+export interface IUserEnterFull {
+  userAccount: IUserAccount;
+  userData: IUserRegistration;
+}
 
-const initialState: IUserAccount = {
+const initialState: IUserEnterFull = {
   userAccount: {
     isLogin: false,
     recoveryIsOpen: false,
     email: '',
-    basket: [],
+    password: '',
+  },
+  userData: {
+    firstName: '',
+    phone: '',
+    orders: [],
+    closeWindow: () => {},
+    userUrl: '',
+    deliveryAddress: [],
   }
 };
 
@@ -15,6 +27,9 @@ export const userAccountSlice = createSlice({
   name: 'userAccount',
   initialState,
   reducers: {
+    setUserDataInUserAccount: (state, action: PayloadAction<IUserEnterFull>) => {
+      state = action.payload;
+    },
     changeIsLoginUserAccount: (state, action: PayloadAction<boolean>) => {
       state.userAccount.isLogin = !action.payload;
     },
@@ -28,6 +43,7 @@ export const userAccountSlice = createSlice({
 });
 
 export const {
+  setUserDataInUserAccount,
   changeIsLoginUserAccount,
   changeIsOpenRecovery,
   changeEmailUserAccount,

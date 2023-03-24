@@ -6,6 +6,7 @@ import {
   IrestaurantPagesInfo,
   IRestaurantProductions,
 } from "features/restaurant";
+import {IUserEnterFull} from "../../../user/model/slice/userAccountSlice";
 
 export interface IProducts {
   name: string;
@@ -76,7 +77,7 @@ export interface IUserOrder {
 
 export interface ResponseApi {
   status: string;
-  data: IUserRegistration[];
+  data: IUserEnterFull[];
 }
 
 export interface ResponseApiMap {

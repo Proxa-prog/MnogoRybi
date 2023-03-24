@@ -22,7 +22,7 @@ const Recovery: FC = () => {
   const [email, setEmail] = useState("");
 
   const handleButtonCloseClick = () => {
-    dispatch(changeIsOpenRecovery(userAccount.recoveryIsOpen));
+    dispatch(changeIsOpenRecovery(userAccount.userAccount.recoveryIsOpen));
   };
 
   const handleButtonSendClick = (email: string) => {
@@ -31,7 +31,7 @@ const Recovery: FC = () => {
 
   const handleButtonBackClick = () => {
     dispatch(changeIsOpenUserEnter(userEnter.isOpen));
-    dispatch(changeIsOpenRecovery(userAccount.recoveryIsOpen));
+    dispatch(changeIsOpenRecovery(userAccount.userAccount.recoveryIsOpen));
   };
 
   return (

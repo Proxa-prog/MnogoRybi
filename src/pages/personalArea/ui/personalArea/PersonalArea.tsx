@@ -47,9 +47,7 @@ const PersonalArea: FC = () => {
   const confirmation = useSelector(openConfirmationSelector);
   const userAccount = useSelector(setUserAccountStateSelector);
   const restaurant = useSelector(getRestaurantPagesInfoSelector);
-  console.log(restaurant);
   const [isButtonGenderActive, setIsButtonGenderActive] = useState(true);
-  const isChecked = true;
 
   const pageLinks: IPersonalAreaPagesLinks[] = [
     { name: "Личные данные", id: "personalData", isCurrent: true, },
@@ -57,16 +55,17 @@ const PersonalArea: FC = () => {
   ];
 
   useEffect(() => {
+    dispatch(fetchRestaurantProductions());
     dispatch(fetchPagesInfo());
   }, []);
-
+  console.log(userAccount);
   return (
     <>
       {registration.isOpen && <ModalRegistration />}
       {userEnter.isOpen && <UserEnter />}
       {confirmation.isOpen && <Confirmation />}
-      {userAccount.recoveryIsOpen && <Recovery />}
-      <Header isAuth={userAccount.isLogin} />
+      {userAccount.userAccount.recoveryIsOpen && <Recovery />}
+      <Header isAuth={userAccount.userAccount.isLogin} />
       <section className={style.wrapper}>
         <div className={style.links_wrapper}>
           {

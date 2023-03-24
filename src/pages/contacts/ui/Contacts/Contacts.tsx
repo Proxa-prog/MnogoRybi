@@ -98,8 +98,8 @@ const Contacts: FC = () => {
       {registration.isOpen && <ModalRegistration />}
       {userEnter.isOpen && <UserEnter />}
       {confirmation.isOpen && <Confirmation />}
-      {userAccount.recoveryIsOpen && <Recovery />}
-      <Header isAuth={userAccount.isLogin} />
+      {userAccount.userAccount.recoveryIsOpen && <Recovery />}
+      <Header isAuth={userAccount.userAccount.isLogin} />
       <BlockHeader pageName="Контакты">
         <div className={style.our_contacts}>
           {pagesInfo.restaurantAddress.map((card: IContactsCard) => {

@@ -45,7 +45,7 @@ const UserEnter: FC = () => {
   };
 
   const handleConfirmationButtonClick = () => {
-    dispatch(changeIsOpenRecovery(userAccount.recoveryIsOpen));
+    dispatch(changeIsOpenRecovery(userAccount.userAccount.recoveryIsOpen));
     dispatch(changeIsOpenUserEnter(userEnter.isOpen));
   };
 
@@ -54,10 +54,10 @@ const UserEnter: FC = () => {
 
     dispatch(
       findUserAccount({
-        email: userEnter.email,
-        password: userEnter.password,
+        email: userEnter.userAccount.email,
+        password: userEnter.userAccount.password,
         isWindowUserEnterOpen: userEnter.isOpen,
-        isUserLogin: userAccount.isLogin,
+        isUserLogin: userAccount.userAccount.isLogin,
       })
     );
   };
