@@ -174,7 +174,7 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
             {scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL &&
               windowWidth >= ViewPorts.TABLET && (
                 <>
-                  <MenuButtonEnter isAuth={isAuth} scroll={scrollHeight} />
+                  <MenuButtonEnter isAuth={true} scroll={scrollHeight} />
                   <div className={style.header__button_basket_wrapper}>
                     <MenuButtonBasket
                       itemsInTheBasket={itemsInTheBasket}

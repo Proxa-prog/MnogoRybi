@@ -23,7 +23,6 @@ const Checkbox: FC<CheckboxProps> = (props) => {
     label,
     disabled,
     checked,
-    classNameLabel,
     id,
     onChange,
   } = props;
@@ -34,13 +33,6 @@ const Checkbox: FC<CheckboxProps> = (props) => {
 
   return (
     <>
-      <label
-        className={classNames(styles.label, {}, [classNameLabel])}
-        htmlFor={id}
-        // className="visually-hidden"
-      >
-        {label}
-      </label>
       <input
         checked={checked}
         id={id}
@@ -54,6 +46,16 @@ const Checkbox: FC<CheckboxProps> = (props) => {
         onChange={handleOnChange}
         onClick={(event) => { !event.currentTarget.checked }}
       />
+      {
+        label
+        &&
+        <label
+          className={classNames(styles.label, {}, [])}
+          htmlFor={id}
+        >
+          {label}
+        </label>
+      }
     </>
   );
 };
