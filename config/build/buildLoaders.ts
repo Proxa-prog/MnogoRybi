@@ -17,7 +17,7 @@ export default function buildLoaders(global: string): webpack.RuleSetRule[] {
   };
 
   const fileLoader = {
-    test: /\.(jpeg|jpg|png|gif|svg)$/,
+    test: /\.(jpeg|jpg|png|gif|svg$)$/,
     type: 'asset/resource',
   };
 

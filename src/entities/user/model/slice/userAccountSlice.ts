@@ -17,7 +17,6 @@ const initialState: IUserEnterFull = {
     firstName: '',
     phone: '',
     orders: [],
-    closeWindow: () => {},
     userUrl: '',
     deliveryAddress: [],
   }
@@ -28,7 +27,8 @@ export const userAccountSlice = createSlice({
   initialState,
   reducers: {
     setUserDataInUserAccount: (state, action: PayloadAction<IUserEnterFull>) => {
-      state = action.payload;
+      state.userAccount = action.payload.userAccount;
+      state.userData = action.payload.userData;
     },
     changeIsLoginUserAccount: (state, action: PayloadAction<boolean>) => {
       state.userAccount.isLogin = !action.payload;
@@ -39,6 +39,9 @@ export const userAccountSlice = createSlice({
     changeEmailUserAccount: (state, action: PayloadAction<string | undefined>) => {
       state.userAccount.email = action.payload;
     },
+    removeDeliveryAddress: (state, action: PayloadAction<string>) => {
+      state.userData.deliveryAddress = state.userData.deliveryAddress.filter((item) => item !== action.payload);
+    },
   }
 });
 
@@ -47,6 +50,7 @@ export const {
   changeIsLoginUserAccount,
   changeIsOpenRecovery,
   changeEmailUserAccount,
+  removeDeliveryAddress,
 } = userAccountSlice.actions;
 
 export default userAccountSlice.reducer;

@@ -5,6 +5,7 @@ export {
   changeEmailUserAccount,
   changeIsLoginUserAccount,
   changeIsOpenRecovery,
+  removeDeliveryAddress,
 } from "./model/slice/userAccountSlice";
 export { findUserAccount } from "./model/services/findUserAccount";
 export { restorePassword } from "./model/services/restorePassword";

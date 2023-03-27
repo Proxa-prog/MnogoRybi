@@ -10,7 +10,6 @@ import {
   changeIsOpenRegistration,
   changePhone,
   setPassword,
-  changeIsOpenConfirmation,
   openConfirmationSelector,
   getRegistrationSelector,
 } from 'features/registration';
@@ -65,11 +64,6 @@ const ModalRegistration: React.FC = () => {
     dispatch(changePhone(phone));
   };
 
-  const closeWindow = () => {
-    dispatch(changeIsOpenConfirmation(confirmation.isOpen));
-    dispatch(changeIsOpenRegistration(registration.isOpen));
-  };
-
   const handleButtonRegistrationClick = (event: React.FormEvent) => {
     event.preventDefault();
     dispatch(setPassword(MOK_PASSWORD));
@@ -79,7 +73,7 @@ const ModalRegistration: React.FC = () => {
       return item.name;
     })
 
-    registerUser({
+    dispatch(registerUser({
       userAccount: {
         email: registration.email,
         password: MOK_PASSWORD,
@@ -90,11 +84,10 @@ const ModalRegistration: React.FC = () => {
         firstName: registration.firstName,
         phone: registration.phone,
         orders: [],
-        closeWindow: closeWindow,
         userUrl: USER_DATA,
-        deliveryAddress: [...restaurantAddress],
+        deliveryAddress: ['2345'],
       },
-    });
+    }));
   };
 
   return (

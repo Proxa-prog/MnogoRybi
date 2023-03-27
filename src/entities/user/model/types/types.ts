@@ -13,7 +13,6 @@ export interface IUserRegistration {
   firstName: string | undefined;
   phone: string | undefined;
   orders: IAmountProduct[];
-  closeWindow: () => void;
   userUrl: string;
   id?: string;
   deliveryAddress: string[];

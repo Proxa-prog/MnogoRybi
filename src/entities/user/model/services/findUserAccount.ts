@@ -29,8 +29,9 @@ export const findUserAccount = createAsyncThunk<void, IUserData, ThunkConfig<voi
           thunkAPI.dispatch(changeIsLoginUserAccount(isUserLogin)),
           thunkAPI.dispatch(changeEmailUserAccount(email)));
           // email && getUserData(email);
-          thunkAPI.dispatch(setUserDataInUserAccount(response.data[0]));
-        console.log('findUserAccount', response.data);
+          const actualUser = response.data.find((user) => email === user.userAccount.email);
+          actualUser && thunkAPI.dispatch(setUserDataInUserAccount(actualUser));
+        console.log('findUserAccount', actualUser);
       }
     } catch (error) {
       console.error(error);

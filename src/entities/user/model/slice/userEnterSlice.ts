@@ -27,7 +27,6 @@ const initialState: IUserEnter =  {
     firstName: '',
     phone: '',
     orders: [],
-    closeWindow: () => {},
     userUrl: '',
     deliveryAddress: [],
   }
