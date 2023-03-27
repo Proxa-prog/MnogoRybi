@@ -18,6 +18,7 @@ export interface IUserEnterAction {
 const initialState: IUserEnter =  {
   isOpen: false,
   userAccount: {
+    isAddNewAddressOpen: false,
     isLogin: false,
     recoveryIsOpen: false,
     email: '',

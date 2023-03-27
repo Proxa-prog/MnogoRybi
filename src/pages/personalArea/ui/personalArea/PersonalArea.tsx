@@ -18,6 +18,7 @@ import {
 import { UserEnter } from "features/user";
 
 import {
+  addDeliveryAddress, changeIsAddNewAddressOpen,
   openModalUserEnterSelector, removeDeliveryAddress,
   setUserAccountStateSelector,
 } from "entities/user";
@@ -32,6 +33,7 @@ import {
 } from "../../../../features/restaurant";
 import {nanoid} from "nanoid";
 import DellFill from "shared/assets/icons";
+import AddDeliveryAddress from "../../../../entities/user/ui/AddDeliveryAddress/AddDeliveryAddress";
 
 interface IPersonalAreaPagesLinks {
   name: string;
@@ -53,12 +55,12 @@ const PersonalArea: FC = () => {
     { name: "Мои заказы", id: "myOrders" },
   ];
 
-  const handleButtonAddNewAddress = () => {
-
-  };
-
   const handleButtonRemoveNewAddress = (deliveryAddress: string) => {
     dispatch(removeDeliveryAddress(deliveryAddress));
+  };
+
+  const handleButtonOpenModalAddNewAddress = () => {
+    dispatch(changeIsAddNewAddressOpen());
   };
 
   useEffect(() => {
@@ -73,6 +75,11 @@ const PersonalArea: FC = () => {
       {userEnter.isOpen && <UserEnter />}
       {confirmation.isOpen && <Confirmation />}
       {userAccount.userAccount.recoveryIsOpen && <Recovery />}
+      {
+        userAccount.userAccount.isLogin
+        && userAccount.userAccount.isAddNewAddressOpen
+        && <AddDeliveryAddress />
+      }
       <section className={style.wrapper}>
         <div className={style.links_wrapper}>
           {
@@ -192,7 +199,7 @@ const PersonalArea: FC = () => {
                 type="button"
                 color="blue"
                 className={style.buttonAddNewAddress}
-                onClick={handleButtonAddNewAddress}
+                onClick={handleButtonOpenModalAddNewAddress}
               >
                 Добавить новый адрес
               </Button>

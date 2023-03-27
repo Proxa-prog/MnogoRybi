@@ -75,6 +75,7 @@ const ModalRegistration: React.FC = () => {
 
     dispatch(registerUser({
       userAccount: {
+        isAddNewAddressOpen: false,
         email: registration.email,
         password: MOK_PASSWORD,
         isLogin: false,

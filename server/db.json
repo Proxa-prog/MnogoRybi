@@ -8,141 +8,6 @@
         "password": "qwerty"
       },
       "userData": {
-        "firstName": "Славик",
-        "phone": "12341234",
-        "orders": [
-          {
-            "orders": [
-              {
-                "amount": 4,
-                "baseCost": 360,
-                "baseProduct": "Пшеничная лапша",
-                "cost": 1440,
-                "description": "Состав на усмотрение шеф-повара от 320 гр. до 450 гр.",
-                "name": "Фирменный поке с лососем",
-                "sauce": "Соевый соус"
-              }
-            ],
-            "orderDay": "24.03.2023",
-            "orderTime": "15:34:56",
-            "comment": "",
-            "paymentToTheCourier": false,
-            "pickupOfGoods": false,
-            "recipientAddress": "Ярославль, Тургенева 1а",
-            "recipientCardDate": "2134",
-            "recipientCardNumber": "1234",
-            "recipientCvc": "1234",
-            "recipientName": "ЙАААААААААЗЬ",
-            "recipientPhone": "1231234",
-            "saveCardDate": true,
-            "orderId": "hYRrwRqnI434YSuEwNvpa"
-          },
-          {
-            "orders": [
-              {
-                "amount": 4,
-                "baseCost": 360,
-                "baseProduct": "Пшеничная лапша",
-                "cost": 1440,
-                "description": "Состав на усмотрение шеф-повара от 320 гр. до 450 гр.",
-                "name": "Фирменный поке с лососем",
-                "sauce": "Соевый соус"
-              }
-            ],
-            "orderDay": "24.03.2023",
-            "orderTime": "15:35:19",
-            "comment": "",
-            "paymentToTheCourier": false,
-            "pickupOfGoods": false,
-            "recipientAddress": "Ярославль, Тургенева 1а",
-            "recipientCardDate": "2134",
-            "recipientCardNumber": "1234",
-            "recipientCvc": "1234",
-            "recipientName": "ЙАААААААААЗЬ",
-            "recipientPhone": "1231234",
-            "saveCardDate": true,
-            "orderId": "YilIp6XIkwNAe3ltHa4DK"
-          },
-          {
-            "orders": [
-              {
-                "amount": 1,
-                "baseCost": 360,
-                "baseProduct": "Рисовая лапша",
-                "cost": 360,
-                "description": "Состав на усмотрение шеф-повара от 320 гр. до 450 гр.",
-                "name": "Фирменный поке с креветками",
-                "sauce": "Соевый соус"
-              }
-            ],
-            "orderDay": "24.03.2023",
-            "orderTime": "15:44:15",
-            "comment": "",
-            "paymentToTheCourier": false,
-            "pickupOfGoods": false,
-            "recipientAddress": "Ярославль, Тургенева 1а",
-            "recipientCardDate": "3",
-            "recipientCardNumber": "3",
-            "recipientCvc": "0",
-            "recipientName": "2",
-            "recipientPhone": "30",
-            "saveCardDate": true,
-            "orderId": "G94Manka3aJttFggdl5s3"
-          },
-          {
-            "orders": [
-              {
-                "amount": 4,
-                "baseCost": 360,
-                "baseProduct": "Рисовая лапша",
-                "cost": 1440,
-                "description": "Состав на усмотрение шеф-повара от 320 гр. до 450 гр.",
-                "name": "Фирменный поке с креветками",
-                "sauce": "Соевый соус"
-              }
-            ],
-            "orderDay": "24.03.2023",
-            "orderTime": "15:44:55",
-            "comment": "",
-            "paymentToTheCourier": false,
-            "pickupOfGoods": false,
-            "recipientAddress": "Ярославль, Тургенева 1а",
-            "recipientCardDate": "3",
-            "recipientCardNumber": "3",
-            "recipientCvc": "0",
-            "recipientName": "2",
-            "recipientPhone": "30",
-            "saveCardDate": true,
-            "orderId": "_oIaI6HDy2os7KW1wjfuV"
-          },
-          {
-            "orders": [
-              {
-                "amount": 4,
-                "baseCost": 360,
-                "baseProduct": "Рисовая лапша",
-                "cost": 1440,
-                "description": "Состав на усмотрение шеф-повара от 320 гр. до 450 гр.",
-                "name": "Фирменный поке с креветками",
-                "sauce": "Соевый соус"
-              }
-            ],
-            "orderDay": "24.03.2023",
-            "orderTime": "15:45:38",
-            "comment": "",
-            "paymentToTheCourier": false,
-            "pickupOfGoods": false,
-            "recipientAddress": "Ярославль, Тургенева 1а",
-            "recipientCardDate": "3",
-            "recipientCardNumber": "3",
-            "recipientCvc": "0",
-            "recipientName": "2",
-            "recipientPhone": "30",
-            "saveCardDate": true,
-            "orderId": "wxsnRrwds7WZeAP-OZ2JK"
-          }
-        ],
-        "userUrl": "",
         "deliveryAddress": [
           "Ярославль, Тургенева 1а",
           "Ярославль, Некрасова 52/35",
@@ -160,68 +25,107 @@
         "password": "qwerty"
       },
       "userData": {
-        "firstName": "Семён",
-        "phone": "2345",
-        "orders": [
-          {
-            "orders": [
-              {
-                "amount": 4,
-                "baseCost": 360,
-                "baseProduct": "Рисовая лапша",
-                "cost": 1440,
-                "description": "Состав на усмотрение шеф-повара от 320 гр. до 450 гр.",
-                "name": "Фирменный поке с лососем",
-                "sauce": "Соевый соус"
-              }
-            ],
-            "orderDay": "24.03.2023",
-            "orderTime": "16:45:01",
-            "comment": "",
-            "paymentToTheCourier": false,
-            "pickupOfGoods": false,
-            "recipientAddress": "Ярославль, Тургенева 1а",
-            "recipientCardDate": "5",
-            "recipientCardNumber": "5",
-            "recipientCvc": "2",
-            "recipientName": "Иванов Иван",
-            "recipientPhone": "546",
-            "saveCardDate": true,
-            "orderId": "bAkq-zTeQmgZhnVjngL6W"
+        "userAccount": {
+          "isLogin": false,
+          "recoveryIsOpen": false,
+          "email": "miha@mail.ru",
+          "password": "qwerty"
+        },
+        "userData": {
+          "userAccount": {
+            "isLogin": false,
+            "recoveryIsOpen": false,
+            "email": "miha@mail.ru",
+            "password": "qwerty"
           },
-          {
+          "userData": {
+            "firstName": "Семён",
+            "phone": "2345",
             "orders": [
               {
-                "amount": 4,
-                "baseCost": 360,
-                "baseProduct": "Рисовая лапша",
-                "cost": 1440,
-                "description": "Состав на усмотрение шеф-повара от 320 гр. до 450 гр.",
-                "name": "Фирменный поке с лососем",
-                "sauce": "Соевый соус"
+                "orders": [
+                  {
+                    "amount": 4,
+                    "baseCost": 360,
+                    "baseProduct": "Рисовая лапша",
+                    "cost": 1440,
+                    "description": "Состав на усмотрение шеф-повара от 320 гр. до 450 гр.",
+                    "name": "Фирменный поке с лососем",
+                    "sauce": "Соевый соус"
+                  }
+                ],
+                "orderDay": "24.03.2023",
+                "orderTime": "16:45:01",
+                "comment": "",
+                "paymentToTheCourier": false,
+                "pickupOfGoods": false,
+                "recipientAddress": "Ярославль, Тургенева 1а",
+                "recipientCardDate": "5",
+                "recipientCardNumber": "5",
+                "recipientCvc": "2",
+                "recipientName": "Иванов Иван",
+                "recipientPhone": "546",
+                "saveCardDate": true,
+                "orderId": "bAkq-zTeQmgZhnVjngL6W"
+              },
+              {
+                "orders": [
+                  {
+                    "amount": 4,
+                    "baseCost": 360,
+                    "baseProduct": "Рисовая лапша",
+                    "cost": 1440,
+                    "description": "Состав на усмотрение шеф-повара от 320 гр. до 450 гр.",
+                    "name": "Фирменный поке с лососем",
+                    "sauce": "Соевый соус"
+                  }
+                ],
+                "orderDay": "24.03.2023",
+                "orderTime": "16:45:11",
+                "comment": "",
+                "paymentToTheCourier": false,
+                "pickupOfGoods": false,
+                "recipientAddress": "Ярославль, Тургенева 1а",
+                "recipientCardDate": "5",
+                "recipientCardNumber": "5",
+                "recipientCvc": "2",
+                "recipientName": "Иванов Иван",
+                "recipientPhone": "546",
+                "saveCardDate": true,
+                "orderId": "R1XkZkX7B29GaxLbOik-n"
               }
             ],
-            "orderDay": "24.03.2023",
-            "orderTime": "16:45:11",
-            "comment": "",
-            "paymentToTheCourier": false,
-            "pickupOfGoods": false,
-            "recipientAddress": "Ярославль, Тургенева 1а",
-            "recipientCardDate": "5",
-            "recipientCardNumber": "5",
-            "recipientCvc": "2",
-            "recipientName": "Иванов Иван",
-            "recipientPhone": "546",
-            "saveCardDate": true,
-            "orderId": "R1XkZkX7B29GaxLbOik-n"
-          }
-        ],
-        "userUrl": "",
+            "userUrl": "",
+            "deliveryAddress": [
+              "Ярославль, Тургенева 1а",
+              "Ярославль, Некрасова 52/35",
+              "Ярославль, Свободы 52/39",
+              "Ярославль, Урицкого 39",
+              "asdfasdf",
+              "asdfasdfasdfasdf"
+            ]
+          },
+          "id": 2,
+          "deliveryAddress": [
+            "Ярославль, Тургенева 1а",
+            "Ярославль, Некрасова 52/35",
+            "Ярославль, Свободы 52/39",
+            "Ярославль, Урицкого 39",
+            "asdfasdf",
+            "asdfasdfasdfasdf",
+            "qweqeasasd12421412213"
+          ]
+        },
+        "id": 2,
         "deliveryAddress": [
           "Ярославль, Тургенева 1а",
           "Ярославль, Некрасова 52/35",
           "Ярославль, Свободы 52/39",
-          "Ярославль, Урицкого 39"
+          "Ярославль, Урицкого 39",
+          "asdfasdf",
+          "asdfasdfasdfasdf",
+          "qweqeasasd12421412213",
+          "qweqeasasd12421412213234234234"
         ]
       },
       "id": 2

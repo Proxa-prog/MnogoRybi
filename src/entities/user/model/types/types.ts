@@ -3,6 +3,7 @@ import {IUserEnterFull} from "../slice/userAccountSlice";
 import {IUserEnter} from "../slice/userEnterSlice";
 
 export interface IUserAccount {
+  isAddNewAddressOpen: boolean;
   isLogin: boolean;
   recoveryIsOpen: boolean;
   email: string | undefined;
@@ -32,4 +33,5 @@ export interface IUserData {
   password: string | undefined;
   isWindowUserEnterOpen: boolean;
   isUserLogin: boolean;
+  newDeliveryAddress?: string;
 }

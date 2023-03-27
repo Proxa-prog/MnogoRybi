@@ -26,11 +26,11 @@ export const findUserAccount = createAsyncThunk<void, IUserData, ThunkConfig<voi
       );
       if (response.data.length !== 0 && response.data[0].userAccount.password === password) {
         (thunkAPI.dispatch(changeIsOpenUserEnter(isWindowUserEnterOpen)),
-          thunkAPI.dispatch(changeIsLoginUserAccount(isUserLogin)),
           thunkAPI.dispatch(changeEmailUserAccount(email)));
           // email && getUserData(email);
           const actualUser = response.data.find((user) => email === user.userAccount.email);
           actualUser && thunkAPI.dispatch(setUserDataInUserAccount(actualUser));
+          thunkAPI.dispatch(changeIsLoginUserAccount()),
         console.log('findUserAccount', actualUser);
       }
     } catch (error) {
