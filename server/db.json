@@ -1,13 +1,6 @@
 {
   "users": [
-    {
-      "firstName": "user",
-      "email": "qwerty@mail.ru",
-      "phone": "8888888888",
-      "password": "qwerty",
-      "orders": [],
-      "id": 5
-    }
+
   ],
   "productions": {
     "poke": [
