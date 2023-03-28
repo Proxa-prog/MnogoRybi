@@ -1,7 +1,7 @@
 import React from 'react';
 import { Args, Story } from '@storybook/react';
 
-import Checkbox from './Checkbox';
+import { Checkbox } from './Checkbox';
 import './Checkbox.module.scss';
 
 export default {

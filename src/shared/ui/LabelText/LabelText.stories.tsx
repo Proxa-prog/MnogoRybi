@@ -1,7 +1,7 @@
 import React from 'react';
 import { Args, Story } from '@storybook/react';
 
-import LabelText from './LabelText';
+import { LabelText } from './LabelText';
 
 export default {
   title: 'LabelText',

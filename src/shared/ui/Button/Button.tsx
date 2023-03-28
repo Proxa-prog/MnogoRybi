@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import classNames from 'classnames';
-import ImageWrapper from 'shared/ui/ImageWrapper/ImageWrapper';
+import { ImageWrapper } from 'shared/ui/ImageWrapper/ImageWrapper';
 
 import style from './Button.module.scss';
 
@@ -29,7 +29,7 @@ export interface ButtonProps {
   id?: string;
 }
 
-const Button: FC<ButtonProps> = (props) => {
+export const Button: FC<ButtonProps> = (props) => {
   const {
     className,
     disabled,
@@ -49,7 +49,7 @@ const Button: FC<ButtonProps> = (props) => {
     id,
   } = props;
 
-  const defaultButtonColor = isGrayTheme ? 'default_white' : '';
+ const defaultButtonColor = isGrayTheme ? 'default_white' : '';
 
   const handleOnClick = () => {
     console.log("Button");
@@ -105,5 +105,3 @@ const Button: FC<ButtonProps> = (props) => {
     </button>
   );
 };
-
-export default Button;

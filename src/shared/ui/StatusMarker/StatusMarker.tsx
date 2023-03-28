@@ -10,7 +10,7 @@ export interface StatusMarkerProps {
   children?: string | number;
   color?: ButtonColor;
 }
-const StatusMarker: FC<StatusMarkerProps> = (props) => {
+export const StatusMarker: FC<StatusMarkerProps> = (props) => {
   const {
     className,
     children,
@@ -31,5 +31,3 @@ const StatusMarker: FC<StatusMarkerProps> = (props) => {
     </span>
   );
 };
-
-export default StatusMarker;

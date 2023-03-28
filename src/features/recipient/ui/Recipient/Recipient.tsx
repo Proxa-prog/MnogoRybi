@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import { addRecipientName, addRecipientPhone } from "entities/basket";
 
-import Input from "shared/ui/Input/Input";
+import { Input } from "shared/ui/Input/Input";
 
 import style from "./Recipient.module.scss";
 
