@@ -14,7 +14,7 @@ export const restorePassword = async (userEmail: string) => {
   try {
     const response = await axios.get<string, ResponseApi>(USER_DATA);
 
-    const isFind = response.data.map((item: any) => {
+    const isFind = response.data.map((item: IUserEnterFull) => {
       if (item.userAccount.email === userEmail) {
         setNewPassword(item);
       } else {
