@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import classNames from 'classnames';
 
-import Button from 'shared/ui/Button/Button';
+import { Button } from 'shared/ui/Button/Button';
 
 import style from './ProductCounter.module.scss';
 

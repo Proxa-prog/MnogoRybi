@@ -1,7 +1,7 @@
 import React from 'react';
 import { Args, Story } from '@storybook/react';
 
-import Input, { InputProps } from './Input';
+import { Input, InputProps } from './Input';
 import './Input.module.scss';
 
 export default {

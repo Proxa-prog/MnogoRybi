@@ -23,7 +23,7 @@ export interface InputProps extends HtmlInputProps {
   type?: string;
 }
 
-const Input: FC<InputProps> = (props) => {
+export const Input: FC<InputProps> = (props) => {
   const {
     className,
     classNameWrapper,
@@ -84,5 +84,3 @@ const Input: FC<InputProps> = (props) => {
     </div>
   );
 };
-
-export default Input;

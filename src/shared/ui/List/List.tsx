@@ -20,7 +20,7 @@ export interface ListProps {
   onClick?: () => void;
 }
 
-const List: FC<ListProps> = (props) => {
+export const List: FC<ListProps> = (props) => {
   const {
     classNameItem,
     classNameList,
@@ -82,5 +82,3 @@ const List: FC<ListProps> = (props) => {
     </ul>
   );
 };
-
-export default List;

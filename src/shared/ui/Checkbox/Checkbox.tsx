@@ -16,7 +16,7 @@ interface CheckboxProps extends HtmlInputProps {
   onChange: (event?: boolean) => void;
 }
 
-const Checkbox: FC<CheckboxProps> = (props) => {
+export const Checkbox: FC<CheckboxProps> = (props) => {
   const {
     className,
     isCircle,
@@ -59,5 +59,3 @@ const Checkbox: FC<CheckboxProps> = (props) => {
     </>
   );
 };
-
-export default Checkbox;

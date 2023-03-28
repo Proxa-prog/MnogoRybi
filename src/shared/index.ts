@@ -1,17 +1,3 @@
-export { default as Advanced } from './ui/Advanced/Advanced';
-export { default as Button } from './ui/Button/Button';
-export { ButtonColor } from './ui/Button/Button';
-export { default as Checkbox } from './ui/Checkbox/Checkbox';
-export { default as Counter } from './ui/Counter/Counter';
-export { default as ImageWrapper } from './ui/ImageWrapper/ImageWrapper';
-export { default as Input } from './ui/Input/Input';
-export { default as LabelText } from './ui/LabelText/LabelText';
-export { default as List } from './ui/List/List';
-export { default as Select } from './ui/Select/Select';
-export { default as StatusMarker } from './ui/StatusMarker/StatusMarker';
-export { StatusMarkerProps } from './ui/StatusMarker/StatusMarker';
-export { default as Svg } from './ui/Svg/Svg';
-export { ThunkConfig } from './assets/api/types/types';
 export {
   ViewPorts,
   COST_OF_DELIVERY,
@@ -39,4 +25,18 @@ export {
   LOGO_WIDTH,
   LOGO_HEIGHT,
 } from './assets/constants/constants';
+export { Advanced } from './ui/Advanced/Advanced';
+export { Button } from './ui/Button/Button';
+export { ButtonColor } from './ui/Button/Button';
+export { Checkbox } from './ui/Checkbox/Checkbox';
+export { Counter } from './ui/Counter/Counter';
+export { ImageWrapper } from './ui/ImageWrapper/ImageWrapper';
+export { Input } from './ui/Input/Input';
+export { LabelText } from './ui/LabelText/LabelText';
+export { List } from './ui/List/List';
+export { Select } from './ui/Select/Select';
+export { StatusMarker } from './ui/StatusMarker/StatusMarker';
+export { StatusMarkerProps } from './ui/StatusMarker/StatusMarker';
+export { Svg } from './ui/Svg/Svg';
+export { ThunkConfig } from './assets/api/types/types';
 

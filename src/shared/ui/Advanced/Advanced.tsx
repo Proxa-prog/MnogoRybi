@@ -11,7 +11,7 @@ export interface AdvancedProps {
   text?: string;
 }
 
-const Advanced: FC<AdvancedProps> = (props) => {
+export const Advanced: FC<AdvancedProps> = (props) => {
   const {
     name = '',
     width = '',
@@ -31,5 +31,3 @@ const Advanced: FC<AdvancedProps> = (props) => {
     </div>
   )
 }
-
-export default Advanced;

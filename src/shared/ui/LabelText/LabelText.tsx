@@ -9,7 +9,7 @@ export interface LabelTextProps {
   id?: string;
 }
 
-const LabelText: FC<LabelTextProps> = (props) => {
+export const LabelText: FC<LabelTextProps> = (props) => {
   const {
     className,
     children,
@@ -28,5 +28,3 @@ const LabelText: FC<LabelTextProps> = (props) => {
     </label>
   );
 };
-
-export default LabelText;

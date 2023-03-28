@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
 
 import styles from './Icon.module.scss';
-import Svg from 'shared/ui/Svg/Svg';
+import { Svg } from 'shared/ui/Svg/Svg';
 
 const stories = storiesOf('Icon', module);
 stories.addDecorator(withKnobs);

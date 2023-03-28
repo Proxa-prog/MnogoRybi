@@ -9,7 +9,7 @@ interface SvgProps {
   height: string;
 }
 
-const Svg: FC<SvgProps> = (props) => {
+export const Svg: FC<SvgProps> = (props) => {
   const {
     name,
     className,
@@ -28,5 +28,3 @@ const Svg: FC<SvgProps> = (props) => {
     </svg>
   );
 };
-
-export default Svg;

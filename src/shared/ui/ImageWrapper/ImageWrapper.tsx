@@ -8,7 +8,7 @@ export interface ImageWrapperProps {
   height: number;
 }
 
-const ImageWrapper: FC<ImageWrapperProps> = (props) => {
+export const ImageWrapper: FC<ImageWrapperProps> = (props) => {
   const {
     name,
     alt,
@@ -27,5 +27,3 @@ const ImageWrapper: FC<ImageWrapperProps> = (props) => {
     />
   );
 };
-
-export default ImageWrapper;

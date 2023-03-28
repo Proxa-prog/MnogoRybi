@@ -22,7 +22,7 @@ export interface SelectProps extends HtmlSelectProps {
   onChange?: (baseProd: string) => void;
 }
 
-const Select: FC<SelectProps> = (props) => {
+export const Select: FC<SelectProps> = (props) => {
   const {
     name,
     id,
@@ -103,5 +103,3 @@ const Select: FC<SelectProps> = (props) => {
     </>
   );
 };
-
-export default Select;
