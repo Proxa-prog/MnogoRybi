@@ -11,6 +11,8 @@ interface CheckboxProps extends HtmlInputProps {
   disabled?: boolean;
   isCircle?: boolean;
   checked?: boolean;
+  classNameLabel?: string;
+  id?: string;
   onChange: (event?: boolean) => void;
 }
 
@@ -21,6 +23,7 @@ const Checkbox: FC<CheckboxProps> = (props) => {
     label,
     disabled,
     checked,
+    id,
     onChange,
   } = props;
 
@@ -30,15 +33,9 @@ const Checkbox: FC<CheckboxProps> = (props) => {
 
   return (
     <>
-      <label
-        htmlFor="checkbox"
-        className="visually-hidden"
-      >
-        {label}
-      </label>
       <input
         checked={checked}
-        id="checkbox"
+        id={id}
         type="checkbox"
         className={classNames(
           styles.checkbox,
@@ -49,6 +46,16 @@ const Checkbox: FC<CheckboxProps> = (props) => {
         onChange={handleOnChange}
         onClick={(event) => { !event.currentTarget.checked }}
       />
+      {
+        label
+        &&
+        <label
+          className={classNames(styles.label, {}, [])}
+          htmlFor={id}
+        >
+          {label}
+        </label>
+      }
     </>
   );
 };

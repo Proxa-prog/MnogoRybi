@@ -10,7 +10,6 @@ import {
   changeIsOpenRegistration,
   changePhone,
   setPassword,
-  changeIsOpenConfirmation,
   openConfirmationSelector,
   getRegistrationSelector,
 } from 'features/registration';
@@ -30,6 +29,7 @@ import {
 } from 'shared';
 
 import style from './ModalRegistration.module.scss';
+import {getRestaurantPagesInfoSelector} from "../../../restaurant";
 
 const ModalRegistration: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -37,6 +37,7 @@ const ModalRegistration: React.FC = () => {
   const registration = useSelector(getRegistrationSelector);
   const userEnter = useSelector(openModalUserEnterSelector);
   const confirmation = useSelector(openConfirmationSelector);
+  const restaurant = useSelector(getRestaurantPagesInfoSelector);
 
   const handleButtonUserEnterClick = () => {
     dispatch(changeIsOpenRegistration(registration.isOpen));
@@ -63,24 +64,31 @@ const ModalRegistration: React.FC = () => {
     dispatch(changePhone(phone));
   };
 
-  const closeWindow = () => {
-    dispatch(changeIsOpenConfirmation(confirmation.isOpen));
-    dispatch(changeIsOpenRegistration(registration.isOpen));
-  };
-
   const handleButtonRegistrationClick = (event: React.FormEvent) => {
     event.preventDefault();
     dispatch(setPassword(MOK_PASSWORD));
 
-    registerUser({
-      firstName: registration.firstName,
-      email: registration.email,
-      phone: registration.phone,
-      password: MOK_PASSWORD,
-      orders: [],
-      closeWindow: closeWindow,
-      userUrl: USER_DATA,
-    });
+    const restaurantAddress = restaurant.restaurantAddress.map((item) => {
+
+      return item.name;
+    })
+
+    dispatch(registerUser({
+      userAccount: {
+        isAddNewAddressOpen: false,
+        email: registration.email,
+        password: MOK_PASSWORD,
+        isLogin: false,
+        recoveryIsOpen: true,
+      },
+      userData: {
+        firstName: registration.firstName,
+        phone: registration.phone,
+        orders: [],
+        userUrl: USER_DATA,
+        deliveryAddress: ['2345'],
+      },
+    }));
   };
 
   return (

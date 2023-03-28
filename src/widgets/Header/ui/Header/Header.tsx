@@ -23,7 +23,10 @@ export interface HeaderProps {
 }
 
 const Header: FC<HeaderProps> = (props) => {
-  const { itemsInTheBasket, isAuth = false } = props;
+  const {
+    itemsInTheBasket,
+    isAuth = false
+  } = props;
 
   const dispatch = useAppDispatch();
   const [scrollHeight, setScrollHeight] = useState(0);
@@ -52,6 +55,7 @@ const Header: FC<HeaderProps> = (props) => {
   const onHeaderEnterClick = () => {
     dispatch(changeIsOpenUserEnter(userEnter.isOpen));
     dispatch(changeIsOpenRegistration(true));
+
   };
 
   const getWindowWidth = () => {

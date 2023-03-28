@@ -9,6 +9,8 @@ import {
 import { IUserRegistration } from "entities/user";
 
 import { ThunkConfig, USER_DATA } from "shared";
+import {IUserEnter} from "../../../user/model/slice/userEnterSlice";
+import {IUserEnterFull} from "../../../user/model/slice/userAccountSlice";
 
 export const addOrderToUser = createAsyncThunk<void, IUserOrder, ThunkConfig<void>>(
   USER_DATA,
@@ -18,22 +20,30 @@ export const addOrderToUser = createAsyncThunk<void, IUserOrder, ThunkConfig<voi
     const id = nanoid();
 
     try {
-      const response = await axios.get<string, ResponseApi>(`${USER_DATA}`);
+      const response = await axios.get<string, any>(`${USER_DATA}`);
+      // response.data.map((item: any) => {
+      //   axios.delete<string, IUserEnterFull>(
+      //     `${USER_DATA}/${item.id}`,
+      //
+      //   )
+      // })
 
-      const actualUserId = response.data.find((user: IUserRegistration) => {
-        return user.email === userEmail;
+      const actualUserId = response.data.find((user: any) => {
+        console.log('user.userAccount.email', user.userAccount.email);
+        console.log('userEmail', userEmail);
+        return user.userAccount.email === userEmail;
       });
-
+      console.log('actualUserId', actualUserId);
       // Убрал не нужные поля
-      const orderInfo = basket.basket.map((currnetOrder: IAmountProduct) => {
+      const orderInfo = basket.basket.map((currentOrder: IAmountProduct) => {
         return {
-          amount: currnetOrder.amount,
-          baseCost: currnetOrder.baseCost,
-          baseProduct: currnetOrder.baseProduct,
-          cost: currnetOrder.cost,
-          description: currnetOrder.description,
-          name: currnetOrder.name,
-          sauce: currnetOrder.sauce,
+          amount: currentOrder.amount,
+          baseCost: currentOrder.baseCost,
+          baseProduct: currentOrder.baseProduct,
+          cost: currentOrder.cost,
+          description: currentOrder.description,
+          name: currentOrder.name,
+          sauce: currentOrder.sauce,
         };
       });
 
@@ -55,10 +65,13 @@ export const addOrderToUser = createAsyncThunk<void, IUserOrder, ThunkConfig<voi
       };
 
       actualUserId &&
-        (await axios.patch<string, IAmountProduct>(
+        (await axios.patch<string, IUserEnterFull>(
           `${USER_DATA}/${actualUserId.id}`,
           {
-            orders: [...actualUserId.orders, newOrder],
+            userData: {
+              ...actualUserId.userData,
+              orders: [...actualUserId.userData.orders, newOrder],
+            },
           }
         ));
     } catch (error) {

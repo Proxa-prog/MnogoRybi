@@ -44,7 +44,8 @@ const Input: FC<InputProps> = (props) => {
     <div className={classNames(
       styles.inputWrapper,
       [classNameWrapper]
-    )}>
+    )}
+    >
       <input
         className={classNames(
           styles.desktop,

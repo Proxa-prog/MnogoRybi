@@ -12,6 +12,7 @@ import {
 import { ONE_HUNDRED_PIXEL_SCROLL, Button } from "shared";
 
 import style from "widgets/Header/ui/Header/Header.module.scss";
+import { Link } from "react-router-dom";
 
 interface MenuButtonEnterProps {
   isAuth: boolean;
@@ -30,17 +31,19 @@ const MenuButtonEnter: FC<MenuButtonEnterProps> = (props) => {
   };
 
   return isAuth ? (
-    <Button
-      imageLeft="user_fill.svg"
-      className={
-        scroll && scroll >= ONE_HUNDRED_PIXEL_SCROLL
-          ? style.user_auth_scroll
-          : style.user_auth
-      }
-      type="button"
-      isGrayTheme
-      onClick={handleCheckboxAgreementChange}
-    />
+    <Link to="/personalArea">
+      <Button
+        imageLeft="user_fill.svg"
+        className={
+          scroll && scroll >= ONE_HUNDRED_PIXEL_SCROLL
+            ? style.user_auth_scroll
+            : style.user_auth
+        }
+        type="button"
+        isGrayTheme
+        onClick={() => {}}
+      />
+    </Link>
   ) : (
     <Button type="button" isGrayTheme onClick={handleCheckboxAgreementChange}>
       Войти
