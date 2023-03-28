@@ -18,7 +18,7 @@ import { MainPage } from 'pages/mainPage';
 import { News } from 'pages/news';
 import { Contacts } from 'pages/contacts';
 import { NewsPage } from 'pages/newsPage';
-import { PersonalArea } from 'pages/PersonalArea';
+import { PersonalArea } from 'pages/personalArea';
 // import FranchisePage from 'widgets/ui/FranchisePage/FranchisePage';
 // import DeliveryPage from 'widgets/ui/DeliveryPage/DeliveryPage';
 
