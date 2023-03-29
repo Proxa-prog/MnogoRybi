@@ -24,15 +24,23 @@ export const findUserAccount = createAsyncThunk<void, IUserData, ThunkConfig<voi
       const response = await axios.get<string, ResponseApi>(
         `${USER_DATA}?email=${email}`
       );
-      if (response.data.length !== 0 && response.data[0].userAccount.password === password) {
-        (thunkAPI.dispatch(changeIsOpenUserEnter(isWindowUserEnterOpen)),
-          thunkAPI.dispatch(changeEmailUserAccount(email)));
-          // email && getUserData(email);
+
+      const findUser = response.data.map((item) => {
+        if (
+          response.data.length !== 0
+          && item.userAccount.email === email
+          && item.userAccount.password === password
+        ) {
+          (thunkAPI.dispatch(changeIsOpenUserEnter(isWindowUserEnterOpen)),
+            thunkAPI.dispatch(changeEmailUserAccount(email)));
+
           const actualUser = response.data.find((user) => email === user.userAccount.email);
           actualUser && thunkAPI.dispatch(setUserDataInUserAccount(actualUser));
-          thunkAPI.dispatch(changeIsLoginUserAccount()),
-        console.log('findUserAccount', actualUser);
-      }
+          thunkAPI.dispatch(changeIsLoginUserAccount())
+        }
+
+        return item;
+      })
     } catch (error) {
       console.error(error);
     }

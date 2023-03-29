@@ -45,7 +45,7 @@ const MainPage: FC = () => {
     dispatch(fetchRestaurantProductions());
     dispatch(fetchPagesInfo());
   }, []);
-  console.log('userAccount', userAccount);
+
   return (
     <>
       <Header isAuth={userAccount.userAccount.isLogin} />

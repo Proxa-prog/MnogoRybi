@@ -33,7 +33,7 @@ export const registerUser = createAsyncThunk<void, IUserEnterFull, ThunkConfig<v
     password,
     email,
   } = userAccount;
-  console.log('++')
+
   try {
     const createUser = () => axios
       .post<string, ResponseApi>(userUrl, {
@@ -54,15 +54,16 @@ export const registerUser = createAsyncThunk<void, IUserEnterFull, ThunkConfig<v
       );
 
     const data = await axios.get<string, ResponseApi>(userUrl);
-    console.log(data);
+
     const check = checkEmailExistence(data, email);
 
     const state = thunkAPI.getState();
     console.log(state);
     if (!check) {
-      createUser();
       thunkAPI.dispatch(changeIsOpenConfirmation(state.configmation.confirmation.isOpen));
       thunkAPI.dispatch(changeIsOpenRegistration(state.registration.registration.isOpen));
+
+      await createUser();
     } else {
       console.log("Пользователь с таким email уже существует.");
     }
