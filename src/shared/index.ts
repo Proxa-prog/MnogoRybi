@@ -24,6 +24,7 @@ export {
   IMAGE_NEWS_HEIGHT,
   LOGO_WIDTH,
   LOGO_HEIGHT,
+  INPUT_MASK,
 } from './assets/constants/constants';
 export { Advanced } from './ui/Advanced/Advanced';
 export { Button } from './ui/Button/Button';

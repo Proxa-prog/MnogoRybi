@@ -67,3 +67,12 @@ export const PRODUCTS = [
     id: "Drinks",
   },
 ];
+
+export const INPUT_MASK = {
+  PHONE_MASK: {
+    mask: '+{7}(000)000-00-00',
+  },
+  DATE_MASK: {
+    mask: '__.__.____',
+  }
+};
