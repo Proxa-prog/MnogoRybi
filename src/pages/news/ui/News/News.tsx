@@ -57,7 +57,7 @@ const News: FC = () => {
 
   useEffect(() => {
     dispatch(fetchProductions());
-    dispatch(fetchRestaurantProductions());
+
     dispatch(fetchPagesInfo());
     dispatch(fetchNews(news.limit));
   }, [news.limit]);
@@ -67,8 +67,8 @@ const News: FC = () => {
       {registration.isOpen && <ModalRegistration />}
       {userEnter.isOpen && <UserEnter />}
       {confirmation.isOpen && <Confirmation />}
-      {userAccount.recoveryIsOpen && <Recovery />}
-      <Header isAuth={userAccount.isLogin} />
+      {userAccount.userAccount.recoveryIsOpen && <Recovery />}
+      <Header isAuth={userAccount.userAccount.isLogin} />
       <BlockHeader
         pageName='Новости и акции'
       >

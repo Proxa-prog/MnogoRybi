@@ -57,9 +57,9 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
 
   useEffect(() => {
     if (scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL) {
-     dispatch(changeIsLoginUserAccount(false));
+     dispatch(changeIsLoginUserAccount());
     } else {
-      dispatch(changeIsLoginUserAccount(true));
+      dispatch(changeIsLoginUserAccount());
     }
   }, [scrollHeight]);
 

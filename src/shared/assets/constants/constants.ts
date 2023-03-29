@@ -34,6 +34,7 @@ export const MAIN_PAGE_ROUTE = "/";
 export const CONTACTS_ROUTE = "/contacts";
 export const NEWS_ROUTE = "/news";
 export const NEWS_PAGE_ROUTE = "/:newsId";
+export const PERSONAL_AREA_ROUTE = "/PersonalArea";
 export const FRANCHISE_ROUTE = "/franchise";
 export const DELIVERY_ROUTE = "/delivery";
 export const CONSTRUCTOR_PAGE_ROUTE = "/constructor";
@@ -69,3 +70,12 @@ export const PRODUCTS = [
     id: "Drinks",
   },
 ];
+
+export const INPUT_MASK = {
+  PHONE_MASK: {
+    mask: '+{7}(000)000-00-00',
+  },
+  DATE_MASK: {
+    mask: '__.__.____',
+  }
+};

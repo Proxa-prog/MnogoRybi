@@ -34,7 +34,7 @@ const Basket: FC = () => {
 
     dispatch(
       addOrderToUser({
-        userEmail: userAccount.email,
+        userEmail: userAccount.userAccount.email,
         basket: basket,
       })
     );

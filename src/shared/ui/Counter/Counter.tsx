@@ -8,7 +8,7 @@ export interface CounterProps {
   classNames?: string;
 }
 
-const Counter: FC<CounterProps> = (props) => {
+export const Counter: FC<CounterProps> = (props) => {
   const {
     count = 0,
     classNames,
@@ -27,5 +27,3 @@ const Counter: FC<CounterProps> = (props) => {
     </span>
   );
 };
-
-export default Counter;

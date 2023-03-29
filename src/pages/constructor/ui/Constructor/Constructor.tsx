@@ -1,11 +1,14 @@
-import React, {useEffect, useState} from 'react';
-import {useSelector} from "react-redux";
+import React, { useEffect, useState } from 'react';
+import { useSelector } from "react-redux";
 
-import {useAppDispatch} from "app/store";
+import { useAppDispatch } from "app/store";
 
-import {BlockHeader, Header} from "widgets/Header";
-import {ConstructorCard} from "widgets/ConstructorCard";
-import {Footer} from "widgets/Footer";
+import {
+  BlockHeader,
+  Header
+} from "widgets/Header";
+import { ConstructorCard } from "widgets/ConstructorCard";
+import { Footer } from "widgets/Footer";
 import CheckboxListWrapper from "widgets/ConstructorCard/ui/CheckboxListWrapper/CheckboxListWrapper";
 import AddCreatedPoke from "widgets/ConstructorCard/ui/AddCreatedPoke/AddCreatedPoke";
 
@@ -14,9 +17,12 @@ import {
   getIngredientsSelector,
   fetchIngredients,
 } from "features/productions";
-import {fetchPagesInfo, fetchRestaurantProductions} from "features/restaurant";
+import {
+  fetchPagesInfo,
+  fetchRestaurantProductions
+} from "features/restaurant";
 
-import {setUserAccountStateSelector} from "entities/user";
+import { setUserAccountStateSelector } from "entities/user";
 import {
   baseProductSelector,
   changeBaseProductType,
@@ -31,16 +37,15 @@ import {
   changeSauceType,
   changeToppingChecked,
   changeToppingType,
-  constructorSelector,
   crunchSelector, fillersSelector,
   fillersTypeSelector,
   proteinSelector,
   sauceSelector,
   toppingSelector,
 } from "entities/constructor";
-import {fetchFilters} from "entities/constructor/model/services/fetchFilters";
+import { fetchFilters } from "entities/constructor/model/services/fetchFilters";
 
-import {ImageWrapper} from "shared";
+import { ImageWrapper } from "shared";
 
 import style from './Constructor.module.scss';
 
@@ -79,7 +84,7 @@ const Constructor = () => {
 
   return (
     <div>
-      <Header isAuth={userAccount.isLogin}/>
+      <Header isAuth={userAccount.userAccount.isLogin}/>
       <BlockHeader
         pageName='Конструктор поке'
       >

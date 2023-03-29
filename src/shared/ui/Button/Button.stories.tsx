@@ -1,8 +1,8 @@
 import React from 'react';
 import { Args, Story } from '@storybook/react';
 
-import Button from './Button';
 import './Button.module.scss';
+import {Button} from "./Button";
 
 export default {
   title: 'Button',

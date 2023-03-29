@@ -48,11 +48,11 @@ const MainPage: FC = () => {
 
   return (
     <>
-      <Header isAuth={userAccount.isLogin} />
+      <Header isAuth={userAccount.userAccount.isLogin} />
       {registration.isOpen && <ModalRegistration />}
       {userEnter.isOpen && <UserEnter />}
       {confirmation.isOpen && <Confirmation />}
-      {userAccount.recoveryIsOpen && <Recovery />}
+      {userAccount.userAccount.recoveryIsOpen && <Recovery />}
       <div>
         <Description />
         <ComponentWrapper title='Наша продукция'>

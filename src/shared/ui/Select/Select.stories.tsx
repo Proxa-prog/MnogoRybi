@@ -1,7 +1,7 @@
 import React from 'react';
 import { Args, Story } from '@storybook/react';
 
-import Select from './Select';
+import { Select } from './Select';
 import { PRODUCTS } from 'shared/assets/constants/constants';
 
 export default {

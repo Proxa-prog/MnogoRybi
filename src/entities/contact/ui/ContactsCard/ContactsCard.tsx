@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import { IContactsCard } from 'entities/contact';
 
-import Button from 'shared/ui/Button/Button';
+import { Button } from 'shared/ui/Button/Button';
 
 import style from './ContactsCard.module.scss';
 

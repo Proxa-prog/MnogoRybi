@@ -1,6 +1,8 @@
 import React, { FC, InputHTMLAttributes } from 'react';
 import classNames from 'classnames';
 
+import { inputMask } from "./lib/inputMask/inputMask";
+
 import styles from './Input.module.scss';
 
 type HtmlInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>;
@@ -23,7 +25,7 @@ export interface InputProps extends HtmlInputProps {
   type?: string;
 }
 
-const Input: FC<InputProps> = (props) => {
+export const Input: FC<InputProps> = ((props) => {
   const {
     className,
     classNameWrapper,
@@ -40,11 +42,14 @@ const Input: FC<InputProps> = (props) => {
     type = 'text',
   } = props;
 
+  inputMask(name);
+
   return (
     <div className={classNames(
       styles.inputWrapper,
       [classNameWrapper]
-    )}>
+    )}
+    >
       <input
         className={classNames(
           styles.desktop,
@@ -82,6 +87,4 @@ const Input: FC<InputProps> = (props) => {
       }
     </div>
   );
-};
-
-export default Input;
+});
