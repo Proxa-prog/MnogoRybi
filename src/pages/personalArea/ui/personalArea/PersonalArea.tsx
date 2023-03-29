@@ -18,7 +18,7 @@ import {
 import { UserEnter } from "features/user";
 
 import {
-  addDeliveryAddress, changeIsAddNewAddressOpen,
+  addDeliveryAddress, changeIsAddNewAddressOpen, logoutUserAccount,
   openModalUserEnterSelector, removeDeliveryAddress,
   setUserAccountStateSelector,
 } from "entities/user";
@@ -57,6 +57,10 @@ const PersonalArea: FC = () => {
 
   const handleButtonRemoveNewAddress = (deliveryAddress: string) => {
     dispatch(removeDeliveryAddress(deliveryAddress));
+  };
+
+  const handleButtonExitOnClick = () => {
+    dispatch(logoutUserAccount());
   };
 
   const handleButtonOpenModalAddNewAddress = () => {
@@ -212,6 +216,7 @@ const PersonalArea: FC = () => {
             className={style.button_exit}
             type="button"
             isGrayTheme
+            onClick={handleButtonExitOnClick}
           >
             Выйти из личного кабинета
           </Button>

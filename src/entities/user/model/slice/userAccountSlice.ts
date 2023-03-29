@@ -49,6 +49,10 @@ export const userAccountSlice = createSlice({
     changeIsAddNewAddressOpen: (state) => {
       state.userAccount.isAddNewAddressOpen = !state.userAccount.isAddNewAddressOpen;
     },
+    logoutUserAccount: (state) => {
+      state.userAccount = initialState.userAccount;
+      state.userData = initialState.userData;
+    }
   }
 });
 
@@ -60,6 +64,7 @@ export const {
   addDeliveryAddress,
   removeDeliveryAddress,
   changeIsAddNewAddressOpen,
+  logoutUserAccount,
 } = userAccountSlice.actions;
 
 export default userAccountSlice.reducer;
