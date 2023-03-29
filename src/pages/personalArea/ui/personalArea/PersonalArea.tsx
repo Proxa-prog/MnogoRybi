@@ -1,6 +1,7 @@
-import React, {FC, useEffect, useState} from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { nanoid } from "nanoid";
 import classNames from "classnames";
 
 import { useAppDispatch } from "app/store";
@@ -16,24 +17,24 @@ import {
   Confirmation,
 } from "features/registration";
 import { UserEnter } from "features/user";
-
-import {
-  addDeliveryAddress, changeIsAddNewAddressOpen, logoutUserAccount,
-  openModalUserEnterSelector, removeDeliveryAddress,
-  setUserAccountStateSelector,
-} from "entities/user";
-
-import {Button, Checkbox, Input, StatusMarker, Svg} from "shared";
-
-import style from "./PersonalArea.module.scss";
 import {
   fetchPagesInfo,
   fetchRestaurantProductions,
   getRestaurantPagesInfoSelector
-} from "../../../../features/restaurant";
-import {nanoid} from "nanoid";
-import DellFill from "shared/assets/icons";
-import AddDeliveryAddress from "../../../../entities/user/ui/AddDeliveryAddress/AddDeliveryAddress";
+} from "features/restaurant";
+
+import {
+  changeIsAddNewAddressOpen,
+  logoutUserAccount,
+  openModalUserEnterSelector,
+  removeDeliveryAddress,
+  setUserAccountStateSelector,
+} from "entities/user";
+import AddDeliveryAddress from "entities/user/ui/AddDeliveryAddress/AddDeliveryAddress";
+
+import {Button, Checkbox, Input, StatusMarker} from "shared";
+
+import style from "./PersonalArea.module.scss";
 
 interface IPersonalAreaPagesLinks {
   name: string;
