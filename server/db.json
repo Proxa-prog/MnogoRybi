@@ -1,6 +1,13 @@
 {
   "users": [
-
+    {
+      "firstName": "user",
+      "email": "qwerty@mail.ru",
+      "phone": "8888888888",
+      "password": "qwerty",
+      "orders": [],
+      "id": 5
+    }
   ],
   "productions": {
     "poke": [
@@ -686,31 +693,38 @@
     "products": [
       {
         "name": "Поке",
-        "id": "Poke"
+        "id": "Poke",
+        "isCurrent": true
       },
       {
         "name": "Роллы",
-        "id": "Rolls"
+        "id": "Rolls",
+        "isCurrent": false
       },
       {
         "name": "Супы и карри",
-        "id": "Curry"
+        "id": "Curry",
+        "isCurrent": false
       },
       {
         "name": "Вок",
-        "id": "Wok"
+        "id": "Wok",
+        "isCurrent": false
       },
       {
         "name": "Сэндвичи",
-        "id": "Sandwich"
+        "id": "Sandwich",
+        "isCurrent": false
       },
       {
         "name": "Десерты",
-        "id": "Deserts"
+        "id": "Deserts",
+        "isCurrent": false
       },
       {
         "name": "Напитки",
-        "id": "Drinks"
+        "id": "Drinks",
+        "isCurrent": false
       }
     ],
     "baseProduct": [

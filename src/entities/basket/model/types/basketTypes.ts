@@ -11,6 +11,7 @@ import {IUserEnterFull} from "../../../user/model/slice/userAccountSlice";
 export interface IProducts {
   name: string;
   id?: string;
+  isCurrent?: boolean;
 }
 
 export interface IBasketState {

@@ -24,6 +24,9 @@ export const restaurantProductionsSlice = createSlice({
     getRestaurantSauce: (state, action: PayloadAction<IProducts[]>) => {
       state.restaurantProductions.sauce = action.payload;
     },
+    changeCurrentProducts: (state, action: PayloadAction<IProducts[]> ) => {
+      state.restaurantProductions.products = action.payload;
+    },
   }
 });
 
@@ -31,6 +34,7 @@ export const {
   getRestaurantProducts,
   getRestaurantBaseProduct,
   getRestaurantSauce,
+  changeCurrentProducts,
 } = restaurantProductionsSlice.actions;
 
 export default restaurantProductionsSlice.reducer;
