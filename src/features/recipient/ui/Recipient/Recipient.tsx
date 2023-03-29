@@ -35,7 +35,7 @@ const Recipient: FC = () => {
           label="Телефон"
           placeholder="+7 986 456 75 34"
           required
-          type="number"
+          type="text"
           name="recipient_phone"
           onChange={handleInputPhoneChange}
         />

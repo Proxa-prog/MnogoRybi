@@ -24,6 +24,8 @@ export const USER_DATA = "https://json-server-mnogo.vercel.app/users";
 export const RESTAURANT_LOCATION_URL = "https://json-server-mnogo.vercel.app/restaurantLocation";
 export const RESTAURANT_PRODUCTIONS_URL = "https://json-server-mnogo.vercel.app/restaurantProductions";
 export const RESTAURANT_PAGES_INFO_URL = "https://json-server-mnogo.vercel.app/restaurantPagesInfo";
+export const RESTAURANT_INGREDIENTS_URL = "https://json-server-mnogo.vercel.app/pokeIngredients";
+export const RESTAURANT_FILTERS_URL = "https://json-server-mnogo.vercel.app/filters";
 
 export const MOK_PASSWORD = "qwerty";
 export const NEW_PASSWORD = "12345";
@@ -35,6 +37,7 @@ export const NEWS_PAGE_ROUTE = "/:newsId";
 export const PERSONAL_AREA_ROUTE = "/PersonalArea";
 export const FRANCHISE_ROUTE = "/franchise";
 export const DELIVERY_ROUTE = "/delivery";
+export const CONSTRUCTOR_PAGE_ROUTE = "/constructor";
 
 // Для storybook.
 export const PRODUCTS = [

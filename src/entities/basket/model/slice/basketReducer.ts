@@ -30,7 +30,7 @@ export const basketSlice = createSlice({
   reducers: {
     addProductInBasket: (state, action: PayloadAction<IAmountProduct>) => {
       state.basketState.basket = [...state.basketState.basket, action.payload];
-      state.basketState.isBasketOpen = state.basketState.isBasketOpen;
+      // state.basketState.isBasketOpen = state.basketState.isBasketOpen;
     },
     openBasketBlock: (state, action: PayloadAction<boolean>) => {
       state.basketState.isBasketOpen = !action.payload;

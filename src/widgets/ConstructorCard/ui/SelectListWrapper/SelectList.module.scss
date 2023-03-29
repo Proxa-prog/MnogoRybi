@@ -1,0 +1,70 @@
+.wrapper {
+  position: relative;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+}
+
+.select_wrapper {
+  width: 290px;
+
+  @media (max-width: 1023px) {
+    width: 201px;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+}
+
+.isSelected {
+  position: relative;
+
+  &::after {
+    content: "+ 180₽";
+    position: absolute;
+    z-index: 999;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: $yellow-100;
+    right: 40px;
+    top: 20px;
+  }
+}
+
+.select {
+  width: 100%;
+  background: $white-00;
+  border: 1px solid $gray-30;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  appearance: none;
+}
+
+.label {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  color: $gray-100;
+  margin-bottom: 10px;
+
+  &::after {
+    position: absolute;
+    right: 11px;
+    top: 52px;
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-image: url("/public/images/arrow_down.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 999;
+  }
+}
+
+.list {
+  bottom: 12px;
+}

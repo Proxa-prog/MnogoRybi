@@ -1,6 +1,6 @@
-import React, {FC, useState} from "react";
+import React, {FC, useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import classNames from "classnames";
 
@@ -23,6 +23,7 @@ import {
 import style from "widgets/Header/ui/Header/Header.module.scss";
 import {IProducts} from "../../../../entities/basket";
 import {useAppDispatch} from "../../../../app/store";
+import {changeIsLoginUserAccount, setUserAccountStateSelector} from "../../../../entities/user";
 
 interface HeaderNavWrapperProps {
   isHeaderMenuActive: boolean;
@@ -48,9 +49,19 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
     onClick,
     onBasketButtonClick,
   } = props;
+
+  const dispatch = useDispatch();
   const restaurantProductions = useSelector(getRestaurantProductionsSelector);
   const pagesInfo = useSelector(getRestaurantPagesInfoSelector);
   const [buttonMoreIsOpen, setButtonMoreIsOpen] = useState(true);
+
+  useEffect(() => {
+    if (scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL) {
+     dispatch(changeIsLoginUserAccount());
+    } else {
+      dispatch(changeIsLoginUserAccount());
+    }
+  }, [scrollHeight]);
 
   return (
     <div
@@ -170,7 +181,12 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
                   console.log("Button Create");
                 }}
               >
-                Создать поке
+                <Link
+                  to={`/constructor`}
+                  className={style.create_poke_button}
+                >
+                  Создать поке
+                </Link>
               </Button>
             )}
             {scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL &&

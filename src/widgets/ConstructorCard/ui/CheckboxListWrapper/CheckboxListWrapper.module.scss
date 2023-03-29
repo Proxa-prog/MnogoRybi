@@ -1,0 +1,162 @@
+.wrapper {
+  background: $gray-10;
+  border-radius: 10px;
+  padding: 30px;
+  display: flex;
+
+  @media (max-width: 1023px) {
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 767px) {
+    padding: 20px;
+  }
+}
+
+.horizontal_line {
+  border: 1px solid $white-00;
+}
+
+.filters_wrapper {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 30px;
+  font-size: 16px;
+
+  @media (max-width: 767px) {
+    flex-wrap: wrap;
+    text-align: left;
+
+    span {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+}
+
+.checkbox_wrapper {
+  flex-grow: 1;
+}
+
+.header_wrapper {
+  width: 25.5%;
+  margin-right: auto;
+
+  span {
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 72px;
+    color: $yellow-100;
+    margin-right: 10px;
+  }
+
+  @media (max-width: 1023px) {
+    width: 30.5%;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.image_header {
+  margin-bottom: 23px;
+
+  @media (max-width: 767px) {
+    margin-bottom: 10px;
+  }
+}
+
+.header {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 120%;
+
+  @media (max-width: 767px) {
+    font-size: 20px;
+    line-height: 120%;
+  }
+}
+
+.description {
+  margin-top: 13px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: $gray-70;
+
+  @media (max-width: 767px) {
+    margin-bottom: 15px;
+  }
+}
+
+.content_wrapper {
+  width: 75.5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+
+  @media (max-width: 1023px) {
+    width: 62.5%;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+}
+
+.content {
+  flex-grow: 1;
+  flex-wrap: wrap;
+  gap: 10px;
+  display: flex;
+  align-self: center;
+
+  @media (max-width: 767px) {
+    gap: 5px;
+  }
+}
+
+.checkbox_white_background {
+  background-color: $white-00;
+}
+
+.checkbox_wrapper_column {
+  display: flex;
+  align-items: center;
+}
+
+.content_header_wrapper {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.contentHeader {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 120%;
+}
+
+.howMuchIsLeft {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  color: $green-100;
+}
+
+.list {
+  column-gap: 128px;
+  column-count: 2;
+  column-width: 305px;
+
+  li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+  }
+}

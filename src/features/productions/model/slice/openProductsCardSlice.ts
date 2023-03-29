@@ -10,6 +10,7 @@ const initialState: OpenProductsCardArray = {
     description: "",
     cost: "",
     statuses: [],
+    isPreview: false,
   },
 };
 

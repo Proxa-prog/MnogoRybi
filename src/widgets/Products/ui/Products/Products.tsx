@@ -41,6 +41,7 @@ const Products: FC<ProductsProps> = (props) => {
               description={productCard.description}
               imageUrl={productCard.imageUrl}
               statuses={productCard.statuses}
+              isPreview={productCard.isPreview}
             />
           )
         })

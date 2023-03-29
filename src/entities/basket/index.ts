@@ -5,12 +5,16 @@ export { setTotalCost } from "./model/services/setTotalCost";
 export { default as BasketCard } from "./ui/BasketCard/BasketCard";
 export { default as BasketSumm } from "./ui/BasketSumm/BasketSumm";
 export { default as ShowOrder } from "./ui/ShowOrder/ShowOrder";
+export { getAmountConstructorProductSelector } from './model/selectors/getAmountProductSelector';
 export {
   setNewProduct,
   setAmountProduct,
   setCostProduct,
   setBaseProduct,
   setSauce,
+  setAmountOfProductsInConstructor,
+  setCostOfProductsInConstructor,
+  setBaseCostOfProductsInConstructor,
 } from "./model/slice/amountProductReduser";
 export {
   addProductInBasket,
@@ -35,7 +39,7 @@ export {
   IBasketArray,
   IChangeAmountAction,
   IChangeCostAction,
-  IIngridients,
+  IIngredients,
   IAmountProduct,
   IHowMuchProduct,
   AmountProductArray,

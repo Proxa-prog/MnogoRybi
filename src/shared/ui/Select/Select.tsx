@@ -1,8 +1,8 @@
 import { nanoid } from '@reduxjs/toolkit';
 import classNames from 'classnames';
 import React,
-{ FC, SelectHTMLAttributes, useState }
-from 'react';
+{ChangeEventHandler, FC, SelectHTMLAttributes, useState}
+  from 'react';
 
 import { IProducts } from 'entities/basket/model/types/basketTypes';
 
@@ -17,9 +17,10 @@ export interface SelectProps extends HtmlSelectProps {
   id?: string;
   options: IProducts[];
   className?: string;
+  classNameList?: string;
   disabled?: boolean;
   promptOption?: string;
-  onChange?: (baseProd: string) => void;
+  onChange?: (baseProd: string, checked: boolean) => void;
 }
 
 export const Select: FC<SelectProps> = (props) => {
@@ -28,6 +29,7 @@ export const Select: FC<SelectProps> = (props) => {
     id,
     options,
     className,
+    classNameList,
     disabled,
     promptOption,
     onChange,
@@ -41,10 +43,9 @@ export const Select: FC<SelectProps> = (props) => {
   };
 
   const handleOptionClick = (option: IContactsCard | IProducts) => {
-    console.log(option);
 
     return () => {
-      onChange && onChange(option.name);
+      onChange && onChange(option.name, isOpen);
       setValue(option.name);
       setSelectOption(option.name)
       setIsOpen(prev => !prev);
@@ -67,8 +68,8 @@ export const Select: FC<SelectProps> = (props) => {
       required
       disabled={disabled}
       defaultValue="Default"
-      onChange={(event) => {
-        onChange && onChange(event.target.value);
+      onChange={(event: any) => {
+        onChange && onChange(event.target.value, event.currentTarget.checked);
         setValue(event.target.value);
       }}
       value={value}
@@ -78,13 +79,14 @@ export const Select: FC<SelectProps> = (props) => {
         value="Default"
         disabled={disabled}
         hidden
+        className={style.with_cost}
       >
         {selectOption}
       </option>
     </select>
       {
     isOpen &&
-      <ul className={style.isOpen}>
+      <ul className={classNames(style.isOpen, {}, [classNameList])}>
         {options.map((option: IProducts) => {
           const id = nanoid();
 

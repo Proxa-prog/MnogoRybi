@@ -1,0 +1,49 @@
+.checkbox_wrapper {
+  background: $white-00;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  padding: 18px 15px;
+  width: 220px;
+
+  &:hover {
+    outline: 2px solid $blue-100;
+  }
+
+  @media (max-width: 1023px) {
+    width: 201px;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+.checkbox_wrapper_checked {
+  outline: 2px solid $blue-100;
+}
+
+.checkbox {
+  margin-right: 12px;
+
+  @media (max-width: 767px) {
+    margin-right: 5px
+  }
+}
+
+.font_checked_style {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: $blue-100;
+  padding-top: 16px;
+  padding-bottom: 16px;
+
+  @media (max-width: 767px) {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}

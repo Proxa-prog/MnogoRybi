@@ -129,7 +129,7 @@ const ModalRegistration: React.FC = () => {
         label='Телефон'
         placeholder='Введите телефон'
         name='Телефон'
-        type='number'
+        type='text'
         required
         onChange={handleInputPhoneChange}
         value={registration.phone}

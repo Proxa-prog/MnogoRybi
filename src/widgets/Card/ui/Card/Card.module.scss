@@ -11,7 +11,7 @@
         margin-bottom: 4px;
     }
 
-    .descriprion {
+    .description {
         font-weight: 400;
         font-size: 14px;
         line-height: 21px;
@@ -119,4 +119,47 @@
     .description_wrapper_info {
         background-color: $gray-10;
     }
+}
+
+.preview_card {
+    position: relative;
+    min-height: 420px;
+    background-repeat: no-repeat;
+    background: linear-gradient(146.89deg, #FFD567 1.36%, #FFF8D1 98.96%);
+}
+
+.preview_description_wrapper {
+    min-height: auto;
+    position: absolute;
+    top: 54px;
+    padding-top: 0;
+    height: 85%;
+
+    h3 {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 140%;
+        color: $blue-100;
+    }
+}
+
+.image_wrapper_preview {
+    height: 100%;
+}
+
+.create_poke_description {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: $gray-100;
+}
+
+.create_poke_cost_wrapper {
+    position: absolute;
+    bottom: 5px;
+}
+
+.create_poke_button {
+    margin: 0;
+    text-decoration: none;
 }

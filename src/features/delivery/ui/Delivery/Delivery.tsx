@@ -39,7 +39,7 @@ const Delivery: FC = () => {
   useEffect(() => {
     dispatch(addRecipientAddress(pagesInfo.restaurantAddress[0].name));
   }, []);
-
+  console.log(basket);
   return (
     <div className={style.delivery_wrapper}>
       <h4>Доставка</h4>
