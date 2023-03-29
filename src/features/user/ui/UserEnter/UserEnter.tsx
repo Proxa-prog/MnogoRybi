@@ -26,7 +26,7 @@ const UserEnter: FC = () => {
   const registration = useSelector(getRegistrationSelector);
   const userEnter = useSelector(openModalUserEnterSelector);
   const userAccount = useSelector(setUserAccountStateSelector);
-  console.log('userEnter', userEnter);
+
   const handleCheckboxAgreementChange = () => {
     dispatch(changeIsOpenRegistration(registration.isOpen));
     dispatch(changeIsOpenUserEnter(userEnter.isOpen));

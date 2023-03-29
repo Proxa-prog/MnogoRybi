@@ -1,45 +1,40 @@
-import {createAsyncThunk} from "@reduxjs/toolkit";
-import {ThunkConfig, USER_DATA} from "shared";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { ThunkConfig, USER_DATA } from "shared";
 import axios from "axios";
-import {ResponseApi} from "../../../basket";
-import {IUserData} from "../types/types";
-import {IUserEnterFull} from "../slice/userAccountSlice";
+import { ResponseApi } from "../../../basket";
+import { IUserData } from "../types/types";
+import { IUserEnterFull } from "../slice/userAccountSlice";
 
-interface IId extends IUserEnterFull {
-  id?: number;
-}
-
-interface INewAddressData {
-  userData: IId,
-  email: string,
-  newDeliveryAddress: string,
-}
-
-const setNewAddress = async (item: INewAddressData) => {
+const setNewAddress = async (item: IUserEnterFull) => {
     await axios.patch<string, string>(
-      `${USER_DATA}/${item.userData.id}`,
-      {userData: {
-        ...item.userData,
-          deliveryAddress: [...item.userData.userData.deliveryAddress, item.newDeliveryAddress]
-      }});
+      `${USER_DATA}/1/userData`,
+      item.userData,
+    );
 };
 
-export const addNewDeliveryAddressAsync = createAsyncThunk<void, IUserData, ThunkConfig<void>>(USER_DATA, async (userData: IUserData, thunkAPI) => {
-  const {email, newDeliveryAddress} = userData;
+export const addNewDeliveryAddressAsync = createAsyncThunk<void, IUserData, ThunkConfig<void>>(
+  USER_DATA,
+  async (userData: IUserData, thunkAPI) => {
+  const { email } = userData;
   try {
-    const response = await axios.get<string, ResponseApi>(`${USER_DATA}?email=${email}`);
+    const state = thunkAPI.getState();
+    const response = await axios.get<string, any>(`${USER_DATA}`);
 
-    const isFind = response.data.map((item: IUserEnterFull) => {
-      if (item.userAccount.email === email) {
-        email && newDeliveryAddress && setNewAddress({
-          userData: item,
-          email: email,
-          newDeliveryAddress: newDeliveryAddress,
-        });
-      }
+    const actualUserId = response.data.find((user: any) => {
 
-      return item;
+      return user.userAccount.email === email;
     });
+
+    actualUserId &&
+    (await axios.patch<string, IUserEnterFull>(
+      `${USER_DATA}/${actualUserId.id}`,
+      {
+        userData: {
+          ...actualUserId.userData,
+          deliveryAddress: [...state.userAccount.userData.deliveryAddress,]
+        },
+      }
+    ));
   } catch (error) {
     console.log(error);
   }

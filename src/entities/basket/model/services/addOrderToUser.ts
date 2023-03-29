@@ -29,11 +29,9 @@ export const addOrderToUser = createAsyncThunk<void, IUserOrder, ThunkConfig<voi
       // })
 
       const actualUserId = response.data.find((user: any) => {
-        console.log('user.userAccount.email', user.userAccount.email);
-        console.log('userEmail', userEmail);
         return user.userAccount.email === userEmail;
       });
-      console.log('actualUserId', actualUserId);
+
       // Убрал не нужные поля
       const orderInfo = basket.basket.map((currentOrder: IAmountProduct) => {
         return {
