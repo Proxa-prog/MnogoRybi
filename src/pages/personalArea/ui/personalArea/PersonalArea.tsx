@@ -126,7 +126,7 @@ const PersonalArea: FC = () => {
               label="Дата рождения"
               name="Дата рождения"
             />
-            <div>
+            <div className={style.gender_wrapper}>
               <h4>Пол</h4>
               <div className={style.button_gender_wrapper}>
                 <Button
@@ -169,6 +169,7 @@ const PersonalArea: FC = () => {
                         className={style.checkbox}
                         label={item}
                         id={id}
+                        classNameLabel={style.address_label}
                       />
                       {
                         item === 'Ярославль, Свободы 52/39'
@@ -205,6 +206,15 @@ const PersonalArea: FC = () => {
               </Button>
             </div>
           </div>
+        </div>
+        <div className={style.button_exit_wrapper}>
+          <Button
+            className={style.button_exit}
+            type="button"
+            isGrayTheme
+          >
+            Выйти из личного кабинета
+          </Button>
         </div>
       </section>
       <Footer />
