@@ -9,6 +9,8 @@ export {
   removeDeliveryAddress,
   changeIsAddNewAddressOpen,
   logoutUserAccount,
+  changePersonalAreaLinkIsCurrent,
+  addOrderInUserAccount,
 } from "./model/slice/userAccountSlice";
 export { findUserAccount } from "./model/services/findUserAccount";
 export { restorePassword } from "./model/services/restorePassword";

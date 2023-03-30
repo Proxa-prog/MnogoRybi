@@ -1,22 +1,24 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {IUserRegistration} from "../types/types";
-import {IUserEnterFull} from "./userAccountSlice";
+import { IUserEnterFull } from "./userAccountSlice";
 
 export interface IUserEnter extends IUserEnterFull {
   isOpen: boolean;
 }
 
-export enum UserEnterAction {
-  CHANGE_IS_OPEN = 'CHANGE_IS_OPEN',
-}
-
-export interface IUserEnterAction {
-  type: UserEnterAction;
-  payload: IUserEnter;
-}
-
 const initialState: IUserEnter =  {
   isOpen: false,
+  personalAreaLinks: [
+    {
+      name: "Личные данные",
+      id: "personalArea",
+      isCurrent: true,
+    },
+    {
+      name: "Мои заказы",
+      id: "myOrders",
+      isCurrent: false
+    },
+  ],
   userAccount: {
     isAddNewAddressOpen: false,
     isLogin: false,

@@ -74,6 +74,18 @@ const ModalRegistration: React.FC = () => {
     })
 
     dispatch(registerUser({
+      personalAreaLinks: [
+        {
+          name: "Личные данные",
+          id: "personalArea",
+          isCurrent: true,
+        },
+        {
+          name: "Мои заказы",
+          id: "myOrders",
+          isCurrent: false
+        },
+      ],
       userAccount: {
         isAddNewAddressOpen: false,
         email: registration.email,

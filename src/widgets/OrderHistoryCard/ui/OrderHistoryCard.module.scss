@@ -1,0 +1,64 @@
+.wrapper {
+  width: 413px;
+  background-color: $white-00;
+  padding: 20px;
+  border-radius: 10px;
+
+  @media (max-width: 1023px) {
+    width: 350px;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+
+  .number_of_order {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 150%;
+  }
+
+  @media (max-width: 767px) {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+}
+
+.order_information {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.information_name {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: $gray-70;
+}
+
+.information_value {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 150%;
+  color: $gray-100;
+}
+
+.rejected {
+  color: $red-100;
+}
+
+.fulfilled {
+  color: $purpul-100;
+}
+
+.pending {
+  color: $green-100;
+}

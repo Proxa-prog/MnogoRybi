@@ -23,11 +23,8 @@ import style from "./Basket.module.scss";
 const Basket: FC = () => {
   const dispatch = useAppDispatch();
   const basket = useSelector(openBasketSelector);
-  const totalCost = setTotalCost(basket.basket);
   const userAccount = useSelector(setUserAccountStateSelector);
-
-  console.log(basket);
-  console.log("userAccount", userAccount);
+  const totalCost = setTotalCost(basket.basket);
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -39,7 +36,7 @@ const Basket: FC = () => {
       })
     );
   };
-
+  console.log('totalCost', totalCost);
   return (
     <form className={style.basket_wrapper} onSubmit={handleSubmit}>
       <div className={style.basket_info}>
@@ -63,7 +60,7 @@ const Basket: FC = () => {
               ? `Заказать на ${totalCost} ₽`
               : `Заказать на ${totalCost + COST_OF_DELIVERY} ₽`
           }
-          onClick={(event) => {}}
+          onClick={() => {}}
         />
       </div>
     </form>

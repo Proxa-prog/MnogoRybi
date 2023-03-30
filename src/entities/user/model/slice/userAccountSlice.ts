@@ -1,12 +1,30 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {IUserAccount, IUserRegistration} from "../types/types";
+import {
+  IPersonalAreaPagesLinks,
+  IUserAccount,
+  IUserRegistration
+} from "../types/types";
+import { IAddedOrder } from "../../../basket/model/services/addOrderToUser";
 
 export interface IUserEnterFull {
+  personalAreaLinks: IPersonalAreaPagesLinks[];
   userAccount: IUserAccount;
   userData: IUserRegistration;
 }
 
 const initialState: IUserEnterFull = {
+  personalAreaLinks: [
+    {
+      name: "Личные данные",
+      id: "personalArea",
+      isCurrent: true,
+    },
+    {
+      name: "Мои заказы",
+      id: "myOrders",
+      isCurrent: false
+    },
+  ],
   userAccount: {
     isAddNewAddressOpen: false,
     isLogin: false,
@@ -31,6 +49,9 @@ export const userAccountSlice = createSlice({
       state.userAccount = action.payload.userAccount;
       state.userData = action.payload.userData;
     },
+    addOrderInUserAccount: (state, action: PayloadAction<IAddedOrder>) => {
+      state.userData.orders = [...state.userData.orders, action.payload];
+    },
     changeIsLoginUserAccount: (state) => {
       state.userAccount.isLogin = !state.userAccount.isLogin;
     },
@@ -52,7 +73,17 @@ export const userAccountSlice = createSlice({
     logoutUserAccount: (state) => {
       state.userAccount = initialState.userAccount;
       state.userData = initialState.userData;
-    }
+    },
+    changePersonalAreaLinkIsCurrent: (state, action: PayloadAction<string>) => {
+      state.personalAreaLinks.map((item) => {
+        if (item.id === action.payload) {
+          item.isCurrent = true;
+        } else {
+          item.isCurrent = false;
+        }
+
+      })
+    },
   }
 });
 
@@ -65,6 +96,8 @@ export const {
   removeDeliveryAddress,
   changeIsAddNewAddressOpen,
   logoutUserAccount,
+  changePersonalAreaLinkIsCurrent,
+  addOrderInUserAccount,
 } = userAccountSlice.actions;
 
 export default userAccountSlice.reducer;
