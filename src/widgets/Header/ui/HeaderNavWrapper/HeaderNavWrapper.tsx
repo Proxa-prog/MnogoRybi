@@ -9,7 +9,7 @@ import {MenuButtonEnter} from "widgets/MenuButtonEnter";
 
 import {
   getRestaurantPagesInfoSelector,
-  getRestaurantProductionsSelector, getRestaurantProducts,
+  getRestaurantProductionsSelector,
 } from "features/restaurant";
 
 import {
@@ -21,9 +21,7 @@ import {
 } from "shared";
 
 import style from "widgets/Header/ui/Header/Header.module.scss";
-import {IProducts} from "../../../../entities/basket";
-import {useAppDispatch} from "../../../../app/store";
-import {changeIsLoginUserAccount, setUserAccountStateSelector} from "../../../../entities/user";
+import {changeIsLoginUserAccount} from "entities/user";
 
 interface HeaderNavWrapperProps {
   isHeaderMenuActive: boolean;
@@ -56,11 +54,11 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
   const [buttonMoreIsOpen, setButtonMoreIsOpen] = useState(true);
 
   useEffect(() => {
-    if (scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL) {
-     dispatch(changeIsLoginUserAccount());
-    } else {
-      dispatch(changeIsLoginUserAccount());
-    }
+    // if (scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL) {
+    //  dispatch(changeIsLoginUserAccount());
+    // } else {
+    //   dispatch(changeIsLoginUserAccount());
+    // }
   }, [scrollHeight]);
 
   return (

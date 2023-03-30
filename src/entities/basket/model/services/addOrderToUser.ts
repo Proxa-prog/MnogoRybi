@@ -4,17 +4,35 @@ import axios from "axios";
 import {
   IAmountProduct,
   IUserOrder,
-  ResponseApi
+  ResponseApi, setTotalCost
 } from "entities/basket";
-import { IUserRegistration } from "entities/user";
+import {addOrderInUserAccount, IUserRegistration} from "entities/user";
 
 import { ThunkConfig, USER_DATA } from "shared";
 import {IUserEnter} from "../../../user/model/slice/userEnterSlice";
 import {IUserEnterFull} from "../../../user/model/slice/userAccountSlice";
 
+export interface IAddedOrder {
+  orders: IAmountProduct[],
+  orderDay: string;
+  orderTime: string;
+  recipientName: string | undefined;
+  recipientPhone: string | undefined;
+  recipientAddress: string;
+  recipientCardNumber?: string | undefined;
+  recipientCardDate?: string;
+  recipientCvc?: string;
+  pickupOfGoods: boolean;
+  paymentToTheCourier: boolean;
+  saveCardDate: boolean;
+  comment?: string | undefined;
+  totalCost?: number;
+  orderId: string;
+}
+
 export const addOrderToUser = createAsyncThunk<void, IUserOrder, ThunkConfig<void>>(
   USER_DATA,
-  async (userOrder) => {
+  async (userOrder,thunkAPI) => {
     const { userEmail, basket } = userOrder;
     const orderTime = new Date();
     const id = nanoid();
@@ -45,7 +63,9 @@ export const addOrderToUser = createAsyncThunk<void, IUserOrder, ThunkConfig<voi
         };
       });
 
-      const newOrder = {
+      const totalCost = setTotalCost(basket.basket);
+
+      const newOrder: IAddedOrder = {
         orders: orderInfo,
         orderDay: orderTime.toLocaleDateString(),
         orderTime: orderTime.toLocaleTimeString(),
@@ -60,7 +80,10 @@ export const addOrderToUser = createAsyncThunk<void, IUserOrder, ThunkConfig<voi
         recipientPhone: basket.recipientPhone,
         saveCardDate: basket.saveCardDate,
         orderId: id,
+        totalCost: totalCost,
       };
+
+      thunkAPI.dispatch(addOrderInUserAccount(newOrder));
 
       actualUserId &&
         (await axios.patch<string, IUserEnterFull>(

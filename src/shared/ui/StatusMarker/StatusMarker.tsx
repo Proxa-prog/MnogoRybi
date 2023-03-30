@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import style from './StatusMarker.module.scss';
 
-type ButtonColor = 'yellow' | 'blue' | 'purple' | 'gray' | 'green';
+export type ButtonColor = 'yellow' | 'blue' | 'purple' | 'gray' | 'green';
 
 export interface StatusMarkerProps {
   className?: string;

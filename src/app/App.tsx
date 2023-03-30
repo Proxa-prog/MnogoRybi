@@ -12,7 +12,7 @@ import {
   CONSTRUCTOR_PAGE_ROUTE,
   FRANCHISE_ROUTE,
   DELIVERY_ROUTE,
-  PERSONAL_AREA_ROUTE,
+  PERSONAL_AREA_ROUTE, PERSONAL_AREA_MY_ORDERS_ROUTE,
 } from 'shared';
 
 import { MainPage } from 'pages/mainPage';
@@ -21,6 +21,7 @@ import { Contacts } from 'pages/contacts';
 import { NewsPage } from 'pages/newsPage';
 import {Constructor} from "pages/constructor";
 import { PersonalArea } from 'pages/personalArea';
+import { MyOrders } from 'pages/myOrders';
 // import FranchisePage from 'widgets/ui/FranchisePage/FranchisePage';
 // import DeliveryPage from 'widgets/ui/DeliveryPage/DeliveryPage';
 
@@ -41,6 +42,7 @@ const App: React.FC = () => {
             <Route path={NEWS_PAGE_ROUTE} element={<NewsPage/>}/>
             <Route path={CONSTRUCTOR_PAGE_ROUTE} element={<Constructor/>}/>
             <Route path={PERSONAL_AREA_ROUTE} element={<PersonalArea />} />
+            <Route path={PERSONAL_AREA_MY_ORDERS_ROUTE} element={<MyOrders />} />
             {/* <Route path={FRANCHISE_ROUTE} element={<FranchisePage />} />
             <Route path={DELIVERY_ROUTE} element={<DeliveryPage />} /> */}
           </Routes>
