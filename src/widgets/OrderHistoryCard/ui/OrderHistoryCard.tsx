@@ -1,13 +1,9 @@
 import React, { FC } from "react";
 import classNames from "classnames";
 
-import { StatusMarker } from "shared";
-import { ButtonColor } from "shared/ui/StatusMarker/StatusMarker";
+import { IPaymentStatuses } from "../model/types/types";
 
-export interface IPaymentStatus {
-  text: string;
-  color: ButtonColor;
-}
+import { StatusMarker } from "shared";
 
 interface IOrderHistoryCard {
   numberOfOrder: number;
@@ -17,7 +13,7 @@ interface IOrderHistoryCard {
   cost: string;
   commentToOrder?: string;
   paymentStatus: string;
-  orderStatus: IPaymentStatus;
+  orderStatus: IPaymentStatuses;
 }
 
 import style from "./OrderHistoryCard.module.scss";
@@ -41,9 +37,9 @@ export const OrderHistoryCard: FC<IOrderHistoryCard> = (props: IOrderHistoryCard
           № {numberOfOrder}
         </span>
         <StatusMarker
-          color={orderStatus.color}
+          color={orderStatus.prepare.color}
         >
-          {orderStatus.text}
+          {orderStatus.prepare.text}
         </StatusMarker>
       </div>
       <div className={style.order_information}>
@@ -57,7 +53,7 @@ export const OrderHistoryCard: FC<IOrderHistoryCard> = (props: IOrderHistoryCard
           Адрес доставки: <span className={style.information_value}>{deliveryAddress}</span>
         </span>
         <span className={style.information_name}>
-          Сумма заказа: <span className={style.information_value}>{cost}</span>
+          Сумма заказа: <span className={style.information_value}>{cost} ₽</span>
         </span>
         <span className={style.information_name}>
           Комментарий к заказу: <span className={style.information_value}>{commentToOrder}</span>
@@ -65,9 +61,11 @@ export const OrderHistoryCard: FC<IOrderHistoryCard> = (props: IOrderHistoryCard
         <span className={style.information_name}>
           Оплата: <span className={classNames(
           style.information_value,
-          { [style.rejected]: paymentStatus === 'Не оплачен' },
-          { [style.fulfilled]: paymentStatus === 'Оплачен онлайн' },
-          { [style.pending]: paymentStatus === 'Оплата при получении' },
+          {
+            [style.rejected]: paymentStatus === 'Не оплачен',
+            [style.fulfilled]: paymentStatus === 'Оплачен онлайн',
+            [style.pending]: paymentStatus === 'Оплата при получении',
+          },
           []
         )}>{paymentStatus}</span>
         </span>

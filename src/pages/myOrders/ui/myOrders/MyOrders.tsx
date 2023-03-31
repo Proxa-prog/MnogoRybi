@@ -7,9 +7,8 @@ import { useAppDispatch } from "app/store";
 import { Footer } from "widgets/Footer";
 import { Recovery } from "widgets/Recovery";
 import { Header, } from "widgets/Header";
-import { IPersonalAreaPagesLinks } from "entities/user/model/types/types";
 import { OrderHistoryCard } from "widgets/OrderHistoryCard";
-import { IPaymentStatus } from "widgets/OrderHistoryCard/ui/OrderHistoryCard";
+
 
 import {
   getRegistrationSelector,
@@ -29,18 +28,10 @@ import {
   setUserAccountStateSelector,
 } from "entities/user";
 import AddDeliveryAddress from "entities/user/ui/AddDeliveryAddress/AddDeliveryAddress";
+import { IPersonalAreaPagesLinks } from "entities/user/model/types/types";
 
 import style from "./MyOrders.module.scss";
-
-interface IUserOrder {
-
-}
-
-export const enum paymentStatus {
-  PENDING = 'Оплата при получении',
-  FULLFILED = 'Оплачен онлайн',
-  REJECTED = 'Не оплачен',
-}
+import {orderStatuses, paymentStatus} from "../../../../widgets/OrderHistoryCard/model/types/types";
 
 export const MyOrders: FC = () => {
   const dispatch = useAppDispatch();
@@ -93,10 +84,6 @@ export const MyOrders: FC = () => {
            {
              // Должен принимать тип IAddedOrder, выдаёт ошибку.
              userAccount.userData.orders && userAccount.userData.orders.map((order: any) => {
-               const orderStatus: IPaymentStatus = {
-                 text: 'Доставлен',
-                 color: 'blue',
-               };
 
                return (
                  <OrderHistoryCard
@@ -107,7 +94,7 @@ export const MyOrders: FC = () => {
                    deliveryAddress={order.recipientAddress}
                    cost={String(order.totalCost)}
                    paymentStatus={paymentStatus.PENDING}
-                   orderStatus={orderStatus}
+                   orderStatus={orderStatuses}
                    commentToOrder={order.comment}
                  />
                )
