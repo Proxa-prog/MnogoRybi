@@ -3,11 +3,11 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { useAppDispatch } from "app/store";
+import {createTheme, Pagination, ThemeProvider} from "@mui/material";
 
 import { Footer } from "widgets/Footer";
 import { Recovery } from "widgets/Recovery";
 import { Header, } from "widgets/Header";
-import { IPersonalAreaPagesLinks } from "entities/user/model/types/types";
 import { OrderHistoryCard } from "widgets/OrderHistoryCard";
 import { IPaymentStatus } from "widgets/OrderHistoryCard/ui/OrderHistoryCard";
 
@@ -23,24 +23,75 @@ import {
   fetchRestaurantProductions,
 } from "features/restaurant";
 
+import { IPersonalAreaPagesLinks } from "entities/user/model/types/types";
 import {
   changePersonalAreaLinkIsCurrent,
   openModalUserEnterSelector,
   setUserAccountStateSelector,
+  AddDeliveryAddress,
+  fetchOrders,
 } from "entities/user";
-import AddDeliveryAddress from "entities/user/ui/AddDeliveryAddress/AddDeliveryAddress";
 
 import style from "./MyOrders.module.scss";
-
-interface IUserOrder {
-
-}
 
 export const enum paymentStatus {
   PENDING = 'Оплата при получении',
   FULLFILED = 'Оплачен онлайн',
   REJECTED = 'Не оплачен',
 }
+
+export const theme = createTheme({
+  components: {
+    MuiButtonBase: {
+      styleOverrides: {
+        root: {
+          '&.MuiButtonBase-root': {
+            '&.MuiPaginationItem-root': {
+              fontWeight: '700',
+              fontSize: '14px',
+              lineHeight: '20px',
+
+              '&.Mui-selected': {
+                backgroundColor: '#414042',
+                color: '#FFFFFF',
+              },
+            },
+          },
+          '&.MuiPaginationItem-sizeMedium': {
+            width: '44px',
+            height: '44px',
+            borderRadius: '50%',
+            backgroundColor: '#FFFFFF',
+          },
+        },
+      },
+    },
+    MuiSvgIcon: {
+      styleOverrides: {
+        root: {
+          '&.MuiSvgIcon-root': {
+            width: '26px',
+            height: '30px',
+            fill: '#31688F',
+          }
+        }
+      }
+    },
+    MuiPaginationItem: {
+      styleOverrides: {
+        root: {
+          width: '44px',
+          height: '44px',
+          borderRadius: '50%',
+          backgroundColor: '#FFFFFF',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }
+      }
+    },
+  },
+});
 
 export const MyOrders: FC = () => {
   const dispatch = useAppDispatch();
@@ -53,11 +104,14 @@ export const MyOrders: FC = () => {
     dispatch(changePersonalAreaLinkIsCurrent(event.currentTarget.id));
   };
 
+  const pagesCount = Math.ceil(userAccount.userData.orders.length / 12);
+
   useEffect(() => {
     dispatch(fetchRestaurantProductions());
     dispatch(fetchPagesInfo());
+    dispatch(fetchOrders(userAccount.userAccount.email ?? ''));
   }, []);
-  console.log(userAccount.userData.orders)
+  // console.log(userAccount.userData.orders)
   return (
     <>
       <Header isAuth={userAccount.userAccount.isLogin} />
@@ -113,6 +167,17 @@ export const MyOrders: FC = () => {
                )
              })
            }
+         </div>
+         <div className={style.paginationWrapper}>
+           <div className={style.container}>
+             <ThemeProvider theme={theme}>
+               <Pagination
+                 count={pagesCount}
+                 defaultPage={1}
+                 siblingCount={0}
+               />
+             </ThemeProvider>
+           </div>
          </div>
        </div>
       </section>

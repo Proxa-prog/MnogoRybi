@@ -28,7 +28,6 @@ export interface ResponseApiUserData {
   data: IUserEnter[];
 }
 
-
 export interface IUserData {
   email: string | undefined;
   password: string | undefined;

@@ -11,7 +11,7 @@ import {useSelector} from "react-redux";
 import {openModalUserEnterSelector} from "../../model/selectors/openModalUserEnterSelector";
 import {setUserAccountStateSelector} from "../../model/selectors/setUserAccountStateSelector";
 
-const AddDeliveryAddress: React.FC = () => {
+export const AddDeliveryAddress: React.FC = () => {
   const dispatch = useAppDispatch();
   const userEnter = useSelector(openModalUserEnterSelector);
   const userAccount = useSelector(setUserAccountStateSelector);
@@ -64,5 +64,3 @@ const AddDeliveryAddress: React.FC = () => {
     </div>
   )
 };
-
-export default AddDeliveryAddress;
