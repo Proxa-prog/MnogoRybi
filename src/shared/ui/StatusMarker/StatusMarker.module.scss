@@ -1,5 +1,5 @@
 .status_marker {
-    padding: 3px 8px;
+    padding: 4px 8px;
     font-weight: 700;
     font-size: 12px;
     line-height: 18px;
@@ -10,7 +10,7 @@
     user-select: none;
 
     @media (max-width: 767px) {
-        padding: 2px 5px;
+        padding: 6px 5px;
         font-size: 10px;
         line-height: 12px;
     }
