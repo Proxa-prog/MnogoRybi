@@ -77,7 +77,7 @@ const ModalRegistration: React.FC = () => {
       personalAreaLinks: [
         {
           name: "Личные данные",
-          id: "personalArea",
+          id: "PersonalArea",
           isCurrent: true,
         },
         {

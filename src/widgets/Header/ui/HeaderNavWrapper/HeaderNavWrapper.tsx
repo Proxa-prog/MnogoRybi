@@ -8,8 +8,9 @@ import {MenuButtonBasket} from "widgets/MenuButtonBasket";
 import {MenuButtonEnter} from "widgets/MenuButtonEnter";
 
 import {
+  getPagesNames,
   getRestaurantPagesInfoSelector,
-  getRestaurantProductionsSelector,
+  getRestaurantProductionsSelector, getRestaurantProducts,
 } from "features/restaurant";
 
 import {
@@ -52,6 +53,46 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
   const restaurantProductions = useSelector(getRestaurantProductionsSelector);
   const pagesInfo = useSelector(getRestaurantPagesInfoSelector);
   const [buttonMoreIsOpen, setButtonMoreIsOpen] = useState(true);
+
+  const handleProductionsClick = (event: React.MouseEvent<HTMLLIElement>, items: any) => {
+    const newArray = items.map((item: any) => {
+      if (event.currentTarget.id === `navLink${item.id}`) {
+
+        return {
+          ...item,
+          isCurrent: !item.isCurrent
+        };
+      }
+
+      return {
+        ...item,
+        isCurrent: false
+      };
+    })
+
+    dispatch(getRestaurantProducts(newArray));
+  };
+
+  const handlePagesClick = (event: React.MouseEvent<HTMLLIElement>, items: any) => {
+    console.log(items)
+    const newArray = items.map((item: any) => {
+      if (event.currentTarget.id === `navLink${item.id}`) {
+
+        return {
+          ...item,
+          isCurrent: !item.isCurrent
+        };
+      } else {
+        return {
+          ...item,
+          isCurrent: false
+        };
+      }
+    })
+
+    dispatch(getPagesNames(newArray));
+  };
+
 
   useEffect(() => {
     // if (scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL) {
@@ -110,23 +151,30 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
               )}
             <List
               isNavigate
-              classNameList={classNames(style.header__products_list, {
-                [style.header__products_list__open]: isProductsMenuActive,
-              })}
-              classNameItem={classNames(style.header__products_item, {
-                [style.header__products_item__open]: isProductsMenuActive,
-              })}
+              classNameList={classNames(
+                style.header__products_list,
+                { [style.header__products_list__open]: isProductsMenuActive },
+                []
+              )}
+              classNameItem={classNames(
+                style.header__products_item,
+                { [style.header__products_item__open]: isProductsMenuActive },
+                []
+              )}
               items={restaurantProductions.products}
+              onClick={(event) => {handleProductionsClick(event, restaurantProductions.products)}}
             />
             <div className={style.header__vertical_line}/>
             {scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL &&
-            windowWidth >= ViewPorts.DESKTOP ? (
+            windowWidth >= ViewPorts.DESKTOP
+              ? (
               <>
                 <List
                   isLink
                   classNameList={style.header__info_list_scroll}
                   classNameItem={style.header__info_item_scroll}
                   items={pagesInfo.pagesNames}
+                  onClick={(event) => {handlePagesClick(event, pagesInfo.pagesNames)}}
                 />
                 <Button
                   className={style.header__button_more}
@@ -151,6 +199,7 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
                     classNameList={style.info_list_scroll_more_info}
                     classNameItem={style.info_item_scroll_more_info}
                     items={pagesInfo.pagesNames}
+                    onClick={(event) => {handlePagesClick(event, pagesInfo.pagesNames)}}
                   />
                 </div>
               </>
@@ -166,6 +215,7 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
                   isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
                 })}
                 items={pagesInfo.pagesNames}
+                onClick={(event) => {handlePagesClick(event, pagesInfo.pagesNames)}}
               />
             )}
           </div>

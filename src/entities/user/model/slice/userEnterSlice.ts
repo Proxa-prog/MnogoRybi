@@ -10,7 +10,7 @@ const initialState: IUserEnter =  {
   personalAreaLinks: [
     {
       name: "Личные данные",
-      id: "personalArea",
+      id: "PersonalArea",
       isCurrent: true,
     },
     {

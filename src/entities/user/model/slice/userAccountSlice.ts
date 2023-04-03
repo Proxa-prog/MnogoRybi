@@ -16,7 +16,7 @@ const initialState: IUserEnterFull = {
   personalAreaLinks: [
     {
       name: "Личные данные",
-      id: "personalArea",
+      id: "PersonalArea",
       isCurrent: true,
     },
     {

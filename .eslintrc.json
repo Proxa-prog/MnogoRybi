@@ -53,7 +53,8 @@
       ],
       "linebreak-style": ["error", "windows"],
       "react/button-has-type": [0],
-      "max-len": ["error", { "code": 120 }]
+      "max-len": ["error", { "code": 120 }],
+      "object-curly-spacing": ["error", "never", { "objectsInObjects": true }]
   },
   "env": {
     "browser": true,
@@ -62,5 +63,5 @@
   "globals": {
     "JSX":"readonly"
   },
-  "ignorePatterns": ["src/**/*.test.ts", "src/frontend/generated/*"]
+  "ignorePatterns": ["src/**/*.test.ts", "src/frontend/generated/*"],
 }

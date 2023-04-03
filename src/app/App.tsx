@@ -20,9 +20,9 @@ import { News } from 'pages/news';
 import { Contacts } from 'pages/contacts';
 import { NewsPage } from 'pages/newsPage';
 import {Constructor} from "pages/constructor";
-import { PersonalArea } from 'pages/personalArea';
+import { PersonalArea } from 'pages/PersonalArea';
 import { MyOrders } from 'pages/myOrders';
-// import FranchisePage from 'widgets/ui/FranchisePage/FranchisePage';
+import { Franchise } from 'pages/Franchise';
 // import DeliveryPage from 'widgets/ui/DeliveryPage/DeliveryPage';
 
 import 'shared/assets/fonts/style.css';
@@ -43,8 +43,8 @@ const App: React.FC = () => {
             <Route path={CONSTRUCTOR_PAGE_ROUTE} element={<Constructor/>}/>
             <Route path={PERSONAL_AREA_ROUTE} element={<PersonalArea />} />
             <Route path={PERSONAL_AREA_MY_ORDERS_ROUTE} element={<MyOrders />} />
-            {/* <Route path={FRANCHISE_ROUTE} element={<FranchisePage />} />
-            <Route path={DELIVERY_ROUTE} element={<DeliveryPage />} /> */}
+            <Route path={FRANCHISE_ROUTE} element={<Franchise />} />
+            {/*<Route path={DELIVERY_ROUTE} element={<DeliveryPage />} />*/}
           </Routes>
         </BrowserRouter>
       </Provider>

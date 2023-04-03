@@ -10,7 +10,6 @@ export {
   getRestaurantProducts,
   getRestaurantBaseProduct,
   getRestaurantSauce,
-  changeCurrentProducts,
 } from "./model/slice/restaurantProductionsSlice";
 export {
   IrestaurantLocation,
