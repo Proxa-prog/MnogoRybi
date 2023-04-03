@@ -29,9 +29,9 @@ import {
   openModalUserEnterSelector,
   removeDeliveryAddress,
   setUserAccountStateSelector,
+  AddDeliveryAddress,
+  IPersonalAreaPagesLinks,
 } from "entities/user";
-import AddDeliveryAddress from "entities/user/ui/AddDeliveryAddress/AddDeliveryAddress";
-import { IPersonalAreaPagesLinks } from "entities/user/model/types/types";
 
 import {
   Button,

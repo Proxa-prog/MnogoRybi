@@ -30,6 +30,7 @@ const initialState: IUserEnter =  {
     firstName: '',
     phone: '',
     orders: [],
+    currentOrders: [],
     userUrl: '',
     deliveryAddress: [],
   }
