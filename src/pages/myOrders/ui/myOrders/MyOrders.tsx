@@ -10,7 +10,7 @@ import { Footer } from "widgets/Footer";
 import { Recovery } from "widgets/Recovery";
 import { Header, } from "widgets/Header";
 import { OrderHistoryCard } from "widgets/OrderHistoryCard";
-import { IPaymentStatus } from "widgets/OrderHistoryCard/ui/OrderHistoryCard";
+
 
 import {
   getRegistrationSelector,
@@ -40,6 +40,7 @@ import {
 } from '../../model/types/types'
 
 import style from "./MyOrders.module.scss";
+import { IPaymentStatus, orderStatuses } from "../../../../widgets/OrderHistoryCard/model/types/types";
 
 export const MyOrders: FC = () => {
   const dispatch = useAppDispatch();
@@ -115,7 +116,7 @@ export const MyOrders: FC = () => {
                    deliveryAddress={order.recipientAddress}
                    cost={String(order.totalCost)}
                    paymentStatus={paymentStatus.PENDING}
-                   orderStatus={orderStatus}
+                   orderStatus={orderStatuses}
                    commentToOrder={order.comment}
                  />
                )
