@@ -15,6 +15,7 @@ export interface IUserRegistration {
   firstName: string | undefined;
   phone: string | undefined;
   orders: IAddedOrder[];
+  currentOrders: IAddedOrder[];
   userUrl: string;
   id?: string;
   deliveryAddress: string[];

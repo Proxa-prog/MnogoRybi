@@ -36,6 +36,7 @@ const initialState: IUserEnterFull = {
     firstName: '',
     phone: '',
     orders: [],
+    currentOrders: [],
     userUrl: '',
     deliveryAddress: [],
   }
@@ -81,8 +82,10 @@ export const userAccountSlice = createSlice({
         } else {
           item.isCurrent = false;
         }
-
       })
+    },
+    sortUserOrders: (state, action: PayloadAction<number>) => {
+      state.userData.currentOrders = state.userData.orders.slice(12 * (action.payload - 1), action.payload * 12);
     },
   }
 });
@@ -98,6 +101,7 @@ export const {
   logoutUserAccount,
   changePersonalAreaLinkIsCurrent,
   addOrderInUserAccount,
+  sortUserOrders,
 } = userAccountSlice.actions;
 
 export default userAccountSlice.reducer;

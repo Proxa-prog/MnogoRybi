@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { useAppDispatch } from "app/store";
-import {createTheme, Pagination, ThemeProvider} from "@mui/material";
+import { Pagination, ThemeProvider} from "@mui/material";
+import { nanoid } from "nanoid";
 
 import { Footer } from "widgets/Footer";
 import { Recovery } from "widgets/Recovery";
@@ -30,68 +31,15 @@ import {
   setUserAccountStateSelector,
   AddDeliveryAddress,
   fetchOrders,
+  sortUserOrders,
 } from "entities/user";
 
+import {
+  paymentStatus,
+  theme,
+} from '../../model/types/types'
+
 import style from "./MyOrders.module.scss";
-
-export const enum paymentStatus {
-  PENDING = 'Оплата при получении',
-  FULLFILED = 'Оплачен онлайн',
-  REJECTED = 'Не оплачен',
-}
-
-export const theme = createTheme({
-  components: {
-    MuiButtonBase: {
-      styleOverrides: {
-        root: {
-          '&.MuiButtonBase-root': {
-            '&.MuiPaginationItem-root': {
-              fontWeight: '700',
-              fontSize: '14px',
-              lineHeight: '20px',
-
-              '&.Mui-selected': {
-                backgroundColor: '#414042',
-                color: '#FFFFFF',
-              },
-            },
-          },
-          '&.MuiPaginationItem-sizeMedium': {
-            width: '44px',
-            height: '44px',
-            borderRadius: '50%',
-            backgroundColor: '#FFFFFF',
-          },
-        },
-      },
-    },
-    MuiSvgIcon: {
-      styleOverrides: {
-        root: {
-          '&.MuiSvgIcon-root': {
-            width: '26px',
-            height: '30px',
-            fill: '#31688F',
-          }
-        }
-      }
-    },
-    MuiPaginationItem: {
-      styleOverrides: {
-        root: {
-          width: '44px',
-          height: '44px',
-          borderRadius: '50%',
-          backgroundColor: '#FFFFFF',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }
-      }
-    },
-  },
-});
 
 export const MyOrders: FC = () => {
   const dispatch = useAppDispatch();
@@ -100,8 +48,12 @@ export const MyOrders: FC = () => {
   const confirmation = useSelector(openConfirmationSelector);
   const userAccount = useSelector(setUserAccountStateSelector);
 
-  const handleLickClick = (event: React.MouseEvent<HTMLElement>) => {
+  const handleLinkClick = (event: React.MouseEvent<HTMLElement>) => {
     dispatch(changePersonalAreaLinkIsCurrent(event.currentTarget.id));
+  };
+
+  const handlePaginationClick = (event: React.ChangeEvent<unknown>, value: number) => {
+    dispatch(sortUserOrders(value));
   };
 
   const pagesCount = Math.ceil(userAccount.userData.orders.length / 12);
@@ -110,8 +62,9 @@ export const MyOrders: FC = () => {
     dispatch(fetchRestaurantProductions());
     dispatch(fetchPagesInfo());
     dispatch(fetchOrders(userAccount.userAccount.email ?? ''));
+    dispatch(sortUserOrders(1));
   }, []);
-  // console.log(userAccount.userData.orders)
+
   return (
     <>
       <Header isAuth={userAccount.userAccount.isLogin} />
@@ -133,7 +86,7 @@ export const MyOrders: FC = () => {
                  className={classNames(
                    style.page_link,
                    { [style.page_link_current]: item.isCurrent })}
-                 onClick={handleLickClick}
+                 onClick={handleLinkClick}
                  to={`/${item.id}`}
                  id={item.id}
                  key={item.id}
@@ -146,7 +99,8 @@ export const MyOrders: FC = () => {
          <div className={style.history_order_wrapper}>
            {
              // Должен принимать тип IAddedOrder, выдаёт ошибку.
-             userAccount.userData.orders && userAccount.userData.orders.map((order: any) => {
+             userAccount.userData.currentOrders && userAccount.userData.currentOrders.map((order: any) => {
+               const id = nanoid();
                const orderStatus: IPaymentStatus = {
                  text: 'Доставлен',
                  color: 'blue',
@@ -154,7 +108,7 @@ export const MyOrders: FC = () => {
 
                return (
                  <OrderHistoryCard
-                   key={order.orderId}
+                   key={id}
                    numberOfOrder={123}
                    orderData={order.orderDay}
                    deliveryTime='19:00-19:30'
@@ -175,6 +129,7 @@ export const MyOrders: FC = () => {
                  count={pagesCount}
                  defaultPage={1}
                  siblingCount={0}
+                 onChange={handlePaginationClick}
                />
              </ThemeProvider>
            </div>

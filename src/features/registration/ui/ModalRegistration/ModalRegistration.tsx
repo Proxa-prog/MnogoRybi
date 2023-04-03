@@ -97,6 +97,7 @@ const ModalRegistration: React.FC = () => {
         firstName: registration.firstName,
         phone: registration.phone,
         orders: [],
+        currentOrders: [],
         userUrl: USER_DATA,
         deliveryAddress: [],
       },

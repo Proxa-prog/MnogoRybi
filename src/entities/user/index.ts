@@ -11,6 +11,7 @@ export {
   logoutUserAccount,
   changePersonalAreaLinkIsCurrent,
   addOrderInUserAccount,
+  sortUserOrders,
 } from "./model/slice/userAccountSlice";
 export { findUserAccount } from "./model/services/findUserAccount";
 export { restorePassword } from "./model/services/restorePassword";
