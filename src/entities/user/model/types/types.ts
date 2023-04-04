@@ -1,7 +1,11 @@
-import { IAmountProduct } from "entities/basket/model/types/basketTypes";
-import {IUserEnterFull} from "../slice/userAccountSlice";
-import {IUserEnter} from "../slice/userEnterSlice";
-import {IAddedOrder} from "../../../basket/model/services/addOrderToUser";
+import { IUserEnter } from '../slice/userEnterSlice';
+import { IAddedOrder } from '../../../basket';
+
+export interface IUserEnterFull {
+  personalAreaLinks: IPersonalAreaPagesLinks[];
+  userAccount: IUserAccount;
+  userData: IUserRegistration;
+}
 
 export interface IUserAccount {
   isAddNewAddressOpen: boolean;
@@ -24,6 +28,7 @@ export interface IUserRegistration {
 export interface IResponse {
   data: IUserEnterFull[];
 }
+
 export interface ResponseApiUserData {
   status: string;
   data: IUserEnter[];

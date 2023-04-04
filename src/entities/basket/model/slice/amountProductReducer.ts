@@ -1,28 +1,28 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AmountProductArray, IAmountProduct } from "../types/basketTypes";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { AmountProductArray, IAmountProduct } from '../types/basketTypes';
 
 const initialState: AmountProductArray = {
   amountProduct: {
-    name: "",
+    name: '',
     amount: 0,
     cost: 0,
-    imageUrl: "",
-    description: "",
+    imageUrl: '',
+    description: '',
     baseCost: 0,
-    baseProduct: "",
-    sauce: "",
-    id: "",
+    baseProduct: '',
+    sauce: '',
+    id: '',
   },
   AmountOfProductsInConstructor: {
-    name: "",
+    name: '',
     amount: 0,
     cost: 0,
     baseCost: 440,
-  }
+  },
 };
 
 export const amountProductSlice = createSlice({
-  name: "amountProduct",
+  name: 'amountProduct',
   initialState,
   reducers: {
     setNewProduct: (state, action: PayloadAction<IAmountProduct>) => {
@@ -40,28 +40,29 @@ export const amountProductSlice = createSlice({
     setSauce: (state, action: PayloadAction<string>) => {
       state.amountProduct.sauce = action.payload;
     },
-    setAmountOfProductsInConstructor: (state, action: PayloadAction<number>) => {
+    setAmountOfProductsInConstructor: (
+      state,
+      action: PayloadAction<number>
+    ) => {
       state.AmountOfProductsInConstructor.amount = action.payload;
     },
     setCostOfProductsInConstructor: (state, action: PayloadAction<number>) => {
       state.AmountOfProductsInConstructor.cost = action.payload;
     },
-    setBaseCostOfProductsInConstructor: (state, action: PayloadAction<number>) => {
-      state.AmountOfProductsInConstructor.baseCost = state.AmountOfProductsInConstructor.baseCost + action.payload;
-      state.AmountOfProductsInConstructor.cost = state.AmountOfProductsInConstructor.baseCost * state.AmountOfProductsInConstructor.amount;
+    setBaseCostOfProductsInConstructor: (
+      state,
+      action: PayloadAction<number>
+    ) => {
+      state.AmountOfProductsInConstructor.baseCost =
+        state.AmountOfProductsInConstructor.baseCost + action.payload;
+      state.AmountOfProductsInConstructor.cost =
+        state.AmountOfProductsInConstructor.baseCost *
+        state.AmountOfProductsInConstructor.amount;
     },
   },
 });
 
 export const {
-  setNewProduct,
-  setAmountProduct,
-  setCostProduct,
-  setBaseProduct,
-  setSauce,
-  setAmountOfProductsInConstructor,
-  setCostOfProductsInConstructor,
-  setBaseCostOfProductsInConstructor,
-} = amountProductSlice.actions;
-
-export default amountProductSlice.reducer;
+  reducer: amountProductReducer,
+  actions: amountProductActions
+} = amountProductSlice;

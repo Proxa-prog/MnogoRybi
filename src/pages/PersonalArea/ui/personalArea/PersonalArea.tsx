@@ -24,10 +24,8 @@ import {
 } from "features/restaurant";
 
 import {
-  changeIsAddNewAddressOpen, changePersonalAreaLinkIsCurrent,
-  logoutUserAccount,
+  userAccountActions,
   openModalUserEnterSelector,
-  removeDeliveryAddress,
   setUserAccountStateSelector,
   AddDeliveryAddress,
   IPersonalAreaPagesLinks,
@@ -53,19 +51,19 @@ const PersonalArea: FC = () => {
   const [isButtonGenderActive, setIsButtonGenderActive] = useState(true);
 
   const handleButtonRemoveNewAddress = (deliveryAddress: string) => {
-    dispatch(removeDeliveryAddress(deliveryAddress));
+    dispatch(userAccountActions.removeDeliveryAddress(deliveryAddress));
   };
 
   const handleButtonExitOnClick = () => {
-    dispatch(logoutUserAccount());
+    dispatch(userAccountActions.logoutUserAccount());
   };
 
   const handleButtonOpenModalAddNewAddress = () => {
-    dispatch(changeIsAddNewAddressOpen());
+    dispatch(userAccountActions.changeIsAddNewAddressOpen());
   };
 
   const handleLinkClick = (id: string) => {
-    dispatch(changePersonalAreaLinkIsCurrent(id));
+    dispatch(userAccountActions.changePersonalAreaLinkIsCurrent(id));
   };
 
   useEffect(() => {

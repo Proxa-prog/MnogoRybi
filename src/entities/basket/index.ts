@@ -7,31 +7,12 @@ export { default as BasketSumm } from "./ui/BasketSumm/BasketSumm";
 export { default as ShowOrder } from "./ui/ShowOrder/ShowOrder";
 export { getAmountConstructorProductSelector } from './model/selectors/getAmountProductSelector';
 export {
-  setNewProduct,
-  setAmountProduct,
-  setCostProduct,
-  setBaseProduct,
-  setSauce,
-  setAmountOfProductsInConstructor,
-  setCostOfProductsInConstructor,
-  setBaseCostOfProductsInConstructor,
-} from "./model/slice/amountProductReduser";
+  amountProductActions,
+  amountProductReducer,
+} from "./model/slice/amountProductReducer";
 export {
-  addProductInBasket,
-  openBasketBlock,
-  changeAmount,
-  changeCost,
-  removeProduct,
-  addRecipientName,
-  addRecipientPhone,
-  addRecipientAddress,
-  changePickupOfGoods,
-  addRecipientCardNumber,
-  addRecipientCardDate,
-  addRecipientCardCvc,
-  changePaymentToTheCourier,
-  addComment,
-  changeSaveCardDate,
+  basketReducer,
+  basketActions,
 } from "./model/slice/basketReducer";
 export {
   IProducts,
@@ -52,4 +33,6 @@ export {
   ResponseApiRestaurantLocation,
   ResponseApiRestaurantPagesInfo,
   ResponseApiRestaurantProductions,
+  IAddedOrder,
+  ResponseApiIngredients,
 } from "./model/types/basketTypes";

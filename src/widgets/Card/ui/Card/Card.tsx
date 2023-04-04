@@ -1,31 +1,31 @@
-import React, {FC} from "react";
-import {nanoid} from "@reduxjs/toolkit";
-import classnames from "classnames";
+import React, { FC } from 'react';
+import { nanoid } from '@reduxjs/toolkit';
+import { Link } from 'react-router-dom';
+import classnames from 'classnames';
 
-import {useAppDispatch} from "app/store";
+import { useAppDispatch } from 'app/store';
 
-import {CardProps} from "widgets/Card";
+import { CardProps } from 'widgets/Card';
 
-import {setOpenProductsCard} from "features/productions";
+import { openProductsCardActions } from 'features/productions';
 
-import {StatusMarker, Button, StatusMarkerProps} from "shared";
+import { StatusMarker, Button, StatusMarkerProps } from 'shared';
 
-import style from "./Card.module.scss";
-import {Link} from "react-router-dom";
+import style from './Card.module.scss';
 
 const Card: FC<CardProps> = (props) => {
   const {
-    className = "",
-    imageWrapperClassName = "",
-    imageUrl = "",
+    className = '',
+    imageWrapperClassName = '',
+    imageUrl = '',
     header,
     description,
     cost = null,
     previousCost = null,
     statuses,
     isInfo,
-    buttonText = "В корзину",
-    buttonColor = "default",
+    buttonText = 'В корзину',
+    buttonColor = 'default',
     isGrayTheme = false,
     disabled = false,
     onClick,
@@ -42,10 +42,9 @@ const Card: FC<CardProps> = (props) => {
   };
 
   const handleCardClick = (image: string) => {
-
     return () => {
       dispatch(
-        setOpenProductsCard({
+        openProductsCardActions.setOpenProductsCard({
           imageUrl: image,
           isOpen: true,
           header: header,
@@ -65,23 +64,20 @@ const Card: FC<CardProps> = (props) => {
           [style.info]: isInfo,
           [style.preview_card]: isPreview,
         },
-        [className])
-      }
+        [className]
+      )}
       id={id}
-      onClick={() => {
-      }}
+      onClick={() => {}}
     >
       <div
-        className={classnames(
-          style.image_wrapper,
-          imageWrapperClassName,
-          {[style.image_wrapper_preview]: isPreview}
-        )}
+        className={classnames(style.image_wrapper, imageWrapperClassName, {
+          [style.image_wrapper_preview]: isPreview,
+        })}
         style={{
           backgroundImage: `url(images/${imageUrl})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "contain",
-          backgroundPosition: "bottom",
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'contain',
+          backgroundPosition: 'bottom',
         }}
       >
         <div className={style.card_status_wrapper}>
@@ -107,19 +103,21 @@ const Card: FC<CardProps> = (props) => {
           [style.preview_description_wrapper]: isPreview,
         })}
       >
-        <h3 className={classnames({[style.preview_description]: isPreview})}>
+        <h3 className={classnames({ [style.preview_description]: isPreview })}>
           {header}
         </h3>
-        <p className={classnames(
-          style.description,
-          {
+        <p
+          className={classnames(style.description, {
             [style.create_poke_description]: isPreview,
-          }
-        )}>{description}</p>
-        <div className={classnames(
-          style.cost_wrapper,
-          {[style.create_poke_cost_wrapper]: isPreview}
-        )}>
+          })}
+        >
+          {description}
+        </p>
+        <div
+          className={classnames(style.cost_wrapper, {
+            [style.create_poke_cost_wrapper]: isPreview,
+          })}
+        >
           {(cost || previousCost) && (
             <div className={style.current_cost}>
               {cost && (
@@ -136,33 +134,26 @@ const Card: FC<CardProps> = (props) => {
               )}
             </div>
           )}
-          {
-            isPreview
-              ? (
-                <Button type="button">
-                  <Link
-                    to={`/constructor`}
-                    className={style.create_poke_button}
-                  >Создать поке
-                  </Link>
-                </Button>
-              )
-              : (
-                <Button
-                  className={classnames(style.button_buy)}
-                  color={buttonColor}
-                  isGrayTheme={isGrayTheme}
-                  type="button"
-                  disabled={disabled}
-                  onClick={
-                    (onClick && handleButtonClick) || handleCardClick(imageUrl)
-                  }
-                >
-                  {buttonText}
-                </Button>
-              )
-          }
-
+          {isPreview ? (
+            <Button type='button'>
+              <Link to={`/constructor`} className={style.create_poke_button}>
+                Создать поке
+              </Link>
+            </Button>
+          ) : (
+            <Button
+              className={classnames(style.button_buy)}
+              color={buttonColor}
+              isGrayTheme={isGrayTheme}
+              type='button'
+              disabled={disabled}
+              onClick={
+                (onClick && handleButtonClick) || handleCardClick(imageUrl)
+              }
+            >
+              {buttonText}
+            </Button>
+          )}
         </div>
       </div>
     </div>

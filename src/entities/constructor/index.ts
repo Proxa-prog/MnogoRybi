@@ -1,22 +1,10 @@
 export {
-  changeFillersType,
-  changeFillers,
-  changeIsFillerChecked,
-  changeBaseProductType,
-  changeIsBaseProductChecked,
-  changeProteinType,
-  changeProteinChecked,
-  changeToppingType,
-  changeToppingChecked,
-  changeSauceType,
-  changeSauceChecked,
-  changeCrunchType,
-  changeCrunchChecked,
-  changeAdditionallyType,
-  clearFillers,
+  constructorReducer,
+  constructorActions,
 } from "./model/slice/constructorSlice";
 export {
-  getFilters,
+  filtersReducer,
+  filtersActions,
 } from "./model/slice/filtersSlice";
 export { fillersTypeSelector } from "./model/selectors/fillersTypeSelector";
 export { baseProductSelector } from "./model/selectors/baseProductSelector";

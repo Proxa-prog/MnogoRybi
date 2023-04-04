@@ -144,23 +144,8 @@ export const constructorSlice = createSlice({
 });
 
 export const {
-  changeFillersType,
-  changeFillers,
-  changeIsFillerChecked,
-  changeBaseProductType,
-  changeIsBaseProductChecked,
-  changeProteinType,
-  changeProteinChecked,
-  changeToppingType,
-  changeToppingChecked,
-  changeSauceType,
-  changeSauceChecked,
-  changeCrunchType,
-  changeCrunchChecked,
-  changeAdditionallyType,
-  clearFillers,
-} = constructorSlice.actions;
-
-export default constructorSlice.reducer;
+  reducer: constructorReducer,
+  actions: constructorActions,
+} = constructorSlice;
 
 

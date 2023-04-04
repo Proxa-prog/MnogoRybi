@@ -1,21 +1,18 @@
-import React, { FC, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import classNames from "classnames";
+import React, { FC, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import classNames from 'classnames';
 
-import { useAppDispatch } from "app/store";
-import { HeaderOrderDataWrapper, HeaderNavWrapper } from "widgets/Header";
+import { useAppDispatch } from 'app/store';
+import { HeaderOrderDataWrapper, HeaderNavWrapper } from 'widgets/Header';
 
-import { changeIsOpenRegistration } from "features/registration";
+import { registrationActions } from 'features/registration';
 
-import { openBasketSelector, openBasketBlock } from "entities/basket";
-import {
-  openModalUserEnterSelector,
-  changeIsOpenUserEnter,
-} from "entities/user";
+import { openBasketSelector, basketActions } from 'entities/basket';
+import { openModalUserEnterSelector, userEnterActions } from 'entities/user';
 
-import { ViewPorts } from "shared";
+import { ViewPorts } from 'shared';
 
-import style from "./Header.module.scss";
+import style from './Header.module.scss';
 
 export interface HeaderProps {
   itemsInTheBasket?: number | undefined;
@@ -23,10 +20,7 @@ export interface HeaderProps {
 }
 
 const Header: FC<HeaderProps> = (props) => {
-  const {
-    itemsInTheBasket,
-    isAuth = false
-  } = props;
+  const { itemsInTheBasket, isAuth = false } = props;
 
   const dispatch = useAppDispatch();
   const [scrollHeight, setScrollHeight] = useState(0);
@@ -37,7 +31,7 @@ const Header: FC<HeaderProps> = (props) => {
   const userEnter = useSelector(openModalUserEnterSelector);
 
   const handlerButtonBasketClick = () => {
-    dispatch(openBasketBlock(basket.isBasketOpen));
+    dispatch(basketActions.openBasketBlock(basket.isBasketOpen));
   };
 
   const handleScroll = () => {
@@ -53,9 +47,8 @@ const Header: FC<HeaderProps> = (props) => {
   };
 
   const onHeaderEnterClick = () => {
-    dispatch(changeIsOpenUserEnter(userEnter.isOpen));
-    dispatch(changeIsOpenRegistration(true));
-
+    dispatch(userEnterActions.changeIsOpenUserEnter(userEnter.isOpen));
+    dispatch(registrationActions.changeIsOpenRegistration(true));
   };
 
   const getWindowWidth = () => {
@@ -63,12 +56,12 @@ const Header: FC<HeaderProps> = (props) => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", getWindowWidth);
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', getWindowWidth);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", getWindowWidth);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', getWindowWidth);
     };
   }, []);
 

@@ -1,21 +1,24 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { IOpenProductsCard, OpenProductsCardArray } from "features/productions/model/types/openProductsCardTypes";
+import {
+  IOpenProductsCard,
+  OpenProductsCardArray,
+} from 'features/productions';
 
 const initialState: OpenProductsCardArray = {
   openProductsCard: {
     isOpen: false,
-    imageUrl: "",
-    header: "",
-    description: "",
-    cost: "",
+    imageUrl: '',
+    header: '',
+    description: '',
+    cost: '',
     statuses: [],
     isPreview: false,
   },
 };
 
 export const openProductsCardSlice = createSlice({
-  name: "openProductsCard",
+  name: 'openProductsCard',
   initialState,
   reducers: {
     setOpenProductsCard: (state, action: PayloadAction<IOpenProductsCard>) => {
@@ -24,6 +27,7 @@ export const openProductsCardSlice = createSlice({
   },
 });
 
-export const { setOpenProductsCard } = openProductsCardSlice.actions;
-
-export default openProductsCardSlice.reducer;
+export const {
+  reducer: openProductsCardReducer,
+  actions: openProductsCardActions,
+} = openProductsCardSlice;

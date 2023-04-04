@@ -1,10 +1,9 @@
 import axios from "axios";
 
 import { ResponseApi } from "entities/basket";
-import { IUserRegistration } from "entities/user";
+import {IUserEnterFull, IUserRegistration} from "entities/user";
 
 import { NEW_PASSWORD, USER_DATA } from "shared";
-import {IUserEnterFull} from "../slice/userAccountSlice";
 
 const setNewPassword = async (item: IUserEnterFull) => {
   await axios.patch<string, string>(`${USER_DATA}/${item.userData.id}`, { password: NEW_PASSWORD });

@@ -1,13 +1,15 @@
-import { IUserRegistration } from "entities/user";
-import { INews } from "features/news";
-import { IProductions } from "features/productions";
+import { IUserEnterFull } from 'entities/user';
+import { INews } from 'features/news';
+import { IProductions } from 'features/productions';
 import {
-  IrestaurantLocation,
+  IRestaurantLocation,
   IrestaurantPagesInfo,
   IRestaurantProductions,
-} from "features/restaurant";
-import {AdditionallyType, ConstructorType} from "../../../constructor/model/slice/constructorSlice";
-import {IUserEnterFull} from "../../../user/model/slice/userAccountSlice";
+} from 'features/restaurant';
+import {
+  AdditionallyType,
+  ConstructorType,
+} from '../../../constructor/model/slice/constructorSlice';
 
 export interface IProducts {
   name: string;
@@ -90,7 +92,7 @@ export interface ResponseApi {
 
 export interface ResponseApiMap {
   status: string;
-  data: IrestaurantLocation;
+  data: IRestaurantLocation;
 }
 
 export interface ResponseApiNews {
@@ -110,7 +112,7 @@ export interface ResponseApiIngredients {
 
 export interface ResponseApiRestaurantLocation {
   status: string;
-  data: IrestaurantLocation;
+  data: IRestaurantLocation;
 }
 
 export interface ResponseApiRestaurantPagesInfo {
@@ -121,4 +123,22 @@ export interface ResponseApiRestaurantPagesInfo {
 export interface ResponseApiRestaurantProductions {
   status: string;
   data: IRestaurantProductions;
+}
+
+export interface IAddedOrder {
+  orders: IAmountProduct[];
+  orderDay: string;
+  orderTime: string;
+  recipientName: string | undefined;
+  recipientPhone: string | undefined;
+  recipientAddress: string;
+  recipientCardNumber?: string | undefined;
+  recipientCardDate?: string;
+  recipientCvc?: string;
+  pickupOfGoods: boolean;
+  paymentToTheCourier: boolean;
+  saveCardDate: boolean;
+  comment?: string | undefined;
+  totalCost?: number;
+  orderId: string;
 }

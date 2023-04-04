@@ -1,9 +1,9 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { IAllRestaurantPagesInfo, IName } from "features/restaurant";
+import { IAllRestaurantPagesInfo, IName } from 'features/restaurant';
 
-import { IContactsCard } from "entities/contact";
-import { IDescription } from "entities/descriptions";
+import { IContactsCard } from 'entities/contact';
+import { IDescription } from 'entities/descriptions';
 
 const initialState: IAllRestaurantPagesInfo = {
   restaurantPagesInfo: {
@@ -15,7 +15,7 @@ const initialState: IAllRestaurantPagesInfo = {
 };
 
 export const restaurantPagesInfoSlice = createSlice({
-  name: "restaurantPagesInfo",
+  name: 'restaurantPagesInfo',
   initialState,
   reducers: {
     getPagesNames: (state, action: PayloadAction<IName[]>) => {
@@ -37,11 +37,6 @@ export const restaurantPagesInfoSlice = createSlice({
 });
 
 export const {
-  getPagesNames,
-  getFooterLinksNames,
-  getRestaurantAddress,
-  getMainPageDescriptionImagesLinks,
-} =
-  restaurantPagesInfoSlice.actions;
-
-export default restaurantPagesInfoSlice.reducer;
+  reducer: restaurantPagesInfoReducer,
+  actions: restaurantPagesInfoActions,
+} = restaurantPagesInfoSlice;

@@ -1,15 +1,15 @@
 import * as React from 'react';
-import {useState} from "react";
+import { useState } from 'react';
 
-import {Button, Input} from "shared";
-import {useAppDispatch} from "app/store";
-import {addDeliveryAddress, changeIsAddNewAddressOpen} from "../../model/slice/userAccountSlice";
+import { Button, Input } from 'shared';
+import { useAppDispatch } from 'app/store';
+import { userAccountActions } from 'entities/user';
 
-import style from "./AddDeliveryAddress.module.scss";
-import {addNewDeliveryAddressAsync} from "../../model/services/addNewDeliveryAddressAsync";
-import {useSelector} from "react-redux";
-import {openModalUserEnterSelector} from "../../model/selectors/openModalUserEnterSelector";
-import {setUserAccountStateSelector} from "../../model/selectors/setUserAccountStateSelector";
+import style from './AddDeliveryAddress.module.scss';
+import { addNewDeliveryAddressAsync } from '../../model/services/addNewDeliveryAddressAsync';
+import { useSelector } from 'react-redux';
+import { openModalUserEnterSelector } from '../../model/selectors/openModalUserEnterSelector';
+import { setUserAccountStateSelector } from '../../model/selectors/setUserAccountStateSelector';
 
 export const AddDeliveryAddress: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -18,7 +18,7 @@ export const AddDeliveryAddress: React.FC = () => {
   const [address, setNewAddress] = useState('');
 
   const handleButtonModalClose = () => {
-    dispatch(changeIsAddNewAddressOpen());
+    dispatch(userAccountActions.changeIsAddNewAddressOpen());
   };
 
   const handleInputAddressChange = (newAddress: string | undefined) => {
@@ -26,14 +26,16 @@ export const AddDeliveryAddress: React.FC = () => {
   };
 
   const handleButtonAddAddressClick = (newAddress: string) => {
-    dispatch(addDeliveryAddress(newAddress));
-    dispatch(addNewDeliveryAddressAsync({
-      email: userEnter.userAccount.email,
-      password: userEnter.userAccount.password,
-      isWindowUserEnterOpen: userEnter.isOpen,
-      isUserLogin: userAccount.userAccount.isLogin,
-      newDeliveryAddress: newAddress,
-    }));
+    dispatch(userAccountActions.addDeliveryAddress(newAddress));
+    dispatch(
+      addNewDeliveryAddressAsync({
+        email: userEnter.userAccount.email,
+        password: userEnter.userAccount.password,
+        isWindowUserEnterOpen: userEnter.isOpen,
+        isUserLogin: userAccount.userAccount.isLogin,
+        newDeliveryAddress: newAddress,
+      })
+    );
   };
 
   return (
@@ -51,16 +53,20 @@ export const AddDeliveryAddress: React.FC = () => {
         placeholder='Введите адрес'
         name='Введите адрес'
         type='text'
-        onChange={(event) => {handleInputAddressChange(event)}}
+        onChange={(event) => {
+          handleInputAddressChange(event);
+        }}
       />
       <Button
         className={style.button_add_new_address}
         type='button'
         color='yellow'
-        onClick={() => {handleButtonAddAddressClick(address)}}
+        onClick={() => {
+          handleButtonAddAddressClick(address);
+        }}
       >
         Добавить новый адрес
       </Button>
     </div>
-  )
+  );
 };

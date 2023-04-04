@@ -1,20 +1,14 @@
-import React, { FC } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { nanoid } from "@reduxjs/toolkit";
+import React, { FC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
 
-import {
-  addRecipientCardCvc,
-  addRecipientCardDate,
-  addRecipientCardNumber,
-  changePaymentToTheCourier,
-  changeSaveCardDate,
-} from "entities/basket";
+import { basketActions } from 'entities/basket';
 
-import { openBasketSelector } from "entities/basket";
+import { openBasketSelector } from 'entities/basket';
 
-import { Input, Checkbox } from "shared";
+import { Input, Checkbox } from 'shared';
 
-import style from "./Payment.module.scss";
+import style from './Payment.module.scss';
 
 const Payment: FC = () => {
   const dispatch = useDispatch();
@@ -22,26 +16,26 @@ const Payment: FC = () => {
   const basket = useSelector(openBasketSelector);
 
   const handlerChangeInputCardNumber = (cardNumber: string | undefined) => {
-    dispatch(addRecipientCardNumber(cardNumber));
+    dispatch(basketActions.addRecipientCardNumber(cardNumber));
   };
 
   const handlerChangeInputCardDate = (cardDate: string | undefined) => {
-    dispatch(addRecipientCardDate(cardDate));
+    dispatch(basketActions.addRecipientCardDate(cardDate));
   };
 
   const handlerChangeInputCardCvc = (cardCvc: string | undefined) => {
-    dispatch(addRecipientCardCvc(cardCvc));
+    dispatch(basketActions.addRecipientCardCvc(cardCvc));
   };
 
   const handlerChangeCheckboxPaymentToTheCourier = (isTrue: boolean) => {
     return () => {
-      dispatch(changePaymentToTheCourier(isTrue));
+      dispatch(basketActions.changePaymentToTheCourier(isTrue));
     };
   };
 
   const handlerChangeCheckboxSaveCardDate = (isTrue: boolean) => {
     return () => {
-      dispatch(changeSaveCardDate(isTrue));
+      dispatch(basketActions.changeSaveCardDate(isTrue));
     };
   };
 
@@ -69,30 +63,30 @@ const Payment: FC = () => {
           <div className={style.card_data}>
             <Input
               className={style.user_name}
-              placeholder="Номер карты"
-              label=""
-              name="Номер карты"
-              type="number"
+              placeholder='Номер карты'
+              label=''
+              name='Номер карты'
+              type='number'
               onChange={handlerChangeInputCardNumber}
               required
             />
             <Input
               classNameWrapper={style.validity_wrapper}
               className={style.card_validity}
-              placeholder="Срок действия"
-              label=""
-              name="Срок действия"
-              type="number"
+              placeholder='Срок действия'
+              label=''
+              name='Срок действия'
+              type='number'
               onChange={handlerChangeInputCardDate}
               required
             />
             <Input
               classNameWrapper={style.cvc_wrapper}
               className={style.card_cvc}
-              placeholder="CVC"
-              label=""
-              name="CVC"
-              type="number"
+              placeholder='CVC'
+              label=''
+              name='CVC'
+              type='number'
               onChange={handlerChangeInputCardCvc}
               required
             />

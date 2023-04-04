@@ -6,13 +6,13 @@ export interface IName {
   name: string;
 }
 
-export interface IrestaurantLocation {
-  restautantPopupCoordinates: IPopupCoordinates[];
-  restautantMapCenter: IPopupCoordinates;
+export interface IRestaurantLocation {
+  restaurantPopupCoordinates: IPopupCoordinates[];
+  restaurantMapCenter: IPopupCoordinates;
 }
 
-export interface IAllIrestaurantLocationData {
-  restaurantLocation: IrestaurantLocation;
+export interface IAllIRestaurantLocationData {
+  restaurantLocation: IRestaurantLocation;
 }
 
 export interface IRestaurantProductions {

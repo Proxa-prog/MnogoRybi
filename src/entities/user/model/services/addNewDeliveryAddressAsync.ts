@@ -2,8 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { ThunkConfig, USER_DATA } from "shared";
 import axios from "axios";
 import { ResponseApi } from "../../../basket";
-import { IUserData } from "../types/types";
-import { IUserEnterFull } from "../slice/userAccountSlice";
+import {IUserData, IUserEnterFull} from "../types/types";
 
 const setNewAddress = async (item: IUserEnterFull) => {
     await axios.patch<string, string>(

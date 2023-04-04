@@ -1,52 +1,51 @@
-import React, { FC, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { nanoid } from "@reduxjs/toolkit";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
-import { useAppDispatch } from "app/store";
+import React, { FC, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+import { useAppDispatch } from 'app/store';
 
-import PopupIcon from "/public/images/location_marker.png";
+import PopupIcon from '/public/images/location_marker.png';
 
-import { Footer } from "widgets/Footer";
-import { Header, BlockHeader } from "widgets/Header";
-import { Recovery } from "widgets/Recovery";
+import { Footer } from 'widgets/Footer';
+import { Header, BlockHeader } from 'widgets/Header';
+import { Recovery } from 'widgets/Recovery';
 
-import { UserEnter } from "features/user";
+import { UserEnter } from 'features/user';
 import {
   fetchMapCenter,
   setMapSelector,
-  changeMapCenter,
-  RecenterAutomatically,
-} from "features/map";
-import { fetchProductions } from "features/productions";
+  RecenterAutomatically, mapActions,
+} from 'features/map';
+import { fetchProductions } from 'features/productions';
 import {
   getRegistrationSelector,
   openConfirmationSelector,
   ModalRegistration,
   Confirmation,
-} from "features/registration";
+} from 'features/registration';
 import {
   getRestaurantLocationSelector,
   fetchRestaurantLocation,
   fetchPagesInfo,
   fetchRestaurantProductions,
   getRestaurantPagesInfoSelector,
-} from "features/restaurant";
+} from 'features/restaurant';
 
 import {
   openModalUserEnterSelector,
   setUserAccountStateSelector,
-} from "entities/user";
+} from 'entities/user';
 import {
   IContactsCard,
   IPopupCoordinates,
   ContactsCard,
-} from "entities/contact";
+} from 'entities/contact';
 
-import { MAP_ICON_SIZE, MAP_ZOOM } from "shared";
+import { MAP_ICON_SIZE, MAP_ZOOM } from 'shared';
 
-import style from "./Contacts.module.scss";
+import style from './Contacts.module.scss';
 
 const Contacts: FC = () => {
   const dispatch = useAppDispatch();
@@ -81,7 +80,7 @@ const Contacts: FC = () => {
 
   const setMapAddress = (card: IContactsCard) => {
     return () => {
-      dispatch(changeMapCenter(card));
+      dispatch(mapActions.changeMapCenter(card));
     };
   };
 
@@ -100,7 +99,7 @@ const Contacts: FC = () => {
       {confirmation.isOpen && <Confirmation />}
       {userAccount.userAccount.recoveryIsOpen && <Recovery />}
       <Header isAuth={userAccount.userAccount.isLogin} />
-      <BlockHeader pageName="Контакты">
+      <BlockHeader pageName='Контакты'>
         <div className={style.our_contacts}>
           {pagesInfo.restaurantAddress.map((card: IContactsCard) => {
             const id = nanoid();
@@ -118,8 +117,8 @@ const Contacts: FC = () => {
       <div className={style.map}>
         <MapContainer
           center={[
-            restaurantLocation.restautantMapCenter.lat,
-            restaurantLocation.restautantMapCenter.lng,
+            restaurantLocation.restaurantMapCenter.lat,
+            restaurantLocation.restaurantMapCenter.lng,
           ]}
           zoom={MAP_ZOOM}
           scrollWheelZoom={false}
@@ -127,11 +126,11 @@ const Contacts: FC = () => {
           <TileLayer
             noWrap={true}
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
           />
           <>
             {restaurantLocation &&
-              restaurantLocation.restautantPopupCoordinates.map(
+              restaurantLocation.restaurantPopupCoordinates.map(
                 (coordinates) => {
                   return createPopup(coordinates);
                 }

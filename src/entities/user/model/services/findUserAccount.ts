@@ -2,13 +2,11 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { ResponseApi } from "entities/basket";
 import {
-  changeEmailUserAccount,
-  changeIsLoginUserAccount,
-  changeIsOpenUserEnter,
-  IUserData, setUserDataInUserAccount,
+  userAccountActions,
+  userEnterActions,
+  IUserData,
 } from "entities/user";
 import { ThunkConfig, USER_DATA } from "shared";
-import {getUserData} from "./getUserData";
 
 export const findUserAccount = createAsyncThunk<void, IUserData, ThunkConfig<void>>(
   USER_DATA,
@@ -31,12 +29,12 @@ export const findUserAccount = createAsyncThunk<void, IUserData, ThunkConfig<voi
           && item.userAccount.email === email
           && item.userAccount.password === password
         ) {
-          (thunkAPI.dispatch(changeIsOpenUserEnter(isWindowUserEnterOpen)),
-            thunkAPI.dispatch(changeEmailUserAccount(email)));
+          (thunkAPI.dispatch(userEnterActions.changeIsOpenUserEnter(isWindowUserEnterOpen)),
+            thunkAPI.dispatch(userAccountActions.changeEmailUserAccount(email)));
 
           const actualUser = response.data.find((user) => email === user.userAccount.email);
-          actualUser && thunkAPI.dispatch(setUserDataInUserAccount(actualUser));
-          thunkAPI.dispatch(changeIsLoginUserAccount())
+          actualUser && thunkAPI.dispatch(userAccountActions.setUserDataInUserAccount(actualUser));
+          thunkAPI.dispatch(userAccountActions.changeIsLoginUserAccount())
         }
 
         return item;

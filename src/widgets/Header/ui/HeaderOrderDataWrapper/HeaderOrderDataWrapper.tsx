@@ -9,7 +9,7 @@ import { MenuButtonBasket } from "widgets/MenuButtonBasket";
 
 import { getRestaurantPagesInfoSelector } from "features/restaurant";
 
-import { addRecipientAddress } from "entities/basket";
+import { basketActions } from "entities/basket";
 
 import { ViewPorts, ImageWrapper, LabelText, Select, Button } from "shared";
 
@@ -39,7 +39,7 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
   const pagesInfo = useSelector(getRestaurantPagesInfoSelector);
 
   const handlerChangeSelectAddress = (address: string) => {
-    dispatch(addRecipientAddress(address));
+    dispatch(basketActions.addRecipientAddress(address));
   };
 
   return (

@@ -1,25 +1,26 @@
-import React, {FC, useEffect} from "react";
-import { nanoid } from "@reduxjs/toolkit";
-import { useSelector } from "react-redux";
+import React, { FC } from 'react';
+import { nanoid } from '@reduxjs/toolkit';
+import { useSelector } from 'react-redux';
 
-import { useAppDispatch } from "app/store";
+import { useAppDispatch } from 'app/store';
 
-import { Button } from "shared";
+import { Button } from 'shared';
 
-import { constructorSelector } from "entities/constructor";
-import { ProductCounter } from "entities/counter";
+import { constructorSelector } from 'entities/constructor';
+import { ProductCounter } from 'entities/counter';
 import {
-  setAmountOfProductsInConstructor,
-  setCostOfProductsInConstructor,
+  amountProductActions,
   getAmountConstructorProductSelector,
-  addProductInBasket, openBasketSelector,
-} from "entities/basket";
+  basketActions,
+} from 'entities/basket';
 
-import style from "./AddCreatedPoke.module.scss";
+import style from './AddCreatedPoke.module.scss';
 
 const AddCreatedPoke: FC = () => {
   const dispatch = useAppDispatch();
-  const amountOfProductsInConstructor = useSelector(getAmountConstructorProductSelector);
+  const amountOfProductsInConstructor = useSelector(
+    getAmountConstructorProductSelector
+  );
   const constructor = useSelector(constructorSelector);
 
   // Увеличить количество товара
@@ -27,8 +28,8 @@ const AddCreatedPoke: FC = () => {
     const addAmount = amountOfProductsInConstructor.amount + 1;
     const addCost = amountOfProductsInConstructor.baseCost * addAmount;
 
-    dispatch(setAmountOfProductsInConstructor(addAmount));
-    dispatch(setCostOfProductsInConstructor(addCost));
+    dispatch(amountProductActions.setAmountOfProductsInConstructor(addAmount));
+    dispatch(amountProductActions.setCostOfProductsInConstructor(addCost));
   };
 
   // Уменьшить количество товара
@@ -37,8 +38,8 @@ const AddCreatedPoke: FC = () => {
       const addAmount = amountOfProductsInConstructor.amount - 1;
       const addCost = amountOfProductsInConstructor.baseCost * addAmount;
 
-      dispatch(setAmountOfProductsInConstructor(addAmount));
-      dispatch(setCostOfProductsInConstructor(addCost));
+      dispatch(amountProductActions.setAmountOfProductsInConstructor(addAmount));
+      dispatch(amountProductActions.setCostOfProductsInConstructor(addCost));
     }
   };
 
@@ -47,7 +48,7 @@ const AddCreatedPoke: FC = () => {
     const id = nanoid();
 
     dispatch(
-      addProductInBasket({
+      basketActions.addProductInBasket({
         name: '',
         amount: amountOfProductsInConstructor.amount,
         cost: amountOfProductsInConstructor.cost,
@@ -79,14 +80,14 @@ const AddCreatedPoke: FC = () => {
         />
         <Button
           className={style.button_basket}
-          type="button"
-          color="yellow"
+          type='button'
+          color='yellow'
           children={`В корзину за ${amountOfProductsInConstructor.cost} ₽`}
           onClick={addProductOnBasket}
         />
       </div>
     </div>
-  )
+  );
 };
 
 export default AddCreatedPoke;

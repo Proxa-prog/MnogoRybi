@@ -4,111 +4,98 @@ import { nanoid } from '@reduxjs/toolkit';
 
 import { useAppDispatch } from 'app/store';
 import {
-  changeAgreement,
-  changeEmail,
-  changeFirstName,
-  changeIsOpenRegistration,
-  changePhone,
-  setPassword,
+  registrationActions,
   openConfirmationSelector,
   getRegistrationSelector,
 } from 'features/registration';
 
 import {
   openModalUserEnterSelector,
-  changeIsOpenUserEnter,
+  userEnterActions,
   registerUser,
-} from "entities/user";
+} from 'entities/user';
 
-import {
-  MOK_PASSWORD,
-  Button,
-  Checkbox,
-  Input,
-  USER_DATA,
-} from 'shared';
+import { getRestaurantPagesInfoSelector } from '../../../restaurant';
+
+import { Button, Checkbox, MOK_PASSWORD, Input, USER_DATA } from 'shared';
 
 import style from './ModalRegistration.module.scss';
-import {getRestaurantPagesInfoSelector} from "../../../restaurant";
 
 const ModalRegistration: React.FC = () => {
   const dispatch = useAppDispatch();
   const buttonCloseId = nanoid();
   const registration = useSelector(getRegistrationSelector);
   const userEnter = useSelector(openModalUserEnterSelector);
-  const confirmation = useSelector(openConfirmationSelector);
   const restaurant = useSelector(getRestaurantPagesInfoSelector);
 
   const handleButtonUserEnterClick = () => {
-    dispatch(changeIsOpenRegistration(registration.isOpen));
-    dispatch(changeIsOpenUserEnter(userEnter.isOpen));
+    dispatch(registrationActions.changeIsOpenRegistration(registration.isOpen));
+    dispatch(userEnterActions.changeIsOpenUserEnter(userEnter.isOpen));
   };
 
   const handleCheckboxAgreementChange = () => {
-    dispatch(changeAgreement(registration.agreement));
+    dispatch(registrationActions.changeAgreement(registration.agreement));
   };
 
   const handleButtonCloseChange = () => {
-    dispatch(changeIsOpenRegistration(registration.isOpen));
+    dispatch(registrationActions.changeIsOpenRegistration(registration.isOpen));
   };
 
   const handleInputNameChange = (firstName: string | undefined) => {
-    dispatch(changeFirstName(firstName));
+    dispatch(registrationActions.changeFirstName(firstName));
   };
 
   const handleInputEmailChange = (email: string | undefined) => {
-    dispatch(changeEmail(email));
+    dispatch(registrationActions.changeEmail(email));
   };
 
   const handleInputPhoneChange = (phone: string | undefined) => {
-    dispatch(changePhone(phone));
+    dispatch(registrationActions.changePhone(phone));
   };
 
   const handleButtonRegistrationClick = (event: React.FormEvent) => {
     event.preventDefault();
-    dispatch(setPassword(MOK_PASSWORD));
+    dispatch(registrationActions.setPassword(MOK_PASSWORD));
 
     const restaurantAddress = restaurant.restaurantAddress.map((item) => {
-
       return item.name;
-    })
+    });
 
-    dispatch(registerUser({
-      personalAreaLinks: [
-        {
-          name: "Личные данные",
-          id: "PersonalArea",
-          isCurrent: true,
+    dispatch(
+      registerUser({
+        personalAreaLinks: [
+          {
+            name: 'Личные данные',
+            id: 'PersonalArea',
+            isCurrent: true,
+          },
+          {
+            name: 'Мои заказы',
+            id: 'myOrders',
+            isCurrent: false,
+          },
+        ],
+        userAccount: {
+          isAddNewAddressOpen: false,
+          email: registration.email,
+          password: MOK_PASSWORD,
+          isLogin: false,
+          recoveryIsOpen: true,
         },
-        {
-          name: "Мои заказы",
-          id: "myOrders",
-          isCurrent: false
+        userData: {
+          firstName: registration.firstName,
+          phone: registration.phone,
+          orders: [],
+          currentOrders: [],
+          userUrl: USER_DATA,
+          deliveryAddress: [],
         },
-      ],
-      userAccount: {
-        isAddNewAddressOpen: false,
-        email: registration.email,
-        password: MOK_PASSWORD,
-        isLogin: false,
-        recoveryIsOpen: true,
-      },
-      userData: {
-        firstName: registration.firstName,
-        phone: registration.phone,
-        orders: [],
-        currentOrders: [],
-        userUrl: USER_DATA,
-        deliveryAddress: [],
-      },
-    }));
+      })
+    );
   };
 
   return (
-    <form
-      className={style.modal}
-      onSubmit={handleButtonRegistrationClick}
-    >
+    <form className={style.modal} onSubmit={handleButtonRegistrationClick}>
       <Button
         id={buttonCloseId}
         className={style.button_close}
@@ -166,7 +153,9 @@ const ModalRegistration: React.FC = () => {
         Зарегистрироваться
       </Button>
       <div className={style.have_account_wrapper}>
-        <span className={style.have_account}>Уже есть учетная запись?&nbsp;&nbsp;</span>
+        <span className={style.have_account}>
+          Уже есть учетная запись?&nbsp;&nbsp;
+        </span>
         <Button
           className={style.button_have_account}
           onClick={handleButtonUserEnterClick}
@@ -176,7 +165,7 @@ const ModalRegistration: React.FC = () => {
         </Button>
       </div>
     </form>
-  )
+  );
 };
 
 export default ModalRegistration;

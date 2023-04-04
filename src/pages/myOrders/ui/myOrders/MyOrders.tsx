@@ -23,14 +23,13 @@ import {
   fetchRestaurantProductions,
 } from "features/restaurant";
 
-import { IPersonalAreaPagesLinks } from "entities/user/model/types/types";
+import { IPersonalAreaPagesLinks } from "entities/user";
 import {
-  changePersonalAreaLinkIsCurrent,
+  userAccountActions,
   openModalUserEnterSelector,
   setUserAccountStateSelector,
   AddDeliveryAddress,
   fetchOrders,
-  sortUserOrders,
 } from "entities/user";
 
 import { IPaymentStatus, orderStatuses } from "../../../../widgets/OrderHistoryCard/model/types/types";
@@ -49,11 +48,11 @@ export const MyOrders: FC = () => {
   const userAccount = useSelector(setUserAccountStateSelector);
 
   const handleLinkClick = (event: React.MouseEvent<HTMLElement>) => {
-    dispatch(changePersonalAreaLinkIsCurrent(event.currentTarget.id));
+    dispatch(userAccountActions.changePersonalAreaLinkIsCurrent(event.currentTarget.id));
   };
 
   const handlePaginationClick = (event: React.ChangeEvent<unknown>, value: number) => {
-    dispatch(sortUserOrders(value));
+    dispatch(userAccountActions.sortUserOrders(value));
   };
 
   const pagesCount = Math.ceil(userAccount.userData.orders.length / 12);
@@ -62,7 +61,7 @@ export const MyOrders: FC = () => {
     dispatch(fetchRestaurantProductions());
     dispatch(fetchPagesInfo());
     dispatch(fetchOrders(userAccount.userAccount.email ?? ''));
-    dispatch(sortUserOrders(1));
+    dispatch(userAccountActions.sortUserOrders(1));
   }, []);
 
   return (

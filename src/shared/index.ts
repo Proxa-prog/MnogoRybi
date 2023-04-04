@@ -28,6 +28,7 @@ export {
   LOGO_WIDTH,
   LOGO_HEIGHT,
   INPUT_MASK,
+  RESTAURANT_FILTERS_URL,
 } from './assets/constants/constants';
 export { Advanced } from './ui/Advanced/Advanced';
 export { Button } from './ui/Button/Button';

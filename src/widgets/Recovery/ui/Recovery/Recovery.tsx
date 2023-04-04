@@ -7,8 +7,8 @@ import {
   setUserAccountStateSelector,
   openModalUserEnterSelector,
   restorePassword,
-  changeIsOpenUserEnter,
-  changeIsOpenRecovery,
+  userEnterActions,
+  userAccountActions,
 } from "entities/user";
 
 import { Button, Input } from "shared";
@@ -22,7 +22,7 @@ const Recovery: FC = () => {
   const [email, setEmail] = useState("");
 
   const handleButtonCloseClick = () => {
-    dispatch(changeIsOpenRecovery(userAccount.userAccount.recoveryIsOpen));
+    dispatch(userAccountActions.changeIsOpenRecovery(userAccount.userAccount.recoveryIsOpen));
   };
 
   const handleButtonSendClick = (email: string) => {
@@ -30,8 +30,8 @@ const Recovery: FC = () => {
   };
 
   const handleButtonBackClick = () => {
-    dispatch(changeIsOpenUserEnter(userEnter.isOpen));
-    dispatch(changeIsOpenRecovery(userAccount.userAccount.recoveryIsOpen));
+    dispatch(userEnterActions.changeIsOpenUserEnter(userEnter.isOpen));
+    dispatch(userAccountActions.changeIsOpenRecovery(userAccount.userAccount.recoveryIsOpen));
   };
 
   return (

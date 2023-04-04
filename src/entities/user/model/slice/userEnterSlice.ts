@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IUserEnterFull } from "./userAccountSlice";
+import {IUserEnterFull} from "../types/types";
 
 export interface IUserEnter extends IUserEnterFull {
   isOpen: boolean;
@@ -56,10 +56,6 @@ export const userEnterSlice = createSlice({
 });
 
 export const {
-  setUserData,
-  changeIsOpenUserEnter,
-  changeEmailUserEnter,
-  changePasswordUserEnter,
- } = userEnterSlice.actions;
-
-export default userEnterSlice.reducer;
+  reducer: userEnterReducer,
+  actions: userEnterActions,
+ } = userEnterSlice;

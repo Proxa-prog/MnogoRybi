@@ -3,9 +3,7 @@ import { useDispatch } from "react-redux";
 import classNames from "classnames";
 
 import {
-  changeAmount,
-  changeCost,
-  removeProduct,
+  basketActions,
   IAmountProduct,
 } from "entities/basket";
 
@@ -28,8 +26,8 @@ const BasketCard: FC<BasketCardProps> = (props) => {
     const addAmount = product.amount + 1;
     const addCost = Number(product.baseCost) * addAmount;
 
-    dispatch(changeAmount({ addAmount: addAmount, id: product.id }));
-    dispatch(changeCost({ addCost: addCost, id: product.id }));
+    dispatch(basketActions.changeAmount({ addAmount: addAmount, id: product.id }));
+    dispatch(basketActions.changeCost({ addCost: addCost, id: product.id }));
   };
 
   // Уменьшить количество товара в корзине
@@ -38,14 +36,14 @@ const BasketCard: FC<BasketCardProps> = (props) => {
       const addAmount = product.amount - 1;
       const addCost = Number(product.baseCost) * addAmount;
 
-      dispatch(changeAmount({ addAmount: addAmount, id: product.id }));
-      dispatch(changeCost({ addCost: addCost, id: product.id }));
+      dispatch(basketActions.changeAmount({ addAmount: addAmount, id: product.id }));
+      dispatch(basketActions.changeCost({ addCost: addCost, id: product.id }));
     }
   };
 
   // Удалить товар в корзине
   const handlerButtonRemoveProduct = () => {
-    dispatch(removeProduct(product.id));
+    dispatch(basketActions.removeProduct(product.id));
   };
 
   return (

@@ -6,7 +6,7 @@ import { useAppDispatch } from "app/store";
 
 import { Basket } from "widgets/Basket";
 
-import { openBasketSelector, openBasketBlock } from "entities/basket";
+import { openBasketSelector, basketActions } from "entities/basket";
 
 import { Button } from "shared";
 
@@ -23,7 +23,7 @@ const BasketWrapper: FC = () => {
       event.target.id === cardWrapperId ||
       event.target.id === buttonCloseId
     ) {
-      dispatch(openBasketBlock(basket.isBasketOpen));
+      dispatch(basketActions.openBasketBlock(basket.isBasketOpen));
     }
   };
 

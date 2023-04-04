@@ -43,13 +43,6 @@ export const registrationSlice = createSlice({
 });
 
 export const {
-  changeAgreement,
-  changeIsOpenRegistration,
-  changeFirstName,
-  changeEmail,
-  changePassword,
-  changePhone,
-  setPassword,
-} = registrationSlice.actions;
-
-export default registrationSlice.reducer;
+  reducer: registrationReducer,
+  actions: registrationActions,
+} = registrationSlice

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { IAmountProduct, addComment } from "entities/basket";
+import { IAmountProduct, basketActions } from 'entities/basket';
 
 import { Input } from 'shared/ui/Input/Input';
 
@@ -14,15 +14,11 @@ export interface BasketSummProps {
 }
 
 const BasketSumm: FC<BasketSummProps> = (props) => {
-  const {
-    basket,
-    totalCost,
-    costOfDelivery,
-  } = props;
+  const { basket, totalCost, costOfDelivery } = props;
   const dispatch = useDispatch();
 
   const handlerChangeInputComment = (comment: string | undefined) => {
-    dispatch(addComment(comment));
+    dispatch(basketActions.addComment(comment));
   };
 
   return (
@@ -48,7 +44,7 @@ const BasketSumm: FC<BasketSummProps> = (props) => {
         onChange={handlerChangeInputComment}
       />
     </div>
-  )
+  );
 };
 
 export default BasketSumm;

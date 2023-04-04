@@ -1,34 +1,40 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { IPopupCoordinates } from "entities/contact";
-import { IAllIrestaurantLocationData } from "features/restaurant";
+import { IPopupCoordinates } from 'entities/contact';
 
-const initialState: IAllIrestaurantLocationData = {
+import { IAllIRestaurantLocationData } from 'features/restaurant';
+
+const initialState: IAllIRestaurantLocationData = {
   restaurantLocation: {
-    restautantPopupCoordinates: [],
-    restautantMapCenter: {
+    restaurantPopupCoordinates: [],
+    restaurantMapCenter: {
       lat: 0,
       lng: 0,
     },
-  }
-}
+  },
+};
 
 export const restaurantLocationSlice = createSlice({
-  name: "restaurantLocation",
+  name: 'restaurantLocation',
   initialState,
   reducers: {
-    getRestaurantLocation: (state, action: PayloadAction<IPopupCoordinates[]>) => {
-      state.restaurantLocation.restautantPopupCoordinates = action.payload;
+    getRestaurantLocation: (
+      state,
+      action: PayloadAction<IPopupCoordinates[]>
+    ) => {
+      state.restaurantLocation.restaurantPopupCoordinates = action.payload;
     },
-    getRestaurantMapCenter: (state, action: PayloadAction<IPopupCoordinates>) => {
-      state.restaurantLocation.restautantMapCenter = action.payload;
-    }
-  }
+    getRestaurantMapCenter: (
+      state,
+      action: PayloadAction<IPopupCoordinates>
+    ) => {
+      state.restaurantLocation.restaurantMapCenter = action.payload;
+    },
+  },
 });
 
 export const {
-  getRestaurantLocation,
-  getRestaurantMapCenter,
-} = restaurantLocationSlice.actions;
-
-export default restaurantLocationSlice.reducer;
+  reducer: restaurantReducer,
+  actions: restaurantActions,
+} =
+  restaurantLocationSlice;

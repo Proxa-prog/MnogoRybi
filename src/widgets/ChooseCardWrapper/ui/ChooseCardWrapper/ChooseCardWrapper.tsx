@@ -5,9 +5,8 @@ import { nanoid } from "@reduxjs/toolkit";
 import { useAppDispatch } from "app/store";
 
 import {
-  setOpenProductsCard,
   openProductsCardSelector,
-  ChooseCard,
+  ChooseCard, openProductsCardActions,
 } from "features/productions";
 
 import { Button } from "shared";
@@ -26,7 +25,7 @@ const ChooseCardWrapper: FC = () => {
       event.target.id === buttonCloseId
     ) {
       dispatch(
-        setOpenProductsCard({
+        openProductsCardActions.setOpenProductsCard({
           imageUrl: "",
           isOpen: false,
         })

@@ -1,17 +1,18 @@
-import React, {FC, useEffect, useState} from "react";
-import {Link} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import React, { FC, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
-import classNames from "classnames";
+import classNames from 'classnames';
 
-import {MenuButtonBasket} from "widgets/MenuButtonBasket";
-import {MenuButtonEnter} from "widgets/MenuButtonEnter";
+import { MenuButtonBasket } from 'widgets/MenuButtonBasket';
+import { MenuButtonEnter } from 'widgets/MenuButtonEnter';
 
 import {
-  getPagesNames,
   getRestaurantPagesInfoSelector,
-  getRestaurantProductionsSelector, getRestaurantProducts,
-} from "features/restaurant";
+  getRestaurantProductionsSelector,
+  restaurantPagesInfoActions,
+  restaurantProductionsActions,
+} from 'features/restaurant';
 
 import {
   ONE_HUNDRED_PIXEL_SCROLL,
@@ -19,10 +20,9 @@ import {
   ImageWrapper,
   Button,
   List,
-} from "shared";
+} from 'shared';
 
-import style from "widgets/Header/ui/Header/Header.module.scss";
-import {changeIsLoginUserAccount} from "entities/user";
+import style from 'widgets/Header/ui/Header/Header.module.scss';
 
 interface HeaderNavWrapperProps {
   isHeaderMenuActive: boolean;
@@ -54,45 +54,48 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
   const pagesInfo = useSelector(getRestaurantPagesInfoSelector);
   const [buttonMoreIsOpen, setButtonMoreIsOpen] = useState(true);
 
-  const handleProductionsClick = (event: React.MouseEvent<HTMLLIElement>, items: any) => {
+  const handleProductionsClick = (
+    event: React.MouseEvent<HTMLLIElement>,
+    items: any
+  ) => {
     const newArray = items.map((item: any) => {
       if (event.currentTarget.id === `navLink${item.id}`) {
-
         return {
           ...item,
-          isCurrent: !item.isCurrent
+          isCurrent: !item.isCurrent,
         };
       }
 
       return {
         ...item,
-        isCurrent: false
+        isCurrent: false,
       };
-    })
+    });
 
-    dispatch(getRestaurantProducts(newArray));
+    dispatch(restaurantProductionsActions.getRestaurantProducts(newArray));
   };
 
-  const handlePagesClick = (event: React.MouseEvent<HTMLLIElement>, items: any) => {
-    console.log(items)
+  const handlePagesClick = (
+    event: React.MouseEvent<HTMLLIElement>,
+    items: any
+  ) => {
+    console.log(items);
     const newArray = items.map((item: any) => {
       if (event.currentTarget.id === `navLink${item.id}`) {
-
         return {
           ...item,
-          isCurrent: !item.isCurrent
+          isCurrent: !item.isCurrent,
         };
       } else {
         return {
           ...item,
-          isCurrent: false
+          isCurrent: false,
         };
       }
-    })
+    });
 
-    dispatch(getPagesNames(newArray));
+    dispatch(restaurantPagesInfoActions.getPagesNames(newArray));
   };
-
 
   useEffect(() => {
     // if (scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL) {
@@ -106,7 +109,7 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
     <div
       className={classNames(style.nav, {
         [style.header__nav_wrapper_scroll]:
-        scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL,
+          scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL,
       })}
     >
       <div className={classNames(style.header__nav_wrapper)}>
@@ -115,11 +118,11 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
             <Button
               isGrayTheme
               className={style.header__button_products_menu}
-              type="button"
+              type='button'
               imageRight={
                 isProductsMenuActive
-                  ? "property_expand_up.svg"
-                  : "property_expand_down.svg"
+                  ? 'property_expand_up.svg'
+                  : 'property_expand_down.svg'
               }
               imageHeight={24}
               imageWidth={24}
@@ -131,19 +134,19 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
           <div
             className={classNames(style.list_wrapper, {
               [style.list_wrapper_scroll]:
-              scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL,
+                scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL,
               [style.list_wrapper__open]: isProductsMenuActive,
               [style.list_wrapper__open_button_menu]:
-              isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
+                isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
             })}
           >
             {scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL &&
               windowWidth >= ViewPorts.DESKTOP && (
-                <Link to="/">
+                <Link to='/'>
                   <ImageWrapper
                     className={style.header__logo_scroll}
-                    name="logo_only_image.svg"
-                    alt="Логотип тарелка, рыба, китайские палочки"
+                    name='logo_only_image.svg'
+                    alt='Логотип тарелка, рыба, китайские палочки'
                     width={38.25}
                     height={45}
                   />
@@ -162,24 +165,27 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
                 []
               )}
               items={restaurantProductions.products}
-              onClick={(event) => {handleProductionsClick(event, restaurantProductions.products)}}
+              onClick={(event) => {
+                handleProductionsClick(event, restaurantProductions.products);
+              }}
             />
-            <div className={style.header__vertical_line}/>
+            <div className={style.header__vertical_line} />
             {scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL &&
-            windowWidth >= ViewPorts.DESKTOP
-              ? (
+            windowWidth >= ViewPorts.DESKTOP ? (
               <>
                 <List
                   isLink
                   classNameList={style.header__info_list_scroll}
                   classNameItem={style.header__info_item_scroll}
                   items={pagesInfo.pagesNames}
-                  onClick={(event) => {handlePagesClick(event, pagesInfo.pagesNames)}}
+                  onClick={(event) => {
+                    handlePagesClick(event, pagesInfo.pagesNames);
+                  }}
                 />
                 <Button
                   className={style.header__button_more}
-                  type="button"
-                  imageRight="property_expand_down.svg"
+                  type='button'
+                  imageRight='property_expand_down.svg'
                   imageHeight={24}
                   imageWidth={24}
                   onClick={() => {
@@ -199,7 +205,9 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
                     classNameList={style.info_list_scroll_more_info}
                     classNameItem={style.info_item_scroll_more_info}
                     items={pagesInfo.pagesNames}
-                    onClick={(event) => {handlePagesClick(event, pagesInfo.pagesNames)}}
+                    onClick={(event) => {
+                      handlePagesClick(event, pagesInfo.pagesNames);
+                    }}
                   />
                 </div>
               </>
@@ -208,14 +216,16 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
                 isLink
                 classNameList={classNames(style.header__info_list, {
                   [style.header__info_list__open]:
-                  isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
+                    isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
                 })}
                 classNameItem={classNames(style.header__info_item, {
                   [style.header__info_item__open]:
-                  isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
+                    isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
                 })}
                 items={pagesInfo.pagesNames}
-                onClick={(event) => {handlePagesClick(event, pagesInfo.pagesNames)}}
+                onClick={(event) => {
+                  handlePagesClick(event, pagesInfo.pagesNames);
+                }}
               />
             )}
           </div>
@@ -223,16 +233,13 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
             {(isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP) || (
               <Button
                 className={style.header__button_create_poke}
-                type="button"
+                type='button'
                 isGrayTheme
                 onClick={() => {
-                  console.log("Button Create");
+                  console.log('Button Create');
                 }}
               >
-                <Link
-                  to={`/constructor`}
-                  className={style.create_poke_button}
-                >
+                <Link to={`/constructor`} className={style.create_poke_button}>
                   Создать поке
                 </Link>
               </Button>
@@ -240,7 +247,7 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
             {scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL &&
               windowWidth >= ViewPorts.TABLET && (
                 <>
-                  <MenuButtonEnter isAuth={isAuth} scroll={scrollHeight}/>
+                  <MenuButtonEnter isAuth={isAuth} scroll={scrollHeight} />
                   <div className={style.header__button_basket_wrapper}>
                     <MenuButtonBasket
                       itemsInTheBasket={itemsInTheBasket}

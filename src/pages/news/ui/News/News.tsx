@@ -12,7 +12,7 @@ import { Header, BlockHeader } from 'widgets/Header';
 
 import {
   INews,
-  addLimit,
+  newsActions,
   getNewsSelector,
   fetchNews,
 } from 'features/news';
@@ -24,7 +24,7 @@ import {
 } from 'features/registration';
 import { UserEnter } from 'features/user';
 import { fetchProductions } from 'features/productions';
-import { fetchPagesInfo, fetchRestaurantProductions } from 'features/restaurant';
+import { fetchPagesInfo } from 'features/restaurant';
 
 import {
   openModalUserEnterSelector,
@@ -45,11 +45,10 @@ const News: FC = () => {
   const userAccount = useSelector(setUserAccountStateSelector);
 
   const handleButtonShowMore = () => {
-    dispatch(addLimit(NEWS_LIMIT));
+    dispatch(newsActions.addLimit(NEWS_LIMIT));
   };
 
   const handleCardButtonClick = (id: string) => {
-
     return () => {
       router(`/${id}`)
     }
@@ -57,7 +56,6 @@ const News: FC = () => {
 
   useEffect(() => {
     dispatch(fetchProductions());
-
     dispatch(fetchPagesInfo());
     dispatch(fetchNews(news.limit));
   }, [news.limit]);
