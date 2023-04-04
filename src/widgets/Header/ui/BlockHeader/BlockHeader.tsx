@@ -8,7 +8,7 @@ export interface BlockHeaderProps {
   className?: string;
   pageName: string;
   previousPages?: string[];
-  children: JSX.Element;
+  children?: JSX.Element;
 }
 
 const BlockHeader: FC<BlockHeaderProps> = (props) => {

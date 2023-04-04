@@ -3,14 +3,13 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { useAppDispatch } from "app/store";
-import { Pagination, ThemeProvider} from "@mui/material";
+import {Pagination, ThemeProvider} from "@mui/material";
 import { nanoid } from "nanoid";
 
 import { Footer } from "widgets/Footer";
 import { Recovery } from "widgets/Recovery";
 import { Header, } from "widgets/Header";
 import { OrderHistoryCard } from "widgets/OrderHistoryCard";
-
 
 import {
   getRegistrationSelector,
@@ -34,13 +33,13 @@ import {
   sortUserOrders,
 } from "entities/user";
 
+import { IPaymentStatus, orderStatuses } from "../../../../widgets/OrderHistoryCard/model/types/types";
 import {
   paymentStatus,
   theme,
-} from '../../model/types/types'
+} from 'pages/myOrders';
 
 import style from "./MyOrders.module.scss";
-import { IPaymentStatus, orderStatuses } from "../../../../widgets/OrderHistoryCard/model/types/types";
 
 export const MyOrders: FC = () => {
   const dispatch = useAppDispatch();

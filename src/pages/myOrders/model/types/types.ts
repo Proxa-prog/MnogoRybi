@@ -1,4 +1,4 @@
-import {createTheme} from "@mui/material";
+import { createTheme } from "@mui/material";
 
 export const enum paymentStatus {
   PENDING = 'Оплата при получении',
