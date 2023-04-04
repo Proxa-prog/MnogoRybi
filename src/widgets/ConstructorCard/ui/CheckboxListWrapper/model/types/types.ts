@@ -1,11 +1,9 @@
 import { AnyAction } from '@reduxjs/toolkit';
 
+import { IFiltersIngredients } from 'widgets/ConstructorCard';
+
 import { IProducts } from 'entities/basket';
-import { IFiltersIngredients } from '../../../../model/types/types';
-import {
-  ConstructorType,
-  FillersType,
-} from 'entities/constructor/model/slice/constructorSlice';
+import { ConstructorType, FillersType } from 'entities/constructor';
 
 interface imageTypes {
   url: string | undefined;

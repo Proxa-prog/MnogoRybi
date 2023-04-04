@@ -7,7 +7,12 @@ import {
   IUserOrder,
   setTotalCost,
 } from 'entities/basket';
-import { userAccountActions, IUserEnterFull } from 'entities/user';
+import {
+  userAccountActions,
+  IUserEnterFull,
+  ResponseApiUserData,
+  IUserEnter,
+} from 'entities/user';
 
 import { ThunkConfig, USER_DATA } from 'shared';
 
@@ -15,21 +20,17 @@ export const addOrderToUser = createAsyncThunk<
   void,
   IUserOrder,
   ThunkConfig<void>
->(USER_DATA, async (userOrder, thunkAPI) => {
+>('basket/addOrderToUser', async (userOrder, thunkAPI) => {
   const { userEmail, basket } = userOrder;
   const orderTime = new Date();
   const id = nanoid();
 
   try {
-    const response = await axios.get<string, any>(`${USER_DATA}`);
-    // response.data.map((item: any) => {
-    //   axios.delete<string, IUserEnterFull>(
-    //     `${USER_DATA}/${item.id}`,
-    //
-    //   )
-    // })
+    const response = await axios.get<string, ResponseApiUserData>(
+      `${USER_DATA}`
+    );
 
-    const actualUserId = response.data.find((user: any) => {
+    const actualUserId = response.data.find((user: IUserEnter) => {
       return user.userAccount.email === userEmail;
     });
 

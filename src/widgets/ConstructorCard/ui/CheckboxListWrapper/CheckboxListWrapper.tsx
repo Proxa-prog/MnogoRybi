@@ -1,18 +1,17 @@
 import React, { FC } from 'react';
+import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { nanoid } from 'nanoid';
-
-import { ImageWrapper } from 'shared';
 
 import CheckboxListColumnSquare from '../CheckboxListColumnSquare/CheckboxListColumnSquare';
 import CheckboxListCircle from '../CheckboxListCircle/CheckboxListCircle';
 import SelectList from '../SelectListWrapper/SelectList';
 
-import { IFiltersIngredients } from '../../model/types/types';
-import { useSelector } from 'react-redux';
-import { filtersSelector } from 'entities/constructor/model/selectors/filtersSelector';
+import { CheckboxListWrapperProps, IFiltersIngredients } from 'widgets/ConstructorCard';
 
-import { CheckboxListWrapperProps } from 'widgets/ConstructorCard';
+import { filtersSelector } from 'entities/constructor';
+
+import { ImageWrapper } from 'shared';
 
 import style from './CheckboxListWrapper.module.scss';
 

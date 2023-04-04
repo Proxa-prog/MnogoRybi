@@ -9,13 +9,12 @@ import { filtersActions } from 'entities/constructor';
 import { ThunkConfig, RESTAURANT_FILTERS_URL } from 'shared';
 
 export const fetchFilters = createAsyncThunk<void, void, ThunkConfig<void>>(
-  RESTAURANT_FILTERS_URL,
+  'filters/fetchFilters',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get<
-        IFiltersIngredients[],
-        ResponseApiIngredients
-      >(RESTAURANT_FILTERS_URL);
+      const response = await axios.get<IFiltersIngredients[], ResponseApiIngredients>(
+        RESTAURANT_FILTERS_URL
+      );
       thunkAPI.dispatch(filtersActions.getFilters(response.data));
     } catch (error) {
       console.log(error);

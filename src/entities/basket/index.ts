@@ -2,9 +2,9 @@ export { openBasketSelector } from "./model/selectors/openBasketSelector";
 export { getAmountProductSelector } from "./model/selectors/getAmountProductSelector";
 export { addOrderToUser } from "./model/services/addOrderToUser";
 export { setTotalCost } from "./model/services/setTotalCost";
-export { default as BasketCard } from "./ui/BasketCard/BasketCard";
-export { default as BasketSumm } from "./ui/BasketSumm/BasketSumm";
-export { default as ShowOrder } from "./ui/ShowOrder/ShowOrder";
+export { BasketCard } from "./ui/BasketCard/BasketCard";
+export { BasketSumm } from "./ui/BasketSumm/BasketSumm";
+export { ShowOrder } from "./ui/ShowOrder/ShowOrder";
 export { getAmountConstructorProductSelector } from './model/selectors/getAmountProductSelector';
 export {
   amountProductActions,
@@ -35,4 +35,5 @@ export {
   ResponseApiRestaurantProductions,
   IAddedOrder,
   ResponseApiIngredients,
+  BasketCardProps,
 } from "./model/types/basketTypes";

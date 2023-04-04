@@ -1,4 +1,4 @@
-.basket_summ_wrapper {
+.basketSummWrapper {
     width: 100%;
     background-color: $white-00;
     padding: 30px;
@@ -11,7 +11,7 @@
     }
 }
 
-.input_wrapper {
+.inputWrapper {
     width: 100%;
     color: $gray-30;
 }
@@ -32,15 +32,15 @@
     color: $gray-100;
 }
 
-.product_amount {
+.productAmount {
     @include basket_summ_text_template;
 }
 
-.cost_of_delivery {
+.costOfDelivery {
     @include basket_summ_text_template;
 }
 
-.basket_summ {
+.basketSumm {
     @include basket_summ_text_template;
 
     font-weight: 600;
@@ -53,7 +53,7 @@
     }
 }
 
-.order_commet {
+.orderComment {
     width: 100%;
 
     @media (max-width: 767px) {

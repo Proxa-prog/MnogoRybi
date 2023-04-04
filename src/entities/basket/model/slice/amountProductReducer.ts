@@ -40,29 +40,21 @@ export const amountProductSlice = createSlice({
     setSauce: (state, action: PayloadAction<string>) => {
       state.amountProduct.sauce = action.payload;
     },
-    setAmountOfProductsInConstructor: (
-      state,
-      action: PayloadAction<number>
-    ) => {
+    setAmountOfProductsInConstructor: (state, action: PayloadAction<number>) => {
       state.AmountOfProductsInConstructor.amount = action.payload;
     },
     setCostOfProductsInConstructor: (state, action: PayloadAction<number>) => {
       state.AmountOfProductsInConstructor.cost = action.payload;
     },
-    setBaseCostOfProductsInConstructor: (
-      state,
-      action: PayloadAction<number>
-    ) => {
-      state.AmountOfProductsInConstructor.baseCost =
-        state.AmountOfProductsInConstructor.baseCost + action.payload;
+    setBaseCostOfProductsInConstructor: (state, action: PayloadAction<number>) => {
+      state.AmountOfProductsInConstructor.baseCost = state.AmountOfProductsInConstructor.baseCost + action.payload;
       state.AmountOfProductsInConstructor.cost =
-        state.AmountOfProductsInConstructor.baseCost *
-        state.AmountOfProductsInConstructor.amount;
+        state.AmountOfProductsInConstructor.baseCost * state.AmountOfProductsInConstructor.amount;
     },
   },
 });
 
 export const {
   reducer: amountProductReducer,
-  actions: amountProductActions
+  actions: amountProductActions,
 } = amountProductSlice;

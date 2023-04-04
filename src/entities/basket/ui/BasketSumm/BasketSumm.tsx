@@ -13,8 +13,12 @@ export interface BasketSummProps {
   costOfDelivery: number;
 }
 
-const BasketSumm: FC<BasketSummProps> = (props) => {
-  const { basket, totalCost, costOfDelivery } = props;
+export const BasketSumm: FC<BasketSummProps> = (props) => {
+  const {
+    basket,
+    totalCost,
+    costOfDelivery
+  } = props;
   const dispatch = useDispatch();
 
   const handlerChangeInputComment = (comment: string | undefined) => {
@@ -22,22 +26,22 @@ const BasketSumm: FC<BasketSummProps> = (props) => {
   };
 
   return (
-    <div className={style.basket_summ_wrapper}>
-      <div className={style.product_amount}>
+    <div className={style.basketSummWrapper}>
+      <div className={style.productAmount}>
         <span className={style.text}>{`${basket.length} товара`}</span>
         <span className={style.cost}>{`${totalCost} ₽`}</span>
       </div>
-      <div className={style.cost_of_delivery}>
+      <div className={style.costOfDelivery}>
         <span className={style.text}>Доставка</span>
         <span className={style.cost}>{`${costOfDelivery} ₽`}</span>
       </div>
-      <div className={style.basket_summ}>
+      <div className={style.basketSumm}>
         <span>Сумма заказа</span>
         <span>{`${totalCost + costOfDelivery} ₽`}</span>
       </div>
       <Input
-        className={style.order_commet}
-        classNameWrapper={style.input_wrapper}
+        className={style.orderComment}
+        classNameWrapper={style.inputWrapper}
         label=''
         name=''
         placeholder='Комментарий к заказу'
@@ -46,5 +50,3 @@ const BasketSumm: FC<BasketSummProps> = (props) => {
     </div>
   );
 };
-
-export default BasketSumm;

@@ -1,16 +1,16 @@
-.basket_card_wrapper {
+.basketCardWrapper {
     width: 100%;
     border-radius: 10px;
     background-color: $white-00;
     margin-bottom: 5px;
 }
 
-.basket_card {
+.basketCard {
     display: flex;
     width: 100%;
     padding: 10px;
 
-    .product_image {
+    .productImage {
         width: 120px;
         height: 100px;
         border-radius: 8px;
@@ -29,17 +29,17 @@
     }
 }
 
-.counter_wrapper {
+.counterWrapper {
     padding: 12px;
 }
 
-.trash_button {
+.trashButton {
     padding: 0;
     width: 24px;
     height: 24px;
 }
 
-.description_wrapper {
+.descriptionWrapper {
     width: 55%;
     margin-left: 15px;
 
@@ -59,7 +59,7 @@
     }
 }
 
-.trash_wrapper {
+.trashWrapper {
     display: flex;
     flex-grow: 1;
     justify-content: flex-end;

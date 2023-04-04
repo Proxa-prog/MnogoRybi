@@ -16,9 +16,12 @@ export {
   IUserData,
   IPersonalAreaPagesLinks,
   IUserEnterFull,
+  ResponseApiUserData,
+  IUserEnter,
 } from './model/types/types';
 export {
   userEnterReducer,
   userEnterActions,
+  userEnterSlice,
 } from './model/slice/userEnterSlice';
 export { AddDeliveryAddress } from './ui/AddDeliveryAddress/AddDeliveryAddress';

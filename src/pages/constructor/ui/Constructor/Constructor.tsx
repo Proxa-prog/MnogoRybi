@@ -112,7 +112,7 @@ const Constructor = () => {
                 checkboxState={baseProduct}
                 changeChecked={constructorActions.changeIsBaseProductChecked}
                 // @ts-ignore
-                changeType={changeBaseProductType}
+                changeType={constructorActions.changeBaseProductType}
               />
             </ConstructorCard>
             <ConstructorCard>
@@ -122,7 +122,7 @@ const Constructor = () => {
                 checkboxState={protein}
                 changeChecked={constructorActions.changeProteinChecked}
                 // @ts-ignore
-                changeType={changeProteinType}
+                changeType={constructorActions.changeProteinType}
               />
             </ConstructorCard>
             <ConstructorCard className={style.withoutMargin}>
@@ -155,7 +155,7 @@ const Constructor = () => {
                 checkboxState={sauce}
                 changeChecked={constructorActions.changeSauceChecked}
                 // @ts-ignore
-                changeType={changeSauceType}
+                changeType={constructorActions.changeSauceType}
               />
             </ConstructorCard>
             <ConstructorCard>
@@ -164,7 +164,7 @@ const Constructor = () => {
                 isCircleCheckbox
                 changeChecked={constructorActions.changeCrunchChecked}
                 // @ts-ignore
-                changeType={changeCrunchType}
+                changeType={constructorActions.changeCrunchType}
                 checkboxState={crunch}
               />
             </ConstructorCard>
@@ -175,7 +175,7 @@ const Constructor = () => {
                 {...ingredients.additionally}
                 changeChecked={constructorActions.changeCrunchChecked}
                 // @ts-ignore
-                changeType={changeCrunchType}
+                changeType={constructorActions.changeCrunchType}
               />
             </ConstructorCard>
             <AddCreatedPoke />

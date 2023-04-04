@@ -6,6 +6,12 @@ export {
   filtersReducer,
   filtersActions,
 } from "./model/slice/filtersSlice";
+export {
+  IConstructorState,
+  ConstructorType,
+  AdditionallyType,
+  FillersType,
+} from './model/types/types';
 export { fillersTypeSelector } from "./model/selectors/fillersTypeSelector";
 export { baseProductSelector } from "./model/selectors/baseProductSelector";
 export { sauceSelector } from "./model/selectors/sauceSelector";

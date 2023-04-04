@@ -1,5 +1,9 @@
-import { IUserEnter } from '../slice/userEnterSlice';
 import { IAddedOrder } from '../../../basket';
+
+export interface IUserEnter extends IUserEnterFull {
+  isOpen: boolean;
+  id?: number;
+}
 
 export interface IUserEnterFull {
   personalAreaLinks: IPersonalAreaPagesLinks[];

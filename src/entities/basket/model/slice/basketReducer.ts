@@ -30,7 +30,6 @@ export const basketSlice = createSlice({
   reducers: {
     addProductInBasket: (state, action: PayloadAction<IAmountProduct>) => {
       state.basketState.basket = [...state.basketState.basket, action.payload];
-      // state.basketState.isBasketOpen = state.basketState.isBasketOpen;
     },
     openBasketBlock: (state, action: PayloadAction<boolean>) => {
       state.basketState.isBasketOpen = !action.payload;
@@ -68,16 +67,10 @@ export const basketSlice = createSlice({
     changePickupOfGoods: (state, action: PayloadAction<boolean>) => {
       state.basketState.pickupOfGoods = !action.payload;
     },
-    addRecipientCardNumber: (
-      state,
-      action: PayloadAction<string | undefined>
-    ) => {
+    addRecipientCardNumber: (state, action: PayloadAction<string | undefined>) => {
       state.basketState.recipientCardNumber = action.payload;
     },
-    addRecipientCardDate: (
-      state,
-      action: PayloadAction<string | undefined>
-    ) => {
+    addRecipientCardDate: (state, action: PayloadAction<string | undefined>) => {
       state.basketState.recipientCardDate = action.payload;
     },
     addRecipientCardCvc: (state, action: PayloadAction<string | undefined>) => {

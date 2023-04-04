@@ -4,12 +4,9 @@ import { IProductions } from 'features/productions';
 import {
   IRestaurantLocation,
   IrestaurantPagesInfo,
-  IRestaurantProductions,
+  IRestaurantProductions
 } from 'features/restaurant';
-import {
-  AdditionallyType,
-  ConstructorType,
-} from '../../../constructor/model/slice/constructorSlice';
+import { AdditionallyType, ConstructorType } from 'entities/constructor';
 
 export interface IProducts {
   name: string;
@@ -141,4 +138,8 @@ export interface IAddedOrder {
   comment?: string | undefined;
   totalCost?: number;
   orderId: string;
+}
+
+export interface BasketCardProps {
+  product: IAmountProduct;
 }
