@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import { IContactsCard } from 'entities/contact';
 
-import { Button } from 'shared/ui/Button/Button';
+import { Button } from 'shared';
 
 import style from './ContactsCard.module.scss';
 
@@ -11,19 +11,16 @@ export interface ContactsCardProps {
   onClick?: () => void;
 }
 
-const ContactsCard: FC<ContactsCardProps> = (props) => {
-  const {
-    card,
-    onClick,
-  } = props;
+export const ContactsCard: FC<ContactsCardProps> = (props) => {
+  const { card, onClick } = props;
 
   return (
-    <div className={style.contacts_card}>
+    <div className={style.contactsCard}>
       <h3>{card.name}</h3>
       <p>{card.workTime}</p>
       <p>{card.phone}</p>
       <Button
-        className={style.button_show_on_map}
+        className={style.buttonShowOnMap}
         isGrayTheme
         type='button'
         onClick={onClick}
@@ -31,7 +28,5 @@ const ContactsCard: FC<ContactsCardProps> = (props) => {
         Показать на карте
       </Button>
     </div>
-  )
+  );
 };
-
-export default ContactsCard;
