@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { IMap } from 'features/map';
 
 const initialState: IMap = {
