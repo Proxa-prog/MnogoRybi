@@ -1,5 +1,5 @@
 .payment {
-    @include basket_block_wrapper;
+    @include basketBlockWrapper;
 }
 
 .payment_block_wrapepr {
@@ -7,7 +7,7 @@
 }
 
 .payment_header_wrapper {
-    @include basket_block_header;
+    @include basketBlockHeader;
 }
 
 p {
@@ -82,5 +82,5 @@ hr {
 }
 
 .courier {
-    @include checkbox_block;
+    @include checkboxBlock;
 }
