@@ -67,7 +67,7 @@ export const Input: FC<InputProps> = ((props) => {
         required={required}
         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
           if (onChange) {
-            onChange(event.target.value, name);
+            onChange(event.target?.value, name);
           }
         }}
       />
