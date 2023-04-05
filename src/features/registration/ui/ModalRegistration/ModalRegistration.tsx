@@ -10,7 +10,7 @@ import {
 } from 'features/registration';
 
 import {
-  openModalUserEnterSelector,
+  userEnterSelector,
   userEnterActions,
   registerUser,
 } from 'entities/user';
@@ -25,7 +25,7 @@ const ModalRegistration: React.FC = () => {
   const dispatch = useAppDispatch();
   const buttonCloseId = nanoid();
   const registration = useSelector(getRegistrationSelector);
-  const userEnter = useSelector(openModalUserEnterSelector);
+  const userEnter = useSelector(userEnterSelector);
   const restaurant = useSelector(getRestaurantPagesInfoSelector);
 
   const handleButtonUserEnterClick = () => {
@@ -76,11 +76,11 @@ const ModalRegistration: React.FC = () => {
           },
         ],
         userAccount: {
-          isAddNewAddressOpen: false,
+          isModalAddNewAddressOpen: false,
           email: registration.email,
           password: MOK_PASSWORD,
           isLogin: false,
-          recoveryIsOpen: true,
+          isModalRecoveryOpen: true,
         },
         userData: {
           firstName: registration.firstName,

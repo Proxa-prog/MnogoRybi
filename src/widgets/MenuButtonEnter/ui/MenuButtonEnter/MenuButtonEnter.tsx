@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 import { registrationActions } from 'features/registration';
 
-import { openModalUserEnterSelector, userEnterActions } from 'entities/user';
+import { userEnterSelector, userEnterActions } from 'entities/user';
 
 import { ONE_HUNDRED_PIXEL_SCROLL, Button } from 'shared';
 
@@ -19,7 +19,7 @@ interface MenuButtonEnterProps {
 const MenuButtonEnter: FC<MenuButtonEnterProps> = (props) => {
   const { isAuth, scroll } = props;
 
-  const userEnter = useSelector(openModalUserEnterSelector);
+  const userEnter = useSelector(userEnterSelector);
   const dispatch = useAppDispatch();
 
   const handleCheckboxAgreementChange = () => {

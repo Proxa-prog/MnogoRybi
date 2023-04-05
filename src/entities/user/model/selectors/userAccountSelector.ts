@@ -3,7 +3,7 @@ import { RootState } from "app/store";
 
 const userAccount = (state: RootState) => state.userAccount;
 
-export const setUserAccountStateSelector = createSelector(
+export const userAccountSelector = createSelector(
   [ userAccount ],
   (userAccountState) => {
 

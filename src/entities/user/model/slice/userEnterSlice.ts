@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IUserEnter } from '../types/types';
+
+import { IUserEnter } from 'entities/user';
 
 const initialState: IUserEnter = {
   isOpen: false,
@@ -16,9 +17,9 @@ const initialState: IUserEnter = {
     },
   ],
   userAccount: {
-    isAddNewAddressOpen: false,
+    isModalAddNewAddressOpen: false,
     isLogin: false,
-    recoveryIsOpen: false,
+    isModalRecoveryOpen: false,
     email: '',
     password: '',
   },
@@ -39,19 +40,13 @@ export const userEnterSlice = createSlice({
     setUserData: (state, action: PayloadAction<IUserEnter>) => {
       state = action.payload;
     },
-    changeIsOpenUserEnter: (state, action: PayloadAction<boolean>) => {
+    changeIsOpenUserEnter: (state,action: PayloadAction<boolean>) => {
       state.isOpen = !action.payload;
     },
-    changeEmailUserEnter: (
-      state,
-      action: PayloadAction<string | undefined>
-    ) => {
+    changeEmailUserEnter: (state,action: PayloadAction<string | undefined>) => {
       state.userAccount.email = action.payload;
     },
-    changePasswordUserEnter: (
-      state,
-      action: PayloadAction<string | undefined>
-    ) => {
+    changePasswordUserEnter: (state,action: PayloadAction<string | undefined>) => {
       state.userAccount.password = action.payload;
     },
   },

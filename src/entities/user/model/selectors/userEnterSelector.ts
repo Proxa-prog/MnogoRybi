@@ -3,7 +3,7 @@ import { RootState } from "app/store";
 
 const userEnter = (state: RootState) => state.userEnter;
 
-export const openModalUserEnterSelector = createSelector(
+export const userEnterSelector = createSelector(
   [ userEnter ],
   (isOpen) => {
 

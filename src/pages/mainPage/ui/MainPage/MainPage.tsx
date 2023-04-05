@@ -27,8 +27,8 @@ import {
 } from 'features/restaurant';
 
 import {
-  openModalUserEnterSelector,
-  setUserAccountStateSelector
+  userEnterSelector,
+  userAccountSelector
 } from 'entities/user';
 import { Description } from 'entities/descriptions';
 
@@ -36,9 +36,9 @@ const MainPage: FC = () => {
   const dispatch = useAppDispatch();
   const productions = useSelector(getProdSelector);
   const registration = useSelector(getRegistrationSelector);
-  const userEnter = useSelector(openModalUserEnterSelector);
+  const userEnter = useSelector(userEnterSelector);
   const confirmation = useSelector(openConfirmationSelector);
-  const userAccount = useSelector(setUserAccountStateSelector);
+  const userAccount = useSelector(userAccountSelector);
 
   useEffect(() => {
     dispatch(fetchProductions());
@@ -52,7 +52,7 @@ const MainPage: FC = () => {
       {registration.isOpen && <ModalRegistration />}
       {userEnter.isOpen && <UserEnter />}
       {confirmation.isOpen && <Confirmation />}
-      {userAccount.userAccount.recoveryIsOpen && <Recovery />}
+      {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
       <div>
         <Description />
         <ComponentWrapper title='Наша продукция'>

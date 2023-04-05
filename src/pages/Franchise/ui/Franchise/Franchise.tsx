@@ -22,8 +22,8 @@ import { UserEnter } from "../../../../features/user";
 import { Recovery } from "../../../../widgets/Recovery";
 import { nanoid } from "@reduxjs/toolkit";
 import {
-  openModalUserEnterSelector,
-  setUserAccountStateSelector,
+  userEnterSelector,
+  userAccountSelector,
 } from "../../../../entities/user";
 import { FranchiseAdvantages } from "../FranchiseAdvantages/FranchiseAdvantages";
 import { fetchProductions } from "../../../../features/productions";
@@ -34,9 +34,9 @@ import style from "./Franchise.module.scss";
 export const Franchise: FC = () => {
   const dispatch = useAppDispatch();
   const registration = useSelector(getRegistrationSelector);
-  const userEnter = useSelector(openModalUserEnterSelector);
+  const userEnter = useSelector(userEnterSelector);
   const confirmation = useSelector(openConfirmationSelector);
-  const userAccount = useSelector(setUserAccountStateSelector);
+  const userAccount = useSelector(userAccountSelector);
 
   useEffect(() => {
     dispatch(fetchProductions());
@@ -49,7 +49,7 @@ export const Franchise: FC = () => {
       {registration.isOpen && <ModalRegistration />}
       {userEnter.isOpen && <UserEnter />}
       {confirmation.isOpen && <Confirmation />}
-      {userAccount.userAccount.recoveryIsOpen && <Recovery />}
+      {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
       <Header isAuth={userAccount.userAccount.isLogin} />
       <section className={style.wrapper}>
         <div className={style.inner}>

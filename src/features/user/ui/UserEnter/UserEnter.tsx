@@ -10,8 +10,8 @@ import {
 
 import {
   findUserAccount,
-  setUserAccountStateSelector,
-  openModalUserEnterSelector,
+  userAccountSelector,
+  userEnterSelector,
   userEnterActions,
   userAccountActions,
 } from 'entities/user';
@@ -23,8 +23,8 @@ import style from './UserEnter.module.scss';
 const UserEnter: FC = () => {
   const dispatch = useAppDispatch();
   const registration = useSelector(getRegistrationSelector);
-  const userEnter = useSelector(openModalUserEnterSelector);
-  const userAccount = useSelector(setUserAccountStateSelector);
+  const userEnter = useSelector(userEnterSelector);
+  const userAccount = useSelector(userAccountSelector);
 
   const handleCheckboxAgreementChange = () => {
     dispatch(registrationActions.changeIsOpenRegistration(registration.isOpen));
@@ -45,8 +45,8 @@ const UserEnter: FC = () => {
 
   const handleConfirmationButtonClick = () => {
     dispatch(
-      userAccountActions.changeIsOpenRecovery(
-        userAccount.userAccount.recoveryIsOpen
+      userAccountActions.changeIsModalRecoveryOpen(
+        userAccount.userAccount.isModalRecoveryOpen
       )
     );
     dispatch(userEnterActions.changeIsOpenUserEnter(userEnter.isOpen));

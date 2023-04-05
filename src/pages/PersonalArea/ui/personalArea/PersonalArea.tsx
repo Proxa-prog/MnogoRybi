@@ -25,8 +25,8 @@ import {
 
 import {
   userAccountActions,
-  openModalUserEnterSelector,
-  setUserAccountStateSelector,
+  userEnterSelector,
+  userAccountSelector,
   AddDeliveryAddress,
   IPersonalAreaPagesLinks,
 } from "entities/user";
@@ -44,9 +44,9 @@ const PersonalArea: FC = () => {
   const dispatch = useAppDispatch();
   const router = useNavigate();
   const registration = useSelector(getRegistrationSelector);
-  const userEnter = useSelector(openModalUserEnterSelector);
+  const userEnter = useSelector(userEnterSelector);
   const confirmation = useSelector(openConfirmationSelector);
-  const userAccount = useSelector(setUserAccountStateSelector);
+  const userAccount = useSelector(userAccountSelector);
   const restaurant = useSelector(getRestaurantPagesInfoSelector);
   const [isButtonGenderActive, setIsButtonGenderActive] = useState(true);
 
@@ -59,7 +59,7 @@ const PersonalArea: FC = () => {
   };
 
   const handleButtonOpenModalAddNewAddress = () => {
-    dispatch(userAccountActions.changeIsAddNewAddressOpen());
+    dispatch(userAccountActions.changeIsModalAddNewAddressOpen());
   };
 
   const handleLinkClick = (id: string) => {
@@ -77,10 +77,10 @@ const PersonalArea: FC = () => {
       {registration.isOpen && <ModalRegistration />}
       {userEnter.isOpen && <UserEnter />}
       {confirmation.isOpen && <Confirmation />}
-      {userAccount.userAccount.recoveryIsOpen && <Recovery />}
+      {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
       {
         userAccount.userAccount.isLogin
-        && userAccount.userAccount.isAddNewAddressOpen
+        && userAccount.userAccount.isModalAddNewAddressOpen
         && <AddDeliveryAddress />
       }
       <section className={style.wrapper}>

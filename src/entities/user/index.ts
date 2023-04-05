@@ -1,15 +1,14 @@
-export { openModalUserEnterSelector } from './model/selectors/openModalUserEnterSelector';
-export { setUserAccountStateSelector } from './model/selectors/setUserAccountStateSelector';
+export { userEnterSelector } from './model/selectors/userEnterSelector';
+export { userAccountSelector } from './model/selectors/userAccountSelector';
 export {
   userAccountActions,
   userAccountReducer,
 } from './model/slice/userAccountSlice';
 export { findUserAccount } from './model/services/findUserAccount';
 export { restorePassword } from './model/services/restorePassword';
+export { createUser } from './model/services/createUser';
 export { addNewDeliveryAddressAsync } from './model/services/addNewDeliveryAddressAsync';
 export { registerUser } from './model/services/setUserData';
-export { addDeliveryAddressToUser } from './model/services/addDeliveryAddressToUser';
-export { fetchOrders } from './model/services/fetchOrders';
 export {
   IUserRegistration,
   IResponse,
@@ -18,6 +17,7 @@ export {
   IUserEnterFull,
   ResponseApiUserData,
   IUserEnter,
+  ICreateUserData,
 } from './model/types/types';
 export {
   userEnterReducer,

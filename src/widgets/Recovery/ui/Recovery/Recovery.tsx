@@ -4,8 +4,8 @@ import { useSelector } from "react-redux";
 import { useAppDispatch } from "app/store";
 
 import {
-  setUserAccountStateSelector,
-  openModalUserEnterSelector,
+  userAccountSelector,
+  userEnterSelector,
   restorePassword,
   userEnterActions,
   userAccountActions,
@@ -17,12 +17,12 @@ import style from "./Recovery.module.scss";
 
 const Recovery: FC = () => {
   const dispatch = useAppDispatch();
-  const userAccount = useSelector(setUserAccountStateSelector);
-  const userEnter = useSelector(openModalUserEnterSelector);
+  const userAccount = useSelector(userAccountSelector);
+  const userEnter = useSelector(userEnterSelector);
   const [email, setEmail] = useState("");
 
   const handleButtonCloseClick = () => {
-    dispatch(userAccountActions.changeIsOpenRecovery(userAccount.userAccount.recoveryIsOpen));
+    dispatch(userAccountActions.changeIsModalRecoveryOpen(userAccount.userAccount.isModalRecoveryOpen));
   };
 
   const handleButtonSendClick = (email: string) => {
@@ -31,7 +31,7 @@ const Recovery: FC = () => {
 
   const handleButtonBackClick = () => {
     dispatch(userEnterActions.changeIsOpenUserEnter(userEnter.isOpen));
-    dispatch(userAccountActions.changeIsOpenRecovery(userAccount.userAccount.recoveryIsOpen));
+    dispatch(userAccountActions.changeIsModalRecoveryOpen(userAccount.userAccount.isModalRecoveryOpen));
   };
 
   return (

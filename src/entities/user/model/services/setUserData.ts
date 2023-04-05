@@ -1,15 +1,18 @@
 import axios from 'axios';
-import { ResponseApi } from 'entities/basket';
-
-import { IResponse, IUserEnterFull } from 'entities/user';
-import {
-  confirmationActions,
-  registrationActions,
-} from 'features/registration';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig, USER_DATA } from 'shared';
 
-const checkEmailExistence = (resp: IResponse, email: string | undefined) => {
+import { confirmationActions, registrationActions } from 'features/registration';
+
+import { ResponseApi } from 'entities/basket';
+import {
+  createUser,
+  IResponse,
+  IUserEnterFull
+} from 'entities/user';
+
+import { ThunkConfig } from 'shared';
+
+const checkEmailExistence = (resp: IResponse, email: string) => {
   const emailIsBusy = resp.data.some((item: IUserEnterFull) => {
     return item.userAccount.email === email;
   });
@@ -17,57 +20,49 @@ const checkEmailExistence = (resp: IResponse, email: string | undefined) => {
   return emailIsBusy;
 };
 
-export const registerUser = createAsyncThunk<
-  void,
-  IUserEnterFull,
-  ThunkConfig<void>
->(USER_DATA, async (user: IUserEnterFull, thunkAPI) => {
-  const { userAccount, userData } = user;
-  const { firstName, phone, orders, userUrl, deliveryAddress, id } = userData;
+export const registerUser = createAsyncThunk<void, IUserEnterFull, ThunkConfig<void>>(
+  'confirmation/registerUser',
+  async (user: IUserEnterFull, thunkAPI) => {
+    const { userAccount, userData } = user;
+    const { password, email } = userAccount;
+    const {
+      firstName,
+      phone,
+      orders,
+      userUrl,
+      deliveryAddress,
+    } = userData;
 
-  const { password, email } = userAccount;
-
-  try {
-    const createUser = () =>
-      axios.post<string, ResponseApi>(userUrl, {
-        userAccount: {
-          isLogin: false,
-          recoveryIsOpen: false,
-          email: email,
-          password: password,
-        },
-        userData: {
-          firstName: firstName,
-          phone: phone,
+    try {
+      const newUserData = () => {
+        return {
+          password,
+          email,
+          firstName,
+          phone,
           orders,
-          userUrl: '',
+          userUrl,
           deliveryAddress,
-        },
-      });
+        };
+      };
 
-    const data = await axios.get<string, ResponseApi>(userUrl);
+      const data = await axios.get<string, ResponseApi>(userUrl);
+      const check = email && checkEmailExistence(data, email);
+      const state = thunkAPI.getState();
 
-    const check = checkEmailExistence(data, email);
-
-    const state = thunkAPI.getState();
-    console.log(state);
-    if (!check) {
-      thunkAPI.dispatch(
-        confirmationActions.changeIsOpenConfirmation(
-          state.confirmation.confirmation.isOpen
-        )
-      );
-      thunkAPI.dispatch(
-        registrationActions.changeIsOpenRegistration(
-          state.registration.registration.isOpen
-        )
-      );
-
-      await createUser();
-    } else {
-      console.log('Пользователь с таким email уже существует.');
+      if (!check) {
+        thunkAPI.dispatch(
+          confirmationActions.changeIsOpenConfirmation(state.confirmation.confirmation.isOpen)
+        );
+        thunkAPI.dispatch(
+          registrationActions.changeIsOpenRegistration(state.registration.registration.isOpen)
+        );
+        await createUser(newUserData());
+      } else {
+        console.log('Пользователь с таким email уже существует.');
+      }
+    } catch (error) {
+      console.error(error);
     }
-  } catch (error) {
-    console.error(error);
   }
-});
+);

@@ -26,10 +26,9 @@ import {
 import { IPersonalAreaPagesLinks } from "entities/user";
 import {
   userAccountActions,
-  openModalUserEnterSelector,
-  setUserAccountStateSelector,
+  userEnterSelector,
+  userAccountSelector,
   AddDeliveryAddress,
-  fetchOrders,
 } from "entities/user";
 
 import { IPaymentStatus, orderStatuses } from "../../../../widgets/OrderHistoryCard/model/types/types";
@@ -43,9 +42,9 @@ import style from "./MyOrders.module.scss";
 export const MyOrders: FC = () => {
   const dispatch = useAppDispatch();
   const registration = useSelector(getRegistrationSelector);
-  const userEnter = useSelector(openModalUserEnterSelector);
+  const userEnter = useSelector(userEnterSelector);
   const confirmation = useSelector(openConfirmationSelector);
-  const userAccount = useSelector(setUserAccountStateSelector);
+  const userAccount = useSelector(userAccountSelector);
 
   const handleLinkClick = (event: React.MouseEvent<HTMLElement>) => {
     dispatch(userAccountActions.changePersonalAreaLinkIsCurrent(event.currentTarget.id));
@@ -60,7 +59,6 @@ export const MyOrders: FC = () => {
   useEffect(() => {
     dispatch(fetchRestaurantProductions());
     dispatch(fetchPagesInfo());
-    dispatch(fetchOrders(userAccount.userAccount.email ?? ''));
     dispatch(userAccountActions.sortUserOrders(1));
   }, []);
 
@@ -70,10 +68,10 @@ export const MyOrders: FC = () => {
       {registration.isOpen && <ModalRegistration />}
       {userEnter.isOpen && <UserEnter />}
       {confirmation.isOpen && <Confirmation />}
-      {userAccount.userAccount.recoveryIsOpen && <Recovery />}
+      {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
       {
         userAccount.userAccount.isLogin
-        && userAccount.userAccount.isAddNewAddressOpen
+        && userAccount.userAccount.isModalAddNewAddressOpen
         && <AddDeliveryAddress />
       }
       <section className={style.wrapper}>

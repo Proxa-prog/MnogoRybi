@@ -21,7 +21,7 @@ import {
   fetchRestaurantProductions,
 } from 'features/restaurant';
 
-import { setUserAccountStateSelector } from 'entities/user';
+import { userAccountSelector } from 'entities/user';
 import {
   baseProductSelector,
   constructorActions,
@@ -40,7 +40,7 @@ import style from './Constructor.module.scss';
 
 const Constructor = () => {
   const dispatch = useAppDispatch();
-  const userAccount = useSelector(setUserAccountStateSelector);
+  const userAccount = useSelector(userAccountSelector);
   const ingredients = useSelector(getIngredientsSelector);
   const fillersType = useSelector(fillersTypeSelector);
   const fillers = useSelector(fillersSelector);

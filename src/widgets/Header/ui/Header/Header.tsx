@@ -8,7 +8,7 @@ import { HeaderOrderDataWrapper, HeaderNavWrapper } from 'widgets/Header';
 import { registrationActions } from 'features/registration';
 
 import { openBasketSelector, basketActions } from 'entities/basket';
-import { openModalUserEnterSelector, userEnterActions } from 'entities/user';
+import { userEnterSelector, userEnterActions } from 'entities/user';
 
 import { ViewPorts } from 'shared';
 
@@ -28,7 +28,7 @@ const Header: FC<HeaderProps> = (props) => {
   const [isProductsMenuActive, setIsProductsMenuActive] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const basket = useSelector(openBasketSelector);
-  const userEnter = useSelector(openModalUserEnterSelector);
+  const userEnter = useSelector(userEnterSelector);
 
   const handlerButtonBasketClick = () => {
     dispatch(basketActions.openBasketBlock(basket.isBasketOpen));

@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IUserEnterFull } from '../types/types';
-import { IAddedOrder } from '../../../basket';
+
+import { IUserEnterFull } from 'entities/user';
+import { IAddedOrder } from 'entities/basket';
 
 const initialState: IUserEnterFull = {
   personalAreaLinks: [
@@ -16,9 +17,9 @@ const initialState: IUserEnterFull = {
     },
   ],
   userAccount: {
-    isAddNewAddressOpen: false,
+    isModalAddNewAddressOpen: false,
     isLogin: false,
-    recoveryIsOpen: false,
+    isModalRecoveryOpen: false,
     email: '',
     password: '',
   },
@@ -49,8 +50,8 @@ export const userAccountSlice = createSlice({
     changeIsLoginUserAccount: (state) => {
       state.userAccount.isLogin = !state.userAccount.isLogin;
     },
-    changeIsOpenRecovery: (state, action: PayloadAction<boolean>) => {
-      state.userAccount.recoveryIsOpen = !action.payload;
+    changeIsModalRecoveryOpen: (state, action: PayloadAction<boolean>) => {
+      state.userAccount.isModalRecoveryOpen = !action.payload;
     },
     changeEmailUserAccount: (
       state,
@@ -69,9 +70,9 @@ export const userAccountSlice = createSlice({
         (item) => item !== action.payload
       );
     },
-    changeIsAddNewAddressOpen: (state) => {
-      state.userAccount.isAddNewAddressOpen =
-        !state.userAccount.isAddNewAddressOpen;
+    changeIsModalAddNewAddressOpen: (state) => {
+      state.userAccount.isModalAddNewAddressOpen =
+        !state.userAccount.isModalAddNewAddressOpen;
     },
     logoutUserAccount: (state) => {
       state.userAccount = initialState.userAccount;

@@ -1,4 +1,4 @@
-import { IAddedOrder } from '../../../basket';
+import { IAddedOrder } from 'entities/basket';
 
 export interface IUserEnter extends IUserEnterFull {
   isOpen: boolean;
@@ -9,12 +9,13 @@ export interface IUserEnterFull {
   personalAreaLinks: IPersonalAreaPagesLinks[];
   userAccount: IUserAccount;
   userData: IUserRegistration;
+  id?: number;
 }
 
 export interface IUserAccount {
-  isAddNewAddressOpen: boolean;
+  isModalAddNewAddressOpen: boolean;
   isLogin: boolean;
-  recoveryIsOpen: boolean;
+  isModalRecoveryOpen: boolean;
   email: string | undefined;
   password: string | undefined;
 }
@@ -50,4 +51,14 @@ export interface IPersonalAreaPagesLinks {
   name: string;
   id: string;
   isCurrent?: boolean;
+}
+
+export interface ICreateUserData {
+  userUrl: string;
+  email: string | undefined;
+  password: string | undefined;
+  firstName: string | undefined;
+  phone: string | undefined;
+  orders: IAddedOrder[];
+  deliveryAddress: string[];
 }

@@ -7,7 +7,7 @@ import { Delivery } from "features/delivery";
 import { Payment } from "features/payment";
 import { Recipient } from "features/recipient";
 
-import { setUserAccountStateSelector } from "entities/user";
+import { userAccountSelector } from "entities/user";
 import {
   openBasketSelector,
   setTotalCost,
@@ -23,7 +23,7 @@ import style from "./Basket.module.scss";
 const Basket: FC = () => {
   const dispatch = useAppDispatch();
   const basket = useSelector(openBasketSelector);
-  const userAccount = useSelector(setUserAccountStateSelector);
+  const userAccount = useSelector(userAccountSelector);
   const totalCost = setTotalCost(basket.basket);
 
   const handleSubmit = (event: React.FormEvent) => {

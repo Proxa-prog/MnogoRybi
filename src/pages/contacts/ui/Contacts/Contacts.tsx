@@ -34,8 +34,8 @@ import {
 } from 'features/restaurant';
 
 import {
-  openModalUserEnterSelector,
-  setUserAccountStateSelector,
+  userEnterSelector,
+  userAccountSelector,
 } from 'entities/user';
 import {
   IContactsCard,
@@ -51,9 +51,9 @@ const Contacts: FC = () => {
   const dispatch = useAppDispatch();
   const map = useSelector(setMapSelector);
   const registration = useSelector(getRegistrationSelector);
-  const userEnter = useSelector(openModalUserEnterSelector);
+  const userEnter = useSelector(userEnterSelector);
   const confirmation = useSelector(openConfirmationSelector);
-  const userAccount = useSelector(setUserAccountStateSelector);
+  const userAccount = useSelector(userAccountSelector);
   const pagesInfo = useSelector(getRestaurantPagesInfoSelector);
   const restaurantLocation = useSelector(getRestaurantLocationSelector);
 
@@ -97,7 +97,7 @@ const Contacts: FC = () => {
       {registration.isOpen && <ModalRegistration />}
       {userEnter.isOpen && <UserEnter />}
       {confirmation.isOpen && <Confirmation />}
-      {userAccount.userAccount.recoveryIsOpen && <Recovery />}
+      {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
       <Header isAuth={userAccount.userAccount.isLogin} />
       <BlockHeader pageName='Контакты'>
         <div className={style.our_contacts}>

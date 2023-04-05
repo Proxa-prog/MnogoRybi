@@ -27,8 +27,8 @@ import { fetchProductions } from 'features/productions';
 import { fetchPagesInfo } from 'features/restaurant';
 
 import {
-  openModalUserEnterSelector,
-  setUserAccountStateSelector
+  userEnterSelector,
+  userAccountSelector
 } from 'entities/user';
 
 import { Button, NEWS_LIMIT } from 'shared';
@@ -40,9 +40,9 @@ const News: FC = () => {
   const router = useNavigate();
   const news = useSelector(getNewsSelector);
   const registration = useSelector(getRegistrationSelector);
-  const userEnter = useSelector(openModalUserEnterSelector);
+  const userEnter = useSelector(userEnterSelector);
   const confirmation = useSelector(openConfirmationSelector);
-  const userAccount = useSelector(setUserAccountStateSelector);
+  const userAccount = useSelector(userAccountSelector);
 
   const handleButtonShowMore = () => {
     dispatch(newsActions.addLimit(NEWS_LIMIT));
@@ -65,7 +65,7 @@ const News: FC = () => {
       {registration.isOpen && <ModalRegistration />}
       {userEnter.isOpen && <UserEnter />}
       {confirmation.isOpen && <Confirmation />}
-      {userAccount.userAccount.recoveryIsOpen && <Recovery />}
+      {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
       <Header isAuth={userAccount.userAccount.isLogin} />
       <BlockHeader
         pageName='Новости и акции'
