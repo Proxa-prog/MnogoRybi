@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { IConfirmation } from '../types/confirmationTypes';
+import { IConfirmation } from 'features/registration';
 
 const initialState: IConfirmation = {
   confirmation: {

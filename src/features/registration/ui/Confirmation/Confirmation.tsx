@@ -10,15 +10,13 @@ import {
   openConfirmationSelector,
 } from 'features/registration';
 
-import {
-  userAccountActions,
-} from 'entities/user';
+import { userAccountActions } from 'entities/user';
 
 import { Button, Input } from 'shared';
 
 import style from './Confirmation.module.scss';
 
-const Confirmation: FC = () => {
+export const Confirmation: FC = () => {
   const dispatch = useAppDispatch();
   const registration = useSelector(getRegistrationSelector);
   const confirmation = useSelector(openConfirmationSelector);
@@ -49,25 +47,25 @@ const Confirmation: FC = () => {
   return (
     <div className={style.confirmation}>
       <Button
-        className={style.button_back}
+        className={style.buttonBack}
         isTurn='back'
         type='button'
         isGrayTheme
         onClick={handleButtonBackClick}
       />
       <Button
-        className={style.button_close}
+        className={style.buttonClose}
         isClose='close'
         type='button'
         onClick={handleButtonCloseClick}
       />
       <h3>Подтверждение</h3>
       <p>
-        Мы отправили пароль на почту {registration.email} Введите его для
-        подтверждения почты и авторизации на сайте
+        Мы отправили пароль на почту {registration.email} Введите его для подтверждения почты и
+        авторизации на сайте
       </p>
       <Input
-        className={style.input_password}
+        className={style.inputPassword}
         required
         type='password'
         label='Пароль'
@@ -78,16 +76,14 @@ const Confirmation: FC = () => {
         }}
       />
       <Button
-        className={style.button_enter}
+        className={style.buttonEnter}
         type='button'
         color='yellow'
         onClick={handleButtonEnterClick(repeatPassword)}
       >
-        <span className={style.button_text_desktop}>Войти</span>
-        <span className={style.button_text_mobile}>Зарегистрироваться</span>
+        <span className={style.buttonTextDesktop}>Войти</span>
+        <span className={style.buttonTextMobile}>Зарегистрироваться</span>
       </Button>
     </div>
   );
 };
-
-export default Confirmation;

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { IRegistration } from "../types/registrationTypes";
+import { IRegistration } from "features/registration";
 
 const initialState: IRegistration = {
   registration: {

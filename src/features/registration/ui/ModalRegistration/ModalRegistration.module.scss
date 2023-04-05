@@ -18,7 +18,7 @@
     }
 }
 
-.input_text {
+.inputText {
     width: 100%;
     margin-bottom: 20px;
 
@@ -27,7 +27,7 @@
     }
 }
 
-.button_registration {
+.buttonRegistration {
     width: 100%;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -35,12 +35,12 @@
     justify-content: center;
 }
 
-.have_account_wrapper {
+.haveAccountWrapper {
     display: flex;
     justify-content: center;
 }
 
-.button_have_account {
+.buttonHaveAccount {
     font-weight: 700;
     font-size: 14px;
     line-height: 20px;
@@ -51,7 +51,7 @@
     margin: 0;
 }
 
-.agreement_wrapper {
+.agreementWrapper {
     display: flex;
     align-items: center;
 
@@ -74,7 +74,7 @@
     }
 }
 
-.button_close {
+.buttonClose {
     position: fixed;
     z-index: 10001;
     right: -44px;

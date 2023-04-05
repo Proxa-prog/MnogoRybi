@@ -1,4 +1,4 @@
-import { IBasketState } from "entities/basket/model/types/basketTypes";
+import { IBasketState } from "entities/basket";
 
 export interface IRegistration {
   registration: {
