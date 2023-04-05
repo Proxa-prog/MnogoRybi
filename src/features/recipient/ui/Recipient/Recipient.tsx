@@ -7,7 +7,7 @@ import { Input } from 'shared/ui/Input/Input';
 
 import style from './Recipient.module.scss';
 
-const Recipient: FC = () => {
+export const Recipient: FC = () => {
   const dispatch = useDispatch();
 
   const handleInputNameChange = (name: string | undefined) => {
@@ -21,9 +21,9 @@ const Recipient: FC = () => {
   return (
     <div className={style.recipient}>
       <h4>Получатель</h4>
-      <div className={style.recipient_data_wrapper}>
+      <div className={style.wrapper}>
         <Input
-          className={style.user_name}
+          className={style.inputName}
           label='Имя'
           placeholder='Иванов Иван Иванович'
           required
@@ -31,7 +31,7 @@ const Recipient: FC = () => {
           onChange={handleInputNameChange}
         />
         <Input
-          className={style.user_phone}
+          className={style.inputPhone}
           label='Телефон'
           placeholder='+7 986 456 75 34'
           required
@@ -43,5 +43,3 @@ const Recipient: FC = () => {
     </div>
   );
 };
-
-export default Recipient;
