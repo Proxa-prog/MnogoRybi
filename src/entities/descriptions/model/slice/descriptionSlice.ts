@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { DescriprionsArray, IDescription } from 'entities/descriptions';
+import { DescriptionsArray, IDescription } from 'entities/descriptions';
 
-const initialState: DescriprionsArray = {
+const initialState: DescriptionsArray = {
   descriptions: [],
 };
 

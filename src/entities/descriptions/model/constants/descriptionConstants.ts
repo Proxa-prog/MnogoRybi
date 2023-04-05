@@ -1,1 +1,1 @@
-export const DESCRIPTION_COUNT_LENGTS = 2;
+export const DESCRIPTION_COUNT_LENGTH = 2;
