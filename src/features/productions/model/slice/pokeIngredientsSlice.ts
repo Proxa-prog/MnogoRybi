@@ -1,22 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {CheckboxListWrapperProps} from "widgets/ConstructorCard";
+import { IIngredients, IPokeIngredients } from "../types/productionTypes";
 
-interface IPokeIngredients {
-  basis: CheckboxListWrapperProps;
-  protein: CheckboxListWrapperProps;
-  sauce: CheckboxListWrapperProps;
-  productsType: CheckboxListWrapperProps;
-  topping: CheckboxListWrapperProps;
-  crunch: CheckboxListWrapperProps;
-  additionally: CheckboxListWrapperProps;
-  fillers: CheckboxListWrapperProps;
-}
-
-interface IIngredients {
-  pokeIngredients: IPokeIngredients;
-}
-
-const initialState = {
+const initialState: IIngredients = {
   pokeIngredients: {
     basis: {},
     protein: {},
@@ -33,7 +18,7 @@ export const pokeIngredientsSlice = createSlice({
   name: 'pokeIngredients',
   initialState,
   reducers: {
-    getIngredients: (state, action: PayloadAction<any>) => {
+    getIngredients: (state, action: PayloadAction<IPokeIngredients>) => {
       state.pokeIngredients = { ...action.payload };
     },
   },

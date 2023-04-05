@@ -1,8 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { ResponseApiRestaurantLocation } from 'entities/basket';
 import { IPopupCoordinates } from 'entities/contact';
-import { restaurantActions } from 'features/restaurant';
+import { ResponseApiRestaurantLocation, restaurantActions } from 'features/restaurant';
 import { RESTAURANT_LOCATION_URL, ThunkConfig } from 'shared';
 
 const coordinatesToNumber = (coordinates: IPopupCoordinates) => {

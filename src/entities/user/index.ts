@@ -18,6 +18,7 @@ export {
   ResponseApiUserData,
   IUserEnter,
   ICreateUserData,
+  ResponseApi,
 } from './model/types/types';
 export {
   userEnterReducer,

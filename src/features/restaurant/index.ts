@@ -15,9 +15,13 @@ export {
   IAllIRestaurantLocationData,
   IRestaurantProductions,
   IAllIRestaurantProductionsData,
-  IrestaurantPagesInfo,
+  IRestaurantPagesInfo,
   IAllRestaurantPagesInfo,
   IName,
+  ResponseApiMap,
+  ResponseApiRestaurantPagesInfo,
+  ResponseApiRestaurantProductions,
+  ResponseApiRestaurantLocation,
 } from './model/types/restaurantTypes';
 export { fetchRestaurantProductions } from './model/services/fetchRestaurantProductions';
 export {

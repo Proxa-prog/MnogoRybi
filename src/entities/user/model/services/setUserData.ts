@@ -3,11 +3,11 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { confirmationActions, registrationActions } from 'features/registration';
 
-import { ResponseApi } from 'entities/basket';
 import {
   createUser,
   IResponse,
-  IUserEnterFull
+  IUserEnterFull,
+  ResponseApi,
 } from 'entities/user';
 
 import { ThunkConfig } from 'shared';

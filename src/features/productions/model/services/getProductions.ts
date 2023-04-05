@@ -1,13 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { ResponseApiProductions } from 'entities/basket';
 
-import { productionsActions } from 'features/productions';
+import { productionsActions, ResponseApiProductions } from 'features/productions';
 
 import { POKE_URL, ThunkConfig } from 'shared';
 
 export const fetchProductions = createAsyncThunk<void, void, ThunkConfig<void>>(
-  POKE_URL,
+  'productions/fetchProductions',
   async (_, thunkAPI) => {
     try {
       const response = await axios.get<string, ResponseApiProductions>(

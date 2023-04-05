@@ -24,5 +24,10 @@ export {
   IProductionsAction,
   IProductions,
   IProductionsArray,
+  ResponseApiProductions,
+  IIngredients,
+  IPokeIngredients,
+  IngredientsType,
+  ResponseApiIngredients,
 } from './model/types/productionTypes';
-export { default as ChooseCard } from './ui/ChooseCard/ChooseCard';
+export { ChooseCard } from './ui/ChooseCard/ChooseCard';

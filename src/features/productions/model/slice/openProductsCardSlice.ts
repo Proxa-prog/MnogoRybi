@@ -1,9 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import {
-  IOpenProductsCard,
-  OpenProductsCardArray,
-} from 'features/productions';
+import { IOpenProductsCard, OpenProductsCardArray } from 'features/productions';
 
 const initialState: OpenProductsCardArray = {
   openProductsCard: {

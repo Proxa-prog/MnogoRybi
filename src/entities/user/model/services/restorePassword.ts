@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-import { ResponseApi } from 'entities/basket';
-import { IUserEnterFull } from 'entities/user';
+import {IUserEnterFull, ResponseApi} from 'entities/user';
 
 import { NEW_PASSWORD, USER_DATA } from 'shared';
 

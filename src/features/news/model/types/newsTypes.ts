@@ -9,3 +9,8 @@ export interface INews {
   id: string;
   text?: string;
 }
+
+export interface ResponseApiNews {
+  status: string;
+  data: INews[];
+}

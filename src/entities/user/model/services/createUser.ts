@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { ResponseApi } from 'entities/basket';
-import { ICreateUserData } from "entities/user";
+import { ICreateUserData, ResponseApi } from "entities/user";
 
 export const createUser = (userData: ICreateUserData) => {
   const {

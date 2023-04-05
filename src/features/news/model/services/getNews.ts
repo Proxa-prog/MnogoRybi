@@ -1,9 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import { newsActions } from 'features/news';
-
-import { ResponseApiNews } from 'entities/basket';
+import { newsActions, ResponseApiNews } from 'features/news';
 
 import { NEWS_URL, ThunkConfig } from 'shared';
 

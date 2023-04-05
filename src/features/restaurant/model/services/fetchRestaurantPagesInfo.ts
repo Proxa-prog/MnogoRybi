@@ -1,9 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import { restaurantPagesInfoActions } from 'features/restaurant';
-
-import { ResponseApiRestaurantPagesInfo } from 'entities/basket';
+import { ResponseApiRestaurantPagesInfo, restaurantPagesInfoActions } from 'features/restaurant';
 
 import { RESTAURANT_PAGES_INFO_URL, ThunkConfig } from 'shared';
 

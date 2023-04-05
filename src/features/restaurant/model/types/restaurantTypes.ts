@@ -26,12 +26,32 @@ export interface IAllIRestaurantProductionsData {
 }
 
 export interface IAllRestaurantPagesInfo {
-  restaurantPagesInfo: IrestaurantPagesInfo;
+  restaurantPagesInfo: IRestaurantPagesInfo;
 }
 
-export interface IrestaurantPagesInfo {
+export interface IRestaurantPagesInfo {
   pagesNames: IName[];
   footerLinksNames: IName[];
   restaurantAddress: IContactsCard[];
   mainPageDescriptionImagesLinks: IDescription[];
+}
+
+export interface ResponseApiMap {
+  status: string;
+  data: IRestaurantLocation;
+}
+
+export interface ResponseApiRestaurantPagesInfo {
+  status: string;
+  data: IRestaurantPagesInfo;
+}
+
+export interface ResponseApiRestaurantProductions {
+  status: string;
+  data: IRestaurantProductions;
+}
+
+export interface ResponseApiRestaurantLocation {
+  status: string;
+  data: IRestaurantLocation;
 }

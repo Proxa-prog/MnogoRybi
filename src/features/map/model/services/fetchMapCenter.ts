@@ -2,8 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 import { mapActions } from 'features/map';
-
-import { ResponseApiMap } from 'entities/basket';
+import {ResponseApiMap} from "features/restaurant";
 
 import { RESTAURANT_LOCATION_URL, ThunkConfig } from 'shared';
 

@@ -12,6 +12,11 @@ export interface IUserEnterFull {
   id?: number;
 }
 
+export interface ResponseApi {
+  status: string;
+  data: IUserEnterFull[];
+}
+
 export interface IUserAccount {
   isModalAddNewAddressOpen: boolean;
   isLogin: boolean;

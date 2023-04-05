@@ -1,11 +1,3 @@
-import { IUserEnterFull } from 'entities/user';
-import { INews } from 'features/news';
-import { IProductions } from 'features/productions';
-import {
-  IRestaurantLocation,
-  IrestaurantPagesInfo,
-  IRestaurantProductions
-} from 'features/restaurant';
 import { AdditionallyType, ConstructorType } from 'entities/constructor';
 
 export interface IProducts {
@@ -80,46 +72,6 @@ export interface IAmountProductAction {
 export interface IUserOrder {
   userEmail: string | undefined;
   basket: IBasketState;
-}
-
-export interface ResponseApi {
-  status: string;
-  data: IUserEnterFull[];
-}
-
-export interface ResponseApiMap {
-  status: string;
-  data: IRestaurantLocation;
-}
-
-export interface ResponseApiNews {
-  status: string;
-  data: INews[];
-}
-
-export interface ResponseApiProductions {
-  status: string;
-  data: IProductions;
-}
-
-export interface ResponseApiIngredients {
-  status: string;
-  data: any;
-}
-
-export interface ResponseApiRestaurantLocation {
-  status: string;
-  data: IRestaurantLocation;
-}
-
-export interface ResponseApiRestaurantPagesInfo {
-  status: string;
-  data: IrestaurantPagesInfo;
-}
-
-export interface ResponseApiRestaurantProductions {
-  status: string;
-  data: IRestaurantProductions;
 }
 
 export interface IAddedOrder {

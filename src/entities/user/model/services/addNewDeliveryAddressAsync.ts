@@ -1,8 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import { IUserData, IUserEnterFull } from 'entities/user';
-import { ResponseApi } from 'entities/basket';
+import { IUserData, IUserEnterFull, ResponseApi } from 'entities/user';
 
 import { ThunkConfig, USER_DATA } from 'shared';
 
