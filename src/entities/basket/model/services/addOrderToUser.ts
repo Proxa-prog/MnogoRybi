@@ -39,11 +39,18 @@ export const addOrderToUser = createAsyncThunk<
       return {
         amount: currentOrder.amount,
         baseCost: currentOrder.baseCost,
-        baseProduct: currentOrder.baseProduct,
         cost: currentOrder.cost,
         description: currentOrder.description,
         name: currentOrder.name,
-        sauce: currentOrder.sauce,
+        ingredients: {
+          protein: currentOrder.protein,
+          topping: currentOrder.topping,
+          additionally: currentOrder.additionally,
+          baseProduct: currentOrder.baseProduct,
+          crunch: currentOrder.crunch,
+          fillers: currentOrder.fillers,
+          sauce: currentOrder.sauce,
+        } ?? null,
       };
     });
 

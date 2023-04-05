@@ -34,6 +34,6 @@ export interface CheckboxListWrapperProps {
   checkboxState?: IFiltersIngredients | FillersType | ConstructorType;
   fillersType?: IFiltersIngredients;
   changeChecked: () => AnyAction;
-  changeType: (name: ConstructorType | string) => AnyAction;
+  changeType: (name: ConstructorType) => AnyAction;
   changeFiltersType?: (name: IFiltersIngredients) => AnyAction;
 }

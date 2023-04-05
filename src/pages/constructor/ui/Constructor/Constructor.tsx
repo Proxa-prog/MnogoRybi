@@ -4,10 +4,12 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'app/store';
 
 import { BlockHeader, Header } from 'widgets/Header';
-import { ConstructorCard } from 'widgets/ConstructorCard';
+import {
+  ConstructorCard,
+  AddCreatedPoke,
+  CheckboxListWrapper,
+} from 'widgets/ConstructorCard';
 import { Footer } from 'widgets/Footer';
-import CheckboxListWrapper from 'widgets/ConstructorCard/ui/CheckboxListWrapper/CheckboxListWrapper';
-import AddCreatedPoke from 'widgets/ConstructorCard/ui/AddCreatedPoke/AddCreatedPoke';
 
 import {
   fetchProductions,
@@ -29,8 +31,8 @@ import {
   proteinSelector,
   sauceSelector,
   toppingSelector,
+  fetchFilters,
 } from 'entities/constructor';
-import { fetchFilters } from 'entities/constructor/model/services/fetchFilters';
 
 import { ImageWrapper } from 'shared';
 
@@ -111,7 +113,6 @@ const Constructor = () => {
                 isCircleCheckbox
                 checkboxState={baseProduct}
                 changeChecked={constructorActions.changeIsBaseProductChecked}
-                // @ts-ignore
                 changeType={constructorActions.changeBaseProductType}
               />
             </ConstructorCard>
@@ -121,7 +122,6 @@ const Constructor = () => {
                 isCircleCheckbox
                 checkboxState={protein}
                 changeChecked={constructorActions.changeProteinChecked}
-                // @ts-ignore
                 changeType={constructorActions.changeProteinType}
               />
             </ConstructorCard>
@@ -154,7 +154,6 @@ const Constructor = () => {
                 isCircleCheckbox
                 checkboxState={sauce}
                 changeChecked={constructorActions.changeSauceChecked}
-                // @ts-ignore
                 changeType={constructorActions.changeSauceType}
               />
             </ConstructorCard>
@@ -163,7 +162,6 @@ const Constructor = () => {
                 {...ingredients.crunch}
                 isCircleCheckbox
                 changeChecked={constructorActions.changeCrunchChecked}
-                // @ts-ignore
                 changeType={constructorActions.changeCrunchType}
                 checkboxState={crunch}
               />
@@ -174,7 +172,6 @@ const Constructor = () => {
                 isSelectList
                 {...ingredients.additionally}
                 changeChecked={constructorActions.changeCrunchChecked}
-                // @ts-ignore
                 changeType={constructorActions.changeCrunchType}
               />
             </ConstructorCard>

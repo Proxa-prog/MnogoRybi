@@ -16,7 +16,7 @@ import {
 
 import style from './AddCreatedPoke.module.scss';
 
-const AddCreatedPoke: FC = () => {
+export const AddCreatedPoke: FC = () => {
   const dispatch = useAppDispatch();
   const amountOfProductsInConstructor = useSelector(
     getAmountConstructorProductSelector
@@ -49,7 +49,7 @@ const AddCreatedPoke: FC = () => {
 
     dispatch(
       basketActions.addProductInBasket({
-        name: '',
+        name: 'Самосозданный поке',
         amount: amountOfProductsInConstructor.amount,
         cost: amountOfProductsInConstructor.cost,
         baseCost: amountOfProductsInConstructor.baseCost,
@@ -89,5 +89,3 @@ const AddCreatedPoke: FC = () => {
     </div>
   );
 };
-
-export default AddCreatedPoke;

@@ -15,7 +15,7 @@ import { ImageWrapper } from 'shared';
 
 import style from './CheckboxListWrapper.module.scss';
 
-const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
+export const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
   const {
     productsType,
     stepNumber,
@@ -186,5 +186,3 @@ const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
     </div>
   );
 };
-
-export default CheckboxListWrapper;
