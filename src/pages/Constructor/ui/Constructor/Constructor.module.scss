@@ -1,4 +1,4 @@
-.constructor_page_wrapper {
+.wrapper {
   h2 {
     position: relative;
     font-style: italic;
@@ -13,17 +13,13 @@
   }
 }
 
-.blue_header {
+.blueTextHeader {
   color: $blue-100;
 }
 
-.yellow_header {
+.yellowTextHeader {
   color: $yellow-100;
   background-color: white;
-}
-
-.arrow_wrapper {
-  width: 85vw;
 }
 
 .arrow {
@@ -42,7 +38,7 @@
   }
 }
 
-.constructor_inner {
+.constructorInner {
   margin-top: 70px;
   display: flex;
   flex-direction: column;
@@ -52,13 +48,13 @@
   margin-bottom: 0;
 }
 
-.mobile_gap {
+.mobileGap {
   @media (max-width: 767px) {
     display: none;
   }
 }
 
-.mobile_gap_on {
+.mobileGapOn {
   display: none;
 
   @media (max-width: 767px) {

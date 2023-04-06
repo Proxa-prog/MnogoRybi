@@ -38,7 +38,7 @@ export const PERSONAL_AREA_ROUTE = "/PersonalArea";
 export const PERSONAL_AREA_MY_ORDERS_ROUTE = "/myOrders";
 export const FRANCHISE_ROUTE = "/franchise";
 export const DELIVERY_ROUTE = "/delivery";
-export const CONSTRUCTOR_PAGE_ROUTE = "/constructor";
+export const CONSTRUCTOR_PAGE_ROUTE = "/Constructor";
 
 // Для storybook.
 export const PRODUCTS = [

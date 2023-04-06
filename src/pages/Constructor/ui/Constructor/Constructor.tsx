@@ -7,7 +7,7 @@ import { BlockHeader, Header } from 'widgets/Header';
 import {
   ConstructorCard,
   AddCreatedPoke,
-  CheckboxListWrapper,
+  CheckboxListWrapper
 } from 'widgets/ConstructorCard';
 import { Footer } from 'widgets/Footer';
 
@@ -16,10 +16,7 @@ import {
   getIngredientsSelector,
   fetchIngredients,
 } from 'features/productions';
-import {
-  fetchPagesInfo,
-  fetchRestaurantProductions,
-} from 'features/restaurant';
+import { fetchPagesInfo, fetchRestaurantProductions } from 'features/restaurant';
 
 import { userAccountSelector } from 'entities/user';
 import {
@@ -38,7 +35,7 @@ import { ImageWrapper } from 'shared';
 
 import style from './Constructor.module.scss';
 
-const Constructor = () => {
+export const Constructor = () => {
   const dispatch = useAppDispatch();
   const userAccount = useSelector(userAccountSelector);
   const ingredients = useSelector(getIngredientsSelector);
@@ -75,14 +72,14 @@ const Constructor = () => {
     <div>
       <Header isAuth={userAccount.userAccount.isLogin} />
       <BlockHeader pageName='Конструктор поке'>
-        <section className={style.constructor_page_wrapper}>
+        <section className={style.wrapper}>
           <h2>
-            <span className={style.blue_header}>Соберите&nbsp;ваш</span>
-            <span className={style.yellow_header}>
+            <span className={style.blueTextHeader}>Соберите&nbsp;ваш</span>
+            <span className={style.yellowTextHeader}>
               {' '}
               идеальный&nbsp;поке
-              <span className={style.mobile_gap}>&nbsp;</span>
-              <span className={style.mobile_gap_on}> </span>за&nbsp;6&nbsp;шагов
+              <span className={style.mobileGap}>&nbsp;</span>
+              <span className={style.mobileGapOn}> </span>за&nbsp;6&nbsp;шагов
             </span>
             {(windowWidth > 1200 && (
               <ImageWrapper
@@ -106,7 +103,7 @@ const Constructor = () => {
                 />
               ))}
           </h2>
-          <div className={style.constructor_inner}>
+          <div className={style.constructorInner}>
             <ConstructorCard>
               <CheckboxListWrapper
                 {...ingredients.basis}
@@ -183,5 +180,3 @@ const Constructor = () => {
     </div>
   );
 };
-
-export default Constructor;

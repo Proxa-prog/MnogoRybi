@@ -20,7 +20,7 @@ import { MainPage } from 'pages/mainPage';
 import { News } from 'pages/news';
 import { Contacts } from 'pages/contacts';
 import { NewsPage } from 'pages/newsPage';
-import { Constructor } from 'pages/constructor';
+import { Constructor } from '../pages/Constructor';
 import { PersonalArea } from 'pages/PersonalArea';
 import { MyOrders } from 'pages/myOrders';
 import { Franchise } from 'pages/Franchise';
