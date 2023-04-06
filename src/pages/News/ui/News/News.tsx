@@ -14,28 +14,25 @@ import {
   INews,
   newsActions,
   getNewsSelector,
-  fetchNews,
+  fetchNews
 } from 'features/news';
 import {
   getRegistrationSelector,
   openConfirmationSelector,
   ModalRegistration,
-  Confirmation
+  Confirmation,
 } from 'features/registration';
 import { UserEnter } from 'features/user';
 import { fetchProductions } from 'features/productions';
 import { fetchPagesInfo } from 'features/restaurant';
 
-import {
-  userEnterSelector,
-  userAccountSelector
-} from 'entities/user';
+import { userEnterSelector, userAccountSelector } from 'entities/user';
 
 import { Button, NEWS_LIMIT } from 'shared';
 
 import style from './News.module.scss';
 
-const News: FC = () => {
+export const News: FC = () => {
   const dispatch = useAppDispatch();
   const router = useNavigate();
   const news = useSelector(getNewsSelector);
@@ -50,8 +47,8 @@ const News: FC = () => {
 
   const handleCardButtonClick = (id: string) => {
     return () => {
-      router(`/${id}`)
-    }
+      router(`/${id}`);
+    };
   };
 
   useEffect(() => {
@@ -67,34 +64,30 @@ const News: FC = () => {
       {confirmation.isOpen && <Confirmation />}
       {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
       <Header isAuth={userAccount.userAccount.isLogin} />
-      <BlockHeader
-        pageName='Новости и акции'
-      >
-        <div className={style.news_wrapper}>
-          {
-            news.newsArray.map((news: INews) => {
-              const id = nanoid();
+      <BlockHeader pageName='Новости и акции'>
+        <div className={style.wrapper}>
+          {news.newsArray.map((news: INews) => {
+            const id = nanoid();
 
-              return (
-                <Card
-                  className={style.news_card}
-                  imageWrapperClassName={style.image_wrapper}
-                  buttonText='Подробнее'
-                  statuses={news.statuses}
-                  isGrayTheme
-                  imageUrl={news.imageUrl}
-                  description={news.description}
-                  header={news.header}
-                  isInfo
-                  key={id}
-                  onClick={handleCardButtonClick(news.id)}
-                />
-              )
-            })
-          }
+            return (
+              <Card
+                className={style.card}
+                imageWrapperClassName={style.imageWrapper}
+                buttonText='Подробнее'
+                statuses={news.statuses}
+                isGrayTheme
+                imageUrl={news.imageUrl}
+                description={news.description}
+                header={news.header}
+                isInfo
+                key={id}
+                onClick={handleCardButtonClick(news.id)}
+              />
+            );
+          })}
           <Button
             onClick={handleButtonShowMore}
-            className={style.button_show_more}
+            className={style.buttonShowMore}
             type='button'
           >
             Показать ещё
@@ -103,7 +96,5 @@ const News: FC = () => {
       </BlockHeader>
       <Footer />
     </>
-  )
-}
-
-export default News;
+  );
+};

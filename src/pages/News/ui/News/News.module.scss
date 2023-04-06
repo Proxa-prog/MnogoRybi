@@ -1,11 +1,11 @@
-.news_wrapper {
+.wrapper {
     padding-top: 30px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-.news_card {
+.card {
     margin-bottom: 20px;
 
     @media (max-width: 1023px) {
@@ -13,13 +13,13 @@
     }
 }
 
-.image_wrapper {
+.imageWrapper {
     @media (max-width: 1023px) {
         height: 200px;
     }
 }
 
-.button_show_more {
+.buttonShowMore {
     width: 100%;
     justify-content: center;
 }

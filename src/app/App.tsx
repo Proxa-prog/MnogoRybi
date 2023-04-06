@@ -17,7 +17,7 @@ import {
 } from 'shared';
 
 import { MainPage } from 'pages/MainPage';
-import { News } from 'pages/news';
+import { News } from 'pages/News';
 import { Contacts } from 'pages/Contacts';
 import { NewsPage } from 'pages/newsPage';
 import { Constructor } from 'pages/Constructor';

@@ -32,7 +32,7 @@ export const NEW_PASSWORD = "12345";
 
 export const MAIN_PAGE_ROUTE = "/";
 export const CONTACTS_ROUTE = "/Contacts";
-export const NEWS_ROUTE = "/news";
+export const NEWS_ROUTE = "/News";
 export const NEWS_PAGE_ROUTE = "/:newsId";
 export const PERSONAL_AREA_ROUTE = "/PersonalArea";
 export const PERSONAL_AREA_MY_ORDERS_ROUTE = "/MyOrders";
