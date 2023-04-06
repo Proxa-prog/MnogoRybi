@@ -18,7 +18,7 @@ import {
 
 import { MainPage } from 'pages/mainPage';
 import { News } from 'pages/news';
-import { Contacts } from 'pages/contacts';
+import { Contacts } from 'pages/Contacts';
 import { NewsPage } from 'pages/newsPage';
 import { Constructor } from '../pages/Constructor';
 import { PersonalArea } from 'pages/PersonalArea';

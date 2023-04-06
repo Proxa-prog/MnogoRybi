@@ -1,9 +1,15 @@
 import React, { FC, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import {
+  MapContainer,
+  Marker,
+  Popup,
+  TileLayer
+} from 'react-leaflet';
+
 import { useAppDispatch } from 'app/store';
 
 import PopupIcon from '/public/images/location_marker.png';
@@ -12,13 +18,14 @@ import { Footer } from 'widgets/Footer';
 import { Header, BlockHeader } from 'widgets/Header';
 import { Recovery } from 'widgets/Recovery';
 
+import { fetchProductions } from 'features/productions';
 import { UserEnter } from 'features/user';
 import {
   fetchMapCenter,
   setMapSelector,
-  RecenterAutomatically, mapActions,
+  RecenterAutomatically,
+  mapActions,
 } from 'features/map';
-import { fetchProductions } from 'features/productions';
 import {
   getRegistrationSelector,
   openConfirmationSelector,
@@ -33,21 +40,14 @@ import {
   getRestaurantPagesInfoSelector,
 } from 'features/restaurant';
 
-import {
-  userEnterSelector,
-  userAccountSelector,
-} from 'entities/user';
-import {
-  IContactsCard,
-  IPopupCoordinates,
-  ContactsCard,
-} from 'entities/contact';
+import { userEnterSelector, userAccountSelector } from 'entities/user';
+import { IContactsCard, IPopupCoordinates, ContactsCard } from 'entities/contact';
 
 import { MAP_ICON_SIZE, MAP_ZOOM } from 'shared';
 
 import style from './Contacts.module.scss';
 
-const Contacts: FC = () => {
+export const Contacts: FC = () => {
   const dispatch = useAppDispatch();
   const map = useSelector(setMapSelector);
   const registration = useSelector(getRegistrationSelector);
@@ -68,11 +68,7 @@ const Contacts: FC = () => {
     });
 
     return (
-      <Marker
-        key={id}
-        position={[PopupCoordinates.lat, PopupCoordinates.lng]}
-        icon={Icon}
-      >
+      <Marker key={id} position={[PopupCoordinates.lat, PopupCoordinates.lng]} icon={Icon}>
         <Popup>Наш магазин.</Popup>
       </Marker>
     );
@@ -100,7 +96,7 @@ const Contacts: FC = () => {
       {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
       <Header isAuth={userAccount.userAccount.isLogin} />
       <BlockHeader pageName='Контакты'>
-        <div className={style.our_contacts}>
+        <div className={style.ourContacts}>
           {pagesInfo.restaurantAddress.map((card: IContactsCard) => {
             const id = nanoid();
 
@@ -130,11 +126,9 @@ const Contacts: FC = () => {
           />
           <>
             {restaurantLocation &&
-              restaurantLocation.restaurantPopupCoordinates.map(
-                (coordinates) => {
-                  return createPopup(coordinates);
-                }
-              )}
+              restaurantLocation.restaurantPopupCoordinates.map((coordinates) => {
+                return createPopup(coordinates);
+              })}
           </>
           <RecenterAutomatically lat={map.lat} lng={map.lng} />
         </MapContainer>
@@ -143,5 +137,3 @@ const Contacts: FC = () => {
     </>
   );
 };
-
-export default Contacts;
