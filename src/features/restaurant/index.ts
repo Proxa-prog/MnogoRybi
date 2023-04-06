@@ -2,10 +2,10 @@ export { getRestaurantLocationSelector } from './model/selectors/restaurantLocat
 export { getRestaurantProductionsSelector } from './model/selectors/restaurantProductionsSelectors';
 export { getRestaurantPagesInfoSelector } from './model/selectors/restaurantPagesInfo';
 export { fetchRestaurantLocation } from './model/services/fetchRestaurantLocation';
-export {
-  restaurantReducer,
-  restaurantActions,
-} from './model/slice/restaurantSlice';
+export { restaurantReducer, restaurantActions } from './model/slice/restaurantSlice';
+export { fetchPagesInfo } from './model/services/fetchRestaurantPagesInfo';
+export { coordinatesToNumber } from './model/lib/coordinatesToNumber';
+export { fetchRestaurantProductions } from './model/services/fetchRestaurantProductions';
 export {
   restaurantProductionsReducer,
   restaurantProductionsActions,
@@ -23,9 +23,8 @@ export {
   ResponseApiRestaurantProductions,
   ResponseApiRestaurantLocation,
 } from './model/types/restaurantTypes';
-export { fetchRestaurantProductions } from './model/services/fetchRestaurantProductions';
 export {
   restaurantPagesInfoActions,
   restaurantPagesInfoReducer,
 } from './model/slice/restaurantPagesInfo';
-export { fetchPagesInfo } from './model/services/fetchRestaurantPagesInfo';
+

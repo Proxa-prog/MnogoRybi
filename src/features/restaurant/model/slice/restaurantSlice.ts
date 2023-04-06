@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { IPopupCoordinates } from 'entities/contact';
-
 import { IAllIRestaurantLocationData } from 'features/restaurant';
+
+import { IPopupCoordinates } from 'entities/contact';
 
 const initialState: IAllIRestaurantLocationData = {
   restaurantLocation: {

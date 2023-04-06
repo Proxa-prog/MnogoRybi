@@ -6,7 +6,7 @@ import { ResponseApiRestaurantPagesInfo, restaurantPagesInfoActions } from 'feat
 import { RESTAURANT_PAGES_INFO_URL, ThunkConfig } from 'shared';
 
 export const fetchPagesInfo = createAsyncThunk<void, void, ThunkConfig<void>>(
-  RESTAURANT_PAGES_INFO_URL,
+  'restaurantPagesInfo/fetchPagesInfo',
   async (_, thunkAPI) => {
     try {
       const response = await axios.get<string, ResponseApiRestaurantPagesInfo>(
