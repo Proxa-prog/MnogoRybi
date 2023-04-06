@@ -1,34 +1,28 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import classNames from 'classnames';
 
 import { useAppDispatch } from 'app/store';
 
 import { Footer } from 'widgets/Footer';
-import { Recovery } from 'widgets/Recovery';
 import { Header } from 'widgets/Header';
+import { Recovery } from "widgets/Recovery";
 
+import { UserEnter } from "features/user";
 import {
   getRegistrationSelector,
   openConfirmationSelector,
   ModalRegistration,
-  Confirmation,
+  Confirmation
 } from 'features/registration';
-import { UserEnter } from 'features/user';
-import {
-  fetchPagesInfo,
-  fetchRestaurantProductions,
-  getRestaurantPagesInfoSelector,
-} from 'features/restaurant';
 
 import {
   userAccountActions,
-  userEnterSelector,
   userAccountSelector,
   AddDeliveryAddress,
-  IPersonalAreaPagesLinks,
+  IPersonalAreaPagesLinks, userEnterSelector,
 } from 'entities/user';
 
 import {

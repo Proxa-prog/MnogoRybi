@@ -18,9 +18,7 @@ export const Counter: FC<CounterProps> = (props) => {
     <span
       className={classnames(
         style.counter,
-        [
-          classNames,
-        ],
+        [ classNames ],
       )}
     >
       {count}

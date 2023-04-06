@@ -8,19 +8,19 @@ import { advantages, FranchiseAdvantages } from 'pages/Franchise';
 
 import { Footer } from 'widgets/Footer';
 import { BlockHeader, Header } from 'widgets/Header';
-import { Recovery } from 'widgets/Recovery';
+import { Recovery } from "widgets/Recovery";
 
+import { UserEnter } from "features/user";
 import {
-  Confirmation,
   getRegistrationSelector,
-  ModalRegistration,
   openConfirmationSelector,
+  ModalRegistration,
+  Confirmation
 } from 'features/registration';
 import { fetchPagesInfo, fetchRestaurantProductions } from 'features/restaurant';
-import { UserEnter } from 'features/user';
 import { fetchProductions } from 'features/productions';
 
-import { userEnterSelector, userAccountSelector } from 'entities/user';
+import {userAccountSelector, userEnterSelector} from 'entities/user';
 
 import { Button, ImageWrapper } from 'shared';
 

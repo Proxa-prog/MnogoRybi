@@ -2,7 +2,7 @@ import React from 'react';
 import { Args, Story } from '@storybook/react';
 
 import { List } from './List';
-import { PRODUCTS } from 'shared/assets/constants/constants';
+import { PRODUCTS } from 'shared';
 
 export default {
   title: 'List',

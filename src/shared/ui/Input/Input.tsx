@@ -73,14 +73,14 @@ export const Input: FC<InputProps> = ((props) => {
       />
       <label
         htmlFor={name}
-        className={styles.label_input}
+        className={styles.labelInput}
       >
         {label}
       </label>
       {
         error
         && (
-          <span className={styles.error_message_text}>
+          <span className={styles.errorMessageText}>
             {error}
           </span>
         )

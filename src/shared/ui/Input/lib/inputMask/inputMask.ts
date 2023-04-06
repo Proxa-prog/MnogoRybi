@@ -1,5 +1,6 @@
 import IMask from "imask";
-import {INPUT_MASK} from "../../../../assets/constants/constants";
+
+import { INPUT_MASK } from "shared";
 
 export const inputMask = (id: string) => {
   const element = document.getElementById(id);

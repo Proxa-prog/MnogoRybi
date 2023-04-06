@@ -1,4 +1,4 @@
-.status_marker {
+.statusMarker {
     padding: 4px 8px;
     font-weight: 700;
     font-size: 12px;
@@ -6,7 +6,6 @@
     border-radius: 13px;
     color: $white-00;
     -moz-user-select: none;
-    -khtml-user-select: none;
     user-select: none;
 
     @media (max-width: 767px) {

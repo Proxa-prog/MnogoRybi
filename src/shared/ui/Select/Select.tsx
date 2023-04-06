@@ -1,11 +1,8 @@
+import React, { FC, SelectHTMLAttributes, useState } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
 import classNames from 'classnames';
-import React,
-{ChangeEventHandler, FC, SelectHTMLAttributes, useState}
-  from 'react';
 
-import { IProducts } from 'entities/basket/model/types/basketTypes';
-
+import { IProducts } from 'entities/basket';
 import { IContactsCard } from 'entities/contact';
 
 import style from './Select.module.scss';
@@ -56,11 +53,8 @@ export const Select: FC<SelectProps> = (props) => {
     <>
       <select
         className={classNames(
-          style.select_default,
+          style.selectDefault,
           className,
-          {
-            // [style.closed]: isOpen,
-          }
         )}
       hidden={isOpen}
       name={name}
@@ -79,7 +73,7 @@ export const Select: FC<SelectProps> = (props) => {
         value="Default"
         disabled={disabled}
         hidden
-        className={style.with_cost}
+        className={style.withCost}
       >
         {selectOption}
       </option>
@@ -92,7 +86,7 @@ export const Select: FC<SelectProps> = (props) => {
 
           return (
             <li
-              className={style.list_item}
+              className={style.listItem}
               key={id}
               onClick={handleOptionClick(option)}
             >

@@ -19,7 +19,7 @@ export const LabelText: FC<LabelTextProps> = (props) => {
   return (
     <label
       className={classNames(
-        style.label_text,
+        style.labelText,
         className,
       )}
       htmlFor={id}

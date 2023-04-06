@@ -10,23 +10,23 @@ import { useAppDispatch } from 'app/store';
 import { paymentStatus, theme } from "pages/MyOrders";
 
 import { Footer } from 'widgets/Footer';
-import { Recovery } from 'widgets/Recovery';
 import { Header } from 'widgets/Header';
-import { OrderHistoryCard } from 'widgets/OrderHistoryCard';
+import { Recovery } from "widgets/Recovery";
 
+import { OrderHistoryCard } from 'widgets/OrderHistoryCard';
+import { UserEnter } from "features/user";
 import {
   getRegistrationSelector,
   openConfirmationSelector,
   ModalRegistration,
-  Confirmation,
+  Confirmation
 } from 'features/registration';
-import { UserEnter } from 'features/user';
+
 import { fetchPagesInfo, fetchRestaurantProductions } from 'features/restaurant';
 
-import { IPersonalAreaPagesLinks } from 'entities/user';
+import {IPersonalAreaPagesLinks, userEnterSelector} from 'entities/user';
 import {
   userAccountActions,
-  userEnterSelector,
   userAccountSelector,
   AddDeliveryAddress,
 } from 'entities/user';

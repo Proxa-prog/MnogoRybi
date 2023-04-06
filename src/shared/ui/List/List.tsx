@@ -3,8 +3,8 @@ import { nanoid } from '@reduxjs/toolkit';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { IProducts } from 'entities/basket/model/types/basketTypes';
-import {useAppDispatch} from "../../../app/store";
+import { IProducts } from 'entities/basket';
+import { useAppDispatch } from "app/store";
 
 import style from './List.module.scss';
 
@@ -28,7 +28,6 @@ export const List: FC<ListProps> = (props) => {
     isText = false,
     onClick,
   } = props;
-  const dispatch = useAppDispatch();
 
   return (
     <ul className={classNames(

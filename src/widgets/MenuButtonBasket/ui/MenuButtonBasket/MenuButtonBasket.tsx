@@ -34,7 +34,7 @@ const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
   if (scroll && scroll > 0 && windowWidth >= ViewPorts.DESKTOP) {
     return (
       <Button
-        childrenWrapperClassName="button__text_wrapper"
+        childrenWrapperClassName="buttonTextWrapper"
         className={
           scroll && scroll >= ONE_HUNDRED_PIXEL_SCROLL
             ? style.header__button_basket_scroll
@@ -70,7 +70,7 @@ const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
         </StatusMarker>
       )}
       <Button
-        childrenWrapperClassName="button__text_wrapper"
+        childrenWrapperClassName="buttonTextWrapper"
         className={
           scroll && scroll >= ONE_HUNDRED_PIXEL_SCROLL
             ? style.header__button_basket_scroll

@@ -4,7 +4,7 @@
     width: 100%;
 }
 
-.label_input {
+.labelInput {
     order: -1;
     position: relative;
     margin-bottom: 5px;
@@ -29,7 +29,7 @@
     margin-bottom: 5px;
 
     
-    &:required + .label_input::after {
+    &:required + .labelInput::after {
         position: absolute;
         content: "*";
         color: $red-100;
@@ -40,7 +40,7 @@
 .mobile {
     padding: 10px;
 
-    &:required + .label_input::after {
+    &:required + .labelInput::after {
         position: absolute;
         content: "*";
         color: $red-100;
@@ -50,7 +50,7 @@
 
 //---------variant---------//
 
-.error, .error_message {
+.error {
     border: 1px solid $red-100;
     background: $white-00;
 }
@@ -61,7 +61,7 @@
 
 //-------------------------//
 
-.error_message_text {
+.errorMessageText {
     font-weight: 400;
     font-size: 12px;
     line-height: 18px;

@@ -7,8 +7,16 @@ import { useAppDispatch } from 'app/store';
 
 import { Footer } from 'widgets/Footer';
 import { Card } from 'widgets/Card';
-import { Recovery } from 'widgets/Recovery';
 import { Header, BlockHeader } from 'widgets/Header';
+import { Recovery } from "widgets/Recovery";
+
+import { UserEnter } from "features/user";
+import {
+  getRegistrationSelector,
+  openConfirmationSelector,
+  ModalRegistration,
+  Confirmation
+} from 'features/registration';
 
 import {
   INews,
@@ -16,17 +24,10 @@ import {
   getNewsSelector,
   fetchNews
 } from 'features/news';
-import {
-  getRegistrationSelector,
-  openConfirmationSelector,
-  ModalRegistration,
-  Confirmation,
-} from 'features/registration';
-import { UserEnter } from 'features/user';
 import { fetchProductions } from 'features/productions';
 import { fetchPagesInfo } from 'features/restaurant';
 
-import { userEnterSelector, userAccountSelector } from 'entities/user';
+import {userAccountSelector, userEnterSelector} from 'entities/user';
 
 import { Button, NEWS_LIMIT } from 'shared';
 

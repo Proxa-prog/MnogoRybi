@@ -16,22 +16,23 @@ import PopupIcon from '/public/images/location_marker.png';
 
 import { Footer } from 'widgets/Footer';
 import { Header, BlockHeader } from 'widgets/Header';
-import { Recovery } from 'widgets/Recovery';
+import { Recovery } from "widgets/Recovery";
+
+import { UserEnter } from "features/user";
+import {
+  getRegistrationSelector,
+  openConfirmationSelector,
+  ModalRegistration,
+  Confirmation
+} from 'features/registration';
 
 import { fetchProductions } from 'features/productions';
-import { UserEnter } from 'features/user';
 import {
   fetchMapCenter,
   setMapSelector,
   RecenterAutomatically,
   mapActions,
 } from 'features/map';
-import {
-  getRegistrationSelector,
-  openConfirmationSelector,
-  ModalRegistration,
-  Confirmation,
-} from 'features/registration';
 import {
   getRestaurantLocationSelector,
   fetchRestaurantLocation,
@@ -40,7 +41,7 @@ import {
   getRestaurantPagesInfoSelector,
 } from 'features/restaurant';
 
-import { userEnterSelector, userAccountSelector } from 'entities/user';
+import {userAccountSelector, userEnterSelector} from 'entities/user';
 import { IContactsCard, IPopupCoordinates, ContactsCard } from 'entities/contact';
 
 import { MAP_ICON_SIZE, MAP_ZOOM } from 'shared';

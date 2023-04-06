@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
 
 import styles from './Icon.module.scss';
-import { Svg } from 'shared/ui/Svg/Svg';
+import { Svg } from 'shared';
 
 const stories = storiesOf('Icon', module);
 stories.addDecorator(withKnobs);
@@ -20,7 +20,7 @@ stories.add('Icon', () => (
       <Svg name="peanut" width="50" height="50" />
     </div>
     <div className={styles.icon_wrapper}>
-      <Svg name="pinapple" width="50" height="50" />
+      <Svg name="pineapple" width="50" height="50" />
     </div>
     <div className={styles.icon_wrapper}>
       <Svg name="sashimi" width="50" height="50" />

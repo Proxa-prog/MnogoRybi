@@ -2,6 +2,7 @@ import React from 'react';
 import { Args, Story } from '@storybook/react';
 
 import { Counter } from './Counter';
+
 import './Counter.module.scss';
 
 export default {

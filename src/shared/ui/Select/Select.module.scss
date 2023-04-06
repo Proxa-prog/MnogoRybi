@@ -1,4 +1,4 @@
-.select_default {
+.selectDefault {
     border: none;
     outline: none;
     font-weight: 700;
@@ -15,7 +15,6 @@
     align-items: center;
     width: 400px;
     padding: 5px 15px;
-    display: flex;
     position: absolute;
     bottom: 12px;
     background: $white-00;
@@ -24,11 +23,7 @@
     z-index: 100000;
 }
 
-.closed {
-    display: none;
-}
-
-.list_item {
+.listItem {
     cursor: pointer;
     width: 100%;
 
@@ -37,6 +32,6 @@
     }
 }
 
-.with_cost {
+.withCost {
 
 }

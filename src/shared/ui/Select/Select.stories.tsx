@@ -2,7 +2,7 @@ import React from 'react';
 import { Args, Story } from '@storybook/react';
 
 import { Select } from './Select';
-import { PRODUCTS } from 'shared/assets/constants/constants';
+import { PRODUCTS } from 'shared';
 
 export default {
   title: 'Select',
@@ -12,7 +12,7 @@ export default {
       type: 'string',
       description: 'Разрешение экрана',
       defaultValue: 'desktop',
-      optoins: [
+      options: [
         { name: "Поке" },
         { name: "Супы и карри" },
         { name: "Вок" },
@@ -38,5 +38,5 @@ const Template: Story = (arg: Partial<Args>) => (
 export const Default = Template.bind({});
 
 Default.args = {
-  optoins: PRODUCTS,
+  options: PRODUCTS,
 };

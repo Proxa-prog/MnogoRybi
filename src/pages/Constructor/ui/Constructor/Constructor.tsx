@@ -10,7 +10,15 @@ import {
   CheckboxListWrapper
 } from 'widgets/ConstructorCard';
 import { Footer } from 'widgets/Footer';
+import { Recovery } from "widgets/Recovery";
 
+import { UserEnter } from "features/user";
+import {
+  getRegistrationSelector,
+  openConfirmationSelector,
+  ModalRegistration,
+  Confirmation
+} from 'features/registration';
 import {
   fetchProductions,
   getIngredientsSelector,
@@ -34,13 +42,6 @@ import {
 import { ImageWrapper } from 'shared';
 
 import style from './Constructor.module.scss';
-import {
-  Confirmation,
-  getRegistrationSelector,
-  ModalRegistration, openConfirmationSelector
-} from "../../../../features/registration";
-import {UserEnter} from "../../../../features/user";
-import {Recovery} from "../../../../widgets/Recovery";
 
 export const Constructor = () => {
   const dispatch = useAppDispatch();

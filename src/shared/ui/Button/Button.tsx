@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import classNames from 'classnames';
-import { ImageWrapper } from 'shared/ui/ImageWrapper/ImageWrapper';
+import { ImageWrapper } from 'shared';
 
 import style from './Button.module.scss';
 
@@ -49,13 +49,10 @@ export const Button: FC<ButtonProps> = (props) => {
     id,
   } = props;
 
- const defaultButtonColor = isGrayTheme ? 'default_white' : '';
+ const defaultButtonColor = isGrayTheme ? 'defaultWhite' : '';
 
   const handleOnClick = () => {
-    console.log("Button");
-
     if (onClick) {
-      console.log("onClick");
       onClick();
     }
   };
@@ -80,7 +77,7 @@ export const Button: FC<ButtonProps> = (props) => {
       {
         (imageLeft !== '') && (
           <ImageWrapper
-            className={style.button__image}
+            className={style.buttonImage}
             width={imageWidth}
             height={imageHeight}
             name={imageLeft}
@@ -94,7 +91,7 @@ export const Button: FC<ButtonProps> = (props) => {
       {
         (imageRight !== '') && (
           <ImageWrapper
-            className={style.button__image}
+            className={style.buttonImage}
             width={imageWidth}
             height={imageHeight}
             name={imageRight}
