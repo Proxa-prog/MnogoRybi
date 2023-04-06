@@ -3,10 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from 'app/store';
 
-import {
-  getRegistrationSelector,
-  registrationActions,
-} from 'features/registration';
+import { getRegistrationSelector, registrationActions } from 'features/registration';
 
 import {
   findUserAccount,
@@ -20,7 +17,7 @@ import { Button, Input } from 'shared';
 
 import style from './UserEnter.module.scss';
 
-const UserEnter: FC = () => {
+export const UserEnter: FC = () => {
   const dispatch = useAppDispatch();
   const registration = useSelector(getRegistrationSelector);
   const userEnter = useSelector(userEnterSelector);
@@ -45,9 +42,7 @@ const UserEnter: FC = () => {
 
   const handleConfirmationButtonClick = () => {
     dispatch(
-      userAccountActions.changeIsModalRecoveryOpen(
-        userAccount.userAccount.isModalRecoveryOpen
-      )
+      userAccountActions.changeIsModalRecoveryOpen(userAccount.userAccount.isModalRecoveryOpen)
     );
     dispatch(userEnterActions.changeIsOpenUserEnter(userEnter.isOpen));
   };
@@ -66,16 +61,19 @@ const UserEnter: FC = () => {
   };
 
   return (
-    <form className={style.user_enter} onSubmit={handleButtonUserEnter}>
+    <form
+      className={style.userEnter}
+      onSubmit={handleButtonUserEnter}
+    >
       <Button
-        className={style.button_close}
+        className={style.buttonClose}
         isClose='close'
         type='button'
         onClick={handleUserEnterButtonClose}
       />
       <h3>Вход</h3>
       <Input
-        className={style.input_email}
+        className={style.inputEmail}
         required
         type='email'
         label='Email'
@@ -84,15 +82,14 @@ const UserEnter: FC = () => {
         onChange={handleUserEnterEmail}
       />
       <Button
-        className={style.button_forgot_password}
+        className={style.buttonForgotPassword}
         type='button'
         onClick={handleConfirmationButtonClick}
       >
         Забыли пароль?
       </Button>
       <Input
-        classNameWrapper={style.email_wrapper}
-        className={style.input_password}
+        className={style.inputPassword}
         required
         type='password'
         label='Пароль'
@@ -101,21 +98,21 @@ const UserEnter: FC = () => {
         onChange={handleUserEnterPassword}
       />
       <Button
-        className={style.button_enter}
+        className={style.buttonEnter}
         type='submit'
         color='yellow'
         onClick={() => {}}
       >
         Войти
       </Button>
-      <div className={style.have_account_wrapper}>
-        <span className={style.have_account}>
+      <div className={style.haveAccountWrapper}>
+        <span className={style.haveAccount}>
           Нет учетной записи?
           <span className={style.space}>&nbsp;&nbsp;</span>
         </span>
         <Button
           onClick={handleCheckboxAgreementChange}
-          className={style.button_have_account}
+          className={style.buttonHaveAccount}
           type={'button'}
         >
           Зарегистрироваться
@@ -124,5 +121,3 @@ const UserEnter: FC = () => {
     </form>
   );
 };
-
-export default UserEnter;

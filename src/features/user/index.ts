@@ -1,1 +1,1 @@
-export { default as UserEnter } from './ui/UserEnter/UserEnter';
+export { UserEnter } from './ui/UserEnter/UserEnter';
