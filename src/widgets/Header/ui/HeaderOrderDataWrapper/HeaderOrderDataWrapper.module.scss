@@ -1,0 +1,172 @@
+.orderDataWrapper {
+  display: flex;
+  align-items: center;
+  padding: 10px 80px 20px;
+  max-width: 1440px;
+  margin: 0 auto;
+
+  @media (max-width: 1023px) {
+    padding: 7px 24px 13px;
+    margin: 0;
+  }
+
+  @media (max-width: 767px) {
+    padding: 15px;
+  }
+}
+
+.orderDataWrapperOpen {
+  padding: 0;
+  order: 1;
+}
+
+.menuButton {
+  display: none;
+  color: $gray-100;
+
+  @media (max-width: 1023px) {
+    display: block;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    margin-right: 20px;
+  }
+
+  @media (max-width: 767px) {
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+  }
+}
+
+.menuButtonOpen {
+  display: none;
+
+  @media (max-width: 1023px) {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 1000;
+    display: block;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    margin-right: 20px;
+  }
+}
+
+.logo {
+  margin-right: 40px;
+
+  @media (max-width: 1023px) {
+    width: 168.5px;
+    height: 50px;
+  }
+
+  @media (max-width: 767px) {
+    margin: 0 10px;
+    width: 124.7px;
+    height: 37px;
+  }
+}
+
+.orderData {
+  flex-basis: 46%;
+
+  @media (max-width: 1023px) {
+    display: none;
+  }
+}
+
+.orderDataOpen {
+  flex-basis: 46%;
+
+  @media (max-width: 1023px) {
+    display: flex;
+  }
+}
+
+.infoWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.infoWrapperOpen {
+  display: block
+}
+
+.info {
+  margin: 0 1.4vw;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  flex-direction: column;
+
+  a[href^="tel:"] {
+    text-decoration: none;
+    color: $gray-100;
+  }
+}
+
+.infoOpen {
+  margin: 0 1.4vw;
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+
+  a[href^="tel:"] {
+    text-decoration: none;
+    color: $gray-100;
+  }
+}
+
+.open {
+  display: block;
+}
+
+.buttonWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.userAuth {
+  width: 50px;
+  height: 50px;
+  padding: 15px;
+
+  @media (max-width: 767px) {
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+  }
+}
+
+.buttonOrders {
+  @media (max-width: 1023px) {
+    display: none;
+  }
+}
+
+.buttonBasketWrapper {
+  position: relative;
+  display: flex;
+
+  .amountItems {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  @media (max-width: 767px) {
+    margin-left: 8px;
+
+    .amountItems {
+      right: -1px;
+      top: 0;
+    }
+  }
+}
+

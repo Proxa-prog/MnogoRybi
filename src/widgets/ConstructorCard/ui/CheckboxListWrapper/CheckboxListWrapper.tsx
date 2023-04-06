@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { nanoid } from 'nanoid';
 
-import CheckboxListColumnSquare from '../CheckboxListColumnSquare/CheckboxListColumnSquare';
-import CheckboxListCircle from '../CheckboxListCircle/CheckboxListCircle';
-import SelectList from '../SelectListWrapper/SelectList';
+import { CheckboxListColumnSquare } from '../CheckboxListColumnSquare/CheckboxListColumnSquare';
+import { CheckboxListCircle } from '../CheckboxListCircle/CheckboxListCircle';
+import { SelectList } from '../SelectListWrapper/SelectList';
 
 import { CheckboxListWrapperProps, IFiltersIngredients } from 'widgets/ConstructorCard';
 
@@ -37,7 +37,7 @@ export const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
   } = props;
 
   const filters = useSelector(filtersSelector);
-
+  console.log(selectListArray)
   const func = fillersType?.ingredients.filter(
     (filler) => filler.name === contentHeader?.name
   );
@@ -56,14 +56,14 @@ export const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
     <div
       className={classNames(
         style.wrapper,
-        { [style.horizontal_line]: hasHorizontalLine },
+        { [style.horizontalLine]: hasHorizontalLine },
         []
       )}
     >
-      <div className={style.header_wrapper}>
+      <div className={style.headerWrapper}>
         <div
           className={classNames({ [style.hide]: isSelectList }, [
-            style.image_header,
+            style.imageHeader,
           ])}
         >
           <span>{stepNumber}</span>
@@ -79,9 +79,9 @@ export const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
         <div className={style.header}>{header}</div>
         <div className={style.description}>{description}</div>
       </div>
-      <div className={style.content_wrapper}>
+      <div className={style.contentWrapper}>
         {hasFilters && productsType && (
-          <div className={style.filters_wrapper}>
+          <div className={style.filtersWrapper}>
             {filters.filters.map((item: IFiltersIngredients) => {
               const id = nanoid();
 
@@ -90,7 +90,7 @@ export const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
                   key={id}
                   isCircleCheckbox
                   productsType={item}
-                  className={style.checkbox_wrapper}
+                  className={style.checkboxWrapper}
                   isFillers
                   checked={isFillerChecked(checkboxState?.name, item.name)}
                   isFillerChecked={isFillerChecked(
@@ -107,7 +107,7 @@ export const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
           </div>
         )}
         {contentHeader && (
-          <div className={style.content_header_wrapper}>
+          <div className={style.contentHeaderWrapper}>
             <span className={style.contentHeader}>{contentHeader.name}</span>
             &nbsp;
             <span className={style.howMuchIsLeft}>
@@ -132,7 +132,7 @@ export const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
                   <CheckboxListColumnSquare
                     isCircleCheckbox={isCircleCheckbox}
                     productsType={item}
-                    className={style.checkbox_white_background}
+                    className={style.checkboxWhiteBackground}
                     changeType={changeType}
                     changeChecked={changeChecked}
                     disabled={func && howMuchIsLeft === func[0].count}

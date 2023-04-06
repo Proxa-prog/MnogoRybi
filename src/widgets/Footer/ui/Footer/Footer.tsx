@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -17,17 +17,17 @@ import {
 
 import style from "./Footer.module.scss";
 
-const Footer: FC = () => {
+export const Footer: FC = () => {
   const restaurantProductions = useSelector(getRestaurantProductionsSelector);
   const pagesInfo = useSelector(getRestaurantPagesInfoSelector);
 
   return (
     <footer className={classNames(style.footer)}>
-      <nav className={classNames(style.footer__nav)}>
-        <div className={classNames(style.footer__logo_wrapper)}>
+      <nav className={classNames(style.nav)}>
+        <div className={classNames(style.logoWrapper)}>
           <Link to="/">
             <ImageWrapper
-              className={style.footer__logo}
+              className={style.footerLogo}
               alt="Логотип Много Рыбы"
               name="logo_white.svg"
               width={LOGO_WIDTH}
@@ -35,49 +35,47 @@ const Footer: FC = () => {
             />
           </Link>
         </div>
-        <div className={classNames(style.footer__info_wrapper)}>
-          <div className={classNames(style.footer__products)}>
+        <div className={classNames(style.infoWrapper)}>
+          <div className={classNames(style.products)}>
             <h3>Меню poke-room</h3>
             <List
               isNavigate
               items={restaurantProductions.products}
-              classNameList={classNames(style.footer__list)}
-              classNameItem={classNames(style.footer__item)}
+              classNameList={classNames(style.list)}
+              classNameItem={classNames(style.item)}
             />
           </div>
-          <div className={classNames(style.footer__info)}>
+          <div className={classNames(style.info)}>
             <h3>О нас</h3>
             <List
               isLink
               items={pagesInfo.footerLinksNames}
-              classNameList={classNames(style.footer__list)}
-              classNameItem={classNames(style.footer__item, {
-                [style.footer__info_item]: true,
-              })}
+              classNameList={classNames(style.list)}
+              classNameItem={classNames(style.item, { [style.infoItem]: true }, [])}
             />
           </div>
-          <div className={classNames(style.footer__contacts)}>
+          <div className={classNames(style.contacts)}>
             <h3>Контакты</h3>
             <List
               isLink
               items={pagesInfo.restaurantAddress}
-              classNameList={classNames(style.footer__list, {
-                [style.footer__address_list]: true,
+              classNameList={classNames(style.list, {
+                [style.addressList]: true,
               })}
-              classNameItem={classNames(style.footer__item, {
-                [style.footer__address_item]: true,
+              classNameItem={classNames(style.item, {
+                [style.addressItem]: true,
               })}
             />
             <a href="tel:+74852980100">8 (4852) 980-100</a>
           </div>
         </div>
       </nav>
-      <div className={classNames(style.footer__politics_wrapper)}>
-        <div className={classNames(style.footer__our_politics)}>
-          <a className={classNames(style.header__our_politics_item)} href="#">
+      <div className={classNames(style.politicsWrapper)}>
+        <div className={classNames(style.ourPolitics)}>
+          <a className={classNames(style.ourPoliticsItem)} href="#">
             © 2022 poke-room «МногоРыбы».
           </a>
-          <a className={classNames(style.header__our_politics_item)} href="#">
+          <a className={classNames(style.ourPoliticsItem)} href="#">
             Политика обработки персональных данных
           </a>
         </div>
@@ -85,5 +83,3 @@ const Footer: FC = () => {
     </footer>
   );
 };
-
-export default Footer;

@@ -12,7 +12,7 @@
     }
 }
 
-.footer__nav {
+.nav {
     padding: 40px 80px;
     display: flex;
     max-width: 1440px;
@@ -27,7 +27,7 @@
 
 }
 
-.footer__info_wrapper {
+.infoWrapper {
     padding: 20px;
     display: flex;
     justify-content: flex-start;
@@ -46,7 +46,7 @@
     }
 }
 
-.footer__logo_wrapper {
+.logoWrapper {
     margin-right: 69px;
 
     @media (max-width: 1023px) {
@@ -54,7 +54,7 @@
     }
 }
 
-.footer__logo {
+.footerLogo {
     width: 235.9px;
     height: 70px;
 
@@ -64,7 +64,7 @@
     }
 }
 
-.footer__list {
+.list {
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
@@ -78,9 +78,9 @@
     }
 }
 
-.footer__products,
-.footer__info,
-.footer__contacts {
+.products,
+.info,
+.contacts {
     width: 33%;
 
     @media (max-width: 1023px) {
@@ -92,7 +92,7 @@
     }
 }
 
-.footer__item {
+.item {
     margin-bottom: 15px;
     color: $gray-30;
 
@@ -101,15 +101,15 @@
     }
 }
 
-.footer__address_item {
+.addressItem {
     margin-bottom: 0;
 }
 
-.footer__address_list {
+.addressList {
     margin-bottom: 15px;
 }
 
-.footer__info_item {
+.infoItem {
     font-weight: 700;
     font-size: 16px;
     line-height: 24px;
@@ -119,7 +119,7 @@
     }
 }
 
-.footer__products {
+.products {
     @media (max-width: 767px) {
         a {
             font-size: 14px;
@@ -128,7 +128,7 @@
     }
 }
 
-.footer__contacts {
+.contacts {
     a[href^="tel:"] {
         text-decoration: none;
         font-weight: 400;
@@ -138,7 +138,7 @@
     }
 }
 
-.footer__politics_wrapper {
+.politicsWrapper {
     background-color: $gray-70;
     padding: 20px 0;
     font-weight: 400;
@@ -163,7 +163,7 @@
     }
 }
 
-.footer__our_politics {
+.ourPolitics {
     display: flex;
     justify-content: space-between;
     max-width: 1440px;
@@ -180,7 +180,7 @@
      }
 }
 
-.header__our_politics_item {
+.ourPoliticsItem {
     @media (max-width: 767px) {
        width: 100%;
        margin-bottom: 5px;

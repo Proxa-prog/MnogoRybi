@@ -5,7 +5,7 @@ import { AnyAction } from '@reduxjs/toolkit';
 
 import { useAppDispatch } from 'app/store';
 
-import { Checkbox } from 'shared';
+import { IFiltersIngredients } from 'widgets/ConstructorCard';
 
 import { IProducts } from 'entities/basket';
 import {
@@ -14,7 +14,7 @@ import {
   filtersSelector
 } from 'entities/constructor';
 
-import { IFiltersIngredients } from '../../model/types/types';
+import { Checkbox } from 'shared';
 
 import style from './CheckboxListCircle.module.scss';
 
@@ -30,7 +30,7 @@ interface CheckboxListCircleProps {
   changeFiltersType?: (item: IFiltersIngredients) => AnyAction;
 }
 
-const CheckboxListCircle: FC<CheckboxListCircleProps> = (props) => {
+export const CheckboxListCircle: FC<CheckboxListCircleProps> = (props) => {
   const {
     productsType,
     isCircleCheckbox,
@@ -60,9 +60,9 @@ const CheckboxListCircle: FC<CheckboxListCircleProps> = (props) => {
     <div
       className={classNames(
         {
-          [style.checkbox_wrapper]: isCircleCheckbox,
-          [style.font_checked_style]: isFillers ? isFillerChecked : isChecked,
-          [style.checkbox_wrapper_checked]: isFillers ? isFillerChecked : isChecked,
+          [style.wrapper]: isCircleCheckbox,
+          [style.fontCheckedStyle]: isFillers ? isFillerChecked : isChecked,
+          [style.checkboxWrapperChecked]: isFillers ? isFillerChecked : isChecked,
         },
         [className]
       )}
@@ -80,5 +80,3 @@ const CheckboxListCircle: FC<CheckboxListCircleProps> = (props) => {
     </div>
   );
 };
-
-export default CheckboxListCircle;

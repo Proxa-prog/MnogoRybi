@@ -1,0 +1,271 @@
+.headerNavWrapper {
+  background-color: $yellow-10;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.navWrapperScroll {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  @media (max-width: 1023px) {
+    padding-right: 24px;
+  }
+
+  @media (max-width: 767px) {
+    padding-right: 0;
+  }
+}
+
+.navWrapper {
+  max-width: 1440px;
+  padding: 10px 80px;
+  margin: 0 auto;
+
+  @media (max-width: 1023px) {
+    padding: 5px 24px;
+    margin: 0;
+  }
+
+  @media (max-width: 767px) {
+    padding: 7px 15px;
+  }
+}
+
+.nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buttonProductsMenu {
+  display: none;
+
+  @media (max-width: 1023px) {
+    display: flex;
+    padding-left: 20px;
+    padding-right: 10px;
+  }
+}
+
+.listWrapper {
+  display: flex;
+  align-items: center;
+  flex-basis: 78.64%;
+
+  @media (max-width: 1023px) {
+    display: none;
+  }
+}
+
+.listWrapperOpen {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  @media (max-width: 1023px) {
+    width: 100%;
+    padding: 5px 15px;
+    display: flex;
+    position: absolute;
+    bottom: -265px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    z-index: 9999;
+  }
+}
+
+.openButtonMenu {
+  @media (max-width: 1023px) {
+    display: block;
+  }
+}
+
+.logoScroll {
+  width: 38.5px;
+  height: 45px;
+  margin-right: 25.75px;
+}
+
+.productsList {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 57.64%;
+
+  @media (max-width: 1023px) {
+    display: none;
+  }
+}
+
+.productsListOpen {
+  display: flex;
+  flex-wrap: wrap;
+
+  @media (max-width: 1023px) {
+    display: block;
+    width: 100%;
+  }
+}
+
+.productsItem,
+.infoItem,
+.infoItemScroll {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  margin-right: 20px;
+
+  a {
+    color: $gray-100;
+  }
+}
+
+.productsItemOpen {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  margin-right: 20px;
+
+  @media (max-width: 1023px) {
+    padding: 5px 0;
+    cursor: pointer;
+    &:not(:last-child) {
+      border-bottom: 1px solid $gray-10;
+    }
+  }
+}
+
+.verticalLine {
+  width: 1px;
+  height: 24px;
+  background-color: $yellow-100;
+  margin-right: 20px;
+  align-self: center;
+
+  @media (max-width: 1023px) {
+    display: none;
+  }
+}
+
+.infoListScroll {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 28.3%;
+
+  .infoItemScroll:nth-child(n+4) {
+    display: none;
+  }
+
+  @media (max-width: 1023px) {
+    display: none;
+  }
+}
+
+.buttonMore {
+  background-color: inherit;
+  padding: 0;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  margin-left: 0;
+}
+
+.listMoreInfo {
+  display: none;
+}
+
+.listMoreInfoOpen {
+  position: relative;
+}
+
+.listScrollMoreInfo {
+  position: absolute;
+  bottom: -95px;
+  left: -80px;
+  background-color: $white-00;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 25px rgba(5, 5, 5, 0.15);
+}
+
+.itemScrollMoreInfo {
+  display: none;
+
+  &:nth-child(n + 4) {
+    display: block;
+    margin-bottom: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    margin-right: 20px;
+
+    a {
+      color: $gray-100;
+    }
+  }
+}
+
+.infoListOpen {
+  display: block;
+}
+
+.infoList {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 38%;
+
+  @media (max-width: 1023px) {
+    display: none;
+  }
+}
+
+.infoItemOpen {
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  margin-right: 20px;
+}
+
+.buttonWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.buttonCreatePokeWrapper {
+  margin-left: auto;
+  padding: 10px 20px;
+  align-self: center;
+}
+
+.createPokeButton {
+  text-decoration: none;
+}
+
+.buttonBasketWrapper {
+  position: relative;
+  display: flex;
+
+  .amountItems {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  @media (max-width: 767px) {
+    margin-left: 8px;
+
+    .amountItems {
+      right: -1px;
+      top: 0;
+    }
+  }
+}

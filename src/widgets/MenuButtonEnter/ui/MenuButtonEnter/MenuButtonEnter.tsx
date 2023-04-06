@@ -9,7 +9,7 @@ import { userEnterSelector, userEnterActions } from 'entities/user';
 
 import { ONE_HUNDRED_PIXEL_SCROLL, Button } from 'shared';
 
-import style from 'widgets/Header/ui/Header/Header.module.scss';
+import style from './MenuButtonEnter.module.scss';
 
 interface MenuButtonEnterProps {
   isAuth: boolean;
@@ -33,8 +33,8 @@ const MenuButtonEnter: FC<MenuButtonEnterProps> = (props) => {
         imageLeft='user_fill.svg'
         className={
           scroll && scroll >= ONE_HUNDRED_PIXEL_SCROLL
-            ? style.user_auth_scroll
-            : style.user_auth
+            ? style.authScroll
+            : style.userAuth
         }
         type='button'
         isGrayTheme
@@ -42,7 +42,12 @@ const MenuButtonEnter: FC<MenuButtonEnterProps> = (props) => {
       />
     </Link>
   ) : (
-    <Button type='button' isGrayTheme onClick={handleCheckboxAgreementChange}>
+    <Button
+      className={style.buttonEnter}
+      type='button'
+      isGrayTheme
+      onClick={handleCheckboxAgreementChange}
+    >
       Войти
     </Button>
   );

@@ -22,7 +22,7 @@ import {
   List,
 } from 'shared';
 
-import style from 'widgets/Header/ui/Header/Header.module.scss';
+import style from './HeaderNavWrapper.module.scss';
 
 interface HeaderNavWrapperProps {
   isHeaderMenuActive: boolean;
@@ -36,7 +36,7 @@ interface HeaderNavWrapperProps {
   onBasketButtonClick?: () => void;
 }
 
-const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
+export const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
   const {
     isHeaderMenuActive,
     windowWidth,
@@ -79,7 +79,7 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
     event: React.MouseEvent<HTMLLIElement>,
     items: any
   ) => {
-    console.log(items);
+
     const newArray = items.map((item: any) => {
       if (event.currentTarget.id === `navLink${item.id}`) {
         return {
@@ -97,27 +97,19 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
     dispatch(restaurantPagesInfoActions.getPagesNames(newArray));
   };
 
-  useEffect(() => {
-    // if (scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL) {
-    //  dispatch(changeIsLoginUserAccount());
-    // } else {
-    //   dispatch(changeIsLoginUserAccount());
-    // }
-  }, [scrollHeight]);
-
   return (
     <div
-      className={classNames(style.nav, {
-        [style.header__nav_wrapper_scroll]:
+      className={classNames(style.headerNavWrapper, {
+        [style.navWrapperScroll]:
           scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL,
       })}
     >
-      <div className={classNames(style.header__nav_wrapper)}>
-        <nav className={style.header__nav}>
+      <div className={classNames(style.navWrapper)}>
+        <nav className={style.nav}>
           {(isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP) || (
             <Button
               isGrayTheme
-              className={style.header__button_products_menu}
+              className={style.buttonProductsMenu}
               type='button'
               imageRight={
                 isProductsMenuActive
@@ -132,11 +124,11 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
             </Button>
           )}
           <div
-            className={classNames(style.list_wrapper, {
-              [style.list_wrapper_scroll]:
+            className={classNames(style.listWrapper, {
+              [style.listWrapperScroll]:
                 scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL,
-              [style.list_wrapper__open]: isProductsMenuActive,
-              [style.list_wrapper__open_button_menu]:
+              [style.listWrapperOpen]: isProductsMenuActive,
+              [style.openButtonMenu]:
                 isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
             })}
           >
@@ -144,7 +136,7 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
               windowWidth >= ViewPorts.DESKTOP && (
                 <Link to='/'>
                   <ImageWrapper
-                    className={style.header__logo_scroll}
+                    className={style.logoScroll}
                     name='logo_only_image.svg'
                     alt='Логотип тарелка, рыба, китайские палочки'
                     width={38.25}
@@ -155,13 +147,13 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
             <List
               isNavigate
               classNameList={classNames(
-                style.header__products_list,
-                { [style.header__products_list__open]: isProductsMenuActive },
+                style.productsList,
+                { [style.productsListOpen]: isProductsMenuActive },
                 []
               )}
               classNameItem={classNames(
-                style.header__products_item,
-                { [style.header__products_item__open]: isProductsMenuActive },
+                style.productsItem,
+                { [style.productsItemOpen]: isProductsMenuActive },
                 []
               )}
               items={restaurantProductions.products}
@@ -169,21 +161,21 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
                 handleProductionsClick(event, restaurantProductions.products);
               }}
             />
-            <div className={style.header__vertical_line} />
+            <div className={style.verticalLine} />
             {scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL &&
             windowWidth >= ViewPorts.DESKTOP ? (
               <>
                 <List
                   isLink
-                  classNameList={style.header__info_list_scroll}
-                  classNameItem={style.header__info_item_scroll}
+                  classNameList={style.infoListScroll}
+                  classNameItem={style.infoItemScroll}
                   items={pagesInfo.pagesNames}
                   onClick={(event) => {
                     handlePagesClick(event, pagesInfo.pagesNames);
                   }}
                 />
                 <Button
-                  className={style.header__button_more}
+                  className={style.buttonMore}
                   type='button'
                   imageRight='property_expand_down.svg'
                   imageHeight={24}
@@ -196,14 +188,14 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
                 </Button>
                 <div
                   className={classNames(
-                    buttonMoreIsOpen && style.list_more_info,
-                    !buttonMoreIsOpen && style.list_more_info_open
+                    buttonMoreIsOpen && style.listMoreInfo,
+                    !buttonMoreIsOpen && style.listMoreInfoOpen
                   )}
                 >
                   <List
                     isLink
-                    classNameList={style.info_list_scroll_more_info}
-                    classNameItem={style.info_item_scroll_more_info}
+                    classNameList={style.listScrollMoreInfo}
+                    classNameItem={style.itemScrollMoreInfo}
                     items={pagesInfo.pagesNames}
                     onClick={(event) => {
                       handlePagesClick(event, pagesInfo.pagesNames);
@@ -214,12 +206,12 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
             ) : (
               <List
                 isLink
-                classNameList={classNames(style.header__info_list, {
-                  [style.header__info_list__open]:
+                classNameList={classNames(style.infoList, {
+                  [style.infoListOpen]:
                     isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
                 })}
-                classNameItem={classNames(style.header__info_item, {
-                  [style.header__info_item__open]:
+                classNameItem={classNames(style.infoItem, {
+                  [style.infoItemOpen]:
                     isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
                 })}
                 items={pagesInfo.pagesNames}
@@ -229,17 +221,20 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
               />
             )}
           </div>
-          <div className={style.header__button_wrapper}>
+          <div className={style.buttonWrapper}>
             {(isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP) || (
               <Button
-                className={style.header__button_create_poke}
+                className={style.buttonCreatePokeWrapper}
                 type='button'
                 isGrayTheme
                 onClick={() => {
                   console.log('Button Create');
                 }}
               >
-                <Link to={`/constructor`} className={style.create_poke_button}>
+                <Link
+                  to={`/constructor`}
+                  className={style.createPokeButton}
+                >
                   Создать поке
                 </Link>
               </Button>
@@ -248,7 +243,7 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
               windowWidth >= ViewPorts.TABLET && (
                 <>
                   <MenuButtonEnter isAuth={isAuth} scroll={scrollHeight} />
-                  <div className={style.header__button_basket_wrapper}>
+                  <div className={style.buttonBasketWrapper}>
                     <MenuButtonBasket
                       itemsInTheBasket={itemsInTheBasket}
                       scroll={scrollHeight}
@@ -264,5 +259,3 @@ const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
     </div>
   );
 };
-
-export default HeaderNavWrapper;

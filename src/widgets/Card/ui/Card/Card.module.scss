@@ -50,7 +50,7 @@
     text-decoration: line-through;
 }
 
-.card_status_wrapper {
+.cardStatusWrapper {
     position: absolute;
     left: 10px;
     top: 10px;
@@ -58,12 +58,12 @@
     flex-wrap: wrap;
 }
 
-.card_status  {
+.cardStatus  {
     margin-right: 5px;
     margin-bottom: 5px;
 }
 
-.button_buy {
+.buttonBuy {
     margin-right: 0;
     padding: 15px 25px;
 
@@ -72,7 +72,7 @@
     }
 }
 
-.image_wrapper {
+.imageWrapper {
     width: 305px;
     height: 240px;
     position: relative;
@@ -90,21 +90,21 @@
     }
 }
 
-.description_wrapper {
+.descriptionWrapper {
     padding: 20px;
     min-height: 189px;
     display: flex;
     flex-direction: column;
 }
 
-.cost_wrapper {
+.costWrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: flex-end;
 }
 
-.current_cost {
+.currentCost {
     margin-right: auto;
     align-self: center;
 }
@@ -112,23 +112,23 @@
 .info {
     width: 413px;
 
-    .image_wrapper {
+    .imageWrapper {
         width: 100%;
     }
 
-    .description_wrapper_info {
+    .descriptionWrapperInfo {
         background-color: $gray-10;
     }
 }
 
-.preview_card {
+.previewCard {
     position: relative;
     min-height: 420px;
     background-repeat: no-repeat;
     background: linear-gradient(146.89deg, #FFD567 1.36%, #FFF8D1 98.96%);
 }
 
-.preview_description_wrapper {
+.previewDescriptionWrapper {
     min-height: auto;
     position: absolute;
     top: 54px;
@@ -143,23 +143,23 @@
     }
 }
 
-.image_wrapper_preview {
+.imageWrapperPreview {
     height: 100%;
 }
 
-.create_poke_description {
+.createPokeDescription {
     font-weight: 400;
     font-size: 16px;
     line-height: 140%;
     color: $gray-100;
 }
 
-.create_poke_cost_wrapper {
+.createPokeCostWrapper {
     position: absolute;
     bottom: 5px;
 }
 
-.create_poke_button {
+.createPokeButton {
     margin: 0;
     text-decoration: none;
 }

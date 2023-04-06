@@ -1,1 +1,1 @@
-export { default as ChooseCardWrapper } from "./ui/ChooseCardWrapper/ChooseCardWrapper";
+export { ChooseCardWrapper } from "./ui/ChooseCardWrapper/ChooseCardWrapper";

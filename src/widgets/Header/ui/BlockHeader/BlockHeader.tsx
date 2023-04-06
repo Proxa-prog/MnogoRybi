@@ -11,7 +11,7 @@ export interface BlockHeaderProps {
   children?: JSX.Element;
 }
 
-const BlockHeader: FC<BlockHeaderProps> = (props) => {
+export const BlockHeader: FC<BlockHeaderProps> = (props) => {
   const {
     className,
     pageName,
@@ -49,8 +49,5 @@ const BlockHeader: FC<BlockHeaderProps> = (props) => {
       <h1>{pageName}</h1>
       {children}
     </div>
-
   )
 }
-
-export default BlockHeader;

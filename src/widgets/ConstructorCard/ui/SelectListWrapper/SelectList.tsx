@@ -16,7 +16,7 @@ export interface SelectListProps {
   isSelected?: boolean;
 }
 
-const SelectList: FC<SelectListProps> = (props) => {
+export const SelectList: FC<SelectListProps> = (props) => {
   const {
     productsType,
     header,
@@ -35,7 +35,7 @@ const SelectList: FC<SelectListProps> = (props) => {
     );
     setIsChecked(isChecked);
 
-    const isIncludes = !constructor?.additionally?.some(
+    const isIncludes = !constructor.additionally?.some(
       (item) => item.productType === header
     );
     isChecked &&
@@ -50,7 +50,7 @@ const SelectList: FC<SelectListProps> = (props) => {
           <h4 className={classNames(style.label)}>{header}</h4>
           <div
             className={classNames(
-              style.select_wrapper,
+              style.selectWrapper,
               { [style.isSelected]: isChecked },
               []
             )}
@@ -68,5 +68,3 @@ const SelectList: FC<SelectListProps> = (props) => {
     </div>
   );
 };
-
-export default SelectList;

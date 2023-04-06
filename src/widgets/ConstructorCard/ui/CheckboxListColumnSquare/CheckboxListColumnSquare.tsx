@@ -21,7 +21,7 @@ interface CheckboxListColumnSquareProps {
   name?: string;
 }
 
-const CheckboxListColumnSquare: FC<CheckboxListColumnSquareProps> = (props) => {
+export const CheckboxListColumnSquare: FC<CheckboxListColumnSquareProps> = (props) => {
   const {
     productsType,
     isCircleCheckbox,
@@ -84,5 +84,3 @@ const CheckboxListColumnSquare: FC<CheckboxListColumnSquareProps> = (props) => {
     </li>
   );
 };
-
-export default CheckboxListColumnSquare;

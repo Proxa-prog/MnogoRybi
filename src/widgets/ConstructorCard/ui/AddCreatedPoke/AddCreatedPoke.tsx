@@ -4,8 +4,6 @@ import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from 'app/store';
 
-import { Button } from 'shared';
-
 import { constructorSelector } from 'entities/constructor';
 import { ProductCounter } from 'entities/counter';
 import {
@@ -14,13 +12,13 @@ import {
   basketActions,
 } from 'entities/basket';
 
+import { Button } from 'shared';
+
 import style from './AddCreatedPoke.module.scss';
 
 export const AddCreatedPoke: FC = () => {
   const dispatch = useAppDispatch();
-  const amountOfProductsInConstructor = useSelector(
-    getAmountConstructorProductSelector
-  );
+  const amountOfProductsInConstructor = useSelector(getAmountConstructorProductSelector);
   const constructor = useSelector(constructorSelector);
 
   // Увеличить количество товара
@@ -67,19 +65,19 @@ export const AddCreatedPoke: FC = () => {
 
   return (
     <div className={style.wrapper}>
-      <div className={style.header_wrapper}>
+      <div className={style.headerWrapper}>
         <h3>Готово</h3>
         <span>Вы создали свой идеальный поке</span>
       </div>
-      <div className={style.button_wrapper}>
+      <div className={style.buttonWrapper}>
         <ProductCounter
-          wrapperClassName={style.counter_wrapper}
+          wrapperClassName={style.counterWrapper}
           removeAmountProduct={removeAmountProduct}
           addAmountProduct={addAmountProduct}
           amount={amountOfProductsInConstructor.amount}
         />
         <Button
-          className={style.button_basket}
+          className={style.buttonBasket}
           type='button'
           color='yellow'
           children={`В корзину за ${amountOfProductsInConstructor.cost} ₽`}

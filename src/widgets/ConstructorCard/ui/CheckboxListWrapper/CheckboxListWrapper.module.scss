@@ -13,11 +13,11 @@
   }
 }
 
-.horizontal_line {
+.horizontalLine {
   border: 1px solid $white-00;
 }
 
-.filters_wrapper {
+.filtersWrapper {
   display: flex;
   gap: 10px;
   width: 100%;
@@ -35,11 +35,11 @@
   }
 }
 
-.checkbox_wrapper {
+.checkboxWrapper {
   flex-grow: 1;
 }
 
-.header_wrapper {
+.headerWrapper {
   width: 25.5%;
   margin-right: auto;
 
@@ -64,7 +64,7 @@
   display: none;
 }
 
-.image_header {
+.imageHeader {
   margin-bottom: 23px;
 
   @media (max-width: 767px) {
@@ -95,7 +95,7 @@
   }
 }
 
-.content_wrapper {
+.contentWrapper {
   width: 75.5%;
   display: flex;
   flex-wrap: wrap;
@@ -122,16 +122,11 @@
   }
 }
 
-.checkbox_white_background {
+.checkboxWhiteBackground {
   background-color: $white-00;
 }
 
-.checkbox_wrapper_column {
-  display: flex;
-  align-items: center;
-}
-
-.content_header_wrapper {
+.contentHeaderWrapper {
   width: 100%;
   margin-bottom: 15px;
 }

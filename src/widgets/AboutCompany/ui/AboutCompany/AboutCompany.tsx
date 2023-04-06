@@ -4,10 +4,10 @@ import { Advanced } from "shared";
 
 import style from "./AboutCompany.module.scss";
 
-const AboutCompany: FC = () => {
+export const AboutCompany: FC = () => {
   return (
-    <section className={style.about_company}>
-      <div className={style.images_wrapper}></div>
+    <section className={style.aboutCompany}>
+      <div className={style.imagesWrapper}></div>
       <Advanced
         name="fish"
         width="50"
@@ -36,10 +36,8 @@ const AboutCompany: FC = () => {
           выберите одно из наших фирменных блюд, либо создайте свой идеальный
           Poke!
         </p>
-        <div className={style.logo_wrapper} />
+        <div className={style.logoWrapper} />
       </div>
     </section>
   );
 };
-
-export default AboutCompany;

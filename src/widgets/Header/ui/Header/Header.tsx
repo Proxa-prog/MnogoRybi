@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 
 import { useAppDispatch } from 'app/store';
+
 import { HeaderOrderDataWrapper, HeaderNavWrapper } from 'widgets/Header';
 
 import { registrationActions } from 'features/registration';
@@ -20,7 +21,10 @@ export interface HeaderProps {
 }
 
 const Header: FC<HeaderProps> = (props) => {
-  const { itemsInTheBasket, isAuth = false } = props;
+  const {
+    itemsInTheBasket,
+    isAuth = false
+  } = props;
 
   const dispatch = useAppDispatch();
   const [scrollHeight, setScrollHeight] = useState(0);
@@ -68,7 +72,7 @@ const Header: FC<HeaderProps> = (props) => {
   return (
     <header
       className={classNames(style.header, {
-        [style.header__open]:
+        [style.headerOpen]:
           isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
       })}
     >

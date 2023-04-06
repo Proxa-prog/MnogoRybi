@@ -9,7 +9,7 @@ import {
   StatusMarker,
 } from "shared";
 
-import style from "widgets/Header/ui/Header/Header.module.scss";
+import style from "./MenuButtonBasket.module.scss";
 
 interface MenuButtonBasketProps {
   itemsInTheBasket: number | undefined;
@@ -19,7 +19,7 @@ interface MenuButtonBasketProps {
   onClick?: () => void;
 }
 
-const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
+export const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
   const {
     itemsInTheBasket,
     scroll,
@@ -37,8 +37,8 @@ const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
         childrenWrapperClassName="buttonTextWrapper"
         className={
           scroll && scroll >= ONE_HUNDRED_PIXEL_SCROLL
-            ? style.header__button_basket_scroll
-            : style.header__button_basket
+            ? style.buttonBasketScroll
+            : style.buttonBasket
         }
         type="button"
         color="yellow"
@@ -56,7 +56,7 @@ const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
         <StatusMarker
           key={0}
           color="blue"
-          className={style.header__amount_items}
+          className={style.amountItems}
         >
           {itemsInTheBasket}
         </StatusMarker>
@@ -64,7 +64,7 @@ const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
         <StatusMarker
           key={0}
           color="blue"
-          className={style.header__amount_items}
+          className={style.amountItems}
         >
           {basket.basket.length}
         </StatusMarker>
@@ -73,8 +73,8 @@ const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
         childrenWrapperClassName="buttonTextWrapper"
         className={
           scroll && scroll >= ONE_HUNDRED_PIXEL_SCROLL
-            ? style.header__button_basket_scroll
-            : style.header__button_basket
+            ? style.buttonBasketScroll
+            : style.buttonBasket
         }
         type="button"
         color="yellow"
@@ -86,5 +86,3 @@ const MenuButtonBasket: FC<MenuButtonBasketProps> = (props) => {
     </>
   );
 };
-
-export default MenuButtonBasket;

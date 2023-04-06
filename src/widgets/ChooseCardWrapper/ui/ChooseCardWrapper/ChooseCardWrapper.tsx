@@ -6,14 +6,15 @@ import { useAppDispatch } from "app/store";
 
 import {
   openProductsCardSelector,
-  ChooseCard, openProductsCardActions,
+  ChooseCard,
+  openProductsCardActions,
 } from "features/productions";
 
 import { Button } from "shared";
 
 import style from "./ChooseCardWrapper.module.scss";
 
-const ChooseCardWrapper: FC = () => {
+export const ChooseCardWrapper: FC = () => {
   const dispatch = useAppDispatch();
   const productsCard = useSelector(openProductsCardSelector);
   const cardWrapperId = nanoid();
@@ -38,12 +39,12 @@ const ChooseCardWrapper: FC = () => {
       {productsCard.isOpen && (
         <div
           id={cardWrapperId}
-          className={style.choose_card_wrapper}
+          className={style.chooseCardWrapper}
           onClick={handleBackgroundClick}
         >
           <Button
             id={buttonCloseId}
-            className={style.button_close}
+            className={style.buttonClose}
             isClose="close"
             type="button"
           />
@@ -53,5 +54,3 @@ const ChooseCardWrapper: FC = () => {
     </>
   );
 };
-
-export default ChooseCardWrapper;

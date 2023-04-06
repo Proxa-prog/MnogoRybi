@@ -25,7 +25,7 @@ import {
   fetchNews
 } from 'features/news';
 import { fetchProductions } from 'features/productions';
-import { fetchPagesInfo } from 'features/restaurant';
+import { fetchPagesInfo, fetchRestaurantProductions } from 'features/restaurant';
 
 import {userAccountSelector, userEnterSelector} from 'entities/user';
 
@@ -55,6 +55,7 @@ export const News: FC = () => {
   useEffect(() => {
     dispatch(fetchProductions());
     dispatch(fetchPagesInfo());
+    dispatch(fetchRestaurantProductions());
     dispatch(fetchNews(news.limit));
   }, [news.limit]);
 

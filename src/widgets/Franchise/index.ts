@@ -1,1 +1,1 @@
-export { default as Franchise } from "./ui/Franchise/Franchise";
+export { Franchise } from "./ui/Franchise/Franchise";
