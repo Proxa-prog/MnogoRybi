@@ -16,7 +16,7 @@ import {
   PERSONAL_AREA_MY_ORDERS_ROUTE,
 } from 'shared';
 
-import { MainPage } from 'pages/mainPage';
+import { MainPage } from 'pages/MainPage';
 import { News } from 'pages/news';
 import { Contacts } from 'pages/Contacts';
 import { NewsPage } from 'pages/newsPage';

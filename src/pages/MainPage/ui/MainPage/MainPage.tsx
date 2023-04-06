@@ -18,21 +18,15 @@ import {
   getRegistrationSelector,
   openConfirmationSelector,
   ModalRegistration,
-  Confirmation
+  Confirmation,
 } from 'features/registration';
 import { UserEnter } from 'features/user';
-import {
-  fetchPagesInfo,
-  fetchRestaurantProductions,
-} from 'features/restaurant';
+import { fetchPagesInfo, fetchRestaurantProductions } from 'features/restaurant';
 
-import {
-  userEnterSelector,
-  userAccountSelector
-} from 'entities/user';
+import { userEnterSelector, userAccountSelector } from 'entities/user';
 import { Description } from 'entities/descriptions';
 
-const MainPage: FC = () => {
+export const MainPage: FC = () => {
   const dispatch = useAppDispatch();
   const productions = useSelector(getProdSelector);
   const registration = useSelector(getRegistrationSelector);
@@ -57,37 +51,37 @@ const MainPage: FC = () => {
         <Description />
         <ComponentWrapper title='Наша продукция'>
           <Products
-            id="Poke"
+            id='Poke'
             title='Поке'
             productCards={productions.poke}
           />
           <Products
-            id="Rolls"
+            id='Rolls'
             title='Роллы'
             productCards={productions.rolls}
           />
           <Products
-            id="Curry"
+            id='Curry'
             title='Супы и карри'
             productCards={productions.curry}
           />
           <Products
-            id="Wok"
+            id='Wok'
             title='Вок'
             productCards={productions.wok}
           />
           <Products
-            id="Sandwich"
+            id='Sandwich'
             title='Сэндвичи'
             productCards={productions.sandwich}
           />
           <Products
-            id="Deserts"
+            id='Deserts'
             title='Десерты'
             productCards={productions.deserts}
           />
           <Products
-            id="Drinks"
+            id='Drinks'
             title='Напитки'
             productCards={productions.beverages}
           />
@@ -99,8 +93,5 @@ const MainPage: FC = () => {
       <BasketWrapper />
       <Footer />
     </>
-
-  )
+  );
 };
-
-export default MainPage;
