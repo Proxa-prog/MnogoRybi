@@ -18,7 +18,7 @@ import {
 } from 'features/productions';
 import { fetchPagesInfo, fetchRestaurantProductions } from 'features/restaurant';
 
-import { userAccountSelector } from 'entities/user';
+import {userAccountSelector, userEnterSelector} from 'entities/user';
 import {
   baseProductSelector,
   constructorActions,
@@ -34,9 +34,19 @@ import {
 import { ImageWrapper } from 'shared';
 
 import style from './Constructor.module.scss';
+import {
+  Confirmation,
+  getRegistrationSelector,
+  ModalRegistration, openConfirmationSelector
+} from "../../../../features/registration";
+import {UserEnter} from "../../../../features/user";
+import {Recovery} from "../../../../widgets/Recovery";
 
 export const Constructor = () => {
   const dispatch = useAppDispatch();
+  const registration = useSelector(getRegistrationSelector);
+  const userEnter = useSelector(userEnterSelector);
+  const confirmation = useSelector(openConfirmationSelector);
   const userAccount = useSelector(userAccountSelector);
   const ingredients = useSelector(getIngredientsSelector);
   const fillersType = useSelector(fillersTypeSelector);
@@ -70,6 +80,10 @@ export const Constructor = () => {
 
   return (
     <div>
+      {registration.isOpen && <ModalRegistration />}
+      {userEnter.isOpen && <UserEnter />}
+      {confirmation.isOpen && <Confirmation />}
+      {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
       <Header isAuth={userAccount.userAccount.isLogin} />
       <BlockHeader pageName='Конструктор поке'>
         <section className={style.wrapper}>
