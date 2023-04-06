@@ -12,7 +12,7 @@ const initialState: IUserEnter = {
     },
     {
       name: 'Мои заказы',
-      id: 'myOrders',
+      id: 'MyOrders',
       isCurrent: false,
     },
   ],

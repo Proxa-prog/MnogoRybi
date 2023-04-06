@@ -28,7 +28,7 @@
   }
 }
 
-.page_link {
+.pageLink {
   font-weight: 600;
   font-size: 32px;
   line-height: 120%;
@@ -44,12 +44,12 @@
   }
 }
 
-.page_link_current {
+.pageLinkCurrent {
   border-bottom: 3px solid $green-100;
   color: $gray-100;
 }
 
-.links_wrapper {
+.linksWrapper {
   padding: 40px 0 30px;
 
   @media (max-width: 767px) {
@@ -64,7 +64,7 @@
   flex-wrap: wrap;
 }
 
-.history_order_wrapper {
+.historyOrderWrapper {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;

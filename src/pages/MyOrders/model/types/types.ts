@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material";
+import { createTheme } from '@mui/material';
 
 export const enum paymentStatus {
   PENDING = 'Оплата при получении',
@@ -39,9 +39,9 @@ export const theme = createTheme({
             width: '26px',
             height: '30px',
             fill: '#31688F',
-          }
-        }
-      }
+          },
+        },
+      },
     },
     MuiPaginationItem: {
       styleOverrides: {
@@ -53,8 +53,8 @@ export const theme = createTheme({
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-        }
-      }
+        },
+      },
     },
   },
 });

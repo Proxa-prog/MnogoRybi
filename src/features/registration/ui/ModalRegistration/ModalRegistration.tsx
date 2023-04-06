@@ -69,7 +69,7 @@ export const ModalRegistration: React.FC = () => {
           },
           {
             name: 'Мои заказы',
-            id: 'myOrders',
+            id: 'MyOrders',
             isCurrent: false,
           },
         ],

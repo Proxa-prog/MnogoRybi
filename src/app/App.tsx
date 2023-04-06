@@ -20,9 +20,9 @@ import { MainPage } from 'pages/MainPage';
 import { News } from 'pages/news';
 import { Contacts } from 'pages/Contacts';
 import { NewsPage } from 'pages/newsPage';
-import { Constructor } from '../pages/Constructor';
+import { Constructor } from 'pages/Constructor';
 import { PersonalArea } from 'pages/PersonalArea';
-import { MyOrders } from 'pages/myOrders';
+import { MyOrders } from 'pages/MyOrders';
 import { Franchise } from 'pages/Franchise';
 // import DeliveryPage from 'widgets/ui/DeliveryPage/DeliveryPage';
 

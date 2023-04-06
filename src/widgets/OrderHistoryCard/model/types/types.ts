@@ -1,4 +1,4 @@
-import { ButtonColor } from "../../../../shared/ui/StatusMarker/StatusMarker";
+import { ButtonColor } from "shared/ui/StatusMarker/StatusMarker";
 
 export const enum paymentStatus {
   PENDING = 'Оплата при получении',
