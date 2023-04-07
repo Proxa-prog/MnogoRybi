@@ -140,7 +140,6 @@
     position: relative;
 
     &::after {
-        //content: url("/public/images/question_fill.svg");
         position: absolute;
         width: 20px;
         height: 20px;
@@ -182,7 +181,7 @@
     position: absolute;
     background-color: $gray-100;
     color: $white-00;
-    z-index: 1000;
+    z-index: 999;
     width: auto;
 
     @media (max-width: 1023px) {
@@ -194,7 +193,7 @@
     position: absolute;
     background-color: $gray-100;
     color: $white-00;
-    z-index: 1000;
+    z-index: 999;
     width: auto;
     padding-left: 20px;
     left: 148px;
