@@ -101,21 +101,23 @@ export const Contacts: FC = () => {
       {confirmation.isOpen && <Confirmation />}
       {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
       <Header isAuth={userAccount.userAccount.isLogin} />
-      <BlockHeader pageName='Контакты'>
-        <div className={style.ourContacts}>
-          {pagesInfo.restaurantAddress.map((card: IContactsCard) => {
-            const id = nanoid();
+      <div className={style.wrapper}>
+        <BlockHeader pageName='Контакты'>
+          <div className={style.ourContacts}>
+            {pagesInfo.restaurantAddress.map((card: IContactsCard) => {
+              const id = nanoid();
 
-            return (
-              <ContactsCard
-                key={id}
-                card={card}
-                onClick={setMapAddress(card)}
-              />
-            );
-          })}
-        </div>
-      </BlockHeader>
+              return (
+                <ContactsCard
+                  key={id}
+                  card={card}
+                  onClick={setMapAddress(card)}
+                />
+              );
+            })}
+          </div>
+        </BlockHeader>
+      </div>
       <div className={style.map}>
         <MapContainer
           center={[
