@@ -12,6 +12,7 @@ import { paymentStatus, theme } from "pages/MyOrders";
 import { Footer } from 'widgets/Footer';
 import { Header } from 'widgets/Header';
 import { Recovery } from "widgets/Recovery";
+import { BasketWrapper } from "widgets/Basket";
 
 import { OrderHistoryCard } from 'widgets/OrderHistoryCard';
 import { UserEnter } from "features/user";
@@ -32,7 +33,6 @@ import {
 } from 'entities/user';
 
 import {
-  IPaymentStatus,
   orderStatuses,
 } from 'widgets/OrderHistoryCard';
 
@@ -126,6 +126,7 @@ export const MyOrders: FC = () => {
           </div>
         </div>
       </section>
+      <BasketWrapper />
       <Footer />
     </>
   );

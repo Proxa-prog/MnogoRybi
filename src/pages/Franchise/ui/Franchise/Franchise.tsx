@@ -9,6 +9,7 @@ import { advantages, FranchiseAdvantages } from 'pages/Franchise';
 import { Footer } from 'widgets/Footer';
 import { BlockHeader, Header } from 'widgets/Header';
 import { Recovery } from "widgets/Recovery";
+import { BasketWrapper } from "widgets/Basket";
 
 import { UserEnter } from "features/user";
 import {
@@ -20,7 +21,7 @@ import {
 import { fetchPagesInfo, fetchRestaurantProductions } from 'features/restaurant';
 import { fetchProductions } from 'features/productions';
 
-import {userAccountSelector, userEnterSelector} from 'entities/user';
+import { userAccountSelector, userEnterSelector } from 'entities/user';
 
 import { Button, ImageWrapper } from 'shared';
 
@@ -105,6 +106,7 @@ export const Franchise: FC = () => {
           </div>
         </div>
       </section>
+      <BasketWrapper />
       <Footer />
     </>
   );

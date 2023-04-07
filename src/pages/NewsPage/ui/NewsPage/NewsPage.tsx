@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { Footer } from 'widgets/Footer';
 import { Header, BlockHeader } from 'widgets/Header';
 import { Recovery } from "widgets/Recovery";
+import { BasketWrapper } from "widgets/Basket";
 
 import { UserEnter } from "features/user";
 import {
@@ -15,7 +16,7 @@ import {
 } from 'features/registration';
 import { getNewsSelector, INews } from 'features/news';
 
-import {userAccountSelector, userEnterSelector} from "entities/user";
+import { userAccountSelector, userEnterSelector } from "entities/user";
 
 import { IMAGE_NEWS_HEIGHT } from 'shared';
 
@@ -59,6 +60,7 @@ export const NewsPage: FC = () => {
                   <span className={style.date}>{news.date}</span>
                 </div>
               </BlockHeader>
+              <BasketWrapper />
               <Footer />
             </>
           );

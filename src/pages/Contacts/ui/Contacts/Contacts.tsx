@@ -17,6 +17,7 @@ import PopupIcon from '/public/images/location_marker.png';
 import { Footer } from 'widgets/Footer';
 import { Header, BlockHeader } from 'widgets/Header';
 import { Recovery } from "widgets/Recovery";
+import { BasketWrapper } from "widgets/Basket";
 
 import { UserEnter } from "features/user";
 import {
@@ -41,8 +42,12 @@ import {
   getRestaurantPagesInfoSelector,
 } from 'features/restaurant';
 
-import {userAccountSelector, userEnterSelector} from 'entities/user';
-import { IContactsCard, IPopupCoordinates, ContactsCard } from 'entities/contact';
+import { userAccountSelector, userEnterSelector } from 'entities/user';
+import {
+  IContactsCard,
+  IPopupCoordinates,
+  ContactsCard
+} from 'entities/contact';
 
 import { MAP_ICON_SIZE, MAP_ZOOM } from 'shared';
 
@@ -134,6 +139,7 @@ export const Contacts: FC = () => {
           <RecenterAutomatically lat={map.lat} lng={map.lng} />
         </MapContainer>
       </div>
+      <BasketWrapper />
       <Footer />
     </>
   );

@@ -9,6 +9,7 @@ import { Footer } from 'widgets/Footer';
 import { Card } from 'widgets/Card';
 import { Header, BlockHeader } from 'widgets/Header';
 import { Recovery } from 'widgets/Recovery';
+import { BasketWrapper } from "widgets/Basket";
 
 import { UserEnter } from 'features/user';
 import {
@@ -18,7 +19,12 @@ import {
   Confirmation,
 } from 'features/registration';
 
-import { INews, newsActions, getNewsSelector, fetchNews } from 'features/news';
+import {
+  INews,
+  newsActions,
+  getNewsSelector,
+  fetchNews
+} from 'features/news';
 import { fetchProductions } from 'features/productions';
 import { fetchPagesInfo, fetchRestaurantProductions } from 'features/restaurant';
 
@@ -97,6 +103,7 @@ export const News: FC = () => {
           </div>
         </div>
       </div>
+      <BasketWrapper />
       <Footer />
     </>
   );
