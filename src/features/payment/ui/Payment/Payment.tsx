@@ -64,7 +64,7 @@ export const Payment: FC = () => {
               placeholder='Номер карты'
               label=''
               name='Номер карты'
-              type='number'
+              type='text'
               onChange={handlerChangeInputCardNumber}
               required
             />
@@ -74,7 +74,7 @@ export const Payment: FC = () => {
               placeholder='Срок действия'
               label=''
               name='Срок действия'
-              type='number'
+              type='text'
               onChange={handlerChangeInputCardDate}
               required
             />
@@ -84,7 +84,7 @@ export const Payment: FC = () => {
               placeholder='CVC'
               label=''
               name='CVC'
-              type='number'
+              type='text'
               onChange={handlerChangeInputCardCvc}
               required
             />

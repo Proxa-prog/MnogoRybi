@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { basketActions } from 'entities/basket';
 
-import { Input } from 'shared/ui/Input/Input';
+import { Input } from 'shared';
 
 import style from './Recipient.module.scss';
 
