@@ -11,6 +11,7 @@ import {
 } from 'widgets/ConstructorCard';
 import { Footer } from 'widgets/Footer';
 import { Recovery } from "widgets/Recovery";
+import { BasketWrapper } from "widgets/Basket";
 
 import { UserEnter } from "features/user";
 import {
@@ -191,6 +192,7 @@ export const Constructor = () => {
           </div>
         </section>
       </BlockHeader>
+      <BasketWrapper />
       <Footer />
     </div>
   );

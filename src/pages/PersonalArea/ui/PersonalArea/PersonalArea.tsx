@@ -9,6 +9,7 @@ import { useAppDispatch } from 'app/store';
 import { Footer } from 'widgets/Footer';
 import { Header } from 'widgets/Header';
 import { Recovery } from "widgets/Recovery";
+import { BasketWrapper } from "widgets/Basket";
 
 import { UserEnter } from "features/user";
 import {
@@ -221,6 +222,7 @@ export const PersonalArea: FC = () => {
           </div>
         </div>
       </section>
+      <BasketWrapper />
       <Footer />
     </>
   );
