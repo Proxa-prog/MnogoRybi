@@ -37,6 +37,7 @@ export const Franchise: FC = () => {
     dispatch(fetchProductions());
     dispatch(fetchRestaurantProductions());
     dispatch(fetchPagesInfo());
+    window.scrollTo(0, 0);
   }, []);
 
   return (

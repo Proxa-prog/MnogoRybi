@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { Link } from "react-router-dom";
 
 import Image from "/public/images/lace.png";
 
@@ -19,7 +20,9 @@ export const Franchise: FC = () => {
         type="button"
         onClick={() => {}}
       >
-        Подробнее
+        <Link to={`/franchise`} className={style.createPokeButton}>
+          Подробнее
+        </Link>
       </Button>
     </section>
   );
