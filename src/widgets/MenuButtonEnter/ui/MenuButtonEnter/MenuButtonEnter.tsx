@@ -16,7 +16,7 @@ interface MenuButtonEnterProps {
   scroll?: number;
 }
 
-const MenuButtonEnter: FC<MenuButtonEnterProps> = (props) => {
+export const MenuButtonEnter: FC<MenuButtonEnterProps> = (props) => {
   const { isAuth, scroll } = props;
 
   const userEnter = useSelector(userEnterSelector);
@@ -27,21 +27,37 @@ const MenuButtonEnter: FC<MenuButtonEnterProps> = (props) => {
     dispatch(userEnterActions.changeIsOpenUserEnter(userEnter.isOpen));
   };
 
-  return isAuth ? (
-    <Link to='/personalArea'>
+  if (isAuth) {
+    return (
+      <Link to='/personalArea'>
+        <Button
+          imageLeft='user_fill.svg'
+          className={
+            scroll && scroll >= ONE_HUNDRED_PIXEL_SCROLL ? style.authScroll : style.userAuth
+          }
+          type='button'
+          isGrayTheme
+          onClick={() => {}}
+        />
+      </Link>
+    );
+  }
+
+  if (!isAuth && scroll && scroll >= ONE_HUNDRED_PIXEL_SCROLL) {
+    return (
       <Button
         imageLeft='user_fill.svg'
         className={
-          scroll && scroll >= ONE_HUNDRED_PIXEL_SCROLL
-            ? style.authScroll
-            : style.userAuth
+          scroll && scroll >= ONE_HUNDRED_PIXEL_SCROLL ? style.authScroll : style.userAuth
         }
         type='button'
         isGrayTheme
-        onClick={() => {}}
+        onClick={handleCheckboxAgreementChange}
       />
-    </Link>
-  ) : (
+    );
+  }
+
+  return (
     <Button
       className={style.buttonEnter}
       type='button'
@@ -50,7 +66,6 @@ const MenuButtonEnter: FC<MenuButtonEnterProps> = (props) => {
     >
       Войти
     </Button>
-  );
-};
+  )
 
-export default MenuButtonEnter;
+};

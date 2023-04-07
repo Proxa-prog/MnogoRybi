@@ -125,11 +125,9 @@ export const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
           )}
           <div
             className={classNames(style.listWrapper, {
-              [style.listWrapperScroll]:
-                scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL,
-              [style.listWrapperOpen]: isProductsMenuActive,
-              [style.openButtonMenu]:
-                isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
+              [style.listWrapperScroll]: scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL,
+              [style.listWrapperOpen]: isProductsMenuActive && !isHeaderMenuActive,
+              [style.openButtonMenu]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
             })}
           >
             {scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL &&
@@ -149,6 +147,7 @@ export const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
               classNameList={classNames(
                 style.productsList,
                 { [style.productsListOpen]: isProductsMenuActive },
+                { [style.productsListClosed]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP },
                 []
               )}
               classNameItem={classNames(
@@ -207,12 +206,10 @@ export const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
               <List
                 isLink
                 classNameList={classNames(style.infoList, {
-                  [style.infoListOpen]:
-                    isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
+                  [style.infoListOpen]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
                 })}
                 classNameItem={classNames(style.infoItem, {
-                  [style.infoItemOpen]:
-                    isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
+                  [style.infoItemOpen]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
                 })}
                 items={pagesInfo.pagesNames}
                 onClick={(event) => {
@@ -242,7 +239,10 @@ export const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
             {scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL &&
               windowWidth >= ViewPorts.TABLET && (
                 <>
-                  <MenuButtonEnter isAuth={isAuth} scroll={scrollHeight} />
+                  <MenuButtonEnter
+                    isAuth={isAuth}
+                    scroll={scrollHeight}
+                  />
                   <div className={style.buttonBasketWrapper}>
                     <MenuButtonBasket
                       itemsInTheBasket={itemsInTheBasket}
