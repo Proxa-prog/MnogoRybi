@@ -8,7 +8,7 @@ import style from './ShowOrder.module.scss';
 
 export const ShowOrder: FC = () => {
   const basket = useSelector(openBasketSelector);
-
+  console.log(basket);
   return (
     <div className={style.userOrder}>
       <>
