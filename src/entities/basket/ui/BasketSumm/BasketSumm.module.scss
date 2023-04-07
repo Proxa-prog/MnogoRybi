@@ -33,15 +33,15 @@
 }
 
 .productAmount {
-    @include basket_summ_text_template;
+    @include basketSummTextTemplate;
 }
 
 .costOfDelivery {
-    @include basket_summ_text_template;
+    @include basketSummTextTemplate;
 }
 
 .basketSumm {
-    @include basket_summ_text_template;
+    @include basketSummTextTemplate;
 
     font-weight: 600;
     font-size: 18px;
