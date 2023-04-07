@@ -2,9 +2,6 @@
   h2 {
     position: relative;
     font-style: italic;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 120%;
 
     @media (max-width: 767px) {
       font-size: 32px;
@@ -15,11 +12,13 @@
 
 .blueTextHeader {
   color: $blue-100;
+  @include constructorHeaderText;
 }
 
 .yellowTextHeader {
   color: $yellow-100;
   background-color: white;
+  @include constructorHeaderText;
 }
 
 .arrow {

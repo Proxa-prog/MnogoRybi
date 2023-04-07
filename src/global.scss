@@ -61,6 +61,16 @@ $purpul-100:                   #C028CD;
   }
 }
 
+@mixin constructorHeaderText {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 120%;
+
+  @media (max-width: 767px) {
+    font-size: 32px;
+  }
+}
+
 @mixin basketBlockWrapper {
   background-color: $white-00;
   border: 2px solid $blue-100;
