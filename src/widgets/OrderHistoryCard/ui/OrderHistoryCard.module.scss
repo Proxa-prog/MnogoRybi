@@ -19,7 +19,7 @@
   justify-content: space-between;
   margin-bottom: 15px;
 
-  .number_of_order {
+  .numberOfOrder {
     font-weight: 700;
     font-size: 18px;
     line-height: 150%;
@@ -31,20 +31,20 @@
   }
 }
 
-.order_information {
+.orderInformation {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
-.information_name {
+.informationName {
   font-weight: 400;
   font-size: 14px;
   line-height: 150%;
   color: $gray-70;
 }
 
-.information_value {
+.informationValue {
   font-weight: 600;
   font-size: 14px;
   line-height: 150%;

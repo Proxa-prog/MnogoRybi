@@ -33,7 +33,7 @@ export const OrderHistoryCard: FC<IOrderHistoryCard> = (props: IOrderHistoryCard
   return (
     <div className={style.wrapper}>
       <div className={style.header}>
-        <span className={style.number_of_order}>
+        <span className={style.numberOfOrder}>
           № {numberOfOrder}
         </span>
         <StatusMarker
@@ -42,25 +42,25 @@ export const OrderHistoryCard: FC<IOrderHistoryCard> = (props: IOrderHistoryCard
           {orderStatus.prepare.text}
         </StatusMarker>
       </div>
-      <div className={style.order_information}>
-        <span className={style.information_name}>
-          Дата заказа: <span className={style.information_value}>{orderData}</span>
+      <div className={style.orderInformation}>
+        <span className={style.informationName}>
+          Дата заказа: <span className={style.informationValue}>{orderData}</span>
         </span>
-        <span className={style.information_name}>
-          Время доставки: <span className={style.information_value}>{deliveryTime}</span>
+        <span className={style.informationName}>
+          Время доставки: <span className={style.informationValue}>{deliveryTime}</span>
         </span>
-        <span className={style.information_name}>
-          Адрес доставки: <span className={style.information_value}>{deliveryAddress}</span>
+        <span className={style.informationName}>
+          Адрес доставки: <span className={style.informationValue}>{deliveryAddress}</span>
         </span>
-        <span className={style.information_name}>
-          Сумма заказа: <span className={style.information_value}>{cost} ₽</span>
+        <span className={style.informationName}>
+          Сумма заказа: <span className={style.informationValue}>{cost} ₽</span>
         </span>
-        <span className={style.information_name}>
-          Комментарий к заказу: <span className={style.information_value}>{commentToOrder}</span>
+        <span className={style.informationName}>
+          Комментарий к заказу: <span className={style.informationValue}>{commentToOrder}</span>
         </span>
-        <span className={style.information_name}>
+        <span className={style.informationName}>
           Оплата: <span className={classNames(
-          style.information_value,
+          style.informationValue,
           {
             [style.rejected]: paymentStatus === 'Не оплачен',
             [style.fulfilled]: paymentStatus === 'Оплачен онлайн',

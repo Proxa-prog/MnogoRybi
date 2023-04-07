@@ -57,13 +57,14 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-left: 0;
 
     .buttonTextMobile {
         display: none;
     }
 
     @media (max-width: 767px) {
-        .button_text_mobile {
+        .buttonTextMobile {
             display: inline;
         }
 

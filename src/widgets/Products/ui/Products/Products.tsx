@@ -11,7 +11,7 @@ export interface ProductsProps {
   id?: string;
 }
 
-const Products: FC<ProductsProps> = (props) => {
+export const Products: FC<ProductsProps> = (props) => {
   const {
     title,
     productCards,
@@ -20,7 +20,7 @@ const Products: FC<ProductsProps> = (props) => {
 
   return (
     <div
-      className={style.products_wrapper}
+      className={style.productsWrapper}
       id={id}
     >
       <h2 className={style.title}>{title}</h2>
@@ -49,5 +49,3 @@ const Products: FC<ProductsProps> = (props) => {
     </div>
   );
 };
-
-export default Products;

@@ -95,10 +95,6 @@ export const MyOrders: FC = () => {
               userAccount.userData.currentOrders &&
                 userAccount.userData.currentOrders.map((order: any) => {
                   const id = nanoid();
-                  const orderStatus: IPaymentStatus = {
-                    text: 'Доставлен',
-                    color: 'blue',
-                  };
 
                   return (
                     <OrderHistoryCard

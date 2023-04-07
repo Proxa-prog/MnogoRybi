@@ -10,7 +10,7 @@ export interface ComponentWrapperProps {
   children: JSX.Element | JSX.Element[];
 }
 
-const ComponentWrapper: FC<ComponentWrapperProps> = (props) => {
+export const ComponentWrapper: FC<ComponentWrapperProps> = (props) => {
   const {
     className = '',
     title,
@@ -27,5 +27,3 @@ const ComponentWrapper: FC<ComponentWrapperProps> = (props) => {
     </section>
   );
 };
-
-export default ComponentWrapper;

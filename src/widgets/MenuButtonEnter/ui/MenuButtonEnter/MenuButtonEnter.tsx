@@ -67,5 +67,4 @@ export const MenuButtonEnter: FC<MenuButtonEnterProps> = (props) => {
       Войти
     </Button>
   )
-
 };

@@ -37,14 +37,14 @@ const Recovery: FC = () => {
   return (
     <div className={style.recovery}>
       <Button
-        className={style.button_back}
+        className={style.buttonBack}
         isTurn="back"
         type="button"
         isGrayTheme
         onClick={handleButtonBackClick}
       />
       <Button
-        className={style.button_close}
+        className={style.buttonClose}
         isClose="close"
         type="button"
         onClick={handleButtonCloseClick}
@@ -52,7 +52,7 @@ const Recovery: FC = () => {
       <h3>Восстановление пароля</h3>
       <p>Мы отправим новый пароль на email</p>
       <Input
-        className={style.input_password}
+        className={style.inputPassword}
         required
         type="email"
         label="Email"
@@ -63,14 +63,14 @@ const Recovery: FC = () => {
         }}
       />
       <Button
-        className={style.button_enter}
+        className={style.buttonEnter}
         type="button"
         color="yellow"
         onClick={() => {
           handleButtonSendClick(email);
         }}
       >
-        <span className={style.button_text_desktop}>Отправить</span>
+        <span>Отправить</span>
       </Button>
     </div>
   );
