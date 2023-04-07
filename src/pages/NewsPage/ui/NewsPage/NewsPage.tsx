@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, {FC, useEffect} from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
@@ -28,6 +28,10 @@ export const NewsPage: FC = () => {
   const userEnter = useSelector(userEnterSelector);
   const confirmation = useSelector(openConfirmationSelector);
   const userAccount = useSelector(userAccountSelector);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   return (
     <section>

@@ -80,7 +80,7 @@ export const Card: FC<CardProps> = (props) => {
         style={{
           backgroundImage: `url(images/${imageUrl})`,
           backgroundRepeat: 'no-repeat',
-          backgroundSize: 'contain',
+          backgroundSize: 'cover',
           backgroundPosition: 'bottom',
         }}
       >

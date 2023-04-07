@@ -8,26 +8,21 @@ import { useAppDispatch } from 'app/store';
 import { Footer } from 'widgets/Footer';
 import { Card } from 'widgets/Card';
 import { Header, BlockHeader } from 'widgets/Header';
-import { Recovery } from "widgets/Recovery";
+import { Recovery } from 'widgets/Recovery';
 
-import { UserEnter } from "features/user";
+import { UserEnter } from 'features/user';
 import {
   getRegistrationSelector,
   openConfirmationSelector,
   ModalRegistration,
-  Confirmation
+  Confirmation,
 } from 'features/registration';
 
-import {
-  INews,
-  newsActions,
-  getNewsSelector,
-  fetchNews
-} from 'features/news';
+import { INews, newsActions, getNewsSelector, fetchNews } from 'features/news';
 import { fetchProductions } from 'features/productions';
 import { fetchPagesInfo, fetchRestaurantProductions } from 'features/restaurant';
 
-import {userAccountSelector, userEnterSelector} from 'entities/user';
+import { userAccountSelector, userEnterSelector } from 'entities/user';
 
 import { Button, NEWS_LIMIT } from 'shared';
 
@@ -66,36 +61,42 @@ export const News: FC = () => {
       {confirmation.isOpen && <Confirmation />}
       {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
       <Header isAuth={userAccount.userAccount.isLogin} />
-      <BlockHeader pageName='Новости и акции'>
-        <div className={style.wrapper}>
-          {news.newsArray.map((news: INews) => {
-            const id = nanoid();
+      <div className={style.wrapper}>
+        <div className={style.inner}>
+          <BlockHeader
+            pageName='Новости и акции'
+            className={style.paddingOff}
+          />
+          <div className={style.cardWrapper}>
+            {news.newsArray.map((news: INews) => {
+              const id = nanoid();
 
-            return (
-              <Card
-                className={style.card}
-                imageWrapperClassName={style.imageWrapper}
-                buttonText='Подробнее'
-                statuses={news.statuses}
-                isGrayTheme
-                imageUrl={news.imageUrl}
-                description={news.description}
-                header={news.header}
-                isInfo
-                key={id}
-                onClick={handleCardButtonClick(news.id)}
-              />
-            );
-          })}
-          <Button
-            onClick={handleButtonShowMore}
-            className={style.buttonShowMore}
-            type='button'
-          >
-            Показать ещё
-          </Button>
+              return (
+                <Card
+                  className={style.card}
+                  imageWrapperClassName={style.imageWrapper}
+                  buttonText='Подробнее'
+                  statuses={news.statuses}
+                  isGrayTheme
+                  imageUrl={news.imageUrl}
+                  description={news.description}
+                  header={news.header}
+                  isInfo
+                  key={id}
+                  onClick={handleCardButtonClick(news.id)}
+                />
+              );
+            })}
+            <Button
+              onClick={handleButtonShowMore}
+              className={style.buttonShowMore}
+              type='button'
+            >
+              Показать ещё
+            </Button>
+          </div>
         </div>
-      </BlockHeader>
+      </div>
       <Footer />
     </>
   );
