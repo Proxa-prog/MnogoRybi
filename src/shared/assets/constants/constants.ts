@@ -31,12 +31,12 @@ export const MOK_PASSWORD = "qwerty";
 export const NEW_PASSWORD = "12345";
 
 export const MAIN_PAGE_ROUTE = "/";
-export const CONTACTS_ROUTE = "/Contacts";
+export const CONTACTS_PAGE_ROUTE = "/Contacts";
 export const NEWS_ROUTE = "/News";
 export const NEWS_PAGE_ROUTE = "/:newsId";
-export const PERSONAL_AREA_ROUTE = "/PersonalArea";
+export const PERSONAL_AREA_PAGE_ROUTE = "/PersonalArea";
 export const PERSONAL_AREA_MY_ORDERS_ROUTE = "/MyOrders";
-export const FRANCHISE_ROUTE = "/franchise";
+export const FRANCHISE_PAGE_ROUTE = "/franchise";
 export const DELIVERY_ROUTE = "/delivery";
 export const CONSTRUCTOR_PAGE_ROUTE = "/Constructor";
 
