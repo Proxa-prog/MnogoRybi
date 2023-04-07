@@ -26,7 +26,7 @@ import {
 } from 'features/productions';
 import { fetchPagesInfo, fetchRestaurantProductions } from 'features/restaurant';
 
-import {userAccountSelector, userEnterSelector} from 'entities/user';
+import { userAccountSelector, userEnterSelector } from 'entities/user';
 import {
   baseProductSelector,
   constructorActions,
