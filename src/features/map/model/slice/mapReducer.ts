@@ -1,7 +1,8 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IMap } from "features/map";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState: IMap =  {
+import { IMap } from 'features/map';
+
+const initialState: IMap = {
   lat: 0,
   lng: 0,
 };
@@ -17,6 +18,7 @@ export const mapSlice = createSlice({
   },
 });
 
-export const { changeMapCenter } = mapSlice.actions;
-
-export default mapSlice.reducer;
+export const {
+  reducer: mapReducer,
+  actions: mapActions,
+} = mapSlice;

@@ -1,41 +1,31 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ThunkConfig, USER_DATA } from "shared";
-import axios from "axios";
-import { ResponseApi } from "../../../basket";
-import { IUserData } from "../types/types";
-import { IUserEnterFull } from "../slice/userAccountSlice";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-const setNewAddress = async (item: IUserEnterFull) => {
-    await axios.patch<string, string>(
-      `${USER_DATA}/1/userData`,
-      item.userData,
-    );
-};
+import { IUserData, IUserEnterFull, ResponseApi } from 'entities/user';
+
+import { ThunkConfig, USER_DATA } from 'shared';
 
 export const addNewDeliveryAddressAsync = createAsyncThunk<void, IUserData, ThunkConfig<void>>(
-  USER_DATA,
+  'userAccount/addNewDeliveryAddressAsync',
   async (userData: IUserData, thunkAPI) => {
-  const { email } = userData;
-  try {
-    const state = thunkAPI.getState();
-    const response = await axios.get<string, any>(`${USER_DATA}`);
+    const { email } = userData;
+    try {
+      const state = thunkAPI.getState();
+      const response = await axios.get<string, ResponseApi>(`${USER_DATA}`);
 
-    const actualUserId = response.data.find((user: any) => {
+      const actualUserId = response.data.find((user: IUserEnterFull) => {
+        return user.userAccount.email === email;
+      });
 
-      return user.userAccount.email === email;
-    });
-
-    actualUserId &&
-    (await axios.patch<string, IUserEnterFull>(
-      `${USER_DATA}/${actualUserId.id}`,
-      {
-        userData: {
-          ...actualUserId.userData,
-          deliveryAddress: [...state.userAccount.userData.deliveryAddress,]
-        },
-      }
-    ));
-  } catch (error) {
-    console.log(error);
+      actualUserId &&
+        (await axios.patch<string, IUserEnterFull>(`${USER_DATA}/${actualUserId.id}`, {
+          userData: {
+            ...actualUserId.userData,
+            deliveryAddress: [...state.userAccount.userData.deliveryAddress],
+          },
+        }));
+    } catch (error) {
+      console.log(error);
+    }
   }
-})
+);

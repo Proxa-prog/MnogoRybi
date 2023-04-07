@@ -1,12 +1,26 @@
-import { IAmountProduct } from "entities/basket/model/types/basketTypes";
-import {IUserEnterFull} from "../slice/userAccountSlice";
-import {IUserEnter} from "../slice/userEnterSlice";
-import {IAddedOrder} from "../../../basket/model/services/addOrderToUser";
+import { IAddedOrder } from 'entities/basket';
+
+export interface IUserEnter extends IUserEnterFull {
+  isOpen: boolean;
+  id?: number;
+}
+
+export interface IUserEnterFull {
+  personalAreaLinks: IPersonalAreaPagesLinks[];
+  userAccount: IUserAccount;
+  userData: IUserRegistration;
+  id?: number;
+}
+
+export interface ResponseApi {
+  status: string;
+  data: IUserEnterFull[];
+}
 
 export interface IUserAccount {
-  isAddNewAddressOpen: boolean;
+  isModalAddNewAddressOpen: boolean;
   isLogin: boolean;
-  recoveryIsOpen: boolean;
+  isModalRecoveryOpen: boolean;
   email: string | undefined;
   password: string | undefined;
 }
@@ -24,6 +38,7 @@ export interface IUserRegistration {
 export interface IResponse {
   data: IUserEnterFull[];
 }
+
 export interface ResponseApiUserData {
   status: string;
   data: IUserEnter[];
@@ -41,4 +56,14 @@ export interface IPersonalAreaPagesLinks {
   name: string;
   id: string;
   isCurrent?: boolean;
+}
+
+export interface ICreateUserData {
+  userUrl: string;
+  email: string | undefined;
+  password: string | undefined;
+  firstName: string | undefined;
+  phone: string | undefined;
+  orders: IAddedOrder[];
+  deliveryAddress: string[];
 }

@@ -9,11 +9,17 @@ import { MenuButtonBasket } from "widgets/MenuButtonBasket";
 
 import { getRestaurantPagesInfoSelector } from "features/restaurant";
 
-import { addRecipientAddress } from "entities/basket";
+import { basketActions } from "entities/basket";
 
-import { ViewPorts, ImageWrapper, LabelText, Select, Button } from "shared";
+import {
+  ViewPorts,
+  ImageWrapper,
+  LabelText,
+  Select,
+  Button
+} from "shared";
 
-import style from "widgets/Header/ui/Header/Header.module.scss";
+import style from "./HeaderOrderDataWrapper.module.scss";
 
 interface HeaderOrderDataWrapperProps {
   isHeaderMenuActive: boolean;
@@ -25,7 +31,7 @@ interface HeaderOrderDataWrapperProps {
   onBasketButtonClick?: () => void;
 }
 
-const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
+export const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
   const {
     isHeaderMenuActive,
     windowWidth,
@@ -39,13 +45,13 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
   const pagesInfo = useSelector(getRestaurantPagesInfoSelector);
 
   const handlerChangeSelectAddress = (address: string) => {
-    dispatch(addRecipientAddress(address));
+    dispatch(basketActions.addRecipientAddress(address));
   };
 
   return (
     <div
-      className={classNames(style.header__order_data_wrapper, {
-        [style.header__order_data_wrapper__open]:
+      className={classNames(style.orderDataWrapper, {
+        [style.orderDataWrapperOpen]:
           isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
       })}
     >
@@ -56,8 +62,8 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
         }
         imageHeight={24}
         imageWidth={24}
-        className={classNames(style.header_menu_button, {
-          [style.header_menu_button__open]:
+        className={classNames(style.menuButton, {
+          [style.menuButtonOpen]:
             isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
         })}
         type="button"
@@ -66,7 +72,7 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
       {(isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP) || (
         <Link to="/">
           <ImageWrapper
-            className={style.header__logo}
+            className={style.logo}
             alt="Логотип Много Рыбы"
             name="logo.svg"
             width={236}
@@ -76,20 +82,20 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
       )}
 
       <div
-        className={classNames(style.header__order_data, {
-          [style.header__order_data__open]:
+        className={classNames(style.orderData, {
+          [style.orderDataOpen]:
             isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
         })}
       >
         <div
-          className={classNames(style.header__info_wrapper, {
-            [style.header__info_wrapper__open]:
+          className={classNames(style.infoWrapper, {
+            [style.infoWrapperOpen]:
               isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
           })}
         >
           <div
-            className={classNames(style.header__info, {
-              [style.header__info__open]:
+            className={classNames(style.info, {
+              [style.infoOpen]:
                 isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
             })}
           >
@@ -102,8 +108,8 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
             />
           </div>
           <div
-            className={classNames(style.header__info, {
-              [style.header__info__open]:
+            className={classNames(style.info, {
+              [style.infoOpen]:
                 isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
             })}
           >
@@ -111,8 +117,8 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
             <span>9:00-24:00</span>
           </div>
           <div
-            className={classNames(style.header__info, {
-              [style.header__info__open]:
+            className={classNames(style.info, {
+              [style.infoOpen]:
                 isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
             })}
           >
@@ -121,7 +127,7 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
           </div>
         </div>
       </div>
-      <div className={style.header__button_wrapper}>
+      <div className={style.buttonWrapper}>
         {(isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP) ||
           (isAuth ? (
             <Link to="/personalArea">
@@ -129,7 +135,7 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
                 imageLeft="user_fill.svg"
                 imageHeight={24}
                 imageWidth={24}
-                className={style.header__user_auth}
+                className={style.userAuth}
                 type="button"
                 onClick={() => {}}
               />
@@ -143,7 +149,7 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
           (!isAuth && (
             <Button
               type="button"
-              className={style.header__button_orders}
+              className={style.buttonOrders}
               imageLeft="desk_alt_fill.svg"
               imageHeight={24}
               imageWidth={24}
@@ -155,7 +161,7 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
             </Button>
           ))}
         {(isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP) || (
-          <div className={style.header__button_basket_wrapper}>
+          <div className={style.buttonBasketWrapper}>
             <MenuButtonBasket
               itemsInTheBasket={itemsInTheBasket}
               windowWidth={windowWidth}
@@ -167,5 +173,3 @@ const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) => {
     </div>
   );
 };
-
-export default HeaderOrderDataWrapper;

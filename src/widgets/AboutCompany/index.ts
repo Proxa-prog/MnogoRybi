@@ -1,1 +1,1 @@
-export { default as AboutCompany } from "./ui/AboutCompany/AboutCompany";
+export { AboutCompany } from "./ui/AboutCompany/AboutCompany";

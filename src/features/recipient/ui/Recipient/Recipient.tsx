@@ -1,47 +1,45 @@
-import React, { FC } from "react";
-import { useDispatch } from "react-redux";
+import React, { FC } from 'react';
+import { useDispatch } from 'react-redux';
 
-import { addRecipientName, addRecipientPhone } from "entities/basket";
+import { basketActions } from 'entities/basket';
 
-import { Input } from "shared/ui/Input/Input";
+import { Input } from 'shared/ui/Input/Input';
 
-import style from "./Recipient.module.scss";
+import style from './Recipient.module.scss';
 
-const Recipient: FC = () => {
+export const Recipient: FC = () => {
   const dispatch = useDispatch();
 
   const handleInputNameChange = (name: string | undefined) => {
-    dispatch(addRecipientName(name));
+    dispatch(basketActions.addRecipientName(name));
   };
 
   const handleInputPhoneChange = (phone: string | undefined) => {
-    dispatch(addRecipientPhone(phone));
+    dispatch(basketActions.addRecipientPhone(phone));
   };
 
   return (
     <div className={style.recipient}>
       <h4>Получатель</h4>
-      <div className={style.recipient_data_wrapper}>
+      <div className={style.wrapper}>
         <Input
-          className={style.user_name}
-          label="Имя"
-          placeholder="Иванов Иван Иванович"
+          className={style.inputName}
+          label='Имя'
+          placeholder='Иванов Иван Иванович'
           required
-          name="recipient_name"
+          name='recipient_name'
           onChange={handleInputNameChange}
         />
         <Input
-          className={style.user_phone}
-          label="Телефон"
-          placeholder="+7 986 456 75 34"
+          className={style.inputPhone}
+          label='Телефон'
+          placeholder='+7 986 456 75 34'
           required
-          type="text"
-          name="recipient_phone"
+          type='text'
+          name='recipient_phone'
           onChange={handleInputPhoneChange}
         />
       </div>
     </div>
   );
 };
-
-export default Recipient;

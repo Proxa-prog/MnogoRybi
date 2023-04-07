@@ -1,4 +1,4 @@
-.basket_wrapper {
+.wrapper {
     position: absolute;
     right: 0;
     top: 0;
@@ -14,7 +14,7 @@
     }
 }
 
-.basket_info {
+.info {
     flex-grow: 1;
     padding: 30px;
 
@@ -35,7 +35,7 @@
     padding: 30px;
 }
 
-.button_to_order_wrapper {
+.buttonToOrderWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,7 +43,7 @@
     padding: 20px 30px 30px;
 }
 
-.button_to_order {
+.buttonToOrder {
     padding: 18px;
     width: 100%;
     justify-content: center;

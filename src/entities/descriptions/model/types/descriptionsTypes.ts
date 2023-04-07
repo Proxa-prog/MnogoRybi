@@ -3,7 +3,7 @@ export interface IDescription {
   isCurrent: boolean;
 }
 
-export interface DescriprionsArray {
+export interface DescriptionsArray {
   descriptions: IDescription[];
 }
 

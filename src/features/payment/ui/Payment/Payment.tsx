@@ -1,56 +1,48 @@
-import React, { FC } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { nanoid } from "@reduxjs/toolkit";
+import React, { FC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
 
-import {
-  addRecipientCardCvc,
-  addRecipientCardDate,
-  addRecipientCardNumber,
-  changePaymentToTheCourier,
-  changeSaveCardDate,
-} from "entities/basket";
+import { basketActions, openBasketSelector } from 'entities/basket';
 
-import { openBasketSelector } from "entities/basket";
+import { Input, Checkbox } from 'shared';
 
-import { Input, Checkbox } from "shared";
+import style from './Payment.module.scss';
 
-import style from "./Payment.module.scss";
-
-const Payment: FC = () => {
+export const Payment: FC = () => {
   const dispatch = useDispatch();
   const labelPaymentCheckboxId = nanoid();
   const basket = useSelector(openBasketSelector);
 
   const handlerChangeInputCardNumber = (cardNumber: string | undefined) => {
-    dispatch(addRecipientCardNumber(cardNumber));
+    dispatch(basketActions.addRecipientCardNumber(cardNumber));
   };
 
   const handlerChangeInputCardDate = (cardDate: string | undefined) => {
-    dispatch(addRecipientCardDate(cardDate));
+    dispatch(basketActions.addRecipientCardDate(cardDate));
   };
 
   const handlerChangeInputCardCvc = (cardCvc: string | undefined) => {
-    dispatch(addRecipientCardCvc(cardCvc));
+    dispatch(basketActions.addRecipientCardCvc(cardCvc));
   };
 
   const handlerChangeCheckboxPaymentToTheCourier = (isTrue: boolean) => {
     return () => {
-      dispatch(changePaymentToTheCourier(isTrue));
+      dispatch(basketActions.changePaymentToTheCourier(isTrue));
     };
   };
 
   const handlerChangeCheckboxSaveCardDate = (isTrue: boolean) => {
     return () => {
-      dispatch(changeSaveCardDate(isTrue));
+      dispatch(basketActions.changeSaveCardDate(isTrue));
     };
   };
 
   return (
-    <div className={style.payment_wrapper}>
+    <div>
       <h4>Оплата</h4>
       <div className={style.payment}>
-        <div className={style.payment_block_wrapepr}>
-          <div className={style.payment_header_wrapper}>
+        <div className={style.blockWrapper}>
+          <div className={style.headerWrapper}>
             <Checkbox
               id={labelPaymentCheckboxId}
               checked
@@ -60,39 +52,39 @@ const Payment: FC = () => {
             <span>Картой на сайте</span>
           </div>
           <p>
-            Платеж безопасен. Мы не храним данные карт все операции проводит
-            сертифицированная платежная система ЮКасса
+            Платеж безопасен. Мы не храним данные карт все операции проводит сертифицированная
+            платежная система ЮКасса
           </p>
         </div>
         <hr />
-        <div className={style.payment_block_wrapepr}>
-          <div className={style.card_data}>
+        <div className={style.blockWrapper}>
+          <div className={style.cardData}>
             <Input
-              className={style.user_name}
-              placeholder="Номер карты"
-              label=""
-              name="Номер карты"
-              type="number"
+              className={style.userName}
+              placeholder='Номер карты'
+              label=''
+              name='Номер карты'
+              type='number'
               onChange={handlerChangeInputCardNumber}
               required
             />
             <Input
-              classNameWrapper={style.validity_wrapper}
-              className={style.card_validity}
-              placeholder="Срок действия"
-              label=""
-              name="Срок действия"
-              type="number"
+              classNameWrapper={style.validityWrapper}
+              className={style.cardValidity}
+              placeholder='Срок действия'
+              label=''
+              name='Срок действия'
+              type='number'
               onChange={handlerChangeInputCardDate}
               required
             />
             <Input
-              classNameWrapper={style.cvc_wrapper}
-              className={style.card_cvc}
-              placeholder="CVC"
-              label=""
-              name="CVC"
-              type="number"
+              classNameWrapper={style.cvcWrapper}
+              className={style.cardCvc}
+              placeholder='CVC'
+              label=''
+              name='CVC'
+              type='number'
               onChange={handlerChangeInputCardCvc}
               required
             />
@@ -100,7 +92,7 @@ const Payment: FC = () => {
           <div className={style.agreement}>
             <Checkbox
               checked={basket.saveCardDate}
-              className={style.agreement_checkbox}
+              className={style.agreementCheckbox}
               onChange={handlerChangeCheckboxSaveCardDate(basket.saveCardDate)}
             />
             <span>Привязать карту к кабинету для быстрой оплаты</span>
@@ -110,14 +102,10 @@ const Payment: FC = () => {
       <div className={style.courier}>
         <Checkbox
           isCircle
-          onChange={handlerChangeCheckboxPaymentToTheCourier(
-            basket.paymentToTheCourier
-          )}
+          onChange={handlerChangeCheckboxPaymentToTheCourier(basket.paymentToTheCourier)}
         />
         <span>Курьеру при получении</span>
       </div>
     </div>
   );
 };
-
-export default Payment;

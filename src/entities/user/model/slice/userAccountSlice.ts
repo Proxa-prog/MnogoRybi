@@ -1,34 +1,25 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {
-  IPersonalAreaPagesLinks,
-  IUserAccount,
-  IUserRegistration
-} from "../types/types";
-import { IAddedOrder } from "../../../basket/model/services/addOrderToUser";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export interface IUserEnterFull {
-  personalAreaLinks: IPersonalAreaPagesLinks[];
-  userAccount: IUserAccount;
-  userData: IUserRegistration;
-}
+import { IUserEnterFull } from 'entities/user';
+import { IAddedOrder } from 'entities/basket';
 
 const initialState: IUserEnterFull = {
   personalAreaLinks: [
     {
-      name: "Личные данные",
-      id: "PersonalArea",
+      name: 'Личные данные',
+      id: 'PersonalArea',
       isCurrent: true,
     },
     {
-      name: "Мои заказы",
-      id: "myOrders",
-      isCurrent: false
+      name: 'Мои заказы',
+      id: 'MyOrders',
+      isCurrent: false,
     },
   ],
   userAccount: {
-    isAddNewAddressOpen: false,
+    isModalAddNewAddressOpen: false,
     isLogin: false,
-    recoveryIsOpen: false,
+    isModalRecoveryOpen: false,
     email: '',
     password: '',
   },
@@ -39,14 +30,17 @@ const initialState: IUserEnterFull = {
     currentOrders: [],
     userUrl: '',
     deliveryAddress: [],
-  }
+  },
 };
 
 export const userAccountSlice = createSlice({
   name: 'userAccount',
   initialState,
   reducers: {
-    setUserDataInUserAccount: (state, action: PayloadAction<IUserEnterFull>) => {
+    setUserDataInUserAccount: (
+      state,
+      action: PayloadAction<IUserEnterFull>
+    ) => {
       state.userAccount = action.payload.userAccount;
       state.userData = action.payload.userData;
     },
@@ -56,20 +50,29 @@ export const userAccountSlice = createSlice({
     changeIsLoginUserAccount: (state) => {
       state.userAccount.isLogin = !state.userAccount.isLogin;
     },
-    changeIsOpenRecovery: (state, action: PayloadAction<boolean>) => {
-      state.userAccount.recoveryIsOpen = !action.payload;
+    changeIsModalRecoveryOpen: (state, action: PayloadAction<boolean>) => {
+      state.userAccount.isModalRecoveryOpen = !action.payload;
     },
-    changeEmailUserAccount: (state, action: PayloadAction<string | undefined>) => {
+    changeEmailUserAccount: (
+      state,
+      action: PayloadAction<string | undefined>
+    ) => {
       state.userAccount.email = action.payload;
     },
     addDeliveryAddress: (state, action: PayloadAction<string>) => {
-      state.userData.deliveryAddress = [...state.userData.deliveryAddress, action.payload];
+      state.userData.deliveryAddress = [
+        ...state.userData.deliveryAddress,
+        action.payload,
+      ];
     },
     removeDeliveryAddress: (state, action: PayloadAction<string>) => {
-      state.userData.deliveryAddress = state.userData.deliveryAddress.filter((item) => item !== action.payload);
+      state.userData.deliveryAddress = state.userData.deliveryAddress.filter(
+        (item) => item !== action.payload
+      );
     },
-    changeIsAddNewAddressOpen: (state) => {
-      state.userAccount.isAddNewAddressOpen = !state.userAccount.isAddNewAddressOpen;
+    changeIsModalAddNewAddressOpen: (state) => {
+      state.userAccount.isModalAddNewAddressOpen =
+        !state.userAccount.isModalAddNewAddressOpen;
     },
     logoutUserAccount: (state) => {
       state.userAccount = initialState.userAccount;
@@ -82,26 +85,18 @@ export const userAccountSlice = createSlice({
         } else {
           item.isCurrent = false;
         }
-      })
+      });
     },
     sortUserOrders: (state, action: PayloadAction<number>) => {
-      state.userData.currentOrders = state.userData.orders.slice(12 * (action.payload - 1), action.payload * 12);
+      state.userData.currentOrders = state.userData.orders.slice(
+        12 * (action.payload - 1),
+        action.payload * 12
+      );
     },
-  }
+  },
 });
 
 export const {
-  setUserDataInUserAccount,
-  changeIsLoginUserAccount,
-  changeIsOpenRecovery,
-  changeEmailUserAccount,
-  addDeliveryAddress,
-  removeDeliveryAddress,
-  changeIsAddNewAddressOpen,
-  logoutUserAccount,
-  changePersonalAreaLinkIsCurrent,
-  addOrderInUserAccount,
-  sortUserOrders,
-} = userAccountSlice.actions;
-
-export default userAccountSlice.reducer;
+  reducer: userAccountReducer,
+  actions: userAccountActions,
+} = userAccountSlice;

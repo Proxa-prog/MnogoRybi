@@ -1,42 +1,56 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
-import { combineReducers } from "redux";
-import descriptionReducer from "entities/descriptions/model/slice/descriptionSlice";
-import productionsReducer from "features/productions/model/slice/productionsReducer";
-import openProductsCardReducer from "features/productions/model/slice/openProductsCardSlice";
-import amountProductReduser from "entities/basket/model/slice/amountProductReduser";
-import basketReduser from "entities/basket/model/slice/basketReducer";
-import mapReduser from "features/map/model/slice/mapReducer";
-import newsReduser from "features/news/model/slice/newsReducer";
-import registrationReduser from "features/registration/model/slice/registrationReducer";
-import userEnterReduser from "entities/user/model/slice/userEnterSlice";
-import configmationReduser from "features/registration/model/slice/confirmationReducer";
-import userAccountReduser from "entities/user/model/slice/userAccountSlice";
-import restaurantLocationReduser from "features/restaurant/model/slice/restaurantSlice";
-import restaurantProductionsReduser from "features/restaurant/model/slice/restaurantProductionsSlice";
-import restaurantPagesInfoReduser from "features/restaurant/model/slice/restaurantPagesInfo";
-import pokeIngredientsReducer from "features/productions/model/slice/pokeIngredientsSlice";
-import constructorReducer from "entities/constructor/model/slice/constructorSlice";
-import filtersReducer from "entities/constructor/model/slice/filtersSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
+import { combineReducers } from 'redux';
+
+import {
+  productionsReducer as productions,
+  openProductsCardReducer as openProductsCard,
+  pokeIngredientsReducer as pokeIngredients
+} from 'features/productions';
+import { mapReducer as map } from 'features/map';
+import { newsReducer as news } from 'features/news';
+import {
+  registrationReducer as registration,
+  confirmationReducer as confirmation,
+} from 'features/registration';
+import {
+  restaurantReducer as restaurant,
+  restaurantProductionsReducer as restaurantProductions,
+  restaurantPagesInfoReducer as restaurantPagesInfo,
+} from 'features/restaurant';
+
+import { descriptionReducer as description } from 'entities/descriptions';
+import {
+  amountProductReducer as amountProduct,
+  basketReducer as basket,
+} from 'entities/basket';
+import {
+  userEnterReducer as userEnter,
+  userAccountReducer as userAccount,
+} from 'entities/user';
+import {
+  constructorReducer as constructor,
+  filtersReducer as filters,
+} from 'entities/constructor';
 
 const rootReducer = combineReducers({
-  description: descriptionReducer,
-  productions: productionsReducer,
-  openProductsCard: openProductsCardReducer,
-  amountProduct: amountProductReduser,
-  basket: basketReduser,
-  map: mapReduser,
-  news: newsReduser,
-  registration: registrationReduser,
-  userEnter: userEnterReduser,
-  configmation: configmationReduser,
-  userAccount: userAccountReduser,
-  restaurantLocation: restaurantLocationReduser,
-  restaurantProductions: restaurantProductionsReduser,
-  restaurantPagesInfo: restaurantPagesInfoReduser,
-  ingredients: pokeIngredientsReducer,
-  constructorReducer: constructorReducer,
-  filters: filtersReducer,
+  description: description,
+  productions: productions,
+  openProductsCard: openProductsCard,
+  amountProduct: amountProduct,
+  basket: basket,
+  map: map,
+  news: news,
+  registration: registration,
+  userEnter: userEnter,
+  confirmation: confirmation,
+  userAccount: userAccount,
+  restaurantLocation: restaurant,
+  restaurantProductions: restaurantProductions,
+  restaurantPagesInfo: restaurantPagesInfo,
+  ingredients: pokeIngredients,
+  constructorReducer: constructor,
+  filters: filters,
 });
 
 export const store = configureStore({

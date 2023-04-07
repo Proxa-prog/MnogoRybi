@@ -6,11 +6,11 @@ import { openBasketSelector, BasketCard } from 'entities/basket';
 
 import style from './ShowOrder.module.scss';
 
-const ShowOrder: FC = () => {
+export const ShowOrder: FC = () => {
   const basket = useSelector(openBasketSelector);
 
   return (
-    <div className={style.user_order}>
+    <div className={style.userOrder}>
       <>
         <h3>Ваш улов</h3>
         {
@@ -29,5 +29,3 @@ const ShowOrder: FC = () => {
     </div>
   )
 };
-
-export default ShowOrder;

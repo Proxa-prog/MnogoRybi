@@ -1,36 +1,35 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { IAmountProduct } from "entities/basket/model/types/basketTypes";
 import {
+  IAmountProduct,
   IBasketArray,
   IChangeAmountAction,
-  IChangeCostAction
-} from "../types/basketTypes";
+  IChangeCostAction,
+} from 'entities/basket';
 
 const initialState: IBasketArray = {
   basketState: {
     basket: [],
     isBasketOpen: false,
-    recipientName: "",
-    recipientPhone: "",
-    recipientAddress: "",
-    recipientCardNumber: "",
-    recipientCardDate: "",
-    recipientCvc: "",
+    recipientName: '',
+    recipientPhone: '',
+    recipientAddress: '',
+    recipientCardNumber: '',
+    recipientCardDate: '',
+    recipientCvc: '',
     pickupOfGoods: false,
     paymentToTheCourier: false,
     saveCardDate: true,
-    comment: "",
+    comment: '',
   },
 };
 
 export const basketSlice = createSlice({
-  name: "basket",
+  name: 'basket',
   initialState,
   reducers: {
     addProductInBasket: (state, action: PayloadAction<IAmountProduct>) => {
       state.basketState.basket = [...state.basketState.basket, action.payload];
-      // state.basketState.isBasketOpen = state.basketState.isBasketOpen;
     },
     openBasketBlock: (state, action: PayloadAction<boolean>) => {
       state.basketState.isBasketOpen = !action.payload;
@@ -68,16 +67,10 @@ export const basketSlice = createSlice({
     changePickupOfGoods: (state, action: PayloadAction<boolean>) => {
       state.basketState.pickupOfGoods = !action.payload;
     },
-    addRecipientCardNumber: (
-      state,
-      action: PayloadAction<string | undefined>
-    ) => {
+    addRecipientCardNumber: (state, action: PayloadAction<string | undefined>) => {
       state.basketState.recipientCardNumber = action.payload;
     },
-    addRecipientCardDate: (
-      state,
-      action: PayloadAction<string | undefined>
-    ) => {
+    addRecipientCardDate: (state, action: PayloadAction<string | undefined>) => {
       state.basketState.recipientCardDate = action.payload;
     },
     addRecipientCardCvc: (state, action: PayloadAction<string | undefined>) => {
@@ -96,21 +89,6 @@ export const basketSlice = createSlice({
 });
 
 export const {
-  addProductInBasket,
-  openBasketBlock,
-  changeAmount,
-  changeCost,
-  removeProduct,
-  addRecipientName,
-  addRecipientPhone,
-  addRecipientAddress,
-  changePickupOfGoods,
-  addRecipientCardNumber,
-  addRecipientCardDate,
-  addRecipientCardCvc,
-  changePaymentToTheCourier,
-  addComment,
-  changeSaveCardDate,
-} = basketSlice.actions;
-
-export default basketSlice.reducer;
+  reducer: basketReducer,
+  actions: basketActions,
+} = basketSlice;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Args, Story } from '@storybook/react';
 
-import Footer from './Footer';
+import { Footer } from './Footer';
 import './Footer.module.scss';
 
 export default {

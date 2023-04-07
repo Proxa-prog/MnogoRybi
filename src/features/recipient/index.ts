@@ -1,1 +1,1 @@
-export { default as Recipient } from "./ui/Recipient/Recipient";
+export { Recipient } from "./ui/Recipient/Recipient";

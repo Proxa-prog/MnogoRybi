@@ -1,4 +1,4 @@
-import { StatusMarkerProps } from "shared/ui/StatusMarker/StatusMarker";
+import { StatusMarkerProps } from "shared";
 
 export interface INews {
   header: string;
@@ -8,4 +8,9 @@ export interface INews {
   statuses?: StatusMarkerProps[];
   id: string;
   text?: string;
+}
+
+export interface ResponseApiNews {
+  status: string;
+  data: INews[];
 }

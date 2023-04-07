@@ -1,1 +1,1 @@
-export { default as ProductCounter } from './ui/ProductCounter/ProductCounter';
+export { ProductCounter } from './ui/ProductCounter/ProductCounter';

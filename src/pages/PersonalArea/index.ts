@@ -1,1 +1,1 @@
-export { default as PersonalArea } from './ui/personalArea/PersonalArea';
+export { PersonalArea } from './ui/PersonalArea/PersonalArea';

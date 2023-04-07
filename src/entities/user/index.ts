@@ -1,34 +1,28 @@
-export { openModalUserEnterSelector } from "./model/selectors/openModalUserEnterSelector";
-export { setUserAccountStateSelector } from "./model/selectors/setUserAccountStateSelector";
+export { userEnterSelector } from './model/selectors/userEnterSelector';
+export { userAccountSelector } from './model/selectors/userAccountSelector';
 export {
-  setUserDataInUserAccount,
-  changeEmailUserAccount,
-  changeIsLoginUserAccount,
-  changeIsOpenRecovery,
-  addDeliveryAddress,
-  removeDeliveryAddress,
-  changeIsAddNewAddressOpen,
-  logoutUserAccount,
-  changePersonalAreaLinkIsCurrent,
-  addOrderInUserAccount,
-  sortUserOrders,
-} from "./model/slice/userAccountSlice";
-export { findUserAccount } from "./model/services/findUserAccount";
-export { restorePassword } from "./model/services/restorePassword";
-export { addNewDeliveryAddressAsync } from "./model/services/addNewDeliveryAddressAsync";
-export { registerUser } from "./model/services/setUserData";
-export { addDeliveryAddressToUser } from "./model/services/addDeliveryAddressToUser";
-export { fetchOrders } from "./model/services/fetchOrders";
+  userAccountActions,
+  userAccountReducer,
+} from './model/slice/userAccountSlice';
+export { findUserAccount } from './model/services/findUserAccount';
+export { restorePassword } from './model/services/restorePassword';
+export { createUser } from './model/services/createUser';
+export { addNewDeliveryAddressAsync } from './model/services/addNewDeliveryAddressAsync';
+export { registerUser } from './model/services/setUserData';
 export {
   IUserRegistration,
   IResponse,
   IUserData,
   IPersonalAreaPagesLinks,
-} from "./model/types/types";
+  IUserEnterFull,
+  ResponseApiUserData,
+  IUserEnter,
+  ICreateUserData,
+  ResponseApi,
+} from './model/types/types';
 export {
-  setUserData,
-  changeEmailUserEnter,
-  changeIsOpenUserEnter,
-  changePasswordUserEnter,
-} from "./model/slice/userEnterSlice";
+  userEnterReducer,
+  userEnterActions,
+  userEnterSlice,
+} from './model/slice/userEnterSlice';
 export { AddDeliveryAddress } from './ui/AddDeliveryAddress/AddDeliveryAddress';

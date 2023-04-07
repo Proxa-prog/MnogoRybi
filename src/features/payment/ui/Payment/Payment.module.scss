@@ -1,13 +1,13 @@
 .payment {
-    @include basket_block_wrapper;
+    @include basketBlockWrapper;
 }
 
-.payment_block_wrapepr {
+.blockWrapper {
     padding: 10px;
 }
 
-.payment_header_wrapper {
-    @include basket_block_header;
+.headerWrapper {
+    @include basketBlockHeader;
 }
 
 p {
@@ -27,30 +27,30 @@ hr {
     border: 1px solid $gray-10;
 }
 
-.card_data {
+.cardData {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-.user_name {
+.userName {
     width: 100%;
     margin-bottom: 15px;
 }
 
-.validity_wrapper {
+.validityWrapper {
     width: 65%;
 }
 
-.card_validity {
+.cardValidity {
     width: 100%;
 }
 
-.cvc_wrapper {
+.cvcWrapper {
     width: 32%;
 }
 
-.card_cvc {
+.cardCvc {
     width: 100%;
 }
 
@@ -75,12 +75,12 @@ hr {
     }
 }
 
-.agreement_checkbox {
+.agreementCheckbox {
     @media (max-width: 767px) {
         width: 24px;
     }
 }
 
 .courier {
-    @include checkbox_block;
+    @include checkboxBlock;
 }

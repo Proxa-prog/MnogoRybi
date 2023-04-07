@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import classNames from 'classnames';
 
-import { Button } from 'shared/ui/Button/Button';
+import { Button } from 'shared';
 
 import style from './ProductCounter.module.scss';
 
@@ -12,7 +12,7 @@ export interface ProductCounterProps {
   wrapperClassName?: string;
 }
 
-const ProductCounter: FC<ProductCounterProps> = (props) => {
+export const ProductCounter: FC<ProductCounterProps> = (props) => {
   const {
     removeAmountProduct,
     addAmountProduct,
@@ -22,14 +22,9 @@ const ProductCounter: FC<ProductCounterProps> = (props) => {
 
   return (
     <>
-      <div
-        className={classNames(
-          style.how_much_wrapper,
-          wrapperClassName,
-        )}
-      >
+      <div className={classNames(style.howMuchWrapper, wrapperClassName)}>
         <Button
-          className={style.button_amount}
+          className={style.buttonAmount}
           type='button'
           isGrayTheme
           imageLeft='minus.svg'
@@ -39,7 +34,7 @@ const ProductCounter: FC<ProductCounterProps> = (props) => {
         />
         <span className={style.amount}>{amount}</span>
         <Button
-          className={style.button_amount}
+          className={style.buttonAmount}
           type='button'
           isGrayTheme
           imageLeft='plus.svg'
@@ -49,7 +44,5 @@ const ProductCounter: FC<ProductCounterProps> = (props) => {
         />
       </div>
     </>
-  )
+  );
 };
-
-export default ProductCounter;

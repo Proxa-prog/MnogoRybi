@@ -1,24 +1,28 @@
-import * as React from 'react';
-import {useState} from "react";
+import React, { useState } from 'react';
 
-import {Button, Input} from "shared";
-import {useAppDispatch} from "app/store";
-import {addDeliveryAddress, changeIsAddNewAddressOpen} from "../../model/slice/userAccountSlice";
+import { useAppDispatch } from 'app/store';
 
-import style from "./AddDeliveryAddress.module.scss";
-import {addNewDeliveryAddressAsync} from "../../model/services/addNewDeliveryAddressAsync";
-import {useSelector} from "react-redux";
-import {openModalUserEnterSelector} from "../../model/selectors/openModalUserEnterSelector";
-import {setUserAccountStateSelector} from "../../model/selectors/setUserAccountStateSelector";
+import {
+  userAccountActions,
+  userAccountSelector,
+  userEnterSelector,
+  addNewDeliveryAddressAsync,
+} from 'entities/user';
+
+import { useSelector } from 'react-redux';
+
+import { Button, Input } from 'shared';
+
+import style from './AddDeliveryAddress.module.scss';
 
 export const AddDeliveryAddress: React.FC = () => {
   const dispatch = useAppDispatch();
-  const userEnter = useSelector(openModalUserEnterSelector);
-  const userAccount = useSelector(setUserAccountStateSelector);
+  const userEnter = useSelector(userEnterSelector);
+  const userAccount = useSelector(userAccountSelector);
   const [address, setNewAddress] = useState('');
 
   const handleButtonModalClose = () => {
-    dispatch(changeIsAddNewAddressOpen());
+    dispatch(userAccountActions.changeIsModalAddNewAddressOpen());
   };
 
   const handleInputAddressChange = (newAddress: string | undefined) => {
@@ -26,41 +30,47 @@ export const AddDeliveryAddress: React.FC = () => {
   };
 
   const handleButtonAddAddressClick = (newAddress: string) => {
-    dispatch(addDeliveryAddress(newAddress));
-    dispatch(addNewDeliveryAddressAsync({
-      email: userEnter.userAccount.email,
-      password: userEnter.userAccount.password,
-      isWindowUserEnterOpen: userEnter.isOpen,
-      isUserLogin: userAccount.userAccount.isLogin,
-      newDeliveryAddress: newAddress,
-    }));
+    dispatch(userAccountActions.addDeliveryAddress(newAddress));
+    dispatch(
+      addNewDeliveryAddressAsync({
+        email: userEnter.userAccount.email,
+        password: userEnter.userAccount.password,
+        isWindowUserEnterOpen: userEnter.isOpen,
+        isUserLogin: userAccount.userAccount.isLogin,
+        newDeliveryAddress: newAddress,
+      })
+    );
   };
 
   return (
     <div className={style.modal}>
       <Button
-        className={style.button_close}
+        className={style.buttonClose}
         isClose='close'
         type='button'
         onClick={handleButtonModalClose}
       />
       <h3>Добавьте адрес</h3>
       <Input
-        className={style.input_text}
+        className={style.inputText}
         label=''
         placeholder='Введите адрес'
         name='Введите адрес'
         type='text'
-        onChange={(event) => {handleInputAddressChange(event)}}
+        onChange={(event) => {
+          handleInputAddressChange(event);
+        }}
       />
       <Button
-        className={style.button_add_new_address}
+        className={style.buttonAddNewAddress}
         type='button'
         color='yellow'
-        onClick={() => {handleButtonAddAddressClick(address)}}
+        onClick={() => {
+          handleButtonAddAddressClick(address);
+        }}
       >
         Добавить новый адрес
       </Button>
     </div>
-  )
+  );
 };

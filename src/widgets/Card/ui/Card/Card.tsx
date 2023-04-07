@@ -1,31 +1,35 @@
-import React, {FC} from "react";
-import {nanoid} from "@reduxjs/toolkit";
-import classnames from "classnames";
+import React, { FC } from 'react';
+import { nanoid } from '@reduxjs/toolkit';
+import { Link } from 'react-router-dom';
+import classnames from 'classnames';
 
-import {useAppDispatch} from "app/store";
+import { useAppDispatch } from 'app/store';
 
-import {CardProps} from "widgets/Card";
+import { CardProps } from 'widgets/Card';
 
-import {setOpenProductsCard} from "features/productions";
+import { openProductsCardActions } from 'features/productions';
 
-import {StatusMarker, Button, StatusMarkerProps} from "shared";
+import {
+  StatusMarker,
+  Button,
+  StatusMarkerProps
+} from 'shared';
 
-import style from "./Card.module.scss";
-import {Link} from "react-router-dom";
+import style from './Card.module.scss';
 
-const Card: FC<CardProps> = (props) => {
+export const Card: FC<CardProps> = (props) => {
   const {
-    className = "",
-    imageWrapperClassName = "",
-    imageUrl = "",
+    className = '',
+    imageWrapperClassName = '',
+    imageUrl = '',
     header,
     description,
     cost = null,
     previousCost = null,
     statuses,
     isInfo,
-    buttonText = "В корзину",
-    buttonColor = "default",
+    buttonText = 'В корзину',
+    buttonColor = 'default',
     isGrayTheme = false,
     disabled = false,
     onClick,
@@ -42,10 +46,9 @@ const Card: FC<CardProps> = (props) => {
   };
 
   const handleCardClick = (image: string) => {
-
     return () => {
       dispatch(
-        setOpenProductsCard({
+        openProductsCardActions.setOpenProductsCard({
           imageUrl: image,
           isOpen: true,
           header: header,
@@ -63,28 +66,25 @@ const Card: FC<CardProps> = (props) => {
         style.card,
         {
           [style.info]: isInfo,
-          [style.preview_card]: isPreview,
+          [style.previewCard]: isPreview,
         },
-        [className])
-      }
+        [className]
+      )}
       id={id}
-      onClick={() => {
-      }}
+      onClick={() => {}}
     >
       <div
-        className={classnames(
-          style.image_wrapper,
-          imageWrapperClassName,
-          {[style.image_wrapper_preview]: isPreview}
-        )}
+        className={classnames(style.imageWrapper, imageWrapperClassName, {
+          [style.imageWrapperPreview]: isPreview,
+        })}
         style={{
           backgroundImage: `url(images/${imageUrl})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "contain",
-          backgroundPosition: "bottom",
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'contain',
+          backgroundPosition: 'bottom',
         }}
       >
-        <div className={style.card_status_wrapper}>
+        <div className={style.cardStatusWrapper}>
           {statuses &&
             statuses.map((status: StatusMarkerProps) => {
               const id = nanoid();
@@ -93,7 +93,7 @@ const Card: FC<CardProps> = (props) => {
                 <StatusMarker
                   key={id}
                   color={status.color}
-                  className={style.card_status}
+                  className={style.cardStatus}
                 >
                   {status.children}
                 </StatusMarker>
@@ -102,26 +102,28 @@ const Card: FC<CardProps> = (props) => {
         </div>
       </div>
       <div
-        className={classnames(style.description_wrapper, {
-          [style.description_wrapper_info]: isInfo,
-          [style.preview_description_wrapper]: isPreview,
+        className={classnames(style.descriptionWrapper, {
+          [style.descriptionWrapperInfo]: isInfo,
+          [style.previewDescriptionWrapper]: isPreview,
         })}
       >
-        <h3 className={classnames({[style.preview_description]: isPreview})}>
+        <h3 className={classnames({ [style.previewDescription]: isPreview })}>
           {header}
         </h3>
-        <p className={classnames(
-          style.description,
-          {
-            [style.create_poke_description]: isPreview,
-          }
-        )}>{description}</p>
-        <div className={classnames(
-          style.cost_wrapper,
-          {[style.create_poke_cost_wrapper]: isPreview}
-        )}>
+        <p
+          className={classnames(style.description, {
+            [style.createPokeDescription]: isPreview,
+          })}
+        >
+          {description}
+        </p>
+        <div
+          className={classnames(style.costWrapper, {
+            [style.createPokeCostWrapper]: isPreview,
+          })}
+        >
           {(cost || previousCost) && (
-            <div className={style.current_cost}>
+            <div className={style.currentCost}>
               {cost && (
                 <p>
                   {cost}
@@ -136,37 +138,28 @@ const Card: FC<CardProps> = (props) => {
               )}
             </div>
           )}
-          {
-            isPreview
-              ? (
-                <Button type="button">
-                  <Link
-                    to={`/constructor`}
-                    className={style.create_poke_button}
-                  >Создать поке
-                  </Link>
-                </Button>
-              )
-              : (
-                <Button
-                  className={classnames(style.button_buy)}
-                  color={buttonColor}
-                  isGrayTheme={isGrayTheme}
-                  type="button"
-                  disabled={disabled}
-                  onClick={
-                    (onClick && handleButtonClick) || handleCardClick(imageUrl)
-                  }
-                >
-                  {buttonText}
-                </Button>
-              )
-          }
-
+          {isPreview ? (
+            <Button type='button'>
+              <Link to={`/constructor`} className={style.createPokeButton}>
+                Создать поке
+              </Link>
+            </Button>
+          ) : (
+            <Button
+              className={classnames(style.buttonBuy)}
+              color={buttonColor}
+              isGrayTheme={isGrayTheme}
+              type='button'
+              disabled={disabled}
+              onClick={
+                (onClick && handleButtonClick) || handleCardClick(imageUrl)
+              }
+            >
+              {buttonText}
+            </Button>
+          )}
         </div>
       </div>
     </div>
   );
 };
-
-export default Card;

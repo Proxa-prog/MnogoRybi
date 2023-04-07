@@ -1,4 +1,4 @@
-.basket_summ_wrapper {
+.basketSummWrapper {
     width: 100%;
     background-color: $white-00;
     padding: 30px;
@@ -11,7 +11,7 @@
     }
 }
 
-.input_wrapper {
+.inputWrapper {
     width: 100%;
     color: $gray-30;
 }
@@ -32,16 +32,16 @@
     color: $gray-100;
 }
 
-.product_amount {
-    @include basket_summ_text_template;
+.productAmount {
+    @include basketSummTextTemplate;
 }
 
-.cost_of_delivery {
-    @include basket_summ_text_template;
+.costOfDelivery {
+    @include basketSummTextTemplate;
 }
 
-.basket_summ {
-    @include basket_summ_text_template;
+.basketSumm {
+    @include basketSummTextTemplate;
 
     font-weight: 600;
     font-size: 18px;
@@ -53,7 +53,7 @@
     }
 }
 
-.order_commet {
+.orderComment {
     width: 100%;
 
     @media (max-width: 767px) {

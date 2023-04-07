@@ -1,7 +1,8 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { DescriprionsArray, IDescription } from "entities/descriptions";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState: DescriprionsArray =  {
+import { DescriptionsArray, IDescription } from 'entities/descriptions';
+
+const initialState: DescriptionsArray = {
   descriptions: [],
 };
 
@@ -10,11 +11,12 @@ export const descriptionSlice = createSlice({
   initialState,
   reducers: {
     changeDescription: (state, action: PayloadAction<IDescription[]>) => {
-      state.descriptions = action.payload
+      state.descriptions = action.payload;
     },
   },
 });
 
-export const { changeDescription } = descriptionSlice.actions;
-
-export default descriptionSlice.reducer;
+export const {
+  reducer: descriptionReducer,
+  actions: descriptionsActions
+} = descriptionSlice;

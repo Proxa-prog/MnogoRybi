@@ -1,15 +1,15 @@
-.user_enter {
+.userEnter {
     @include modal;
 }
 
-.input_email,
-.input_password {
+.inputEmail,
+.inputPassword {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
 }
 
-.button_enter {
+.buttonEnter {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -17,7 +17,7 @@
     margin-left: 0;
 }
 
-.button_close {
+.buttonClose {
     position: absolute;
     right: -45px;
     top: 0;
@@ -41,7 +41,7 @@
     }
 }
 
-.have_account_wrapper {
+.haveAccountWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,7 +51,7 @@
     }
 }
 
-.button_have_account {
+.buttonHaveAccount {
     font-weight: 700;
     font-size: 14px;
     line-height: 20px;
@@ -63,7 +63,7 @@
     padding: 0;
 }
 
-.have_account {
+.haveAccount {
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
@@ -79,7 +79,7 @@
     }
 }
 
-.button_forgot_password {
+.buttonForgotPassword {
     position: absolute;
     right: 40px;
     font-weight: 400;

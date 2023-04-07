@@ -7,7 +7,7 @@ import { Delivery } from "features/delivery";
 import { Payment } from "features/payment";
 import { Recipient } from "features/recipient";
 
-import { setUserAccountStateSelector } from "entities/user";
+import { userAccountSelector } from "entities/user";
 import {
   openBasketSelector,
   setTotalCost,
@@ -20,10 +20,10 @@ import { COST_OF_DELIVERY, Button } from "shared";
 
 import style from "./Basket.module.scss";
 
-const Basket: FC = () => {
+export const Basket: FC = () => {
   const dispatch = useAppDispatch();
   const basket = useSelector(openBasketSelector);
-  const userAccount = useSelector(setUserAccountStateSelector);
+  const userAccount = useSelector(userAccountSelector);
   const totalCost = setTotalCost(basket.basket);
 
   const handleSubmit = (event: React.FormEvent) => {
@@ -36,10 +36,13 @@ const Basket: FC = () => {
       })
     );
   };
-  console.log('totalCost', totalCost);
+
   return (
-    <form className={style.basket_wrapper} onSubmit={handleSubmit}>
-      <div className={style.basket_info}>
+    <form
+      className={style.wrapper}
+      onSubmit={handleSubmit}
+    >
+      <div className={style.info}>
         <ShowOrder />
         <Recipient />
         <Delivery />
@@ -50,9 +53,9 @@ const Basket: FC = () => {
         totalCost={totalCost}
         costOfDelivery={COST_OF_DELIVERY}
       />
-      <div className={style.button_to_order_wrapper}>
+      <div className={style.buttonToOrderWrapper}>
         <Button
-          className={style.button_to_order}
+          className={style.buttonToOrder}
           type="submit"
           color="yellow"
           children={
@@ -66,5 +69,3 @@ const Basket: FC = () => {
     </form>
   );
 };
-
-export default Basket;

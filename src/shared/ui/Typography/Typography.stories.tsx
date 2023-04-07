@@ -2,6 +2,7 @@ import React from 'react';
 import { Args, Story } from '@storybook/react';
 
 import Typography, { TypographyProps } from './Typography';
+
 import './Typography.module.scss';
 
 export default {

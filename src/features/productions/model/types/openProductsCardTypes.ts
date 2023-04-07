@@ -1,4 +1,4 @@
-import { StatusMarkerProps } from "shared/ui/StatusMarker/StatusMarker";
+import { StatusMarkerProps } from "shared";
 
 export interface IOpenProductsCard {
   isOpen: boolean;

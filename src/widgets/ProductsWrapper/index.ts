@@ -1,1 +1,1 @@
-export { default as ComponentWrapper } from "./ui/ComponentWrapper/ComponentWrapper";
+export { ComponentWrapper } from "./ui/ComponentWrapper/ComponentWrapper";

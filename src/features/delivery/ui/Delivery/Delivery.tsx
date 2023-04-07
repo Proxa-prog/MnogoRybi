@@ -5,90 +5,80 @@ import classNames from 'classnames';
 
 import { getRestaurantPagesInfoSelector } from 'features/restaurant';
 
-import {
-  openBasketSelector,
-  addRecipientAddress,
-  changePickupOfGoods,
-} from 'entities/basket';
+import { openBasketSelector, basketActions } from 'entities/basket';
 
-import {
-  Select,
-  Checkbox,
-  LabelText
-} from 'shared';
+import { Select, Checkbox, LabelText } from 'shared';
 
 import style from './Delivery.module.scss';
 
-const Delivery: FC = () => {
+export const Delivery: FC = () => {
   const dispatch = useDispatch();
   const labelDeliveryCheckboxId = nanoid();
   const basket = useSelector(openBasketSelector);
   const pagesInfo = useSelector(getRestaurantPagesInfoSelector);
 
   const handlerChangeSelectAddress = (address: string) => {
-    dispatch(addRecipientAddress(address));
+    dispatch(basketActions.addRecipientAddress(address));
   };
 
   const handlerChangeCheckboxPickupOfGoods = (isTrue: boolean) => {
-
     return () => {
-      dispatch(changePickupOfGoods(isTrue));
-    }
+      dispatch(basketActions.changePickupOfGoods(isTrue));
+    };
   };
 
   useEffect(() => {
-    dispatch(addRecipientAddress(pagesInfo.restaurantAddress[0].name));
+    dispatch(basketActions.addRecipientAddress(pagesInfo.restaurantAddress[0].name));
   }, []);
-  console.log(basket);
+
   return (
-    <div className={style.delivery_wrapper}>
+    <div className={style.wrapper}>
       <h4>Доставка</h4>
       <div className={style.delivery}>
-        <div className={style.delivery_block_wrapepr}>
-          <div className={style.delivery_header_wrapper}>
+        <div className={style.container}>
+          <div className={style.headerWrapper}>
             <Checkbox
               id={labelDeliveryCheckboxId}
               checked
               isCircle
-              onChange={() => { }} />
+              onChange={() => {}}
+            />
             <span>Доставка по адресу</span>
           </div>
           <p
-            className={style.delivery_checkbox_label}
+            className={style.checkboxLabel}
             id={labelDeliveryCheckboxId}
           >
             Доставляем заказ ежедневно с 09:00 по 00:00
           </p>
         </div>
         <hr />
-        <div className={style.delivery_block_wrapepr}>
+        <div className={style.container}>
           <LabelText
-            className={classNames(
-              style.address_label,
-            )}
+            className={classNames(style.addressLabel)}
             children=''
           />
           <Select
-            className={classNames(
-              style.delivery_address,
-              style.delivery_open,
-            )}
+            className={classNames(style.deliveryAddress, {}, [style.deliveryOpen])}
             promptOption={pagesInfo.restaurantAddress[0].name}
             options={pagesInfo.restaurantAddress}
             onChange={handlerChangeSelectAddress}
             required
           />
-          <p className={style.change_address_text}>Хотите доставить по другому адресу?<br /> <a href='#'>Да изменить</a></p>
+          <p className={style.changeAddressText}>
+            Хотите доставить по другому адресу?
+            <br />
+            <a href='#'>Да изменить</a>
+          </p>
         </div>
       </div>
-      <div className={style.pickup_of_goods}>
+      <div className={style.pickupOfGoods}>
         <Checkbox
           isCircle
-          onChange={handlerChangeCheckboxPickupOfGoods(basket.pickupOfGoods)} />
+          onChange={handlerChangeCheckboxPickupOfGoods(basket.pickupOfGoods)}
+        />
         <span>Самовывоз</span>
       </div>
     </div>
-  )
+  );
 };
-
-export default Delivery;

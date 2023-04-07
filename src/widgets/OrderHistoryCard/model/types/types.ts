@@ -1,10 +1,4 @@
-import { ButtonColor } from "../../../../shared/ui/StatusMarker/StatusMarker";
-
-export const enum paymentStatus {
-  PENDING = 'Оплата при получении',
-  FULLFILED = 'Оплачен онлайн',
-  REJECTED = 'Не оплачен',
-}
+import { ButtonColor } from "shared/ui/StatusMarker/StatusMarker";
 
 export interface IPaymentStatus {
   text: string;

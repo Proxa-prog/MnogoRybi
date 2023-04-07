@@ -1,102 +1,92 @@
-import { createAsyncThunk, nanoid } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk, nanoid } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 import {
+  IAddedOrder,
   IAmountProduct,
   IUserOrder,
-  ResponseApi, setTotalCost
-} from "entities/basket";
-import {addOrderInUserAccount, IUserRegistration} from "entities/user";
+  setTotalCost,
+} from 'entities/basket';
+import {
+  userAccountActions,
+  IUserEnterFull,
+  ResponseApiUserData,
+  IUserEnter,
+} from 'entities/user';
 
-import { ThunkConfig, USER_DATA } from "shared";
-import {IUserEnter} from "../../../user/model/slice/userEnterSlice";
-import {IUserEnterFull} from "../../../user/model/slice/userAccountSlice";
+import { ThunkConfig, USER_DATA } from 'shared';
 
-export interface IAddedOrder {
-  orders: IAmountProduct[],
-  orderDay: string;
-  orderTime: string;
-  recipientName: string | undefined;
-  recipientPhone: string | undefined;
-  recipientAddress: string;
-  recipientCardNumber?: string | undefined;
-  recipientCardDate?: string;
-  recipientCvc?: string;
-  pickupOfGoods: boolean;
-  paymentToTheCourier: boolean;
-  saveCardDate: boolean;
-  comment?: string | undefined;
-  totalCost?: number;
-  orderId: string;
-}
+export const addOrderToUser = createAsyncThunk<
+  void,
+  IUserOrder,
+  ThunkConfig<void>
+>('basket/addOrderToUser', async (userOrder, thunkAPI) => {
+  const { userEmail, basket } = userOrder;
+  const orderTime = new Date();
+  const id = nanoid();
 
-export const addOrderToUser = createAsyncThunk<void, IUserOrder, ThunkConfig<void>>(
-  USER_DATA,
-  async (userOrder,thunkAPI) => {
-    const { userEmail, basket } = userOrder;
-    const orderTime = new Date();
-    const id = nanoid();
+  try {
+    const response = await axios.get<string, ResponseApiUserData>(
+      `${USER_DATA}`
+    );
 
-    try {
-      const response = await axios.get<string, any>(`${USER_DATA}`);
-      // response.data.map((item: any) => {
-      //   axios.delete<string, IUserEnterFull>(
-      //     `${USER_DATA}/${item.id}`,
-      //
-      //   )
-      // })
+    const actualUserId = response.data.find((user: IUserEnter) => {
+      return user.userAccount.email === userEmail;
+    });
 
-      const actualUserId = response.data.find((user: any) => {
-        return user.userAccount.email === userEmail;
-      });
-
-      // Убрал не нужные поля
-      const orderInfo = basket.basket.map((currentOrder: IAmountProduct) => {
-        return {
-          amount: currentOrder.amount,
-          baseCost: currentOrder.baseCost,
+    // Убрал не нужные поля
+    const orderInfo = basket.basket.map((currentOrder: IAmountProduct) => {
+      return {
+        amount: currentOrder.amount,
+        baseCost: currentOrder.baseCost,
+        cost: currentOrder.cost,
+        description: currentOrder.description,
+        name: currentOrder.name,
+        ingredients: {
+          protein: currentOrder.protein,
+          topping: currentOrder.topping,
+          additionally: currentOrder.additionally,
           baseProduct: currentOrder.baseProduct,
-          cost: currentOrder.cost,
-          description: currentOrder.description,
-          name: currentOrder.name,
+          crunch: currentOrder.crunch,
+          fillers: currentOrder.fillers,
           sauce: currentOrder.sauce,
-        };
-      });
-
-      const totalCost = setTotalCost(basket.basket);
-
-      const newOrder: IAddedOrder = {
-        orders: orderInfo,
-        orderDay: orderTime.toLocaleDateString(),
-        orderTime: orderTime.toLocaleTimeString(),
-        comment: basket.comment,
-        paymentToTheCourier: basket.paymentToTheCourier,
-        pickupOfGoods: basket.pickupOfGoods,
-        recipientAddress: basket.recipientAddress,
-        recipientCardDate: basket.recipientCardDate,
-        recipientCardNumber: basket.recipientCardNumber,
-        recipientCvc: basket.recipientCvc,
-        recipientName: basket.recipientName,
-        recipientPhone: basket.recipientPhone,
-        saveCardDate: basket.saveCardDate,
-        orderId: id,
-        totalCost: totalCost,
+        } ?? null,
       };
+    });
 
-      thunkAPI.dispatch(addOrderInUserAccount(newOrder));
+    const totalCost = setTotalCost(basket.basket);
 
-      actualUserId &&
-        (await axios.patch<string, IUserEnterFull>(
-          `${USER_DATA}/${actualUserId.id}`,
-          {
-            userData: {
-              ...actualUserId.userData,
-              orders: [...actualUserId.userData.orders, newOrder],
-            },
-          }
-        ));
-    } catch (error) {
-      console.error(error);
-    }
+    const newOrder: IAddedOrder = {
+      orders: orderInfo,
+      orderDay: orderTime.toLocaleDateString(),
+      orderTime: orderTime.toLocaleTimeString(),
+      comment: basket.comment,
+      paymentToTheCourier: basket.paymentToTheCourier,
+      pickupOfGoods: basket.pickupOfGoods,
+      recipientAddress: basket.recipientAddress,
+      recipientCardDate: basket.recipientCardDate,
+      recipientCardNumber: basket.recipientCardNumber,
+      recipientCvc: basket.recipientCvc,
+      recipientName: basket.recipientName,
+      recipientPhone: basket.recipientPhone,
+      saveCardDate: basket.saveCardDate,
+      orderId: id,
+      totalCost: totalCost,
+    };
+
+    thunkAPI.dispatch(userAccountActions.addOrderInUserAccount(newOrder));
+
+    actualUserId &&
+      (await axios.patch<string, IUserEnterFull>(
+        `${USER_DATA}/${actualUserId.id}`,
+        {
+          userData: {
+            ...actualUserId.userData,
+            orders: [...actualUserId.userData.orders, newOrder],
+          },
+        }
+      ));
+  } catch (error) {
+    console.error(error);
   }
-);
+});

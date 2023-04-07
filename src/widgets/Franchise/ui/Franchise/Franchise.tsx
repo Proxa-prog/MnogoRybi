@@ -6,7 +6,7 @@ import { Button } from "shared";
 
 import style from "./Franchise.module.scss";
 
-const Franchise: FC = () => {
+export const Franchise: FC = () => {
   return (
     <section
       className={style.franchise}
@@ -14,9 +14,9 @@ const Franchise: FC = () => {
     >
       <h3>Открой свой poke-room «МногоРыбы»</h3>
       <Button
-        className={style.button_show_more}
+        className={style.buttonShowMore}
         color="white"
-        type={"button"}
+        type="button"
         onClick={() => {}}
       >
         Подробнее
@@ -24,5 +24,3 @@ const Franchise: FC = () => {
     </section>
   );
 };
-
-export default Franchise;

@@ -1,18 +1,15 @@
-import React, {FC, useState} from "react";
+import React, { FC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AnyAction } from '@reduxjs/toolkit';
+import classNames from 'classnames';
 
-import {Checkbox} from "shared";
+import { Checkbox } from 'shared';
 
-import {useDispatch, useSelector} from "react-redux";
-import {AnyAction} from "@reduxjs/toolkit";
-import classNames from "classnames";
 
-import {IProducts} from "entities/basket";
+import { IProducts } from 'entities/basket';
+import { constructorSelector, ConstructorType } from 'entities/constructor';
 
-import style from "./CheckboxListColumnSquare.module.scss";
-import {getIngredientsSelector} from "../../../../features/productions";
-import {constructorSelector} from "../../../../entities/constructor";
-import {log} from "util";
-import {ConstructorType} from "../../../../entities/constructor/model/slice/constructorSlice";
+import style from './CheckboxListColumnSquare.module.scss';
 
 interface CheckboxListColumnSquareProps {
   productsType: IProducts;
@@ -24,7 +21,7 @@ interface CheckboxListColumnSquareProps {
   name?: string;
 }
 
-const CheckboxListColumnSquare: FC<CheckboxListColumnSquareProps> = (props) => {
+export const CheckboxListColumnSquare: FC<CheckboxListColumnSquareProps> = (props) => {
   const {
     productsType,
     isCircleCheckbox,
@@ -32,41 +29,46 @@ const CheckboxListColumnSquare: FC<CheckboxListColumnSquareProps> = (props) => {
     disabled,
     changeChecked,
     changeType,
-    name,
+    name
   } = props;
 
   const dispatch = useDispatch();
   const constructor = useSelector(constructorSelector);
 
   const handleCheckboxClick = () => {
-    const isChecked = constructor?.fillers?.type && constructor?.fillers?.type.find((item) => {
-      if (productsType.name === item.name) {
-        return item.isChecked
-      }
-    });
+    const isChecked =
+      constructor?.fillers?.type &&
+      constructor?.fillers?.type.find((item) => {
+        if (productsType.name === item.name) {
+          return item.isChecked;
+        }
+      });
 
     dispatch(changeChecked());
-    dispatch(changeType({
-      name: productsType.name,
-      isChecked: isChecked ? !isChecked.isChecked : true,
-    }));
+    dispatch(
+      changeType({
+        name: productsType.name,
+        isChecked: isChecked ? !isChecked.isChecked : true,
+      })
+    );
   };
 
-  const onChange = (event: boolean) => {
+  const onChange = (event: boolean) => {};
 
-  };
-
-  const isChecked = name === 'Наполнители'
-  ? constructor?.fillers?.type && constructor?.fillers?.type.find((item) => {
-    if (productsType.name === item.name) {
-      return item.isChecked
-    }
-  })
-    : constructor?.topping?.type && constructor?.topping?.type.find((item) => {
-    if (productsType.name === item.name) {
-      return item.isChecked
-    }
-  })
+  const isChecked =
+    name === 'Наполнители'
+      ? constructor?.fillers?.type &&
+        constructor?.fillers?.type.find((item) => {
+          if (productsType.name === item.name) {
+            return item.isChecked;
+          }
+        })
+      : constructor?.topping?.type &&
+        constructor?.topping?.type.find((item) => {
+          if (productsType.name === item.name) {
+            return item.isChecked;
+          }
+        });
 
   return (
     <li>
@@ -80,7 +82,5 @@ const CheckboxListColumnSquare: FC<CheckboxListColumnSquareProps> = (props) => {
       />
       <span>{productsType.name}</span>
     </li>
-  )
+  );
 };
-
-export default CheckboxListColumnSquare;

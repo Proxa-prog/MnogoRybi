@@ -1,13 +1,4 @@
-import { IUserRegistration } from "entities/user";
-import { INews } from "features/news";
-import { IProductions } from "features/productions";
-import {
-  IrestaurantLocation,
-  IrestaurantPagesInfo,
-  IRestaurantProductions,
-} from "features/restaurant";
-import {AdditionallyType, ConstructorType} from "../../../constructor/model/slice/constructorSlice";
-import {IUserEnterFull} from "../../../user/model/slice/userAccountSlice";
+import { AdditionallyType, ConstructorType } from 'entities/constructor';
 
 export interface IProducts {
   name: string;
@@ -83,42 +74,24 @@ export interface IUserOrder {
   basket: IBasketState;
 }
 
-export interface ResponseApi {
-  status: string;
-  data: IUserEnterFull[];
+export interface IAddedOrder {
+  orders: IAmountProduct[];
+  orderDay: string;
+  orderTime: string;
+  recipientName: string | undefined;
+  recipientPhone: string | undefined;
+  recipientAddress: string;
+  recipientCardNumber?: string | undefined;
+  recipientCardDate?: string;
+  recipientCvc?: string;
+  pickupOfGoods: boolean;
+  paymentToTheCourier: boolean;
+  saveCardDate: boolean;
+  comment?: string | undefined;
+  totalCost?: number;
+  orderId: string;
 }
 
-export interface ResponseApiMap {
-  status: string;
-  data: IrestaurantLocation;
-}
-
-export interface ResponseApiNews {
-  status: string;
-  data: INews[];
-}
-
-export interface ResponseApiProductions {
-  status: string;
-  data: IProductions;
-}
-
-export interface ResponseApiIngredients {
-  status: string;
-  data: any;
-}
-
-export interface ResponseApiRestaurantLocation {
-  status: string;
-  data: IrestaurantLocation;
-}
-
-export interface ResponseApiRestaurantPagesInfo {
-  status: string;
-  data: IrestaurantPagesInfo;
-}
-
-export interface ResponseApiRestaurantProductions {
-  status: string;
-  data: IRestaurantProductions;
+export interface BasketCardProps {
+  product: IAmountProduct;
 }

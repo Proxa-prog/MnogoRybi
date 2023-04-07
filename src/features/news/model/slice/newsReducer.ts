@@ -1,14 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   news: {
     limit: 3,
-    newsArray: []
+    newsArray: [],
   },
-}
+};
 
 export const newsSlice = createSlice({
-  name: "news",
+  name: 'news',
   initialState,
   reducers: {
     getNewsArray: (state, action) => {
@@ -16,10 +16,11 @@ export const newsSlice = createSlice({
     },
     addLimit: (state, action) => {
       state.news.limit = state.news.limit + action.payload;
-    }
-  }
+    },
+  },
 });
 
-export const { getNewsArray, addLimit } = newsSlice.actions;
-
-export default newsSlice.reducer;
+export const {
+  reducer: newsReducer,
+  actions: newsActions,
+} = newsSlice;

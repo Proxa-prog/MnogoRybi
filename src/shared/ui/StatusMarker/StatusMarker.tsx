@@ -20,7 +20,7 @@ export const StatusMarker: FC<StatusMarkerProps> = (props) => {
   return (
     <span
       className={classNames(
-        style.status_marker,
+        style.statusMarker,
         style[color],
         [
           className,

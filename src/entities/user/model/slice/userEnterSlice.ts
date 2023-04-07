@@ -1,28 +1,25 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IUserEnterFull } from "./userAccountSlice";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export interface IUserEnter extends IUserEnterFull {
-  isOpen: boolean;
-}
+import { IUserEnter } from 'entities/user';
 
-const initialState: IUserEnter =  {
+const initialState: IUserEnter = {
   isOpen: false,
   personalAreaLinks: [
     {
-      name: "Личные данные",
-      id: "PersonalArea",
+      name: 'Личные данные',
+      id: 'PersonalArea',
       isCurrent: true,
     },
     {
-      name: "Мои заказы",
-      id: "myOrders",
-      isCurrent: false
+      name: 'Мои заказы',
+      id: 'MyOrders',
+      isCurrent: false,
     },
   ],
   userAccount: {
-    isAddNewAddressOpen: false,
+    isModalAddNewAddressOpen: false,
     isLogin: false,
-    recoveryIsOpen: false,
+    isModalRecoveryOpen: false,
     email: '',
     password: '',
   },
@@ -33,7 +30,7 @@ const initialState: IUserEnter =  {
     currentOrders: [],
     userUrl: '',
     deliveryAddress: [],
-  }
+  },
 };
 
 export const userEnterSlice = createSlice({
@@ -43,23 +40,19 @@ export const userEnterSlice = createSlice({
     setUserData: (state, action: PayloadAction<IUserEnter>) => {
       state = action.payload;
     },
-    changeIsOpenUserEnter: (state, action: PayloadAction<boolean>) => {
+    changeIsOpenUserEnter: (state,action: PayloadAction<boolean>) => {
       state.isOpen = !action.payload;
     },
-    changeEmailUserEnter: (state, action: PayloadAction<string | undefined>) => {
+    changeEmailUserEnter: (state,action: PayloadAction<string | undefined>) => {
       state.userAccount.email = action.payload;
     },
-    changePasswordUserEnter: (state, action: PayloadAction<string | undefined>) => {
+    changePasswordUserEnter: (state,action: PayloadAction<string | undefined>) => {
       state.userAccount.password = action.payload;
     },
   },
 });
 
 export const {
-  setUserData,
-  changeIsOpenUserEnter,
-  changeEmailUserEnter,
-  changePasswordUserEnter,
- } = userEnterSlice.actions;
-
-export default userEnterSlice.reducer;
+  reducer: userEnterReducer,
+  actions: userEnterActions,
+} = userEnterSlice;

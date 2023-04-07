@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { IRegistration } from "../types/registrationTypes";
+import { IRegistration } from "features/registration";
 
 const initialState: IRegistration = {
   registration: {
@@ -43,13 +43,6 @@ export const registrationSlice = createSlice({
 });
 
 export const {
-  changeAgreement,
-  changeIsOpenRegistration,
-  changeFirstName,
-  changeEmail,
-  changePassword,
-  changePhone,
-  setPassword,
-} = registrationSlice.actions;
-
-export default registrationSlice.reducer;
+  reducer: registrationReducer,
+  actions: registrationActions,
+} = registrationSlice

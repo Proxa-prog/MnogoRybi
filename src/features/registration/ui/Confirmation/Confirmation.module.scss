@@ -2,7 +2,7 @@
     @include modal;
 }
 
-.button_back {
+.buttonBack {
     position: absolute;
     left: -59px;
     top: 0;
@@ -29,7 +29,7 @@
     }
 }
 
-.button_close {
+.buttonClose {
     position: absolute;
     right: -45px;
     top: 0;
@@ -53,27 +53,28 @@
     }
 }
 
-.button_enter {
+.buttonEnter {
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-left: 0;
 
-    .button_text_mobile {
+    .buttonTextMobile {
         display: none;
     }
 
     @media (max-width: 767px) {
-        .button_text_mobile {
+        .buttonTextMobile {
             display: inline;
         }
 
-        .button_text_desktop {
+        .buttonTextDesktop {
             display: none;
         }
     }
 }
 
-.input_password {
+.inputPassword {
     padding: 10px;
     width: 100%;
     margin-bottom: 30px;

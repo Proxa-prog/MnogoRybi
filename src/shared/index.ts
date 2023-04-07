@@ -13,12 +13,12 @@ export {
   MOK_PASSWORD,
   NEW_PASSWORD,
   MAIN_PAGE_ROUTE,
-  CONTACTS_ROUTE,
+  CONTACTS_PAGE_ROUTE,
   NEWS_ROUTE,
-  FRANCHISE_ROUTE,
+  FRANCHISE_PAGE_ROUTE,
   NEWS_PAGE_ROUTE,
   CONSTRUCTOR_PAGE_ROUTE,
-  PERSONAL_AREA_ROUTE,
+  PERSONAL_AREA_PAGE_ROUTE,
   PERSONAL_AREA_MY_ORDERS_ROUTE,
   DELIVERY_ROUTE,
   PRODUCTS,
@@ -28,6 +28,7 @@ export {
   LOGO_WIDTH,
   LOGO_HEIGHT,
   INPUT_MASK,
+  RESTAURANT_FILTERS_URL,
 } from './assets/constants/constants';
 export { Advanced } from './ui/Advanced/Advanced';
 export { Button } from './ui/Button/Button';

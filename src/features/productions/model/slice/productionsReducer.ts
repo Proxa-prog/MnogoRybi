@@ -24,6 +24,7 @@ export const productionsSlice = createSlice({
   },
 });
 
-export const { getProductionsAction } = productionsSlice.actions;
-
-export default productionsSlice.reducer;
+export const {
+  reducer: productionsReducer,
+  actions: productionsActions,
+} = productionsSlice;

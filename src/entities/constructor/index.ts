@@ -1,23 +1,17 @@
 export {
-  changeFillersType,
-  changeFillers,
-  changeIsFillerChecked,
-  changeBaseProductType,
-  changeIsBaseProductChecked,
-  changeProteinType,
-  changeProteinChecked,
-  changeToppingType,
-  changeToppingChecked,
-  changeSauceType,
-  changeSauceChecked,
-  changeCrunchType,
-  changeCrunchChecked,
-  changeAdditionallyType,
-  clearFillers,
+  constructorReducer,
+  constructorActions,
 } from "./model/slice/constructorSlice";
 export {
-  getFilters,
+  filtersReducer,
+  filtersActions,
 } from "./model/slice/filtersSlice";
+export {
+  IConstructorState,
+  ConstructorType,
+  AdditionallyType,
+  FillersType,
+} from './model/types/types';
 export { fillersTypeSelector } from "./model/selectors/fillersTypeSelector";
 export { baseProductSelector } from "./model/selectors/baseProductSelector";
 export { sauceSelector } from "./model/selectors/sauceSelector";
@@ -27,3 +21,4 @@ export { crunchSelector } from "./model/selectors/crunchSelector";
 export { constructorSelector } from "./model/selectors/constructorSelector";
 export { fillersSelector } from "./model/selectors/fillersSelector";
 export { filtersSelector } from "./model/selectors/filtersSelector";
+export { fetchFilters } from "./model/services/fetchFilters";

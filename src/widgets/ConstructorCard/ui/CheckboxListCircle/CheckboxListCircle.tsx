@@ -1,18 +1,22 @@
-import React, {FC, useState} from "react";
-import {useSelector} from "react-redux";
-import classNames from "classnames";
-import {AnyAction} from "@reduxjs/toolkit";
+import React, { FC, useState } from 'react';
+import { useSelector } from 'react-redux';
+import classNames from 'classnames';
+import { AnyAction } from '@reduxjs/toolkit';
 
-import {useAppDispatch} from "app/store";
+import { useAppDispatch } from 'app/store';
 
-import {Checkbox} from "shared";
+import { IFiltersIngredients } from 'widgets/ConstructorCard';
 
-import {IProducts} from "entities/basket";
-import {clearFillers, filtersSelector} from "entities/constructor";
+import { IProducts } from 'entities/basket';
+import {
+  constructorActions,
+  ConstructorType,
+  filtersSelector
+} from 'entities/constructor';
 
-import {IFiltersIngredients} from "../../model/types/types";
+import { Checkbox } from 'shared';
 
-import style from "./CheckboxListCircle.module.scss";
+import style from './CheckboxListCircle.module.scss';
 
 interface CheckboxListCircleProps {
   productsType: IProducts;
@@ -22,11 +26,11 @@ interface CheckboxListCircleProps {
   checked?: boolean;
   isFillerChecked?: boolean;
   changeChecked: () => AnyAction;
-  changeType: (name: string) => AnyAction;
+  changeType: (product: ConstructorType) => AnyAction;
   changeFiltersType?: (item: IFiltersIngredients) => AnyAction;
 }
 
-const CheckboxListCircle: FC<CheckboxListCircleProps> = (props) => {
+export const CheckboxListCircle: FC<CheckboxListCircleProps> = (props) => {
   const {
     productsType,
     isCircleCheckbox,
@@ -45,23 +49,26 @@ const CheckboxListCircle: FC<CheckboxListCircleProps> = (props) => {
   const handleCheckboxClick = () => {
     setIsChecked((prev) => !prev);
     isFillers && dispatch(changeChecked());
-    changeType && dispatch(changeType(productsType.name));
+    changeType && dispatch(changeType(productsType));
 
     const newFilterType = filters.filters.filter((item) => item.name === productsType.name);
     changeFiltersType && dispatch(changeFiltersType(newFilterType[0]));
-    changeFiltersType && dispatch(clearFillers());
+    changeFiltersType && dispatch(constructorActions.clearFillers());
   };
 
   return (
     <div
       className={classNames(
         {
-          [style.checkbox_wrapper]: isCircleCheckbox,
-          [style.font_checked_style]: isFillers ? isFillerChecked : isChecked,
-          [style.checkbox_wrapper_checked]: isFillers ? isFillerChecked : isChecked,
+          [style.wrapper]: isCircleCheckbox,
+          [style.fontCheckedStyle]: isFillers ? isFillerChecked : isChecked,
+          [style.checkboxWrapperChecked]: isFillers ? isFillerChecked : isChecked,
         },
-        [className])}
-      onClick={() => {isFillers && handleCheckboxClick()}}
+        [className]
+      )}
+      onClick={() => {
+        isFillers && handleCheckboxClick();
+      }}
     >
       <Checkbox
         isCircle={isCircleCheckbox}
@@ -71,7 +78,5 @@ const CheckboxListCircle: FC<CheckboxListCircleProps> = (props) => {
       />
       <span>{productsType.name}</span>
     </div>
-  )
+  );
 };
-
-export default CheckboxListCircle;

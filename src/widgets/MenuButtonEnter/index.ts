@@ -1,1 +1,1 @@
-export { default as MenuButtonEnter } from "./ui/MenuButtonEnter/MenuButtonEnter";
+export { MenuButtonEnter } from "./ui/MenuButtonEnter/MenuButtonEnter";

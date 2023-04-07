@@ -1,22 +1,24 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-import { changeMapCenter } from "features/map";
+import { mapActions } from 'features/map';
+import {ResponseApiMap} from "features/restaurant";
 
-import { ResponseApiMap } from "entities/basket";
+import { RESTAURANT_LOCATION_URL, ThunkConfig } from 'shared';
 
-import { RESTAURANT_LOCATION_URL, ThunkConfig } from "shared";
+export const fetchMapCenter = createAsyncThunk<void, void, ThunkConfig<void>>(
+  'map/fetchMapCenter',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get<string, ResponseApiMap>(RESTAURANT_LOCATION_URL);
+      const mapCenter = response.data.restaurantMapCenter;
 
-export const fetchMapCenter = createAsyncThunk<void, void, ThunkConfig<void>>(RESTAURANT_LOCATION_URL, async (_, thunkAPI) => {
-  try {
-    const response = await axios.get<string, ResponseApiMap>(RESTAURANT_LOCATION_URL);
-    const mapCenter = response.data.restautantMapCenter;
+      mapCenter.lat = Number(mapCenter.lat);
+      mapCenter.lng = Number(mapCenter.lng);
 
-    mapCenter.lat = Number(mapCenter.lat);
-    mapCenter.lng = Number(mapCenter.lng);
-
-    thunkAPI.dispatch(changeMapCenter(mapCenter));
-  } catch (error) {
-    console.error(error)
+      thunkAPI.dispatch(mapActions.changeMapCenter(mapCenter));
+    } catch (error) {
+      console.error(error);
+    }
   }
-});
+);

@@ -5,16 +5,16 @@ import { nanoid } from "@reduxjs/toolkit";
 import { useAppDispatch } from "app/store";
 
 import {
-  setOpenProductsCard,
   openProductsCardSelector,
   ChooseCard,
+  openProductsCardActions,
 } from "features/productions";
 
 import { Button } from "shared";
 
 import style from "./ChooseCardWrapper.module.scss";
 
-const ChooseCardWrapper: FC = () => {
+export const ChooseCardWrapper: FC = () => {
   const dispatch = useAppDispatch();
   const productsCard = useSelector(openProductsCardSelector);
   const cardWrapperId = nanoid();
@@ -26,7 +26,7 @@ const ChooseCardWrapper: FC = () => {
       event.target.id === buttonCloseId
     ) {
       dispatch(
-        setOpenProductsCard({
+        openProductsCardActions.setOpenProductsCard({
           imageUrl: "",
           isOpen: false,
         })
@@ -39,12 +39,12 @@ const ChooseCardWrapper: FC = () => {
       {productsCard.isOpen && (
         <div
           id={cardWrapperId}
-          className={style.choose_card_wrapper}
+          className={style.chooseCardWrapper}
           onClick={handleBackgroundClick}
         >
           <Button
             id={buttonCloseId}
-            className={style.button_close}
+            className={style.buttonClose}
             isClose="close"
             type="button"
           />
@@ -54,5 +54,3 @@ const ChooseCardWrapper: FC = () => {
     </>
   );
 };
-
-export default ChooseCardWrapper;

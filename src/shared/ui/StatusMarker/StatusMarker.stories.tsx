@@ -2,6 +2,7 @@ import React from 'react';
 import { Args, Story } from '@storybook/react';
 
 import { StatusMarker } from './StatusMarker';
+
 import './StatusMarker.module.scss';
 
 export default {

@@ -1,5 +1,5 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {IFiltersIngredients} from "../../../../widgets/ConstructorCard/model/types/types";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IFiltersIngredients } from 'widgets/ConstructorCard';
 
 interface IFilters {
   filters: IFiltersIngredients[];
@@ -10,17 +10,16 @@ const initialState: IFilters = {
 };
 
 const filtersSlice = createSlice({
-  name: "filters",
+  name: 'filters',
   initialState,
   reducers: {
     getFilters: (state, action: PayloadAction<IFiltersIngredients[]>) => {
       state.filters = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export const {
-  getFilters,
-} = filtersSlice.actions;
-
-export default filtersSlice.reducer;
+  reducer: filtersReducer,
+  actions: filtersActions
+} = filtersSlice;

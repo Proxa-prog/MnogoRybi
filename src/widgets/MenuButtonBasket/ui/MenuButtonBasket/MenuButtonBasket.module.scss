@@ -1,0 +1,22 @@
+.buttonBasket {
+  @media (max-width: 767px) {
+    width: 36px;
+    height: 36px;
+  }
+}
+.buttonBasketScroll {
+  padding: 10px;
+  height: 40px;
+}
+
+.amountItems {
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  @media (max-width: 767px) {
+    padding: 2px 5px;
+    right: -1px;
+    top: 0;
+  }
+}

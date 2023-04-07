@@ -1,0 +1,25 @@
+.wrapper {
+    padding-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    margin-bottom: 20px;
+
+    @media (max-width: 1023px) {
+        width: 350px;
+    }
+}
+
+.imageWrapper {
+    @media (max-width: 1023px) {
+        height: 200px;
+    }
+}
+
+.buttonShowMore {
+    width: 100%;
+    justify-content: center;
+}

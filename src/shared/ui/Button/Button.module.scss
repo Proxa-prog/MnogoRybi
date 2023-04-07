@@ -232,17 +232,17 @@
     }
 }
 
-.default_white {
+.defaultWhite {
     background: $white-00;
 }
 
-.button__text_wrapper {
+.buttonTextWrapper {
     @media (max-width: 767px) {
         display: none;
     }
 }
 
-.button__image {
+.buttonImage {
     width: 20px;
     height: 20px;
 }

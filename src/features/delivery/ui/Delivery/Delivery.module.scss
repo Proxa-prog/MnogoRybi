@@ -1,12 +1,20 @@
-.delivery_wrapper {
+.wrapper {
     margin-bottom: 30px;
 }
 
-.delivery_block_wrapepr {
+.delivery {
+    @include basketBlockWrapper;
+
+    a {
+        color: $blue-100;
+    }
+}
+
+.container {
     padding: 15px;
     position: relative;
 
-    .delivery_open {
+    .deliveryOpen {
         display: block;
     }
 
@@ -15,19 +23,11 @@
     }
 }
 
-.delivery {
-    @include basket_block_wrapper;
-
-    a {
-        color: $blue-100;
-    }
+.headerWrapper {
+    @include basketBlockHeader;
 }
 
-.delivery_header_wrapper {
-    @include basket_block_header;
-}
-
-.delivery_checkbox_label {
+.checkboxLabel {
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
@@ -44,7 +44,7 @@ hr {
     border: 1px solid $gray-10;
 }
 
-.address_label {
+.addressLabel {
     position: relative;
 
     &::after {
@@ -60,7 +60,7 @@ hr {
     }
 }
 
-.delivery_address {
+.deliveryAddress {
     width: 100%;
     background: $gray-10;
     border: 1px solid $gray-30;
@@ -75,11 +75,11 @@ hr {
     }
 }
 
-.pickup_of_goods {
-  @include checkbox_block;
+.pickupOfGoods {
+  @include checkboxBlock;
 }
 
-.change_address_text {
+.changeAddressText {
     margin-bottom: 0;
 
     br {

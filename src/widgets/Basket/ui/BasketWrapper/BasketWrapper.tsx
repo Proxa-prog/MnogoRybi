@@ -6,13 +6,13 @@ import { useAppDispatch } from "app/store";
 
 import { Basket } from "widgets/Basket";
 
-import { openBasketSelector, openBasketBlock } from "entities/basket";
+import { openBasketSelector, basketActions } from "entities/basket";
 
 import { Button } from "shared";
 
 import style from "./BasketWrapper.module.scss";
 
-const BasketWrapper: FC = () => {
+export const BasketWrapper: FC = () => {
   const dispatch = useAppDispatch();
   const basket = useSelector(openBasketSelector);
   const cardWrapperId = nanoid();
@@ -23,7 +23,7 @@ const BasketWrapper: FC = () => {
       event.target.id === cardWrapperId ||
       event.target.id === buttonCloseId
     ) {
-      dispatch(openBasketBlock(basket.isBasketOpen));
+      dispatch(basketActions.openBasketBlock(basket.isBasketOpen));
     }
   };
 
@@ -31,13 +31,13 @@ const BasketWrapper: FC = () => {
     <>
       {basket.isBasketOpen && (
         <div
-          className={style.basket_wrapper}
+          className={style.wrapper}
           id={cardWrapperId}
           onClick={handleBackgroundClick}
         >
           <Button
             id={buttonCloseId}
-            className={style.button_close}
+            className={style.buttonClose}
             isClose="close"
             type="button"
           />
@@ -47,5 +47,3 @@ const BasketWrapper: FC = () => {
     </>
   );
 };
-
-export default BasketWrapper;

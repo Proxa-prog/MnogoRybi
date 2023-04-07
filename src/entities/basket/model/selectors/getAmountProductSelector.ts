@@ -10,11 +10,12 @@ export const getAmountProductSelector = createSelector(
 
     return amountProduct;
   }
+);
 
-);export const getAmountConstructorProductSelector = createSelector(
+export const getAmountConstructorProductSelector = createSelector(
   [ setAmountConstructorProduct ],
-  (amountProduct) => {
+  (amountConstructorProduct) => {
 
-    return amountProduct;
+    return amountConstructorProduct;
   }
 );

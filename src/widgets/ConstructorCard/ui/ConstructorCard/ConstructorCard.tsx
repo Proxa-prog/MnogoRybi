@@ -9,7 +9,7 @@ export interface  ConstructorCardProps {
   className?: string;
 }
 
-const ConstructorCard: FC<ConstructorCardProps> = (props) => {
+export const ConstructorCard: FC<ConstructorCardProps> = (props) => {
   const {
     children,
     className,
@@ -21,5 +21,3 @@ const ConstructorCard: FC<ConstructorCardProps> = (props) => {
     </div>
   )
 };
-
-export default ConstructorCard;

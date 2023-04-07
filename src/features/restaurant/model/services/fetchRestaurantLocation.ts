@@ -1,41 +1,42 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-import { ResponseApiRestaurantLocation } from "entities/basket";
-import { IPopupCoordinates } from "entities/contact";
-import { getRestaurantLocation, getRestaurantMapCenter } from "features/restaurant";
-import { RESTAURANT_LOCATION_URL, ThunkConfig } from "shared";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-const coordinatesToNumber = (coordinates: IPopupCoordinates) => {
-  coordinates.lat = Number(coordinates.lat);
-  coordinates.lng = Number(coordinates.lng);
+import {
+  coordinatesToNumber,
+  ResponseApiRestaurantLocation,
+  restaurantActions
+} from 'features/restaurant';
 
-  return coordinates;
-};
+import { IPopupCoordinates } from 'entities/contact';
 
-export const fetchRestaurantLocation = createAsyncThunk<void, void, ThunkConfig<void>>(
-  RESTAURANT_LOCATION_URL,
-  async (_, thunkAPI) => {
-    try {
-      const response = await axios.get<string, ResponseApiRestaurantLocation>(RESTAURANT_LOCATION_URL);
+import { RESTAURANT_LOCATION_URL, ThunkConfig } from 'shared';
 
-      const restautantPopupCoordinatesToNumber =
-        response.data.restautantPopupCoordinates.map(
-          (item: IPopupCoordinates) => {
-            coordinatesToNumber(item);
+export const fetchRestaurantLocation = createAsyncThunk<
+  void,
+  void,
+  ThunkConfig<void>
+>('restaurantLocation/fetchRestaurantLocation', async (_, thunkAPI) => {
+  try {
+    const response = await axios.get<string, ResponseApiRestaurantLocation>(
+      RESTAURANT_LOCATION_URL
+    );
 
-            return item;
-          }
-        );
+    const restaurantPopupCoordinatesToNumber = response.data.restaurantPopupCoordinates.map(
+      (item: IPopupCoordinates) => {
+        coordinatesToNumber(item);
 
-      const restautantMapCenterToNumber = {
-        lat: Number(response.data.restautantMapCenter.lat),
-        lng: Number(response.data.restautantMapCenter.lng),
-      };
+        return item;
+      }
+    );
 
-      thunkAPI.dispatch(getRestaurantLocation(restautantPopupCoordinatesToNumber));
-      thunkAPI.dispatch(getRestaurantMapCenter(restautantMapCenterToNumber));
-    } catch (error) {
-      console.error(error)
-    }
+    const restaurantMapCenterToNumber = {
+      lat: Number(response.data.restaurantMapCenter.lat),
+      lng: Number(response.data.restaurantMapCenter.lng),
+    };
+
+    thunkAPI.dispatch(restaurantActions.getRestaurantLocation(restaurantPopupCoordinatesToNumber));
+    thunkAPI.dispatch(restaurantActions.getRestaurantMapCenter(restaurantMapCenterToNumber));
+  } catch (error) {
+    console.error(error);
   }
-);
+});

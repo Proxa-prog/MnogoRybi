@@ -1,23 +1,19 @@
-import React, { FC, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { nanoid } from "@reduxjs/toolkit";
-import classNames from "classnames";
+import React, { FC, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
+import classNames from 'classnames';
 
-import { useAppDispatch } from "app/store";
+import { useAppDispatch } from 'app/store';
 
-import { openProductsCardSelector } from "features/productions";
-import { getRestaurantProductionsSelector } from "features/restaurant";
+import { openProductsCardSelector } from 'features/productions';
+import { getRestaurantProductionsSelector } from 'features/restaurant';
 
 import {
   getAmountProductSelector,
-  addProductInBasket,
-  setNewProduct,
-  setBaseProduct,
-  setSauce,
-  setAmountProduct,
-  setCostProduct,
-} from "entities/basket";
-import { ProductCounter } from "entities/counter";
+  basketActions,
+  amountProductActions,
+} from 'entities/basket';
+import { ProductCounter } from 'entities/counter';
 
 import {
   Select,
@@ -25,23 +21,23 @@ import {
   StatusMarker,
   Button,
   StatusMarkerProps,
-} from "shared";
+} from 'shared';
 
-import style from "./ChooseCard.module.scss";
+import style from './ChooseCard.module.scss';
 
-const ChooseCard: FC = () => {
+export const ChooseCard: FC = () => {
   const dispatch = useAppDispatch();
   const productsCard = useSelector(openProductsCardSelector);
   const amountProduct = useSelector(getAmountProductSelector);
   const restaurantProductions = useSelector(getRestaurantProductionsSelector);
 
-  // Увеличить количество товараx
+  // Увеличить количество товара
   const addAmountProduct = () => {
     const addAmount = amountProduct.amount + 1;
     const addCost = Number(productsCard.cost) * addAmount;
 
-    dispatch(setAmountProduct(addAmount));
-    dispatch(setCostProduct(addCost));
+    dispatch(amountProductActions.setAmountProduct(addAmount));
+    dispatch(amountProductActions.setCostProduct(addCost));
   };
 
   // Уменьшить количество товара
@@ -50,8 +46,8 @@ const ChooseCard: FC = () => {
       const addAmount = amountProduct.amount - 1;
       const addCost = Number(productsCard.cost) * addAmount;
 
-      dispatch(setAmountProduct(addAmount));
-      dispatch(setCostProduct(addCost));
+      dispatch(amountProductActions.setAmountProduct(addAmount));
+      dispatch(amountProductActions.setCostProduct(addCost));
     }
   };
 
@@ -60,7 +56,7 @@ const ChooseCard: FC = () => {
     const id = nanoid();
 
     dispatch(
-      addProductInBasket({
+      basketActions.addProductInBasket({
         name: amountProduct.name,
         amount: amountProduct.amount,
         cost: amountProduct.cost,
@@ -76,17 +72,17 @@ const ChooseCard: FC = () => {
 
   // Установить значение основы блюда
   const changeBaseProduct = (baseProd: string) => {
-    dispatch(setBaseProduct(baseProd));
+    dispatch(amountProductActions.setBaseProduct(baseProd));
   };
 
   // Установить значение соуса
   const changeSauce = (sauce: string) => {
-    dispatch(setSauce(sauce));
+    dispatch(amountProductActions.setSauce(sauce));
   };
 
   useEffect(() => {
     dispatch(
-      setNewProduct({
+      amountProductActions.setNewProduct({
         name: productsCard.header,
         amount: 1,
         cost: Number(productsCard.cost),
@@ -94,19 +90,25 @@ const ChooseCard: FC = () => {
         baseCost: 0,
       })
     );
-    dispatch(setBaseProduct(restaurantProductions.baseProduct[0].name));
-    dispatch(setSauce(restaurantProductions.sauce[0].name));
+    dispatch(
+      amountProductActions.setBaseProduct(
+        restaurantProductions.baseProduct[0].name
+      )
+    );
+    dispatch(
+      amountProductActions.setSauce(restaurantProductions.sauce[0].name)
+    );
   }, []);
 
   return (
-    <div className={style.choose_card}>
+    <div className={style.chooseCard}>
       <div
         className={style.image}
         style={{
           backgroundImage: `url(images/${productsCard.imageUrl})`,
         }}
       >
-        <div className={style.statuses_wrapper}>
+        <div className={style.statusesWrapper}>
           {productsCard.statuses &&
             productsCard.statuses.map((status: StatusMarkerProps) => {
               const id = nanoid();
@@ -115,7 +117,7 @@ const ChooseCard: FC = () => {
                 <StatusMarker
                   key={id}
                   color={status.color}
-                  className={style.card_status}
+                  className={style.cardStatus}
                 >
                   {status.children}
                 </StatusMarker>
@@ -123,7 +125,7 @@ const ChooseCard: FC = () => {
             })}
         </div>
       </div>
-      <div className={style.info_wrapper}>
+      <div className={style.infoWrapper}>
         <div className={style.info}>
           <h3>{productsCard.header}</h3>
 
@@ -132,15 +134,15 @@ const ChooseCard: FC = () => {
             <span>280 ккал / 1172 кДж</span>
           </div>
 
-          <div className={style.compaund}>
+          <div className={style.compound}>
             <h4>Состав</h4>
             <span>{productsCard.description}</span>
           </div>
 
           <div className={style.ingredients}>
             <LabelText
-              children="Выберите основу"
-              className={style.ingredients_label}
+              children='Выберите основу'
+              className={style.ingredientsLabel}
             />
             <Select
               options={restaurantProductions.baseProduct}
@@ -150,8 +152,8 @@ const ChooseCard: FC = () => {
             />
 
             <LabelText
-              children="Выберите соус"
-              className={classNames(style.ingredients_label, style.sauce_label)}
+              children='Выберите соус'
+              className={classNames(style.ingredientsLabel, style.sauceLabel)}
             />
             <Select
               options={restaurantProductions.sauce}
@@ -161,16 +163,15 @@ const ChooseCard: FC = () => {
             />
           </div>
         </div>
-        <div className={style.amount_wrapper}>
+        <div className={style.amountWrapper}>
           <ProductCounter
             removeAmountProduct={removeAmountProduct}
             addAmountProduct={addAmountProduct}
             amount={amountProduct.amount}
           />
           <Button
-            className={style.button_basket}
-            type="button"
-            color="yellow"
+            type='button'
+            color='yellow'
             children={`В корзину за ${amountProduct.cost} ₽`}
             onClick={addProductOnBasket}
           />
@@ -179,5 +180,3 @@ const ChooseCard: FC = () => {
     </div>
   );
 };
-
-export default ChooseCard;
