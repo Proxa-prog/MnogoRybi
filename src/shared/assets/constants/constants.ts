@@ -78,5 +78,14 @@ export const INPUT_MASK = {
   },
   DATE_MASK: {
     mask: '__.__.____',
+  },
+  CARD_NUMBER: {
+    mask: '0000 0000 0000 0000',
+  },
+  CARD_VALIDITY: {
+    mask: '00/00',
+  },
+  CARD_CVC: {
+    mask: '000',
   }
 };
