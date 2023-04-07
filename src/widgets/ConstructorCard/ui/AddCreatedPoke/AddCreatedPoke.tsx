@@ -58,6 +58,7 @@ export const AddCreatedPoke: FC = () => {
         fillers: constructor.fillers?.type,
         topping: constructor.topping?.type,
         additionally: constructor.additionally,
+        imageUrl: 'poke/poke_with_6.jpg',
         id: id,
       })
     );
