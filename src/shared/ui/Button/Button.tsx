@@ -3,11 +3,11 @@ import React, { FC } from 'react';
 import classNames from 'classnames';
 import { ImageWrapper } from 'shared';
 
-import style from './Button.module.scss';
+import styles from './Button.module.scss';
 
 type ButtonType = 'button' | 'submit' | 'reset';
 export type ButtonColor = 'default' | 'yellow' | 'blue' | 'white';
-type ButtonTurn = 'back' | 'forward' | 'default';
+export type ButtonTurn = 'back' | 'forward' | 'default';
 type ButtonClose = 'close';
 
 export interface ButtonProps {
@@ -49,7 +49,7 @@ export const Button: FC<ButtonProps> = (props) => {
     id,
   } = props;
 
- const defaultButtonColor = isGrayTheme ? 'defaultWhite' : '';
+  const defaultButtonColor = isGrayTheme ? 'defaultWhite' : '';
 
   const handleOnClick = () => {
     if (onClick) {
@@ -59,46 +59,35 @@ export const Button: FC<ButtonProps> = (props) => {
 
   return (
     <button
-      className={classNames(
-        style.default,
-        style[isTurn],
-        style[isClose],
-        [
-          style[defaultButtonColor],
-          style[color],
-          className,
-        ],
-      )}
+      className={classNames(styles.default, styles[isTurn], styles[isClose], [
+        styles[defaultButtonColor],
+        styles[color],
+        className,
+      ])}
       disabled={disabled}
       type={type}
       onClick={handleOnClick}
       id={id}
     >
-      {
-        (imageLeft !== '') && (
-          <ImageWrapper
-            className={style.buttonImage}
-            width={imageWidth}
-            height={imageHeight}
-            name={imageLeft}
-            alt={buttonImageAlt}
-          />
-        )
-      }
-      <span className={style[childrenWrapperClassName]}>
-        {children}
-      </span>
-      {
-        (imageRight !== '') && (
-          <ImageWrapper
-            className={style.buttonImage}
-            width={imageWidth}
-            height={imageHeight}
-            name={imageRight}
-            alt={buttonImageAlt}
-          />
-        )
-      }
+      {imageLeft !== '' && (
+        <ImageWrapper
+          className={styles.buttonImage}
+          width={imageWidth}
+          height={imageHeight}
+          name={imageLeft}
+          alt={buttonImageAlt}
+        />
+      )}
+      <span className={styles[childrenWrapperClassName]}>{children}</span>
+      {imageRight !== '' && (
+        <ImageWrapper
+          className={styles.buttonImage}
+          width={imageWidth}
+          height={imageHeight}
+          name={imageRight}
+          alt={buttonImageAlt}
+        />
+      )}
     </button>
   );
 };

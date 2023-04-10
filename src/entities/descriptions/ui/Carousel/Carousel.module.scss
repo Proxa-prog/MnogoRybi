@@ -1,0 +1,45 @@
+.dots {
+  position: absolute;
+  bottom: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  margin: auto;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.dots li {
+  list-style: none;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 3px;
+  padding: 0;
+}
+
+.dots li button {
+  border: none;
+  background: $white-00;
+  color: transparent;
+  cursor: pointer;
+  display: block;
+  height: 10px;
+  width: 10px;
+  border-radius: 7.5px;
+}
+
+.dots :global(li.slick-active) button {
+  background-color: $yellow-100;
+}
+
+.dots li button:hover,
+.dots li button:focus {
+  background: $yellow-100;
+  outline: 0;
+}
+
+.slick-slide img {
+  border: 5px solid #fff;
+  display: block;
+  margin: auto;
+}

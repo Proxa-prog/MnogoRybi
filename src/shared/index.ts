@@ -31,7 +31,7 @@ export {
   RESTAURANT_FILTERS_URL,
 } from './assets/constants/constants';
 export { Advanced } from './ui/Advanced/Advanced';
-export { Button } from './ui/Button/Button';
+export { Button, ButtonTurn } from './ui/Button/Button';
 export { ButtonColor } from './ui/Button/Button';
 export { Checkbox } from './ui/Checkbox/Checkbox';
 export { Counter } from './ui/Counter/Counter';
