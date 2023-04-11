@@ -16,8 +16,25 @@ export const inputMask = (id: string, element: HTMLElement | null) => {
       element,
       {
         mask: Date,
-        min: new Date(1, 0, 1),
-        max: new Date(9999, 0, 1),
+        blocks: {
+          d: {
+            mask: IMask.MaskedRange,
+            from: 1,
+            to: 31,
+            maxLength: 2,
+          },
+          m: {
+            mask: IMask.MaskedRange,
+            from: 1,
+            to: 12,
+            maxLength: 2,
+          },
+          Y: {
+            mask: IMask.MaskedRange,
+            from: 1900,
+            to: 2023,
+          }
+        },
         lazy: false
       });
   }
