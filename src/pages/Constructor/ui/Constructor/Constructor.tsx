@@ -78,6 +78,7 @@ export const Constructor = () => {
     dispatch(fetchRestaurantProductions());
     dispatch(fetchPagesInfo());
     dispatch(fetchFilters());
+    window.scrollTo(0, 0);
   }, []);
 
   return (

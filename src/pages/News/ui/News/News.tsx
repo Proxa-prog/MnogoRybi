@@ -58,6 +58,7 @@ export const News: FC = () => {
     dispatch(fetchPagesInfo());
     dispatch(fetchRestaurantProductions());
     dispatch(fetchNews(news.limit));
+    window.scrollTo(0, 0);
   }, [news.limit]);
 
   return (
