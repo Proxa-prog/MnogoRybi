@@ -88,7 +88,7 @@ export const Constructor = () => {
       {confirmation.isOpen && <Confirmation />}
       {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
       <Header isAuth={userAccount.userAccount.isLogin} />
-      <BlockHeader pageName='Конструктор поке'>
+      <BlockHeader className={style.BlockWrapper} pageName='Конструктор поке'>
         <section className={style.wrapper}>
           <h2>
             <span className={style.blueTextHeader}>Соберите&nbsp;ваш</span>
