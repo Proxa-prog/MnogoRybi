@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { IProducts } from 'entities/basket';
-import { useAppDispatch } from "app/store";
+
+import { Button } from "shared";
 
 import style from './List.module.scss';
 
@@ -15,7 +16,10 @@ export interface ListProps {
   isLink?: boolean;
   isNavigate?: boolean;
   isText?: boolean;
+  isButton?: boolean;
+  buttonMoreIsOpen?: boolean;
   onClick?: (event?: any, items?: any) => void;
+  handleButtonMoreClick?: (isTrue: boolean) => void;
 }
 
 export const List: FC<ListProps> = (props) => {
@@ -26,7 +30,10 @@ export const List: FC<ListProps> = (props) => {
     isLink = false,
     isNavigate = false,
     isText = false,
+    isButton = false,
+    buttonMoreIsOpen = false,
     onClick,
+    handleButtonMoreClick,
   } = props;
 
   return (
@@ -62,6 +69,24 @@ export const List: FC<ListProps> = (props) => {
             </li>
           )
         })
+      }
+      {
+        isButton && <Button
+          className={classNames(
+            style.defaultLi,
+            classNameItem,
+            style.buttonMore,
+          )}
+          type='button'
+          imageRight='property_expand_down.svg'
+          imageHeight={24}
+          imageWidth={24}
+          onClick={() => {
+            handleButtonMoreClick && handleButtonMoreClick(!buttonMoreIsOpen);
+          }}
+        >
+          Ещё
+        </Button>
       }
     </ul>
   );
