@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -151,9 +151,7 @@ export const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
                 []
               )}
               classNameItem={classNames(
-                style.productsItem,
-                { [style.productsItemOpen]: isProductsMenuActive },
-                []
+                style.productsItem, { [style.productsItemOpen]: isProductsMenuActive }, []
               )}
               items={restaurantProductions.products}
               onClick={(event) => {
@@ -166,25 +164,16 @@ export const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
               <>
                 <List
                   isLink
+                  isButton
                   classNameList={style.infoListScroll}
                   classNameItem={style.infoItemScroll}
                   items={pagesInfo.pagesNames}
                   onClick={(event) => {
                     handlePagesClick(event, pagesInfo.pagesNames);
                   }}
+                  handleButtonMoreClick={setButtonMoreIsOpen}
+                  buttonMoreIsOpen={buttonMoreIsOpen}
                 />
-                <Button
-                  className={style.buttonMore}
-                  type='button'
-                  imageRight='property_expand_down.svg'
-                  imageHeight={24}
-                  imageWidth={24}
-                  onClick={() => {
-                    setButtonMoreIsOpen((prev) => !prev);
-                  }}
-                >
-                  Ещё
-                </Button>
                 <div
                   className={classNames(
                     buttonMoreIsOpen && style.listMoreInfo,

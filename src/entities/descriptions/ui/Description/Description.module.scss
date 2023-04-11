@@ -5,7 +5,7 @@
 .description {
     position: relative;
     max-width: 1440px;
-    height: 540px;
+    height: 520px;
     margin: 0 auto;
     overflow: hidden;
     background-color: $green-30;
@@ -33,4 +33,16 @@
     z-index: 1000;
     top: 44%;
     transform: translate(0, 50%);
+}
+
+.description :global(div.slick-slider) {
+    height: 541px;
+
+    @media (max-width: 1023px) {
+        height: 400px;
+    }
+
+    @media (max-width: 767px) {
+        height: 200px;
+    }
 }

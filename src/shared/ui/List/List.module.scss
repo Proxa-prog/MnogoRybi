@@ -7,3 +7,15 @@
 .textShadow {
     text-shadow: #FC0 1px 0 10px;
 }
+
+.buttonMore {
+    background-color: inherit;
+    padding: 0;
+    margin-left: 0;
+
+    span {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
