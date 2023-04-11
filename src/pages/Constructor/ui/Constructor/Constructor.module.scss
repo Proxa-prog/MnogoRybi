@@ -1,3 +1,8 @@
+.BlockWrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
 .wrapper {
   h2 {
     position: relative;
@@ -28,7 +33,7 @@
   z-index: -1;
   background-repeat: no-repeat;
   background-position: center;
-  width: 83vw;
+  width: 90%;
   height: 78px;
 
   @media (max-width: 768px) {
