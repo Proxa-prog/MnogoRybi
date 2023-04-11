@@ -212,12 +212,17 @@ export const PersonalArea: FC = () => {
           </div>
           <div className={style.buttonExitWrapper}>
             <Button
-              className={style.buttonExit}
+              className={style.button}
               type='button'
               isGrayTheme
               onClick={handleButtonExitOnClick}
             >
-              Выйти из личного кабинета
+              <Link
+                to='/'
+                className={style.buttonExit}
+              >
+                Выйти из личного кабинета
+              </Link>
             </Button>
           </div>
         </div>

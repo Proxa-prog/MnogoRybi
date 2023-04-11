@@ -1,4 +1,5 @@
 import React, { FC, useEffect } from 'react';
+import  { useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from 'app/store';
@@ -27,12 +28,24 @@ import { userEnterSelector, userAccountSelector } from 'entities/user';
 import { Description } from 'entities/descriptions';
 
 export const MainPage: FC = () => {
+  const location = useLocation()
   const dispatch = useAppDispatch();
   const productions = useSelector(getProdSelector);
   const registration = useSelector(getRegistrationSelector);
   const userEnter = useSelector(userEnterSelector);
   const confirmation = useSelector(openConfirmationSelector);
   const userAccount = useSelector(userAccountSelector);
+
+  useEffect(()=> {
+    if (location.hash) {
+      let elem = document.getElementById(location.hash.slice(1))
+      if (elem) {
+        elem.scrollIntoView({behavior: "smooth"})
+      }
+    } else {
+      window.scrollTo({top:0,left:0, behavior: "smooth"})
+    }
+  }, [location,])
 
   useEffect(() => {
     dispatch(fetchProductions());
