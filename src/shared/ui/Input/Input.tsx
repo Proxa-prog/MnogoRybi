@@ -1,4 +1,4 @@
-import React, { FC, InputHTMLAttributes } from 'react';
+import React, {FC, InputHTMLAttributes, useEffect} from 'react';
 import classNames from 'classnames';
 
 import { inputMask } from "./lib/inputMask/inputMask";
@@ -42,7 +42,11 @@ export const Input: FC<InputProps> = ((props) => {
     type = 'text',
   } = props;
 
-  inputMask(name);
+
+  useEffect(() => {
+    const element = document.getElementById(name);
+    inputMask(name, element);
+  }, [name])
 
   return (
     <div className={classNames(

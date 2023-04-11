@@ -2,10 +2,12 @@ import IMask from "imask";
 
 import { INPUT_MASK } from "shared";
 
-export const inputMask = (id: string) => {
-  const element = document.getElementById(id);
-
-  if (id === 'Телефон' || id === 'recipient_phone') {
+export const inputMask = (id: string, element: HTMLElement | null) => {
+  if (
+    id === 'Телефон'
+    || id === 'recipient_phone'
+    || id === 'personalAreaPhone'
+  ) {
     element && IMask(element, INPUT_MASK.PHONE_MASK);
   }
 

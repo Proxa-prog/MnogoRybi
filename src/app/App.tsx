@@ -41,10 +41,7 @@ export const App: React.FC = () => {
             <Route path={NEWS_PAGE_ROUTE} element={<NewsPage />} />
             <Route path={CONSTRUCTOR_PAGE_ROUTE} element={<Constructor />} />
             <Route path={PERSONAL_AREA_PAGE_ROUTE} element={<PersonalArea />} />
-            <Route
-              path={PERSONAL_AREA_MY_ORDERS_ROUTE}
-              element={<MyOrders />}
-            />
+            <Route path={PERSONAL_AREA_MY_ORDERS_ROUTE} element={<MyOrders />} />
             <Route path={FRANCHISE_PAGE_ROUTE} element={<Franchise />} />
             {/*<Route path={DELIVERY_ROUTE} element={<DeliveryPage />} />*/}
           </Routes>
