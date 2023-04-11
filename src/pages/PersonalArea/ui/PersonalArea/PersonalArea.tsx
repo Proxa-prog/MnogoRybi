@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { nanoid } from 'nanoid';
@@ -58,6 +58,10 @@ export const PersonalArea: FC = () => {
   const handleLinkClick = (id: string) => {
     dispatch(userAccountActions.changePersonalAreaLinkIsCurrent(id));
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  })
 
   return (
     <>
