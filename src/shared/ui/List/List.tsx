@@ -61,7 +61,7 @@ export const List: FC<ListProps> = (props) => {
                 isLink && <Link to={`/${item.id}`}>{item.name}</Link>
               }
               {
-                isNavigate && <a href={`/#${item.id}`}>{item.name}</a>
+                isNavigate && <Link to={`/#${item.id}`}>{item.name}</Link>
               }
               {
                 isText && <span>{item.name}</span>
