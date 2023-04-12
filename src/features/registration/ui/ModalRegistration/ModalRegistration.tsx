@@ -86,7 +86,7 @@ export const ModalRegistration: React.FC = () => {
           orders: [],
           currentOrders: [],
           userUrl: USER_DATA,
-          deliveryAddress: [],
+          deliveryAddress: ['Ярославль, ул. Льва Толстова, 56, кв. 36'],
         },
       })
     );

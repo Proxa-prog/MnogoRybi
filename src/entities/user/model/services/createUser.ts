@@ -25,7 +25,7 @@ export const createUser = (userData: ICreateUserData) => {
         phone: phone,
         orders,
         userUrl: '',
-        deliveryAddress,
+        deliveryAddress: deliveryAddress,
       },
     })
   );

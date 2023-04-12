@@ -34,6 +34,9 @@ import {
 } from 'shared';
 
 import style from './PersonalArea.module.scss';
+import {
+  removeDeliveryAddressOnServer
+} from "../../../../entities/user/model/services/removeDeliveryAddress";
 
 export const PersonalArea: FC = () => {
   const dispatch = useAppDispatch();
@@ -44,6 +47,10 @@ export const PersonalArea: FC = () => {
   const [isButtonGenderActive, setIsButtonGenderActive] = useState(true);
 
   const handleButtonRemoveNewAddress = (deliveryAddress: string) => {
+    dispatch(removeDeliveryAddressOnServer({
+      userEmail: userEnter.userAccount.email ?? '',
+      deliveryAddress: deliveryAddress,
+    }));
     dispatch(userAccountActions.removeDeliveryAddress(deliveryAddress));
   };
 
@@ -168,7 +175,7 @@ export const PersonalArea: FC = () => {
                         id={id}
                         classNameLabel={style.addressLabel}
                       />
-                      {item === 'Ярославль, Свободы 52/39' && (
+                      {item === 'Ярославль, ул. Льва Толстова, 56, кв. 36' && (
                         <div className={style.statusMarkerWrapper}>
                           <StatusMarker
                             className={style.statusMarker}
@@ -180,7 +187,6 @@ export const PersonalArea: FC = () => {
                         className={style.buttonCloseWrapper}
                         onClick={() => {
                           handleButtonRemoveNewAddress(item);
-                          console.log('click');
                         }}
                       >
                         <svg
