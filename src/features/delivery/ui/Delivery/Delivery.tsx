@@ -28,7 +28,7 @@ export const Delivery: FC = () => {
   };
 
   useEffect(() => {
-    dispatch(basketActions.addRecipientAddress(pagesInfo.restaurantAddress[0].name));
+    basket.recipientAddress === '' && dispatch(basketActions.addRecipientAddress(pagesInfo.restaurantAddress[0].name));
   }, []);
 
   return (
@@ -60,7 +60,11 @@ export const Delivery: FC = () => {
           />
           <Select
             className={classNames(style.deliveryAddress, {}, [style.deliveryOpen])}
-            promptOption={pagesInfo.restaurantAddress[0].name}
+            promptOption={
+              basket.recipientAddress === ''
+                ? pagesInfo.restaurantAddress[0].name
+                : basket.recipientAddress
+            }
             options={pagesInfo.restaurantAddress}
             onChange={handlerChangeSelectAddress}
             required
