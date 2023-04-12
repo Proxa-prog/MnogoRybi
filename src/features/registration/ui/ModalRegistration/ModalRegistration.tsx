@@ -75,6 +75,7 @@ export const ModalRegistration: React.FC = () => {
         ],
         userAccount: {
           isModalAddNewAddressOpen: false,
+          isModalUserDoesNotExist: false,
           email: registration.email,
           password: MOK_PASSWORD,
           isLogin: false,

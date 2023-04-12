@@ -21,7 +21,11 @@ import {
 import { fetchPagesInfo, fetchRestaurantProductions } from 'features/restaurant';
 import { fetchProductions } from 'features/productions';
 
-import { userAccountSelector, userEnterSelector } from 'entities/user';
+import {
+  ModalUserDoesNotExist,
+  userAccountSelector,
+  userEnterSelector
+} from 'entities/user';
 
 import { Button, ImageWrapper } from 'shared';
 
@@ -47,6 +51,7 @@ export const Franchise: FC = () => {
       {userEnter.isOpen && <UserEnter />}
       {confirmation.isOpen && <Confirmation />}
       {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
+      {userAccount.userAccount.isModalUserDoesNotExist && <ModalUserDoesNotExist />}
       <Header isAuth={userAccount.userAccount.isLogin} />
       <section className={style.wrapper}>
         <div className={style.inner}>

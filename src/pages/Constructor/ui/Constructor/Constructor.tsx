@@ -27,7 +27,11 @@ import {
 } from 'features/productions';
 import { fetchPagesInfo, fetchRestaurantProductions } from 'features/restaurant';
 
-import { userAccountSelector, userEnterSelector } from 'entities/user';
+import {
+  ModalUserDoesNotExist,
+  userAccountSelector,
+  userEnterSelector
+} from 'entities/user';
 import {
   baseProductSelector,
   constructorActions,
@@ -87,6 +91,7 @@ export const Constructor = () => {
       {userEnter.isOpen && <UserEnter />}
       {confirmation.isOpen && <Confirmation />}
       {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
+      {userAccount.userAccount.isModalUserDoesNotExist && <ModalUserDoesNotExist />}
       <Header isAuth={userAccount.userAccount.isLogin} />
       <BlockHeader className={style.BlockWrapper} pageName='Конструктор поке'>
         <section className={style.wrapper}>

@@ -26,7 +26,7 @@ const Recovery: FC = () => {
   };
 
   const handleButtonSendClick = (email: string) => {
-    restorePassword(email);
+    dispatch(restorePassword(email));
   };
 
   const handleButtonBackClick = () => {

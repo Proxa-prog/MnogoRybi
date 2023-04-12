@@ -9,6 +9,7 @@ export { restorePassword } from './model/services/restorePassword';
 export { createUser } from './model/services/createUser';
 export { addNewDeliveryAddressAsync } from './model/services/addNewDeliveryAddressAsync';
 export { registerUser } from './model/services/setUserData';
+export { removeDeliveryAddressOnServer } from './model/services/removeDeliveryAddressOnServer';
 export {
   IUserRegistration,
   IResponse,
@@ -26,3 +27,4 @@ export {
   userEnterSlice,
 } from './model/slice/userEnterSlice';
 export { AddDeliveryAddress } from './ui/AddDeliveryAddress/AddDeliveryAddress';
+export { ModalUserDoesNotExist } from './ui/ModalUserDoesNotExist/ModalUserDoesNotExist';

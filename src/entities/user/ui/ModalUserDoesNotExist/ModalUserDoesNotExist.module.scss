@@ -1,0 +1,36 @@
+.modal {
+  @include modal;
+  border: 1px solid #000000;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+
+  h3 {
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 120%;
+  }
+
+  @media (max-width: 767px) {
+    width: 290px;
+    padding: 20px;
+
+    h3 {
+      font-size: 22px;
+    }
+  }
+}
+
+.buttonClose {
+  position: fixed;
+  z-index: 10001;
+  right: -44px;
+  top: 2px;
+
+  @media (max-width: 767px) {
+    width: 36px;
+    height: 36px;
+    left: auto;
+    right: 0;
+    top: 0;
+  }
+}

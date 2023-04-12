@@ -24,7 +24,11 @@ import {
 import { UserEnter } from 'features/user';
 import { fetchPagesInfo, fetchRestaurantProductions } from 'features/restaurant';
 
-import { userEnterSelector, userAccountSelector } from 'entities/user';
+import {
+  userEnterSelector,
+  userAccountSelector,
+  ModalUserDoesNotExist
+} from 'entities/user';
 import { Description } from 'entities/descriptions';
 
 export const MainPage: FC = () => {
@@ -43,7 +47,11 @@ export const MainPage: FC = () => {
         elem.scrollIntoView({behavior: "smooth"})
       }
     } else {
-      window.scrollTo({top:0,left:0, behavior: "smooth"})
+      window.scrollTo({
+        top:0,
+        left:0,
+        behavior: "smooth",
+      })
     }
   }, [location,])
 
@@ -60,6 +68,7 @@ export const MainPage: FC = () => {
       {userEnter.isOpen && <UserEnter />}
       {confirmation.isOpen && <Confirmation />}
       {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
+      {userAccount.userAccount.isModalUserDoesNotExist && <ModalUserDoesNotExist />}
       <div>
         <Description />
         <ComponentWrapper title='Наша продукция'>

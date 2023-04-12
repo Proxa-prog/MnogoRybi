@@ -42,7 +42,11 @@ import {
   getRestaurantPagesInfoSelector,
 } from 'features/restaurant';
 
-import { userAccountSelector, userEnterSelector } from 'entities/user';
+import {
+  ModalUserDoesNotExist,
+  userAccountSelector,
+  userEnterSelector
+} from 'entities/user';
 import {
   IContactsCard,
   IPopupCoordinates,
@@ -101,6 +105,7 @@ export const Contacts: FC = () => {
       {userEnter.isOpen && <UserEnter />}
       {confirmation.isOpen && <Confirmation />}
       {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
+      {userAccount.userAccount.isModalUserDoesNotExist && <ModalUserDoesNotExist />}
       <Header isAuth={userAccount.userAccount.isLogin} />
       <div className={style.wrapper}>
         <BlockHeader pageName='Контакты'>

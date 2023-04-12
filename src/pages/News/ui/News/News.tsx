@@ -28,7 +28,11 @@ import {
 import { fetchProductions } from 'features/productions';
 import { fetchPagesInfo, fetchRestaurantProductions } from 'features/restaurant';
 
-import { userAccountSelector, userEnterSelector } from 'entities/user';
+import {
+  ModalUserDoesNotExist,
+  userAccountSelector,
+  userEnterSelector
+} from 'entities/user';
 
 import { Button, NEWS_LIMIT } from 'shared';
 
@@ -67,6 +71,7 @@ export const News: FC = () => {
       {userEnter.isOpen && <UserEnter />}
       {confirmation.isOpen && <Confirmation />}
       {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
+      {userAccount.userAccount.isModalUserDoesNotExist && <ModalUserDoesNotExist />}
       <Header isAuth={userAccount.userAccount.isLogin} />
       <div className={style.wrapper}>
         <div className={style.inner}>
