@@ -18,6 +18,7 @@ const initialState: IUserEnterFull = {
   ],
   userAccount: {
     isModalAddNewAddressOpen: false,
+    isModalUserDoesNotExist: false,
     isLogin: false,
     isModalRecoveryOpen: false,
     email: '',
@@ -79,6 +80,10 @@ export const userAccountSlice = createSlice({
     changeIsModalAddNewAddressOpen: (state) => {
       state.userAccount.isModalAddNewAddressOpen =
         !state.userAccount.isModalAddNewAddressOpen;
+    },
+    changeIsModalUserDoesNotExist: (state) => {
+      state.userAccount.isModalUserDoesNotExist =
+        !state.userAccount.isModalUserDoesNotExist;
     },
     logoutUserAccount: (state) => {
       state.userAccount = initialState.userAccount;

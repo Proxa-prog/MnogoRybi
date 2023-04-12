@@ -16,7 +16,11 @@ import {
 } from 'features/registration';
 import { getNewsSelector, INews } from 'features/news';
 
-import { userAccountSelector, userEnterSelector } from "entities/user";
+import {
+  ModalUserDoesNotExist,
+  userAccountSelector,
+  userEnterSelector
+} from "entities/user";
 
 import { IMAGE_NEWS_HEIGHT } from 'shared';
 
@@ -40,6 +44,7 @@ export const NewsPage: FC = () => {
       {userEnter.isOpen && <UserEnter />}
       {confirmation.isOpen && <Confirmation />}
       {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
+      {userAccount.userAccount.isModalUserDoesNotExist && <ModalUserDoesNotExist />}
       {news.newsArray.map((news: INews) => {
         if (params.newsId === news.id) {
 

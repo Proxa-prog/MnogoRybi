@@ -23,7 +23,10 @@ import {
   userAccountActions,
   userAccountSelector,
   AddDeliveryAddress,
-  IPersonalAreaPagesLinks, userEnterSelector,
+  IPersonalAreaPagesLinks,
+  userEnterSelector,
+  ModalUserDoesNotExist,
+  removeDeliveryAddressOnServer,
 } from 'entities/user';
 
 import {
@@ -34,9 +37,6 @@ import {
 } from 'shared';
 
 import style from './PersonalArea.module.scss';
-import {
-  removeDeliveryAddressOnServer
-} from "../../../../entities/user/model/services/removeDeliveryAddress";
 
 export const PersonalArea: FC = () => {
   const dispatch = useAppDispatch();
@@ -77,6 +77,7 @@ export const PersonalArea: FC = () => {
       {userEnter.isOpen && <UserEnter />}
       {confirmation.isOpen && <Confirmation />}
       {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
+      {userAccount.userAccount.isModalUserDoesNotExist && <ModalUserDoesNotExist />}
       {userAccount.userAccount.isLogin && userAccount.userAccount.isModalAddNewAddressOpen && (
         <AddDeliveryAddress />
       )}

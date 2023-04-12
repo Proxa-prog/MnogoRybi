@@ -34,6 +34,7 @@ import {
   AddDeliveryAddress,
   IPersonalAreaPagesLinks,
   userEnterSelector,
+  ModalUserDoesNotExist,
 } from 'entities/user';
 import { IAddedOrder } from "entities/basket";
 
@@ -71,6 +72,7 @@ export const MyOrders: FC = () => {
       {userEnter.isOpen && <UserEnter />}
       {confirmation.isOpen && <Confirmation />}
       {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
+      {userAccount.userAccount.isModalUserDoesNotExist && <ModalUserDoesNotExist />}
       {userAccount.userAccount.isLogin && userAccount.userAccount.isModalAddNewAddressOpen && (
         <AddDeliveryAddress />
       )}

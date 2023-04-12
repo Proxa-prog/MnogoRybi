@@ -1,8 +1,17 @@
 import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import {IUserEnterFull, ResponseApi} from 'entities/user';
+import {
+  IUserEnterFull,
+  ResponseApi,
+  userAccountActions
+} from 'entities/user';
 
-import { NEW_PASSWORD, USER_DATA } from 'shared';
+import {
+  NEW_PASSWORD,
+  ThunkConfig,
+  USER_DATA
+} from 'shared';
 
 const setNewPassword = async (item: IUserEnterFull) => {
   await axios.patch<string, string>(`${USER_DATA}/${item.userData.id}`, {
@@ -10,20 +19,34 @@ const setNewPassword = async (item: IUserEnterFull) => {
   });
 };
 
-export const restorePassword = async (userEmail: string) => {
-  try {
-    const response = await axios.get<string, ResponseApi>(USER_DATA);
+export const restorePassword = createAsyncThunk<void, string, ThunkConfig<void>>(
+  'userAccount/restorePassword',
+  async (userEmail: string, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState();
+      const response = await axios.get<string, ResponseApi>(USER_DATA);
 
-    const isFind = response.data.map((item: IUserEnterFull) => {
-      if (item.userAccount.email === userEmail) {
-        setNewPassword(item);
+      const actualUserId = response.data.find((user: IUserEnterFull) => {
+        return user.userAccount.email === userEmail;
+      });
+
+      if (actualUserId) {
+        thunkAPI.dispatch(
+          userAccountActions.changeIsModalRecoveryOpen(
+            state.userAccount.userAccount.isModalRecoveryOpen
+          )
+        );
+        await axios.patch<string, string>(`${USER_DATA}/${actualUserId.id}`, {
+          userAccount: {
+            ...actualUserId.userAccount,
+            password: NEW_PASSWORD,
+          },
+        });
       } else {
-        console.log('Пользователя с таким email не существует.');
+        thunkAPI.dispatch(userAccountActions.changeIsModalUserDoesNotExist());
       }
-
-      return item;
-    });
-  } catch (error) {
-    console.error(error);
+    } catch (error) {
+      console.error(error);
+    }
   }
-};
+);

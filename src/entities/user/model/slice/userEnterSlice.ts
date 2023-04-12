@@ -18,6 +18,7 @@ const initialState: IUserEnter = {
   ],
   userAccount: {
     isModalAddNewAddressOpen: false,
+    isModalUserDoesNotExist: false,
     isLogin: false,
     isModalRecoveryOpen: false,
     email: '',

@@ -19,6 +19,7 @@ export interface ResponseApi {
 
 export interface IUserAccount {
   isModalAddNewAddressOpen: boolean;
+  isModalUserDoesNotExist: boolean;
   isLogin: boolean;
   isModalRecoveryOpen: boolean;
   email: string | undefined;
