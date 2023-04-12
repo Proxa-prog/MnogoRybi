@@ -7,7 +7,7 @@ import {
   createUser,
   IResponse,
   IUserEnterFull,
-  ResponseApi,
+  ResponseApi, userAccountActions,
 } from 'entities/user';
 
 import { ThunkConfig } from 'shared';
@@ -57,6 +57,7 @@ export const registerUser = createAsyncThunk<void, IUserEnterFull, ThunkConfig<v
         thunkAPI.dispatch(
           registrationActions.changeIsOpenRegistration(state.registration.registration.isOpen)
         );
+        thunkAPI.dispatch(userAccountActions.setRegistrationUserDataInUserAccount(user));
         await createUser(newUserData());
       } else {
         console.log('Пользователь с таким email уже существует.');

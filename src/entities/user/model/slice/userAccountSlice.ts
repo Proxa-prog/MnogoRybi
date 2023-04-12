@@ -44,6 +44,12 @@ export const userAccountSlice = createSlice({
       state.userAccount = action.payload.userAccount;
       state.userData = action.payload.userData;
     },
+    setRegistrationUserDataInUserAccount: (
+      state,
+      action: PayloadAction<IUserEnterFull>
+    ) => {
+      state.userData = action.payload.userData;
+    },
     addOrderInUserAccount: (state, action: PayloadAction<IAddedOrder>) => {
       state.userData.orders = [...state.userData.orders, action.payload];
     },
