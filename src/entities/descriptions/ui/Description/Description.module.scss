@@ -22,7 +22,7 @@
 .nextArrow {
     position: absolute;
     right: 20px;
-    z-index: 1000;
+    z-index: 999;
     top: 44%;
     transform: translate(0, 50%);
 }
@@ -30,7 +30,7 @@
 .prevArrow {
     position: absolute;
     left: 20px;
-    z-index: 1000;
+    z-index: 999;
     top: 44%;
     transform: translate(0, 50%);
 }

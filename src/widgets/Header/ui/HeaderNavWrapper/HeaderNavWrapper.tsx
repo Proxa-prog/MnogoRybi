@@ -104,7 +104,10 @@ export const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
           scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL,
       })}
     >
-      <div className={classNames(style.navWrapper)}>
+      <div className={classNames(style.navWrapper, {
+        [style.wrapperScroll]:
+        scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL,
+      })}>
         <nav className={style.nav}>
           {(isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP) || (
             <Button

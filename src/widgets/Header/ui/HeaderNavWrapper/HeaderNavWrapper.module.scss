@@ -11,6 +11,7 @@
   top: 0;
   left: 0;
   z-index: 1000;
+  flex-basis: 74.64%;
 
   @media (max-width: 1023px) {
     padding-right: 24px;
@@ -34,6 +35,11 @@
   @media (max-width: 767px) {
     padding: 7px 15px;
   }
+}
+
+.wrapperScroll {
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .nav {
@@ -69,6 +75,10 @@
   @media (max-width: 1023px) {
     display: none;
   }
+}
+
+.listWrapperScroll {
+  flex-basis: 73.64%;
 }
 
 .listWrapperOpen {
