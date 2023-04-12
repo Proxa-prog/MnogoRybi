@@ -30,6 +30,10 @@ export const RESTAURANT_FILTERS_URL = "https://json-server-mnogo.vercel.app/filt
 export const MOK_PASSWORD = "qwerty";
 export const NEW_PASSWORD = "12345";
 
+export const MOK_DELIVERY_TIME = "19:00-19:30";
+
+export const NUMBER_OF_CARDS_PER_PAGE = 12;
+
 export const MAIN_PAGE_ROUTE = "/";
 export const CONTACTS_PAGE_ROUTE = "/Contacts";
 export const NEWS_ROUTE = "/News";

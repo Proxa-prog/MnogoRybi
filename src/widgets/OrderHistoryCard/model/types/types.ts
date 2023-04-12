@@ -6,9 +6,9 @@ export interface IPaymentStatus {
 }
 
 export interface IPaymentStatuses {
-  delivered: IPaymentStatus;
-  prepare: IPaymentStatus;
-  canceled: IPaymentStatus;
+  delivered?: IPaymentStatus | undefined;
+  prepare?: IPaymentStatus | undefined;
+  canceled?: IPaymentStatus | undefined;
 }
 
 export const orderStatuses: IPaymentStatuses = {

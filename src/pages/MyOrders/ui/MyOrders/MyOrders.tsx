@@ -13,8 +13,11 @@ import { Footer } from 'widgets/Footer';
 import { Header } from 'widgets/Header';
 import { Recovery } from "widgets/Recovery";
 import { BasketWrapper } from "widgets/Basket";
+import {
+  orderStatuses,
+  OrderHistoryCard,
+} from 'widgets/OrderHistoryCard';
 
-import { OrderHistoryCard } from 'widgets/OrderHistoryCard';
 import { UserEnter } from "features/user";
 import {
   getRegistrationSelector,
@@ -25,16 +28,16 @@ import {
 
 import { fetchPagesInfo, fetchRestaurantProductions } from 'features/restaurant';
 
-import {IPersonalAreaPagesLinks, userEnterSelector} from 'entities/user';
 import {
   userAccountActions,
   userAccountSelector,
   AddDeliveryAddress,
+  IPersonalAreaPagesLinks,
+  userEnterSelector,
 } from 'entities/user';
+import { IAddedOrder } from "entities/basket";
 
-import {
-  orderStatuses,
-} from 'widgets/OrderHistoryCard';
+import { MOK_DELIVERY_TIME, NUMBER_OF_CARDS_PER_PAGE } from "shared";
 
 import style from './MyOrders.module.scss';
 
@@ -53,7 +56,7 @@ export const MyOrders: FC = () => {
     dispatch(userAccountActions.sortUserOrders(value));
   };
 
-  const pagesCount = Math.ceil(userAccount.userData.orders.length / 12);
+  const pagesCount = Math.ceil(userAccount.userData.orders.length / NUMBER_OF_CARDS_PER_PAGE);
 
   useEffect(() => {
     dispatch(fetchRestaurantProductions());
@@ -91,17 +94,16 @@ export const MyOrders: FC = () => {
           </div>
           <div className={style.historyOrderWrapper}>
             {
-              // Должен принимать тип IAddedOrder, выдаёт ошибку.
               userAccount.userData.currentOrders &&
-                userAccount.userData.currentOrders.map((order: any) => {
+                userAccount.userData.currentOrders.map((order: IAddedOrder) => {
                   const id = nanoid();
 
                   return (
                     <OrderHistoryCard
                       key={id}
-                      numberOfOrder={123}
+                      numberOfOrder={order.orderId}
                       orderData={order.orderDay}
-                      deliveryTime='19:00-19:30'
+                      deliveryTime={MOK_DELIVERY_TIME}
                       deliveryAddress={order.recipientAddress}
                       cost={String(order.totalCost)}
                       paymentStatus={paymentStatus.PENDING}

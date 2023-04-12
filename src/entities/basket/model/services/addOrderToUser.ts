@@ -1,5 +1,11 @@
-import { createAsyncThunk, nanoid } from '@reduxjs/toolkit';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+
+import { paymentStatus } from "pages/MyOrders";
+
+import {
+  orderStatuses
+} from "widgets/OrderHistoryCard";
 
 import {
   IAddedOrder,
@@ -14,7 +20,11 @@ import {
   IUserEnter,
 } from 'entities/user';
 
-import { ThunkConfig, USER_DATA } from 'shared';
+import {
+  COST_OF_DELIVERY,
+  USER_DATA,
+  ThunkConfig, MOK_DELIVERY_TIME,
+} from 'shared';
 
 export const addOrderToUser = createAsyncThunk<
   void,
@@ -23,12 +33,15 @@ export const addOrderToUser = createAsyncThunk<
 >('basket/addOrderToUser', async (userOrder, thunkAPI) => {
   const { userEmail, basket } = userOrder;
   const orderTime = new Date();
-  const id = nanoid();
 
   try {
-    const response = await axios.get<string, ResponseApiUserData>(
-      `${USER_DATA}`
-    );
+    const response = await axios.get<string, ResponseApiUserData>(`${USER_DATA}`);
+
+    // Общее количество заказов
+    // Из - за того, что в Vercel самопроизвольно удаляются и появляются пользователи -
+    // не всегда корректно отображаются id
+    const orderId = response.data.reduce(
+      (total: number, current: IUserEnter) => total + current.userData.orders.length, 1);
 
     const actualUserId = response.data.find((user: IUserEnter) => {
       return user.userAccount.email === userEmail;
@@ -58,6 +71,11 @@ export const addOrderToUser = createAsyncThunk<
 
     const newOrder: IAddedOrder = {
       orders: orderInfo,
+      orderStatus: orderStatuses.prepare,
+      deliveryTime: MOK_DELIVERY_TIME,
+      paymentStatus: paymentStatus.PENDING,
+      numberOfOrder: orderId,
+      orderData:  new Date(),
       orderDay: orderTime.toLocaleDateString(),
       orderTime: orderTime.toLocaleTimeString(),
       comment: basket.comment,
@@ -70,8 +88,8 @@ export const addOrderToUser = createAsyncThunk<
       recipientName: basket.recipientName,
       recipientPhone: basket.recipientPhone,
       saveCardDate: basket.saveCardDate,
-      orderId: id,
-      totalCost: totalCost,
+      orderId: orderId,
+      totalCost: totalCost + COST_OF_DELIVERY,
     };
 
     thunkAPI.dispatch(userAccountActions.addOrderInUserAccount(newOrder));

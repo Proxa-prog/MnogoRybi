@@ -1,6 +1,6 @@
 import { createTheme } from '@mui/material';
 
-export const enum paymentStatus {
+export const enum paymentStatus  {
   PENDING = 'Оплата при получении',
   FULLFILED = 'Оплачен онлайн',
   REJECTED = 'Не оплачен',
