@@ -43,7 +43,7 @@ export const BasketSumm: FC<BasketSummProps> = (props) => {
         className={style.orderComment}
         classNameWrapper={style.inputWrapper}
         label=''
-        name=''
+        name='Комментарий'
         placeholder='Комментарий к заказу'
         onChange={handlerChangeInputComment}
       />

@@ -1,4 +1,7 @@
 import { AdditionallyType, ConstructorType } from 'entities/constructor';
+import {
+  IPaymentStatus,
+} from "../../../../widgets/OrderHistoryCard/model/types/types";
 
 export interface IProducts {
   name: string;
@@ -76,6 +79,11 @@ export interface IUserOrder {
 
 export interface IAddedOrder {
   orders: IAmountProduct[];
+  orderStatus: IPaymentStatus | undefined;
+  deliveryTime: string;
+  paymentStatus: any;
+  numberOfOrder: number;
+  orderData: Date;
   orderDay: string;
   orderTime: string;
   recipientName: string | undefined;
@@ -89,7 +97,7 @@ export interface IAddedOrder {
   saveCardDate: boolean;
   comment?: string | undefined;
   totalCost?: number;
-  orderId: string;
+  orderId: number;
 }
 
 export interface BasketCardProps {

@@ -37,9 +37,9 @@ export const OrderHistoryCard: FC<IOrderHistoryCard> = (props: IOrderHistoryCard
           № {numberOfOrder}
         </span>
         <StatusMarker
-          color={orderStatus.prepare.color}
+          color={orderStatus?.prepare?.color}
         >
-          {orderStatus.prepare.text}
+          {orderStatus?.prepare?.text}
         </StatusMarker>
       </div>
       <div className={style.orderInformation}>
