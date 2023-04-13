@@ -28,6 +28,10 @@ export const theme = createTheme({
             height: '44px',
             borderRadius: '50%',
             backgroundColor: '#FFFFFF',
+            '@media (max-width: 780px)': {
+              width: '35px',
+              height: '35px',
+            }
           },
         },
       },
@@ -53,6 +57,10 @@ export const theme = createTheme({
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
+          '@media (max-width: 780px)': {
+            width: '35px',
+            height: '35px',
+          }
         },
       },
     },

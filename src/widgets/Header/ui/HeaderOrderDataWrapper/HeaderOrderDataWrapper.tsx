@@ -133,8 +133,10 @@ export const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) =
         </div>
       </div>
       <div className={style.buttonWrapper}>
-        {(isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP) ||
-          (isAuth ? (
+        {
+          (isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP)
+          || isAuth
+            ? (
             <Link to="/personalArea">
               <Button
                 imageLeft="user_fill.svg"
@@ -145,11 +147,24 @@ export const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) =
                 onClick={() => {}}
               />
             </Link>
-          ) : (
+          ) :
+            windowWidth < ViewPorts.TABLET
+            ? (
+              <Button
+                imageLeft="user_fill.svg"
+                imageHeight={24}
+                imageWidth={24}
+                className={style.userAuth}
+                type="button"
+                onClick={onClick}
+              />
+              )
+            :(
             <Button type="button" onClick={onClick}>
               Войти
             </Button>
-          ))}
+          )
+        }
         {(isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP) ||
           (!isAuth && (
             <Button
