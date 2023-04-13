@@ -1,4 +1,8 @@
-import React, { FC, SelectHTMLAttributes, useState } from 'react';
+import React, {
+  FC,
+  SelectHTMLAttributes,
+  useState,
+} from 'react';
 import { nanoid } from '@reduxjs/toolkit';
 import classNames from 'classnames';
 
@@ -14,6 +18,7 @@ export interface SelectProps extends HtmlSelectProps {
   id?: string;
   options: IProducts[];
   className?: string;
+  classNameWrapper?: string;
   classNameList?: string;
   disabled?: boolean;
   promptOption?: string;
@@ -26,6 +31,7 @@ export const Select: FC<SelectProps> = (props) => {
     id,
     options,
     className,
+    classNameWrapper,
     classNameList,
     disabled,
     promptOption,
@@ -35,67 +41,70 @@ export const Select: FC<SelectProps> = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectOption, setSelectOption] = useState(promptOption);
 
+  const closeSelect = (event: { target: HTMLInputElement; }) => {
+    event.target.id !== id
+      ? setIsOpen(false)
+      : setIsOpen(true)
+  }
+
   const handleSelectClick = () => {
-    setIsOpen(prev => !prev);
+    setIsOpen((prev) => !prev);
+    // @ts-ignore
+    addEventListener('click', closeSelect);
   };
 
   const handleOptionClick = (option: IContactsCard | IProducts) => {
-
     return () => {
       onChange && onChange(option.name, isOpen);
       setValue(option.name);
-      setSelectOption(option.name)
-      setIsOpen(prev => !prev);
-    }
+      setSelectOption(option.name);
+      setIsOpen((prev) => !prev);
+    };
   };
 
   return (
-    <>
+    <div className={classNames(classNameWrapper)}>
       <select
-        className={classNames(
-          style.selectDefault,
-          className,
-        )}
-      hidden={isOpen}
-      name={name}
-      id={id}
-      required
-      disabled={disabled}
-      defaultValue="Default"
-      onChange={(event: any) => {
-        onChange && onChange(event.target.value, event.currentTarget.checked);
-        setValue(event.target.value);
-      }}
-      value={value}
-      onClick={handleSelectClick}
-      >
-      <option
-        value="Default"
+        className={classNames(style.selectDefault, className)}
+        hidden={isOpen}
+        name={name}
+        id={id}
+        required
         disabled={disabled}
-        hidden
-        className={style.withCost}
+        defaultValue='Default'
+        onChange={(event: any) => {
+          onChange && onChange(event.target.value, event.currentTarget.checked);
+          setValue(event.target.value);
+        }}
+        value={value}
+        onClick={handleSelectClick}
       >
-        {selectOption}
-      </option>
-    </select>
-      {
-    isOpen &&
-      <ul className={classNames(style.isOpen, {}, [classNameList])}>
-        {options.map((option: IProducts) => {
-          const id = nanoid();
+        <option
+          value='Default'
+          disabled={disabled}
+          hidden
+          className={style.withCost}
+        >
+          {selectOption}
+        </option>
+      </select>
+      {isOpen && (
+        <ul className={classNames(style.isOpen, {}, [classNameList])}>
+          {options.map((option: IProducts) => {
+            const id = nanoid();
 
-          return (
-            <li
-              className={style.listItem}
-              key={id}
-              onClick={handleOptionClick(option)}
-            >
-              {option.name}
-            </li>
-          )
-        })}
-      </ul>
-  }
-    </>
+            return (
+              <li
+                className={style.listItem}
+                key={id}
+                onClick={handleOptionClick(option)}
+              >
+                {option.name}
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </div>
   );
 };

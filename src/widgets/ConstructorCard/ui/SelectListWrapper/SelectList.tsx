@@ -6,7 +6,11 @@ import { IProducts, amountProductActions } from 'entities/basket';
 
 import { Select } from 'shared';
 
-import { constructorActions, constructorSelector } from 'entities/constructor';
+import {
+  AdditionallyType,
+  constructorActions,
+  constructorSelector,
+} from 'entities/constructor';
 
 import style from './SelectList.module.scss';
 
@@ -14,13 +18,15 @@ export interface SelectListProps {
   productsType: IProducts[];
   header?: string;
   isSelected?: boolean;
+  id?: string;
 }
 
 export const SelectList: FC<SelectListProps> = (props) => {
   const {
     productsType,
     header,
-    isSelected
+    isSelected,
+    id,
   } = props;
   const dispatch = useDispatch();
   const [isChecked, setIsChecked] = useState(false);
@@ -36,7 +42,7 @@ export const SelectList: FC<SelectListProps> = (props) => {
     setIsChecked(isChecked);
 
     const isIncludes = !constructor.additionally?.some(
-      (item) => item.productType === header
+      (item: AdditionallyType) => item.productType === header
     );
     isChecked &&
       isIncludes &&
@@ -48,19 +54,15 @@ export const SelectList: FC<SelectListProps> = (props) => {
       {productsType && header && (
         <>
           <h4 className={classNames(style.label)}>{header}</h4>
-          <div
-            className={classNames(
-              style.selectWrapper,
-              { [style.isSelected]: isChecked },
-              []
-            )}
-          >
+          <div className={classNames(style.selectWrapper, { [style.isSelected]: isChecked }, [])}>
             <Select
+              classNameWrapper={style.selectInner}
               classNameList={style.list}
-              className={style.select}
+              className={style.selectAdditionally}
               options={productsType}
               promptOption='Не выбран'
               onChange={onChange}
+              id={id}
             />
           </div>
         </>

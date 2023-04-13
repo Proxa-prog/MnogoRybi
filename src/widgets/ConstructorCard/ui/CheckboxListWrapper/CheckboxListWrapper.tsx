@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, {FC, useEffect} from 'react';
 import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { nanoid } from 'nanoid';
@@ -37,10 +37,11 @@ export const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
   } = props;
 
   const filters = useSelector(filtersSelector);
-  console.log(selectListArray)
+
   const func = fillersType?.ingredients.filter(
     (filler) => filler.name === contentHeader?.name
   );
+
   const isFillerChecked = (
     fillersType: string | string[] | undefined,
     fillerName: string
@@ -170,6 +171,7 @@ export const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
               if (key === 'basis' || key === 'additionally') {
                 return;
               }
+              const id = nanoid();
 
               return (
                 <SelectList
@@ -178,6 +180,7 @@ export const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
                   productsType={value.productsType}
                   // @ts-ignore
                   header={value?.header}
+                  id={id}
                 />
               );
             })}
