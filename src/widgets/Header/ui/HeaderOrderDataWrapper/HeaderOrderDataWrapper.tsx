@@ -20,6 +20,7 @@ import {
 } from "shared";
 
 import style from "./HeaderOrderDataWrapper.module.scss";
+import {nanoid} from "nanoid";
 
 interface HeaderOrderDataWrapperProps {
   isHeaderMenuActive: boolean;
@@ -43,6 +44,7 @@ export const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) =
   } = props;
   const dispatch = useAppDispatch();
   const pagesInfo = useSelector(getRestaurantPagesInfoSelector);
+  const selectId = nanoid();
 
   const handlerChangeSelectAddress = (address: string) => {
     dispatch(basketActions.addRecipientAddress(address));
@@ -107,6 +109,7 @@ export const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) =
               options={pagesInfo.restaurantAddress}
               promptOption="Адрес не выбран"
               onChange={handlerChangeSelectAddress}
+              id={selectId}
             />
           </div>
           <div

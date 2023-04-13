@@ -30,6 +30,8 @@ export const ChooseCard: FC = () => {
   const productsCard = useSelector(openProductsCardSelector);
   const amountProduct = useSelector(getAmountProductSelector);
   const restaurantProductions = useSelector(getRestaurantProductionsSelector);
+  const selectBaseProductId = nanoid();
+  const selectSauceId = nanoid();
 
   // Увеличить количество товара
   const addAmountProduct = () => {
@@ -147,6 +149,7 @@ export const ChooseCard: FC = () => {
               className={style.ingredients_select}
               classNameWrapper={style.selectWrapper}
               onChange={changeBaseProduct}
+              id={selectBaseProductId}
             />
             <LabelText
               children='Выберите соус'
@@ -158,6 +161,7 @@ export const ChooseCard: FC = () => {
               className={style.ingredients_select}
               classNameWrapper={style.selectWrapper}
               onChange={changeSauce}
+              id={selectSauceId}
             />
           </div>
         </div>

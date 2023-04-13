@@ -1,4 +1,8 @@
-import React, { FC, SelectHTMLAttributes, useState } from 'react';
+import React, {
+  FC,
+  SelectHTMLAttributes,
+  useState,
+} from 'react';
 import { nanoid } from '@reduxjs/toolkit';
 import classNames from 'classnames';
 
@@ -31,14 +35,22 @@ export const Select: FC<SelectProps> = (props) => {
     classNameList,
     disabled,
     promptOption,
-    onChange
+    onChange,
   } = props;
   const [value, setValue] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [selectOption, setSelectOption] = useState(promptOption);
 
+  const closeSelect = (event: { target: HTMLInputElement; }) => {
+    event.target.id !== id
+      ? setIsOpen(false)
+      : setIsOpen(true)
+  }
+
   const handleSelectClick = () => {
     setIsOpen((prev) => !prev);
+    // @ts-ignore
+    addEventListener('click', closeSelect);
   };
 
   const handleOptionClick = (option: IContactsCard | IProducts) => {
