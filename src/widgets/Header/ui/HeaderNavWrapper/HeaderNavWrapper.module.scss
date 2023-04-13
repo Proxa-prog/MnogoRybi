@@ -38,8 +38,10 @@
 }
 
 .wrapperScroll {
-  padding-left: 50px;
-  padding-right: 50px;
+  @media (min-width: 1023px) {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
 }
 
 .nav {
@@ -79,6 +81,10 @@
 
 .listWrapperScroll {
   flex-basis: 73.64%;
+
+  @media (max-width: 1104px) {
+    flex-basis: 70.64%;
+  }
 }
 
 .listWrapperOpen {
@@ -116,6 +122,7 @@
   flex-wrap: wrap;
   flex-basis: 57.64%;
   gap: 20px;
+  row-gap: 0;
 
   @media (max-width: 1023px) {
     display: none;
@@ -181,6 +188,7 @@
   flex-wrap: wrap;
   gap: 20px;
   flex-basis: 34.3%;
+  row-gap: 0;
 
   .infoItemScroll:nth-child(n+4):not(button) {
     display: none;
@@ -240,6 +248,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  row-gap: 0;
   flex-basis: 38%;
 
   @media (max-width: 1023px) {
