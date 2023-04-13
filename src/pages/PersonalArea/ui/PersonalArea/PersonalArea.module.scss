@@ -238,6 +238,11 @@
 
     .statusMarkerWrapper {
         order: 3;
+
+        @media (max-width: 767px) {
+            order: 5;
+            width: 100%;
+        }
     }
 
     svg {
@@ -245,12 +250,17 @@
             fill: $gray-70;
         }
     }
+
+    @media (max-width: 767px) {
+        flex-wrap: wrap;
+    }
 }
 
 .checkbox + label {
     @media (max-width: 767px) {
-        width: 58vw;
+        width: 57vw;
         word-wrap: break-word;
+        width: 57vw;
     }
 }
 
@@ -271,13 +281,17 @@
     margin-left: 0;
 }
 
+.linkExit {
+    text-decoration: none;
+}
+
 .buttonExit {
     padding: 15px 25px;
-    text-decoration: none;
     color: $gray-100;
 
     @media (max-width: 767px) {
         width: 100%;
+        padding: 10px 25px;
         display: flex;
         justify-content: center;
     }

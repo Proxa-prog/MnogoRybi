@@ -68,7 +68,7 @@ export const PersonalArea: FC = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  })
+  }, []);
 
   return (
     <>
@@ -223,14 +223,14 @@ export const PersonalArea: FC = () => {
           </div>
           <div className={style.buttonExitWrapper}>
             <Button
-              className={style.button}
+              className={style.buttonExit}
               type='button'
               isGrayTheme
               onClick={handleButtonExitOnClick}
             >
               <Link
                 to='/'
-                className={style.buttonExit}
+                className={style.linkExit}
               >
                 Выйти из личного кабинета
               </Link>
