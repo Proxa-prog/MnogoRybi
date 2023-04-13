@@ -102,6 +102,8 @@ export const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) =
             <LabelText>Доставка по адресу</LabelText>
             <Select
               className={style.open}
+              classNameWrapper={style.selectWrapper}
+              classNameList={style.classNameList}
               options={pagesInfo.restaurantAddress}
               promptOption="Адрес не выбран"
               onChange={handlerChangeSelectAddress}

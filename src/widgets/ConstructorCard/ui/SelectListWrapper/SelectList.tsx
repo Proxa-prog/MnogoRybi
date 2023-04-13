@@ -56,6 +56,7 @@ export const SelectList: FC<SelectListProps> = (props) => {
             )}
           >
             <Select
+              classNameWrapper={style.selectInner}
               classNameList={style.list}
               className={style.select}
               options={productsType}

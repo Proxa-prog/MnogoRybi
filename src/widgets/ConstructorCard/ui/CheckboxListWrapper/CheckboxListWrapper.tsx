@@ -37,7 +37,7 @@ export const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
   } = props;
 
   const filters = useSelector(filtersSelector);
-  console.log(selectListArray)
+
   const func = fillersType?.ingredients.filter(
     (filler) => filler.name === contentHeader?.name
   );

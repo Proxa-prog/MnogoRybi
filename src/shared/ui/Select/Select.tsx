@@ -14,6 +14,7 @@ export interface SelectProps extends HtmlSelectProps {
   id?: string;
   options: IProducts[];
   className?: string;
+  classNameWrapper?: string;
   classNameList?: string;
   disabled?: boolean;
   promptOption?: string;
@@ -26,76 +27,72 @@ export const Select: FC<SelectProps> = (props) => {
     id,
     options,
     className,
+    classNameWrapper,
     classNameList,
     disabled,
     promptOption,
-    onChange,
+    onChange
   } = props;
   const [value, setValue] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [selectOption, setSelectOption] = useState(promptOption);
 
   const handleSelectClick = () => {
-    setIsOpen(prev => !prev);
+    setIsOpen((prev) => !prev);
   };
 
   const handleOptionClick = (option: IContactsCard | IProducts) => {
-
     return () => {
       onChange && onChange(option.name, isOpen);
       setValue(option.name);
-      setSelectOption(option.name)
-      setIsOpen(prev => !prev);
-    }
+      setSelectOption(option.name);
+      setIsOpen((prev) => !prev);
+    };
   };
 
   return (
-    <>
+    <div className={classNames(classNameWrapper)}>
       <select
-        className={classNames(
-          style.selectDefault,
-          className,
-        )}
-      hidden={isOpen}
-      name={name}
-      id={id}
-      required
-      disabled={disabled}
-      defaultValue="Default"
-      onChange={(event: any) => {
-        onChange && onChange(event.target.value, event.currentTarget.checked);
-        setValue(event.target.value);
-      }}
-      value={value}
-      onClick={handleSelectClick}
-      >
-      <option
-        value="Default"
+        className={classNames(style.selectDefault, className)}
+        hidden={isOpen}
+        name={name}
+        id={id}
+        required
         disabled={disabled}
-        hidden
-        className={style.withCost}
+        defaultValue='Default'
+        onChange={(event: any) => {
+          onChange && onChange(event.target.value, event.currentTarget.checked);
+          setValue(event.target.value);
+        }}
+        value={value}
+        onClick={handleSelectClick}
       >
-        {selectOption}
-      </option>
-    </select>
-      {
-    isOpen &&
-      <ul className={classNames(style.isOpen, {}, [classNameList])}>
-        {options.map((option: IProducts) => {
-          const id = nanoid();
+        <option
+          value='Default'
+          disabled={disabled}
+          hidden
+          className={style.withCost}
+        >
+          {selectOption}
+        </option>
+      </select>
+      {isOpen && (
+        <ul className={classNames(style.isOpen, {}, [classNameList])}>
+          {options.map((option: IProducts) => {
+            const id = nanoid();
 
-          return (
-            <li
-              className={style.listItem}
-              key={id}
-              onClick={handleOptionClick(option)}
-            >
-              {option.name}
-            </li>
-          )
-        })}
-      </ul>
-  }
-    </>
+            return (
+              <li
+                className={style.listItem}
+                key={id}
+                onClick={handleOptionClick(option)}
+              >
+                {option.name}
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </div>
   );
 };

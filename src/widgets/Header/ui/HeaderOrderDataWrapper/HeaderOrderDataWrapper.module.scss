@@ -170,3 +170,14 @@
   }
 }
 
+.classNameList {
+  width: 25%;
+
+  @media (max-width: 1023px) {
+    width: 70%;
+  }
+
+  @media (max-width: 1023px) {
+    width: 88%;
+  }
+}

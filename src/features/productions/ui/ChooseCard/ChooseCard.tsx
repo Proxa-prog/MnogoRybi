@@ -128,17 +128,14 @@ export const ChooseCard: FC = () => {
       <div className={style.infoWrapper}>
         <div className={style.info}>
           <h3>{productsCard.header}</h3>
-
           <div className={style.calories}>
             <span>1 шт. / 320 гр.</span>
             <span>280 ккал / 1172 кДж</span>
           </div>
-
           <div className={style.compound}>
             <h4>Состав</h4>
             <span>{productsCard.description}</span>
           </div>
-
           <div className={style.ingredients}>
             <LabelText
               children='Выберите основу'
@@ -148,9 +145,9 @@ export const ChooseCard: FC = () => {
               options={restaurantProductions.baseProduct}
               promptOption={restaurantProductions.baseProduct[0].name}
               className={style.ingredients_select}
+              classNameWrapper={style.selectWrapper}
               onChange={changeBaseProduct}
             />
-
             <LabelText
               children='Выберите соус'
               className={classNames(style.ingredientsLabel, style.sauceLabel)}
@@ -159,6 +156,7 @@ export const ChooseCard: FC = () => {
               options={restaurantProductions.sauce}
               promptOption={restaurantProductions.sauce[0].name}
               className={style.ingredients_select}
+              classNameWrapper={style.selectWrapper}
               onChange={changeSauce}
             />
           </div>
