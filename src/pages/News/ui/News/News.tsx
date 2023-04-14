@@ -110,7 +110,7 @@ export const News: FC = () => {
         </div>
       </div>
       <BasketWrapper />
-      <Footer />
+      <Footer isAuth={userAccount.userAccount.isLogin} />
     </>
   );
 };

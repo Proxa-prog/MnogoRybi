@@ -199,7 +199,7 @@ export const Constructor = () => {
         </section>
       </BlockHeader>
       <BasketWrapper />
-      <Footer />
+      <Footer isAuth={userAccount.userAccount.isLogin} />
     </div>
   );
 };

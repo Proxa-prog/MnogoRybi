@@ -148,7 +148,7 @@ export const Contacts: FC = () => {
         </MapContainer>
       </div>
       <BasketWrapper />
-      <Footer />
+      <Footer isAuth={userAccount.userAccount.isLogin} />
     </>
   );
 };

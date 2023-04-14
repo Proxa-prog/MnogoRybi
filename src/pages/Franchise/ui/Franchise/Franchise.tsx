@@ -112,7 +112,7 @@ export const Franchise: FC = () => {
         </div>
       </section>
       <BasketWrapper />
-      <Footer />
+      <Footer isAuth={userAccount.userAccount.isLogin} />
     </>
   );
 };

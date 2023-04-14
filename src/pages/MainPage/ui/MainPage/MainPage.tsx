@@ -113,7 +113,7 @@ export const MainPage: FC = () => {
       <Franchise />
       <ChooseCardWrapper />
       <BasketWrapper />
-      <Footer />
+      <Footer isAuth={userAccount.userAccount.isLogin} />
     </>
   );
 };
