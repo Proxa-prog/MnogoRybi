@@ -6,9 +6,9 @@ import {
   productionsReducer as productions,
   openProductsCardReducer as openProductsCard,
   pokeIngredientsReducer as pokeIngredients
-} from 'features/productions';
-import { mapReducer as map } from 'features/map';
-import { newsReducer as news } from 'features/news';
+} from 'features/getProductionsData';
+import { mapReducer as map } from 'features/getMapData';
+import { newsReducer as news } from 'features/getNews';
 import {
   registrationReducer as registration,
   confirmationReducer as confirmation,
@@ -17,7 +17,7 @@ import {
   restaurantReducer as restaurant,
   restaurantProductionsReducer as restaurantProductions,
   restaurantPagesInfoReducer as restaurantPagesInfo,
-} from 'features/restaurant';
+} from 'features/getRestaurantData';
 
 import { descriptionReducer as description } from 'entities/descriptions';
 import {

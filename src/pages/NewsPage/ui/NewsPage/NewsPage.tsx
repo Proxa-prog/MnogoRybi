@@ -7,14 +7,14 @@ import { Header, BlockHeader } from 'widgets/Header';
 import { Recovery } from "widgets/Recovery";
 import { BasketWrapper } from "widgets/Basket";
 
-import { UserEnter } from "features/user";
+import { Authorization } from "features/authorization";
 import {
   getRegistrationSelector,
   openConfirmationSelector,
   ModalRegistration,
   Confirmation
 } from 'features/registration';
-import { getNewsSelector, INews } from 'features/news';
+import { getNewsSelector, INews } from 'features/getNews';
 
 import {
   ModalUserDoesNotExist,
@@ -41,7 +41,7 @@ export const NewsPage: FC = () => {
   return (
     <section>
       {registration.isOpen && <ModalRegistration />}
-      {userEnter.isOpen && <UserEnter />}
+      {userEnter.isOpen && <Authorization />}
       {confirmation.isOpen && <Confirmation />}
       {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
       {userAccount.userAccount.isModalUserDoesNotExist && <ModalUserDoesNotExist />}

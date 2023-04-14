@@ -5,7 +5,7 @@ import { Recovery } from "widgets/Recovery";
 import { Header } from "widgets/Header";
 import { Footer } from "widgets/Footer";
 
-import { UserEnter } from "features/user";
+import { Authorization } from "features/authorization";
 import {
   getRegistrationSelector,
   openConfirmationSelector,
@@ -32,7 +32,7 @@ export const NotFound: FC = () => {
   return (
     <section className={style.wrapper}>
       {registration.isOpen && <ModalRegistration />}
-      {userEnter.isOpen && <UserEnter />}
+      {userEnter.isOpen && <Authorization />}
       {confirmation.isOpen && <Confirmation />}
       {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
       {userAccount.userAccount.isModalUserDoesNotExist && <ModalUserDoesNotExist />}

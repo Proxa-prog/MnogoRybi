@@ -11,15 +11,19 @@ import { BlockHeader, Header } from 'widgets/Header';
 import { Recovery } from "widgets/Recovery";
 import { BasketWrapper } from "widgets/Basket";
 
-import { UserEnter } from "features/user";
+import { Authorization } from "features/authorization";
 import {
   getRegistrationSelector,
   openConfirmationSelector,
   ModalRegistration,
   Confirmation
 } from 'features/registration';
-import { fetchPagesInfo, fetchRestaurantProductions } from 'features/restaurant';
-import { fetchProductions } from 'features/productions';
+import {
+  fetchPagesInfo,
+  fetchRestaurantProductions,
+  getRestaurantPagesInfoSelector
+} from 'features/getRestaurantData';
+import { fetchProductions } from 'features/getProductionsData';
 
 import {
   ModalUserDoesNotExist,
@@ -37,25 +41,29 @@ export const Franchise: FC = () => {
   const userEnter = useSelector(userEnterSelector);
   const confirmation = useSelector(openConfirmationSelector);
   const userAccount = useSelector(userAccountSelector);
+  const pageInfo = useSelector(getRestaurantPagesInfoSelector);
 
   useEffect(() => {
     dispatch(fetchProductions());
     dispatch(fetchRestaurantProductions());
-    dispatch(fetchPagesInfo());
+    pageInfo.pagesNames.length === 0 && pageInfo.pagesNames.length === 0 && dispatch(fetchPagesInfo());
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <>
       {registration.isOpen && <ModalRegistration />}
-      {userEnter.isOpen && <UserEnter />}
+      {userEnter.isOpen && <Authorization />}
       {confirmation.isOpen && <Confirmation />}
       {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
       {userAccount.userAccount.isModalUserDoesNotExist && <ModalUserDoesNotExist />}
       <Header isAuth={userAccount.userAccount.isLogin} />
       <section className={style.wrapper}>
         <div className={style.inner}>
-          <BlockHeader pageName='Франшиза' className={style.blockHeader} />
+          <BlockHeader
+            pageName='Франшиза'
+            className={style.blockHeader}
+          />
           <div className={style.franchiseWrapper}>
             {advantages.map((item) => {
               const id = nanoid();

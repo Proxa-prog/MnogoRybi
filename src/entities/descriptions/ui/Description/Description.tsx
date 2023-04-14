@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from 'app/store';
 
-import { getRestaurantPagesInfoSelector } from 'features/restaurant';
+import { getRestaurantPagesInfoSelector } from 'features/getRestaurantData';
 
 import {
   getDescriptionSelector,

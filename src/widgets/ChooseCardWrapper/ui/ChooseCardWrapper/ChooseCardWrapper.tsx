@@ -8,7 +8,7 @@ import {
   openProductsCardSelector,
   ChooseCard,
   openProductsCardActions,
-} from "features/productions";
+} from "features/getProductionsData";
 
 import { Button } from "shared";
 

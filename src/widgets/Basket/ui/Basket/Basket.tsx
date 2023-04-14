@@ -3,9 +3,9 @@ import { useSelector } from "react-redux";
 
 import { useAppDispatch } from "app/store";
 
-import { Delivery } from "features/delivery";
-import { Payment } from "features/payment";
-import { Recipient } from "features/recipient";
+import { Delivery } from "widgets/Delivery";
+import { Payment } from "widgets/Payment";
+import { Recipient } from "widgets/Recipient";
 
 import { userAccountSelector } from "entities/user";
 import {
