@@ -78,6 +78,16 @@
     }
 }
 
+.listWithPersonalAreaLink {
+    @media (max-width: 1023px) {
+        margin-bottom: 0;
+    }
+
+    @media (max-width: 767px) {
+        margin-bottom: 0;
+    }
+}
+
 .products,
 .info,
 .contacts {
@@ -89,6 +99,16 @@
 
     @media (max-width: 767px) {
         width: 290px;
+    }
+}
+
+.info {
+    @media (max-width: 1023px) {
+        margin-bottom: 40px;
+    }
+
+    @media (max-width: 767px) {
+        margin-bottom: 30px;
     }
 }
 
@@ -189,4 +209,29 @@
         margin-bottom: 0;
        }
     }
+}
+
+.buttonEnter,
+.personalAreaLink {
+    margin: 0;
+    padding: 0;
+    background-color: inherit;
+    color: $white-00;
+
+    &:hover {
+        background-color: inherit;
+    }
+
+    span {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+
+.personalAreaLink {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
 }

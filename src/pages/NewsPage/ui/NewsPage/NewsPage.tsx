@@ -66,7 +66,7 @@ export const NewsPage: FC = () => {
                 </div>
               </BlockHeader>
               <BasketWrapper />
-              <Footer />
+              <Footer isAuth={userAccount.userAccount.isLogin} />
             </>
           );
         }
