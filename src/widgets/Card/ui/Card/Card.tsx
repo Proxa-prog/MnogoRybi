@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import { nanoid } from '@reduxjs/toolkit';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
@@ -60,6 +60,18 @@ export const Card: FC<CardProps> = (props) => {
     };
   };
 
+  const useProgressiveImage = (src: string) => {
+    const [sourceLoaded, setSourceLoaded] = useState('')
+
+    useEffect(() => {
+      const img = new Image()
+      img.src = src
+      img.onload = () => setSourceLoaded(src)
+    }, [src])
+    console.log(sourceLoaded);
+    return sourceLoaded;
+  }
+  const loaded = useProgressiveImage(`images/${imageUrl}`)
   return (
     <div
       className={classnames(
@@ -74,11 +86,14 @@ export const Card: FC<CardProps> = (props) => {
       onClick={() => {}}
     >
       <div
-        className={classnames(style.imageWrapper, imageWrapperClassName, {
-          [style.imageWrapperPreview]: isPreview,
-        })}
+        className={classnames(
+          style.imageWrapper,
+          imageWrapperClassName,
+          { [style.imageWrapperPreview]: isPreview },
+          [style.lazyBackground]
+        )}
         style={{
-          backgroundImage: `url(images/${imageUrl})`,
+          backgroundImage: `url(${loaded || ''})`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
           backgroundPosition: 'bottom',
