@@ -50,7 +50,7 @@ export const NewsPage: FC = () => {
 
           return (
             <>
-              <Header isAuth />
+              <Header isAuth={userAccount.userAccount.isLogin} />
               <BlockHeader pageName={news.header} previousPages={['Новости и акции']}>
                 <div key={news.id}>
                   <div className={style.image}>

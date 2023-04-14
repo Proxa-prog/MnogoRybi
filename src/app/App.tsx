@@ -24,6 +24,7 @@ import { Constructor } from 'pages/Constructor';
 import { PersonalArea } from 'pages/PersonalArea';
 import { MyOrders } from 'pages/MyOrders';
 import { Franchise } from 'pages/Franchise';
+import { NotFound } from "pages/NotFound";
 
 import 'shared/assets/fonts/style.css';
 import './styles/index.scss';
@@ -43,7 +44,7 @@ export const App: React.FC = () => {
             <Route path={PERSONAL_AREA_PAGE_ROUTE} element={<PersonalArea />} />
             <Route path={PERSONAL_AREA_MY_ORDERS_ROUTE} element={<MyOrders />} />
             <Route path={FRANCHISE_PAGE_ROUTE} element={<Franchise />} />
-            {/*<Route path={DELIVERY_ROUTE} element={<DeliveryPage />} />*/}
+            <Route path={DELIVERY_ROUTE} element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </Provider>

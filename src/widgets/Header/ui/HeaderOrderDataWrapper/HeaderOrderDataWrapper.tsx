@@ -1,26 +1,20 @@
-import React, { FC } from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import classNames from "classnames";
+import React, { FC } from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import classNames from 'classnames';
+import { nanoid } from 'nanoid';
 
-import { useAppDispatch } from "app/store";
+import { useAppDispatch } from 'app/store';
 
-import { MenuButtonBasket } from "widgets/MenuButtonBasket";
+import { MenuButtonBasket } from 'widgets/MenuButtonBasket';
 
-import { getRestaurantPagesInfoSelector } from "features/restaurant";
+import { getRestaurantPagesInfoSelector } from 'features/restaurant';
 
-import { basketActions } from "entities/basket";
+import { basketActions } from 'entities/basket';
 
-import {
-  ViewPorts,
-  ImageWrapper,
-  LabelText,
-  Select,
-  Button
-} from "shared";
+import { ViewPorts, ImageWrapper, LabelText, Select, Button } from 'shared';
 
-import style from "./HeaderOrderDataWrapper.module.scss";
-import {nanoid} from "nanoid";
+import style from './HeaderOrderDataWrapper.module.scss';
 
 interface HeaderOrderDataWrapperProps {
   isHeaderMenuActive: boolean;
@@ -53,30 +47,27 @@ export const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) =
   return (
     <div
       className={classNames(style.orderDataWrapper, {
-        [style.orderDataWrapperOpen]:
-          isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
+        [style.orderDataWrapperOpen]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
       })}
     >
       <Button
+        buttonName='Меню'
         isGrayTheme={isHeaderMenuActive && true}
-        imageLeft={
-          isHeaderMenuActive ? "property_close_round.svg" : "property_menu.svg"
-        }
+        imageLeft={isHeaderMenuActive ? 'property_close_round.svg' : 'property_menu.svg'}
         imageHeight={24}
         imageWidth={24}
         className={classNames(style.menuButton, {
-          [style.menuButtonOpen]:
-            isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
+          [style.menuButtonOpen]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
         })}
-        type="button"
+        type='button'
         onClick={onHeaderMenuClick}
       />
       {(isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP) || (
-        <Link to="/">
+        <Link to='/'>
           <ImageWrapper
             className={style.logo}
-            alt="Логотип Много Рыбы"
-            name="logo.svg"
+            alt='Логотип Много Рыбы'
+            name='logo.svg'
             width={236}
             height={70}
           />
@@ -85,20 +76,17 @@ export const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) =
 
       <div
         className={classNames(style.orderData, {
-          [style.orderDataOpen]:
-            isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
+          [style.orderDataOpen]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
         })}
       >
         <div
           className={classNames(style.infoWrapper, {
-            [style.infoWrapperOpen]:
-              isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
+            [style.infoWrapperOpen]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
           })}
         >
           <div
             className={classNames(style.info, {
-              [style.infoOpen]:
-                isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
+              [style.infoOpen]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
             })}
           >
             <LabelText>Доставка по адресу</LabelText>
@@ -107,15 +95,14 @@ export const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) =
               classNameWrapper={style.selectWrapper}
               classNameList={style.classNameList}
               options={pagesInfo.restaurantAddress}
-              promptOption="Адрес не выбран"
+              promptOption='Адрес не выбран'
               onChange={handlerChangeSelectAddress}
               id={selectId}
             />
           </div>
           <div
             className={classNames(style.info, {
-              [style.infoOpen]:
-                isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
+              [style.infoOpen]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
             })}
           >
             <LabelText>Принимаем заказы</LabelText>
@@ -123,63 +110,61 @@ export const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) =
           </div>
           <div
             className={classNames(style.info, {
-              [style.infoOpen]:
-                isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
+              [style.infoOpen]: isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP,
             })}
           >
             <LabelText>Телефон</LabelText>
-            <a href="tel:+74852980100">8 (4852) 980-100</a>
+            <a href='tel:+74852980100'>8 (4852) 980-100</a>
           </div>
         </div>
       </div>
       <div className={style.buttonWrapper}>
-        {
-          (isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP)
-          || isAuth
-            ? (
-            <Link to="/personalArea">
+        {!isHeaderMenuActive ? (
+          isAuth ? (
+            <Link to='/personalArea'>
               <Button
-                imageLeft="user_fill.svg"
+                buttonName='Личный кабинет'
+                imageLeft='user_fill.svg'
                 imageHeight={24}
                 imageWidth={24}
                 className={style.userAuth}
-                type="button"
+                type='button'
                 onClick={() => {}}
               />
             </Link>
-          ) :
-            windowWidth < ViewPorts.TABLET
-            ? (
-              <Button
-                imageLeft="user_fill.svg"
-                imageHeight={24}
-                imageWidth={24}
-                className={style.userAuth}
-                type="button"
-                onClick={onClick}
-              />
-              )
-            :(
-            <Button type="button" onClick={onClick}>
+          ) : windowWidth < ViewPorts.TABLET ? (
+            <Button
+              buttonName='Личный кабинет'
+              imageLeft='user_fill.svg'
+              imageHeight={24}
+              imageWidth={24}
+              className={style.userAuth}
+              type='button'
+              onClick={onClick}
+            />
+          ) : (
+            <Button buttonName='Вход' type='button' onClick={onClick}>
               Войти
             </Button>
           )
-        }
-        {(isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP) ||
-          (!isAuth && (
-            <Button
-              type="button"
-              className={style.buttonOrders}
-              imageLeft="desk_alt_fill.svg"
-              imageHeight={24}
-              imageWidth={24}
-              onClick={() => {
-                console.log("Button orders header");
-              }}
-            >
-              Заказы
-            </Button>
-          ))}
+        ) : (
+          <></>
+        )}
+        {(isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP) || (
+          <Button
+            buttonName='Заказы'
+            type='button'
+            className={style.buttonOrders}
+            imageLeft='desk_alt_fill.svg'
+            imageHeight={24}
+            imageWidth={24}
+            onClick={() => {
+              console.log('Button orders header');
+            }}
+          >
+            Заказы
+          </Button>
+        )}
         {(isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP) || (
           <div className={style.buttonBasketWrapper}>
             <MenuButtonBasket

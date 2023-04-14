@@ -68,7 +68,7 @@ export const Card: FC<CardProps> = (props) => {
       img.src = src
       img.onload = () => setSourceLoaded(src)
     }, [src])
-    console.log(sourceLoaded);
+
     return sourceLoaded;
   }
   const loaded = useProgressiveImage(`images/${imageUrl}`)
