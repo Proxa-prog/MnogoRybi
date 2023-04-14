@@ -8,7 +8,7 @@ import { useAppDispatch } from 'app/store';
 import {
   getRestaurantPagesInfoSelector,
   getRestaurantProductionsSelector,
-} from 'features/restaurant';
+} from 'features/getRestaurantData';
 import { registrationActions } from 'features/registration';
 
 import { userEnterActions, userEnterSelector } from 'entities/user';

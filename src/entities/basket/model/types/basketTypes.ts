@@ -1,7 +1,7 @@
 import { AdditionallyType, ConstructorType } from 'entities/constructor';
 import {
   IPaymentStatus,
-} from "../../../../widgets/OrderHistoryCard/model/types/types";
+} from "widgets/OrderHistoryCard/model/types/types";
 
 export interface IProducts {
   name: string;

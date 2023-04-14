@@ -8,7 +8,7 @@ import { useAppDispatch } from 'app/store';
 
 import { MenuButtonBasket } from 'widgets/MenuButtonBasket';
 
-import { getRestaurantPagesInfoSelector } from 'features/restaurant';
+import { getRestaurantPagesInfoSelector } from 'features/getRestaurantData';
 
 import { basketActions } from 'entities/basket';
 

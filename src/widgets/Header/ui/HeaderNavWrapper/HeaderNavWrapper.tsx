@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -12,7 +12,7 @@ import {
   getRestaurantProductionsSelector,
   restaurantPagesInfoActions,
   restaurantProductionsActions,
-} from 'features/restaurant';
+} from 'features/getRestaurantData';
 
 import {
   ONE_HUNDRED_PIXEL_SCROLL,

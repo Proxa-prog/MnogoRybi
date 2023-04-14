@@ -7,7 +7,7 @@ import { useAppDispatch } from 'app/store';
 
 import { CardProps } from 'widgets/Card';
 
-import { openProductsCardActions } from 'features/productions';
+import { openProductsCardActions } from 'features/getProductionsData';
 
 import {
   StatusMarker,

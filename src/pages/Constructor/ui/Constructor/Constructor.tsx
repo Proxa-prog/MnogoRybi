@@ -13,7 +13,7 @@ import { Footer } from 'widgets/Footer';
 import { Recovery } from "widgets/Recovery";
 import { BasketWrapper } from "widgets/Basket";
 
-import { UserEnter } from "features/user";
+import { Authorization } from "features/authorization";
 import {
   getRegistrationSelector,
   openConfirmationSelector,
@@ -24,8 +24,12 @@ import {
   fetchProductions,
   getIngredientsSelector,
   fetchIngredients,
-} from 'features/productions';
-import { fetchPagesInfo, fetchRestaurantProductions } from 'features/restaurant';
+} from 'features/getProductionsData';
+import {
+  fetchPagesInfo,
+  fetchRestaurantProductions,
+  getRestaurantPagesInfoSelector
+} from 'features/getRestaurantData';
 
 import {
   ModalUserDoesNotExist,
@@ -62,6 +66,7 @@ export const Constructor = () => {
   const protein = useSelector(proteinSelector);
   const topping = useSelector(toppingSelector);
   const crunch = useSelector(crunchSelector);
+  const pageInfo = useSelector(getRestaurantPagesInfoSelector);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const getWindowWidth = () => {
@@ -80,7 +85,7 @@ export const Constructor = () => {
     dispatch(fetchIngredients());
     dispatch(fetchProductions());
     dispatch(fetchRestaurantProductions());
-    dispatch(fetchPagesInfo());
+    pageInfo.pagesNames.length === 0 && dispatch(fetchPagesInfo());
     dispatch(fetchFilters());
     window.scrollTo(0, 0);
   }, []);
@@ -88,7 +93,7 @@ export const Constructor = () => {
   return (
     <div>
       {registration.isOpen && <ModalRegistration />}
-      {userEnter.isOpen && <UserEnter />}
+      {userEnter.isOpen && <Authorization />}
       {confirmation.isOpen && <Confirmation />}
       {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
       {userAccount.userAccount.isModalUserDoesNotExist && <ModalUserDoesNotExist />}

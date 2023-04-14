@@ -11,7 +11,7 @@ import { Header } from 'widgets/Header';
 import { Recovery } from "widgets/Recovery";
 import { BasketWrapper } from "widgets/Basket";
 
-import { UserEnter } from "features/user";
+import { Authorization } from "features/authorization";
 import {
   getRegistrationSelector,
   openConfirmationSelector,
@@ -74,7 +74,7 @@ export const PersonalArea: FC = () => {
     <>
       <Header isAuth={userAccount.userAccount.isLogin} />
       {registration.isOpen && <ModalRegistration />}
-      {userEnter.isOpen && <UserEnter />}
+      {userEnter.isOpen && <Authorization />}
       {confirmation.isOpen && <Confirmation />}
       {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
       {userAccount.userAccount.isModalUserDoesNotExist && <ModalUserDoesNotExist />}

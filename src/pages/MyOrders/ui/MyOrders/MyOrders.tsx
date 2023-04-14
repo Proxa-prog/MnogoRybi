@@ -18,7 +18,7 @@ import {
   OrderHistoryCard,
 } from 'widgets/OrderHistoryCard';
 
-import { UserEnter } from "features/user";
+import { Authorization } from "features/authorization";
 import {
   getRegistrationSelector,
   openConfirmationSelector,
@@ -26,7 +26,11 @@ import {
   Confirmation
 } from 'features/registration';
 
-import { fetchPagesInfo, fetchRestaurantProductions } from 'features/restaurant';
+import {
+  fetchPagesInfo,
+  fetchRestaurantProductions,
+  getRestaurantPagesInfoSelector
+} from 'features/getRestaurantData';
 
 import {
   userAccountActions,
@@ -48,6 +52,7 @@ export const MyOrders: FC = () => {
   const userEnter = useSelector(userEnterSelector);
   const confirmation = useSelector(openConfirmationSelector);
   const userAccount = useSelector(userAccountSelector);
+  const pageInfo = useSelector(getRestaurantPagesInfoSelector);
 
   const handleLinkClick = (event: React.MouseEvent<HTMLElement>) => {
     dispatch(userAccountActions.changePersonalAreaLinkIsCurrent(event.currentTarget.id));
@@ -61,7 +66,7 @@ export const MyOrders: FC = () => {
 
   useEffect(() => {
     dispatch(fetchRestaurantProductions());
-    dispatch(fetchPagesInfo());
+    pageInfo.pagesNames.length === 0 && dispatch(fetchPagesInfo());
     dispatch(userAccountActions.sortUserOrders(1));
   }, []);
 
@@ -69,7 +74,7 @@ export const MyOrders: FC = () => {
     <>
       <Header isAuth={userAccount.userAccount.isLogin} />
       {registration.isOpen && <ModalRegistration />}
-      {userEnter.isOpen && <UserEnter />}
+      {userEnter.isOpen && <Authorization />}
       {confirmation.isOpen && <Confirmation />}
       {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
       {userAccount.userAccount.isModalUserDoesNotExist && <ModalUserDoesNotExist />}

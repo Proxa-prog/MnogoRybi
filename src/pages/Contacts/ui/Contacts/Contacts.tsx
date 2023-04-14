@@ -19,7 +19,7 @@ import { Header, BlockHeader } from 'widgets/Header';
 import { Recovery } from "widgets/Recovery";
 import { BasketWrapper } from "widgets/Basket";
 
-import { UserEnter } from "features/user";
+import { Authorization } from "features/authorization";
 import {
   getRegistrationSelector,
   openConfirmationSelector,
@@ -27,20 +27,20 @@ import {
   Confirmation
 } from 'features/registration';
 
-import { fetchProductions } from 'features/productions';
+import { fetchProductions } from 'features/getProductionsData';
 import {
   fetchMapCenter,
   setMapSelector,
   RecenterAutomatically,
   mapActions,
-} from 'features/map';
+} from 'features/getMapData';
 import {
   getRestaurantLocationSelector,
   fetchRestaurantLocation,
   fetchPagesInfo,
   fetchRestaurantProductions,
   getRestaurantPagesInfoSelector,
-} from 'features/restaurant';
+} from 'features/getRestaurantData';
 
 import {
   ModalUserDoesNotExist,
@@ -66,6 +66,7 @@ export const Contacts: FC = () => {
   const userAccount = useSelector(userAccountSelector);
   const pagesInfo = useSelector(getRestaurantPagesInfoSelector);
   const restaurantLocation = useSelector(getRestaurantLocationSelector);
+  const pageInfo = useSelector(getRestaurantPagesInfoSelector);
 
   const createPopup = (PopupCoordinates: IPopupCoordinates) => {
     const id = nanoid();
@@ -95,14 +96,14 @@ export const Contacts: FC = () => {
     dispatch(fetchMapCenter());
     dispatch(fetchProductions());
     dispatch(fetchRestaurantProductions());
-    dispatch(fetchPagesInfo());
+    pageInfo.pagesNames.length === 0 && dispatch(fetchPagesInfo());
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <>
       {registration.isOpen && <ModalRegistration />}
-      {userEnter.isOpen && <UserEnter />}
+      {userEnter.isOpen && <Authorization />}
       {confirmation.isOpen && <Confirmation />}
       {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
       {userAccount.userAccount.isModalUserDoesNotExist && <ModalUserDoesNotExist />}

@@ -14,15 +14,15 @@ import { ChooseCardWrapper } from 'widgets/ChooseCardWrapper';
 import { Footer } from 'widgets/Footer';
 import { Franchise } from 'widgets/Franchise';
 
-import { getProdSelector, fetchProductions } from 'features/productions';
+import { getProdSelector, fetchProductions } from 'features/getProductionsData';
 import {
   getRegistrationSelector,
   openConfirmationSelector,
   ModalRegistration,
   Confirmation,
 } from 'features/registration';
-import { UserEnter } from 'features/user';
-import { fetchPagesInfo, fetchRestaurantProductions } from 'features/restaurant';
+import { Authorization } from 'features/authorization';
+import { fetchPagesInfo, fetchRestaurantProductions } from 'features/getRestaurantData';
 
 import {
   userEnterSelector,
@@ -65,7 +65,7 @@ export const MainPage: FC = () => {
     <>
       <Header isAuth={userAccount.userAccount.isLogin} />
       {registration.isOpen && <ModalRegistration />}
-      {userEnter.isOpen && <UserEnter />}
+      {userEnter.isOpen && <Authorization />}
       {confirmation.isOpen && <Confirmation />}
       {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
       {userAccount.userAccount.isModalUserDoesNotExist && <ModalUserDoesNotExist />}

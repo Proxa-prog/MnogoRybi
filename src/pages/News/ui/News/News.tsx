@@ -11,7 +11,7 @@ import { Header, BlockHeader } from 'widgets/Header';
 import { Recovery } from 'widgets/Recovery';
 import { BasketWrapper } from "widgets/Basket";
 
-import { UserEnter } from 'features/user';
+import { Authorization } from 'features/authorization';
 import {
   getRegistrationSelector,
   openConfirmationSelector,
@@ -24,9 +24,13 @@ import {
   newsActions,
   getNewsSelector,
   fetchNews
-} from 'features/news';
-import { fetchProductions } from 'features/productions';
-import { fetchPagesInfo, fetchRestaurantProductions } from 'features/restaurant';
+} from 'features/getNews';
+import { fetchProductions } from 'features/getProductionsData';
+import {
+  fetchPagesInfo,
+  fetchRestaurantProductions,
+  getRestaurantPagesInfoSelector
+} from 'features/getRestaurantData';
 
 import {
   ModalUserDoesNotExist,
@@ -46,6 +50,7 @@ export const News: FC = () => {
   const userEnter = useSelector(userEnterSelector);
   const confirmation = useSelector(openConfirmationSelector);
   const userAccount = useSelector(userAccountSelector);
+  const pageInfo = useSelector(getRestaurantPagesInfoSelector);
 
   const handleButtonShowMore = () => {
     dispatch(newsActions.addLimit(NEWS_LIMIT));
@@ -59,16 +64,15 @@ export const News: FC = () => {
 
   useEffect(() => {
     dispatch(fetchProductions());
-    dispatch(fetchPagesInfo());
+    pageInfo.pagesNames.length === 0 && dispatch(fetchPagesInfo());
     dispatch(fetchRestaurantProductions());
     dispatch(fetchNews(news.limit));
-    window.scrollTo(0, 0);
   }, [news.limit]);
 
   return (
     <>
       {registration.isOpen && <ModalRegistration />}
-      {userEnter.isOpen && <UserEnter />}
+      {userEnter.isOpen && <Authorization />}
       {confirmation.isOpen && <Confirmation />}
       {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
       {userAccount.userAccount.isModalUserDoesNotExist && <ModalUserDoesNotExist />}

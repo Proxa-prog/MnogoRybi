@@ -41,7 +41,7 @@ export const NEWS_PAGE_ROUTE = "/:newsId";
 export const PERSONAL_AREA_PAGE_ROUTE = "/PersonalArea";
 export const PERSONAL_AREA_MY_ORDERS_ROUTE = "/MyOrders";
 export const FRANCHISE_PAGE_ROUTE = "/franchise";
-export const DELIVERY_ROUTE = "/delivery";
+export const DELIVERY_ROUTE = "/Delivery";
 export const CONSTRUCTOR_PAGE_ROUTE = "/Constructor";
 
 // Для storybook.
