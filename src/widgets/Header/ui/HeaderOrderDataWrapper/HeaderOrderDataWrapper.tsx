@@ -120,7 +120,7 @@ export const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) =
       </div>
       <div className={style.buttonWrapper}>
         {!isHeaderMenuActive ? (
-          windowWidth < ViewPorts.DESKTOP && isAuth ? (
+          isAuth ? (
             <Link to='/personalArea'>
               <Button
                 buttonName='Личный кабинет'
