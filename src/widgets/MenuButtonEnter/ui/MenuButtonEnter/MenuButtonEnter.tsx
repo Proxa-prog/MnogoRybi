@@ -31,6 +31,7 @@ export const MenuButtonEnter: FC<MenuButtonEnterProps> = (props) => {
     return (
       <Link to='/personalArea'>
         <Button
+          buttonName='Личный кабинет'
           imageLeft='user_fill.svg'
           className={
             scroll && scroll >= ONE_HUNDRED_PIXEL_SCROLL ? style.authScroll : style.userAuth
@@ -46,6 +47,7 @@ export const MenuButtonEnter: FC<MenuButtonEnterProps> = (props) => {
   if (!isAuth && scroll && scroll >= ONE_HUNDRED_PIXEL_SCROLL) {
     return (
       <Button
+        buttonName='Вход'
         imageLeft='user_fill.svg'
         className={
           scroll && scroll >= ONE_HUNDRED_PIXEL_SCROLL ? style.authScroll : style.userAuth
@@ -60,6 +62,7 @@ export const MenuButtonEnter: FC<MenuButtonEnterProps> = (props) => {
   return (
     <Button
       className={style.buttonEnter}
+      buttonName='Вход'
       type='button'
       isGrayTheme
       onClick={handleCheckboxAgreementChange}

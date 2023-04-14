@@ -27,6 +27,7 @@ export interface ButtonProps {
   imageWidth?: number;
   imageHeight?: number;
   id?: string;
+  buttonName?: string;
 }
 
 export const Button: FC<ButtonProps> = (props) => {
@@ -47,6 +48,7 @@ export const Button: FC<ButtonProps> = (props) => {
     imageWidth = 0,
     imageHeight = 0,
     id,
+    buttonName,
   } = props;
 
   const defaultButtonColor = isGrayTheme ? 'defaultWhite' : '';
@@ -64,6 +66,7 @@ export const Button: FC<ButtonProps> = (props) => {
         styles[color],
         className,
       ])}
+      name={buttonName}
       disabled={disabled}
       type={type}
       onClick={handleOnClick}
