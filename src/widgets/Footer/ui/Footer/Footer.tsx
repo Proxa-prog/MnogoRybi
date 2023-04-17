@@ -11,7 +11,7 @@ import {
 } from 'features/getRestaurantData';
 import { registrationActions } from 'features/registration';
 
-import { userEnterActions, userEnterSelector } from 'entities/user';
+import {userAccountActions, userEnterActions, userEnterSelector} from 'entities/user';
 
 import {
   Button,
@@ -38,6 +38,12 @@ export const Footer: FC<IFooter> = (props) => {
   const handleCheckboxAgreementChange = () => {
     dispatch(registrationActions.changeIsOpenRegistration(true));
     dispatch(userEnterActions.changeIsOpenUserEnter(userEnter.isOpen));
+  };
+
+  const handleLinkClick = (id: string) => {
+    return () => {
+      dispatch(userAccountActions.changePersonalAreaLinkIsCurrent(id));
+    }
   };
 
   return (
@@ -76,6 +82,7 @@ export const Footer: FC<IFooter> = (props) => {
               <Link
                 to='/personalArea'
                 className={style.personalAreaLink}
+                onClick={handleLinkClick('PersonalArea')}
               >
                 Личный кабинет
               </Link>

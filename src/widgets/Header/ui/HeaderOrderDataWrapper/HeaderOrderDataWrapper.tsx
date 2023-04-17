@@ -12,9 +12,17 @@ import { getRestaurantPagesInfoSelector } from 'features/getRestaurantData';
 
 import { basketActions } from 'entities/basket';
 
-import { ViewPorts, ImageWrapper, LabelText, Select, Button } from 'shared';
+import {
+  ViewPorts,
+  ImageWrapper,
+  LabelText,
+  Select,
+  Button,
+  PERSONAL_AREA_MY_ORDERS_ROUTE,
+} from 'shared';
 
 import style from './HeaderOrderDataWrapper.module.scss';
+import {userAccountActions} from "../../../../entities/user";
 
 interface HeaderOrderDataWrapperProps {
   isHeaderMenuActive: boolean;
@@ -42,6 +50,12 @@ export const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) =
 
   const handlerChangeSelectAddress = (address: string) => {
     dispatch(basketActions.addRecipientAddress(address));
+  };
+
+  const handleLinkClick = (id: string) => {
+    return () => {
+      dispatch(userAccountActions.changePersonalAreaLinkIsCurrent(id));
+    }
   };
 
   return (
@@ -129,7 +143,7 @@ export const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) =
                 imageWidth={24}
                 className={style.userAuth}
                 type='button'
-                onClick={() => {}}
+                onClick={handleLinkClick('PersonalArea')}
               />
             </Link>
           ) : windowWidth < ViewPorts.TABLET ? (
@@ -150,21 +164,34 @@ export const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) =
         ) : (
           <></>
         )}
-        {(isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP) || (
-          <Button
-            buttonName='Заказы'
-            type='button'
-            className={style.buttonOrders}
-            imageLeft='desk_alt_fill.svg'
-            imageHeight={24}
-            imageWidth={24}
-            onClick={() => {
-              console.log('Button orders header');
-            }}
-          >
-            Заказы
-          </Button>
-        )}
+        {(isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP) ||
+          (isAuth ? (
+            <Link to={PERSONAL_AREA_MY_ORDERS_ROUTE} className={style.linkOrders}>
+              <Button
+                buttonName='Заказы'
+                type='button'
+                className={style.buttonOrders}
+                imageLeft='desk_alt_fill.svg'
+                imageHeight={24}
+                imageWidth={24}
+                onClick={handleLinkClick('MyOrders')}
+              >
+                Заказы
+              </Button>
+            </Link>
+          ) : (
+            <Button
+              buttonName='Заказы'
+              type='button'
+              className={style.buttonOrders}
+              imageLeft='desk_alt_fill.svg'
+              imageHeight={24}
+              imageWidth={24}
+              onClick={() => {}}
+            >
+              Заказы
+            </Button>
+          ))}
         {(isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP) || (
           <div className={style.buttonBasketWrapper}>
             <MenuButtonBasket

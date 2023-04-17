@@ -26,19 +26,7 @@ $purpul-100:                   #C028CD;
   border-radius: 10px;
   display: flex;
   align-items: center;
-
-  span {
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 24px;
-      margin-left: 10px;
-  }
-
-  @media (max-width: 767px) {
-    span {
-      font-size: 14px;
-    }
-  }
+  gap: 10px;
 }
 
 @mixin basketBlockHeader {

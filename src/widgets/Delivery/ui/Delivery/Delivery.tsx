@@ -16,6 +16,8 @@ export const Delivery: FC = () => {
   const labelDeliveryCheckboxId = nanoid();
   const basket = useSelector(openBasketSelector);
   const pagesInfo = useSelector(getRestaurantPagesInfoSelector);
+  const selectId = nanoid();
+  const pickupOfGoodsSelectId = nanoid();
 
   const handlerChangeSelectAddress = (address: string) => {
     dispatch(basketActions.addRecipientAddress(address));
@@ -68,11 +70,12 @@ export const Delivery: FC = () => {
             options={pagesInfo.restaurantAddress}
             onChange={handlerChangeSelectAddress}
             required
+            id={selectId}
           />
           <p className={style.changeAddressText}>
             Хотите доставить по другому адресу?
             <br />
-            <a href='widgets/delivery/ui/Delivery/Delivery#'>Да изменить</a>
+            <a href='#'>Да изменить</a>
           </p>
         </div>
       </div>
@@ -80,8 +83,9 @@ export const Delivery: FC = () => {
         <Checkbox
           isCircle
           onChange={handlerChangeCheckboxPickupOfGoods(basket.pickupOfGoods)}
+          label='Самовывоз'
+          id={pickupOfGoodsSelectId}
         />
-        <span>Самовывоз</span>
       </div>
     </div>
   );
