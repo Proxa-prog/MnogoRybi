@@ -38,6 +38,11 @@
 .ourContacts {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 20px;
     padding-top: 30px;
+
+    @media (max-width: 767px) {
+        gap: 10px;
+    }
 }

@@ -1,7 +1,6 @@
 .contactsCard {
     background: $gray-10;
     padding: 20px;
-    margin-bottom: 20px;
     border-radius: 10px;
     min-width: 305px;
 
@@ -23,7 +22,6 @@
     
     @media (max-width: 767px) {
         width: 100%;
-        margin-bottom: 10px;
         padding: 15px;
         min-width: auto;
 

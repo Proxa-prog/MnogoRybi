@@ -3,11 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AnyAction } from '@reduxjs/toolkit';
 import classNames from 'classnames';
 
-import { Checkbox } from 'shared';
-
-
 import { IProducts } from 'entities/basket';
 import { constructorSelector, ConstructorType } from 'entities/constructor';
+
+import { Checkbox } from 'shared';
 
 import style from './CheckboxListColumnSquare.module.scss';
 

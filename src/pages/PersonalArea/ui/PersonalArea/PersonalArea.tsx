@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { nanoid } from 'nanoid';
@@ -85,20 +85,23 @@ export const PersonalArea: FC = () => {
         <div className={style.inner}>
           <div className={style.linksWrapper}>
             {userAccount.personalAreaLinks &&
-              userAccount.personalAreaLinks.map((item: IPersonalAreaPagesLinks) => (
-                <Link
-                  to={`/${item.id}`}
-                  type='button'
-                  onClick={() => {
-                    handleLinkClick(item.id);
-                  }}
-                  className={classNames(style.pageLink, {
-                    [style.pageLinkCurrent]: item.isCurrent,
-                  })}
-                >
-                  {item.name}
-                </Link>
-              ))}
+              userAccount.personalAreaLinks.map((item: IPersonalAreaPagesLinks) => {
+
+                return (
+                  <Link
+                    to={`/${item.id}`}
+                    type='button'
+                    onClick={() => {
+                      handleLinkClick(item.id);
+                    }}
+                    className={classNames(style.pageLink, {
+                      [style.pageLinkCurrent]: item.isCurrent,
+                    })}
+                  >
+                    {item.name}
+                  </Link>
+                )
+              })}
           </div>
           <div className={style.myDataWrapper}>
             <div className={style.myData}>

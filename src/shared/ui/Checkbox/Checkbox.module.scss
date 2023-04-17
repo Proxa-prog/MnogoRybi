@@ -15,7 +15,6 @@
         & + label {
             font-weight: 600;
             font-size: 16px;
-            line-height: 24px;
         }
     
         &::before {
@@ -23,7 +22,7 @@
             content: "";
             width: 20px;
             height: 20px;
-            //background-image: url("/public/images/ok.svg");
+            background-image: url("/public/images/ok.svg");
             background-repeat: no-repeat;
             left: 2px;
             top: 3px;
@@ -40,7 +39,7 @@
             content: "";
             width: 20px;
             height: 20px;
-            //background-image: url("/public/images/ok.svg");
+            background-image: url("/public/images/ok.svg");
             background-repeat: no-repeat;
             left: 3px;
             top: 3px;
@@ -85,12 +84,5 @@
     &:hover {
         font-weight: 600;
         font-size: 16px;
-        line-height: 24px;
     }
-}
-
-.labelChecked {
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
 }

@@ -12,6 +12,7 @@ export const Payment: FC = () => {
   const dispatch = useDispatch();
   const labelPaymentCheckboxId = nanoid();
   const basket = useSelector(openBasketSelector);
+  const paymentToTheCourierCheckboxId = nanoid();
 
   const handlerChangeInputCardNumber = (cardNumber: string | undefined) => {
     dispatch(basketActions.addRecipientCardNumber(cardNumber));
@@ -103,8 +104,9 @@ export const Payment: FC = () => {
         <Checkbox
           isCircle
           onChange={handlerChangeCheckboxPaymentToTheCourier(basket.paymentToTheCourier)}
+          label='Курьеру при получении'
+          id={paymentToTheCourierCheckboxId}
         />
-        <span>Курьеру при получении</span>
       </div>
     </div>
   );
