@@ -9,6 +9,7 @@ export const fetchProductions = createAsyncThunk<void, void, ThunkConfig<void>>(
   'getProductionsData/fetchProductions',
   async (_, thunkAPI) => {
     try {
+      console.log('fetchProductions')
       const response = await axios.get<string, ResponseApiProductions>(
         POKE_URL
       );

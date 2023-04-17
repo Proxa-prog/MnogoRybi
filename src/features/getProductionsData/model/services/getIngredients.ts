@@ -9,6 +9,7 @@ export const fetchIngredients = createAsyncThunk<void, void, ThunkConfig<void>>(
   'pokeIngredients/fetchIngredients',
   async (_, thunkAPI) => {
     try {
+      console.log('fetchIngredients')
       const response = await axios.get<string, ResponseApiIngredients>(
         RESTAURANT_INGREDIENTS_URL
       );

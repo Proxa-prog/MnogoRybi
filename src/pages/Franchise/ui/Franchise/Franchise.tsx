@@ -2,33 +2,14 @@ import React, { FC, useEffect } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
 import { useSelector } from 'react-redux';
 
-import { useAppDispatch } from 'app/store';
-
 import { advantages, FranchiseAdvantages } from 'pages/Franchise';
 
 import { Footer } from 'widgets/Footer';
 import { BlockHeader, Header } from 'widgets/Header';
-import { Recovery } from "widgets/Recovery";
 import { BasketWrapper } from "widgets/Basket";
 
-import { Authorization } from "features/authorization";
 import {
-  getRegistrationSelector,
-  openConfirmationSelector,
-  ModalRegistration,
-  Confirmation
-} from 'features/registration';
-import {
-  fetchPagesInfo,
-  fetchRestaurantProductions,
-  getRestaurantPagesInfoSelector
-} from 'features/getRestaurantData';
-import { fetchProductions } from 'features/getProductionsData';
-
-import {
-  ModalUserDoesNotExist,
   userAccountSelector,
-  userEnterSelector
 } from 'entities/user';
 
 import { Button, ImageWrapper } from 'shared';
@@ -36,27 +17,14 @@ import { Button, ImageWrapper } from 'shared';
 import style from './Franchise.module.scss';
 
 export const Franchise: FC = () => {
-  const dispatch = useAppDispatch();
-  const registration = useSelector(getRegistrationSelector);
-  const userEnter = useSelector(userEnterSelector);
-  const confirmation = useSelector(openConfirmationSelector);
   const userAccount = useSelector(userAccountSelector);
-  const pageInfo = useSelector(getRestaurantPagesInfoSelector);
 
   useEffect(() => {
-    dispatch(fetchProductions());
-    dispatch(fetchRestaurantProductions());
-    pageInfo.pagesNames.length === 0 && pageInfo.pagesNames.length === 0 && dispatch(fetchPagesInfo());
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <>
-      {registration.isOpen && <ModalRegistration />}
-      {userEnter.isOpen && <Authorization />}
-      {confirmation.isOpen && <Confirmation />}
-      {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
-      {userAccount.userAccount.isModalUserDoesNotExist && <ModalUserDoesNotExist />}
       <Header isAuth={userAccount.userAccount.isLogin} />
       <section className={style.wrapper}>
         <div className={style.inner}>

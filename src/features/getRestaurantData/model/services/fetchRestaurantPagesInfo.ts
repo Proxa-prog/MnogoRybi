@@ -9,6 +9,7 @@ export const fetchPagesInfo = createAsyncThunk<void, void, ThunkConfig<void>>(
   'restaurantPagesInfo/fetchPagesInfo',
   async (_, thunkAPI) => {
     try {
+      console.log('fetchPagesInfo')
       const response = await axios.get<string, ResponseApiRestaurantPagesInfo>(
         RESTAURANT_PAGES_INFO_URL
       );

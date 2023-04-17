@@ -10,31 +10,15 @@ import {
   CheckboxListWrapper
 } from 'widgets/ConstructorCard';
 import { Footer } from 'widgets/Footer';
-import { Recovery } from "widgets/Recovery";
 import { BasketWrapper } from "widgets/Basket";
 
-import { Authorization } from "features/authorization";
 import {
-  getRegistrationSelector,
-  openConfirmationSelector,
-  ModalRegistration,
-  Confirmation
-} from 'features/registration';
-import {
-  fetchProductions,
   getIngredientsSelector,
   fetchIngredients,
 } from 'features/getProductionsData';
-import {
-  fetchPagesInfo,
-  fetchRestaurantProductions,
-  getRestaurantPagesInfoSelector
-} from 'features/getRestaurantData';
 
 import {
-  ModalUserDoesNotExist,
   userAccountSelector,
-  userEnterSelector
 } from 'entities/user';
 import {
   baseProductSelector,
@@ -46,6 +30,7 @@ import {
   sauceSelector,
   toppingSelector,
   fetchFilters,
+  filtersSelector,
 } from 'entities/constructor';
 
 import { ImageWrapper } from 'shared';
@@ -54,9 +39,6 @@ import style from './Constructor.module.scss';
 
 export const Constructor = () => {
   const dispatch = useAppDispatch();
-  const registration = useSelector(getRegistrationSelector);
-  const userEnter = useSelector(userEnterSelector);
-  const confirmation = useSelector(openConfirmationSelector);
   const userAccount = useSelector(userAccountSelector);
   const ingredients = useSelector(getIngredientsSelector);
   const fillersType = useSelector(fillersTypeSelector);
@@ -66,7 +48,7 @@ export const Constructor = () => {
   const protein = useSelector(proteinSelector);
   const topping = useSelector(toppingSelector);
   const crunch = useSelector(crunchSelector);
-  const pageInfo = useSelector(getRestaurantPagesInfoSelector);
+  const filters = useSelector(filtersSelector);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const getWindowWidth = () => {
@@ -82,21 +64,13 @@ export const Constructor = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(fetchIngredients());
-    dispatch(fetchProductions());
-    dispatch(fetchRestaurantProductions());
-    pageInfo.pagesNames.length === 0 && dispatch(fetchPagesInfo());
-    dispatch(fetchFilters());
+    Object.keys(ingredients.basis).length === 0 && dispatch(fetchIngredients());
+    filters.filters.length === 0 && dispatch(fetchFilters());
     window.scrollTo(0, 0);
   }, []);
-
+  console.log("Constructor")
   return (
     <div>
-      {registration.isOpen && <ModalRegistration />}
-      {userEnter.isOpen && <Authorization />}
-      {confirmation.isOpen && <Confirmation />}
-      {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
-      {userAccount.userAccount.isModalUserDoesNotExist && <ModalUserDoesNotExist />}
       <Header isAuth={userAccount.userAccount.isLogin} />
       <BlockHeader className={style.BlockWrapper} pageName='Конструктор поке'>
         <section className={style.wrapper}>

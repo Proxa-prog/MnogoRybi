@@ -1,2 +1,2 @@
-export { Contacts } from './ui/Contacts/Contacts';
+export { default as Contacts } from './ui/Contacts/Contacts';
 

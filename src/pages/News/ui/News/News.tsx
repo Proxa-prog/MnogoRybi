@@ -8,16 +8,7 @@ import { useAppDispatch } from 'app/store';
 import { Footer } from 'widgets/Footer';
 import { Card } from 'widgets/Card';
 import { Header, BlockHeader } from 'widgets/Header';
-import { Recovery } from 'widgets/Recovery';
 import { BasketWrapper } from "widgets/Basket";
-
-import { Authorization } from 'features/authorization';
-import {
-  getRegistrationSelector,
-  openConfirmationSelector,
-  ModalRegistration,
-  Confirmation,
-} from 'features/registration';
 
 import {
   INews,
@@ -25,17 +16,9 @@ import {
   getNewsSelector,
   fetchNews
 } from 'features/getNews';
-import { fetchProductions } from 'features/getProductionsData';
-import {
-  fetchPagesInfo,
-  fetchRestaurantProductions,
-  getRestaurantPagesInfoSelector
-} from 'features/getRestaurantData';
 
 import {
-  ModalUserDoesNotExist,
   userAccountSelector,
-  userEnterSelector
 } from 'entities/user';
 
 import { Button, NEWS_LIMIT } from 'shared';
@@ -46,11 +29,7 @@ export const News: FC = () => {
   const dispatch = useAppDispatch();
   const router = useNavigate();
   const news = useSelector(getNewsSelector);
-  const registration = useSelector(getRegistrationSelector);
-  const userEnter = useSelector(userEnterSelector);
-  const confirmation = useSelector(openConfirmationSelector);
   const userAccount = useSelector(userAccountSelector);
-  const pageInfo = useSelector(getRestaurantPagesInfoSelector);
 
   const handleButtonShowMore = () => {
     dispatch(newsActions.addLimit(NEWS_LIMIT));
@@ -63,19 +42,11 @@ export const News: FC = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchProductions());
-    pageInfo.pagesNames.length === 0 && dispatch(fetchPagesInfo());
-    dispatch(fetchRestaurantProductions());
-    dispatch(fetchNews(news.limit));
+    news.newsArray.length === 0 && dispatch(fetchNews(news.limit));
   }, [news.limit]);
 
   return (
     <>
-      {registration.isOpen && <ModalRegistration />}
-      {userEnter.isOpen && <Authorization />}
-      {confirmation.isOpen && <Confirmation />}
-      {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
-      {userAccount.userAccount.isModalUserDoesNotExist && <ModalUserDoesNotExist />}
       <Header isAuth={userAccount.userAccount.isLogin} />
       <div className={style.wrapper}>
         <div className={style.inner}>

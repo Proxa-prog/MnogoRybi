@@ -16,18 +16,8 @@ import PopupIcon from '/public/images/location_marker.png';
 
 import { Footer } from 'widgets/Footer';
 import { Header, BlockHeader } from 'widgets/Header';
-import { Recovery } from "widgets/Recovery";
 import { BasketWrapper } from "widgets/Basket";
 
-import { Authorization } from "features/authorization";
-import {
-  getRegistrationSelector,
-  openConfirmationSelector,
-  ModalRegistration,
-  Confirmation
-} from 'features/registration';
-
-import { fetchProductions } from 'features/getProductionsData';
 import {
   fetchMapCenter,
   setMapSelector,
@@ -36,16 +26,11 @@ import {
 } from 'features/getMapData';
 import {
   getRestaurantLocationSelector,
-  fetchRestaurantLocation,
-  fetchPagesInfo,
-  fetchRestaurantProductions,
   getRestaurantPagesInfoSelector,
 } from 'features/getRestaurantData';
 
 import {
-  ModalUserDoesNotExist,
   userAccountSelector,
-  userEnterSelector
 } from 'entities/user';
 import {
   IContactsCard,
@@ -57,16 +42,12 @@ import { MAP_ICON_SIZE, MAP_ZOOM } from 'shared';
 
 import style from './Contacts.module.scss';
 
-export const Contacts: FC = () => {
+const Contacts: FC = () => {
   const dispatch = useAppDispatch();
   const map = useSelector(setMapSelector);
-  const registration = useSelector(getRegistrationSelector);
-  const userEnter = useSelector(userEnterSelector);
-  const confirmation = useSelector(openConfirmationSelector);
   const userAccount = useSelector(userAccountSelector);
   const pagesInfo = useSelector(getRestaurantPagesInfoSelector);
   const restaurantLocation = useSelector(getRestaurantLocationSelector);
-  const pageInfo = useSelector(getRestaurantPagesInfoSelector);
 
   const createPopup = (PopupCoordinates: IPopupCoordinates) => {
     const id = nanoid();
@@ -90,23 +71,13 @@ export const Contacts: FC = () => {
       dispatch(mapActions.changeMapCenter(card));
     };
   };
-
   useEffect(() => {
-    dispatch(fetchRestaurantLocation());
-    dispatch(fetchMapCenter());
-    dispatch(fetchProductions());
-    dispatch(fetchRestaurantProductions());
-    pageInfo.pagesNames.length === 0 && dispatch(fetchPagesInfo());
+    (map.lat === 0 && map.lng === 0) && dispatch(fetchMapCenter());
     window.scrollTo(0, 0);
   }, []);
-
+  console.log("Contacts")
   return (
     <>
-      {registration.isOpen && <ModalRegistration />}
-      {userEnter.isOpen && <Authorization />}
-      {confirmation.isOpen && <Confirmation />}
-      {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
-      {userAccount.userAccount.isModalUserDoesNotExist && <ModalUserDoesNotExist />}
       <Header isAuth={userAccount.userAccount.isLogin} />
       <div className={style.wrapper}>
         <BlockHeader pageName='Контакты'>
@@ -153,3 +124,5 @@ export const Contacts: FC = () => {
     </>
   );
 };
+
+export default React.memo(Contacts);

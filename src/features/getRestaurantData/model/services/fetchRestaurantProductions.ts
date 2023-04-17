@@ -12,6 +12,7 @@ export const fetchRestaurantProductions = createAsyncThunk<void, void, ThunkConf
   'restaurantProductions/fetchRestaurantProductions',
   async (_, thunkAPI) => {
     try {
+      console.log('fetchRestaurantProductions')
       const response = await axios.get<string, ResponseApiRestaurantProductions>(
         RESTAURANT_PRODUCTIONS_URL
       );
