@@ -11,34 +11,17 @@ import { paymentStatus, theme } from "pages/MyOrders";
 
 import { Footer } from 'widgets/Footer';
 import { Header } from 'widgets/Header';
-import { Recovery } from "widgets/Recovery";
 import { BasketWrapper } from "widgets/Basket";
 import {
   orderStatuses,
   OrderHistoryCard,
 } from 'widgets/OrderHistoryCard';
 
-import { Authorization } from "features/authorization";
-import {
-  getRegistrationSelector,
-  openConfirmationSelector,
-  ModalRegistration,
-  Confirmation
-} from 'features/registration';
-
-import {
-  fetchPagesInfo,
-  fetchRestaurantProductions,
-  getRestaurantPagesInfoSelector
-} from 'features/getRestaurantData';
-
 import {
   userAccountActions,
   userAccountSelector,
   AddDeliveryAddress,
   IPersonalAreaPagesLinks,
-  userEnterSelector,
-  ModalUserDoesNotExist,
 } from 'entities/user';
 import { IAddedOrder } from "entities/basket";
 
@@ -48,11 +31,7 @@ import style from './MyOrders.module.scss';
 
 export const MyOrders: FC = () => {
   const dispatch = useAppDispatch();
-  const registration = useSelector(getRegistrationSelector);
-  const userEnter = useSelector(userEnterSelector);
-  const confirmation = useSelector(openConfirmationSelector);
   const userAccount = useSelector(userAccountSelector);
-  const pageInfo = useSelector(getRestaurantPagesInfoSelector);
 
   const handleLinkClick = (event: React.MouseEvent<HTMLElement>) => {
     dispatch(userAccountActions.changePersonalAreaLinkIsCurrent(event.currentTarget.id));
@@ -65,19 +44,12 @@ export const MyOrders: FC = () => {
   const pagesCount = Math.ceil(userAccount.userData.orders.length / NUMBER_OF_CARDS_PER_PAGE);
 
   useEffect(() => {
-    dispatch(fetchRestaurantProductions());
-    pageInfo.pagesNames.length === 0 && dispatch(fetchPagesInfo());
     dispatch(userAccountActions.sortUserOrders(1));
   }, []);
 
   return (
     <>
       <Header isAuth={userAccount.userAccount.isLogin} />
-      {registration.isOpen && <ModalRegistration />}
-      {userEnter.isOpen && <Authorization />}
-      {confirmation.isOpen && <Confirmation />}
-      {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
-      {userAccount.userAccount.isModalUserDoesNotExist && <ModalUserDoesNotExist />}
       {userAccount.userAccount.isLogin && userAccount.userAccount.isModalAddNewAddressOpen && (
         <AddDeliveryAddress />
       )}

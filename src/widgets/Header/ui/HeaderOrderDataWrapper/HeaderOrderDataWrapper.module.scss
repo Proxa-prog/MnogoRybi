@@ -128,7 +128,6 @@
 
 .buttonWrapper {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   margin-left: auto;
 }
@@ -154,6 +153,7 @@
 .buttonBasketWrapper {
   position: relative;
   display: flex;
+  flex-shrink: 0;
 
   .amountItems {
     position: absolute;

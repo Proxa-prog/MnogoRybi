@@ -2,11 +2,8 @@ import React, { FC, useEffect } from 'react';
 import  { useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
-import { useAppDispatch } from 'app/store';
-
 import { BasketWrapper } from 'widgets/Basket';
 import { Header } from 'widgets/Header';
-import { Recovery } from 'widgets/Recovery';
 import { ComponentWrapper } from 'widgets/ProductsWrapper';
 import { Products } from 'widgets/Products';
 import { AboutCompany } from 'widgets/AboutCompany';
@@ -14,30 +11,16 @@ import { ChooseCardWrapper } from 'widgets/ChooseCardWrapper';
 import { Footer } from 'widgets/Footer';
 import { Franchise } from 'widgets/Franchise';
 
-import { getProdSelector, fetchProductions } from 'features/getProductionsData';
-import {
-  getRegistrationSelector,
-  openConfirmationSelector,
-  ModalRegistration,
-  Confirmation,
-} from 'features/registration';
-import { Authorization } from 'features/authorization';
-import { fetchPagesInfo, fetchRestaurantProductions } from 'features/getRestaurantData';
+import { getProdSelector } from 'features/getProductionsData';
 
 import {
-  userEnterSelector,
   userAccountSelector,
-  ModalUserDoesNotExist
 } from 'entities/user';
 import { Description } from 'entities/descriptions';
 
 export const MainPage: FC = () => {
   const location = useLocation()
-  const dispatch = useAppDispatch();
   const productions = useSelector(getProdSelector);
-  const registration = useSelector(getRegistrationSelector);
-  const userEnter = useSelector(userEnterSelector);
-  const confirmation = useSelector(openConfirmationSelector);
   const userAccount = useSelector(userAccountSelector);
 
   useEffect(()=> {
@@ -53,22 +36,11 @@ export const MainPage: FC = () => {
         behavior: "smooth",
       })
     }
-  }, [location,])
-
-  useEffect(() => {
-    dispatch(fetchProductions());
-    dispatch(fetchRestaurantProductions());
-    dispatch(fetchPagesInfo());
-  }, []);
+  }, [location])
 
   return (
     <>
       <Header isAuth={userAccount.userAccount.isLogin} />
-      {registration.isOpen && <ModalRegistration />}
-      {userEnter.isOpen && <Authorization />}
-      {confirmation.isOpen && <Confirmation />}
-      {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
-      {userAccount.userAccount.isModalUserDoesNotExist && <ModalUserDoesNotExist />}
       <div>
         <Description />
         <ComponentWrapper title='Наша продукция'>

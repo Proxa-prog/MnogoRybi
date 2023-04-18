@@ -8,16 +8,7 @@ import { useAppDispatch } from 'app/store';
 
 import { Footer } from 'widgets/Footer';
 import { Header } from 'widgets/Header';
-import { Recovery } from "widgets/Recovery";
 import { BasketWrapper } from "widgets/Basket";
-
-import { Authorization } from "features/authorization";
-import {
-  getRegistrationSelector,
-  openConfirmationSelector,
-  ModalRegistration,
-  Confirmation
-} from 'features/registration';
 
 import {
   userAccountActions,
@@ -25,7 +16,6 @@ import {
   AddDeliveryAddress,
   IPersonalAreaPagesLinks,
   userEnterSelector,
-  ModalUserDoesNotExist,
   removeDeliveryAddressOnServer,
 } from 'entities/user';
 
@@ -40,9 +30,7 @@ import style from './PersonalArea.module.scss';
 
 export const PersonalArea: FC = () => {
   const dispatch = useAppDispatch();
-  const registration = useSelector(getRegistrationSelector);
   const userEnter = useSelector(userEnterSelector);
-  const confirmation = useSelector(openConfirmationSelector);
   const userAccount = useSelector(userAccountSelector);
   const [isButtonGenderActive, setIsButtonGenderActive] = useState(true);
 
@@ -73,11 +61,6 @@ export const PersonalArea: FC = () => {
   return (
     <>
       <Header isAuth={userAccount.userAccount.isLogin} />
-      {registration.isOpen && <ModalRegistration />}
-      {userEnter.isOpen && <Authorization />}
-      {confirmation.isOpen && <Confirmation />}
-      {userAccount.userAccount.isModalRecoveryOpen && <Recovery />}
-      {userAccount.userAccount.isModalUserDoesNotExist && <ModalUserDoesNotExist />}
       {userAccount.userAccount.isLogin && userAccount.userAccount.isModalAddNewAddressOpen && (
         <AddDeliveryAddress />
       )}
