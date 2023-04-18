@@ -18,7 +18,7 @@ import {
 } from 'entities/user';
 import { Description } from 'entities/descriptions';
 
-export const MainPage: FC = React.memo(() => {
+export const MainPage: FC = () => {
   const location = useLocation()
   const productions = useSelector(getProdSelector);
   const userAccount = useSelector(userAccountSelector);
@@ -38,7 +38,6 @@ export const MainPage: FC = React.memo(() => {
     }
   }, [location])
 
-  console.log("MainPage")
   return (
     <>
       <Header isAuth={userAccount.userAccount.isLogin} />
@@ -89,4 +88,4 @@ export const MainPage: FC = React.memo(() => {
       <Footer isAuth={userAccount.userAccount.isLogin} />
     </>
   );
-});
+};

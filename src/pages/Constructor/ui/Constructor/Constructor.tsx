@@ -68,7 +68,7 @@ export const Constructor = () => {
     filters.filters.length === 0 && dispatch(fetchFilters());
     window.scrollTo(0, 0);
   }, []);
-  console.log("Constructor")
+
   return (
     <div>
       <Header isAuth={userAccount.userAccount.isLogin} />

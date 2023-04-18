@@ -75,7 +75,7 @@ const Contacts: FC = () => {
     (map.lat === 0 && map.lng === 0) && dispatch(fetchMapCenter());
     window.scrollTo(0, 0);
   }, []);
-  console.log("Contacts")
+
   return (
     <>
       <Header isAuth={userAccount.userAccount.isLogin} />

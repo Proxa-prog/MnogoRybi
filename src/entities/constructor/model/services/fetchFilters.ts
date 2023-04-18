@@ -11,7 +11,6 @@ export const fetchFilters = createAsyncThunk<void, void, ThunkConfig<void>>(
   'filters/fetchFilters',
   async (_, thunkAPI) => {
     try {
-      console.log('filters')
       const response = await axios.get<IFiltersIngredients[], ResponseApiFilters>(
         RESTAURANT_FILTERS_URL
       );

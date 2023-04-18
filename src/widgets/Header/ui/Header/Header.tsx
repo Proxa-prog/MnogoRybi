@@ -25,7 +25,6 @@ const Header: FC<HeaderProps> = (props) => {
     itemsInTheBasket,
     isAuth = false
   } = props;
-  console.log("Header")
 
   const dispatch = useAppDispatch();
   const [scrollHeight, setScrollHeight] = useState(0);

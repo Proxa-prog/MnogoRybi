@@ -10,7 +10,6 @@ export const fetchMapCenter = createAsyncThunk<void, void, ThunkConfig<void>>(
   'getMapData/fetchMapCenter',
   async (_, thunkAPI) => {
     try {
-      console.log('fetchMapCenter')
       const response = await axios.get<string, ResponseApiMap>(RESTAURANT_LOCATION_URL);
       const mapCenter = response.data.restaurantMapCenter;
 

@@ -46,7 +46,7 @@ export const MyOrders: FC = () => {
   useEffect(() => {
     dispatch(userAccountActions.sortUserOrders(1));
   }, []);
-  console.log('MyOrders')
+
   return (
     <>
       <Header isAuth={userAccount.userAccount.isLogin} />
