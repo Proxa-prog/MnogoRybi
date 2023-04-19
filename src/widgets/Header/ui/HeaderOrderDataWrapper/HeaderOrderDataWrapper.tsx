@@ -10,6 +10,7 @@ import { MenuButtonBasket } from 'widgets/MenuButtonBasket';
 
 import { getRestaurantPagesInfoSelector } from 'features/getRestaurantData';
 
+import { userAccountActions } from "entities/user";
 import { basketActions } from 'entities/basket';
 
 import {
@@ -22,7 +23,6 @@ import {
 } from 'shared';
 
 import style from './HeaderOrderDataWrapper.module.scss';
-import {userAccountActions} from "../../../../entities/user";
 
 interface HeaderOrderDataWrapperProps {
   isHeaderMenuActive: boolean;
@@ -157,7 +157,11 @@ export const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) =
               onClick={onClick}
             />
           ) : (
-            <Button buttonName='Вход' type='button' onClick={onClick}>
+            <Button
+              buttonName='Вход'
+              type='button'
+              onClick={onClick}
+            >
               Войти
             </Button>
           )
@@ -187,7 +191,6 @@ export const HeaderOrderDataWrapper: FC<HeaderOrderDataWrapperProps> = (props) =
               imageLeft='desk_alt_fill.svg'
               imageHeight={24}
               imageWidth={24}
-              onClick={() => {}}
             >
               Заказы
             </Button>

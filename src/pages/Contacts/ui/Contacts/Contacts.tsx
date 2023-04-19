@@ -7,7 +7,7 @@ import {
   MapContainer,
   Marker,
   Popup,
-  TileLayer
+  TileLayer,
 } from 'react-leaflet';
 
 import { useAppDispatch } from 'app/store';
@@ -16,7 +16,7 @@ import PopupIcon from '/public/images/location_marker.png';
 
 import { Footer } from 'widgets/Footer';
 import { Header, BlockHeader } from 'widgets/Header';
-import { BasketWrapper } from "widgets/Basket";
+import { BasketWrapper } from 'widgets/Basket';
 
 import {
   fetchMapCenter,
@@ -25,17 +25,16 @@ import {
   mapActions,
 } from 'features/getMapData';
 import {
+  fetchRestaurantLocation,
   getRestaurantLocationSelector,
   getRestaurantPagesInfoSelector,
 } from 'features/getRestaurantData';
 
-import {
-  userAccountSelector,
-} from 'entities/user';
+import { userAccountSelector } from 'entities/user';
 import {
   IContactsCard,
   IPopupCoordinates,
-  ContactsCard
+  ContactsCard,
 } from 'entities/contact';
 
 import { MAP_ICON_SIZE, MAP_ZOOM } from 'shared';
@@ -71,8 +70,15 @@ const Contacts: FC = () => {
       dispatch(mapActions.changeMapCenter(card));
     };
   };
+
   useEffect(() => {
-    (map.lat === 0 && map.lng === 0) && dispatch(fetchMapCenter());
+    restaurantLocation.restaurantMapCenter.lat === 0
+    && restaurantLocation.restaurantMapCenter.lng === 0
+    && dispatch(fetchMapCenter());
+
+    map.lat === 0
+    && map.lng === 0
+    && dispatch(fetchRestaurantLocation());
     window.scrollTo(0, 0);
   }, []);
 
@@ -85,13 +91,7 @@ const Contacts: FC = () => {
             {pagesInfo.restaurantAddress.map((card: IContactsCard) => {
               const id = nanoid();
 
-              return (
-                <ContactsCard
-                  key={id}
-                  card={card}
-                  onClick={setMapAddress(card)}
-                />
-              );
+              return <ContactsCard key={id} card={card} onClick={setMapAddress(card)} />;
             })}
           </div>
         </BlockHeader>
@@ -104,6 +104,7 @@ const Contacts: FC = () => {
           ]}
           zoom={MAP_ZOOM}
           scrollWheelZoom={false}
+          attributionControl={false}
         >
           <TileLayer
             noWrap={true}

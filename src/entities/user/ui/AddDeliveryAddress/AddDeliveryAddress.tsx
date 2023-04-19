@@ -30,16 +30,18 @@ export const AddDeliveryAddress: React.FC = () => {
   };
 
   const handleButtonAddAddressClick = (newAddress: string) => {
-    dispatch(userAccountActions.addDeliveryAddress(newAddress));
-    dispatch(
-      addNewDeliveryAddressAsync({
-        email: userEnter.userAccount.email,
-        password: userEnter.userAccount.password,
-        isWindowUserEnterOpen: userEnter.isOpen,
-        isUserLogin: userAccount.userAccount.isLogin,
-        newDeliveryAddress: newAddress,
-      })
-    );
+    return () => {
+      dispatch(userAccountActions.addDeliveryAddress(newAddress));
+      dispatch(
+        addNewDeliveryAddressAsync({
+          email: userEnter.userAccount.email,
+          password: userEnter.userAccount.password,
+          isWindowUserEnterOpen: userEnter.isOpen,
+          isUserLogin: userAccount.userAccount.isLogin,
+          newDeliveryAddress: newAddress,
+        })
+      );
+    }
   };
 
   return (
@@ -65,9 +67,7 @@ export const AddDeliveryAddress: React.FC = () => {
         className={style.buttonAddNewAddress}
         type='button'
         color='yellow'
-        onClick={() => {
-          handleButtonAddAddressClick(address);
-        }}
+        onClick={handleButtonAddAddressClick(address)}
       >
         Добавить новый адрес
       </Button>

@@ -1,7 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { nanoid } from '@reduxjs/toolkit';
 
 import { useAppDispatch } from 'app/store';
 
@@ -42,7 +41,7 @@ export const News: FC = () => {
   };
 
   useEffect(() => {
-    news.newsArray.length === 0 && dispatch(fetchNews(news.limit));
+    dispatch(fetchNews(news.limit));
   }, [news.limit]);
 
   return (
@@ -55,8 +54,7 @@ export const News: FC = () => {
             className={style.paddingOff}
           />
           <div className={style.cardWrapper}>
-            {news.newsArray.map((news: INews) => {
-              const id = nanoid();
+            {news.newsArray.map((news: INews, index: number) => {
 
               return (
                 <Card
@@ -69,7 +67,7 @@ export const News: FC = () => {
                   description={news.description}
                   header={news.header}
                   isInfo
-                  key={id}
+                  key={index}
                   onClick={handleCardButtonClick(news.id)}
                 />
               );

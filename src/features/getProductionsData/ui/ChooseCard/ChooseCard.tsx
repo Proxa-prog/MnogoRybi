@@ -112,12 +112,11 @@ export const ChooseCard: FC = () => {
       >
         <div className={style.statusesWrapper}>
           {productsCard.statuses &&
-            productsCard.statuses.map((status: StatusMarkerProps) => {
-              const id = nanoid();
+            productsCard.statuses.map((status: StatusMarkerProps, index) => {
 
               return (
                 <StatusMarker
-                  key={id}
+                  key={index}
                   color={status.color}
                   className={style.cardStatus}
                 >

@@ -5,25 +5,24 @@ import Image from "/public/images/lace.png";
 
 import { Button } from "shared";
 
-import style from "./Franchise.module.scss";
+import style from "./FranchiseBlock.module.scss";
 
-export const Franchise: FC = () => {
+export const FranchiseBlock: FC = () => {
   return (
     <section
       className={style.franchise}
       style={{ backgroundImage: `url(${Image})` }}
     >
       <h3>Открой свой poke-room «МногоРыбы»</h3>
-      <Button
-        className={style.buttonShowMore}
-        color="white"
-        type="button"
-        onClick={() => {}}
-      >
-        <Link to={`/franchise`} className={style.createPokeButton}>
+      <Link to={`/franchise`} className={style.createPokeButton}>
+        <Button
+          className={style.buttonShowMore}
+          color="white"
+          type="button"
+        >
           Подробнее
-        </Link>
-      </Button>
+        </Button>
+      </Link>
     </section>
   );
 };

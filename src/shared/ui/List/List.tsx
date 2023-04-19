@@ -1,5 +1,4 @@
-import React, {FC, useEffect} from 'react';
-import { nanoid } from '@reduxjs/toolkit';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
@@ -36,58 +35,43 @@ export const List: FC<ListProps> = (props) => {
     handleButtonMoreClick,
   } = props;
 
-  return (
-    <ul className={classNames(
-      style.default,
-      classNameList,
-    )}
-    >
-      {
-        items.map((item: IProducts) => {
-          const id = nanoid();
+  const handleMoreClick = () => {
+    return () => {
+      handleButtonMoreClick && handleButtonMoreClick(!buttonMoreIsOpen);
+    };
+  };
 
-          return (
-            <li
-              className={classNames(
-                style.defaultLi,
-                classNameItem,
-                {[style.textShadow]: item.isCurrent && item.isCurrent}
-              )}
-              key={id}
-              id={`navLink${item.id}`}
-              onClick={onClick}
-            >
-              {
-                isLink && <Link to={`/${item.id}`}>{item.name}</Link>
-              }
-              {
-                isNavigate && <Link to={`/#${item.id}`}>{item.name}</Link>
-              }
-              {
-                isText && <span>{item.name}</span>
-              }
-            </li>
-          )
-        })
-      }
-      {
-        isButton && <Button
-          className={classNames(
-            style.defaultLi,
-            classNameItem,
-            style.buttonMore,
-          )}
+  return (
+    <ul className={classNames(style.default, classNameList)}>
+      {items.map((item: IProducts, index: number) => {
+
+        return (
+          <li
+            className={classNames(style.defaultLi, classNameItem, {
+              [style.textShadow]: item.isCurrent && item.isCurrent,
+            })}
+            key={index}
+            id={`navLink${item.id}`}
+            onClick={onClick}
+          >
+            {isLink && <Link to={`/${item.id}`}>{item.name}</Link>}
+            {isNavigate && <Link to={`/#${item.id}`}>{item.name}</Link>}
+            {isText && <span>{item.name}</span>}
+          </li>
+        );
+      })}
+      {isButton && (
+        <Button
+          className={classNames(style.defaultLi, classNameItem, style.buttonMore)}
           type='button'
           imageRight='property_expand_down.svg'
           imageHeight={24}
           imageWidth={24}
-          onClick={() => {
-            handleButtonMoreClick && handleButtonMoreClick(!buttonMoreIsOpen);
-          }}
+          onClick={handleMoreClick}
         >
           Ещё
         </Button>
-      }
+      )}
     </ul>
   );
 };

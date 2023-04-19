@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
-import { nanoid } from '@reduxjs/toolkit';
 
 import { openBasketSelector, BasketCard } from 'entities/basket';
 
@@ -14,12 +13,11 @@ export const ShowOrder: FC = () => {
       <>
         <h3>Ваш улов</h3>
         {
-          basket.basket && basket.basket.map((product) => {
-            const id = nanoid();
+          basket.basket && basket.basket.map((product, index) => {
 
             return (
               <BasketCard
-                key={id}
+                key={index}
                 product={product}
               />
             )

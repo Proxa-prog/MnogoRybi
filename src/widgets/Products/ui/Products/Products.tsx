@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { nanoid } from '@reduxjs/toolkit';
 
 import { Card, CardProps } from 'widgets/Card';
 
@@ -25,12 +24,10 @@ export const Products: FC<ProductsProps> = (props) => {
     >
       <h2 className={style.title}>{title}</h2>
       {
-        productCards && productCards.map((productCard: CardProps) => {
-          const id = nanoid();
-
+        productCards && productCards.map((productCard: CardProps, index) => {
           return (
             <Card
-              key={id}
+              key={index}
               className={style.card}
               id={id}
               buttonColor={productCard.buttonColor}

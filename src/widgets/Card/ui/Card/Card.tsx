@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, { FC } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
@@ -60,18 +60,6 @@ export const Card: FC<CardProps> = (props) => {
     };
   };
 
-  const useProgressiveImage = (src: string) => {
-    const [sourceLoaded, setSourceLoaded] = useState('')
-
-    useEffect(() => {
-      const img = new Image()
-      img.src = src
-      img.onload = () => setSourceLoaded(src)
-    }, [src])
-
-    return sourceLoaded;
-  }
-  const loaded = useProgressiveImage(`images/${imageUrl}`)
   return (
     <div
       className={classnames(
@@ -83,7 +71,6 @@ export const Card: FC<CardProps> = (props) => {
         [className]
       )}
       id={id}
-      onClick={() => {}}
     >
       <div
         className={classnames(
@@ -93,7 +80,7 @@ export const Card: FC<CardProps> = (props) => {
           [style.lazyBackground]
         )}
         style={{
-          backgroundImage: `url(${loaded || ''})`,
+          backgroundImage: `url(images/${imageUrl})`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
           backgroundPosition: 'bottom',
@@ -101,19 +88,16 @@ export const Card: FC<CardProps> = (props) => {
       >
         <div className={style.cardStatusWrapper}>
           {statuses &&
-            statuses.map((status: StatusMarkerProps) => {
-              const id = nanoid();
-
-              return (
+            statuses.map((status: StatusMarkerProps, index) => (
                 <StatusMarker
-                  key={id}
+                  key={index}
                   color={status.color}
                   className={style.cardStatus}
                 >
                   {status.children}
                 </StatusMarker>
-              );
-            })}
+              )
+            )}
         </div>
       </div>
       <div
@@ -154,11 +138,11 @@ export const Card: FC<CardProps> = (props) => {
             </div>
           )}
           {isPreview ? (
-            <Button type='button'>
-              <Link to={`/constructor`} className={style.createPokeButton}>
-                Создать поке
-              </Link>
-            </Button>
+            <Link to={`/constructor`} className={style.createPokeButton}>
+              <Button type='button'>
+                  Создать поке
+              </Button>
+            </Link>
           ) : (
             <Button
               className={classnames(style.buttonBuy)}

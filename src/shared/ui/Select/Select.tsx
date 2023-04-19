@@ -3,7 +3,6 @@ import React, {
   SelectHTMLAttributes,
   useState,
 } from 'react';
-import { nanoid } from '@reduxjs/toolkit';
 import classNames from 'classnames';
 
 import { IProducts } from 'entities/basket';
@@ -71,7 +70,6 @@ export const Select: FC<SelectProps> = (props) => {
         id={id}
         required
         disabled={disabled}
-        defaultValue='Default'
         onChange={(event: any) => {
           onChange && onChange(event.target.value, event.currentTarget.checked);
           setValue(event.target.value);
@@ -90,13 +88,11 @@ export const Select: FC<SelectProps> = (props) => {
       </select>
       {isOpen && (
         <ul className={classNames(style.isOpen, {}, [classNameList])}>
-          {options.map((option: IProducts) => {
-            const id = nanoid();
-
+          {options.map((option: IProducts, index) => {
             return (
               <li
                 className={style.listItem}
-                key={id}
+                key={index}
                 onClick={handleOptionClick(option)}
               >
                 {option.name}

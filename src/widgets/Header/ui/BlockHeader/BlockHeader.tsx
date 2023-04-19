@@ -30,15 +30,15 @@ export const BlockHeader: FC<BlockHeaderProps> = (props) => {
             <span>Главная</span>
           </Link>
           {
-            previousPages && previousPages.map((name) => {
+            previousPages && previousPages.map((name: string, index: number) => {
 
               return (
-                <>
+                <span key={index}>
                   &nbsp; &mdash; &nbsp;
                   <Link to='/news'>
                     <span>{name}</span>
                   </Link>
-                </>
+                </span>
               )
             })
           }

@@ -23,11 +23,10 @@ export const Carousel = React.forwardRef((props, ref) => {
       ref={ref}
       {...settingsNoModules}
     >
-      {descriptions.map((link) => {
-        const id = nanoid();
+      {descriptions.map((link, index) => {
 
         return (
-          <div key={id}>
+          <div key={index}>
             <div
               className={style.imageWrapper}
               style={{
