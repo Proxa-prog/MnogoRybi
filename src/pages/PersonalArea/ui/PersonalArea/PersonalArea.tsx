@@ -1,4 +1,8 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, {
+  FC,
+  useEffect,
+  useState,
+} from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { nanoid } from 'nanoid';
@@ -35,11 +39,13 @@ export const PersonalArea: FC = () => {
   const [isButtonGenderActive, setIsButtonGenderActive] = useState(true);
 
   const handleButtonRemoveNewAddress = (deliveryAddress: string) => {
-    dispatch(removeDeliveryAddressOnServer({
-      userEmail: userEnter.userAccount.email ?? '',
-      deliveryAddress: deliveryAddress,
-    }));
-    dispatch(userAccountActions.removeDeliveryAddress(deliveryAddress));
+    return () => {
+      dispatch(removeDeliveryAddressOnServer({
+        userEmail: userEnter.userAccount.email ?? '',
+        deliveryAddress: deliveryAddress,
+      }));
+      dispatch(userAccountActions.removeDeliveryAddress(deliveryAddress));
+    };
   };
 
   const handleButtonExitOnClick = () => {
@@ -51,7 +57,9 @@ export const PersonalArea: FC = () => {
   };
 
   const handleLinkClick = (id: string) => {
-    dispatch(userAccountActions.changePersonalAreaLinkIsCurrent(id));
+    return () => {
+      dispatch(userAccountActions.changePersonalAreaLinkIsCurrent(id));
+    };
   };
 
   useEffect(() => {
@@ -61,9 +69,13 @@ export const PersonalArea: FC = () => {
   return (
     <>
       <Header isAuth={userAccount.userAccount.isLogin} />
-      {userAccount.userAccount.isLogin && userAccount.userAccount.isModalAddNewAddressOpen && (
-        <AddDeliveryAddress />
-      )}
+      {
+        userAccount.userAccount.isLogin
+        && userAccount.userAccount.isModalAddNewAddressOpen
+        && (
+          <AddDeliveryAddress />
+        )
+      }
       <section className={style.wrapper}>
         <div className={style.inner}>
           <div className={style.linksWrapper}>
@@ -74,9 +86,7 @@ export const PersonalArea: FC = () => {
                   <Link
                     to={`/${item.id}`}
                     type='button'
-                    onClick={() => {
-                      handleLinkClick(item.id);
-                    }}
+                    onClick={handleLinkClick(item.id)}
                     className={classNames(style.pageLink, {
                       [style.pageLinkCurrent]: item.isCurrent,
                     })}
@@ -148,13 +158,13 @@ export const PersonalArea: FC = () => {
             <div className={style.deliveryAddress}>
               <h3>Адреса доставки</h3>
               <div>
-                {userAccount.userData.deliveryAddress.map((item) => {
+                {userAccount.userData.deliveryAddress.map((item, index) => {
                   const id = nanoid();
 
                   return (
                     <div className={style.checkboxWrapper}>
                       <Checkbox
-                        key={id}
+                        key={index}
                         onChange={() => {}}
                         isCircle
                         className={style.checkbox}
@@ -172,9 +182,7 @@ export const PersonalArea: FC = () => {
                       )}
                       <div
                         className={style.buttonCloseWrapper}
-                        onClick={() => {
-                          handleButtonRemoveNewAddress(item);
-                        }}
+                        onClick={handleButtonRemoveNewAddress(item)}
                       >
                         <svg
                           width='24'

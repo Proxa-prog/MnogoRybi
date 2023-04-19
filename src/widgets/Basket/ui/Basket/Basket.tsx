@@ -63,7 +63,6 @@ export const Basket: FC = () => {
               ? `Заказать на ${totalCost} ₽`
               : `Заказать на ${totalCost + COST_OF_DELIVERY} ₽`
           }
-          onClick={() => {}}
         />
       </div>
     </form>

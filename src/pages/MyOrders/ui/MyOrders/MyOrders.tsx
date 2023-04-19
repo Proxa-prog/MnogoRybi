@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { Pagination, ThemeProvider } from '@mui/material';
-import { nanoid } from 'nanoid';
 
 import { useAppDispatch } from 'app/store';
 
@@ -50,14 +49,19 @@ export const MyOrders: FC = () => {
   return (
     <>
       <Header isAuth={userAccount.userAccount.isLogin} />
-      {userAccount.userAccount.isLogin && userAccount.userAccount.isModalAddNewAddressOpen && (
-        <AddDeliveryAddress />
-      )}
+      {
+        userAccount.userAccount.isLogin
+        && userAccount.userAccount.isModalAddNewAddressOpen
+        && (
+          <AddDeliveryAddress />
+        )
+      }
       <section className={style.wrapper}>
         <div className={style.inner}>
           <div className={style.linksWrapper}>
-            {userAccount.personalAreaLinks &&
-              userAccount.personalAreaLinks.map((item: IPersonalAreaPagesLinks) => (
+            {
+              userAccount.personalAreaLinks
+              && userAccount.personalAreaLinks.map((item: IPersonalAreaPagesLinks) => (
                 <Link
                   className={classNames(style.pageLink, {
                     [style.pageLinkCurrent]: item.isCurrent,
@@ -73,13 +77,12 @@ export const MyOrders: FC = () => {
           </div>
           <div className={style.historyOrderWrapper}>
             {
-              userAccount.userData.currentOrders &&
-                userAccount.userData.currentOrders.map((order: IAddedOrder) => {
-                  const id = nanoid();
+              userAccount.userData.currentOrders
+              && userAccount.userData.currentOrders.map((order: IAddedOrder, index) => {
 
                   return (
                     <OrderHistoryCard
-                      key={id}
+                      key={index}
                       numberOfOrder={order.orderId}
                       orderData={order.orderDay}
                       deliveryTime={MOK_DELIVERY_TIME}

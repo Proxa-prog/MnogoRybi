@@ -147,7 +147,6 @@ export const ModalRegistration: React.FC = () => {
         type='submit'
         color='yellow'
         disabled={!registration.agreement}
-        onClick={() => {}}
       >
         Зарегистрироваться
       </Button>

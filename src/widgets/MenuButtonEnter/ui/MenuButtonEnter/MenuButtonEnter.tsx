@@ -18,7 +18,6 @@ interface MenuButtonEnterProps {
 
 export const MenuButtonEnter: FC<MenuButtonEnterProps> = (props) => {
   const { isAuth, scroll } = props;
-
   const userEnter = useSelector(userEnterSelector);
   const dispatch = useAppDispatch();
 
@@ -34,17 +33,22 @@ export const MenuButtonEnter: FC<MenuButtonEnterProps> = (props) => {
           buttonName='Личный кабинет'
           imageLeft='user_fill.svg'
           className={
-            scroll && scroll >= ONE_HUNDRED_PIXEL_SCROLL ? style.authScroll : style.userAuth
+            scroll &&
+            scroll >= ONE_HUNDRED_PIXEL_SCROLL
+              ? style.authScroll
+              : style.userAuth
           }
           type='button'
           isGrayTheme
-          onClick={() => {}}
         />
       </Link>
     );
   }
 
-  if (!isAuth && scroll && scroll >= ONE_HUNDRED_PIXEL_SCROLL) {
+  if (
+    !isAuth
+    && scroll
+    && scroll >= ONE_HUNDRED_PIXEL_SCROLL) {
     return (
       <Button
         buttonName='Вход'

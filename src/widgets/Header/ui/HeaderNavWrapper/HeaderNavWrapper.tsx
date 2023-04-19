@@ -212,21 +212,18 @@ export const HeaderNavWrapper: FC<HeaderNavWrapperProps> = (props) => {
           </div>
           <div className={style.buttonWrapper}>
             {(isHeaderMenuActive && windowWidth < ViewPorts.DESKTOP) || (
-              <Button
-                className={style.buttonCreatePokeWrapper}
-                type='button'
-                isGrayTheme
-                onClick={() => {
-                  console.log('Button Create');
-                }}
+              <Link
+                to={`/constructor`}
+                className={style.createPokeButton}
               >
-                <Link
-                  to={`/constructor`}
-                  className={style.createPokeButton}
+                <Button
+                  className={style.buttonCreatePokeWrapper}
+                  type='button'
+                  isGrayTheme
                 >
-                  Создать поке
-                </Link>
-              </Button>
+                    Создать поке
+                </Button>
+              </Link>
             )}
             {scrollHeight >= ONE_HUNDRED_PIXEL_SCROLL &&
               windowWidth >= ViewPorts.TABLET && (

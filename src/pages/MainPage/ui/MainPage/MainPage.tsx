@@ -9,7 +9,7 @@ import { Products } from 'widgets/Products';
 import { AboutCompany } from 'widgets/AboutCompany';
 import { ChooseCardWrapper } from 'widgets/ChooseCardWrapper';
 import { Footer } from 'widgets/Footer';
-import { Franchise } from 'widgets/Franchise';
+import { FranchiseBlock } from 'widgets/FranchiseBlock';
 
 import { getProdSelector } from 'features/getProductionsData';
 
@@ -82,7 +82,7 @@ export const MainPage: FC = () => {
         </ComponentWrapper>
       </div>
       <AboutCompany />
-      <Franchise />
+      <FranchiseBlock />
       <ChooseCardWrapper />
       <BasketWrapper />
       <Footer isAuth={userAccount.userAccount.isLogin} />

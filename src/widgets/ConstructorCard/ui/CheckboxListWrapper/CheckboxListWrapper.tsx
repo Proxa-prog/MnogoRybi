@@ -10,6 +10,7 @@ import { SelectList } from '../SelectListWrapper/SelectList';
 import { CheckboxListWrapperProps, IFiltersIngredients } from 'widgets/ConstructorCard';
 
 import { filtersSelector } from 'entities/constructor';
+import { IProducts } from "entities/basket";
 
 import { ImageWrapper } from 'shared';
 
@@ -128,9 +129,11 @@ export const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
         <div className={classNames(style.content, {}, [])}>
           {!isCircleCheckbox && !isSelectList && productsType && (
             <ul className={style.list}>
-              {productsType.map((item) => {
+              {productsType.map((item: IProducts, index: number) => {
+
                 return (
                   <CheckboxListColumnSquare
+                    key={index}
                     isCircleCheckbox={isCircleCheckbox}
                     productsType={item}
                     className={style.checkboxWhiteBackground}
@@ -146,11 +149,10 @@ export const CheckboxListWrapper: FC<CheckboxListWrapperProps> = (props) => {
           {isCircleCheckbox &&
             !isSelectList &&
             productsType &&
-            productsType.map((item: any) => {
-              const id = nanoid();
+            productsType.map((item: any, index) => {
               return (
                 <CheckboxListCircle
-                  key={id}
+                  key={index}
                   isCircleCheckbox={isCircleCheckbox}
                   productsType={item}
                   isFillers

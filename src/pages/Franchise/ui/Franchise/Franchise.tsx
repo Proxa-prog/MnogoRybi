@@ -33,12 +33,11 @@ export const Franchise: FC = () => {
             className={style.blockHeader}
           />
           <div className={style.franchiseWrapper}>
-            {advantages.map((item) => {
-              const id = nanoid();
+            {advantages.map((item, index) => {
 
               return (
                 <FranchiseAdvantages
-                  key={id}
+                  key={index}
                   header={item.header}
                   description={item.description}
                   color={item.color}

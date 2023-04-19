@@ -26,7 +26,9 @@ const Recovery: FC = () => {
   };
 
   const handleButtonSendClick = (email: string) => {
-    dispatch(restorePassword(email));
+    return () => {
+      dispatch(restorePassword(email))
+    }
   };
 
   const handleButtonBackClick = () => {
@@ -66,9 +68,7 @@ const Recovery: FC = () => {
         className={style.buttonEnter}
         type="button"
         color="yellow"
-        onClick={() => {
-          handleButtonSendClick(email);
-        }}
+        onClick={handleButtonSendClick(email)}
       >
         <span>Отправить</span>
       </Button>

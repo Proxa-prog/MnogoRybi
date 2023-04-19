@@ -101,7 +101,6 @@ export const Authorization: FC = () => {
         className={style.buttonEnter}
         type='submit'
         color='yellow'
-        onClick={() => {}}
       >
         Войти
       </Button>

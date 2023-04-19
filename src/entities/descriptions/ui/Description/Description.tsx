@@ -1,4 +1,8 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {
+  FC,
+  useEffect,
+  useState,
+} from 'react';
 import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from 'app/store';
@@ -6,8 +10,6 @@ import { useAppDispatch } from 'app/store';
 import { getRestaurantPagesInfoSelector } from 'features/getRestaurantData';
 
 import {
-  getDescriptionSelector,
-  IDescription,
   descriptionsActions,
   ButtonExpand,
   Carousel,
@@ -24,6 +26,11 @@ export const Description: FC = () => {
   const getWindowWidth = () => {
     setWindowWidth(window.innerWidth);
   };
+
+  // @ts-ignore
+  const handleButtonForwardClick = () => sliderRef?.current?.slickNext();
+  // @ts-ignore
+  const handleButtonPrevClick = () => sliderRef?.current?.slickPrev();
 
   useEffect(() => {
     window.addEventListener('resize', getWindowWidth);
@@ -44,18 +51,15 @@ export const Description: FC = () => {
           <ButtonExpand
             className={style.prevArrow}
             isTurn='back'
-            // @ts-ignore
-            onClick={() => sliderRef?.current?.slickPrev()}
+            onClick={handleButtonPrevClick}
           />
         )}
-
         <Carousel ref={sliderRef}></Carousel>
         {windowWidth > 1023 &&
           <ButtonExpand
             className={style.nextArrow}
             isTurn='forward'
-            // @ts-ignore
-            onClick={() => sliderRef?.current?.slickNext()}
+            onClick={handleButtonForwardClick}
           />
         }
       </div>
