@@ -12,7 +12,7 @@ import { openProductsCardActions } from 'features/getProductionsData';
 import {
   StatusMarker,
   Button,
-  StatusMarkerProps
+  StatusMarkerProps, ImageWrapper
 } from 'shared';
 
 import style from './Card.module.scss';
@@ -77,15 +77,22 @@ export const Card: FC<CardProps> = (props) => {
           style.imageWrapper,
           imageWrapperClassName,
           { [style.imageWrapperPreview]: isPreview },
-          [style.lazyBackground]
+          { [style.background]: imageUrl === 'createPokePreview.png' },
+          []
         )}
         style={{
-          backgroundImage: `url(images/${imageUrl})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
-          backgroundPosition: 'bottom',
+          backgroundImage: `url(images/${imageUrl === 'createPokePreview.png' && imageUrl})`,
         }}
       >
+        {
+          imageUrl !== 'createPokePreview.png' &&
+          <ImageWrapper
+            name={imageUrl}
+            alt='Продукция'
+            width='100%'
+            height='100%'
+          />
+        }
         <div className={style.cardStatusWrapper}>
           {statuses &&
             statuses.map((status: StatusMarkerProps, index) => (

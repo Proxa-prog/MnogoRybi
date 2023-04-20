@@ -79,14 +79,6 @@
   }
 }
 
-.listWrapperScroll {
-  flex-basis: 73.64%;
-
-  @media (max-width: 1104px) {
-    flex-basis: 70.64%;
-  }
-}
-
 .listWrapperOpen {
   display: flex;
   flex-wrap: wrap;
@@ -102,6 +94,15 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     z-index: 9999;
+  }
+}
+
+.listWrapperScroll {
+  flex-basis: 73.64%;
+  flex-wrap: nowrap;
+
+  @media (max-width: 1104px) {
+    flex-basis: 70.64%;
   }
 }
 

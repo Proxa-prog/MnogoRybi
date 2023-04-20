@@ -4,8 +4,8 @@ export interface ImageWrapperProps {
   name: string | undefined;
   alt: string;
   className?: string;
-  width?: number;
-  height?: number;
+  width?: number | string;
+  height?: number | string;
 }
 
 export const ImageWrapper: FC<ImageWrapperProps> = (props) => {
@@ -24,6 +24,7 @@ export const ImageWrapper: FC<ImageWrapperProps> = (props) => {
       alt={alt}
       width={width}
       height={height}
+      loading='lazy'
     />
   );
 };
